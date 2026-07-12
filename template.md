@@ -20,10 +20,11 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## 视觉风格关键词
 - 包豪斯几何构成（Bauhaus geometric composition）
-- Red Hat 红色 #CC0000 作为强调色
-- 暖白底色 #F5F2ED，复古学术质感
-- 极简主义排版，大字号标题
-- 信息图表风格，概念关系图
+- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
+- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
+- 极简主义排版，大字号标题，宽松行距
+- 深色学术风格（dark academic），理性、克制、智识感
+- 几何抽象元素——圆、方、线作为装饰，不依赖图标
 - 书籍封面/古籍页面纹理作为背景元素
 - 深色学术风格（dark academic）整体调性
 
