@@ -83,7 +83,79 @@ dark academic tone, Intellectual Visual System, art taste.
   * 15 张 Slide 为一组，每日独立文件，自然延伸
   * 所有输出提交到 git 仓库（`OCselected/markdown-to-slides`）
 
-## Slide 7：66 本在读清单的结构
+## Slide 7：系统架构概览
+* 视觉隐喻：
+  * 三台机器通过管道相连——一台是阅读输入（Hermes Agent），一台是知识存储（LLM Wiki），一台是输出引擎（Git + NotebookLM）
+* 显示要点：
+  * **Hermes Agent**（个人AI助理）：接收摘抄 → 格式化为 Slide → 记录断点 → 提交 git
+  * **LLM Wiki**（Google Drive）：永久知识存储——书籍条目、概念页、断点日志、引用谱系
+  * **markdown-to-slides**（GitHub Repository）：Slide 模板 + 每日阅读记录 + wiki转换脚本 + 分享 Deck
+  * **ttoos**（GitHub Repository）：Hugo 博客——每日开源推荐发布到博客
+  * **Cron Job**：每日 07:30 自动运行——推荐书籍 → 生成 SVG 卡片 → 写入 wiki → 发布博客 → git commit + push
+  * 核心设计原则：**一次输入，多点输出**——一次摘抄同时进入每日记录、wiki 条目、blog 文章
+
+## Slide 8：系统架构图（技术细节）
+* 视觉隐喻：
+  * 一个数据流图，箭头从输入指向多个输出，每个节点标注了工具名称
+* 显示要点：
+  * **输入层**：用户分享摘抄（Feishu/微信）→ Hermes Agent 接收
+  * **处理层**：Hermes 格式化→ `daily-reading/YYYY-MM-DD.md`（Slide格式）→ 同时写入 wiki 推荐条目
+  * **自动管线（Cron Job）**：
+    - `generate-rec-card.py`：生成 600×800 深普鲁士蓝 SVG 卡片
+    - `wiki-to-slides.py`：wiki 条目 → 标准化 Slide 格式
+    - `daily-book-paper-check.sh`：检查 wiki 已有条目，避免重复推荐
+    - 全部写入后自动 `git add + commit + push`
+  * **输出层**：
+    - GitHub: `OCselected/markdown-to-slides`（每日阅读记录）
+    - GitHub: `OCselected/ttoos`（Hugo 博客文章 + SVG）
+    - GitHub: `OCselected/open-source-reading`（reading-breakpoints skill）
+    - Google Drive: LLM Wiki（概念图谱 + 引用网）
+
+## Slide 9：Git 仓库结构与工作流
+* 视觉隐喻：
+  * 三个并排的仓库，每个仓库里放着不同类型的文件——读书笔记、博客文章、技能文件
+* 显示要点：
+  * **仓库 1：`OCselected/markdown-to-slides`**
+    - `daily-reading/`：每日阅读笔记（按日期命名，15张slide上限）
+    - `slides/`：wiki 推荐条目的批量 Slide 输出
+    - `osbook-sharing/`：分享 Deck
+    - `wiki-to-slides.py`：wiki 转换脚本
+    - `template.md`：统一 Slide 模板
+  * **仓库 2：`OCselected/ttoos`**（Hugo 博客）
+    - `content/posts/osbook-book-recommendation/`：每日推荐博客文章
+    - `static/media/`：SVG 视觉卡片
+    - 标题格式：`2026年7月13日，「开源之书」今日推荐：《书名》`
+  * **仓库 3：`OCselected/open-source-reading`**
+    - `skills/reading-breakpoints/`：阅读断点方法论
+    - 哲学三支柱 + 工作流规则 + 发布渠道
+  * Git 规则：禁止 `git add -A`，只允许 `git add <具体路径>`
+
+## Slide 10：Cron Job 自动化管线
+* 视觉隐喻：
+  * 一个自动化的工厂流水线，每天 07:30 准时启动——从原料到成品无人值守
+* 显示要点：
+  * **触发**：每日 07:30（北京时间），`schedule: "30 7 * * *"`
+  * **步骤 1**：从 wiki 素材库选择推荐书籍（按优先级：第二梯队 → 信任谱系 → 论文轮换）
+  * **步骤 2**：生成 SVG 卡片（`generate-rec-card.py`，深普鲁士蓝 #1B3B6B 配色）
+  * **步骤 3**：写入 Hugo 博客文章（`date: 当天07:00`，比运行时间早30分钟确保 Hugo 显示）
+  * **步骤 4**：写入 LLM Wiki（推荐条目 + log.md + index.md）
+  * **步骤 5**：git add + commit + push（博客文章 + SVG 卡片）
+  * **步骤 6**：推送飞书/微信群聊（MEDIA: 路径 + 推荐文案 + 金句）
+  * 全流程约 2-3 分钟，无人值守，自动运行
+
+## Slide 11：知识演化管线——从摘抄到永久知识
+* 视觉隐喻：
+  * 一条河流从源头到入海口——源头是阅读时的灵光一闪，入海口是 wiki 中固化下来的概念节点
+* 显示要点：
+  * **瞬间**：阅读时产生摘抄或感慨 → 告诉 Hermes
+  * **分钟**：Hermes 格式化为 Slide → 追加到当日 `daily-reading/YYYY-MM-DD.md` → git commit
+  * **小时**：如果摘抄涉及新书 → 创建 wiki 推荐条目（含 frontmatter、核心概念、开源映射）
+  * **天**：Cron Job 自动从 wiki 素材库中选择推荐 → 生成 SVG 卡片 → 发布博客
+  * **周**：积累的 Slide 达到 15 张 → 封存为完整 Deck → 输入 NotebookLM 生成视觉演示
+  * **年**：断点累积到足够数量 → 分析跳跃模式 → 形成个人阅读认知图谱
+  * 核心设计：**从瞬时灵感到永久知识的五个时间层**，不需要手动整理
+
+## Slide 12：66 本在读清单的结构
 * 视觉隐喻：
   * 七层同心圆，从内到外密度递减——最内层是制度经济学，最外层是健康与科幻
 * 显示要点：
@@ -94,7 +166,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * **外圈**：启蒙思想史、健康与生物、战略与商业
   * 核心发现：不读「如何做开源」，而是用制度分析 + 经济史 + 认知科学来解剖它
 
-## Slide 8：XX 经济学的谱系
+## Slide 13：XX 经济学的谱系
 * 视觉隐喻：
   * 一棵树，树干写着「经济学」，树枝延伸到幸福、犯罪、AI、公地、海盗、甜甜圈……
 * 显示要点：
@@ -104,7 +176,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * 第三类：用一个概念统一切面（海盗经济学、Token经济学、助推）
   * **开源经济学属于这个家族**——它不是又一个标签，而是在追问：没有雇佣关系、没有层级命令、没有价格信号的世界，协作如何可能？
 
-## Slide 9：第一天——Ostrom 到 Graeber
+## Slide 14：第一天——Ostrom 到 Graeber
 * 视觉隐喻：
   * 同一座雕塑的两面——一面是农民围坐协商，一面是柜台前排队的市民
 * 显示要点：
@@ -113,7 +185,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * **制度的双面光谱**：Ostrom 看到制度作为协作的处方，Graeber 看到制度作为暴力的仪式
   * 读懂制度，必须同时读这两个人
 
-## Slide 10：第二天——North 的制度变迁
+## Slide 15：第二天——North 的制度变迁
 * 视觉隐喻：
   * 一块巨石投入湖面，激起的涟漪缓慢扩散，而非瞬间消失
 * 显示要点：
@@ -123,7 +195,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * 语言、物理制品、信念都是制度载体——文化作为 L1 层几乎决定了一切
   * 《西游记》结构：等级天经地义的文化编码
 
-## Slide 11：第三天——Engelhardt 论文与 Williamson 框架
+## Slide 16：第三天——Engelhardt 论文与 Williamson 框架
 * 视觉隐喻：
   * 四层同心圆，最外层模糊不清，最内层清晰锐利
 * 显示要点：
@@ -132,7 +204,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * Williamson L1-L4 框架：人们在 L4（资源配置）挣扎，却不知道决定性的力量在 L1-L3
   * 大分流命题：中国搭了开源的技术便车，但缺少治理认知——不是技术问题，是制度问题
 
-## Slide 12：第四天——有限理性与制度的起源
+## Slide 17：第四天——有限理性与制度的起源
 * 视觉隐喻：
   * 两个赛跑者，一个有地图但看不清路，另一个没有地图但腿脚灵活
 * 显示要点：
@@ -143,7 +215,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * **因为两者同时存在，制度才成为必要**
   * 西蒙（1968）：思想也是稀缺资源。如果思想稀缺却没有自由的思想市场（科斯），有限理性的最优策略就是停止思考
 
-## Slide 13：每日阅读记录——一条连续的认知流
+## Slide 18：每日阅读记录——一条连续的认知流
 * 视觉隐喻：
   * 一条河流，每天的记录是河床上的一个横截面——每个截面不同，但水流是连续的
 * 显示要点：
@@ -154,7 +226,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * 7/15 Lowe服从 → Weber丰田类比 → Moody共同信念 → Lerner组织创新（5张slide）
   * 一日不中断，每日记录独立，15张上限自然轮换
 
-## Slide 14：过去一周的阅读网络
+## Slide 19：过去一周的阅读网络
 * 视觉隐喻：
   * 一个不断扩展的星座图，每本书是一颗星，阅读断点是连接它们的线
 * 显示要点：
@@ -163,7 +235,7 @@ dark academic tone, Intellectual Visual System, art taste.
   * 跨越的文化：从秘鲁灌溉渠（Ostrom）到中世纪热那亚（Greif）到日本丰田（Weber）
   * 桥接概念谱系：理论生成的制度条件 → 制度的多面体 → 制度的双面光谱 → 受限即可能 → 经济学作为启蒙工具
 
-## Slide 15：核心收获与延伸思考
+## Slide 20：核心收获与延伸思考
 * 视觉隐喻：
   * 一个人站在山顶，前方不是更清晰，而是看到更多看不清的山脉——然后知道该往哪里走了
 * 显示要点：
