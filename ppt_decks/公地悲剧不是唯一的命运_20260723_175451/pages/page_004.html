@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1600, initial-scale=1.0">
+<title>Ostrom的破局实验 - 八项原则重构公地治理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-main: #F5F0E8;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #4A4A4A;
+    --text-muted: #7A7A7A;
+    --red-accent: #C0392B;
+    --red-light: #E74C3C;
+    --border-light: #E8E2D5;
+    --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #E8E2D5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: var(--bg-main);
+  }
+
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg-main);
+  }
+
+  #bg::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(192,57,43,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  #bg::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(26,26,26,0.03) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ========== 顶部标题区域 ========== */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  .title-block {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .title-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--red-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .title-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: var(--red-accent);
+  }
+
+  .main-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+  }
+
+  .subtitle .highlight {
+    color: var(--red-accent);
+    font-weight: 700;
+  }
+
+  /* 右侧章节编号 */
+  .chapter-mark {
+    text-align: right;
+    padding-top: 10px;
+  }
+
+  .chapter-mark .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--red-accent);
+    line-height: 1;
+  }
+
+  .chapter-mark .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ========== 主体内容区域 ========== */
+  .main-content {
+    flex: 1;
+    display: flex;
+    gap: 40px;
+    min-height: 0;
+  }
+
+  /* 左侧环形信息图 */
+  .infographic-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ring-container {
+    position: relative;
+    width: 560px;
+    height: 560px;
+  }
+
+  .ring-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* 中心核心定位 */
+  .center-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 3px solid var(--red-accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+    z-index: 3;
+  }
+
+  .center-core .core-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .center-core .core-sub {
+    font-size: 10px;
+    color: var(--red-accent);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* 外圈节点 */
+  .node {
+    position: absolute;
+    width: 160px;
+    height: 84px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: var(--shadow-soft);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.3s ease;
+  }
+
+  .node::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--red-accent);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .node .node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .node .node-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--red-accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .node .node-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .node .node-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    padding-left: 30px;
+  }
+
+  /* 8个节点的定位 - 中心点(280,280)，半径180 */
+  .node-1 { top: 38px; left: 200px; }
+  .node-2 { top: 108px; left: 372px; }
+  .node-3 { top: 238px; left: 410px; }
+  .node-4 { top: 368px; left: 372px; }
+  .node-5 { top: 438px; left: 200px; }
+  .node-6 { top: 368px; left: 28px; }
+  .node-7 { top: 238px; left: -10px; }
+  .node-8 { top: 108px; left: 28px; }
+
+  /* ========== 右侧数据面板 ========== */
+  .data-panel {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .panel-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .data-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, transparent 50%, rgba(192,57,43,0.08) 50%);
+    border-radius: 0 12px 0 0;
+  }
+
+  .data-card .card-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--red-accent);
+    margin-bottom: 8px;
+  }
+
+  .data-card .card-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .data-card .card-number .unit {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-left: 4px;
+  }
+
+  .data-card .card-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+
+  .data-card .card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .data-card.featured {
+    background: linear-gradient(135deg, var(--red-accent) 0%, #A93226 100%);
+  }
+
+  .data-card.featured .card-eyebrow {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .data-card.featured .card-number {
+    color: white;
+  }
+
+  .data-card.featured .card-number .unit {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .data-card.featured .card-label {
+    color: rgba(255,255,255,0.9);
+  }
+
+  .data-card.featured .card-desc {
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* 补充说明卡片 */
+  .note-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 16px 20px;
+    border-left: 3px solid var(--text-primary);
+  }
+
+  .note-card .note-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .note-card .note-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ========== 底部结论 ========== */
+  .conclusion {
+    margin-top: 20px;
+    padding: 20px 28px;
+    background: var(--text-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+
+  .conclusion::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--red-accent);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .conclusion .conclusion-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--red-accent);
+    white-space: nowrap;
+  }
+
+  .conclusion .conclusion-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .conclusion .conclusion-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.5;
+  }
+
+  .conclusion .conclusion-text .emphasis {
+    color: var(--red-light);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+    
+    <!-- 顶部标题 -->
+    <div class="header">
+      <div class="title-block">
+        <div class="title-eyebrow">数据洞察 · 公地治理</div>
+        <h1 class="main-title">Ostrom 的破局实验</h1>
+        <div class="subtitle">八项原则<span class="highlight">重构</span>公地治理</div>
+      </div>
+      <div class="chapter-mark">
+        <div class="num">03</div>
+        <div class="label">DATA PAGE</div>
+      </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+      
+      <!-- 左侧环形信息图 -->
+      <div class="infographic-section">
+        <div class="ring-container">
+          <!-- SVG环形轨道 -->
+          <svg class="ring-svg" viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet">
+            <!-- 外圈虚线圆 -->
+            <circle cx="280" cy="280" r="200" fill="none" stroke="#C0392B" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+            <!-- 内圈装饰圆 -->
+            <circle cx="280" cy="280" r="90" fill="none" stroke="#E8E2D5" stroke-width="1"/>
+            <!-- 8条连接线到中心 -->
+            <g stroke="#C0392B" stroke-width="0.8" opacity="0.3">
+              <line x1="280" y1="280" x2="280" y2="80"/>
+              <line x1="280" y1="280" x2="421" y2="139"/>
+              <line x1="280" y1="280" x2="480" y2="280"/>
+              <line x1="280" y1="280" x2="421" y2="421"/>
+              <line x1="280" y1="280" x2="280" y2="480"/>
+              <line x1="280" y1="280" x2="139" y2="421"/>
+              <line x1="280" y1="280" x2="80" y2="280"/>
+              <line x1="280" y1="280" x2="139" y2="139"/>
+            </g>
+            <!-- 8个节点定位点 -->
+            <g fill="#C0392B">
+              <circle cx="280" cy="80" r="4"/>
+              <circle cx="421" cy="139" r="4"/>
+              <circle cx="480" cy="280" r="4"/>
+              <circle cx="421" cy="421" r="4"/>
+              <circle cx="280" cy="480" r="4"/>
+              <circle cx="139" cy="421" r="4"/>
+              <circle cx="80" cy="280" r="4"/>
+              <circle cx="139" cy="139" r="4"/>
+            </g>
+          </svg>
+
+          <!-- 中心核心 -->
+          <div class="center-core">
+            <div class="core-main">开源<br/>社区案例</div>
+            <div class="core-sub">自组织治理</div>
+          </div>
+
+          <!-- 8个原则节点 -->
+          <div class="node node-1">
+            <div class="node-header">
+              <span class="node-num">01</span>
+              <span class="node-title">边界清晰</span>
+            </div>
+            <div class="node-desc">Apache基金会项目准入标准</div>
+          </div>
+
+          <div class="node node-2">
+            <div class="node-header">
+              <span class="node-num">02</span>
+              <span class="node-title">规则适配</span>
+            </div>
+            <div class="node-desc">Linux内核维护流程协商演化</div>
+          </div>
+
+          <div class="node node-3">
+            <div class="node-header">
+              <span class="node-num">03</span>
+              <span class="node-title">集体决策</span>
+            </div>
+            <div class="node-desc">Python PEP提案制度民主化机制</div>
+          </div>
+
+          <div class="node node-4">
+            <div class="node-header">
+              <span class="node-num">04</span>
+              <span class="node-title">监督机制</span>
+            </div>
+            <div class="node-desc">GitHub Issue评论文化质量把关</div>
+          </div>
+
+          <div class="node node-5">
+            <div class="node-header">
+              <span class="node-num">05</span>
+              <span class="node-title">冲突解决</span>
+            </div>
+            <div class="node-desc">开源项目MAINTAINER文件争议条款</div>
+          </div>
+
+          <div class="node node-6">
+            <div class="node-header">
+              <span class="node-num">06</span>
+              <span class="node-title">自治权利</span>
+            </div>
+            <div class="node-desc">社区自主管理外部干预最小化</div>
+          </div>
+
+          <div class="node node-7">
+            <div class="node-header">
+              <span class="node-num">07</span>
+              <span class="node-title">嵌套结构</span>
+            </div>
+            <div class="node-desc">多项目联邦治理层次化组织</div>
+          </div>
+
+          <div class="node node-8">
+            <div class="node-header">
+              <span class="node-num">08</span>
+              <span class="node-title">组织能力</span>
+            </div>
+            <div class="node-desc">开源基金会运作资源协调</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 右侧数据面板 -->
+      <div class="data-panel">
+        <div class="panel-title">实证研究关键数据</div>
+
+        <div class="data-card featured">
+          <div class="card-eyebrow">DESIGN PRINCIPLES</div>
+          <div class="card-number">8<span class="unit">条</span></div>
+          <div class="card-label">设计原则</div>
+          <div class="card-desc">源自Ostrom对全球公地社区的长期实证研究，系统提炼的通用治理规则框架。</div>
+        </div>
+
+        <div class="data-card">
+          <div class="card-eyebrow">SUCCESS CASES</div>
+          <div class="card-number">12<span class="unit">个</span></div>
+          <div class="card-label">全球公地社区成功案例</div>
+          <div class="card-desc">涵盖日本山村、瑞士牧场、东南亚渔场等多类场景的持续有效治理实践。</div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-title">开源社区映射</div>
+          <div class="note-text">Linux、Python、Apache等项目的治理实践与Ostrom八项原则高度吻合，证明自组织模式在数字公地中的普适性。</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 底部核心结论 -->
+    <div class="conclusion">
+      <span class="conclusion-tag">核心结论</span>
+      <span class="conclusion-divider"></span>
+      <span class="conclusion-text">自组织治理在<span class="emphasis">特定条件下</span>比中央控制或私有化更有效——关键在于八项设计原则的系统满足。</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "deck_id": "公地悲剧不是唯一的命运_20260723_175451",
+  "deck_dir": "/home/lee/developing/markdown-to-slides/ppt_decks/公地悲剧不是唯一的命运_20260723_175451",
+  "ppt_mode": "fast",
+  "params": {
+    "role": "「开源之道」·适兕，独立开源研究者、协作机制设计师（社会黑客）",
+    "audience": "思考者、阅读者，对制度经济学和开源文化有基本认知框架的读书交流群体",
+    "scene": "「开源之道」日常交流 / OSCAR·开源之书·共读分享",
+    "page_count": 8,
+    "language": "zh-Hans",
+    "image_source": "ai-gen",
+    "infographic_source": "echarts"
+  },
+  "created_at": "2026-07-23T17:55:00+08:00",
+  "skill_version": "0.1.0"
+}

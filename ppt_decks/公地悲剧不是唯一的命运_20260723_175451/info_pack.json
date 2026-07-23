@@ -1,0 +1,36 @@
+{
+  "user_query": "基于 Steven Weber《The Success of Open Source》中关于公地悲剧（tragedy of the commons）的讨论，结合「开源之道」·适兕的感慨——公地悲剧存在但非唯一命运，人类可通过经济增长、技术规训、法律法规、道德戒律、文化习俗、意识形态、协商联盟等无数种方法避免悲剧——制作一份阅读分享 PPT。与 Hardin (1968) 的诊断、Ostrom 的设计原则、Weber 的'提供悲剧'、North 的制度变迁、以及开源（GPL/分叉权/社区规范）作为治理工具形成阅读链。",
+  "user_assets": {
+    "reference_images": [],
+    "reference_docs": ["/home/lee/developing/markdown-to-slides/daily-reading/2026-07-23.md"],
+    "reference_docs_failed": []
+  },
+  "document_digest": {
+    "topic_summary": "公地悲剧不是唯一的命运——从 Hardin 的诊断到 Ostrom 的制度设计，再到开源作为治理工具箱的实践。悲剧是存在巨链的一环，而非链条的终点。",
+    "key_sections": [
+      "封面：公地悲剧不是唯一的命运",
+      "Weber 引述 Hardin 的公地悲剧比喻",
+      "Weber 的'提供悲剧'——无人有激励提供公地品",
+      "「开源之道」·适兕的感慨：无数种方法避免悲剧",
+      "阅读链：Hardin → Ostrom → Weber → North",
+      "开源的双重挑战：搭便车 + 无人维护",
+      "GPL/分叉权/社区规范 = 治理工具箱",
+      "分布式创新与公地治理的对话"
+    ],
+    "key_points": [
+      "Hardin (1968)：竞争性+非排他性资源因过度使用而耗尽",
+      "Weber 补充'提供悲剧'：即使资源不耗竭，不可排他性也使无人愿意提供",
+      "Ostrom 证明悲剧非宿命——八条设计原则下社区可自组织治理公地",
+      "避免悲剧的方法：经济增长、技术规训、法律法规、道德戒律、文化习俗、意识形态、协商联盟",
+      "开源既是公地也面临双重悲剧挑战，许可证制度是治理工具箱的一种",
+      "分布式创新取消中央决策者，恰恰放大了公地悲剧风险，需同时解决协调与治理"
+    ],
+    "data_highlights": [],
+    "inherited_tables": [],
+    "inherited_images": []
+  },
+  "raw_document_excerpts": {
+    "enabled": true,
+    "path": "/home/lee/developing/markdown-to-slides/daily-reading/2026-07-23.md"
+  }
+}

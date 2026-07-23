@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>North的制度变迁透镜</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-color: #F5F0E8;
+  --primary: #000000;
+  --accent: #C0392B;
+  --text-muted: #555555;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--primary);
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg-color);
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+/* 页面标记 */
+.page-marker {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* 左栏 */
+.left-col {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 780px;
+  display: flex;
+  flex-direction: column;
+}
+
+.kicker {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  font-weight: 500;
+}
+
+h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.divider {
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0 0 16px 0;
+}
+
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 28px 0;
+  line-height: 1.4;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid #000;
+}
+
+.card:first-child {
+  padding-top: 18px;
+  border-top: none;
+}
+
+.card-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  padding-top: 2px;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: var(--primary);
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* 右栏 */
+.right-col {
+  position: absolute;
+  left: 540px;
+  top: 0;
+  width: 940px;
+  height: 780px;
+}
+
+.figure {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 900px;
+  text-align: center;
+}
+
+.figure img {
+  width: 900px;
+  height: 500px;
+  display: block;
+}
+
+.figure-caption {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 14px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* 右侧补充说明 */
+.layer-notes {
+  position: absolute;
+  left: 20px;
+  top: 540px;
+  width: 900px;
+}
+
+.layer-note {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
+}
+
+.layer-note:first-child {
+  border-top: none;
+}
+
+.layer-tag {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-weight: 500;
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.layer-text {
+  font-size: 12px;
+  color: var(--primary);
+  line-height: 1.5;
+}
+
+/* 底部 */
+.bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 700px;
+  height: 80px;
+}
+
+.tags {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  padding: 5px 14px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: var(--bg-color);
+  font-weight: 500;
+}
+
+.tag strong {
+  font-weight: 700;
+}
+
+.conclusion {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--primary);
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  
+  <div id="ct">
+    <div class="page-marker">PAGE · 06</div>
+    
+    <!-- 左栏 -->
+    <div class="left-col">
+      <div class="kicker">制度变迁理论 · 开源生态</div>
+      <h1>North的<br/>制度变迁透镜</h1>
+      <div class="divider"></div>
+      <p class="subtitle">规则系统如何塑造技术公地</p>
+      
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">01</div>
+          <div class="card-body">
+            <h3 class="card-title">正式规则</h3>
+            <p class="card-desc">软件专利与版权法构成开源许可证的法律基础，如 SCO v IBM 案确立 GPL 有效性。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-num">02</div>
+          <div class="card-body">
+            <h3 class="card-title">非正式约束</h3>
+            <p class="card-desc">社区文化中 'hacker ethic' 形成隐性规范，超越法律条文的实践指导。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-num">03</div>
+          <div class="card-body">
+            <h3 class="card-title">认知模式</h3>
+            <p class="card-desc">开发者对代码作为 '共享遗产' 的集体认知，支撑着无偿维护行为。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-num">04</div>
+          <div class="card-body">
+            <h3 class="card-title">制度互补</h3>
+            <p class="card-desc">企业赞助（FLOSS 模式）+ 社区贡献形成混合治理生态，如 Red Hat 商业模式。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 右栏 -->
+    <div class="right-col">
+      <div class="figure">
+        <img src="../images/page_006_institution.png" alt="制度变迁三层模型示意图：底层几何技术结构，中层建筑形式制度设计，顶层流动有机形态代表文化价值观，三层以红色细线垂直连接"/>
+        <div class="figure-caption">FIG. 01 — 制度变迁三层模型：技术基础设施 · 制度设计 · 文化价值观</div>
+      </div>
+      
+      <div class="layer-notes">
+        <div class="layer-note">
+          <span class="layer-tag">技术层</span>
+          <span class="layer-text">几何结构代表基础设施与可复用的代码资产</span>
+        </div>
+        <div class="layer-note">
+          <span class="layer-tag">制度层</span>
+          <span class="layer-text">建筑形式代表许可证、治理机制与正式规则</span>
+        </div>
+        <div class="layer-note">
+          <span class="layer-tag">文化层</span>
+          <span class="layer-text">流动形态代表共享价值观与协作伦理</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部 -->
+    <div class="bottom">
+      <div class="tags">
+        <div class="tag">制度层次：<strong>3 层</strong>（正式 / 非正式 / 认知）</div>
+        <div class="tag">互补模式：<strong>混合治理</strong>（企业 + 社区）</div>
+      </div>
+      <p class="conclusion">North 的制度变迁理论揭示，技术公地的可持续运营依赖正式规则与非正式约束的协同演化。开源社区既是制度创新的试验田，也是理解人类协作能力的窗口。</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
