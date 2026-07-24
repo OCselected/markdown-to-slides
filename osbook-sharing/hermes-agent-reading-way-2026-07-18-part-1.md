@@ -34,7 +34,7 @@ dark academic tone, Intellectual Visual System, art taste.
 * **主标题：** 用 Hermes Agent 读书——一种新的阅读方式
 * **副标题：** 阅读断点、桥接概念与知识网络的生长
 * **讲者信息：** 「开源之道」·适兕
-* **时间/地点：** 2026.7.18 · OSCAR 分享
+* **时间/地点：** 2026.7.18 · 「开源之书」·共读 Meetup
 
 ## Slide 2: 问题：多书并行的阅读者
 * 视觉隐喻：

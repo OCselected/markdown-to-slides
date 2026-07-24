@@ -1,4 +1,4 @@
-# 7/18 OSCAR 分享 — Hermes Agent 参与方案
+# 7/18 「开源之书」·共读 Meetup — Hermes Agent 参与方案
 
 ## 方案：远程智囊团模式
 
