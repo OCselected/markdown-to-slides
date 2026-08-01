@@ -41,20 +41,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 16
+## Slide 18
 
 - 开源在现代数字社会中的概况
 
 ---
 
-## Slide 17
+## Slide 19
 
 - 无处不在
 - 来源：LF Research Measuring the Economic Value of Open Source： A Survey and a Preliminary Analysis
 
 ---
 
-## Slide 18
+## Slide 20
 
 - 软件成分分析：SBOM
 - 请打开你的手机：关于
@@ -66,7 +66,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 21
 
 - The value of open source software
 - supply-side value of widely-used OSS is $4.15 billion
@@ -77,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 22
 
 - 数据、证据与对比
 - 软件商业公司的市值
@@ -88,14 +88,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 23
 
 - 开源之史
 - 嵌入在信息产业中的暗流
 
 ---
 
-## Slide 22
+## Slide 24
 
 - 放弃编年罗列事件的叙述
 - 时间是一种参考
@@ -106,7 +106,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 25
 
 - 软件的历史
 - 最初是没有软件（software）的
@@ -118,7 +118,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 26
 
 - 软件的商品化难题
 - 世界上第一份软件许可的诞生
@@ -130,7 +130,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 27
 
 - 开源许可的演化
 - 学术型开源许可的诞生与演变
@@ -142,7 +142,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 28
 
 - 协作的演化
 - 单机、联网、Internet、www
@@ -152,7 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 29
 
 - 共同体的起源
 - 科学共同体：高校、科研机构、企业研究所
@@ -163,7 +163,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 28
+## Slide 30
 
 - 开源机构与组织
 - 自由软件基金会的诞生与设计
@@ -174,7 +174,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 29
+## Slide 31
 
 - 商业模式的探索
 - 商业是制度的产物
@@ -186,7 +186,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 30
+## Slide 32
 
 - 同时启动通识项目：「开源之史」讲谈
 - 每双周一次讲谈

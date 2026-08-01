@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -50,7 +52,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第3讲 开源软件的商业模式：产权制度与案例分析
 - 第4讲 开源的劳动力市场
 
----
 
 ## Slide 2
 
@@ -62,17 +63,24 @@ dark academic tone, Intellectual Visual System, art taste.
 - 观念与文化
 - 技术、网络和累积
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 科斯问：为什么有些协作通过市场完成，有些通过企业？
+- 开源给出了第三种答案：通过互联网的虚拟共同体。
+- 路径依赖：技术不是被发明的，而是被累积、被建构的。
+- Williamson L1：开源的协作规范降低了一笔笔交易的协调成本
+
+
+## Slide 4
 
 - 开源与经济学
 - 开源经济学12讲座     第六期 交易成本与路径依赖
 - 「开源之道」·适兕
 
----
 
-## Slide 4
+## Slide 5
 
 - 议程
 - 法律经济学：用成本来思考交易
@@ -81,9 +89,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 路径依赖与技术的本质
 - 开源是如何吞噬软件栈的
 
----
 
-## Slide 5
+## Slide 6
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -92,9 +99,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 6
+## Slide 7
 
 - 解释开源的难处
 - 人类的知识是累积的
@@ -102,26 +108,24 @@ dark academic tone, Intellectual Visual System, art taste.
 - 但是，我们始终身处“下游”，面临新的形势和问题
 - 技术、信息、法律、经济、社会、文化、制度
 
----
 
-## Slide 7
+## Slide 8
 
 - 要理解资本主义，我们需要理解资本；要理解资本，需要理解货币；要理解货币，需要理解交换；要理解交换，需要理解财产；要理解财产，需要理解法律。
 - —— Geoffrey M.Hodgson 《资本主义的本质：制度、演化和未来》
 
----
 
-## Slide 8
+## Slide 9
 
 - 思考题
 - 为什么需要基金会这样的组织？
 - 开源需要商业公司或者政府倡导吗？
 - 搭便车者的破坏力量是巨大的～ 如何遏制？
+- 【术语定义】搭便车（Free Rider Problem）：享受公共品收益却不承担生产成本。理论出处：奥尔森《集体行动的逻辑》（1965）
 - 开源是不是完全的自组织/浑然天成？
 
----
 
-## Slide 9
+## Slide 10
 
 - 什么是交易成本
 - 原始社会偶尔的物物交换
@@ -130,9 +134,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 需要大量的沟通、获取信任、相互理解
 - 成本，天下没有免费的午餐
 
----
 
-## Slide 10
+## Slide 11
 
 - 举例而言：放在现实中
 - 打印纸张的三种获取方式：
@@ -140,18 +143,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - 2、 找前台索取，她一定提前购买了一些放在仓库
 - 3、 去隔壁同事哪里借
 
----
 
-## Slide 11
+## Slide 12
 
 - 以企业软件为例
 - 采购freeware，企业微信等：试用、评估、决策、采购、部署、维护、定制
 - Git handbook， 雇佣开发者、部署、培训和教育、定制、上游优先、保持先进
 - OpenOffice、GroupWare ，雇佣开发者、部署、员工反馈、定制、上游优先、保持先进
 
----
 
-## Slide 12
+## Slide 13
 
 - 从企业的性质到交易成本
 - 我们为什么要成为“打工人“？
@@ -160,9 +161,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 交易成本决定了企业的存在
 - 想象一下企业为什么要裁员？
 
----
 
-## Slide 13
+## Slide 14
 
 - 开源的交易成本为零乎？
 - 基于互联网的开发者群体，乃至共同体
@@ -171,9 +171,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目的优缺点了若执掌
 - 非市场，也非科层机构，开放式组织？
 
----
 
-## Slide 14
+## Slide 15
 
 - CTO是最后一个知道技术栈的
 - 软件是无形的信息产品
@@ -182,9 +181,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 从内部了解全貌，还可定制
 - Upstream first 降低未来的风险
 
----
 
-## Slide 15
+## Slide 16
 
 - 科斯的贡献
 - 《企业的性质》，1937
@@ -192,4 +190,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 新制度经济学的鼻祖，美国芝加哥大学教授、芝加哥经济学派代表人物之一，1991年诺贝尔经济学奖得主
 - 长期对中国的关注
 - 和王宁合著《变革中国：市场经济的中国之路》
-

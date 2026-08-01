@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -48,16 +50,22 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第1讲 软件的生产、分销和消费
 - 第2讲 数字时代的知识财产法演变与开源许可
 
----
 
 ## Slide 2
 
 - 开源与经济学
 - 开源经济学12讲座     第四期 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 当许可费被放弃，价值如何被捕获？
+- Red Hat、MySQL、WordPress 的案例告诉我们什么？
+- 商业模式的本质：在开源规则框架下，重新设计价值的分配方式
+
+
+## Slide 4
 
 - 议程
 - 私人秩序：许可与合同的演变
@@ -67,9 +75,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 模式
 - 案例
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -78,9 +85,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - Business is just business
 - 一种软件的许可方式
@@ -90,9 +96,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 一种 cyberspace 共同体
 - 一种财产分配方式
 
----
 
-## Slide 6
+## Slide 7
 
 - To B 与 To C 是人话吗？
 - 合同与许可
@@ -100,9 +105,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 面向特定的社会实体：公司、政府、学校、非营利
 - 面向全体公民：尽可能的简化手续
 
----
 
-## Slide 7
+## Slide 8
 
 - 有形财产的交易
 - 土地、房屋
@@ -111,9 +115,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 需求方、供应方
 - 交易是被鼓励的
 
----
 
-## Slide 8
+## Slide 9
 
 - 无形财产及其交易
 - 人为制定法律
@@ -122,9 +125,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 公法：版权、专利
 - 书籍、音乐、电影与媒介
 
----
 
-## Slide 9
+## Slide 10
 
 - 软件的商品化及其发展
 - 最初从硬件分离出来，是没有法律保护的
@@ -134,9 +136,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 技术保护措施、数字版权管理的实施
 - 软件、信息产品帝国的建立
 
----
 
-## Slide 10
+## Slide 11
 
 - 软件的性质与获取
 - 信息载体、无形
@@ -146,9 +147,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 学习成本高
 - 试用和宣传成本也高
 
----
 
-## Slide 11
+## Slide 12
 
 - 软件的零售与定制交付
 - 物流和互联网改变了介质的交付
@@ -157,9 +157,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 技术保护措施的发展与扩张（加密、硬件绑定）
 - 移动端 App 的“免费”（不知道用啥换的）
 
----
 
-## Slide 12
+## Slide 13
 
 - 开源软件的性质
 - 开源软件仍然是软件
@@ -168,9 +167,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 放弃了收取许可费用
 - 和排他权选择完全不同的道路
 
----
 
-## Slide 13
+## Slide 14
 
 - 所有权/使用权的转让
 - 支持/教育
@@ -181,16 +179,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 优化
 - 嵌入
 
----
 
-## Slide 14
+## Slide 15
 
 - 任何的商业成功，都是天时、地利、人和，以及做到了该做的事。（大多数时候需要运气）
 - ———— 适兕
 
----
 
-## Slide 15
+## Slide 16
 
 - 案例分析之：优化
 - Cygnus
@@ -199,4 +195,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - FOSS 项目：GCC、GDB
 - 1997年被列入世界前500软件公司
 - 1999年11月，RedHat 以$674 million 收购
-

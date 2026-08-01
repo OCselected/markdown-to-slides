@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -53,7 +55,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第6讲 组织结构与治理
 - 第7讲 文化的重要作用
 
----
 
 ## Slide 2
 
@@ -61,9 +62,17 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第八期  商业价值与社会价值：开源的政治经济学
 - 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 开源项目是公共物品，但公共物品谁来维护？
+- 「精心布局的开源」为什么经常失败？
+- 政治经济学的核心问题：谁受益？谁付出？制度如何分配？
+- 与奥斯特罗姆的桥接：开源是数字时代的公地
+
+
+## Slide 4
 
 - 议程
 - “精心布局的开源“及其案例解析
@@ -74,9 +83,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 政策介入与鼓励倡导
 - 网络的控制与生产
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -86,15 +94,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - 读一本书就够了～
 
----
 
-## Slide 6
+## Slide 7
 
 - 从互联网私有化说起
 - 互联网诞生于ARPANET
@@ -102,23 +108,20 @@ dark academic tone, Intellectual Visual System, art taste.
 - 1990年开始转交给公共部门
 - 以域名为例：Jon Postel ，IAHC （ISOC 下属），ICANN
 
----
 
-## Slide 7
+## Slide 8
 
 - 从历史的角度鸟瞰开源
 - chrape, Jan-Felix (2017) : Open source projects as incubators of innovation: From niche phenomenon to integral part of the software industry, SOI Discussion Paper, No. 2017-03,
 
----
 
-## Slide 8
+## Slide 9
 
 - 从根本上说，开源的成功是一个政治故事......然而，如果以工业时代的政治经济学逻辑考量的话，这种政治组织就是非常陌生的。
 - ———— Steven Weber  《The Success of Open Source》
 
----
 
-## Slide 9
+## Slide 10
 
 - 政治经济学的定义
 - 分配与收入
@@ -127,20 +130,20 @@ dark academic tone, Intellectual Visual System, art taste.
 - 稀缺资源的配置
 - 经济学的存在意义
 
----
 
-## Slide 10
+## Slide 11
 
 - 几个颇受争议的问题
 - 基于互联网的 Community，开源项目，自发秩序，不需要任何的外力？
+- 【术语定义】自发秩序（Spontaneous Order）：个体互动产生的有序结构，无需中央设计者。理论出处：哈耶克（1973）；Benkler 用于描述开源协作
 - 当搭便车者盛行，甚至抢夺了community的“财产”，政府/法律是否介入？
+- 【术语定义】搭便车（Free Rider Problem）：享受公共品收益却不承担生产成本。理论出处：奥尔森《集体行动的逻辑》（1965）
 - 商业巨头“操控”下的开源项目是否伤害了谁？
 - 开源项目被下毒，开发者是否承担法律责任？
 - 开源 community 是自然成长的，不需要任何干预的？
 
----
 
-## Slide 11
+## Slide 12
 
 - 数一数开源项目/共同体被摁着暴打的事件
 - Emacs 被闭源
@@ -150,9 +153,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Xz 后门事件 引发轩然大波
 - CEC-IDE 套壳VS Code，引发热议
 
----
 
-## Slide 12
+## Slide 13
 
 - 案例0：开源的发明
 - BSD/Unix War 如火如荼
@@ -162,9 +164,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 1998年春，Tim O'Reilly 来自community主要人物之间达成政治上的一致意见
 - 图片由 DALL·E 生成
 
----
 
-## Slide 13
+## Slide 14
 
 - 案例一：Linux 的危机
 - Linus 毕业后加入芯片公司，开始忙碌
@@ -174,9 +175,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 雇佣了Linus，成为OSDL的第一位Fellow
 - OSDL 和FSG 合并成：Linux Foundation
 
----
 
-## Slide 14
+## Slide 15
 
 - 案例2：Android 的政治经济批判
 - 移动通讯市场的扩张
@@ -185,9 +185,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 反碎片化协议
 - 技术架构设计：内核、SDK和GSM
 
----
 
-## Slide 15
+## Slide 16
 
 - 案例3：Kebernetes的崛起
 - Google 在大数据架构的失利
@@ -195,4 +194,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的战略决定（以及面临的竞争）
 - 开源，并成立Cloud Native computer foundation
 - 加大Community的建设
-

@@ -41,7 +41,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 46
+## Slide 48
 
 - 第11期：文化的重要作用
 - 行动与价值观
@@ -50,7 +50,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 47
+## Slide 49
 
 - 第5期：交易成本
 - 罗纳德·科斯与《企业的性质》
@@ -60,7 +60,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 48
+## Slide 50
 
 - 请记住，有时我们得到的反馈就像被包装丑陋的包裹——但这并不意味着包裹里面装的不是一份礼物。
 - ——大卫·布拉德福德，卡罗尔·罗宾 《深度关系：从建立信任到彼此成就》

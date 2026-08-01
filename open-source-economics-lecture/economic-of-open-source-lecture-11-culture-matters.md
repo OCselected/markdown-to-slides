@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -52,7 +54,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第5讲 交易成本与路径依赖
 - 第6讲 组织结构与治理
 
----
 
 ## Slide 2
 
@@ -60,9 +61,18 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第八期      文化的重要作用
 - 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 文化为什么重要？——因为所有制度最终依赖文化来支撑
+- 黑客伦理、科学伦理、强互惠：开源文化的基因是什么？
+- 信任作为社会系统的运作基础（Luhmann）
+- 回到第0期核心问题：开源是什么？——12讲回顾与适兕的回答
+- Williamson L3：社会规范层是整个制度金字塔的根基
+
+
+## Slide 4
 
 - 议程
 - 文化的重要作用
@@ -72,9 +82,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - OSI与OSD，Pragmatic 文化兴起
 - 现实的问题是：开源文化离我们有多远？
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -84,9 +93,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - 何谓文化？如何识别？
 - 我们都身处文化之中
@@ -95,16 +103,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 也就是我们的日常
 - 尝试跳出当下：迈向边缘
 
----
 
-## Slide 6
+## Slide 7
 
 - Culture so understood is a social fact about particular sets of human beings in historical context.
 - ————Yochai Benkler 《The Wealth of Network》Chapter 8
 
----
 
-## Slide 7
+## Slide 8
 
 - 文化的重要作用
 - 为什么有的地方富有？
@@ -113,9 +119,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 互联网为何诞生和发展在美国？
 - 为什么Linux、Python等欧洲的创始人都去了美国？
 
----
 
-## Slide 8
+## Slide 9
 
 - 边缘/非主流文化
 - 世界很大，人很多，选择迥异
@@ -125,9 +130,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 改变世界与深远意义
 - 开源改变了世界，尽管仍然是非主流
 
----
 
-## Slide 9
+## Slide 10
 
 - 反主流文化概览
 - 斯图尔特·布兰德
@@ -136,9 +140,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 《连线》杂志
 - 计算机是解放自我的武器、计算机构建了令人耳目一新的虚拟共同体、拓展社会边疆
 
----
 
-## Slide 10
+## Slide 11
 
 - Hacker 文化起源、发展与陨落
 - MIT 人工智能实验室
@@ -147,9 +150,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 软件合同与公司的流行
 - 最后的Hacker: Richard Stallman
 
----
 
-## Slide 11
+## Slide 12
 
 - 自由软件运动及其影响
 - GNU 宣言
@@ -158,9 +160,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 自由软件基金会
 - GNU 项目：GCC、Emacs、Hard 等等
 
----
 
-## Slide 12
+## Slide 13
 
 - 《大教堂与集市》的发表
 - 1997年，德国，技术会议
@@ -169,9 +170,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 总结了21条文化准则
 - 发明了Linus 定律：``Given enough eyeballs, all bugs are shallow.''
 
----
 
-## Slide 13
+## Slide 14
 
 - 开源软件运动
 - 浏览器战争之 Netscape
@@ -180,9 +180,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的定义（OSD）
 - 开源软件运动
 
----
 
-## Slide 14
+## Slide 15
 
 - 文化基调：开源定义
 - 自由再分发
@@ -197,9 +196,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 许可必须技术中立
 - 图片由通义万相生成
 
----
 
-## Slide 15
+## Slide 16
 
 - 开源运动的理论基础
 - 科研
@@ -208,4 +206,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 技术
 - 工程
 - 商业
-

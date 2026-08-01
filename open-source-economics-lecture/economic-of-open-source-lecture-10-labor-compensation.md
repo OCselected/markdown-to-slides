@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -56,7 +58,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第9期：信息规则与网络经济
 - 第10期：排他权与容他权、比例原则与 Copyleft
 
----
 
 ## Slide 2
 
@@ -65,17 +66,24 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度、劳动与财产分配
 - 开源的可持续发展需要回答劳动报酬的问题
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 开源贡献者应获得什么样的报酬？
+- 从「无偿贡献」到「制度化的经济回报」——制度创新的方向
+- 数字时代的生产资料：代码库、平台、数据——谁拥有分配权？
+- 与第4期的分工：本期聚焦分配正义，而非劳动力市场的形成
+
+
+## Slide 4
 
 - 劳动报酬与财产分配
 - 开源经济学12讲座  ·  第十一期
 - 「开源之道」·适兕
 
----
 
-## Slide 4
+## Slide 5
 
 - 议程
 - 个体角度如何思考「报酬」
@@ -86,9 +94,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 代码即资本
 - 开源的政治经济学展望
 
----
 
-## Slide 5
+## Slide 6
 
 - 为什么需要讨论劳动报酬？
 - 开源经常被贴上「无偿劳动」的标签
@@ -96,9 +103,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 没有回报的工作，是现代文明社会无法接受的
 - 开源的可持续性，取决于劳动报酬的制度安排
 
----
 
-## Slide 6
+## Slide 7
 
 - 开源是无偿劳动吗？
 - 比尔·盖茨 1976 年公开信：软件可以免费复制，谁还会付费？
@@ -106,9 +112,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 忽略了开源中「贡献即报酬」的动态机制
 - 当开发者获得足够的信号价值时，劳动就不是无偿的
 
----
 
-## Slide 7
+## Slide 8
 
 - 个体角度思考「报酬」
 - 金钱不是唯一激励
@@ -118,9 +123,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源贡献者获得的是三重回报：
 - 信号（职业声誉）、体验（创造的愉悦）、归属（共同体认同）
 
----
 
-## Slide 8
+## Slide 9
 
 - 信号的价值
 - 开源贡献是个人能力的公开证明
@@ -129,9 +133,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是开源劳动力市场的基础
 - 信号本身就是一种报酬
 
----
 
-## Slide 9
+## Slide 10
 
 - 贡献者经济的制度结构
 - 从个人贡献到企业赞助的制度演变
@@ -140,9 +143,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - GitHub Sponsors：匹配机制
 - 这些制度安排正在将「无偿贡献」转化为「可预期的经济回报」
 
----
 
-## Slide 10
+## Slide 11
 
 - 基金会的制度角色
 - 基金会是贡献者经济的制度中介
@@ -151,9 +153,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是一种间接的劳动报酬制度
 - 它的核心是：透明、可预期、制度化
 
----
 
-## Slide 11
+## Slide 12
 
 - 发布权与财产分配
 - 开源代码的「所有权」没有被放弃
@@ -162,9 +163,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 但也创造了新的分配问题：
 - 谁来决定代码的走向？
 
----
 
-## Slide 12
+## Slide 13
 
 - 开源劳动者与云厂商的分配冲突
 - 云厂商利用开源代码提供服务赚取巨额收入
@@ -172,9 +172,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是数字时代的生产资料与劳动价值之间的分配不匹配
 - 与马克思在《资本论》中分析的劳资矛盾在制度逻辑上同构
 
----
 
-## Slide 13
+## Slide 14
 
 - 数字时代的生产资料
 - 工业时代：工厂、机器、原材料
@@ -183,9 +182,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 云厂商拥有平台，贡献者拥有代码
 - 分配的冲突不可避免
 
----
 
-## Slide 14
+## Slide 15
 
 - 代码即资本
 - 当开源代码成为数字基础设施
@@ -194,9 +192,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Heartbleed 漏洞：「开源基础设施危机」
 - 本质上是制度设计失败：没有为关键基础设施维护者设计可持续的回报机制
 
----
 
-## Slide 15
+## Slide 16
 
 - 关键基础设施的报酬问题
 - OpenSSL、Linux Kernel、OpenSSH
@@ -204,4 +201,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 他们获得的报酬严重不匹配
 - 制度设计的责任：让关键基础设施维护者获得合理回报
 - 否则，数字基础设施的脆弱性将无限放大
-

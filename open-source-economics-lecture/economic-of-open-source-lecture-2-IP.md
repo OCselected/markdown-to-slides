@@ -41,22 +41,30 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
 
----
 
 ## Slide 2
 
 - 开源与经济学
 - 开源经济学12讲座     第三期 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 知识财产法的扩张，如何塑造了数字时代的软件生态？
+- 开源许可（GPL、BSD、MIT）如何回应这一扩张？
+- Copyleft 的本质：用排他权来强制执行开放——这是一种制度创新
+
+
+## Slide 4
 
 - 议程
 - 从（数字）版权的扩张开始说起
@@ -67,9 +75,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的难题
 - 开源许可的演变与走向
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -78,9 +85,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - 法律、技术与经济增长
 - 技术发展与创新
@@ -89,9 +95,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 力量的角逐与制衡：文化、习俗、制度的冲突、妥协
 - 法律的历史，就是规则的演变
 
----
 
-## Slide 6
+## Slide 7
 
 - 理解争议与对立
 - 排他权与形成垄断
@@ -100,9 +105,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Bill Gates 抱怨不公，开发者们互惠分享
 - 一方面谴责巨头，另一方面又拥抱巨头
 
----
 
-## Slide 7
+## Slide 8
 
 - 财产权小议与人类观念变迁
 - “普天之下，莫非王土”
@@ -112,9 +116,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 土地归集体所有
 - 中华人民共和国物权法：2007年10月1日施行
 
----
 
-## Slide 8
+## Slide 9
 
 - 什么是知识财产权
 - 知识产权，诞生于1967年
@@ -122,9 +125,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 分类：著作权和相关权利、商标、地理标志、工业设计、 专利、集成电路布图设计和对未公开信息的保护
 - 知识财产法是一套管理信息作品使用的法律理论
 
----
 
-## Slide 9
+## Slide 10
 
 - 知识财产权三剑客
 - 著作权/版权
@@ -132,16 +134,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 商标
 - 数字经济崛起的纲要
 
----
 
-## Slide 10
+## Slide 11
 
 - A tax on readers for the purpose of giving a bounty to writers.
 - —— Macaulay 勋爵 1914
 
----
 
-## Slide 11
+## Slide 12
 
 - 围绕版权的经济
 - 《安妮法案》特许经营权
@@ -149,9 +149,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 创作者、传播者、阅读者三方的均衡
 - 纸张和印刷术保证了交付
 
----
 
-## Slide 12
+## Slide 13
 
 - 版权的扩张（示例）
 - 1998 年 The Sonny Bono Act.
@@ -160,9 +159,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 理由就是知识产权法经济结构范式的失误：
 - 认为激励作用更大
 
----
 
-## Slide 13
+## Slide 14
 
 - 软件著作权简史
 - 最早的“软件”：The Piano Roll
@@ -170,22 +168,19 @@ dark academic tone, Intellectual Visual System, art taste.
 - 1976 年版权法，国会有意将软件版权化。
 - 1982年 二进制纳入版权（Apple v. Franklin）
 
----
 
-## Slide 14
+## Slide 15
 
 - 数字所有权的扩张
 - 1990 年计算机软件租赁修正法案；
 - 1995年7月，软件受专利保护；
 - 1998 年，作为《数字千年版权法案》的一部分
 
----
 
-## Slide 15
+## Slide 16
 
 - 私人秩序的兴起
 - 合同是建立知识产权新规范的主要机制之一
 - 用户最终许可协议（EULA）的扩张
 - 数字网络使签订合同更容易
 - EULA 和技术保护措施不仅改变了所有者和用户之间的关系，还改变了商品的性质（许可授权，而不是销售）
-

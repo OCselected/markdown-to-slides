@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -51,7 +53,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第4讲 开源的劳动力市场
 - 第5讲 交易成本与路径依赖
 
----
 
 ## Slide 2
 
@@ -59,9 +60,17 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第六期  组织结构与治理
 - 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 开源项目如何组织？没有CEO、没有HR、没有董事会？
+- 制度（许可）、法律（基金会）、文化（行为准则）的三重治理
+- Williamson L2：制度环境层决定了项目的演化方向
+- 包容性制度 vs 汲取性制度：为什么有的项目繁荣，有的消亡？
+
+
+## Slide 4
 
 - 议程
 - 基于互联网/万维网的虚拟共同体
@@ -71,9 +80,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Android 企业协会的联合，让事情更复杂
 - 组织，不断演化的协作分工：法律、技术与政治经济学
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -83,16 +91,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - 我们的文明，不管是它的起源还是它的维持，都取决于这样一件事情，它的准确表述，就是在人类合作中不断扩展的秩序。....... 这种扩展秩序并不是人类的设计或意图造成的结果，而是一个自发的产物。
 - —— 弗里德里希·冯·哈耶克 《致命的自负 》
 
----
 
-## Slide 6
+## Slide 7
 
 - 人类合作的演化（宏观）
 - 农业文明
@@ -101,9 +107,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 企业的发明
 - 开源共同体（文明）
 
----
 
-## Slide 7
+## Slide 8
 
 - 人类合作的演化（个体）
 - 只和家人、亲戚、部落宗族合作
@@ -114,9 +119,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 全球化的跨地域的协作
 - GPT 带来的人和AI的协作
 
----
 
-## Slide 8
+## Slide 9
 
 - 组织的逻辑
 - 再提《企业的性质》与科斯定理
@@ -125,28 +129,26 @@ dark academic tone, Intellectual Visual System, art taste.
 - 小型软件企业如何做“大事”？
 - 动员与集体行动
 
----
 
-## Slide 9
+## Slide 10
 
 - 演化视角看开源组织
 - 社会化分工
 - 自发秩序：卡里斯玛或优绩、投票等
+- 【术语定义】自发秩序（Spontaneous Order）：个体互动产生的有序结构，无需中央设计者。理论出处：哈耶克（1973）；Benkler 用于描述开源协作
 - 看不见的手的作用
 - 有问题解决问题
 - 失败，可以选择继续
 - 虚拟共同体、法律实体、联邦、法律、技术
 
----
 
-## Slide 10
+## Slide 11
 
 - 我们花了很长时间，试图想出在“大教堂”与“集市”之间建立联系纽带的方法。最后我们得出结论，解决方案的核心在于这样一个事实，那就是开源共同体已经逐渐发展起来了，他们已经开始建立自己的大教堂，而且正好坐落在老社区集市的附近。实际上，开源本身已经成为了“大业务”。不仅像红帽公司这样的“纯粹”开源公司已经成为重要的商业机构，而且像IBM和Novell 公司这样早年建立且拥有重要的专利产品的技术公司，也成为开源软件开发和商业化的重要推动者。
 - 灵感来源：《Burning The Ship：Intellectual Property and the transformation of microsoft》
 
----
 
-## Slide 11
+## Slide 12
 
 - 互联网改变了一些事情
 - 信息、知识、和文化的生产
@@ -156,9 +158,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 不止娱乐，交换，还可以高质量的生产
 - 力量强大：拥抱或傲慢
 
----
 
-## Slide 12
+## Slide 13
 
 - 虚拟的共同体：Cyberspace
 - 邮件列表、新闻组、电子公告板、IRC、论坛 等技术实现
@@ -166,9 +167,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 从混乱到有序是一个漫长的过程
 - 参考材料：《A Declaration of the Independence of Cyberspace》by John Perry Barlow
 
----
 
-## Slide 13
+## Slide 14
 
 - 基于代码共享的虚拟共同体
 - GNU 项目
@@ -178,9 +178,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Sendmail、Python、Perl......
 - 江河湖海，发明开源一语覆盖：想象的新事物
 
----
 
-## Slide 14
+## Slide 15
 
 - 开放源码促进会和开源定义
 - 1998 年 Freesoftware Summit
@@ -190,9 +189,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的定义与倡导
 - 世界从此被改变了～
 
----
 
-## Slide 15
+## Slide 16
 
 - 组织的演化或扩展的秩序
 - 自发的虚拟共同体
@@ -200,4 +198,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 政策制定与立法关注
 - 政治经济学的战略利用：Microsoft 和Google
 - OSPO （企业和政府）联盟 + OSI  + Open Source Cgress ?
-

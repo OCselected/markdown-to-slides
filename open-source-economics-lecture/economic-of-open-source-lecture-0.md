@@ -41,12 +41,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 开源与经济学
 - 开源经济学12讲座     第零期 「开源之道」·适兕
 
----
 
 ## Slide 2
 
@@ -57,9 +58,28 @@ dark academic tone, Intellectual Visual System, art taste.
 - 产业视角下的开源
 - 12讲座的思考路径与目标
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 开源是什么？为什么需要一套经济学的语言来理解它？
+- 12讲将回答：开源如何在制度、组织与文化的层层嵌套中，
+-   形成一种替代性的协作生产秩序？
+- 统一分析框架：Williamson 的 L1/L2/L3 制度层级
+-   ——具体规则层、制度环境层、社会规范层
+
+
+## Slide 4
+
+## 12讲的统一框架：Williamson 制度层级
+- L3 社会规范层：行为准则、社区伦理、文化——第12讲（文化）
+- L2 制度环境层：许可证、基金会、行为准则——第2、6讲
+- L1 具体规则层：合同、贡献者协议、CLA——第5讲（交易成本）
+- 每一讲都在这三个层级中的某一层定位问题
+- 制度不是中性的，制度塑造了开源的形态
+
+
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -68,15 +88,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 4
+## Slide 6
 
 - 为什么要做这个讲座？
 
----
 
-## Slide 5
+## Slide 7
 
 - 凡事问个为什么
 - 经常被问：开源怎么赚钱？
@@ -85,16 +103,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - “天下没有免费的午餐”错了吗？
 - 开源还有前途吗？
 
----
 
-## Slide 6
+## Slide 8
 
 - 经济学是研究资源配置的，研究经济学是为了使有限的资源被用于最合理、最有效的方面，以便增加社会总的财富，使社会日益富裕。研究经济学，是为了寻找一种令人满意的机制，以便合理利用资源，有效配置资源，既能增加社会财富，又能使财富或收入的分配趋于公平。
 - ———— 厉以宁 《超越市场与超越政府》
 
----
 
-## Slide 7
+## Slide 9
 
 - 开源是什么？
 - 一种生产模式
@@ -104,27 +120,25 @@ dark academic tone, Intellectual Visual System, art taste.
 - 文化与价值观
 - 生活态度
 
----
 
-## Slide 8
+## Slide 10
 
 - 开源经济：开源的价值
 
----
 
-## Slide 9
+## Slide 11
 
 - 理想中的开源世界
 - 最优的模块胜出，保持整体最佳
 - 人们的搭便车本能消失了
+- 【术语定义】搭便车（Free Rider Problem）：享受公共品收益却不承担生产成本。理论出处：奥尔森《集体行动的逻辑》（1965）
 - 劳动成果和价值能够完美公平的货币化
 - 复用到极致，所有的资源都用于创新
 - 人际和谐，平等交流，一片富足
 - 赢得社会尊重～
 
----
 
-## Slide 10
+## Slide 12
 
 - 但是，没有完美世界
 - 世界上有很多力量
@@ -133,9 +147,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度：法律、道德、文化、习俗的共同作用
 - 开源和其它类是共存的
 
----
 
-## Slide 11
+## Slide 13
 
 - 为什么不相信模型经济学？
 - 经济学是一门社会人文学科
@@ -143,9 +156,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 建模很多时候是自洽逻辑的倒推
 - 数学的迷信，确实很唬人
 
----
 
-## Slide 12
+## Slide 14
 
 - 无法提供答案
 - 所有的都是探讨
@@ -153,18 +165,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - 继续探索：结合本土文化和环境
 - 能够为我们的日常工作提供一个思考路径
 
----
 
-## Slide 13
+## Slide 15
 
 - 开源属于第几次分配？
 - 第一次分配：自由市场
 - 第二次分配：政府配置
 - 第三次分配：慈善与道德
 
----
 
-## Slide 14
+## Slide 16
 
 - 共识是协作集体行动的基础
 - 开源有很多被误解、曲解的地方
@@ -172,13 +182,11 @@ dark academic tone, Intellectual Visual System, art taste.
 - 细节中见魔鬼
 - 开源的观念需要极大的理性思考
 
----
 
-## Slide 15
+## Slide 17
 
 - 新制度经济学
 - 开源软件的经济和社会价值
 - 制度是一切的基础：集体行动、财产分配、商业交易
 - 从历史中寻找规律
 - 尽量少假设，往不假设靠近
-

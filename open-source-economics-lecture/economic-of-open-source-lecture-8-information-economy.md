@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -54,7 +56,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第7期：文化的重要作用
 - 第8期：商业价值与社会价值：开源的政治经济学
 
----
 
 ## Slide 2
 
@@ -65,17 +66,24 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度：法律、风俗、规章、行为指南
 - 观念与文化，技术与网络的累积
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 信息的边际成本为零，传统定价逻辑为何失效？
+- 网络效应如何塑造开源生态的演化方向？
+- 当价格信号消失，价值如何在没有市场的情况下被发现？
+- Williamson L1 的延伸：信息商品需要新的产权界定方式
+
+
+## Slide 4
 
 - 信息规则与网络经济
 - 开源经济学12讲座  ·  第九期
 - 「开源之道」·适兕
 
----
 
-## Slide 4
+## Slide 5
 
 - 议程
 - 信息的特殊经济属性
@@ -86,9 +94,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 订阅经济与开源的交汇
 - 开源与云计算的制度冲突
 
----
 
-## Slide 5
+## Slide 6
 
 - 为什么需要理解信息经济？
 - 信息是人类文明史上最具革命性的商品
@@ -96,9 +103,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 复制成本为零，但撰写成本高昂
 - 这给整个定价逻辑带来了结构性挑战
 
----
 
-## Slide 6
+## Slide 7
 
 - 信息的特殊经济属性
 - 非竞争性：一个人使用信息，不减少他人使用
@@ -106,9 +112,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 高固定成本，低边际成本
 - 传统商品的经济逻辑，在这里完全失效
 
----
 
-## Slide 7
+## Slide 8
 
 - 夏皮罗与范里安《信息规则》
 - 信息生产的成本结构：固定成本极高，边际成本极低
@@ -116,9 +121,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 代码一旦写出，分发一亿次与分发一次的成本几乎相同
 - 这从根本上改变了市场结构
 
----
 
-## Slide 8
+## Slide 9
 
 - 软件定价的历史回顾
 - 纸质时代：代码是奢侈品，高价垄断
@@ -127,9 +131,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源出现：许可费用被放弃
 - 价格信号消失，价值信号仍在
 
----
 
-## Slide 9
+## Slide 10
 
 - 网络效应与正反馈回路
 - 梅特卡夫定律：网络价值与节点数的平方成正比
@@ -137,9 +140,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 使用者、贡献者、赞助者形成正反馈
 - 这种效应无法被市场单独定价
 
----
 
-## Slide 10
+## Slide 11
 
 - 开源作为多边平台
 - 项目共同体：维护者与核心开发者
@@ -149,9 +151,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 基金会是平台的治理机构
 - 三方在同一个平台上交换价值
 
----
 
-## Slide 11
+## Slide 12
 
 - 谁在补贴谁？
 - 企业投入研发，通过订阅和服务收回成本
@@ -160,9 +161,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是一个跨市场的补贴结构
 - 不存在单一的价格信号
 
----
 
-## Slide 12
+## Slide 13
 
 - 开源软件的定价悖论
 - 放弃许可费用后，「价格」消失了
@@ -171,9 +171,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - GitHub SaaS：卖的是平台与协作工具
 - 云厂商托管：卖的是便利与规模
 
----
 
-## Slide 13
+## Slide 14
 
 - 价值捕获的制度路径
 - Red Hat 模式：订阅 + 支持
@@ -182,9 +181,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 每一种模式都是制度设计，而非自然形成
 - 关键在于解决了信任问题
 
----
 
-## Slide 14
+## Slide 15
 
 - 信息商品的版本差异化
 - 社区版：核心功能开源
@@ -194,9 +192,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 什么样的功能需要闭源？
 - 底层逻辑是交易成本分析
 
----
 
-## Slide 15
+## Slide 16
 
 - OpenCore 的制度本质
 - 开源版本是营销工具，也是信任机制
@@ -204,4 +201,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 本质是「信息商品」的分层策略
 - 核心问题是：谁为创新买单？
 - 答案：愿意付费的企业
-

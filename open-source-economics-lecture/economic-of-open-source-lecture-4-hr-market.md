@@ -41,6 +41,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+
+
 ## Slide 1
 
 - 前情提要
@@ -49,7 +51,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第2讲 数字时代的知识财产法演变与开源许可
 - 第3讲 开源软件的商业模式：产权制度与案例分析
 
----
 
 ## Slide 2
 
@@ -57,9 +58,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第五期 开源的劳动力市场
 - 「开源之道」·适兕
 
----
 
 ## Slide 3
+
+## 本期核心问题
+- 开源贡献者的劳动力市场是如何形成的？
+- 人们为什么愿意为开源贡献自己的时间？（信号、体验、归属）
+- 匠人精神与工程学：开源如何改变了软件开发者对工作的理解？
+
+
+## Slide 4
 
 - 议程
 - 代码不是商品
@@ -68,9 +76,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 软件开发者工程师的人才培养
 - 兴趣与实践培养
 
----
 
-## Slide 4
+## Slide 5
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -79,9 +86,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
----
 
-## Slide 5
+## Slide 6
 
 - 当我们提起劳动力市场时，在说什么？
 - 岗位需求
@@ -91,30 +97,26 @@ dark academic tone, Intellectual Visual System, art taste.
 - 人力投资
 - 职业教育
 
----
-
-## Slide 6
-
-- 就业让人愁
-
----
 
 ## Slide 7
 
-- 来自LF的调查报告（2024）
+- 就业让人愁
 
----
 
 ## Slide 8
+
+- 来自LF的调查报告（2024）
+
+
+## Slide 9
 
 - 衡量开源的价值指标
 - 《the value of Open Source》
 - 提供方：COCOMO + 平均工资
 - 消费方：重置成本 + COCOMO + 平均工资
 
----
 
-## Slide 9
+## Slide 10
 
 - 代码无法售卖的难题
 - 代码是文本
@@ -124,9 +126,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 权利用尽法则也无能为力
 - 技术加强壁垒与法律被寄予厚望
 
----
 
-## Slide 10
+## Slide 11
 
 - 需求定律看软件产业
 - 经济学最为坚实的基石：需求
@@ -136,9 +137,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 交易成本最低是开源项目的重要优势
 - CTO是最后一个知道项目中采用开源的
 
----
 
-## Slide 11
+## Slide 12
 
 - 作为创作者的软件开发者
 - 从学校实验室到学术交流
@@ -147,9 +147,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 继而是法律上的扩张
 - 软件工程本身的特性：开发者成为了一个职业
 
----
 
-## Slide 12
+## Slide 13
 
 - 参与开源的动机
 - 学习技能
@@ -160,9 +159,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 匠人，黑客，以解决问题本身为Fun
 - 道德诉求和社会公平
 
----
 
-## Slide 13
+## Slide 14
 
 - 开发者的窘境
 - 创作者：作家、作曲家等
@@ -172,9 +170,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 受雇于某个商业实体
 - 合伙经营商业实体
 
----
 
-## Slide 14
+## Slide 15
 
 - 开发者的技能要求
 - 需要大量的基础知识受训
@@ -183,9 +180,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 了解某类特定的业务
 - 技术的本质是不断的组合，越发的复杂与细化
 
----
 
-## Slide 15
+## Slide 16
 
 - 拓展的教育市场
 - 技术是公开可获取的
@@ -193,4 +189,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 竞争的是口碑和影响力
 - 弥补教育的实践不足以及职场的过渡
 - IT 职业教育堪称一绝，缔造上市公司
-

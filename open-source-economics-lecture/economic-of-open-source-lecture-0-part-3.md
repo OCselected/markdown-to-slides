@@ -41,13 +41,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 31
+## Slide 33
 
 - 产业视角下的开源
 
 ---
 
-## Slide 32
+## Slide 34
 
 - 生态之三分天下
 - 全封闭（Apple）
@@ -56,7 +56,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 33
+## Slide 35
 
 - 供应链
 - Internet 的架构设计：点对点分布式
@@ -67,7 +67,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 34
+## Slide 36
 
 - 超越产业
 - 开放
@@ -77,13 +77,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 35
+## Slide 37
 
 - 12次讲座的思路和目标
 
 ---
 
-## Slide 36
+## Slide 38
 
 - 第0期
 - 前因后果
@@ -94,7 +94,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 37
+## Slide 39
 
 - 第1期
 - 软件的生产
@@ -104,7 +104,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 38
+## Slide 40
 
 - 第2期：软件开发劳动力市场
 - 劳动力市场
@@ -116,14 +116,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 39
+## Slide 41
 
 - 第3期：比例原则与 Copyleft 思想
 - 知识财产正当性解释
 
 ---
 
-## Slide 40
+## Slide 42
 
 - 第4期：数字时代的知识财产法演变与开源许可
 - 所有权的终结
@@ -133,7 +133,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 41
+## Slide 43
 
 - 第6期：信息规则与网络经济
 - 信息想要免费，但是免费又是昂贵的
@@ -143,7 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 42
+## Slide 44
 
 - 第7期：基于互联网的协作
 - 电子邮件与邮件列表/新闻组
@@ -153,7 +153,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 43
+## Slide 45
 
 - 第8期：商业模式：规则下的具体操作
 - 副本：取决于介质
@@ -164,7 +164,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 44
+## Slide 46
 
 - 第9期：组织结构与治理
 - 为什么需要正式的组织？
@@ -175,7 +175,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 45
+## Slide 47
 
 - 第10期：量化与劳动报酬
 - 无报酬干活？
