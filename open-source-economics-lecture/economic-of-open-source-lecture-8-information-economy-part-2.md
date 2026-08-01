@@ -44,12 +44,29 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 50 -->
 
----<!-- Part 2 of 2, slides 16-27 / 27 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---<!-- Part 2 of 2, slides 16-29 / 29 -->
 
 ---
 
 
 ## Slide 16
+
+- 信息商品的版本差异化
+- 社区版：核心功能开源
+- 企业版：高级功能闭源
+- 边界划分是制度设计问题，不是技术问题
+- 什么样的功能可以开源？
+- 什么样的功能需要闭源？
+- 底层逻辑是交易成本分析
+
+---
+
+## Slide 17
 
 - 订阅经济与开源的交汇
 - 从产品到服务的制度转型
@@ -60,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 17
+## Slide 18
 
 - OpenCore 的制度本质
 - 开源版本是营销工具，也是信任机制
@@ -71,7 +88,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 开源与云计算的制度冲突
 - 云厂商利用开源代码提供托管服务
@@ -82,7 +99,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
+
+## 云计算的制度冲突——Coase 视角下的产权重新界定
+
+- 云厂商利用开源代码提供托管服务，但不向项目贡献者支付许可费
+- Coase 的核心洞见：当交易成本为零时，产权归属不影响资源配置
+- 但现实中交易成本不为零——项目维护者需要投入，云厂商在获利
+- 这就引发了产权重新界定的问题：开源代码在云端运行时，产权归属该如何界定？
+- SSPL、BSL 等新许可证的出现，正是对这一产权模糊的回应
+- 但正如 North 所言：规则容易改，社区适应难
+
+---
+
+## Slide 21
 
 - 许可证的新挑战
 - AGPL：当代码在服务器上运行时也要开源
@@ -92,7 +122,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 22
 
 - 核心思考
 - 信息商品的价值如何在没有价格的情况下被发现？
@@ -102,7 +132,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 23
 
 - 从制度经济学视角看信息经济
 - 科斯：当交易成本趋近于零，所有权的重要性重新评估
@@ -112,7 +142,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 24
 
 - 与第8期的联系
 - 第8期讨论开源的政治经济学：商业公司受益于开源却不投入
@@ -122,7 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 25
 
 - 历史上的价格信号
 - Windows 按拷贝收费
@@ -133,7 +163,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 26
 
 - 开源的制度创新
 - 开源不生产价格，但生产价值
@@ -143,7 +173,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 27
 
 - 开源与数字未来的制度挑战
 - 当AI模型训练依赖开源代码
@@ -153,7 +183,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 28
 
 - 推荐阅读
 - 《信息规则：网络经济的策略指导》——夏皮罗与范里安
@@ -163,7 +193,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 29
 
 - 留白问题
 - 如果开源软件的边际成本为零，

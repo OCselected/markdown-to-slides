@@ -50,6 +50,11 @@ dark academic tone, Intellectual Visual System, art taste.
 <!-- Part 1 of 4, slides 1-15 / 51 -->
 
 ---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
 
 
 ## Slide 1

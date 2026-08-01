@@ -47,7 +47,12 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 # economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 25 -->
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 2, slides 1-15 / 27 -->
 
 ---
 
@@ -89,13 +94,26 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 4
 
+## 排他权的制度起源——从印刷特权到数字版权
+
+- 1662年：英国《出版许可法》——"印刷特权"是排他权的雏形
+- 1710年：《安妮法》——世界上第一部版权法，保护作者而非出版商
+- 19世纪：工业革命推动版权从"保护作者"向"保护投资者"转变
+- 数字时代：版权保护从"保护创意"演变为"保护商业模式"
+- 排他权不是中性的——它塑造了谁能生产、谁能使用、谁能受益
+- Williamson L2：排他权是数字时代最根本的制度环境之一
+
+---
+
+## Slide 5
+
 - 排他权与容他权、比例原则与 Copyleft
 - 开源经济学12讲座  ·  第十期
 - 「开源之道」·适兕
 
 ---
 
-## Slide 5
+## Slide 6
 
 - 议程
 - 排他权的制度起源
@@ -108,7 +126,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 6
+## Slide 7
+
+## 普赞诺斯基《所有权的终结》——从公有领域到圈地运动
+
+- "所有权"从一种权利，演变为一种"排他性工具"
+- 知识财产从"保护创新"变为"锁定知识"——公有领域急剧萎缩
+- 这不是市场的自然演化，而是制度选择的结果
+- Williamson L2 的视角：每一次排他权的扩张，都是对制度环境的一次重塑
+- 开源的出现，正是在这种"圈地运动"的缝隙中生长出来的制度创新
+
+---
+
+## Slide 8
 
 - 为什么要理解排他权？
 - 知识财产法是数字时代的制度基础
@@ -118,7 +148,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 7
+## Slide 9
 
 - 排他权的制度起源
 - 从印刷特权到数字版权
@@ -128,7 +158,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 8
+## Slide 10
 
 - 排他权扩张的制度后果
 - 普赞诺斯基《所有权的终结》
@@ -138,7 +168,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 9
+## Slide 11
 
 - 数字时代的圈地运动
 - 印刷时代：书籍可以自由复印
@@ -148,7 +178,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 10
+## Slide 12
 
 - 容他权的制度逻辑
 - 开源许可证：保留版权的同时授予发布权
@@ -159,7 +189,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 11
+## Slide 13
 
 - 排他权与容他权的对比
 - 排他权：阻止他人使用，目的是控制
@@ -170,7 +200,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 12
+## Slide 14
 
 - Copyleft 的制度设计
 - GPL 的「传染性」不是法律漏洞
@@ -181,35 +211,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 13
+## Slide 15
 
 - GPL 的逻辑
 - 如果你使用了 GPL 代码，你发布的软件也必须开源
 - 这不是惩罚，而是激励机制
 - 它保证了：任何人都不可以独占 GPL 项目的成果
 - 这是容他权的强制执行机制
-
----
-
-## Slide 14
-
-- 比例原则在知识财产中的运用
-- 排他权过强：创新被锁定（专利流氓）
-- 排他权过弱：创新者无法回收投入（制药行业）
-- 开源许可证在排他权光谱中占据独特位置
-- 不强不弱：恰好足以激励贡献，恰好不足以阻碍利用
-
----
-
-## Slide 15
-
-- 排他权与容他权的动态均衡
-- BSD / MIT：几乎无 Copyleft
-- GPL：强 Copyleft
-- MPL / APL：中间路线
-- 许可证的光谱本身就是制度多样性
-- Ostrom 的 Design Principles 在 IP 领域的具体化
-- 不同的项目，选择不同强度的排他权
 
 ---
 

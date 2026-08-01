@@ -47,7 +47,12 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 # economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 27 -->
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 2, slides 1-15 / 29 -->
 
 ---
 
@@ -152,6 +157,18 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 10
 
+## Windows 与 Linux 的定价对比——历史上的价格信号
+
+- Windows：每张拷贝按许可证付费，价格信号清晰，但限制了扩散
+- Linux：按服务收费，价格信号模糊，但扩散速度更快
+- 这不是"哪个更好"的问题，而是"哪个定价逻辑适配了哪种商品属性"
+- Stewart Brand 的悖论在此得到验证：「信息渴望自由」
+- 软件从"卖拷贝"到"卖服务"的转型，本质上是信息商品化的历史必然
+
+---
+
+## Slide 11
+
 - 网络效应与正反馈回路
 - 梅特卡夫定律：网络价值与节点数的平方成正比
 - 开源项目是典型的多边网络
@@ -160,7 +177,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 11
+## Slide 12
 
 - 开源作为多边平台
 - 项目共同体：维护者与核心开发者
@@ -172,7 +189,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 12
+## Slide 13
 
 - 谁在补贴谁？
 - 企业投入研发，通过订阅和服务收回成本
@@ -183,7 +200,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 13
+## Slide 14
 
 - 开源软件的定价悖论
 - 放弃许可费用后，「价格」消失了
@@ -194,7 +211,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 14
+## Slide 15
 
 - 价值捕获的制度路径
 - Red Hat 模式：订阅 + 支持
@@ -202,18 +219,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - OpenCore 模式：社区版免费 + 企业版收费
 - 每一种模式都是制度设计，而非自然形成
 - 关键在于解决了信任问题
-
----
-
-## Slide 15
-
-- 信息商品的版本差异化
-- 社区版：核心功能开源
-- 企业版：高级功能闭源
-- 边界划分是制度设计问题，不是技术问题
-- 什么样的功能可以开源？
-- 什么样的功能需要闭源？
-- 底层逻辑是交易成本分析
 
 ---
 

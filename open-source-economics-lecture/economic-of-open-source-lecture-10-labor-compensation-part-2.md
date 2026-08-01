@@ -44,12 +44,39 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 50 -->
 
----<!-- Part 2 of 2, slides 16-26 / 26 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---<!-- Part 2 of 2, slides 16-28 / 28 -->
 
 ---
 
 
 ## Slide 16
+
+- 数字时代的生产资料
+- 工业时代：工厂、机器、原材料
+- 数字时代：代码库、平台、数据
+- 谁拥有生产资料，谁就拥有分配权
+- 云厂商拥有平台，贡献者拥有代码
+- 分配的冲突不可避免
+
+---
+
+## Slide 17
+
+- 代码即资本
+- 当开源代码成为数字基础设施
+- 维护者从「劳动者」变为「基础设施管理者」
+- 财产分配的逻辑需要重新设计
+- Heartbleed 漏洞：「开源基础设施危机」
+- 本质上是制度设计失败：没有为关键基础设施维护者设计可持续的回报机制
+
+---
+
+## Slide 18
 
 - 开源的政治经济学展望
 - 从 Commons-based Peer Production（Benkler）到 Platform Cooperativism（Scholz）
@@ -59,7 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 17
+## Slide 19
 
 - 关键基础设施的报酬问题
 - OpenSSL、Linux Kernel、OpenSSH
@@ -70,7 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 20
 
 - 社会正义的视角
 - 开源的分配问题不仅是经济问题，也是社会正义问题
@@ -80,7 +107,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 21
 
 - 制度创新的必要性
 - 现有的制度安排：
@@ -91,7 +118,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 22
 
 - 劳动报酬的可测量性
 - Git 贡献数据是劳动的度量
@@ -102,7 +129,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 23
 
 - 可持续性问题的制度根源
 - 当前开源维护者的报酬制度是：无保障的、随机的
@@ -113,7 +140,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 24
 
 - 与第4期的联系
 - 第4期讨论劳动力市场：开源开发者为什么贡献？
@@ -124,7 +151,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 25
 
 - 与第8期的联系
 - 第8期讨论政治经济学：云厂商受益但不投入
@@ -134,7 +161,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 26
 
 - 开源劳动报酬的未来
 - 当AI辅助代码生成
@@ -146,7 +173,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 27
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -157,7 +184,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 28
 
 - 留白问题
 - 开源贡献者是否应该被视为劳动者？

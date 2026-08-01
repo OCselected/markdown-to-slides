@@ -44,12 +44,39 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 50 -->
 
----<!-- Part 2 of 2, slides 16-25 / 25 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---<!-- Part 2 of 2, slides 16-27 / 27 -->
 
 ---
 
 
 ## Slide 16
+
+- 比例原则在知识财产中的运用
+- 排他权过强：创新被锁定（专利流氓）
+- 排他权过弱：创新者无法回收投入（制药行业）
+- 开源许可证在排他权光谱中占据独特位置
+- 不强不弱：恰好足以激励贡献，恰好不足以阻碍利用
+
+---
+
+## Slide 17
+
+- 排他权与容他权的动态均衡
+- BSD / MIT：几乎无 Copyleft
+- GPL：强 Copyleft
+- MPL / APL：中间路线
+- 许可证的光谱本身就是制度多样性
+- Ostrom 的 Design Principles 在 IP 领域的具体化
+- 不同的项目，选择不同强度的排他权
+
+---
+
+## Slide 18
 
 - 许可证作为制度多样性
 - 每一种许可证都是一套规则
@@ -59,7 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 17
+## Slide 19
 
 - 许可证光谱的制度含义
 - 宽松许可：鼓励企业采用
@@ -70,7 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 20
 
 - 云时代的 Copyleft 新挑战
 - 当代码运行在服务器端而非分发时
@@ -82,7 +109,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 21
 
 - North 的洞见
 - 「规则易改，反应难变」
@@ -93,7 +120,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 22
 
 - 开源制度的创新意义
 - 开源不是废除知识产权
@@ -103,7 +130,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 23
 
 - 与第5期的联系
 - 第5期讨论科斯的交易成本
@@ -114,7 +141,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 24
 
 - 制度设计的案例
 - Linux 内核：GPL 强制开放
@@ -125,7 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 25
 
 - 开源许可证的未来
 - 新的挑战：AI 训练与开源代码
@@ -135,7 +162,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 26
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -145,7 +172,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 27
 
 - 留白问题
 - 排他权是一种权力，

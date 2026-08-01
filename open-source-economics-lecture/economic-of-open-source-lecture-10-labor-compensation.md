@@ -47,7 +47,12 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 # economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 26 -->
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 2, slides 1-15 / 28 -->
 
 ---
 
@@ -80,6 +85,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 3
 
+## 关键基础设施的报酬问题——Heartbleed 与制度反思
+
+- 2014年 Heartbleed 漏洞：OpenSSL 维护者仅 10 人，影响数亿用户
+- "开源基础设施危机"的本质：没有为关键基础设施维护者设计可持续的回报机制
+- 这不是技术问题，而是制度设计问题
+- 与第5期科斯的交易成本分析呼应：当维护者的成本得不到补偿，系统就不可持续
+- 制度设计的方向：让关键基础设施维护者获得合理的、可预期的经济回报
+- 否则，数字基础设施的脆弱性将无限放大
+
+---
+
+## Slide 4
+
 ## 本期核心问题
 - 开源贡献者应获得什么样的报酬？
 - 从「无偿贡献」到「制度化的经济回报」——制度创新的方向
@@ -88,7 +106,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 4
+## Slide 5
 
 - 劳动报酬与财产分配
 - 开源经济学12讲座  ·  第十一期
@@ -96,7 +114,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 5
+## Slide 6
 
 - 议程
 - 个体角度如何思考「报酬」
@@ -109,7 +127,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 6
+## Slide 7
+
+## GitHub——协作的简化与问题
+
+- GitHub 让开源协作变得前所未有的简单：fork、PR、review 一键完成
+- 但平台的"便利性"背后是对生产资料的控制
+- 代码仓库平台在开源世界中占据了"基础设施管理者"的位置
+- 这与云厂商的问题同构：谁拥有生产资料，谁就拥有分配权
+- 与第6期的 Williamson OLR 框架呼应：GitHub 是 R（规则）层面的制度装置
+- 但同时也是 O（组织）层面的权力集中——平台取代了部分社区治理的功能
+
+---
+
+## Slide 8
 
 - 为什么需要讨论劳动报酬？
 - 开源经常被贴上「无偿劳动」的标签
@@ -119,7 +150,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 7
+## Slide 9
 
 - 开源是无偿劳动吗？
 - 比尔·盖茨 1976 年公开信：软件可以免费复制，谁还会付费？
@@ -129,7 +160,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 8
+## Slide 10
 
 - 个体角度思考「报酬」
 - 金钱不是唯一激励
@@ -141,7 +172,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 9
+## Slide 11
 
 - 信号的价值
 - 开源贡献是个人能力的公开证明
@@ -152,7 +183,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 10
+## Slide 12
 
 - 贡献者经济的制度结构
 - 从个人贡献到企业赞助的制度演变
@@ -163,7 +194,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 11
+## Slide 13
 
 - 基金会的制度角色
 - 基金会是贡献者经济的制度中介
@@ -174,7 +205,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 12
+## Slide 14
 
 - 发布权与财产分配
 - 开源代码的「所有权」没有被放弃
@@ -185,35 +216,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 13
+## Slide 15
 
 - 开源劳动者与云厂商的分配冲突
 - 云厂商利用开源代码提供服务赚取巨额收入
 - 但贡献者没有获得直接回报
 - 这是数字时代的生产资料与劳动价值之间的分配不匹配
 - 与马克思在《资本论》中分析的劳资矛盾在制度逻辑上同构
-
----
-
-## Slide 14
-
-- 数字时代的生产资料
-- 工业时代：工厂、机器、原材料
-- 数字时代：代码库、平台、数据
-- 谁拥有生产资料，谁就拥有分配权
-- 云厂商拥有平台，贡献者拥有代码
-- 分配的冲突不可避免
-
----
-
-## Slide 15
-
-- 代码即资本
-- 当开源代码成为数字基础设施
-- 维护者从「劳动者」变为「基础设施管理者」
-- 财产分配的逻辑需要重新设计
-- Heartbleed 漏洞：「开源基础设施危机」
-- 本质上是制度设计失败：没有为关键基础设施维护者设计可持续的回报机制
 
 ---
 
