@@ -39,12 +39,28 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
----<!-- Part 3 of 4, slides 31-45 / 50 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---<!-- Part 3 of 4, slides 31-45 / 51 -->
 
 ---
 
 
 ## Slide 31
+
+- 开源机构与组织
+- 自由软件基金会的诞生与设计
+- 早期的开放组织、标准组织（IETF）
+- 开源软件基金会的崛起
+- Linux、Gnome、Python、SPI+Debian、Apache等发挥作用的组织
+- 开源的未来～
+
+---
+
+## Slide 32
 
 - 商业模式的探索
 - 商业是制度的产物
@@ -56,7 +72,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 32
+## Slide 33
 
 - 同时启动通识项目：「开源之史」讲谈
 - 每双周一次讲谈
@@ -67,13 +83,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 33
+## Slide 34
 
 - 产业视角下的开源
 
 ---
 
-## Slide 34
+## Slide 35
 
 - 生态之三分天下
 - 全封闭（Apple）
@@ -82,7 +98,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 35
+## Slide 36
 
 - 供应链
 - Internet 的架构设计：点对点分布式
@@ -93,7 +109,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 36
+## Slide 37
 
 - 超越产业
 - 开放
@@ -103,13 +119,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 37
+## Slide 38
 
 - 12次讲座的思路和目标
 
 ---
 
-## Slide 38
+## Slide 39
 
 - 第0期
 - 前因后果
@@ -120,7 +136,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 39
+## Slide 40
 
 - 第1期
 - 软件的生产
@@ -130,7 +146,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 40
+## Slide 41
 
 - 第2期：软件开发劳动力市场
 - 劳动力市场
@@ -142,14 +158,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 41
+## Slide 42
 
 - 第3期：比例原则与 Copyleft 思想
 - 知识财产正当性解释
 
 ---
 
-## Slide 42
+## Slide 43
 
 - 第4期：数字时代的知识财产法演变与开源许可
 - 所有权的终结
@@ -159,7 +175,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 43
+## Slide 44
 
 - 第6期：信息规则与网络经济
 - 信息想要免费，但是免费又是昂贵的
@@ -169,24 +185,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 44
+## Slide 45
 
 - 第7期：基于互联网的协作
 - 电子邮件与邮件列表/新闻组
 - 文本/代码
 - CVS/SVN/Git的进化
 - SourceForge/Launchpad/GitHub 的演化
-
----
-
-## Slide 45
-
-- 第8期：商业模式：规则下的具体操作
-- 副本：取决于介质
-- 分发：互联网的颠覆
-- 支持与服务
-- 订阅：补丁与升级，品牌和质量
-- OpenCore，终究是闭源的菜
 
 ---
 

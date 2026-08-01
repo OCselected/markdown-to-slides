@@ -40,7 +40,12 @@ dark academic tone, Intellectual Visual System, art taste.
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
-# 第10期：排他权与容他权、比例原则与 Copyleft
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---
+# economic-of-open-source-lecture-0
 
 <!-- Part 1 of 2, slides 1-15 / 25 -->
 

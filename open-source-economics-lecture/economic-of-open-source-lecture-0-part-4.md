@@ -39,12 +39,28 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
----<!-- Part 4 of 4, slides 46-50 / 50 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---<!-- Part 4 of 4, slides 46-51 / 51 -->
 
 ---
 
 
 ## Slide 46
+
+- 第8期：商业模式：规则下的具体操作
+- 副本：取决于介质
+- 分发：互联网的颠覆
+- 支持与服务
+- 订阅：补丁与升级，品牌和质量
+- OpenCore，终究是闭源的菜
+
+---
+
+## Slide 47
 
 - 第9期：组织结构与治理
 - 为什么需要正式的组织？
@@ -55,7 +71,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 47
+## Slide 48
 
 - 第10期：量化与劳动报酬
 - 无报酬干活？
@@ -67,7 +83,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 48
+## Slide 49
 
 - 第11期：文化的重要作用
 - 行动与价值观
@@ -76,7 +92,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 49
+## Slide 50
 
 - 第5期：交易成本
 - 罗纳德·科斯与《企业的性质》
@@ -86,7 +102,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 50
+## Slide 51
 
 - 请记住，有时我们得到的反馈就像被包装丑陋的包裹——但这并不意味着包裹里面装的不是一份礼物。
 - ——大卫·布拉德福德，卡罗尔·罗宾 《深度关系：从建立信任到彼此成就》

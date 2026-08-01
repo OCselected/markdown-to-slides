@@ -40,7 +40,12 @@ dark academic tone, Intellectual Visual System, art taste.
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
-# 第11期：劳动报酬与财产分配
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---
+# economic-of-open-source-lecture-0
 
 <!-- Part 1 of 2, slides 1-15 / 26 -->
 

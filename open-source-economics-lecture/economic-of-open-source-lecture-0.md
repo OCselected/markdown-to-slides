@@ -45,6 +45,11 @@ dark academic tone, Intellectual Visual System, art taste.
 <!-- Part 1 of 4, slides 1-15 / 50 -->
 
 ---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
 
 
 ## Slide 1
@@ -89,6 +94,24 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+## 12讲在三层制度中的定位
+
+- L3 社会规范层（文化、伦理、信任）：第12讲——文化的重要作用
+- L3 社会规范层：第4讲——劳动力市场的信号与归属感
+- L2 制度环境层（许可证、基金会、行为准则）：第2、10讲——IP法与许可演化
+- L2 制度环境层：第6讲——组织结构与治理
+- L2 制度环境层：第8讲——政治经济学与公共物品治理
+- L1 具体规则层（合同、CLA、交易机制）：第5讲——交易成本
+- L1 具体规则层：第3讲——商业模式（许可费替代机制）
+- L1 具体规则层：第9讲——信息商品的产权界定
+- L0 认识论基础（贯穿全部）：第0、1讲——开源作为研究对象
+- 跨层分析：第11讲——劳动报酬与分配正义
+- 制度不是分层，而是嵌套——每一讲都同时触及多个层级
+
+---
+
+## Slide 6
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -98,13 +121,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 6
+## Slide 7
 
 - 为什么要做这个讲座？
 
 ---
 
-## Slide 7
+## Slide 8
 
 - 凡事问个为什么
 - 经常被问：开源怎么赚钱？
@@ -115,14 +138,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 8
+## Slide 9
 
 - 经济学是研究资源配置的，研究经济学是为了使有限的资源被用于最合理、最有效的方面，以便增加社会总的财富，使社会日益富裕。研究经济学，是为了寻找一种令人满意的机制，以便合理利用资源，有效配置资源，既能增加社会财富，又能使财富或收入的分配趋于公平。
 - ———— 厉以宁 《超越市场与超越政府》
 
 ---
 
-## Slide 9
+## Slide 10
 
 - 开源是什么？
 - 一种生产模式
@@ -134,13 +157,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 10
+## Slide 11
 
 - 开源经济：开源的价值
 
 ---
 
-## Slide 11
+## Slide 12
 
 - 理想中的开源世界
 - 最优的模块胜出，保持整体最佳
@@ -153,7 +176,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 12
+## Slide 13
 
 - 但是，没有完美世界
 - 世界上有很多力量
@@ -164,7 +187,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 13
+## Slide 14
 
 - 为什么不相信模型经济学？
 - 经济学是一门社会人文学科
@@ -174,22 +197,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 14
+## Slide 15
 
 - 无法提供答案
 - 所有的都是探讨
 - 以及前人的研究和挖掘
 - 继续探索：结合本土文化和环境
 - 能够为我们的日常工作提供一个思考路径
-
----
-
-## Slide 15
-
-- 开源属于第几次分配？
-- 第一次分配：自由市场
-- 第二次分配：政府配置
-- 第三次分配：慈善与道德
 
 ---
 

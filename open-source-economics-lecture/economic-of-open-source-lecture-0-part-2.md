@@ -39,12 +39,26 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
----<!-- Part 2 of 4, slides 16-30 / 50 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---<!-- Part 2 of 4, slides 16-30 / 51 -->
 
 ---
 
 
 ## Slide 16
+
+- 开源属于第几次分配？
+- 第一次分配：自由市场
+- 第二次分配：政府配置
+- 第三次分配：慈善与道德
+
+---
+
+## Slide 17
 
 - 共识是协作集体行动的基础
 - 开源有很多被误解、曲解的地方
@@ -54,7 +68,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 17
+## Slide 18
 
 - 新制度经济学
 - 开源软件的经济和社会价值
@@ -64,20 +78,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 开源在现代数字社会中的概况
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 无处不在
 - 来源：LF Research Measuring the Economic Value of Open Source： A Survey and a Preliminary Analysis
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 软件成分分析：SBOM
 - 请打开你的手机：关于
@@ -89,7 +103,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - The value of open source software
 - supply-side value of widely-used OSS is $4.15 billion
@@ -100,7 +114,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 数据、证据与对比
 - 软件商业公司的市值
@@ -111,14 +125,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 开源之史
 - 嵌入在信息产业中的暗流
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 放弃编年罗列事件的叙述
 - 时间是一种参考
@@ -129,7 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 软件的历史
 - 最初是没有软件（software）的
@@ -141,7 +155,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 软件的商品化难题
 - 世界上第一份软件许可的诞生
@@ -153,7 +167,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 28
 
 - 开源许可的演化
 - 学术型开源许可的诞生与演变
@@ -165,7 +179,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 28
+## Slide 29
 
 - 协作的演化
 - 单机、联网、Internet、www
@@ -175,7 +189,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 29
+## Slide 30
 
 - 共同体的起源
 - 科学共同体：高校、科研机构、企业研究所
@@ -183,17 +197,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 邮件列表、版本控制系统、wiki等工具成就了虚拟的线上共同体
 - GitHub 的崛起：社交属性的现象
 - 基金会的崛起，一种融入现有世界的方式
-
----
-
-## Slide 30
-
-- 开源机构与组织
-- 自由软件基金会的诞生与设计
-- 早期的开放组织、标准组织（IETF）
-- 开源软件基金会的崛起
-- Linux、Gnome、Python、SPI+Debian、Apache等发挥作用的组织
-- 开源的未来～
 
 ---
 

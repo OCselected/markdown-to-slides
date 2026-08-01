@@ -39,12 +39,29 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
----<!-- Part 2 of 3, slides 16-30 / 35 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---<!-- Part 2 of 3, slides 16-30 / 36 -->
 
 ---
 
 
 ## Slide 16
+
+- 开放源码促进会和开源定义
+- 1998 年 Freesoftware Summit
+- 各类项目领导齐聚一堂
+- 需要一个新的合力联盟
+- 开源的发明
+- 开源的定义与倡导
+- 世界从此被改变了～
+
+---
+
+## Slide 17
 
 - 自发秩序？
 - 通用许可协议 GPL , 宪法意义
@@ -56,7 +73,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 17
+## Slide 18
 
 - 组织的演化或扩展的秩序
 - 自发的虚拟共同体
@@ -67,13 +84,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 缩小或消亡的开源项目共同体
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 冲突、抱怨和坚持
 - GNU 项目
@@ -85,7 +102,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 伟大的BSD
 - 1973年，伯克利分校就开发了Unix的分支
@@ -96,13 +113,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 保持独立和发展的开源
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 报团取暖或保持中立
 - Debian / python
@@ -113,7 +130,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 收购/资本投入或IPO
 - RedHat/JBoss
@@ -125,13 +142,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 扩展的规模，超越企业
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 从 Kernel 到 linux 基金会
 - Kernel 从minix 新闻组到独立邮件列表
@@ -142,7 +159,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 代码托管的演化：原子到市集
 - SVN
@@ -153,7 +170,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 28
 
 - Android 的技术-法律战略
 - 技术架构的选择
@@ -165,7 +182,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 28
+## Slide 29
 
 - Kubernetes：扩张的艺术
 - 业务发展与开发者的核心诉求
@@ -177,7 +194,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 29
+## Slide 30
 
 - Wikipedia：整合全球智慧（训练数据）
 - 2001年1月发布，10个人，词条 25
@@ -185,12 +202,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 根据使用语言，基本是按人口基数分布，中文除外
 - GPT时代的主要训练数据来源～
 - 词条编写的协商是一门重要的协作基石
-
----
-
-## Slide 30
-
-- 治理视角下的演变
 
 ---
 

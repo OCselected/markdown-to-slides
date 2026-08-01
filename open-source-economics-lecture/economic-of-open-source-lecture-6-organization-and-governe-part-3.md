@@ -39,12 +39,23 @@ dark academic tone, Intellectual Visual System, art taste.
 
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
----<!-- Part 3 of 3, slides 31-35 / 35 -->
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---<!-- Part 3 of 3, slides 31-36 / 36 -->
 
 ---
 
 
 ## Slide 31
+
+- 治理视角下的演变
+
+---
+
+## Slide 32
 
 - 治理的艺术
 - 自发产生的围绕软件项目的在线共同体
@@ -56,7 +67,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 32
+## Slide 33
 
 - 制度、共识、法律和文化
 - Copyleft 互惠是法律的基石
@@ -68,7 +79,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 33
+## Slide 34
 
 - 如此再回看OSPO
 - 开源无法被忽视
@@ -79,14 +90,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 34
+## Slide 35
 
 - In fact, the dirty secret of the computer industry is that everyone is "open , but not open"; they differ only in degree. Every computer company has proprietary pieces in its solutions, while every company in the industry claims to be "open," including microsoft and IBM. Bill gates likes to say that microsoft is the most open software company in the world because anyone can write an application for microsoft's proprietary APIs.
 - —— Michael A. Cusumano / David B. Yoffie《Competing On Internet Time: Lessons From Netscape And Its Battle With Microsoft》
 
 ---
 
-## Slide 35
+## Slide 36
 
 - 预告开源经济学讲座后5期主题（暂定）
 - 第八期： 商业价值与社会价值：开源的政治经济学
