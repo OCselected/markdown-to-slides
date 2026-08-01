@@ -1,0 +1,214 @@
+# [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
+
+## 文档用途
+面向开源经济学讲座的 Deck：以新制度经济学视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、交易成本、组织治理、文化与政治经济学等议题，帮助思考者从制度、协作与激励机制理解数字时代的开源现象。
+
+## 使用场景
+「开源之道」日常交流 / 新制度经济学视角下的开源讲座
+
+## 听众画像
+思考者，阅读者，善于交流者。对制度经济学、开源文化、人类学有基本的认知框架。
+
+## 讲者视角
+思维活跃者、独立开源研究者、协作机制设计师（社会黑客）。
+
+## 核心诉求
+展示人类的思维活动，渴望获得交流。
+
+## 核心基调
+dark academic tone, Intellectual Visual System, art taste.
+
+## 视觉风格关键词
+- 包豪斯几何构成（Bauhaus geometric composition）
+- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
+- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
+- 极简主义排版，大字号标题，宽松行距
+- 深色学术风格（dark academic），理性、克制、智识感
+- 几何抽象元素——圆、方、线作为装饰，不依赖图标
+- 书籍封面/古籍页面纹理作为背景元素
+- 深色学术风格（dark academic）整体调性
+
+## 内容结构约定
+- 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
+- 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
+- 结尾 slide 包含：讨论问题或延伸思考
+
+---
+
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
+# economic-of-open-source-lecture-0
+
+<!-- Part 1 of 4, slides 1-15 / 51 -->
+
+---
+
+# gpl-burn-and-growth.pptx
+
+<!-- Source: ~/onedrive/开源之书/2023-04/gpl-burn-and-growth.pptx -->
+
+<!-- Total: 25 slides -->
+
+<!-- Part 1/2, slides 1-15 / 25 -->
+
+---
+
+
+## Slide 1
+- 压迫下的天才创新- GPL的诞生和发展
+- 「开源之道」·适兕 「OSCAR·开源之书·共读」北京站 2023.4.15
+
+---
+
+## Slide 2
+- 议程
+- 关于「OSCAR·开源之书·共读」
+- 关于「开源之法」
+- 自我介绍
+- 历史背景
+- 解决问题
+- 演化与发展
+
+---
+
+## Slide 3
+- 关于「OSCAR·开源之书·共读」学习共同体
+- 2019.1.1 始
+- 60 + 开源之书·书单
+- 200+ 小组成员
+- 20+ 线下分享
+- 成员遍布北京、杭州、深圳等城市
+- 10+ 读后感书评
+- 隶属于中国信通院云大所 OSCAR 联盟
+- CC-BY-4.0 「OSCAR·开源之书·共读」
+
+---
+
+## Slide 4
+- 「OSCAR·开源之书·共读」观念
+- Learning by Contributing ,
+- Learning by Reading！
+- Leadership by Sharing！
+- Capital by Sponsor.
+- Learning as Belonging～
+- CC-BY-4.0 「OSCAR·开源之书·共读」
+
+---
+
+## Slide 5
+- 「开源之法」小组
+- 软件/数字的知识财产法基础知识学习和科普
+- 开源许可的意义和演化
+- 布道许可对于开源发展的意义
+- 辅助成员到更为资深和正式的开源组织（OpenChain、信通院可信开源等）完成进一步的合规工作
+- 构建对话、分享交流
+
+---
+
+## Slide 6
+- 关于我
+- 作者
+- 作品：《发现开源三部曲之开源之迷》《开源之史》
+- 「开源之道」（致力于开源相关思想、知识和价值的探究、推动！）主创
+- OSPO Group 联合创始人
+- 在多家开源机构担任布道和倡导工作
+
+---
+
+## Slide 7
+- 关于标题的一点题外话
+- 关于创新的定义
+- 社会创新是伟大的
+- 形而上学、民主和物理学、科学是同等重要的
+- 知识财产法、复式记账法、罗伯特议会法则、软件许可
+
+---
+
+## Slide 8
+- 软件许可的诞生
+- 商业的推动
+- 软件市场的蓄势待发
+- 法律的演进
+- 技术的新特性：法律的滞后性
+- 所有权的观念
+
+---
+
+## Slide 9
+- 软件被著作权保护的历史溯源
+- 从钢琴卷Piano Poll讲起
+- 1976年起草，1978年1月生效
+- Apple v. Franklin.
+- 1990年,通过《计算机软件租赁修正法案》。
+
+---
+
+## Slide 10
+- 软件从硬件的分离
+- IBM 改变了销售策略，1969
+- Rather than offer hardware, services and software exclusively in packages, marketers "unbundled" the components and offered them for sale individually.
+- 从此软件开辟了难以计数的市场
+
+---
+
+## Slide 11
+- 路径一：学术型许可
+- 科学共同体伦理及文化
+- 诞生于大学研究院
+- 伯克利、麻省理工等
+- Apache 2.0 等
+- 不过这些不是今天要讲的
+
+---
+
+## Slide 12
+- Richard stallman 和施乐打印机
+- 耳熟能详的传奇故事
+- 最后一个黑客：人生转折点
+- 颇具戏剧性的冲突
+- 但这并非故事的全部/历史从来都不是这么粗糙的
+
+---
+
+## Slide 13
+- 前奏：MIT AI LAB LISP编译器
+- 1971-1981 在MIT AI Lab
+- PDP-11 上运行：Lisp Machine Lisp
+- Symbolics 和Lisp Machines, Inc., 成立，将实验室的同事拉入
+- ”Symbolic 可以无限复制 MIT AI Lab 的代码，但是MIT AI Lab 不可以复制Symbolic的代码。“  Stallman 被禁止获得源代码
+- This Photo by Unknown Author is licensed under CC BY
+
+---
+
+## Slide 14
+- 一己之力，对抗symbolics
+- 1982.3.16 日
+- Stallman 决定对抗Symbolics！
+- 在MIT的Lisp机上实现Symbolics提供的新功能
+- 惊人的能力，获得了比尔·高斯伯的赞赏
+- 被实验室的同事排斥：被拒绝一起吃饭
+
+---
+
+## Slide 15
+- 才华和观念：初露锋芒
+- 1976， Richard Stallman 发起了EMACS项目
+- Emacs的设计和实现，展示了Stallman的天分
+- 运行在 PDP-11 等大型机
+- EMACS 有非常多的分支，但是大家都愿意将改进反馈给RMS
+
+---
+
