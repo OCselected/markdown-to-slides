@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-6-organization-and-governe
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 3, slides 16-30 / 34 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 3, slides 16-30 / 35 -->
 
 ---
+
 
 ## Slide 16
 
@@ -55,11 +58,22 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
-- 缩小或消亡的开源项目共同体
+- 组织的演化或扩展的秩序
+- 自发的虚拟共同体
+- 看得见的手 开始参与和影响
+- 政策制定与立法关注
+- 政治经济学的战略利用：Microsoft 和Google
+- OSPO （企业和政府）联盟 + OSI  + Open Source Cgress ?
 
 ---
 
 ## Slide 18
+
+- 缩小或消亡的开源项目共同体
+
+---
+
+## Slide 19
 
 - 冲突、抱怨和坚持
 - GNU 项目
@@ -71,7 +85,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 伟大的BSD
 - 1973年，伯克利分校就开发了Unix的分支
@@ -82,13 +96,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 保持独立和发展的开源
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 报团取暖或保持中立
 - Debian / python
@@ -99,7 +113,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 收购/资本投入或IPO
 - RedHat/JBoss
@@ -111,13 +125,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 扩展的规模，超越企业
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 从 Kernel 到 linux 基金会
 - Kernel 从minix 新闻组到独立邮件列表
@@ -128,7 +142,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 代码托管的演化：原子到市集
 - SVN
@@ -139,7 +153,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - Android 的技术-法律战略
 - 技术架构的选择
@@ -151,7 +165,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 28
 
 - Kubernetes：扩张的艺术
 - 业务发展与开发者的核心诉求
@@ -163,7 +177,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 28
+## Slide 29
 
 - Wikipedia：整合全球智慧（训练数据）
 - 2001年1月发布，10个人，词条 25
@@ -174,19 +188,9 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 29
+## Slide 30
 
 - 治理视角下的演变
 
 ---
-
-## Slide 30
-
-- 治理的艺术
-- 自发产生的围绕软件项目的在线共同体
-- 遭遇发展危机，开始应对
-- 成立联盟或慈善实体，完善制度和人员更替
-- 设计规则、共同承担
-- 政策倡导和指南
-- 边界划分
 

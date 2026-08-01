@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# 第9期：信息规则与网络经济
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-26 / 26 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-27 / 27 -->
 
 ---
+
 
 ## Slide 16
 
@@ -54,6 +57,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- OpenCore 的制度本质
+- 开源版本是营销工具，也是信任机制
+- 企业版本是收入来源，也是竞争壁垒
+- 本质是「信息商品」的分层策略
+- 核心问题是：谁为创新买单？
+- 答案：愿意付费的企业
+
+---
+
+## Slide 18
+
 - 开源与云计算的制度冲突
 - 云厂商利用开源代码提供托管服务
 - 开源项目的商业模式被侵蚀
@@ -63,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 许可证的新挑战
 - AGPL：当代码在服务器上运行时也要开源
@@ -73,7 +87,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 核心思考
 - 信息商品的价值如何在没有价格的情况下被发现？
@@ -83,7 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 从制度经济学视角看信息经济
 - 科斯：当交易成本趋近于零，所有权的重要性重新评估
@@ -93,7 +107,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 与第8期的联系
 - 第8期讨论开源的政治经济学：商业公司受益于开源却不投入
@@ -103,7 +117,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 历史上的价格信号
 - Windows 按拷贝收费
@@ -114,7 +128,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 开源的制度创新
 - 开源不生产价格，但生产价值
@@ -124,7 +138,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 开源与数字未来的制度挑战
 - 当AI模型训练依赖开源代码
@@ -134,7 +148,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 推荐阅读
 - 《信息规则：网络经济的策略指导》——夏皮罗与范里安
@@ -144,7 +158,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 留白问题
 - 如果开源软件的边际成本为零，
@@ -152,4 +166,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这种付费是买软件，还是买信任？
 - 当云厂商成为代码的主要使用者，
 - 谁来决定开源项目的未来？
+
+---
 

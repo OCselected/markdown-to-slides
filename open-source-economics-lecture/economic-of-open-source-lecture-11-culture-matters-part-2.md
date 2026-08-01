@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-11-culture-matters
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-26 / 26 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-27 / 27 -->
 
 ---
+
 
 ## Slide 16
 
@@ -54,6 +57,18 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 开源运动的理论基础
+- 科研
+- 标准
+- 学术
+- 技术
+- 工程
+- 商业
+
+---
+
+## Slide 18
+
 - Let the code decide
 - 技术实用主义至上
 - 工程文化
@@ -63,7 +78,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 微观基础上的赛博共同体
 - 赛博空间中的部落/联盟
@@ -75,7 +90,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - Microsoft Love linux
 - 获得商业和资本的最终认可
@@ -87,7 +102,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 虚拟共同体的人类学
 - Common-based 生产
@@ -98,7 +113,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 扩展的文化与秩序
 - 拓展的 cyberspace
@@ -110,7 +125,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 本土的突破
 - 接入互联网较晚
@@ -122,7 +137,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 文化是开源的基石
 - MEME
@@ -134,7 +149,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 我们该如何做？
 - 文化建构
@@ -146,7 +161,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 文化是否是可以改变的？
 - 作为 Software 的认知与理解
@@ -157,8 +172,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 有利于进步的文化和阻碍进步的文化，都有自己憧憬的乌托邦，即理想境界。在进步的文化中，人们认为世界是通过个人的创造性和努力而慢慢向遥远的乌托邦前进。在抵制进步的文化中，个人却是寻求早日进入一个实际上达不到的乌托邦，结果又是摇摆于狂热和悲观怀疑之间。
 - ————《文化的重要作用》第四章
+
+---
 

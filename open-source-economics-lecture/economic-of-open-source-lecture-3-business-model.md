@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-3-business-model
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 28 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-3-business-model
 
+<!-- Part 1 of 2, slides 1-15 / 29 -->
+
+---
 
 
 ## Slide 1
@@ -50,12 +54,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第1讲 软件的生产、分销和消费
 - 第2讲 数字时代的知识财产法演变与开源许可
 
+---
 
 ## Slide 2
 
 - 开源与经济学
 - 开源经济学12讲座     第四期 「开源之道」·适兕
 
+---
 
 ## Slide 3
 
@@ -64,6 +70,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - Red Hat、MySQL、WordPress 的案例告诉我们什么？
 - 商业模式的本质：在开源规则框架下，重新设计价值的分配方式
 
+---
 
 ## Slide 4
 
@@ -75,6 +82,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 模式
 - 案例
 
+---
 
 ## Slide 5
 
@@ -85,6 +93,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
+---
 
 ## Slide 6
 
@@ -96,6 +105,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 一种 cyberspace 共同体
 - 一种财产分配方式
 
+---
 
 ## Slide 7
 
@@ -105,6 +115,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 面向特定的社会实体：公司、政府、学校、非营利
 - 面向全体公民：尽可能的简化手续
 
+---
 
 ## Slide 8
 
@@ -115,6 +126,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 需求方、供应方
 - 交易是被鼓励的
 
+---
 
 ## Slide 9
 
@@ -125,6 +137,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 公法：版权、专利
 - 书籍、音乐、电影与媒介
 
+---
 
 ## Slide 10
 
@@ -136,6 +149,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 技术保护措施、数字版权管理的实施
 - 软件、信息产品帝国的建立
 
+---
 
 ## Slide 11
 
@@ -147,6 +161,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 学习成本高
 - 试用和宣传成本也高
 
+---
 
 ## Slide 12
 
@@ -157,6 +172,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 技术保护措施的发展与扩张（加密、硬件绑定）
 - 移动端 App 的“免费”（不知道用啥换的）
 
+---
 
 ## Slide 13
 
@@ -167,6 +183,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 放弃了收取许可费用
 - 和排他权选择完全不同的道路
 
+---
 
 ## Slide 14
 
@@ -179,19 +196,12 @@ dark academic tone, Intellectual Visual System, art taste.
 - 优化
 - 嵌入
 
+---
 
 ## Slide 15
 
 - 任何的商业成功，都是天时、地利、人和，以及做到了该做的事。（大多数时候需要运气）
 - ———— 适兕
 
+---
 
-## Slide 16
-
-- 案例分析之：优化
-- Cygnus
-- 成立于1989年
-- 产品：the GNUPro Developers Kit
-- FOSS 项目：GCC、GDB
-- 1997年被列入世界前500软件公司
-- 1999年11月，RedHat 以$674 million 收购

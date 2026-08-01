@@ -37,7 +37,33 @@ dark academic tone, Intellectual Visual System, art taste.
 
 # economic-of-open-source-lecture-0
 
-<!-- Part 4 of 4, slides 46-48 / 48 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 4 of 4, slides 46-50 / 50 -->
+
+---
+
+
+## Slide 46
+
+- 第9期：组织结构与治理
+- 为什么需要正式的组织？
+- 开源项目共同体也是人类组织
+- 中立的基金会如何发挥作用？
+- 社会的重要作用
+- 自组织可行吗？是神话故事还是现实真相
+
+---
+
+## Slide 47
+
+- 第10期：量化与劳动报酬
+- 无报酬干活？
+- 财富自由回去写代码？
+- KPI 的指标能否转化为销售额？
+- 开源项目的关键指标是什么？
+- 和闭源项目的指标有何不同？
+- “无量化，不管理”在开源中有效？
 
 ---
 
@@ -64,4 +90,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 - 请记住，有时我们得到的反馈就像被包装丑陋的包裹——但这并不意味着包裹里面装的不是一份礼物。
 - ——大卫·布拉德福德，卡罗尔·罗宾 《深度关系：从建立信任到彼此成就》
+
+---
 

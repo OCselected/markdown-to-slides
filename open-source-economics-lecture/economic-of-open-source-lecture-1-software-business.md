@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-1-software-business
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 28 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-1-software-business
 
+<!-- Part 1 of 2, slides 1-15 / 29 -->
+
+---
 
 
 ## Slide 1
@@ -48,12 +52,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 前情提要
 - 第0讲 增长的开源经济
 
+---
 
 ## Slide 2
 
 - 开源与经济学
 - 开源经济学12讲座     第一期 「开源之道」·适兕
 
+---
 
 ## Slide 3
 
@@ -62,6 +68,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 集装箱、互联网、云计算如何依次改变了软件的交付方式？
 - 开源的出现，是软件商品化的必然，还是对商品化逻辑的颠覆？
 
+---
 
 ## Slide 4
 
@@ -73,12 +80,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源软件的商业合理性
 - 开源软件的商业模式
 
+---
 
 ## Slide 5
 
 - On the one hand information wants to be expensive, because it’s so valuable. The right information in the right place just changes your life. On the other hand, information wants to be free, because the cost of getting it out is getting lower and lower all the time. So you have these two fighting against each other.
 - —— Stewart Brand and Steve Wosniak at the first hackers conference in 1984
 
+---
 
 ## Slide 6
 
@@ -89,6 +98,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 理解市场：一个协商的过程
 - 谁在破坏市场？基金会的出现～
 
+---
 
 ## Slide 7
 
@@ -99,6 +109,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开发者：Pypy/CPAN/Golang/Maven/RubyGems
 - 云计算提供商： IaaS、PaaS、SaaS ，三方市场
 
+---
 
 ## Slide 8
 
@@ -109,11 +120,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 现代物流交付
 - 疫情期间的苏伊士运河原地掉头事故
 
+---
 
 ## Slide 9
 
 - 代码/程序/软件发展简史
 
+---
 
 ## Slide 10
 
@@ -123,6 +136,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 个人独大的时代
 - 重大项目工程攻关（附属计算）
 
+---
 
 ## Slide 11
 
@@ -132,6 +146,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 模块化编程思想
 - 学术交流与互惠
 
+---
 
 ## Slide 12
 
@@ -142,6 +157,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - Bill Gates 大怒
 - 《致电脑爱好者的一封公开信》发表
 
+---
 
 ## Slide 13
 
@@ -151,6 +167,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 可擦写
 - 观念故事：1992年，宫敏从芬兰背回了Linux源代码，没有背回来的是协作
 
+---
 
 ## Slide 14
 
@@ -160,6 +177,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 主要工作发生地仍然在大型办公场所
 - 大教堂式的开发模式
 
+---
 
 ## Slide 15
 
@@ -169,12 +187,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - ftp 也加速了软件的分发
 - 集市式的开发模式成为了可能
 
+---
 
-## Slide 16
-
-- 万维网爆炸式发展
-- 网站和p2p可以分发软件
-- LAMP 不仅成就了开源，也成就了电子商务
-- 网站服务本身就是软件构建和分发：从门户到google
-- 集中式的代码仓库平台出现：sourceforge 到 github（后续）
-- 应用市场的出现

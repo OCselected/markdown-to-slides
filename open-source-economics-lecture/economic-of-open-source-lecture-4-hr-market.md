@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-4-hr-market
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 24 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-4-hr-market
 
+<!-- Part 1 of 2, slides 1-15 / 25 -->
+
+---
 
 
 ## Slide 1
@@ -51,6 +55,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第2讲 数字时代的知识财产法演变与开源许可
 - 第3讲 开源软件的商业模式：产权制度与案例分析
 
+---
 
 ## Slide 2
 
@@ -58,6 +63,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第五期 开源的劳动力市场
 - 「开源之道」·适兕
 
+---
 
 ## Slide 3
 
@@ -66,6 +72,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 人们为什么愿意为开源贡献自己的时间？（信号、体验、归属）
 - 匠人精神与工程学：开源如何改变了软件开发者对工作的理解？
 
+---
 
 ## Slide 4
 
@@ -76,6 +83,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 软件开发者工程师的人才培养
 - 兴趣与实践培养
 
+---
 
 ## Slide 5
 
@@ -86,6 +94,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
+---
 
 ## Slide 6
 
@@ -97,16 +106,19 @@ dark academic tone, Intellectual Visual System, art taste.
 - 人力投资
 - 职业教育
 
+---
 
 ## Slide 7
 
 - 就业让人愁
 
+---
 
 ## Slide 8
 
 - 来自LF的调查报告（2024）
 
+---
 
 ## Slide 9
 
@@ -115,6 +127,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 提供方：COCOMO + 平均工资
 - 消费方：重置成本 + COCOMO + 平均工资
 
+---
 
 ## Slide 10
 
@@ -126,6 +139,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 权利用尽法则也无能为力
 - 技术加强壁垒与法律被寄予厚望
 
+---
 
 ## Slide 11
 
@@ -137,6 +151,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 交易成本最低是开源项目的重要优势
 - CTO是最后一个知道项目中采用开源的
 
+---
 
 ## Slide 12
 
@@ -147,6 +162,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 继而是法律上的扩张
 - 软件工程本身的特性：开发者成为了一个职业
 
+---
 
 ## Slide 13
 
@@ -159,6 +175,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 匠人，黑客，以解决问题本身为Fun
 - 道德诉求和社会公平
 
+---
 
 ## Slide 14
 
@@ -170,6 +187,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 受雇于某个商业实体
 - 合伙经营商业实体
 
+---
 
 ## Slide 15
 
@@ -180,12 +198,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 了解某类特定的业务
 - 技术的本质是不断的组合，越发的复杂与细化
 
+---
 
-## Slide 16
-
-- 拓展的教育市场
-- 技术是公开可获取的
-- 无需任何的授权
-- 竞争的是口碑和影响力
-- 弥补教育的实践不足以及职场的过渡
-- IT 职业教育堪称一绝，缔造上市公司

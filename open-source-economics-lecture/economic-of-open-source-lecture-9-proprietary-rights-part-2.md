@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# 第10期：排他权与容他权、比例原则与 Copyleft
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-24 / 24 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-25 / 25 -->
 
 ---
+
 
 ## Slide 16
 
@@ -53,6 +56,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 许可证光谱的制度含义
+- 宽松许可：鼓励企业采用
+- 强 Copyleft：保障开源扩散
+- 中间许可：平衡企业需求与开源精神
+- 选择哪种许可证是项目治理的核心决策
+- 这个决策影响的是：谁可以获利？
+
+---
+
+## Slide 18
+
 - 云时代的 Copyleft 新挑战
 - 当代码运行在服务器端而非分发时
 - 传统 Copyleft 失效了
@@ -63,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - North 的洞见
 - 「规则易改，反应难变」
@@ -74,7 +88,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 开源制度的创新意义
 - 开源不是废除知识产权
@@ -84,7 +98,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 与第5期的联系
 - 第5期讨论科斯的交易成本
@@ -95,7 +109,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 制度设计的案例
 - Linux 内核：GPL 强制开放
@@ -106,7 +120,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 开源许可证的未来
 - 新的挑战：AI 训练与开源代码
@@ -116,7 +130,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -126,7 +140,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 留白问题
 - 排他权是一种权力，
@@ -135,4 +149,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 谁有资格决定许可证的演化方向？
 - 制度设计的终极问题：
 - 是让知识被所有人共享，还是让创新者获得应有的回报？
+
+---
 

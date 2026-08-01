@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-2-IP
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-22 / 22 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-23 / 23 -->
 
 ---
+
 
 ## Slide 16
 
@@ -55,6 +58,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 私人秩序的兴起
+- 合同是建立知识产权新规范的主要机制之一
+- 用户最终许可协议（EULA）的扩张
+- 数字网络使签订合同更容易
+- EULA 和技术保护措施不仅改变了所有者和用户之间的关系，还改变了商品的性质（许可授权，而不是销售）
+
+---
+
+## Slide 18
+
 - Copyleft 是在否定知识财产权吗？
 - 典型的黑客思考模式
 - Copyright 没有否定版权
@@ -64,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 软件许可的“光谱”
 - 自由、容他
@@ -74,7 +87,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 事前与事后，激励范式的视角
 - 如同著作权延期，软件也应该垄断
@@ -83,7 +96,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 法的经济学分析
 - 经济价值与商业价值
@@ -95,7 +108,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 开源带来的市场失灵？
 - 搭便车是人的天性
@@ -106,8 +119,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 自由软件、知识共享和其它增强公共领域的活动的现象可以理解为中央机构对产权扩张效率低下的市场反应。
 - ———— Elkin-Koren 和 Salzberger《数字时代的知识产权法经济学》
+
+---
 

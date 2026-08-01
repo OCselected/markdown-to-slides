@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-4-hr-market
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-24 / 24 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-25 / 25 -->
 
 ---
+
 
 ## Slide 16
 
@@ -54,6 +57,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 拓展的教育市场
+- 技术是公开可获取的
+- 无需任何的授权
+- 竞争的是口碑和影响力
+- 弥补教育的实践不足以及职场的过渡
+- IT 职业教育堪称一绝，缔造上市公司
+
+---
+
+## Slide 18
+
 - 劳动力市场：以外包为例
 - 印度，班加罗尔；中国，大连
 - xx动力
@@ -64,7 +78,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 匠人精神与工程学
 - 软件的开发和交付是个大工程
@@ -75,7 +89,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 留名文化与现代企业
 - 古罗马的制砖者与清代的宫廷瓷器工匠
@@ -86,7 +100,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 开源的学习路径：Learning by contributing
 - 个体参与开源的价值
@@ -98,7 +112,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 开放共同体：实力赢得资本
 - 优绩主义
@@ -109,7 +123,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 本土的劳动力市场反思
 - 经济转型期：就业压力
@@ -120,14 +134,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 由于交易赖以发生的制度背景会影响对生产的激励和交易的成本，因此，对经济学家而言，如果没有对制度背景进行具体说明就来讨论交换过程，则没有任何意义。
 - ————罗纳德·H·科斯 《生产的制度结构》
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 预告开源经济学讲座后7期主题（暂定）
 - 第六期：交易成本与开源的存在
@@ -137,4 +151,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第十期：Copyleft 、容他权，开源的基石
 - 第十一期：劳动报酬与财产分配
 - 第十二期：文化的重要作用
+
+---
 

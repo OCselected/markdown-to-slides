@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# 第9期：信息规则与网络经济
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 26 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# 第9期：信息规则与网络经济
 
+<!-- Part 1 of 2, slides 1-15 / 27 -->
+
+---
 
 
 ## Slide 1
@@ -56,6 +60,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第7期：文化的重要作用
 - 第8期：商业价值与社会价值：开源的政治经济学
 
+---
 
 ## Slide 2
 
@@ -66,6 +71,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度：法律、风俗、规章、行为指南
 - 观念与文化，技术与网络的累积
 
+---
 
 ## Slide 3
 
@@ -75,6 +81,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 当价格信号消失，价值如何在没有市场的情况下被发现？
 - Williamson L1 的延伸：信息商品需要新的产权界定方式
 
+---
 
 ## Slide 4
 
@@ -82,6 +89,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座  ·  第九期
 - 「开源之道」·适兕
 
+---
 
 ## Slide 5
 
@@ -94,6 +102,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 订阅经济与开源的交汇
 - 开源与云计算的制度冲突
 
+---
 
 ## Slide 6
 
@@ -103,6 +112,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 复制成本为零，但撰写成本高昂
 - 这给整个定价逻辑带来了结构性挑战
 
+---
 
 ## Slide 7
 
@@ -112,6 +122,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 高固定成本，低边际成本
 - 传统商品的经济逻辑，在这里完全失效
 
+---
 
 ## Slide 8
 
@@ -121,6 +132,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 代码一旦写出，分发一亿次与分发一次的成本几乎相同
 - 这从根本上改变了市场结构
 
+---
 
 ## Slide 9
 
@@ -131,6 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源出现：许可费用被放弃
 - 价格信号消失，价值信号仍在
 
+---
 
 ## Slide 10
 
@@ -140,6 +153,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 使用者、贡献者、赞助者形成正反馈
 - 这种效应无法被市场单独定价
 
+---
 
 ## Slide 11
 
@@ -151,6 +165,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 基金会是平台的治理机构
 - 三方在同一个平台上交换价值
 
+---
 
 ## Slide 12
 
@@ -161,6 +176,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是一个跨市场的补贴结构
 - 不存在单一的价格信号
 
+---
 
 ## Slide 13
 
@@ -171,6 +187,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - GitHub SaaS：卖的是平台与协作工具
 - 云厂商托管：卖的是便利与规模
 
+---
 
 ## Slide 14
 
@@ -181,6 +198,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 每一种模式都是制度设计，而非自然形成
 - 关键在于解决了信任问题
 
+---
 
 ## Slide 15
 
@@ -192,12 +210,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 什么样的功能需要闭源？
 - 底层逻辑是交易成本分析
 
+---
 
-## Slide 16
-
-- OpenCore 的制度本质
-- 开源版本是营销工具，也是信任机制
-- 企业版本是收入来源，也是竞争壁垒
-- 本质是「信息商品」的分层策略
-- 核心问题是：谁为创新买单？
-- 答案：愿意付费的企业

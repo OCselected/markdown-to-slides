@@ -40,7 +40,11 @@ dark academic tone, Intellectual Visual System, art taste.
 <!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-0
 
+<!-- Part 1 of 4, slides 1-15 / 50 -->
+
+---
 
 
 ## Slide 1
@@ -48,6 +52,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源与经济学
 - 开源经济学12讲座     第零期 「开源之道」·适兕
 
+---
 
 ## Slide 2
 
@@ -58,6 +63,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 产业视角下的开源
 - 12讲座的思考路径与目标
 
+---
 
 ## Slide 3
 
@@ -68,6 +74,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 统一分析框架：Williamson 的 L1/L2/L3 制度层级
 -   ——具体规则层、制度环境层、社会规范层
 
+---
 
 ## Slide 4
 
@@ -78,6 +85,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 每一讲都在这三个层级中的某一层定位问题
 - 制度不是中性的，制度塑造了开源的形态
 
+---
 
 ## Slide 5
 
@@ -88,11 +96,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
+---
 
 ## Slide 6
 
 - 为什么要做这个讲座？
 
+---
 
 ## Slide 7
 
@@ -103,12 +113,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - “天下没有免费的午餐”错了吗？
 - 开源还有前途吗？
 
+---
 
 ## Slide 8
 
 - 经济学是研究资源配置的，研究经济学是为了使有限的资源被用于最合理、最有效的方面，以便增加社会总的财富，使社会日益富裕。研究经济学，是为了寻找一种令人满意的机制，以便合理利用资源，有效配置资源，既能增加社会财富，又能使财富或收入的分配趋于公平。
 - ———— 厉以宁 《超越市场与超越政府》
 
+---
 
 ## Slide 9
 
@@ -120,11 +132,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 文化与价值观
 - 生活态度
 
+---
 
 ## Slide 10
 
 - 开源经济：开源的价值
 
+---
 
 ## Slide 11
 
@@ -137,6 +151,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 人际和谐，平等交流，一片富足
 - 赢得社会尊重～
 
+---
 
 ## Slide 12
 
@@ -147,6 +162,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度：法律、道德、文化、习俗的共同作用
 - 开源和其它类是共存的
 
+---
 
 ## Slide 13
 
@@ -156,6 +172,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 建模很多时候是自洽逻辑的倒推
 - 数学的迷信，确实很唬人
 
+---
 
 ## Slide 14
 
@@ -165,6 +182,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 继续探索：结合本土文化和环境
 - 能够为我们的日常工作提供一个思考路径
 
+---
 
 ## Slide 15
 
@@ -173,20 +191,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第二次分配：政府配置
 - 第三次分配：慈善与道德
 
+---
 
-## Slide 16
-
-- 共识是协作集体行动的基础
-- 开源有很多被误解、曲解的地方
-- 开源是复杂的，看到的只是表象
-- 细节中见魔鬼
-- 开源的观念需要极大的理性思考
-
-
-## Slide 17
-
-- 新制度经济学
-- 开源软件的经济和社会价值
-- 制度是一切的基础：集体行动、财产分配、商业交易
-- 从历史中寻找规律
-- 尽量少假设，往不假设靠近

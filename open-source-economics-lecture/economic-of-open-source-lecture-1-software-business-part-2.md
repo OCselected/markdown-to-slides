@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-1-software-business
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-28 / 28 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-29 / 29 -->
 
 ---
+
 
 ## Slide 16
 
@@ -53,6 +56,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 万维网爆炸式发展
+- 网站和p2p可以分发软件
+- LAMP 不仅成就了开源，也成就了电子商务
+- 网站服务本身就是软件构建和分发：从门户到google
+- 集中式的代码仓库平台出现：sourceforge 到 github（后续）
+- 应用市场的出现
+
+---
+
+## Slide 18
+
 - 经济学的思维方式
 - 天下没有免费的午餐
 - 沉没成本是一种行为、互动
@@ -62,7 +76,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 软件的生产：开发者与工程师及其工具
 - 开发语言
@@ -72,7 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 工业时代的工厂与数字时代的协作
 - 分工带来效率和繁荣
@@ -83,7 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 软件的“消费”者：
 - 源代码是开发者的原料
@@ -95,7 +109,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 软件交付简史之初代
 - 和硬件不可分割
@@ -107,7 +121,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 软件交付简史之介质时代
 - 软盘、光盘、U盘
@@ -119,7 +133,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 软件交付简史之网络下载
 - 网络分发成为常态：p2p
@@ -130,7 +144,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 软件交付简史之云与市场
 - 数据中心的规模化
@@ -141,7 +155,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 举个例子：Chrome 的数字之旅
 - Chromium ：V8、ffmpeg
@@ -152,23 +166,25 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 手动画 Linux 发行版的构建之旅
 
 ---
 
-## Slide 27
+## Slide 28
 
 - The world is not binary，even if it is more and more mode of software，built bit by bit.
 - ——— Steve Lohr 《软件故事》
 
 ---
 
-## Slide 28
+## Slide 29
 
 - 释放开源价值
 - Unleash the power of open source
 - OSPO
 - 2nd OSPO Summit
+
+---
 

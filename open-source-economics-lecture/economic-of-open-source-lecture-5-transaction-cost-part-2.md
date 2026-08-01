@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-5-transaction-cost
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-25 / 25 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-26 / 26 -->
 
 ---
+
 
 ## Slide 16
 
@@ -55,6 +58,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 科斯的贡献
+- 《企业的性质》，1937
+- 《社会成本问题》，1962
+- 新制度经济学的鼻祖，美国芝加哥大学教授、芝加哥经济学派代表人物之一，1991年诺贝尔经济学奖得主
+- 长期对中国的关注
+- 和王宁合著《变革中国：市场经济的中国之路》
+
+---
+
+## Slide 18
+
 - 标准的故事：MP3、Bit与唱片行业
 - Mp2 的垄断地位
 - 万维网的崛起
@@ -64,7 +78,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 技术的本质与路径依赖
 - 技术不是无中生有被发明出来的
@@ -77,7 +91,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 案例一：QWERTY 键盘
 - 回到打字机的时代
@@ -89,7 +103,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 案例二：现代铁路轨道间距
 - 《让子弹飞》 片头
@@ -100,7 +114,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 真实的案例：开源及其标准
 - 从 Unix 到 Linux
@@ -111,7 +125,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 思想试验：从Android /Java迁移
 - xiaomi/vivo/OPPO 需要多大的代价?
@@ -122,7 +136,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 更大范围的路径依赖
 - 技术是其中的一部分
@@ -133,14 +147,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 经济学家带给其他社会科学的主要优势仅仅是一种观察世界的方式。
 - ————罗纳德·H·科斯 《Economics and Contiguous Disciplines》
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 预告开源经济学讲座后6期主题（暂定）
 - 第七期：组织结构与治理
@@ -149,4 +163,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第十期：Copyleft 、容他权，开源的基石
 - 第十一期：劳动报酬与财产分配
 - 第十二期：文化的重要作用
+
+---
 

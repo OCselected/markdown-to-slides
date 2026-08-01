@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-3-business-model
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-28 / 28 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-29 / 29 -->
 
 ---
+
 
 ## Slide 16
 
@@ -55,6 +58,18 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 案例分析之：优化
+- Cygnus
+- 成立于1989年
+- 产品：the GNUPro Developers Kit
+- FOSS 项目：GCC、GDB
+- 1997年被列入世界前500软件公司
+- 1999年11月，RedHat 以$674 million 收购
+
+---
+
+## Slide 18
+
 - 案例分析之：订阅
 - RedHat
 - 成立于1993年
@@ -65,7 +80,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 案例分析之：双重许可
 - MySQL AB
@@ -76,7 +91,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 案例分析之：（移动终端）平台
 - Google
@@ -86,7 +101,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 案例分析之：搜索入口
 - Google
@@ -97,7 +112,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 案例分析之：增值与拓展
 - Automattic Inc.
@@ -108,7 +123,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 案例分析之：基金会及财务信托
 - Linux 基金会
@@ -117,7 +132,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 案例分析之：开发者生态
 - GitHub
@@ -128,7 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 案例分析之：Open core
 - Elastic.co
@@ -141,7 +156,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 案例分析之：互补型
 - IBM、Intel
@@ -151,7 +166,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 26
+## Slide 27
 
 - 本土的环境与外因
 - 落后的发展中国家
@@ -163,7 +178,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 27
+## Slide 28
 
 - 商业化失败常见原因
 - 与上游项目脱节
@@ -175,8 +190,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 28
+## Slide 29
 
 - 由于交易赖以发生的制度背景会影响对生产的激励和交易的成本，因此，对经济学家而言，如果没有对制度背景进行具体说明就来讨论交换过程，则没有任何意义。
 - ————罗纳德·H·科斯 《生产的制度结构》
+
+---
 

@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-5-transaction-cost
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 25 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-5-transaction-cost
 
+<!-- Part 1 of 2, slides 1-15 / 26 -->
+
+---
 
 
 ## Slide 1
@@ -52,6 +56,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第3讲 开源软件的商业模式：产权制度与案例分析
 - 第4讲 开源的劳动力市场
 
+---
 
 ## Slide 2
 
@@ -63,6 +68,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 观念与文化
 - 技术、网络和累积
 
+---
 
 ## Slide 3
 
@@ -72,6 +78,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 路径依赖：技术不是被发明的，而是被累积、被建构的。
 - Williamson L1：开源的协作规范降低了一笔笔交易的协调成本
 
+---
 
 ## Slide 4
 
@@ -79,6 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第六期 交易成本与路径依赖
 - 「开源之道」·适兕
 
+---
 
 ## Slide 5
 
@@ -89,6 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 路径依赖与技术的本质
 - 开源是如何吞噬软件栈的
 
+---
 
 ## Slide 6
 
@@ -99,6 +108,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
+---
 
 ## Slide 7
 
@@ -108,12 +118,14 @@ dark academic tone, Intellectual Visual System, art taste.
 - 但是，我们始终身处“下游”，面临新的形势和问题
 - 技术、信息、法律、经济、社会、文化、制度
 
+---
 
 ## Slide 8
 
 - 要理解资本主义，我们需要理解资本；要理解资本，需要理解货币；要理解货币，需要理解交换；要理解交换，需要理解财产；要理解财产，需要理解法律。
 - —— Geoffrey M.Hodgson 《资本主义的本质：制度、演化和未来》
 
+---
 
 ## Slide 9
 
@@ -124,6 +136,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 【术语定义】搭便车（Free Rider Problem）：享受公共品收益却不承担生产成本。理论出处：奥尔森《集体行动的逻辑》（1965）
 - 开源是不是完全的自组织/浑然天成？
 
+---
 
 ## Slide 10
 
@@ -134,6 +147,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 需要大量的沟通、获取信任、相互理解
 - 成本，天下没有免费的午餐
 
+---
 
 ## Slide 11
 
@@ -143,6 +157,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 2、 找前台索取，她一定提前购买了一些放在仓库
 - 3、 去隔壁同事哪里借
 
+---
 
 ## Slide 12
 
@@ -151,6 +166,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - Git handbook， 雇佣开发者、部署、培训和教育、定制、上游优先、保持先进
 - OpenOffice、GroupWare ，雇佣开发者、部署、员工反馈、定制、上游优先、保持先进
 
+---
 
 ## Slide 13
 
@@ -161,6 +177,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 交易成本决定了企业的存在
 - 想象一下企业为什么要裁员？
 
+---
 
 ## Slide 14
 
@@ -171,6 +188,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目的优缺点了若执掌
 - 非市场，也非科层机构，开放式组织？
 
+---
 
 ## Slide 15
 
@@ -181,12 +199,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 从内部了解全貌，还可定制
 - Upstream first 降低未来的风险
 
+---
 
-## Slide 16
-
-- 科斯的贡献
-- 《企业的性质》，1937
-- 《社会成本问题》，1962
-- 新制度经济学的鼻祖，美国芝加哥大学教授、芝加哥经济学派代表人物之一，1991年诺贝尔经济学奖得主
-- 长期对中国的关注
-- 和王宁合著《变革中国：市场经济的中国之路》

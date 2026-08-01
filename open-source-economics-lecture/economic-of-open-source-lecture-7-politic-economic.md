@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-7-politic-economic
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 22 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# economic-of-open-source-lecture-7-politic-economic
 
+<!-- Part 1 of 2, slides 1-15 / 23 -->
+
+---
 
 
 ## Slide 1
@@ -55,6 +59,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第6讲 组织结构与治理
 - 第7讲 文化的重要作用
 
+---
 
 ## Slide 2
 
@@ -62,6 +67,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座     第八期  商业价值与社会价值：开源的政治经济学
 - 「开源之道」·适兕
 
+---
 
 ## Slide 3
 
@@ -71,6 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 政治经济学的核心问题：谁受益？谁付出？制度如何分配？
 - 与奥斯特罗姆的桥接：开源是数字时代的公地
 
+---
 
 ## Slide 4
 
@@ -83,6 +90,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 政策介入与鼓励倡导
 - 网络的控制与生产
 
+---
 
 ## Slide 5
 
@@ -94,11 +102,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 项目开始，就没有结束
 - 遵循「开源之道」
 
+---
 
 ## Slide 6
 
 - 读一本书就够了～
 
+---
 
 ## Slide 7
 
@@ -108,18 +118,21 @@ dark academic tone, Intellectual Visual System, art taste.
 - 1990年开始转交给公共部门
 - 以域名为例：Jon Postel ，IAHC （ISOC 下属），ICANN
 
+---
 
 ## Slide 8
 
 - 从历史的角度鸟瞰开源
 - chrape, Jan-Felix (2017) : Open source projects as incubators of innovation: From niche phenomenon to integral part of the software industry, SOI Discussion Paper, No. 2017-03,
 
+---
 
 ## Slide 9
 
 - 从根本上说，开源的成功是一个政治故事......然而，如果以工业时代的政治经济学逻辑考量的话，这种政治组织就是非常陌生的。
 - ———— Steven Weber  《The Success of Open Source》
 
+---
 
 ## Slide 10
 
@@ -130,6 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 稀缺资源的配置
 - 经济学的存在意义
 
+---
 
 ## Slide 11
 
@@ -142,6 +156,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源项目被下毒，开发者是否承担法律责任？
 - 开源 community 是自然成长的，不需要任何干预的？
 
+---
 
 ## Slide 12
 
@@ -153,6 +168,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - Xz 后门事件 引发轩然大波
 - CEC-IDE 套壳VS Code，引发热议
 
+---
 
 ## Slide 13
 
@@ -164,6 +180,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 1998年春，Tim O'Reilly 来自community主要人物之间达成政治上的一致意见
 - 图片由 DALL·E 生成
 
+---
 
 ## Slide 14
 
@@ -175,6 +192,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 雇佣了Linus，成为OSDL的第一位Fellow
 - OSDL 和FSG 合并成：Linux Foundation
 
+---
 
 ## Slide 15
 
@@ -185,12 +203,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 反碎片化协议
 - 技术架构设计：内核、SDK和GSM
 
+---
 
-## Slide 16
-
-- 案例3：Kebernetes的崛起
-- Google 在大数据架构的失利
-- Brog 的深厚基石
-- 开源的战略决定（以及面临的竞争）
-- 开源，并成立Cloud Native computer foundation
-- 加大Community的建设

@@ -35,12 +35,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# 第10期：排他权与容他权、比例原则与 Copyleft
+# economic-of-open-source-lecture-0
 
-<!-- Part 1 of 2, slides 1-15 / 24 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
 
 ---
+# 第10期：排他权与容他权、比例原则与 Copyleft
 
+<!-- Part 1 of 2, slides 1-15 / 25 -->
+
+---
 
 
 ## Slide 1
@@ -57,6 +61,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第8期：商业价值与社会价值
 - 第9期：信息规则与网络经济
 
+---
 
 ## Slide 2
 
@@ -65,6 +70,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度、观念与技术共同塑造数字时代
 - 排他权与容他权是制度设计的核心张力
 
+---
 
 ## Slide 3
 
@@ -74,6 +80,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 比例原则：排他权过强则锁定，过弱则无激励
 - Williamson L2 的深化：许可证是制度环境层的核心装置
 
+---
 
 ## Slide 4
 
@@ -81,6 +88,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源经济学12讲座  ·  第十期
 - 「开源之道」·适兕
 
+---
 
 ## Slide 5
 
@@ -93,6 +101,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 排他权与容他权的动态均衡
 - 云时代的 Copyleft 新挑战
 
+---
 
 ## Slide 6
 
@@ -102,6 +111,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 理解排他权，才能理解容他权
 - 容他权是开源的经济学基础
 
+---
 
 ## Slide 7
 
@@ -111,6 +121,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这一制度变迁的背后是 Williamson L2（制度环境）层面的根本性变化
 - 制度不是中性的，制度塑造了知识的分配
 
+---
 
 ## Slide 8
 
@@ -120,6 +131,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 许可费用增长，创新壁垒升高
 - 二次利用受阻，这不是市场自然演化，而是制度选择的结果
 
+---
 
 ## Slide 9
 
@@ -129,6 +141,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 知识财产从「保护创新」变为「控制知识」
 - 公有领域急剧萎缩
 
+---
 
 ## Slide 10
 
@@ -139,6 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是知识财产法的制度创新
 - 不是废除排他权，而是重新定义排他权的使用方式
 
+---
 
 ## Slide 11
 
@@ -149,6 +163,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 容他权的核心是：我拥有，但我允许你使用
 - 制度设计的目标是平衡激励与扩散
 
+---
 
 ## Slide 12
 
@@ -159,6 +174,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 在私有产权制度内创造一个公共品生产空间
 - 这是在 L2 框架内创造 L3 治理创新的典范
 
+---
 
 ## Slide 13
 
@@ -168,6 +184,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 它保证了：任何人都不可以独占 GPL 项目的成果
 - 这是容他权的强制执行机制
 
+---
 
 ## Slide 14
 
@@ -177,6 +194,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源许可证在排他权光谱中占据独特位置
 - 不强不弱：恰好足以激励贡献，恰好不足以阻碍利用
 
+---
 
 ## Slide 15
 
@@ -188,12 +206,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - Ostrom 的 Design Principles 在 IP 领域的具体化
 - 不同的项目，选择不同强度的排他权
 
+---
 
-## Slide 16
-
-- 许可证光谱的制度含义
-- 宽松许可：鼓励企业采用
-- 强 Copyleft：保障开源扩散
-- 中间许可：平衡企业需求与开源精神
-- 选择哪种许可证是项目治理的核心决策
-- 这个决策影响的是：谁可以获利？

@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# 第11期：劳动报酬与财产分配
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-25 / 25 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-26 / 26 -->
 
 ---
+
 
 ## Slide 16
 
@@ -53,6 +56,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 关键基础设施的报酬问题
+- OpenSSL、Linux Kernel、OpenSSH
+- 这些项目维护者数量极少，影响面极大
+- 他们获得的报酬严重不匹配
+- 制度设计的责任：让关键基础设施维护者获得合理回报
+- 否则，数字基础设施的脆弱性将无限放大
+
+---
+
+## Slide 18
+
 - 社会正义的视角
 - 开源的分配问题不仅是经济问题，也是社会正义问题
 - 谁从开源中获益？谁为开源付出？
@@ -61,7 +75,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - 制度创新的必要性
 - 现有的制度安排：
@@ -72,7 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 劳动报酬的可测量性
 - Git 贡献数据是劳动的度量
@@ -83,7 +97,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - 可持续性问题的制度根源
 - 当前开源维护者的报酬制度是：无保障的、随机的
@@ -94,7 +108,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 与第4期的联系
 - 第4期讨论劳动力市场：开源开发者为什么贡献？
@@ -105,7 +119,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 与第8期的联系
 - 第8期讨论政治经济学：云厂商受益但不投入
@@ -115,7 +129,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 23
+## Slide 24
 
 - 开源劳动报酬的未来
 - 当AI辅助代码生成
@@ -127,7 +141,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 24
+## Slide 25
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -138,7 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 25
+## Slide 26
 
 - 留白问题
 - 开源贡献者是否应该被视为劳动者？
@@ -147,4 +161,6 @@ dark academic tone, Intellectual Visual System, art taste.
 - 代码的质量？贡献的规模？社会的影响？
 - 制度设计的终极问题：
 - 如何设计一种制度，让开源贡献者获得应有的尊严和回报？
+
+---
 

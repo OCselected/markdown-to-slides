@@ -35,11 +35,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-# economic-of-open-source-lecture-7-politic-economic
+# economic-of-open-source-lecture-0
 
-<!-- Part 2 of 2, slides 16-22 / 22 -->
+<!-- Part 1 of 4, slides 1-15 / 48 -->
+
+---<!-- Part 2 of 2, slides 16-23 / 23 -->
 
 ---
+
 
 ## Slide 16
 
@@ -54,6 +57,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+- 案例3：Kebernetes的崛起
+- Google 在大数据架构的失利
+- Brog 的深厚基石
+- 开源的战略决定（以及面临的竞争）
+- 开源，并成立Cloud Native computer foundation
+- 加大Community的建设
+
+---
+
+## Slide 18
+
 - 铁三角的可持续发展
 - 项目：工程与技术
 - 许可：权力主张与法律保护
@@ -63,7 +77,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 18
+## Slide 19
 
 - Debian 的巧妙制度设计
 - 社会契约：Communtiy 自治
@@ -75,7 +89,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 19
+## Slide 20
 
 - 回顾一番各国政府的政策建议
 - 事件驱动
@@ -86,7 +100,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 20
+## Slide 21
 
 - Public good释义
 - 公共物品
@@ -95,17 +109,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 21
+## Slide 22
 
 - 经济学家看待人性时需要抱持和农民一样细致入微的态度。并非所有人都在搭便车，但如果你不当心，总有些人会把手伸向你的腰包。
 - ————理查德.泰勒 2017年诺贝尔经济学奖得主
 
 ---
 
-## Slide 22
+## Slide 23
 
 - 预告开源经济学讲座后3期主题（暂定）
 - 第九期：信息规则与网络经济
 - 第十期：Copyleft 、容他权，开源的基石
 - 第十一期：劳动报酬与财产分配
+
+---
 
