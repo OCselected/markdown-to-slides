@@ -177,3 +177,22 @@ dark academic tone, Intellectual Visual System.
 - Williamson 三层次框架贯穿始终：L1（企业边界）→ L2（治理结构）→ L3（制度演化）
 - 来源：https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/
 
+
+
+---
+
+## Slide 14
+### 我眼中的开源——事件背后的制度安排
+- **视觉隐喻**：四个独立的案例窗口横向排列，每个窗口内是一则新闻标题+一张极简图标（Anthropic/AI Must Win/开放模型/中国开源），每个窗口底部用一条横线指向同一条制度轴线——"制度安排"。
+
+| 事件 | 背后的制度逻辑 |
+|------|---------------|
+| Anthropic 发布安全模型，Linux Foundation CEO Jim Zemlin 作为和万亿大厂并列其中 | 制度合法性：基金会成为 AI 时代的治理枢纽 |
+| opensourceaimustwin.com 可能引发未来的一场社会运动 | 运动政治：开源话语作为集体行动的动员框架 |
+| 开放模型（倾倒式）已然是 gov 介入的一种手段 | 国家工具：模型开放作为一种基础设施政策 |
+| 前现代的手段尝试分裂现代的制度和组织安排，所造就的 China Open Source | 前现代 vs 现代：制度移植中的错位 |
+
+- 每一件看似孤立的事件背后，都有一个制度安排——我们看到的不是事件，是制度的影子
+- 制度分析不是站在事件外面评论，而是问：**为什么这件事只能以这种形式发生？**
+- China Open Source 的本质：不是现代制度的产物，而是前现代手段试图嵌入现代组织的失败实验
+
