@@ -223,3 +223,5 @@ dark academic tone, Intellectual Visual System.
 - 「开源之道」近来的工作，就是在移动中保持开放
 - 适兕说：开源之道的道，是思想（idea），不是道路（road）
 
+> "Be Water, My friends!" ———— Bruce Lee
+
