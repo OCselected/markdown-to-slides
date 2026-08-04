@@ -202,6 +202,17 @@ dark academic tone, Intellectual Visual System.
 - **企业对 OpenChain 的拥抱关键与否：对利益的认知**——OpenChain 不是一套合规要求，而是一套利益协调机制：你合规，是为了让上游知道你愿意承担什么
 - **本土推广 OpenChain 的挑战**——不在于合规要求本身，而在于法律在贸易中的认知——在一个缺乏契约文化的环境中，"合规"被理解为"被动接受"而不是"主动承诺"
 
+## Slide 8
+### 新制度经济学下的组织视角：对 OSPO[lization] 的新知
+- **视觉隐喻**：左侧是一座科层制的金字塔（CEO → 中层 → 基层），右侧是一个去中心化的星形网络（community node）；中间一条窄廊将它们连接，标注"OSPO"——既是桥梁，也是门槛。
+
+- **公司作为现代资本主义生产和销售的主要形式**：科斯(1937)的企业边界理论——企业存在是因为市场交易有成本
+- **互联网为 common-based peer production 开辟了道路**：Benkler 的判断——Linux、Git、Wikipedia 代表了大规模协作生产的新可能
+- **正式组织介入：Linux Foundation / CNCF → Kubernetes 的出现**：从"社区自发"到"超级生产组织"——制度对生产的反向塑造
+- **科层制/OKR/KPI vs Community：完全不同的组织形态**——这是 OSPO 存在的前提：两种组织形态在同一屋檐下，需要一个"翻译层"
+- **Community 的激励、制度、文化**——不仅需要理论的观察，也需要深入一线的参与
+- **OSPO 也是一条窄廊**：企业获取成本优势或战略意图，Community 的可持续发展，发挥 Innovation Commons 的功能——两者同时成立，才是窄廊的"窄"之处
+
 ## Slide 13
 ### 我眼中的开源——事件背后的制度安排
 - **视觉隐喻**：四个独立的案例窗口横向排列，每个窗口内是一则新闻标题+一张极简图标（Anthropic/AI Must Win/开放模型/中国开源），每个窗口底部用一条横线指向同一条制度轴线——"制度安排"。
@@ -235,4 +246,8 @@ dark academic tone, Intellectual Visual System.
 - 适兕说：开源之道的道，是思想（idea），不是道路（road）
 
 > "Be Water, My friends!" ———— Bruce Lee
+
+
+
+---
 
