@@ -37,11 +37,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 # 幻灯片大纲内容 (Slide Deck Outline)
 
-## Slide 1: 封面 (Cover)
-* **主标题：** [书名]
-* **副标题：** [核心主题，一句话]
+## Slide 1: Cover
+* **主标题：** [待生成]
+* **副标题：** [待生成]
 * **讲者信息：** 「开源之道」·适兕
-* **时间/地点：** 
+* **时间/地点：** <年.月.日>
+
+> [待生成] 是 Cover 自动生成的触发标记。新建日读文件时保留此占位符，
+> 每日 00:30 和 01:00 两个 cron 会检测并自动填充。适兕可手动覆盖。
+> 详见 daily-reading-slide-deck skill「Cover 占位与自动生成」规则。
 
 ## Slide 2: 为什么读这本书
 * 视觉隐喻：
