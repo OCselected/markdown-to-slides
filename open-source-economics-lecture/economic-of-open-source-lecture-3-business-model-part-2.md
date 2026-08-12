@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：装饰
+
 - 案例分析之：配套服务及咨询
 - Canonical
 - 成立于2004年
@@ -46,6 +48,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 17
+
+* 视觉隐喻：装饰
 
 - 案例分析之：优化
 - Cygnus
@@ -59,6 +63,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：装饰
+
 - 案例分析之：订阅
 - RedHat
 - 成立于1993年
@@ -71,6 +77,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：装饰
+
 - 案例分析之：双重许可
 - MySQL AB
 - 创立于1995年
@@ -82,6 +90,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：装饰
+
 - 案例分析之：（移动终端）平台
 - Google
 - 2008年收购Android
@@ -91,6 +101,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 21
+
+* 视觉隐喻：母公司统领旗下多元化产品矩阵的生态图示。
 
 - 案例分析之：搜索入口
 - Google
@@ -103,6 +115,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：装饰
+
 - 案例分析之：增值与拓展
 - Automattic Inc.
 - 2003年创立
@@ -114,6 +128,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 23
 
+* 视觉隐喻：巨大的吉祥物雕塑如守护者般矗立在创造者身后。
+
 - 案例分析之：基金会及财务信托
 - Linux 基金会
 - 1993年Li，2000年成立OSDL，2007年和FSG合并
@@ -122,6 +138,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 24
+
+* 视觉隐喻：装饰
 
 - 案例分析之：开发者生态
 - GitHub
@@ -133,6 +151,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 25
+
+* 视觉隐喻：深普鲁士蓝几何构成与"互补型"商业并列，隐喻生态中的差异化定位。
 
 - 案例分析之：Open core
 - Elastic.co
@@ -147,6 +167,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 26
 
+* 视觉隐喻：倾斜天平，隐喻本土制度环境与全球化商业逻辑之间的失衡与博弈。
+
 - 案例分析之：互补型
 - IBM、Intel
 - 降低用户总拥有成本
@@ -156,6 +178,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 27
+
+* 视觉隐喻：基石不稳、趋势下行，隐喻商业化失败时制度基础的坍塌。
 
 - 本土的环境与外因
 - 落后的发展中国家
@@ -168,6 +192,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 28
+
+* 视觉隐喻：装饰
 
 - 商业化失败常见原因
 - 与上游项目脱节

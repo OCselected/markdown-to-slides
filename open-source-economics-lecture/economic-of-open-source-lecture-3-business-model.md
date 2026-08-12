@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：深普鲁士蓝几何扉页上"开源与经济学"字样浮现，智识感开篇。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -44,12 +46,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：议程页：深普鲁士蓝几何构成与议程条目并置，象征制度框架下的议题展开。
+
 - 开源与经济学
 - 开源经济学12讲座     第四期 「开源之道」·适兕
 
 ---
 
 ## Slide 3
+
+* 视觉隐喻：蓝杯承载多彩吸管，隐喻同一框架下多元要素的共存与选择。
 
 ## 本期核心问题
 - 当许可费被放弃，价值如何被捕获？
@@ -59,6 +65,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 4
+
+* 视觉隐喻：俯视围桌协作画面，隐喻商业讨论中的分工、沟通与决策。
 
 - 议程
 - 私人秩序：许可与合同的演变
@@ -72,6 +80,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：深普鲁士蓝几何构成与"Business is just business"并列，多重定义并列展开。
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -82,6 +92,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 6
+
+* 视觉隐喻：钥匙与爱心屋挂件，隐喻开启商业价值之门与利益归属。
 
 - Business is just business
 - 一种软件的许可方式
@@ -95,6 +107,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：木栈道上水花四溅、留下湿脚印，隐喻跨越有形与无形财产的边界。
+
 - To B 与 To C 是人话吗？
 - 合同与许可
 - 私人秩序与公共立法
@@ -104,6 +118,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 8
+
+* 视觉隐喻：俯瞰式分拣网络，隐喻数字资产在全球供应链中的高效流转。
 
 - 有形财产的交易
 - 土地、房屋
@@ -116,6 +132,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9
 
+* 视觉隐喻：第一人称视角的超市购物车，隐喻消费选择与获取商品的旅程。
+
 - 无形财产及其交易
 - 人为制定法律
 - 未经允许，不得xx
@@ -126,6 +144,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 10
+
+* 视觉隐喻：深蓝色十六进制代码流满屏涌动，隐喻数字世界的复杂与信息洪流。
 
 - 软件的商品化及其发展
 - 最初从硬件分离出来，是没有法律保护的
@@ -139,6 +159,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：精品店内女士细察商品，隐喻在秩序中寻求价值与选择的审慎。
+
 - 软件的性质与获取
 - 信息载体、无形
 - 无排他性、无竞争性
@@ -151,6 +173,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：巨轮独行于镜面水域，隐喻商业旅程的孤独与宏大。
+
 - 软件的零售与定制交付
 - 物流和互联网改变了介质的交付
 - 拆包装即同意，点击即同意，（签署合同）
@@ -162,6 +186,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 13
 
+* 视觉隐喻：整齐排列的购物车纵深延伸，隐喻消费社会的秩序与待满足的欲望。
+
 - 开源软件的性质
 - 开源软件仍然是软件
 - 人为的定义：法律和许可
@@ -172,6 +198,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 14
+
+* 视觉隐喻：装饰
 
 - 所有权/使用权的转让
 - 支持/教育
@@ -185,6 +213,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：商务人士脚踏电路板人形，隐喻商业与技术的融合或掌控。
 
 - 任何的商业成功，都是天时、地利、人和，以及做到了该做的事。（大多数时候需要运气）
 - ———— 适兕
