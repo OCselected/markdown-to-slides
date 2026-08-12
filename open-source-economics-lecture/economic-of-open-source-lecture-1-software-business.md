@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：
+  * 封面：深普鲁士蓝背景——开源经济学第1讲，软件的生产、分销和消费
 - 前情提要
 - 第0讲 增长的开源经济
 
@@ -42,6 +44,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：
+  * 开场：讲师与听众围坐圆桌——讲座作为平等对话的制度仪式
 - 开源与经济学
 - 开源经济学12讲座     第一期 「开源之道」·适兕
 
@@ -49,6 +53,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 3
 
+* 视觉隐喻：
+  * 蓝色夜幕中橘色车流光轨蜿蜒——速度与时间的流动，软件交付的加速
 ## 本期核心问题
 - 软件作为一种特殊商品，如何被生产、分发和消费？
 - 集装箱、互联网、云计算如何依次改变了软件的交付方式？
@@ -58,6 +64,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 4
 
+* 视觉隐喻：
+  * 议程页面——四个核心问题的制度框架
 - 议程
 - 软件是如何生产的
 - 持续交付及其演化
@@ -70,6 +78,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：
+  * 哈佛商学院工作论文封面——开源软件价值研究的学术基石
 - On the one hand information wants to be expensive, because it’s so valuable. The right information in the right place just changes your life. On the other hand, information wants to be free, because the cost of getting it out is getting lower and lower all the time. So you have these two fighting against each other.
 - —— Stewart Brand and Steve Wosniak at the first hackers conference in 1984
 
@@ -77,6 +87,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 6
 
+* 视觉隐喻：
+  * 东南亚水上市场——传统贸易的生机，对比软件商品的独特性
 - 供求关系看开源
 - 谁是供应方？
 - 需求方又是谁？
@@ -88,6 +100,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：
+  * 巨型集装箱货轮——全球贸易动脉，软件分发的物理类比
 - 软件交易集散地/仓库
 - 智能手机：App Store/Goolge Play/应用市场
 - PC： App Store /Microsoft  商店/dnf或Apt-get
@@ -99,6 +113,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 8
 
+* 视觉隐喻：
+  * 同心圆彩色矩形条向右扩散——信息的汇聚与爆发式分发
 - 集装箱的案例
 - 海上贸易带来全球繁荣
 - 港口的形成与搬运工
@@ -110,12 +126,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9
 
+* 视觉隐喻：
+  * Margaret Hamilton 扶着登月代码高塔——软件工程史的奠基时刻
 - 代码/程序/软件发展简史
 
 ---
 
 ## Slide 10
 
+* 视觉隐喻：
+  * 黑白照片中操作员面对巨型机柜——早期计算的厚重与人机交互
 - 前Unix时代：1970年以前
 - 纸带打孔
 - 先在纸上计算
@@ -126,6 +146,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：
+  * 年轻比尔·盖茨站在巨型金属齿轮前——软件智慧驾驭硬件机械
 - UNIX 的出现
 - 实验室协作
 - 分时操作系统
@@ -136,6 +158,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：
+  * 五彩软盘堆叠——复古科技与数据记忆的实体形态
 - 1976:家酿俱乐部与Bill gates的恩怨
 - Basic 语言的出现
 - 纸带的展示与售卖
@@ -147,6 +171,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 13
 
+* 视觉隐喻：
+  * 莫斯科地铁站向下延伸的阶梯——通往光明的秩序感，软件分发的层级
 - PC的发展、软盘的发明
 - 协作不再局限于实验室
 - 但仍然受制于地理
@@ -157,6 +183,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：
+  * 光纤如瀑布倾泻——互联网时代信息高速传输与全球互联
 - 许可与软盘交换
 - 许可的出现与流行
 - 协作开始出现在校园和科研机构之间
@@ -167,6 +195,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 15
 
+* 视觉隐喻：
+  * 二进制数字在暗蓝虚空中高速流动——云计算与数字基础设施
 - 互联网的崛起
 - Killer app ：e-mail 的流行
 - 新闻组、邮件列表、富文本开启了程序协作的新时代

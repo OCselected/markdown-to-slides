@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：
+  * 电子电路板发光线路——开源基础设施的技术脉络
 - 信任的构建与维护
 - 科学伦理的继承与发扬
 - 强互惠的声明：GPL 的诞生与发展
@@ -46,6 +48,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+* 视觉隐喻：
+  * 垂直俯视城市环岛与光轨——开源生态的辐射与汇聚
 - 开源运动的理论基础
 - 科研
 - 标准
@@ -58,6 +62,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：
+  * 《Cyber Chiefs》红色椭圆压黑线——在线部落中权威与混乱的对照
 - Let the code decide
 - 技术实用主义至上
 - 工程文化
@@ -69,6 +75,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：
+  *微软标志❤️开源——巨头从封闭到拥抱的制度转向
 - 微观基础上的赛博共同体
 - 赛博空间中的部落/联盟
 - 行为准则
@@ -81,6 +89,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：
+  *《成为人类学家》书封：C语言代码即人类学——文化如程序运行
 - Microsoft Love linux
 - 获得商业和资本的最终认可
 - 技术的潮流：云计算与移动互联网
@@ -93,6 +103,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21
 
+* 视觉隐喻：
+  *紫红粒子星云在黑色虚空中爆发——赛博共同体的能量涌现
 - 虚拟共同体的人类学
 - Common-based 生产
 - 没有人拥有项目本身
@@ -104,6 +116,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：
+  *《开源文化在中国》书封：@符号、if语句、二进制——数字技术的文化表达
 - 扩展的文化与秩序
 - 拓展的 cyberspace
 - 无政府主义/乌托邦的理想
@@ -116,6 +130,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 23
 
+* 视觉隐喻：
+  *深色背景中抽象几何结构——本土接入开源文化的制度路径依赖
 - 本土的突破
 - 接入互联网较晚
 - 没有经历很少连接的网络
@@ -128,6 +144,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 24
 
+* 视觉隐喻：
+  *深色背景中蓝色数据流——文化传承的数字基础设施
 - 文化是开源的基石
 - MEME
 - 技术只有在文化的环境中才能获得继承和发展
@@ -140,6 +158,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 25
 
+* 视觉隐喻：
+  *深色背景中金色与蓝色交织——文化制度的成本与收益
 - 我们该如何做？
 - 文化建构
 - 需要文化的塑造者和传播者
@@ -152,6 +172,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 26
 
+* 视觉隐喻：
+  *深色背景中OSPO Summit徽标——文化作为开源价值的释放机制
 - 文化是否是可以改变的？
 - 作为 Software 的认知与理解
 - 东亚的崛起，儒家也是可以适应变化的
@@ -162,6 +184,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 27
+
+* 视觉隐喻：
+  * 深色背景中引文排版——《文化的重要作用》乌托邦对比的哲学沉思
 
 - 有利于进步的文化和阻碍进步的文化，都有自己憧憬的乌托邦，即理想境界。在进步的文化中，人们认为世界是通过个人的创造性和努力而慢慢向遥远的乌托邦前进。在抵制进步的文化中，个人却是寻求早日进入一个实际上达不到的乌托邦，结果又是摇摆于狂热和悲观怀疑之间。
 - ————《文化的重要作用》第四章

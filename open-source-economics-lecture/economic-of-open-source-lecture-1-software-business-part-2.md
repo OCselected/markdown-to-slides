@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：
+  * 城市夜景中光弧连接各建筑——智慧城市与数据网络的可视化
 - 云计算进一步改变了软件交付
 - 平台型软件市场崛起（AWS等）
 - 开源和专有软件公平分发
@@ -45,6 +47,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+* 视觉隐喻：
+  * 人头剪影中拼图碎片散落——软件作为知识碎片与认知障碍的隐喻
 - 万维网爆炸式发展
 - 网站和p2p可以分发软件
 - LAMP 不仅成就了开源，也成就了电子商务
@@ -56,6 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：
+  * 戴安全帽的工人操作笔记本电脑——工业4.0中数字大脑指挥钢铁
 - 经济学的思维方式
 - 天下没有免费的午餐
 - 沉没成本是一种行为、互动
@@ -67,6 +73,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：
+  * 俯视汽车制造工厂，机械臂包围银色车身——软件定义制造的秩序
 - 软件的生产：开发者与工程师及其工具
 - 开发语言
 - 掌握了开发语言，并转化的掌握技能的人
@@ -77,6 +85,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：
+  * 粉色老式电话面对人群剪影——大规模软件分发与用户沟通
 - 工业时代的工厂与数字时代的协作
 - 分工带来效率和繁荣
 - 福特汽车的创新与管理的出现
@@ -88,6 +98,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21
 
+* 视觉隐喻：
+  * 西装男子操作裸露电路的巨型机柜——大型机时代严肃的人机交互
 - 软件的“消费”者：
 - 源代码是开发者的原料
 - 软件是使用计算机人的工具，需要授权和许可
@@ -100,6 +112,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：
+  * 红色复古便携唱机播放黑胶——模拟时代的仪式感，对比数字分发
 - 软件交付简史之初代
 - 和硬件不可分割
 - 大型机是屈指可数的
@@ -112,6 +126,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 23
 
+* 视觉隐喻：
+  * 抽象蓝色节点网络——持续交付的自动化流水线
 - 软件交付简史之介质时代
 - 软盘、光盘、U盘
 - 实体商店仍然是主要的分发渠道
@@ -124,6 +140,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 24
 
+* 视觉隐喻：
+  * 深色背景中蓝色几何连接——闭源软件商业模式的制度结构
 - 软件交付简史之网络下载
 - 网络分发成为常态：p2p
 - Web 技术的进步
@@ -135,6 +153,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 25
 
+* 视觉隐喻：
+  * Chrome logo 彩色版与单色版对比——开源与闭源同根分化的视觉隐喻
 - 软件交付简史之云与市场
 - 数据中心的规模化
 - 计算、存储、网络是可以租用和计费的
@@ -146,6 +166,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 26
 
+* 视觉隐喻：
+  * openEuler 六边形原子结构——开源生态的连接与协作
 - 举个例子：Chrome 的数字之旅
 - Chromium ：V8、ffmpeg
 - Chrome/Edge： Google/microsoft 加入闭源组件
@@ -157,12 +179,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 27
 
+* 视觉隐喻：
+  * 深色背景中制度层级金字塔——开源商业模式的 Williamson L1/L2/L3
 - 手动画 Linux 发行版的构建之旅
 
 ---
 
 ## Slide 28
 
+* 视觉隐喻：
+  * 粗糙混凝土墙面上的灰色砖块堆叠——Steve Lohr「世界并非二元」的质感
 - The world is not binary，even if it is more and more mode of software，built bit by bit.
 - ——— Steve Lohr 《软件故事》
 
@@ -170,6 +196,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 29
 
+* 视觉隐喻：
+  * 深色背景中 OSPO Summit 徽标——开源价值释放的制度承诺
 - 释放开源价值
 - Unleash the power of open source
 - OSPO

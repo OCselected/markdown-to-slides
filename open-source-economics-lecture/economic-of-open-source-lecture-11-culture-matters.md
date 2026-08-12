@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：
+  * 封面：深普鲁士蓝背景——开源经济学第11讲，文化的重要作用
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -48,6 +50,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：
+  * 开场：讲师与听众围坐圆桌——讲座作为平等对话的制度仪式
 - 开源与经济学
 - 开源经济学12讲座     第八期      文化的重要作用
 - 「开源之道」·适兕
@@ -56,6 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 3
 
+* 视觉隐喻：
+  * 蓝色杯中插满多彩吸管——文化多样性的日常化呈现
 ## 本期核心问题
 - 文化为什么重要？——因为所有制度最终依赖文化来支撑
 - 黑客伦理、科学伦理、强互惠：开源文化的基因是什么？
@@ -67,6 +73,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 4
 
+* 视觉隐喻：
+  * 教室里高举的手——求知欲与主动参与的文化基因
 - 议程
 - 文化的重要作用
 - 反主流文化
@@ -79,6 +87,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：
+  * 复活节岛摩艾石像头戴红帽——文化制度中地位与权力的可视化
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -91,6 +101,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 6
 
+* 视觉隐喻：
+  * 议程页面——文化制度分析的框架路径
 - 何谓文化？如何识别？
 - 我们都身处文化之中
 - 人类学的视角: 从他者出发的观察
@@ -102,6 +114,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：
+  * 金属勺中飞溅的焦糖冰淇淋——文化作为感官爆发与制度积淀
 - Culture so understood is a social fact about particular sets of human beings in historical context.
 - ————Yochai Benkler 《The Wealth of Network》Chapter 8
 
@@ -109,6 +123,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 8
 
+* 视觉隐喻：
+  * 橙色身影在苍茫冰海上前行——制度探索者的勇气与视野
 - 文化的重要作用
 - 为什么有的地方富有？
 - 为什么有些地方更具创新？
@@ -120,6 +136,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9
 
+* 视觉隐喻：
+  * HTML代码覆盖《黑客帝国》背景——数字技术构建乌托邦
 - 边缘/非主流文化
 - 世界很大，人很多，选择迥异
 - 互联网扩展了地理边疆
@@ -132,6 +150,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 10
 
+* 视觉隐喻：
+  * 《黑客》书封：背景名字如代码——黑客精神由先驱者构建
 - 反主流文化概览
 - 斯图尔特·布兰德
 - 《全球概览》
@@ -143,6 +163,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：
+  * 《若为自由故》：斯托曼长发胡须——自由不羁的精神象征
 - Hacker 文化起源、发展与陨落
 - MIT 人工智能实验室
 - Hacker 手册
@@ -154,6 +176,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：
+  * 《大教堂与集市》封面——封闭与开放两种开发模式的并置
 - 自由软件运动及其影响
 - GNU 宣言
 - 自由软件运动
@@ -165,6 +189,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 13
 
+* 视觉隐喻：
+  * 1997年德国会议合影——Linux社区早期的人类学现场
 - 《大教堂与集市》的发表
 - 1997年，德国，技术会议
 - 业余人类学家Eric Raymond
@@ -176,6 +202,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：
+  * 赛博朋克霓虹街道——开源运动的技术乌托邦背景
 - 开源软件运动
 - 浏览器战争之 Netscape
 - 开源的发明(被忽略的主题)
@@ -187,6 +215,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 15
 
+* 视觉隐喻：
+  * 《Open Sources》书封：钟象征开源革命的号召
 - 文化基调：开源定义
 - 自由再分发
 - 源代码提供
