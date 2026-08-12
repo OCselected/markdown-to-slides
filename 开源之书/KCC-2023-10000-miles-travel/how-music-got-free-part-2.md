@@ -26,6 +26,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16: “内奸”的产生
 * 视觉隐喻：
+  * 炽热玻璃在匠人手中重塑——创造与蜕变
 * 显示要点：
   * 时间：1995～
   * 地点：美国北卡罗来纳州国王山的宝丽金光盘制造厂
@@ -35,6 +36,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17: 初尝禁果：个体需求与环境变化
 * 视觉隐喻：
+  * 多彩拼图围成圆环——多元协作与待补全的一环
 * 显示要点：
   * 格罗夫个人开支，日渐庞大
   * 刻录机的发明，犹如盗版图书一样：有形而成本高昂
@@ -44,6 +46,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18: 渐入佳境：渠道成型
 * 视觉隐喻：
+  * 带刺蓝玫瑰螺旋向内——地下网络的防御与核心
 * 显示要点：
   * 戴尔·格罗夫 个人生活陷入窘境
   * 路边售卖从IRC随意下载刻录的内容不受欢迎
@@ -53,6 +56,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19: 有组织、有纪律的盗版
 * 视觉隐喻：
+  * 蒙面小偷背负「信息」袋——穿梭于游戏影音书刊的数字网络
 * 显示要点：
   * 戴尔·格罗夫 终于搞清楚了CD工厂的流程
   * 文化、人的心理、最不起眼的环节，都是可被利用的“漏洞”
@@ -61,6 +65,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20: 生意最兴隆也是出问题之时
 * 视觉隐喻：
+  * 堆积如山的美元——生意兴隆与快钱诱惑
 * 显示要点：
   * 格罗夫没有经受得住诱惑：快钱
   * “软破社区”的王牌未发行CD专辑
@@ -70,6 +75,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21: 事情败露
 * 视觉隐喻：
+  * 整齐秩序中的一抹红色——独特的自我与突破
 * 显示要点：
   * 格罗夫越发的对小组技术人员对不满
   * 顶风作案
@@ -78,6 +84,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22: 法网恢恢，当庭对质
 * 视觉隐喻：
+  * 巍峨石柱直指苍穹——法律权威的不可撼动
 * 显示要点：
   * 国际刑警组织、联邦调查局、国际唱片协会、美国唱片工业协会，从未停止反盗版工作
   * 通过聊天记录、宽带登记记录、IP地址跟踪等技术手段，找到了大部分人
@@ -87,11 +94,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 23: 捍卫版权，以各种方式
 * 视觉隐喻：
+  * 多重盾牌交错重叠——版权捍卫的层层防线
+  * 多重盾牌交错重叠——版权捍卫的层层防线
 * 显示要点：
   * 捍卫版权，以各种方式
 
 ## Slide 24: CD 唱片时代的巅峰
 * 视觉隐喻：
+  * 紫红霓虹下黑胶唱针轻触时光——CD时代的巅峰与迷幻
 * 显示要点：
   * 文化并不能左右销量～
   * 莫里斯就是盯着数字上升到时代华纳的总裁的
@@ -100,6 +110,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 25: 被旧观念忽略的新事物
 * 视觉隐喻：
+  * 并购计划书上空白处，隐约浮现的 MP3 字样——被旧观念忽略的新事物
+  * 并购计划书上空白处，隐约浮现的 MP3 字样——被旧观念忽略的新事物
 * 显示要点：
   * 最大的风险压根就没被提及，收购宝丽金的交易计划书是1998年11月向公众开放的，当时互联网的崛起已经无法被忽略，但不知为什么施格兰的高管们认为这一新兴技术完全不值一提。这份计划书没有提及互联网，也没有说到正在成形的民用宽带市场。没有提到的，还有个人电脑、音频压缩技术的巨大进步、流媒体业务的可能、文件共享技术的广泛传播和巨大潜力。
   * 以及，交易计划书没有提到MP3。
@@ -107,6 +119,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 26: 短兵相接：P2P的出现
 * 视觉隐喻：
+  * P2P节点架构——点对点分享的去中心化网络
 * 显示要点：
   * 1999年，是音乐产业历史上最好的一年，也是最后的一年。
   * 1999年6月，Napster 被开发出来，开启了点对点文件分享的潮流
@@ -115,6 +128,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 27: 摧毁旧的，新的也就出生了
 * 视觉隐喻：
+  * 银色金属与白色滚轮——口袋里的音乐革命
 * 显示要点：
   * CD 销量从2000年以来一直下滑
   * 乔布斯开发iTunes ，配合其数字产品iPod
@@ -124,12 +138,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 28: 书摘quote
 * 视觉隐喻：
+  * 蒸馏器中流淌的金色液体——Apple 把盗版蒸馏成合法产品的隐喻
+  * 蒸馏器中流淌的金色液体——Apple 把盗版蒸馏成合法产品的隐喻
 * 显示要点：
   * Apple之所以在新千年的最初十年主宰了市场，基本依靠的是扮演Napster战利品洗钱者的角色，至少一开始是这样。如果把音乐盗版比喻成20世纪90年代的非法毒品制造，那Apple就相当于那时毒品蒸馏器的发明者。 
   * ————Stephen Richard Witt 《How music got free》 P204
 
 ## Slide 29: 夕阳产业，最后的挣扎
 * 视觉隐喻：
+  * 逆光塔吊与工人剪影——夕阳产业的最后挣扎
 * 显示要点：
   * 2004年底，CD 唱片销售持续下滑
   * 传统巨头开始裁员、缩减，关闭工厂
@@ -139,6 +156,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 30: CD的消失，许可控制的崛起
 * 视觉隐喻：
+  * 无数旋钮与推子——掌控听觉的平衡与流动
 * 显示要点：
   * 2007年，CD 唱片继续下滑
   * 法律诉讼开始针对文件的下载者（大多数荒唐）
@@ -148,11 +166,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 31: 欢迎进入免费音乐的时代
 * 视觉隐喻：
+  * 三扇门（iTunes / Spotify / 网易云）开启后是同一间房间——licensed, not sold
+  * 三扇门（iTunes / Spotify / 网易云）开启后是同一间房间——licensed, not sold
 * 显示要点：
   * iTunes、spotify、网易163 …… licensed ,not sold.
 
 ## Slide 32: 书摘quote
 * 视觉隐喻：
+  * 一只从唱片堆中伸出的手，掌心是二维码——「我是盗版一代的一员」
+  * 一只从唱片堆中伸出的手，掌心是二维码——「我是盗版一代的一员」
 * 显示要点：
   *  **我是“盗版一代”的一员。** 
   * ———— Stephen Richard Witt 《How music got free》

@@ -38,11 +38,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1: 音乐是怎样成为免费午餐的一个行业的终结，世代的交替，盗版的零号病人
 * 视觉隐喻：
+  * 羊皮纸上的黑胶唱片正分解为像素——一个行业的终结与世代的交替
+  * 羊皮纸上的黑胶唱片正分解为像素——一个行业的终结与世代的交替
 * 显示要点：
   * 「开源之道」·适兕    2023.8.18    KCC 深圳站
 
 ## Slide 2: 关于我
 * 视觉隐喻：
+  * 像素恐龙守卫二维码中心——数字世界的入口
 * 显示要点：
   * 作者
   * 作品：《发现开源三部曲之开源之迷》《开源之史》
@@ -52,6 +55,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 3: 议程
 * 视觉隐喻：
+  * 两版中文书封（黑胶化像素 / 像素骷髅）+ 二维码——音乐产业从实体走向终结
 * 显示要点：
   * 个人介绍
   * 我们为什么要去关注数字内容的所有权？
@@ -61,6 +65,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 4: 从获取音乐的方式看社会变迁
 * 视觉隐喻：
+  * 从碧绿到枯褐的五片叶子——生命周期与世代交替
 * 显示要点：
   * 留住声音的技术：留声机、磁带、光碟、计算机
   * 保护创作的法律手段：版权、许可
@@ -71,6 +76,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5: 作者其人
 * 视觉隐喻：
+  * 人物头像：Stephen Richard Witt（作者）
 * 显示要点：
   * 1979年生于New Hampshire
   * 2001年从芝加哥大学数学系毕业
@@ -80,6 +86,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 6: 本书创作的起因和过程
 * 视觉隐喻：
+  * 宏伟瀑布倾泻——自然伟力与生生不息的流动
 * 显示要点：
   * 向上游出发：自己免费下载的音乐是从哪里来的？
   * 事实和自己的想法并不一样
@@ -90,11 +97,14 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7: 决定性力量：技术的演进
 * 视觉隐喻：
+  * 齿轮与电路交错咬合——技术演进的必然力量
+  * 齿轮与电路交错咬合——技术演进的必然力量
 * 显示要点：
   * 决定性力量：技术的演进
 
 ## Slide 8: Mp3：数字化音乐算法的演化
 * 视觉隐喻：
+  * 蓝紫霓虹勾勒的音符——数字时代的音乐律动
 * 显示要点：
   * 三代人的突破：心理声学之父Eberhard Zwicker、Dieter Seitzer 数字化音乐先驱、Karlheinz Brandenburg MP3 之父
   * 算法的胜利：在不损失音质的情况下节省存储空间
@@ -102,6 +112,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9: 数字格式之争+商业化艰难道路
 * 视觉隐喻：
+  * 赤色沙海与未知疆域——新大陆与开拓
 * 显示要点：
   * 绕道而行：远离标准之争，直接迈向市场
   * 第一桶金：美国国家冰球联盟
@@ -112,6 +123,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 10: “盗版”帮助了MP3推广？
 * 视觉隐喻：
+  * 逆光中高举的双手——人群对舞台光芒的集体共鸣
 * 显示要点：
   * L3Enc 编码器被疯狂传播，释放了一头猛兽
   * 配合WinPlay3 捆绑，流行于网络聊天室
@@ -121,6 +133,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11: 互联网时代的竞争：WMA、OGG
 * 视觉隐喻：
+  * 密排彩色铅笔——标准之争的多元竞争
 * 显示要点：
   * 1999年8月，微软推出WMA 格式
   * 搜索“MP3”，等同于搜索盗版音乐文件
@@ -130,6 +143,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12: BT时代的疯狂传播
 * 视觉隐喻：
+  * 二进制代码化作流光——高速数据传输的无限连接
 * 显示要点：
   * Bram Cohen 开发了BitTorrent：改变互联网架构规则的软件
   * The Pirate Bay 种子站点出现
@@ -138,6 +152,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 13: 法律战胜技术，金钱打败对手
 * 视觉隐喻：
+  * 单石平衡多石——以少胜多与精准权衡
 * 显示要点：
   * Oink’s Pink Palace  崛起，超越了“合法”
   * 2006年下半年开始收到下架通知函
@@ -147,6 +162,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14: 知识财产权法的胜利，赢麻了
 * 视觉隐喻：
+  * 失衡天平——法律正义的裁决与权衡
 * 显示要点：
   * 英国政府起诉Ellis ：合谋诈骗
   * 2010年1月15日，Ellis 胜诉，回去删除了互联网上的所有踪迹
@@ -155,5 +171,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 15: 盗窃还是盗火？互联网放大了魔鬼
 * 视觉隐喻：
+  * 普罗米修斯的手：一边是火焰，一边是镣铐——盗火还是盗窃
+  * 普罗米修斯的手：一边是火焰，一边是镣铐——盗火还是盗窃
 * 显示要点：
   * 盗窃还是盗火？互联网放大了魔鬼
