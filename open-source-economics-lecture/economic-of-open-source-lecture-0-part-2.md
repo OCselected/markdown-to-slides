@@ -56,6 +56,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：
+  * 三次分配金字塔——自由市场、政府配置、慈善道德的层次
+
+
 - 开源属于第几次分配？
 - 第一次分配：自由市场
 - 第二次分配：政府配置
@@ -64,6 +68,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 17
+
+* 视觉隐喻：
+  * 圆桌前围坐的学者——共识的达成需要理性对话
+
 
 - 共识是协作集体行动的基础
 - 开源有很多被误解、曲解的地方
@@ -75,6 +83,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：
+  * 黑色背景下白色羽毛飘动——新制度经济学的轻盈切入
+
+
 - 新制度经济学
 - 开源软件的经济和社会价值
 - 制度是一切的基础：集体行动、财产分配、商业交易
@@ -85,11 +97,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：
+  * 俯瞰欧洲的夜间卫星影像——开源文明点亮人类聚居地
+
+
 - 开源在现代数字社会中的概况
 
 ---
 
 ## Slide 20
+
+* 视觉隐喻：
+  * 蓝色点阵世界地图与橙色数据流——开源无处不在的全球连接
+
 
 - 无处不在
 - 来源：LF Research Measuring the Economic Value of Open Source： A Survey and a Preliminary Analysis
@@ -97,6 +117,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 21
+
+* 视觉隐喻：
+  * 手机屏幕与 App 界面的拼图——打开你就看到开源
+
 
 - 软件成分分析：SBOM
 - 请打开你的手机：关于
@@ -110,6 +134,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：
+  * 彩虹粉笔排列在深色桌面上——开源价值的多样与有序
+
+
 - The value of open source software
 - supply-side value of widely-used OSS is $4.15 billion
 - the demand-side value is much larger at $8.8 trillion.
@@ -120,6 +148,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 23
+
+* 视觉隐喻：
+  * 暗蓝背景上的十六进制数据雨——数据、证据与对比的底层逻辑
+
 
 - 数据、证据与对比
 - 软件商业公司的市值
@@ -132,12 +164,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 24
 
+* 视觉隐喻：
+  * 超市购物车穿过货架——开源历史的消费视角与日常渗透
+
+
 - 开源之史
 - 嵌入在信息产业中的暗流
 
 ---
 
 ## Slide 25
+
+* 视觉隐喻：
+  * 航拍农田几何色块——历史不是编年史，而是有逻辑的耕作
+
 
 - 放弃编年罗列事件的叙述
 - 时间是一种参考
@@ -149,6 +189,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 26
+
+* 视觉隐喻：
+  * 左侧旧地球仪与右侧数字网络并置——软件从硬件分离的过去与未来
+
 
 - 软件的历史
 - 最初是没有软件（software）的
@@ -162,6 +206,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 27
 
+* 视觉隐喻：
+  * 球体聚合的3D抽象结构——软件许可从物权到许可的演化
+
+
 - 软件的商品化难题
 - 世界上第一份软件许可的诞生
 - 软件源代码受到著作权的保护
@@ -173,6 +221,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 28
+
+* 视觉隐喻：
+  * 金色图钉与透明线交织的立体几何——开源许可的网络化连接
+
 
 - 开源许可的演化
 - 学术型开源许可的诞生与演变
@@ -186,6 +238,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 29
 
+* 视觉隐喻：
+  * 整齐木林中唯红向左——协作的逆向选择与特立独行
+
+
 - 协作的演化
 - 单机、联网、Internet、www
 - 面对面、跨越地理、超越时空
@@ -195,6 +251,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 30
+
+* 视觉隐喻：
+  * 发光神经元网络——共同体的起源：从科学共同体到 GitHub
+
 
 - 共同体的起源
 - 科学共同体：高校、科研机构、企业研究所

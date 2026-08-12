@@ -56,6 +56,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 31
 
+* 视觉隐喻：
+  * 紫色亮片网格——开源机构与组织：自由软件基金会的设计与光芒
+
+
 - 开源机构与组织
 - 自由软件基金会的诞生与设计
 - 早期的开放组织、标准组织（IETF）
@@ -66,6 +70,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 32
+
+* 视觉隐喻：
+  * 三色绳索紧密交织的绳结——商业模式的多元融合
+
 
 - 商业模式的探索
 - 商业是制度的产物
@@ -79,6 +87,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 33
 
+* 视觉隐喻：
+  * 紫色亮片如梦幻星空——「开源之史」讲谈项目的光芒与梦想
+
+
 - 同时启动通识项目：「开源之史」讲谈
 - 每双周一次讲谈
 - 东杰、海玲项目联合发起人，查史料、辅讲
@@ -90,11 +102,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 34
 
+* 视觉隐喻：
+  * 鹰立于雪山之巅——产业视角下的开源：视野与力量
+
+
 - 产业视角下的开源
 
 ---
 
 ## Slide 35
+
+* 视觉隐喻：
+  * 三分天下：全封闭、半封闭、全开放的几何分割——生态三势力
+
 
 - 生态之三分天下
 - 全封闭（Apple）
@@ -104,6 +124,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 36
+
+* 视觉隐喻：
+  * 蓝色像素地球与漂浮二进制数字——开源数字经济的全球图景
+
 
 - 供应链
 - Internet 的架构设计：点对点分布式
@@ -116,6 +140,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 37
 
+* 视觉隐喻：
+  * 暗蓝背景上的二进制数字雨——开源软件价值的矩阵化呈现
+
+
 - 超越产业
 - 开放
 - 放弃排他权，拥抱容他权
@@ -126,11 +154,19 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 38
 
+* 视觉隐喻：
+  * 旧皮革工作手套叠放——开源工作者的双手：劳动与守护
+
+
 - 12次讲座的思路和目标
 
 ---
 
 ## Slide 39
+
+* 视觉隐喻：
+  * 秋叶飘舞蓝天——开源劳动的收获与季节更替
+
 
 - 第0期
 - 前因后果
@@ -143,6 +179,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 40
 
+* 视觉隐喻：
+  * 山间公路上红白尾灯拉出的光轨——开源协作的蜿蜒旅程
+
+
 - 第1期
 - 软件的生产
 - 软件的分发
@@ -152,6 +192,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 41
+
+* 视觉隐喻：
+  * 地球表面的金色光弧交织成网——全球开源网络的数据流动
+
 
 - 第2期：软件开发劳动力市场
 - 劳动力市场
@@ -165,12 +209,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 42
 
+* 视觉隐喻：
+  * 多彩人头连接成网络——开源社区的社交属性与多元协作
+
+
 - 第3期：比例原则与 Copyleft 思想
 - 知识财产正当性解释
 
 ---
 
 ## Slide 43
+
+* 视觉隐喻：
+  * 鹰立于雪山之上——文化的重要作用：视野超越群山
+
 
 - 第4期：数字时代的知识财产法演变与开源许可
 - 所有权的终结
@@ -182,6 +234,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 44
 
+* 视觉隐喻：
+  * 泛黄书页堆叠成几何——劳动与报酬：时间的沉淀与积累
+
+
 - 第6期：信息规则与网络经济
 - 信息想要免费，但是免费又是昂贵的
 - 代码数字化：书籍、音乐、电影保持同步
@@ -191,6 +247,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 45
+
+* 视觉隐喻：
+  * 3D等距视角下的数据图表方块——量化劳动报酬的商业智能视角
+
 
 - 第7期：基于互联网的协作
 - 电子邮件与邮件列表/新闻组

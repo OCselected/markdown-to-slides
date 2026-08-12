@@ -56,6 +56,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 46
 
+* 视觉隐喻：
+  * 金色光弧从地球表面升起——分发：互联网如何颠覆了副本经济
+
+
 - 第8期：商业模式：规则下的具体操作
 - 副本：取决于介质
 - 分发：互联网的颠覆
@@ -67,6 +71,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 47
 
+* 视觉隐喻：
+  * 深蓝背景上 K 线图与折线图交织——交易成本：市场波动的量化
+
+
 - 第9期：组织结构与治理
 - 为什么需要正式的组织？
 - 开源项目共同体也是人类组织
@@ -77,6 +85,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 48
+
+* 视觉隐喻：
+  * 深色背景上的制度层级金字塔——第5/6/8期：交易成本、治理、政治经济学
+
 
 - 第10期：量化与劳动报酬
 - 无报酬干活？
@@ -90,6 +102,10 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 49
 
+* 视觉隐喻：
+  * 紫色亮片闪烁——第11期：文化作为不可替代的驱动力
+
+
 - 第11期：文化的重要作用
 - 行动与价值观
 - 无法忽略的作用
@@ -98,6 +114,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 50
+
+* 视觉隐喻：
+  * 金色图钉连线——12讲的统一框架：Williamson 制度层级回顾
+
 
 - 第5期：交易成本
 - 罗纳德·科斯与《企业的性质》
@@ -108,6 +128,10 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 51
+
+* 视觉隐喻：
+  * 制度层级结构图回顾——第0讲总结
+
 
 - 请记住，有时我们得到的反馈就像被包装丑陋的包裹——但这并不意味着包裹里面装的不是一份礼物。
 - ——大卫·布拉德福德，卡罗尔·罗宾 《深度关系：从建立信任到彼此成就》
