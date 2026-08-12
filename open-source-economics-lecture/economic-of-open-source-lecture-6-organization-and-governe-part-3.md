@@ -35,11 +35,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 31
 
+* 视觉隐喻：点线交织象征科技网络、数据连接与万物互联。
+
 - 治理视角下的演变
 
 ---
 
 ## Slide 32
+
+* 视觉隐喻：OSPO 四阶段阶梯上升，隐喻开源治理成熟度与执行能力的层层递进。
 
 - 治理的艺术
 - 自发产生的围绕软件项目的在线共同体
@@ -53,6 +57,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 33
 
+* 视觉隐喻：深普鲁士蓝几何构成与"制度、共识、法律和文化"并列，象征制度分析收束。
+
 - 制度、共识、法律和文化
 - Copyleft 互惠是法律的基石
 - 学术共同体的继承（科学共同体伦理）
@@ -64,6 +70,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 34
+
+* 视觉隐喻：深普鲁士蓝几何构成与"如此再回看 OSPO"并列，象征开源经济学议题的无限游戏。
 
 - 如此再回看OSPO
 - 开源无法被忽视

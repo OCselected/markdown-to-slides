@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：深普鲁士蓝几何扉页与"前情提要"并列，象征第六讲前的知识回顾。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -47,6 +49,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：深普鲁士蓝几何扉页与"第六期 组织结构与治理"并列，象征议题开启。
+
 - 开源与经济学
 - 开源经济学12讲座     第六期  组织结构与治理
 - 「开源之道」·适兕
@@ -54,6 +58,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 3
+
+* 视觉隐喻：多彩吸管承载杯体，隐喻多元议题并置的议程结构。
 
 ## 本期核心问题
 - 开源项目如何组织？没有CEO、没有HR、没有董事会？
@@ -65,6 +71,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 4
+
+* 视觉隐喻：课堂举手场景，隐喻求知若渴与积极参与课堂互动。
 
 ## Williamson OLR 三重治理框架
 
@@ -79,6 +87,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：装饰
+
 - 议程
 - 基于互联网/万维网的虚拟共同体
 - 宪章、章程、社会契约、行为准则
@@ -90,6 +100,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 6
+
+* 视觉隐喻：赛艇团队合力托举长船，象征团队协作与共同承担重任。
 
 - 关于讲座的规则说明
 - 随时交流或提问
@@ -103,12 +115,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：由数据点构成的星球，象征全球互联的数字世界。
+
 - 我们的文明，不管是它的起源还是它的维持，都取决于这样一件事情，它的准确表述，就是在人类合作中不断扩展的秩序。....... 这种扩展秩序并不是人类的设计或意图造成的结果，而是一个自发的产物。
 - —— 弗里德里希·冯·哈耶克 《致命的自负 》
 
 ---
 
 ## Slide 8
+
+* 视觉隐喻：机械腕表表冠特写，象征时间、秩序与永恒价值。
 
 - 人类合作的演化（宏观）
 - 农业文明
@@ -120,6 +136,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 9
+
+* 视觉隐喻：巍峨雪峰冲破云海，象征崇高目标与坚韧意志。
 
 - 人类合作的演化（个体）
 - 只和家人、亲戚、部落宗族合作
@@ -134,6 +152,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 10
 
+* 视觉隐喻：深普鲁士蓝几何构成与"大教堂与集市"引语并列，象征制度分析框架。
+
 - 组织的逻辑
 - 再提《企业的性质》与科斯定理
 - 数字世界有企业无法触及的地方
@@ -144,6 +164,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 11
+
+* 视觉隐喻：多彩人群拼成世界地图，象征全球人口与多元文化。
 
 - 演化视角看开源组织
 - 社会化分工
@@ -158,12 +180,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：点阵地球象征全球数字化网络与万物互联。
+
 - 我们花了很长时间，试图想出在“大教堂”与“集市”之间建立联系纽带的方法。最后我们得出结论，解决方案的核心在于这样一个事实，那就是开源共同体已经逐渐发展起来了，他们已经开始建立自己的大教堂，而且正好坐落在老社区集市的附近。实际上，开源本身已经成为了“大业务”。不仅像红帽公司这样的“纯粹”开源公司已经成为重要的商业机构，而且像IBM和Novell 公司这样早年建立且拥有重要的专利产品的技术公司，也成为开源软件开发和商业化的重要推动者。
 - 灵感来源：《Burning The Ship：Intellectual Property and the transformation of microsoft》
 
 ---
 
 ## Slide 13
+
+* 视觉隐喻：节点互联网络，象征虚拟共同体中的信息传递与协作。
 
 - 互联网改变了一些事情
 - 信息、知识、和文化的生产
@@ -177,6 +203,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：早期开源社区先驱们的集体合影，象征集结与团结精神。
+
 - 虚拟的共同体：Cyberspace
 - 邮件列表、新闻组、电子公告板、IRC、论坛 等技术实现
 - 分享信息、电子内容、交流、协作
@@ -186,6 +214,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：发光的地球与网络线条，隐喻全球数字化互联。
 
 - 基于代码共享的虚拟共同体
 - GNU 项目

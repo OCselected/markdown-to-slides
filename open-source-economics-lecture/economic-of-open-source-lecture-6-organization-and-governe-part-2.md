@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：手掌托起上升箭头，象征业绩增长与未来希望。
+
 - 开放源码促进会和开源定义
 - 1998 年 Freesoftware Summit
 - 各类项目领导齐聚一堂
@@ -46,6 +48,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 17
+
+* 视觉隐喻：深普鲁士蓝几何构成留白，象征开源项目共同体的收缩与消逝。
 
 - 自发秩序？
 - 通用许可协议 GPL , 宪法意义
@@ -63,6 +67,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：初生小黄鸡的特写，象征开源项目的新生、纯真与无限希望。
+
 - 组织的演化或扩展的秩序
 - 自发的虚拟共同体
 - 看得见的手 开始参与和影响
@@ -73,6 +79,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 19
+
+* 视觉隐喻：类Unix操作系统家族谱系与演变时间轴。
 
 - 缩小或消亡的开源项目共同体
 - GNU 项目：理想主义与现实落差的张力
@@ -87,6 +95,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：深普鲁士蓝几何构成与"保持独立和发展的开源"并列，象征生态张力。
+
 - 冲突、抱怨和坚持
 - GNU 项目
 - Perl
@@ -99,6 +109,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21
 
+* 视觉隐喻：盘根错节的根系，象征生命深厚的根基与顽强的生命力。
+
 - 伟大的BSD
 - 1973年，伯克利分校就开发了Unix的分支
 - 1980年代，采用了BSD 许可分发
@@ -110,11 +122,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：装饰
+
 - 保持独立和发展的开源
 
 ---
 
 ## Slide 23
+
+* 视觉隐喻：深普鲁士蓝几何构成与"扩展的规模"并列，象征超越企业的组织演进。
 
 - 报团取暖或保持中立
 - Debian / python
@@ -126,6 +142,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 24
+
+* 视觉隐喻：装饰
 
 - 收购/资本投入或IPO
 - RedHat/JBoss
@@ -139,11 +157,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 25
 
+* 视觉隐喻：宇航员凝视由点阵构成的地球，象征科技连接世界与探索未知未来。
+
 - 扩展的规模，超越企业
 
 ---
 
 ## Slide 26
+
+* 视觉隐喻：装饰
 
 - 从 Kernel 到 linux 基金会
 - Kernel 从minix 新闻组到独立邮件列表
@@ -156,6 +178,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 27
 
+* 视觉隐喻：舵轮象征 Kubernetes 引领云原生技术航向。
+
 - 代码托管的演化：原子到市集
 - SVN
 - SourceForge、GoogleCode、GitHub
@@ -166,6 +190,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 28
+
+* 视觉隐喻：不同语言条目如拼图般构建全球知识图景。
 
 - Android 的技术-法律战略
 - 技术架构的选择
@@ -179,6 +205,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 29
 
+* 视觉隐喻：深普鲁士蓝几何构成与"治理视角下的演变"并列，象征制度分析维度。
+
 - Kubernetes：扩张的艺术
 - 业务发展与开发者的核心诉求
 - 联盟寻求：Google、RedHat、IBM
@@ -190,6 +218,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 30
+
+* 视觉隐喻：创意便利贴堆叠成阶梯，象征团队协作与共同进步。
 
 - Wikipedia：整合全球智慧（训练数据）
 - 2001年1月发布，10个人，词条 25
