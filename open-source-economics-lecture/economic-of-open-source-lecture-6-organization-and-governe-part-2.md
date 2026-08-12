@@ -78,6 +78,12 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+---
+
+
+
+---
+
 ## Slide 18
 
 - 组织的演化或扩展的秩序
@@ -92,6 +98,13 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 19
 
 - 缩小或消亡的开源项目共同体
+- GNU 项目：理想主义与现实落差的张力
+- Perl：单核维护者的脆弱性
+- OpenStack：企业博弈导致的项目分裂
+- Mozilla：资金依赖与决策权的矛盾
+- 奥斯特罗姆的治理失败诊断：八条设计原则中哪一条被破坏？
+  - 边界不清？监督失效？制裁过度？冲突解决机制缺失？
+- 治理失败不是道德问题，是制度设计问题
 
 ---
 

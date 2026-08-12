@@ -113,3 +113,20 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+---
+
+## Slide 37
+
+## 奥斯特罗姆八条设计原则在开源中的对应
+
+- 边界清晰（Boundary Clarity）→ GitHub 的 fork/PR 机制：明确谁有资格贡献
+- 规则与本地条件一致 → PEP 8、Google Style Guide：规范反映社区实际
+- 集体选择安排 → 社区投票、基金会治理：受影响者参与决策
+- 监督（Monitoring）→ Code Review、CI/CD 检查：同行监督
+- 分级制裁（Graduated Sanctions）→ 从 newcomer 到 maintainer 的权力阶梯
+- 冲突解决机制 → Issue/Discussion 机制、maintainer 仲裁
+- 组织权的最低认可 → Apache 基金会、Linux Foundation 背书
+- 嵌套治理（Nested Enterprises）→ CNCF 的项目→基金会→LF 多层结构
+
+- 理论出处：奥斯特罗姆《公共事物的治理之道》（1990），2009 年诺贝尔经济学奖
+
