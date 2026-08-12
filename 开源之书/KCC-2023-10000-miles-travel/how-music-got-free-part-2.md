@@ -122,9 +122,10 @@ dark academic tone, Intellectual Visual System, art taste.
   * 打击盗版，开始了新的一轮策略：面向分享者
   * 联邦调查局开始介入：侦破分享者犹如度假
 
-## Slide 28: Apple之所以在新千年的最初十年主宰了市场，基本依靠的是扮演Napster战利品洗钱者的角色，至少一开始是这样。如果把音乐盗版比喻成20世纪90年代的非法毒品制造，那Apple就相当于那时毒品蒸馏器的发明者。
+## Slide 28: 书摘quote
 * 视觉隐喻：
 * 显示要点：
+  * Apple之所以在新千年的最初十年主宰了市场，基本依靠的是扮演Napster战利品洗钱者的角色，至少一开始是这样。如果把音乐盗版比喻成20世纪90年代的非法毒品制造，那Apple就相当于那时毒品蒸馏器的发明者。 
   * ————Stephen Richard Witt 《How music got free》 P204
 
 ## Slide 29: 夕阳产业，最后的挣扎
@@ -150,7 +151,8 @@ dark academic tone, Intellectual Visual System, art taste.
 * 显示要点：
   * iTunes、spotify、网易163 …… licensed ,not sold.
 
-## Slide 32: 我是“盗版一代”的一员。
+## Slide 32: 书摘quote
 * 视觉隐喻：
 * 显示要点：
+  *  **我是“盗版一代”的一员。** 
   * ———— Stephen Richard Witt 《How music got free》
