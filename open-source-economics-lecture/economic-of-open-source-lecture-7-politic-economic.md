@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：深普鲁士蓝几何扉页与"前情提要"并列，象征第八讲前的知识回顾。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -49,6 +51,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：深普鲁士蓝几何扉页与"商业价值与社会价值"并列，象征政治经济学议题开启。
+
 - 开源与经济学
 - 开源经济学12讲座     第八期  商业价值与社会价值：开源的政治经济学
 - 「开源之道」·适兕
@@ -56,6 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 3
+
+* 视觉隐喻：不同材质吸管并存，隐喻公共物品供给方式的多元与碰撞。
 
 ## 本期核心问题
 - 开源项目是公共物品，但公共物品谁来维护？
@@ -66,6 +72,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 4
+
+* 视觉隐喻：课堂举手场景，隐喻求知若渴与积极参与课堂互动。
 
 - 议程
 - “精心布局的开源“及其案例解析
@@ -80,6 +88,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：装饰
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -92,11 +102,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 6
 
+* 视觉隐喻：微观世界的绚烂绽放与复杂交织，隐喻互联网从军事网络到公共基础设施的演化。
+
 - 读一本书就够了～
 
 ---
 
 ## Slide 7
+
+* 视觉隐喻：深普鲁士蓝几何构成与"从历史角度鸟瞰开源"并列，象征长时段视角。
 
 - 从互联网私有化说起
 - 互联网诞生于ARPANET
@@ -108,6 +122,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 8
 
+* 视觉隐喻：装饰
+
 - 从历史的角度鸟瞰开源
 - chrape, Jan-Felix (2017) : Open source projects as incubators of innovation: From niche phenomenon to integral part of the software industry, SOI Discussion Paper, No. 2017-03,
 
@@ -115,12 +131,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9
 
+* 视觉隐喻：万黑丛中一点橙，象征开源项目在商业生态中的独特定位与突破。
+
 - 从根本上说，开源的成功是一个政治故事......然而，如果以工业时代的政治经济学逻辑考量的话，这种政治组织就是非常陌生的。
 - ———— Steven Weber  《The Success of Open Source》
 
 ---
 
 ## Slide 10
+
+* 视觉隐喻：万绿丛中一点红，隐喻开源社区在主流经济中的独特领航者。
 
 - 政治经济学的定义
 - 分配与收入
@@ -132,6 +152,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 11
+
+* 视觉隐喻：女性拳手直面挑战，象征开源在与商业/法律对抗中的坚韧与决心。
 
 - 几个颇受争议的问题
 - 基于互联网的 Community，开源项目，自发秩序，不需要任何的外力？
@@ -150,6 +172,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：装饰
+
 - 数一数开源项目/共同体被摁着暴打的事件
 - Emacs 被闭源
 - Kerberos  被微软所窃取
@@ -161,6 +185,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 13
+
+* 视觉隐喻：装饰
 
 - 案例0：开源的发明
 - BSD/Unix War 如火如荼
@@ -174,6 +200,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：装饰
+
 - 案例一：Linux 的危机
 - Linus 毕业后加入芯片公司，开始忙碌
 - 拒绝加入任何linux有关的公司
@@ -185,6 +213,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：装饰
 
 - 案例2：Android 的政治经济批判
 - 移动通讯市场的扩张

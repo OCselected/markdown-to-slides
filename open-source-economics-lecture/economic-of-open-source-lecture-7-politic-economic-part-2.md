@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：以 WebSphere 为核心的开源生态图，象征 IBM 拥抱 Apache 的战略整合。
+
 - 案例4： IBM 拥抱Apache
 - Www 崛起，web server 市场格局
 - WebSphere 中间件市场组件之一
@@ -45,6 +47,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 17
+
+* 视觉隐喻：装饰
 
 - 案例3：Kebernetes的崛起
 - Google 在大数据架构的失利
@@ -57,6 +61,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：Debian 如瑞士军刀，象征万能、可靠与多功能的制度设计。
+
 - 铁三角的可持续发展
 - 项目：工程与技术
 - 许可：权力主张与法律保护
@@ -67,6 +73,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 19
+
+* 视觉隐喻：城市建筑的虚实重叠，隐喻各国政策对开源态度的时空交错与制度记忆。
 
 - Debian 的巧妙制度设计
 - 社会契约：Communtiy 自治
@@ -79,6 +87,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 20
+
+* 视觉隐喻：长椅上的守候与陪伴，象征公共物品治理中对信任与忠诚的期待。
 
 - 回顾一番各国政府的政策建议
 - 事件驱动
@@ -109,6 +119,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21
 
+* 视觉隐喻：装饰
+
 - Public good释义
 - 公共物品
 - 通常由政府提供
@@ -117,6 +129,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 22
+
+* 视觉隐喻：深普鲁士蓝几何构成与"后三期主题"并列，象征开源经济学议题的延续。
 
 - 经济学家看待人性时需要抱持和农民一样细致入微的态度。并非所有人都在搭便车，但如果你不当心，总有些人会把手伸向你的腰包。
 - ————理查德.泰勒 2017年诺贝尔经济学奖得主
