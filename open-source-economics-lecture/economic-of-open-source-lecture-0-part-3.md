@@ -1,64 +1,9 @@
-# [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
-
-## 文档用途
-面向开源经济学讲座的 Deck：以新制度经济学视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、交易成本、组织治理、文化与政治经济学等议题，帮助思考者从制度、协作与激励机制理解数字时代的开源现象。
-
-## 使用场景
-「开源之道」日常交流 / 新制度经济学视角下的开源讲座
-
-## 听众画像
-思考者，阅读者，善于交流者。对制度经济学、开源文化、人类学有基本的认知框架。
-
-## 讲者视角
-思维活跃者、独立开源研究者、协作机制设计师（社会黑客）。
-
-## 核心诉求
-展示人类的思维活动，渴望获得交流。
-
-## 核心基调
-dark academic tone, Intellectual Visual System, art taste.
-
-## 视觉风格关键词
-- 包豪斯几何构成（Bauhaus geometric composition）
-- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
-- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
-- 极简主义排版，大字号标题，宽松行距
-- 深色学术风格（dark academic），理性、克制、智识感
-- 几何抽象元素——圆、方、线作为装饰，不依赖图标
-- 书籍封面/古籍页面纹理作为背景元素
-- 深色学术风格（dark academic）整体调性
-
-## 内容结构约定
-- 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
-- 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
-- 结尾 slide 包含：讨论问题或延伸思考
-
----
-
 # economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 48 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 50 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 51 -->
-
----<!-- Part 3 of 4, slides 31-45 / 51 -->
-
----
-
 
 ## Slide 31
 
 * 视觉隐喻：
   * 紫色亮片网格——开源机构与组织：自由软件基金会的设计与光芒
-
 
 - 开源机构与组织
 - 自由软件基金会的诞生与设计
@@ -73,7 +18,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 三色绳索紧密交织的绳结——商业模式的多元融合
-
 
 - 商业模式的探索
 - 商业是制度的产物
@@ -90,7 +34,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 紫色亮片如梦幻星空——「开源之史」讲谈项目的光芒与梦想
 
-
 - 同时启动通识项目：「开源之史」讲谈
 - 每双周一次讲谈
 - 东杰、海玲项目联合发起人，查史料、辅讲
@@ -105,7 +48,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 鹰立于雪山之巅——产业视角下的开源：视野与力量
 
-
 - 产业视角下的开源
 
 ---
@@ -114,7 +56,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 三分天下：全封闭、半封闭、全开放的几何分割——生态三势力
-
 
 - 生态之三分天下
 - 全封闭（Apple）
@@ -127,7 +68,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 蓝色像素地球与漂浮二进制数字——开源数字经济的全球图景
-
 
 - 供应链
 - Internet 的架构设计：点对点分布式
@@ -143,7 +83,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 暗蓝背景上的二进制数字雨——开源软件价值的矩阵化呈现
 
-
 - 超越产业
 - 开放
 - 放弃排他权，拥抱容他权
@@ -157,7 +96,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 旧皮革工作手套叠放——开源工作者的双手：劳动与守护
 
-
 - 12次讲座的思路和目标
 
 ---
@@ -166,7 +104,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 秋叶飘舞蓝天——开源劳动的收获与季节更替
-
 
 - 第0期
 - 前因后果
@@ -182,7 +119,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 山间公路上红白尾灯拉出的光轨——开源协作的蜿蜒旅程
 
-
 - 第1期
 - 软件的生产
 - 软件的分发
@@ -195,7 +131,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 地球表面的金色光弧交织成网——全球开源网络的数据流动
-
 
 - 第2期：软件开发劳动力市场
 - 劳动力市场
@@ -212,7 +147,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 多彩人头连接成网络——开源社区的社交属性与多元协作
 
-
 - 第3期：比例原则与 Copyleft 思想
 - 知识财产正当性解释
 
@@ -222,7 +156,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 鹰立于雪山之上——文化的重要作用：视野超越群山
-
 
 - 第4期：数字时代的知识财产法演变与开源许可
 - 所有权的终结
@@ -237,7 +170,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 泛黄书页堆叠成几何——劳动与报酬：时间的沉淀与积累
 
-
 - 第6期：信息规则与网络经济
 - 信息想要免费，但是免费又是昂贵的
 - 代码数字化：书籍、音乐、电影保持同步
@@ -250,7 +182,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 3D等距视角下的数据图表方块——量化劳动报酬的商业智能视角
-
 
 - 第7期：基于互联网的协作
 - 电子邮件与邮件列表/新闻组

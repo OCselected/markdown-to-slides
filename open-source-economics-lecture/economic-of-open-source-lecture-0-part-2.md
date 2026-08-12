@@ -1,64 +1,9 @@
-# [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
-
-## 文档用途
-面向开源经济学讲座的 Deck：以新制度经济学视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、交易成本、组织治理、文化与政治经济学等议题，帮助思考者从制度、协作与激励机制理解数字时代的开源现象。
-
-## 使用场景
-「开源之道」日常交流 / 新制度经济学视角下的开源讲座
-
-## 听众画像
-思考者，阅读者，善于交流者。对制度经济学、开源文化、人类学有基本的认知框架。
-
-## 讲者视角
-思维活跃者、独立开源研究者、协作机制设计师（社会黑客）。
-
-## 核心诉求
-展示人类的思维活动，渴望获得交流。
-
-## 核心基调
-dark academic tone, Intellectual Visual System, art taste.
-
-## 视觉风格关键词
-- 包豪斯几何构成（Bauhaus geometric composition）
-- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
-- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
-- 极简主义排版，大字号标题，宽松行距
-- 深色学术风格（dark academic），理性、克制、智识感
-- 几何抽象元素——圆、方、线作为装饰，不依赖图标
-- 书籍封面/古籍页面纹理作为背景元素
-- 深色学术风格（dark academic）整体调性
-
-## 内容结构约定
-- 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
-- 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
-- 结尾 slide 包含：讨论问题或延伸思考
-
----
-
 # economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 48 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 50 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 51 -->
-
----<!-- Part 2 of 4, slides 16-30 / 51 -->
-
----
-
 
 ## Slide 16
 
 * 视觉隐喻：
   * 三次分配金字塔——自由市场、政府配置、慈善道德的层次
-
 
 - 开源属于第几次分配？
 - 第一次分配：自由市场
@@ -71,7 +16,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 圆桌前围坐的学者——共识的达成需要理性对话
-
 
 - 共识是协作集体行动的基础
 - 开源有很多被误解、曲解的地方
@@ -86,7 +30,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 黑色背景下白色羽毛飘动——新制度经济学的轻盈切入
 
-
 - 新制度经济学
 - 开源软件的经济和社会价值
 - 制度是一切的基础：集体行动、财产分配、商业交易
@@ -100,7 +43,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 俯瞰欧洲的夜间卫星影像——开源文明点亮人类聚居地
 
-
 - 开源在现代数字社会中的概况
 
 ---
@@ -109,7 +51,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 蓝色点阵世界地图与橙色数据流——开源无处不在的全球连接
-
 
 - 无处不在
 - 来源：LF Research Measuring the Economic Value of Open Source： A Survey and a Preliminary Analysis
@@ -120,7 +61,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 手机屏幕与 App 界面的拼图——打开你就看到开源
-
 
 - 软件成分分析：SBOM
 - 请打开你的手机：关于
@@ -137,7 +77,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 彩虹粉笔排列在深色桌面上——开源价值的多样与有序
 
-
 - The value of open source software
 - supply-side value of widely-used OSS is $4.15 billion
 - the demand-side value is much larger at $8.8 trillion.
@@ -151,7 +90,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 暗蓝背景上的十六进制数据雨——数据、证据与对比的底层逻辑
-
 
 - 数据、证据与对比
 - 软件商业公司的市值
@@ -167,7 +105,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 超市购物车穿过货架——开源历史的消费视角与日常渗透
 
-
 - 开源之史
 - 嵌入在信息产业中的暗流
 
@@ -177,7 +114,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 航拍农田几何色块——历史不是编年史，而是有逻辑的耕作
-
 
 - 放弃编年罗列事件的叙述
 - 时间是一种参考
@@ -192,7 +128,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 左侧旧地球仪与右侧数字网络并置——软件从硬件分离的过去与未来
-
 
 - 软件的历史
 - 最初是没有软件（software）的
@@ -209,7 +144,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 球体聚合的3D抽象结构——软件许可从物权到许可的演化
 
-
 - 软件的商品化难题
 - 世界上第一份软件许可的诞生
 - 软件源代码受到著作权的保护
@@ -224,7 +158,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 金色图钉与透明线交织的立体几何——开源许可的网络化连接
-
 
 - 开源许可的演化
 - 学术型开源许可的诞生与演变
@@ -241,7 +174,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 整齐木林中唯红向左——协作的逆向选择与特立独行
 
-
 - 协作的演化
 - 单机、联网、Internet、www
 - 面对面、跨越地理、超越时空
@@ -254,7 +186,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 发光神经元网络——共同体的起源：从科学共同体到 GitHub
-
 
 - 共同体的起源
 - 科学共同体：高校、科研机构、企业研究所

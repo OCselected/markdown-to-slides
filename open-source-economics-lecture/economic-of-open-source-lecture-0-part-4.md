@@ -1,64 +1,9 @@
-# [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
-
-## 文档用途
-面向开源经济学讲座的 Deck：以新制度经济学视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、交易成本、组织治理、文化与政治经济学等议题，帮助思考者从制度、协作与激励机制理解数字时代的开源现象。
-
-## 使用场景
-「开源之道」日常交流 / 新制度经济学视角下的开源讲座
-
-## 听众画像
-思考者，阅读者，善于交流者。对制度经济学、开源文化、人类学有基本的认知框架。
-
-## 讲者视角
-思维活跃者、独立开源研究者、协作机制设计师（社会黑客）。
-
-## 核心诉求
-展示人类的思维活动，渴望获得交流。
-
-## 核心基调
-dark academic tone, Intellectual Visual System, art taste.
-
-## 视觉风格关键词
-- 包豪斯几何构成（Bauhaus geometric composition）
-- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
-- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
-- 极简主义排版，大字号标题，宽松行距
-- 深色学术风格（dark academic），理性、克制、智识感
-- 几何抽象元素——圆、方、线作为装饰，不依赖图标
-- 书籍封面/古籍页面纹理作为背景元素
-- 深色学术风格（dark academic）整体调性
-
-## 内容结构约定
-- 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
-- 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
-- 结尾 slide 包含：讨论问题或延伸思考
-
----
-
 # economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 48 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 50 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 51 -->
-
----<!-- Part 4 of 4, slides 46-51 / 51 -->
-
----
-
 
 ## Slide 46
 
 * 视觉隐喻：
   * 金色光弧从地球表面升起——分发：互联网如何颠覆了副本经济
-
 
 - 第8期：商业模式：规则下的具体操作
 - 副本：取决于介质
@@ -74,7 +19,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 深蓝背景上 K 线图与折线图交织——交易成本：市场波动的量化
 
-
 - 第9期：组织结构与治理
 - 为什么需要正式的组织？
 - 开源项目共同体也是人类组织
@@ -88,7 +32,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 深色背景上的制度层级金字塔——第5/6/8期：交易成本、治理、政治经济学
-
 
 - 第10期：量化与劳动报酬
 - 无报酬干活？
@@ -105,7 +48,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 紫色亮片闪烁——第11期：文化作为不可替代的驱动力
 
-
 - 第11期：文化的重要作用
 - 行动与价值观
 - 无法忽略的作用
@@ -117,7 +59,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 金色图钉连线——12讲的统一框架：Williamson 制度层级回顾
-
 
 - 第5期：交易成本
 - 罗纳德·科斯与《企业的性质》
@@ -131,7 +72,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 制度层级结构图回顾——第0讲总结
-
 
 - 请记住，有时我们得到的反馈就像被包装丑陋的包裹——但这并不意味着包裹里面装的不是一份礼物。
 - ——大卫·布拉德福德，卡罗尔·罗宾 《深度关系：从建立信任到彼此成就》

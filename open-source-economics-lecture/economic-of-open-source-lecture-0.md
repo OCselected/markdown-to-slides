@@ -1,67 +1,9 @@
-# [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
-
-## 文档用途
-面向开源经济学讲座的 Deck：以新制度经济学视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、交易成本、组织治理、文化与政治经济学等议题，帮助思考者从制度、协作与激励机制理解数字时代的开源现象。
-
-## 使用场景
-「开源之道」日常交流 / 新制度经济学视角下的开源讲座
-
-## 听众画像
-思考者，阅读者，善于交流者。对制度经济学、开源文化、人类学有基本的认知框架。
-
-## 讲者视角
-思维活跃者、独立开源研究者、协作机制设计师（社会黑客）。
-
-## 核心诉求
-展示人类的思维活动，渴望获得交流。
-
-## 核心基调
-dark academic tone, Intellectual Visual System, art taste.
-
-## 视觉风格关键词
-- 包豪斯几何构成（Bauhaus geometric composition）
-- 深普鲁士蓝 #1B3B6B 作为强调色——代表智识深度与学术传统
-- 暖白底色 #F5F0E8，羊皮纸质感——书本与经卷的联想
-- 极简主义排版，大字号标题，宽松行距
-- 深色学术风格（dark academic），理性、克制、智识感
-- 几何抽象元素——圆、方、线作为装饰，不依赖图标
-- 书籍封面/古籍页面纹理作为背景元素
-- 深色学术风格（dark academic）整体调性
-
-## 内容结构约定
-- 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
-- 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
-- 结尾 slide 包含：讨论问题或延伸思考
-
----
-
 # economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 48 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 50 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 51 -->
-
----
-# economic-of-open-source-lecture-0
-
-<!-- Part 1 of 4, slides 1-15 / 51 -->
-
----
-
 
 ## Slide 1
 
 * 视觉隐喻：
   * 封面：深普鲁士蓝背景上一行白色大字——开源经济学，开启对话
-
 
 - 开源与经济学
 - 开源经济学12讲座     第零期 「开源之道」·适兕
@@ -72,7 +14,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 旅客在机场查阅航班信息——等待中的出行与确认
-
 
 - 议程
 - 为什么要做这件事？
@@ -88,7 +29,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 课堂上高举的手——知识传递中的参与和勇气
 
-
 ## 本期核心问题
 - 开源是什么？为什么需要一套经济学的语言来理解它？
 - 12讲将回答：开源如何在制度、组织与文化的层层嵌套中，
@@ -103,7 +43,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 制度层级结构图（L1/L2/L3）的几何堆叠——嵌套的规则、环境与规范
 
-
 ## 12讲的统一框架：Williamson 制度层级
 - L3 社会规范层：行为准则、社区伦理、文化——第12讲（文化）
 - L2 制度环境层：许可证、基金会、行为准则——第2、6讲
@@ -117,7 +56,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 暗蓝背景上的白色节点网络——制度层级的数字化连接
-
 
 ## 12讲在三层制度中的定位
 
@@ -140,7 +78,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 圆形桌边围坐的人——讲座规则下的平等交流
 
-
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -155,7 +92,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 黑暗空间中一束光裂开裂缝——「为什么做这个讲座？」的探索
 
-
 - 为什么要做这个讲座？
 
 ---
@@ -164,7 +100,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 铁锈斑驳的旧扳手排列——开源经济学是解决问题的工具
-
 
 - 凡事问个为什么
 - 经常被问：开源怎么赚钱？
@@ -180,7 +115,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 众人手叠手围成一圈——团队共识与集体力量
 
-
 - 经济学是研究资源配置的，研究经济学是为了使有限的资源被用于最合理、最有效的方面，以便增加社会总的财富，使社会日益富裕。研究经济学，是为了寻找一种令人满意的机制，以便合理利用资源，有效配置资源，既能增加社会财富，又能使财富或收入的分配趋于公平。
 - ———— 厉以宁 《超越市场与超越政府》
 
@@ -190,7 +124,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 黑色背景中红色球体与白色同心圆——开源作为价值源头的辐射
-
 
 - 开源是什么？
 - 一种生产模式
@@ -207,7 +140,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 蓝色微距下的蒲公英绒球——开源价值随风飘散而自由传播
 
-
 - 开源经济：开源的价值
 
 ---
@@ -216,7 +148,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 野餐桌上的双筒望远镜——观察开源的理想与现实
-
 
 - 理想中的开源世界
 - 最优的模块胜出，保持整体最佳
@@ -234,7 +165,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 蓝色木桌上放着一本打开的旧书——制度约束的隐喻
 
-
 - 但是，没有完美世界
 - 世界上有很多力量
 - 正如人本身的内心活动
@@ -249,7 +179,6 @@ dark academic tone, Intellectual Visual System, art taste.
 * 视觉隐喻：
   * 蓝色二进制代码流——拒绝数学迷信的理性反思
 
-
 - 为什么不相信模型经济学？
 - 经济学是一门社会人文学科
 - 所有的理论都假设了条件：理性人、道德人、完美的人
@@ -262,7 +191,6 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * 金融数据图表与硬币并置——开源无法提供答案，只提供探讨
-
 
 - 无法提供答案
 - 所有的都是探讨
