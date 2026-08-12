@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：宇宙尺度对比（孤树与银河），隐喻新制度经济学视野下个体与宇宙性合作秩序的联系。
+
 - 新制度经济学视野下的开源
 - 行为人
 - 基于互联网的cyberspace和community
@@ -47,6 +49,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+* 视觉隐喻：破碎的CD象征标准与路径在数字时代引发的产业崩塌。
+
 - 科斯的贡献
 - 《企业的性质》，1937
 - 《社会成本问题》，1962
@@ -58,6 +62,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 18
 
+* 视觉隐喻：粗糙石器的排列，象征技术作为人类文明的起源与递归性建构。
+
 - 标准的故事：MP3、Bit与唱片行业
 - Mp2 的垄断地位
 - 万维网的崛起
@@ -68,6 +74,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 19
+
+* 视觉隐喻：复古打字机的按键特写，隐喻 QWERTY 键盘路径依赖的经典书写痕迹。
 
 - 技术的本质与路径依赖
 - 技术不是无中生有被发明出来的
@@ -82,6 +90,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：迷雾中的延伸铁轨，隐喻路径依赖：前路未知却需坚定前行。
+
 - 案例一：QWERTY 键盘
 - 回到打字机的时代
 - QWERTY 最早被采用并推向市场
@@ -94,6 +104,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 21
 
+* 视觉隐喻：红色箭头象征在白色群体中脱颖而出的独特领导者。
+
 - 案例二：现代铁路轨道间距
 - 《让子弹飞》 片头
 - 两匹马的屁股之间的距离：四英尺又八点五寸
@@ -104,6 +116,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 22
+
+* 视觉隐喻：学习Java的艰难令人绝望，仿佛天塌了一样。
 
 - 真实的案例：开源及其标准
 - 从 Unix 到 Linux
@@ -116,6 +130,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 23
 
+* 视觉隐喻：大地如斑斓拼布，蜿蜒道路似银线穿梭其间，隐喻路径依赖的多元选择。
+
 - 思想试验：从Android /Java迁移
 - xiaomi/vivo/OPPO 需要多大的代价?
 - 仓颉语言：不基于任何已有语言
@@ -126,6 +142,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 24
+
+* 视觉隐喻：大地如斑斓拼布，蜿蜒道路似银线穿梭其间，隐喻路径依赖的多元与不可逆。
 
 - 更大范围的路径依赖
 - 技术是其中的一部分
@@ -138,12 +156,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 25
 
+* 视觉隐喻：深普鲁士蓝几何构成与科斯引语并列，象征观察世界的经济学视角。
+
 - 经济学家带给其他社会科学的主要优势仅仅是一种观察世界的方式。
 - ————罗纳德·H·科斯 《Economics and Contiguous Disciplines》
 
 ---
 
 ## Slide 26
+
+* 视觉隐喻：深普鲁士蓝几何构成收尾，"后六期主题"并列，象征开源经济学的持续展开。
 
 - 预告开源经济学讲座后6期主题（暂定）
 - 第七期：组织结构与治理

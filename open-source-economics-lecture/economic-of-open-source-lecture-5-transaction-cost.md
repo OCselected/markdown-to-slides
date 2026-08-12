@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：深普鲁士蓝几何扉页上"前情提要"浮现，象征第五讲前的知识回顾。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -45,6 +47,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 2
+
+* 视觉隐喻：孤树连接大地与银河，象征经济学思维沟通现实与无限宇宙。
 
 - 经济学的思维方式
 - 解释现代世界
@@ -58,6 +62,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 3
 
+* 视觉隐喻：深普鲁士蓝几何构成上"开源经济学·第六期"浮现，象征交易成本议题开启。
+
 ## 本期核心问题
 - 科斯问：为什么有些协作通过市场完成，有些通过企业？
 - 开源给出了第三种答案：通过互联网的虚拟共同体。
@@ -68,6 +74,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 4
 
+* 视觉隐喻：多彩吸管象征多元议题并置的议程结构。
+
 - 开源与经济学
 - 开源经济学12讲座     第六期 交易成本与路径依赖
 - 「开源之道」·适兕
@@ -75,6 +83,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 5
+
+* 视觉隐喻：高举的手穿透教室，象征求知若渴与积极参与课堂互动。
 
 - 议程
 - 法律经济学：用成本来思考交易
@@ -87,6 +97,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 6
 
+* 视觉隐喻：冲破云雾的雪山巅峰，象征经济学知识历经风雨后的高远境界。
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -98,6 +110,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：深普鲁士蓝几何构成与 Hodgson 引语并列，象征制度分析作为经济学的底层入口。
+
 - 解释开源的难处
 - 人类的知识是累积的
 - 我们是站在巨人的肩膀上的
@@ -108,12 +122,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 8
 
+* 视觉隐喻：渺小身影行于宏大沙脊，隐喻开源治理问题的艰难前行与探索。
+
 - 要理解资本主义，我们需要理解资本；要理解资本，需要理解货币；要理解货币，需要理解交换；要理解交换，需要理解财产；要理解财产，需要理解法律。
 - —— Geoffrey M.Hodgson 《资本主义的本质：制度、演化和未来》
 
 ---
 
 ## Slide 9
+
+* 视觉隐喻：多手共审文件，隐喻交易成本的协作、审核与谈判过程。
 
 - 思考题
 - 为什么需要基金会这样的组织？
@@ -126,6 +144,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 10
 
+* 视觉隐喻：平凡中孕育独特，象征获取方式中的差异化选择与价值之光。
+
 - 什么是交易成本
 - 原始社会偶尔的物物交换
 - 现代复杂社会：不确定性
@@ -137,6 +157,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：轻松高效的数字化办公与数据可视化场景，隐喻企业软件选型的多样性。
+
 - 举例而言：放在现实中
 - 打印纸张的三种获取方式：
 - 1、 电商平台下单，一小时达
@@ -147,6 +169,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：工业风背景隐喻创新，团队互动象征协作与沟通——企业存在的本质。
+
 - 以企业软件为例
 - 采购freeware，企业微信等：试用、评估、决策、采购、部署、维护、定制
 - Git handbook， 雇佣开发者、部署、培训和教育、定制、上游优先、保持先进
@@ -155,6 +179,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 13
+
+* 视觉隐喻：二进制代码构成的波浪，隐喻数字信息的流动与开发者共同体。
 
 - 从企业的性质到交易成本
 - 我们为什么要成为“打工人“？
@@ -167,6 +193,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：透过镜头的光之隧道，象征 CTO 对技术栈全景的聚焦与探索。
+
 - 开源的交易成本为零乎？
 - 基于互联网的开发者群体，乃至共同体
 - 声誉胜过金钱，智力展现
@@ -177,6 +205,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：书架与长者的微笑，象征科斯作为学术权威与制度经济学鼻祖的智慧。
 
 - CTO是最后一个知道技术栈的
 - 软件是无形的信息产品
