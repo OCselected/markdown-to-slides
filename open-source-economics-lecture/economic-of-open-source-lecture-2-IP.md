@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：羊皮纸扉页上"开源"二字在暖白底色中浮现，象征一次思想的开启。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -43,12 +45,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：深普鲁士蓝几何构成与"开源经济学"标题并置，智识感开场。
+
 - 开源与经济学
 - 开源经济学12讲座     第三期 「开源之道」·适兕
 
 ---
 
 ## Slide 3
+
+* 视觉隐喻：蓝杯承载多彩吸管，隐喻统一框架下的多元要素共存与选择。
 
 ## 本期核心问题
 - 知识财产法的扩张，如何塑造了数字时代的软件生态？
@@ -58,6 +64,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 4
+
+* 视觉隐喻：高举的手穿透教室，象征主动求知与积极参与的学术氛围。
 
 - 议程
 - 从（数字）版权的扩张开始说起
@@ -72,6 +80,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：彩色铅笔如柱状排列，隐喻多元知识的有序波动与体系构建。
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -82,6 +92,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 6
+
+* 视觉隐喻：狐猴冥想喻示开源需在消费与贡献间寻求平衡的禅意。
 
 - 法律、技术与经济增长
 - 技术发展与创新
@@ -94,6 +106,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：并排彩色砖楼如城市切片，隐喻历史肌理与现代生活的秩序共生。
+
 - 理解争议与对立
 - 排他权与形成垄断
 - 反垄断与拆分
@@ -104,6 +118,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 8
+
+* 视觉隐喻：秩序井然的几何网格，隐喻现代知识的理性与冷峻结构。
 
 - 财产权小议与人类观念变迁
 - “普天之下，莫非王土”
@@ -117,6 +133,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 9
 
+* 视觉隐喻：纸卷上的孔洞，是凝固在时光里的机械旋律。
+
 - 什么是知识财产权
 - 知识产权，诞生于1967年
 - WIP 和 TRIPS
@@ -126,6 +144,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 10
+
+* 视觉隐喻：三色光谱条纹渐变，象征知识财产的三种形态：著作权·专利·商标。
 
 - 知识财产权三剑客
 - 著作权/版权
@@ -137,12 +157,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：书山堆积如墙，隐喻知识的浩瀚积累与无序的丰富。
+
 - A tax on readers for the purpose of giving a bounty to writers.
 - —— Macaulay 勋爵 1914
 
 ---
 
 ## Slide 12
+
+* 视觉隐喻：白鹭昂首展翅，象征高洁志向与对自由的向往。
 
 - 围绕版权的经济
 - 《安妮法案》特许经营权
@@ -153,6 +177,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 13
+
+* 视觉隐喻：倾斜的天平象征正义的失衡与利益的不对等。
 
 - 版权的扩张（示例）
 - 1998 年 The Sonny Bono Act.
@@ -165,6 +191,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：多手共审文件，隐喻团队协作中的审核、修改与决策。
+
 - 软件著作权简史
 - 最早的“软件”：The Piano Roll
 - 1963年，版权局承认了计算机程序的版权所有
@@ -174,6 +202,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：牛头突破绿框，象征自由软件打破技术束缚。
 
 - 数字所有权的扩张
 - 1990 年计算机软件租赁修正法案；

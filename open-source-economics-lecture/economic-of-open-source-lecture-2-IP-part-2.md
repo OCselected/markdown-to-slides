@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：从众多白色中脱颖而出的橙色，象征独特与卓越。
+
 - GPL 的诞生与发展
 - 大型机上 Emacs 的遭遇
 - 重写Emacs ，并修改MIT License 为GPL
@@ -47,6 +49,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+* 视觉隐喻：自动化分拣网络俯瞰，隐喻数字资产在全球供应链中的高效流转。
+
 - 私人秩序的兴起
 - 合同是建立知识产权新规范的主要机制之一
 - 用户最终许可协议（EULA）的扩张
@@ -56,6 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 18
+
+* 视觉隐喻：装饰
 
 - Copyleft 是在否定知识财产权吗？
 - 典型的黑客思考模式
@@ -68,6 +74,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：笔尖精准指点K线，象征在波动市场中精准掌控财富机遇。
+
 - 软件许可的“光谱”
 - 自由、容他
 - 排他、禁止
@@ -78,6 +86,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：基石不稳、趋势下行，隐喻在动荡中艰难维持平衡。
+
 - 事前与事后，激励范式的视角
 - 如同著作权延期，软件也应该垄断
 - DRM、各类技术手段就是证据
@@ -86,6 +96,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 21
+
+* 视觉隐喻：深普鲁士蓝几何构成与结尾要点并置，学术收束。
 
 - 法的经济学分析
 - 经济价值与商业价值
@@ -98,6 +110,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 22
+
+* 视觉隐喻：三色光谱条纹渐变，象征开源许可在版权光谱中的光谱位置。
 
 - 开源带来的市场失灵？
 - 搭便车是人的天性
