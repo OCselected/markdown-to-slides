@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 1
 
+* 视觉隐喻：深普鲁士蓝几何扉页上"开源与经济学·第五期"浮现，象征劳动力市场议题开启。
+
 - 前情提要
 - 第0讲 增长的开源经济
 - 第1讲 软件的生产、分销和消费
@@ -45,6 +47,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 2
 
+* 视觉隐喻：深普鲁士蓝几何构成与议程条目并置，象征制度框架下的议题展开。
+
 - 开源与经济学
 - 开源经济学12讲座     第五期 开源的劳动力市场
 - 「开源之道」·适兕
@@ -52,6 +56,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 3
+
+* 视觉隐喻：多彩吸管象征多元选择与个性表达。
 
 ## 本期核心问题
 - 开源贡献者的劳动力市场是如何形成的？
@@ -61,6 +67,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 4
+
+* 视觉隐喻：高举的手穿透教室，象征求知若渴与积极参与课堂互动。
 
 - 议程
 - 代码不是商品
@@ -73,6 +81,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 5
 
+* 视觉隐喻：下行趋势中，于崩塌基石上艰难维持平衡的挣扎。
+
 - 关于讲座的规则说明
 - 随时交流或提问
 - 指出错误有奖励
@@ -83,6 +93,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 6
+
+* 视觉隐喻：深普鲁士蓝几何构成与"就业让人愁"并列，隐喻就业压力下的沉重基调。
 
 - 当我们提起劳动力市场时，在说什么？
 - 岗位需求
@@ -96,17 +108,23 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 7
 
+* 视觉隐喻：深普鲁士蓝几何构成与"LF 调查报告 2024"并列，象征制度性调研的权威与冷静。
+
 - 就业让人愁
 
 ---
 
 ## Slide 8
 
+* 视觉隐喻：$26B 巨额数字隐喻开源技术的巨大商业价值与影响力。
+
 - 来自LF的调查报告（2024）
 
 ---
 
 ## Slide 9
+
+* 视觉隐喻：跨立冷暖色界的问号，象征在两种对立选择之间的困惑与抉择。
 
 - 衡量开源的价值指标
 - 《the value of Open Source》
@@ -116,6 +134,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 10
+
+* 视觉隐喻：兵投下王的影子，象征开发者虽微末却是真正的造王者。
 
 - 代码无法售卖的难题
 - 代码是文本
@@ -129,6 +149,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 11
 
+* 视觉隐喻：蓝图与人影交融，象征科技赋能现代工程建设。
+
 - 需求定律看软件产业
 - 经济学最为坚实的基石：需求
 - 软件总是处于不断的变化中
@@ -141,6 +163,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 12
 
+* 视觉隐喻：镁粉飞扬，象征力量觉醒与蓄势待发的爆发瞬间。
+
 - 作为创作者的软件开发者
 - 从学校实验室到学术交流
 - 劳动报酬，会成为一门生意
@@ -151,6 +175,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 13
+
+* 视觉隐喻：揉皱的纸团象征被废弃的灵感与反复修改。
 
 - 参与开源的动机
 - 学习技能
@@ -165,6 +191,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 14
 
+* 视觉隐喻：专注的人工与精密科技的微观结合。
+
 - 开发者的窘境
 - 创作者：作家、作曲家等
 - 个体开发，依附于小众市场
@@ -176,6 +204,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 15
+
+* 视觉隐喻：整齐的空椅隐喻着等待被填充的秩序与规训。
 
 - 开发者的技能要求
 - 需要大量的基础知识受训

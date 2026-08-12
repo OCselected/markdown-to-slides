@@ -35,6 +35,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 16
 
+* 视觉隐喻：紧紧相依的背影，隐喻同窗情谊与共同奔赴未来。
+
 - 开源技术走进传统职高/高等院校？
 - 李明康的 2024 初有一个整理文章
 - 基础教育与市场的脱节
@@ -46,6 +48,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 17
 
+* 视觉隐喻：城市之眼，放射状路网如瞳孔，聚焦流动的光河。
+
 - 拓展的教育市场
 - 技术是公开可获取的
 - 无需任何的授权
@@ -56,6 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 18
+
+* 视觉隐喻：绿色代码与网格交织，隐喻深邃复杂的数字网络空间。
 
 - 劳动力市场：以外包为例
 - 印度，班加罗尔；中国，大连
@@ -69,6 +75,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 19
 
+* 视觉隐喻：致敬《创造亚当》，隐喻连接、创造或人机交互。
+
 - 匠人精神与工程学
 - 软件的开发和交付是个大工程
 - 分工的难度和技术架构及组织能力有关
@@ -80,6 +88,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 20
 
+* 视觉隐喻：人们低头看手机，头顶连线象征社交网络的互联互通。
+
 - 留名文化与现代企业
 - 古罗马的制砖者与清代的宫廷瓷器工匠
 - 企业会购买开发者/创作者的所有权
@@ -90,6 +100,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 21
+
+* 视觉隐喻：思维互联，共享内心记忆与生活万象。
 
 - 开源的学习路径：Learning by contributing
 - 个体参与开源的价值
@@ -103,6 +115,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 22
 
+* 视觉隐喻：网格如棋盘，行人似棋子，隐喻社会规则下个体的渺小。
+
 - 开放共同体：实力赢得资本
 - 优绩主义
 - 能力/兴趣展示
@@ -113,6 +127,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 23
+
+* 视觉隐喻：深普鲁士蓝几何构成与科斯引语并列，象征制度分析作为经济学基础。
 
 - 本土的劳动力市场反思
 - 经济转型期：就业压力
@@ -125,12 +141,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ## Slide 24
 
+* 视觉隐喻：深普鲁士蓝几何构成收尾，与科斯引语并列，象征制度分析作为开源经济学的底层基础。
+
 - 由于交易赖以发生的制度背景会影响对生产的激励和交易的成本，因此，对经济学家而言，如果没有对制度背景进行具体说明就来讨论交换过程，则没有任何意义。
 - ————罗纳德·H·科斯 《生产的制度结构》
 
 ---
 
 ## Slide 25
+
+* 视觉隐喻：深普鲁士蓝几何构成与后七期主题并列，象征开源经济学的持续展开。
 
 - 预告开源经济学讲座后7期主题（暂定）
 - 第六期：交易成本与开源的存在
