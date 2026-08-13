@@ -197,11 +197,12 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 29
 
 * 视觉隐喻：
-  * 深色背景中 OSPO Summit 徽标——开源价值释放的制度承诺
-- 释放开源价值
-- Unleash the power of open source
-- OSPO
-- 2nd OSPO Summit
+  * 深普鲁士蓝背景中三圈同心涟漪向外扩散——软件产业三个时代的制度层递
+- 一讲总结：数字时代软件业的制度变迁
+- 三个时代：硬件 → 网络 → 云
+- 三种协作：大教堂 → 集市 → 平台
+- 三种交付：软盘 → 下载 → 订阅
+- 下一讲：制度变迁的法律维度——知识财产法如何塑造了开源与闭源的边界
 
 ---
 
