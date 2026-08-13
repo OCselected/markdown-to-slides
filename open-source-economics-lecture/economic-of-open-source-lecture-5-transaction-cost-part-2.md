@@ -177,3 +177,15 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 27
+* 视觉隐喻：
+  * 深普鲁士蓝背景，QWERTY 键盘纹理与树轮年轮交织，象征路径依赖的累积效应。
+
+## 第5期·交易成本与路径依赖 · 推荐阅读
+
+- "Coase's Penguin, or Linux and the Nature of the Firm"，112 Yale Law Journal 369，2002
+- 《技术的本质》，Brian Arthur，浙江人民出版社，2014.04
+- 《组织的逻辑》，Ray Fisman / Tim Sullivan，九州出版社，2023.04
+- Paul A. David, "Path Dependence and Historical Economics", January 2000
+- Nagle / Seamans / Tadelis, "Transaction Cost Economics in the Digital Economy", HBS WP 21-009
+- 《The Economics of Knowledge》，Dominique Foray，MIT Press，2006.09（ISBN 9780262562232）

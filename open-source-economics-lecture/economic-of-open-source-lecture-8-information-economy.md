@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 1
+
+## Slide 1* 视觉隐喻：
+  * 深蓝色羊皮卷展开，标记前五期学术路线足迹。
 
 - 前情提要
 - 第0期：开源与经济学
@@ -47,8 +49,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第8期：商业价值与社会价值：开源的政治经济学
 
 ---
-
-## Slide 2
+## Slide 2* 视觉隐喻：
+  * 古铜色经纬仪投射制度与文化地层剖面，深蓝天幕。
 
 - 经济学的思维方式
 - 解释现代世界
@@ -58,8 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 观念与文化，技术与网络的累积
 
 ---
-
-## Slide 3
+## Slide 3* 视觉隐喻：
+  * 古老印刷机旁，墨水无限复制不减少，价格天平失衡。
 
 ## 本期核心问题
 - 信息的边际成本为零，传统定价逻辑为何失效？
@@ -68,16 +70,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - Williamson L2 的延伸：信息商品需要新的产权界定方式（L2 制度环境）
 
 ---
-
-## Slide 4
+## Slide 4* 视觉隐喻：
+  * 深蓝封面烫金标题，朱红印章压角，旁注网络节点图谱。
 
 - 信息规则与网络经济
 - 开源经济学12讲座  ·  第九期
 - 「开源之道」·适兕
 
 ---
-
-## Slide 5
+## Slide 5* 视觉隐喻：
+  * 航海日志页边，列出五段航程节点与制度经济学坐标。
 
 - 议程
 - 信息的特殊经济属性
@@ -89,8 +91,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源与云计算的制度冲突
 
 ---
-
-## Slide 6
+## Slide 6* 视觉隐喻：
+  * 矿井推车装满发光晶体而非煤炭，显示固定成本高昂。
 
 - 为什么需要理解信息经济？
 - 信息是人类文明史上最具革命性的商品
@@ -99,8 +101,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这给整个定价逻辑带来了结构性挑战
 
 ---
-
-## Slide 7
+## Slide 7* 视觉隐喻：
+  * 石拱桥承载万人通行而不崩塌，非竞争性具象化呈现。
 
 - 信息的特殊经济属性
 - 非竞争性：一个人使用信息，不减少他人使用
@@ -109,8 +111,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 传统商品的经济逻辑，在这里完全失效
 
 ---
-
-## Slide 8
+## Slide 8* 视觉隐喻：
+  * 古旧账簿首页巨额墨迹，后续行近乎透明，象征成本结构。
 
 - 夏皮罗与范里安《信息规则》
 - 信息生产的成本结构：固定成本极高，边际成本极低
@@ -119,8 +121,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这从根本上改变了市场结构
 
 ---
-
-## Slide 9
+## Slide 9* 视觉隐喻：
+  * 陈列架摆放纸张、软盘、光盘，末端悬浮无形云团。
 
 - 软件定价的历史回顾
 - 纸质时代：代码是奢侈品，高价垄断
@@ -130,8 +132,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 价格信号消失，价值信号仍在
 
 ---
-
-## Slide 10
+## Slide 10* 视觉隐喻：
+  * 左侧收费闸门高耸，右侧开放门廊旁设服务柜台对比。
 
 ## Windows 与 Linux 的定价对比——历史上的价格信号
 
@@ -142,8 +144,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 软件从"卖拷贝"到"卖服务"的转型，本质上是信息商品化的历史必然
 
 ---
-
-## Slide 11
+## Slide 11* 视觉隐喻：
+  * 深蓝天幕星座连线，节点越多光芒越盛，正反馈可视化。
 
 - 网络效应与正反馈回路
 - 梅特卡夫定律：网络价值与节点数的平方成正比
@@ -152,8 +154,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这种效应无法被市场单独定价
 
 ---
-
-## Slide 12
+## Slide 12* 视觉隐喻：
+  * 古典建筑三扇门，分别标注维护者、赞助者与用户入口。
 
 - 开源作为多边平台
 - 项目共同体：维护者与核心开发者
@@ -164,8 +166,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 三方在同一个平台上交换价值
 
 ---
-
-## Slide 13
+## Slide 13* 视觉隐喻：
+  * 复杂灌溉水渠系统，资金与声誉在三方田地间循环流动。
 
 - 谁在补贴谁？
 - 企业投入研发，通过订阅和服务收回成本
@@ -175,8 +177,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 不存在单一的价格信号
 
 ---
-
-## Slide 14
+## Slide 14* 视觉隐喻：
+  * 拍卖师木槌悬空，货物经信任契约流转，价值显价格隐。
 
 - 开源软件的定价悖论
 - 放弃许可费用后，「价格」消失了
@@ -186,8 +188,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 云厂商托管：卖的是便利与规模
 
 ---
-
-## Slide 15
+## Slide 15* 视觉隐喻：
+  * 三条石阶小径通向同一山顶，象征订阅、云与核心模式。
 
 - 价值捕获的制度路径
 - Red Hat 模式：订阅 + 支持
@@ -197,4 +199,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 关键在于解决了信任问题
 
 ---
-

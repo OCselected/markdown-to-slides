@@ -163,3 +163,18 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 26
+* 视觉隐喻：
+  * 深普鲁士蓝背景，工匠工作台与人像群像，象征软件劳动者的精神与伦理。
+
+## 第4期·软件开发劳动力市场 · 推荐阅读
+
+- 《匠人》，Richard Sennett，上海译文出版社，2015.07
+- 《人的境况》，Hannah Arendt（商务印书馆）
+- 《大繁荣》，Edmund Phelps，中信出版社，2018.10
+- 《动机与人格》，Abraham Maslow，中国人民大学出版社，2013.09
+- 《the new kingmaker: How Developers Conquered the World》，Stephen O'Grady，O'Reilly，2013.01
+- 《全球"猎身"》，项飙，北京大学出版社，2012.01
+- 《确定性的寻求》，John Dewey，华东师范大学出版社，2019.08
+- Gerosa 等，"The Shifting Sands of Motivation", arXiv:2101.10291v3，2021.01
+- Linux 基金会历年人才调查报告

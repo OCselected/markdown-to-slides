@@ -193,3 +193,16 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 28
+* 视觉隐喻：
+  * 深普鲁士蓝背景，世界文化地图与代码树交织，象征开源文化的全球与本土张力。
+
+## 第7期·文化的重要作用 · 推荐阅读
+
+- 《文化的重要作用》，Laurence Harrison / Samuel Huntington，新华出版社，2010.01
+- 《国富国穷》，David Landes，新华出版社，2010.01
+- 《The Hacker Ethic and the Spirit of the Information Age》，Pekka Himanen，中信出版社，2002.09
+- 《数字乌托邦》，Fred Turner，电子工业出版社，2013.05
+- 《睡鼠说》，John Markoff，电子工业出版社，2015.07
+- 《The Success of Open Source》，Steven Weber，Harvard UP，2004.04
+- Lancashire, "Code, culture and cash", First Monday 6(12)，2001

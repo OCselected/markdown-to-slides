@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 1
+
+## Slide 1* 视觉隐喻：
+  * 深蓝图上蜿蜒的学术路径，前五期议题如路标碑石。
 
 - 前情提要
 - 第0期：开源与经济学
@@ -49,8 +51,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第10期：排他权与容他权、比例原则与 Copyleft
 
 ---
-
-## Slide 2
+## Slide 2* 视觉隐喻：
+  * 老式制图仪聚焦制度经纬，勾勒劳动与财产分配网格。
 
 - 经济学的思维方式
 - 解释现代世界
@@ -58,8 +60,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的可持续发展需要回答劳动报酬的问题
 
 ---
-
-## Slide 3
+## Slide 3* 视觉隐喻：
+  * 十人肩扛巨大承重墙，墙基裂缝蔓延至数字大厦。
 
 ## 关键基础设施的报酬问题——Heartbleed 与制度反思
 
@@ -71,8 +73,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 否则，数字基础设施的脆弱性将无限放大
 
 ---
-
-## Slide 4
+## Slide 4* 视觉隐喻：
+  * 天平一端是代码库，另一端是制度化回报的砝码。
 
 ## 本期核心问题
 - 开源贡献者应获得什么样的报酬？
@@ -81,16 +83,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - 与第4期的分工：本期聚焦分配正义，而非劳动力市场的形成
 
 ---
-
-## Slide 5
+## Slide 5* 视觉隐喻：
+  * 羊皮卷契约上，劳动工时与财产份额交织署名。
 
 - 劳动报酬与财产分配
 - 开源经济学12讲座  ·  第十一期
 - 「开源之道」·适兕
 
 ---
-
-## Slide 6
+## Slide 6* 视觉隐喻：
+  * 建筑剖面图，分层展示从个体激励到云厂商冲突的结构。
 
 - 议程
 - 个体角度如何思考「报酬」
@@ -102,8 +104,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的政治经济学展望
 
 ---
-
-## Slide 7
+## Slide 7* 视觉隐喻：
+  * 水坝闸门控制代码流向，平台管理者占据枢纽位置。
 
 ## GitHub——协作的简化与问题
 
@@ -115,8 +117,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 但同时也是 O（组织）层面的权力集中——平台取代了部分社区治理的功能
 
 ---
-
-## Slide 8
+## Slide 8* 视觉隐喻：
+  * 干涸的河道边，标有「无偿」的旗帜随风破碎。
 
 - 为什么需要讨论劳动报酬？
 - 开源经常被贴上「无偿劳动」的标签
@@ -125,8 +127,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的可持续性，取决于劳动报酬的制度安排
 
 ---
-
-## Slide 9
+## Slide 9* 视觉隐喻：
+  * 1976 年旧信件旁，信号塔发出动态价值的光束。
 
 - 开源是无偿劳动吗？
 - 比尔·盖茨 1976 年公开信：软件可以免费复制，谁还会付费？
@@ -135,8 +137,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 当开发者获得足够的信号价值时，劳动就不是无偿的
 
 ---
-
-## Slide 10
+## Slide 10* 视觉隐喻：
+  * 三重金字塔结构，底层金钱，中层信号，顶层自我实现。
 
 - 个体角度思考「报酬」
 - 金钱不是唯一激励
@@ -147,8 +149,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 信号（职业声誉）、体验（创造的愉悦）、归属（共同体认同）
 
 ---
-
-## Slide 11
+## Slide 11* 视觉隐喻：
+  * 灯塔投射代码贡献的光芒，照亮劳动力市场的航道。
 
 - 信号的价值
 - 开源贡献是个人能力的公开证明
@@ -158,8 +160,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 信号本身就是一种报酬
 
 ---
-
-## Slide 12
+## Slide 12* 视觉隐喻：
+  * 桥梁连接企业赞助与维护者，基金会作为中间支撑柱。
 
 - 贡献者经济的制度结构
 - 从个人贡献到企业赞助的制度演变
@@ -169,8 +171,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这些制度安排正在将「无偿贡献」转化为「可预期的经济回报」
 
 ---
-
-## Slide 13
+## Slide 13* 视觉隐喻：
+  * 透明账本记录企业捐款流向，精准分配至维护者手中。
 
 - 基金会的制度角色
 - 基金会是贡献者经济的制度中介
@@ -180,8 +182,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 它的核心是：透明、可预期、制度化
 
 ---
-
-## Slide 14
+## Slide 14* 视觉隐喻：
+  * 版权钥匙移交仪式，代码走向的罗盘指向未定远方。
 
 - 发布权与财产分配
 - 开源代码的「所有权」没有被放弃
@@ -191,8 +193,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 谁来决定代码的走向？
 
 ---
-
-## Slide 15
+## Slide 15* 视觉隐喻：
+  * 天平严重倾斜，云厂商端堆积金币，贡献者端空无一物。
 
 - 开源劳动者与云厂商的分配冲突
 - 云厂商利用开源代码提供服务赚取巨额收入
@@ -201,4 +203,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 与马克思在《资本论》中分析的劳资矛盾在制度逻辑上同构
 
 ---
-

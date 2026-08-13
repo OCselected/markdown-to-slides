@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 16
+
+## Slide 16* 视觉隐喻：
+  * 烟囱工厂与云端服务器机柜的对望，隐喻生产资料变迁。
 
 - 数字时代的生产资料
 - 工业时代：工厂、机器、原材料
@@ -43,8 +45,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 分配的冲突不可避免
 
 ---
-
-## Slide 17
+## Slide 17* 视觉隐喻：
+  * 代码行转化为承重石墙，隐喻开源基础设施的制度性脆弱。
 
 - 代码即资本
 - 当开源代码成为数字基础设施
@@ -54,8 +56,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 本质上是制度设计失败：没有为关键基础设施维护者设计可持续的回报机制
 
 ---
-
-## Slide 18
+## Slide 18* 视觉隐喻：
+  * 历史地图分岔路径，指向公平分配或被制度收编的歧途。
 
 - 开源的政治经济学展望
 - 从 Commons-based Peer Production（Benkler）到 Platform Cooperativism（Scholz）
@@ -64,8 +66,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是开源经济学的终极问题
 
 ---
-
-## Slide 19
+## Slide 19* 视觉隐喻：
+  * 少数石柱支撑庞大殿宇，隐喻关键设施维护者报酬失衡。
 
 - 关键基础设施的报酬问题
 - OpenSSL、Linux Kernel、OpenSSH
@@ -75,8 +77,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 否则，数字基础设施的脆弱性将无限放大
 
 ---
-
-## Slide 20
+## Slide 20* 视觉隐喻：
+  * 古老天平称量数字硬币与人类劳工，审视开源分配正义。
 
 - 社会正义的视角
 - 开源的分配问题不仅是经济问题，也是社会正义问题
@@ -85,8 +87,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 如果不能解决分配问题，开源的可持续性将受到挑战
 
 ---
-
-## Slide 21
+## Slide 21* 视觉隐喻：
+  * 建筑师在残旧墙面上绘制新蓝图，象征可预期报酬制度。
 
 - 制度创新的必要性
 - 现有的制度安排：
@@ -96,8 +98,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 它的核心是：可预期、可测量、可持续
 
 ---
-
-## Slide 22
+## Slide 22* 视觉隐喻：
+  * 测量师用经纬仪测绘代码地图，探讨劳动数据转化为报酬。
 
 - 劳动报酬的可测量性
 - Git 贡献数据是劳动的度量
@@ -107,8 +109,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 如何保证报酬的公平性？
 
 ---
-
-## Slide 23
+## Slide 23* 视觉隐喻：
+  * 干涸水井与引水渠并列，隐喻无保障报酬导致人才流失。
 
 - 可持续性问题的制度根源
 - 当前开源维护者的报酬制度是：无保障的、随机的
@@ -118,8 +120,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 让维护者获得职业尊严
 
 ---
-
-## Slide 24
+## Slide 24* 视觉隐喻：
+  * 两根石柱支撑拱门，象征动机与应得报酬构成劳动力市场。
 
 - 与第4期的联系
 - 第4期讨论劳动力市场：开源开发者为什么贡献？
@@ -129,8 +131,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计需要回答这两个问题
 
 ---
-
-## Slide 25
+## Slide 25* 视觉隐喻：
+  * 公共水道只取水不回馈，隐喻云厂商受益与贡献回报失衡。
 
 - 与第8期的联系
 - 第8期讨论政治经济学：云厂商受益但不投入
@@ -139,8 +141,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计的目标：让贡献者获得应有的回报
 
 ---
-
-## Slide 26
+## Slide 26* 视觉隐喻：
+  * 人类指挥机械乐队望向地平线，隐喻 AI 时代贡献者价值。
 
 - 开源劳动报酬的未来
 - 当AI辅助代码生成
@@ -151,8 +153,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 他们应获得什么样的报酬？
 
 ---
-
-## Slide 27
+## Slide 27* 视觉隐喻：
+  * 蓝色图书馆书架陈列经典著作，构建开源劳动报酬之基石。
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -162,8 +164,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 《开源基础设施危机》——相关报道与文献
 
 ---
-
-## Slide 28
+## Slide 28* 视觉隐喻：
+  * 夜空下未完成的建筑草图，象征开源劳动报酬终极叩问。
 
 - 留白问题
 - 开源贡献者是否应该被视为劳动者？
@@ -175,3 +177,22 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 29
+* 视觉隐喻：
+  * 深普鲁士蓝背景，天平与分配齿轮交织，象征开源劳动报酬与财产分配的张力。
+
+## 第11期·劳动报酬与财产分配 · 推荐阅读
+
+- 《集体行动的逻辑》，Mancur Olson，格致出版社，2017.08
+- 《企业的性质》，Williamson / Winter，商务印书馆，2010.09
+- 《The Economics of Knowledge》，Dominique Foray，MIT Press，2006.09（ISBN 9780262562232）
+- 《人月神话》，F. P. Brooks，清华大学出版社，2015.04
+- 《大繁荣》，Edmund Phelps，中信出版社，2018.10
+- 《The New Kingmaker》，Stephen O'Grady，O'Reilly，2013.01
+- Gates, "An Open Letter to Hobbyists", Computer Notes 1(9)，1976
+- 《知识产权正当性解释》，Merges，商务印书馆，2023.05
+- 《知识财产法哲学》，Peter Drahos，商务印书馆，2017.03
+- Hayek, "The Use of Knowledge in Society"，见《个人主义与经济秩序》，复旦 UP，2012
+- 《The Economics of AI》，Agrawal / Gans / Goldfarb，2018
+- 《The Economics of the Commons》，Elinor Ostrom，1990
+- 《Doughnut Economics》，Kate Raworth，2017

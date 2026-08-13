@@ -33,9 +33,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 16
 
-* 视觉隐喻：从众多白色中脱颖而出的橙色，象征独特与卓越。
+## Slide 16* 视觉隐喻：从众多白色中脱颖而出的橙色，象征独特与卓越。
 
 - GPL 的诞生与发展
 - 大型机上 Emacs 的遭遇
@@ -46,10 +45,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 新时代的应对：GPLv3
 
 ---
-
-## Slide 17
-
-* 视觉隐喻：自动化分拣网络俯瞰，隐喻数字资产在全球供应链中的高效流转。
+## Slide 17* 视觉隐喻：自动化分拣网络俯瞰，隐喻数字资产在全球供应链中的高效流转。
 
 - 私人秩序的兴起
 - 合同是建立知识产权新规范的主要机制之一
@@ -58,10 +54,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - EULA 和技术保护措施不仅改变了所有者和用户之间的关系，还改变了商品的性质（许可授权，而不是销售）
 
 ---
-
-## Slide 18
-
-* 视觉隐喻：装饰
+## Slide 18* 视觉隐喻：装饰
 
 - Copyleft 是在否定知识财产权吗？
 - 典型的黑客思考模式
@@ -71,10 +64,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 反直觉
 
 ---
-
-## Slide 19
-
-* 视觉隐喻：笔尖精准指点K线，象征在波动市场中精准掌控财富机遇。
+## Slide 19* 视觉隐喻：笔尖精准指点K线，象征在波动市场中精准掌控财富机遇。
 
 - 软件许可的“光谱”
 - 自由、容他
@@ -83,10 +73,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源是偏向容他的一方
 
 ---
-
-## Slide 20
-
-* 视觉隐喻：基石不稳、趋势下行，隐喻在动荡中艰难维持平衡。
+## Slide 20* 视觉隐喻：基石不稳、趋势下行，隐喻在动荡中艰难维持平衡。
 
 - 事前与事后，激励范式的视角
 - 如同著作权延期，软件也应该垄断
@@ -94,10 +81,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 并不利于创新，甚至是阻止
 
 ---
-
-## Slide 21
-
-* 视觉隐喻：深普鲁士蓝几何构成与结尾要点并置，学术收束。
+## Slide 21* 视觉隐喻：深普鲁士蓝几何构成与结尾要点并置，学术收束。
 
 - 法的经济学分析
 - 经济价值与商业价值
@@ -108,10 +92,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 影响市场
 
 ---
-
-## Slide 22
-
-* 视觉隐喻：三色光谱条纹渐变，象征开源许可在版权光谱中的光谱位置。
+## Slide 22* 视觉隐喻：三色光谱条纹渐变，象征开源许可在版权光谱中的光谱位置。
 
 - 开源带来的市场失灵？
 - 搭便车是人的天性
@@ -121,11 +102,24 @@ dark academic tone, Intellectual Visual System, art taste.
 - 私人联盟、慈善组织、社会捐赠、众筹、以及偶尔的商业模式（苛刻的前提条件）
 
 ---
-
-## Slide 23
+## Slide 23* 视觉隐喻：
+  * 产权扩张地图裂缝，公共领域知识如藤蔓自然蔓延。
 
 - 自由软件、知识共享和其它增强公共领域的活动的现象可以理解为中央机构对产权扩张效率低下的市场反应。
 - ———— Elkin-Koren 和 Salzberger《数字时代的知识产权法经济学》
 
 ---
 
+## Slide 24
+* 视觉隐喻：
+  * 深普鲁士蓝背景，法典与数字代码交织，象征知识产权法在数字时代的张力。
+
+## 第2期·数字时代知识财产法演变与开源许可 · 推荐阅读
+
+- [开源之史]（本博客）/posts/history-of-open-source/summary/
+- 《Legal Protection of Digital Information》，在线版 digital-law-online.info/lpdi1.0/
+- 《The Software License Unveiled》，Douglas E. Phillips，Oxford，2009.06
+- 《知识产权正当性解释》，Robert P. Merges，商务印书馆，2023.05
+- 《商业开源：开源软件许可实用指南》，Heather Meeker，人民邮电出版社，2023.01
+- 《数字时代的知识产权法经济学》，Niva Elkin-Koren / Neil W. Netanel，知识产权出版社，2023.01
+- Lawrence Lessig 关于版权的访谈，econlib.org，访问 2024.03.24

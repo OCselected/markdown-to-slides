@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 16
+
+## Slide 16* 视觉隐喻：
+  * 深普鲁士蓝地图，公共耕地与私人庄园的清晰边界划分线
 
 - 信息商品的版本差异化
 - 社区版：核心功能开源
@@ -44,8 +46,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 底层逻辑是交易成本分析
 
 ---
-
-## Slide 17
+## Slide 17* 视觉隐喻：
+  * 深普鲁士蓝背景，从买断通行权到持续维护契约的桥梁图
 
 - 订阅经济与开源的交汇
 - 从产品到服务的制度转型
@@ -55,8 +57,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计的核心是降低切换成本
 
 ---
-
-## Slide 18
+## Slide 18* 视觉隐喻：
+  * 深普鲁士蓝海景，公共灯塔照亮航道与内部收费港口对比
 
 - OpenCore 的制度本质
 - 开源版本是营销工具，也是信任机制
@@ -66,8 +68,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 答案：愿意付费的企业
 
 ---
-
-## Slide 19
+## Slide 19* 视觉隐喻：
+  * 深普鲁士蓝农田，云厂商在公共代码田收割未向地主交租
 
 - 开源与云计算的制度冲突
 - 云厂商利用开源代码提供托管服务
@@ -77,8 +79,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 谁拥有数字基础设施的控制权？
 
 ---
-
-## Slide 20
+## Slide 20* 视觉隐喻：
+  * 深普鲁士蓝档案，旧账本产权模糊与新许可证划定界限
 
 ## 云计算的制度冲突——Coase 视角下的产权重新界定
 
@@ -90,8 +92,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 但正如 North 所言：规则容易改，社区适应难
 
 ---
-
-## Slide 21
+## Slide 21* 视觉隐喻：
+  * 深普鲁士蓝石碑，法律条文不断雕刻修改以适应新社会契约
 
 - 许可证的新挑战
 - AGPL：当代码在服务器上运行时也要开源
@@ -100,8 +102,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度需要演化，规则容易改写，社区适应需要时间
 
 ---
-
-## Slide 22
+## Slide 22* 视觉隐喻：
+  * 深普鲁士蓝迷雾海，船只依靠灯塔而非罗盘寻找价值航向
 
 - 核心思考
 - 信息商品的价值如何在没有价格的情况下被发现？
@@ -110,8 +112,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 订阅经济的兴起是制度创新，还是商业模式必然？
 
 ---
-
-## Slide 23
+## Slide 23* 视觉隐喻：
+  * 深普鲁士蓝蓝图，三位建筑师在流沙上构建稳固制度框架
 
 - 从制度经济学视角看信息经济
 - 科斯：当交易成本趋近于零，所有权的重要性重新评估
@@ -120,8 +122,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度的作用是降低网络效应中的不确定性
 
 ---
-
-## Slide 24
+## Slide 24* 视觉隐喻：
+  * 深普鲁士蓝地图，两条历史道路交汇指向价值捕获核心区域
 
 - 与第8期的联系
 - 第8期讨论开源的政治经济学：商业公司受益于开源却不投入
@@ -130,8 +132,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 答案不在市场，而在制度设计
 
 ---
-
-## Slide 25
+## Slide 25* 视觉隐喻：
+  * 深普鲁士蓝时间轴，不同时期收费站形态演变展示制度路径
 
 - 历史上的价格信号
 - Windows 按拷贝收费
@@ -141,8 +143,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度路径决定价格路径
 
 ---
-
-## Slide 26
+## Slide 26* 视觉隐喻：
+  * 深普鲁士蓝水渠，无价格标尺系统依靠制度保证价值分配
 
 - 开源的制度创新
 - 开源不生产价格，但生产价值
@@ -151,8 +153,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计的任务：让价值被合理分配
 
 ---
-
-## Slide 27
+## Slide 27* 视觉隐喻：
+  * 深普鲁士蓝大陆，工程师在扩张疆域肩负构建公共基础设施
 
 - 开源与数字未来的制度挑战
 - 当AI模型训练依赖开源代码
@@ -161,8 +163,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计的责任比任何时候都更重大
 
 ---
-
-## Slide 28
+## Slide 28* 视觉隐喻：
+  * 深普鲁士蓝石制书架，摆放支撑信息经济理论的经典书籍
 
 - 推荐阅读
 - 《信息规则：网络经济的策略指导》——夏皮罗与范里安
@@ -171,8 +173,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 《开源的财富》——Yochai Benkler
 
 ---
-
-## Slide 29
+## Slide 29* 视觉隐喻：
+  * 深普鲁士蓝石台，空王座象征待决的开源未来控制权问题
 
 - 留白问题
 - 如果开源软件的边际成本为零，
@@ -183,3 +185,11 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 30
+* 视觉隐喻：
+  * 深普鲁士蓝背景，信息网络与货币流动纹理，象征信息商品的多边平台定价。
+
+## 第9期·信息规则与网络经济 · 推荐阅读
+
+- 《信息规则：网络经济的策略指导》，Carl Shapiro / Hal Varian，中国人民大学出版社，2017.10
+- 《平台领导》，Annabelle Gawer，广东经济出版社，2007.04

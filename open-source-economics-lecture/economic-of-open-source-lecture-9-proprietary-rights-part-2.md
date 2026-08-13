@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 16
+
+## Slide 16* 视觉隐喻：
+  * 深普鲁士蓝底，精密天平称量专利壁垒与制药投入的平衡
 
 - 比例原则在知识财产中的运用
 - 排他权过强：创新被锁定（专利流氓）
@@ -42,8 +44,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 不强不弱：恰好足以激励贡献，恰好不足以阻碍利用
 
 ---
-
-## Slide 17
+## Slide 17* 视觉隐喻：
+  * 深普鲁士蓝底，制度光谱图展示宽松至强共享规则的分布
 
 - 排他权与容他权的动态均衡
 - BSD / MIT：几乎无 Copyleft
@@ -54,8 +56,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 不同的项目，选择不同强度的排他权
 
 ---
-
-## Slide 18
+## Slide 18* 视觉隐喻：
+  * 深普鲁士蓝底，古老档案馆中排列各异的法律卷轴象征演化
 
 - 许可证作为制度多样性
 - 每一种许可证都是一套规则
@@ -64,8 +66,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 许可证的演化是开源制度的重要部分
 
 ---
-
-## Slide 19
+## Slide 19* 视觉隐喻：
+  * 深普鲁士蓝底，运河闸口系统展示资本与代码的流向差异
 
 - 许可证光谱的制度含义
 - 宽松许可：鼓励企业采用
@@ -75,8 +77,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这个决策影响的是：谁可以获利？
 
 ---
-
-## Slide 20
+## Slide 20* 视觉隐喻：
+  * 深普鲁士蓝底，云端图谱中协议如灯塔指引服务器端新边界
 
 - 云时代的 Copyleft 新挑战
 - 当代码运行在服务器端而非分发时
@@ -87,8 +89,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度需要再次演化
 
 ---
-
-## Slide 21
+## Slide 21* 视觉隐喻：
+  * 深普鲁士蓝底，地质剖面显示规则变化与社区适应的时间滞后
 
 - North 的洞见
 - 「规则易改，反应难变」
@@ -98,8 +100,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度的生命力取决于参与者的接受度
 
 ---
-
-## Slide 22
+## Slide 22* 视觉隐喻：
+  * 深普鲁士蓝底，连接私人领地与公共广场的桥梁象征产权创新
 
 - 开源制度的创新意义
 - 开源不是废除知识产权
@@ -108,8 +110,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 它证明了：产权制度也可以服务于公共品生产
 
 ---
-
-## Slide 23
+## Slide 23* 视觉隐喻：
+  * 深普鲁士蓝底，历史地图叠加显示交易成本与产权边界交汇
 
 - 与第5期的联系
 - 第5期讨论科斯的交易成本
@@ -119,8 +121,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 交易成本达到最低，协作达到最优
 
 ---
-
-## Slide 24
+## Slide 24* 视觉隐喻：
+  * 深普鲁士蓝底，建筑模型群展示各主流项目许可证下的生态演化
 
 - 制度设计的案例
 - Linux 内核：GPL 强制开放
@@ -130,8 +132,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度选择决定生态演化
 
 ---
-
-## Slide 25
+## Slide 25* 视觉隐喻：
+  * 深普鲁士蓝底，未绘地图边缘，智能数据如新大陆待规则界定
 
 - 开源许可证的未来
 - 新的挑战：AI 训练与开源代码
@@ -140,8 +142,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 容他权的演化不会停止
 
 ---
-
-## Slide 26
+## Slide 26* 视觉隐喻：
+  * 深普鲁士蓝底，木质书架陈列韦伯与莫杰思等学者的开源著作
 
 - 推荐阅读
 - 《开源的成功之路》——Steven Weber
@@ -150,8 +152,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 《Open Source Licensing》——Lawrence Rosen
 
 ---
-
-## Slide 27
+## Slide 27* 视觉隐喻：
+  * 深普鲁士蓝底，地平线上孤独制图者面对空白思考权利本质
 
 - 留白问题
 - 排他权是一种权力，
@@ -163,3 +165,13 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 28
+* 视觉隐喻：
+  * 深普鲁士蓝背景，天平与光谱色条交织，象征排他权与容他权的比例原则。
+
+## 第10期·排他权与容他权、比例原则与 Copyleft · 推荐阅读
+
+- 《开源的成功之路》，Steven Weber，外语教学与研究出版社，2007.06
+- 《知识产权正当性解释》，Robert P. Merges，商务印书馆，2023.05
+- David McGowan, "Legal Implications of Open-Source Software", 2001 U. Ill. L. Rev. 241
+- 《Open Source Licensing: Software Freedom and Intellectual Property Law》，Lawrence Rosen，Prentice Hall，2004.07

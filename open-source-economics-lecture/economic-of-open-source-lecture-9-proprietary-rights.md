@@ -33,7 +33,9 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 1
+
+## Slide 1* 视觉隐喻：
+  * 普鲁士蓝底，古地图卷轴标注前四期讲演坐标
 
 - 前情提要
 - 第0期：开源与经济学
@@ -48,8 +50,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 第9期：信息规则与网络经济
 
 ---
-
-## Slide 2
+## Slide 2* 视觉隐喻：
+  * 深蓝底色，三根石柱撑起数字时代的穹顶
 
 - 经济学的思维方式
 - 解释现代世界
@@ -57,8 +59,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 排他权与容他权是制度设计的核心张力
 
 ---
-
-## Slide 3
+## Slide 3* 视觉隐喻：
+  * 学术制图风格，产权光谱仪显示排他与容他渐变
 
 ## 本期核心问题
 - 排他权与容他权：开源许可证在产权光谱中的位置
@@ -67,8 +69,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Williamson L2 的深化：许可证是制度环境层的核心装置
 
 ---
-
-## Slide 4
+## Slide 4* 视觉隐喻：
+  * 古旧印刷机旁，堆叠 1662 年特许状与安妮法典
 
 ## 排他权的制度起源——从印刷特权到数字版权
 
@@ -80,16 +82,16 @@ dark academic tone, Intellectual Visual System, art taste.
 - Williamson L2：排他权是数字时代最根本的制度环境之一
 
 ---
-
-## Slide 5
+## Slide 5* 视觉隐喻：
+  * 深蓝封面上，烫金标题与第十期编号如学术铭文
 
 - 排他权与容他权、比例原则与 Copyleft
 - 开源经济学12讲座  ·  第十期
 - 「开源之道」·适兕
 
 ---
-
-## Slide 6
+## Slide 6* 视觉隐喻：
+  * 航海图风格，五个锚点标记制度分析的关键海域
 
 - 议程
 - 排他权的制度起源
@@ -101,8 +103,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 云时代的 Copyleft 新挑战
 
 ---
-
-## Slide 7
+## Slide 7* 视觉隐喻：
+  * 围栏侵入开阔草原，象征公有领域在圈地中萎缩
 
 ## 普赞诺斯基《所有权的终结》——从公有领域到圈地运动
 
@@ -113,8 +115,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 开源的出现，正是在这种"圈地运动"的缝隙中生长出来的制度创新
 
 ---
-
-## Slide 8
+## Slide 8* 视觉隐喻：
+  * 巨树根系深扎土壤，支撑数字时代知识财产大厦
 
 - 为什么要理解排他权？
 - 知识财产法是数字时代的制度基础
@@ -123,8 +125,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 容他权是开源的经济学基础
 
 ---
-
-## Slide 9
+## Slide 9* 视觉隐喻：
+  * 活字印刷字模演变为数字代码字符，展现制度变迁
 
 - 排他权的制度起源
 - 从印刷特权到数字版权
@@ -133,8 +135,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度不是中性的，制度塑造了知识的分配
 
 ---
-
-## Slide 10
+## Slide 10* 视觉隐喻：
+  * 高墙环绕知识花园，入口阶梯陡峭象征壁垒升高
 
 - 排他权扩张的制度后果
 - 普赞诺斯基《所有权的终结》
@@ -143,8 +145,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 二次利用受阻，这不是市场自然演化，而是制度选择的结果
 
 ---
-
-## Slide 11
+## Slide 11* 视觉隐喻：
+  * 像素方块构成的田野，被无形法律网格分割封锁
 
 - 数字时代的圈地运动
 - 印刷时代：书籍可以自由复印
@@ -153,8 +155,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 公有领域急剧萎缩
 
 ---
-
-## Slide 12
+## Slide 12* 视觉隐喻：
+  * 双门结构，一扇紧闭代表排他，一扇敞开代表容他
 
 - 容他权的制度逻辑
 - 开源许可证：保留版权的同时授予发布权
@@ -164,8 +166,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 不是废除排他权，而是重新定义排他权的使用方式
 
 ---
-
-## Slide 13
+## Slide 13* 视觉隐喻：
+  * 天平两端，一端锁链象征控制，一端飞鸟象征扩散
 
 - 排他权与容他权的对比
 - 排他权：阻止他人使用，目的是控制
@@ -175,8 +177,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 制度设计的目标是平衡激励与扩散
 
 ---
-
-## Slide 14
+## Slide 14* 视觉隐喻：
+  * 印章图案盖在开放文档上，形成传染性制度纹路
 
 - Copyleft 的制度设计
 - GPL 的「传染性」不是法律漏洞
@@ -186,8 +188,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是在 L2 框架内创造 L3 治理创新的典范
 
 ---
-
-## Slide 15
+## Slide 15* 视觉隐喻：
+  * 投入石子的水面，涟漪向外强制扩散象征开源激励
 
 - GPL 的逻辑
 - 如果你使用了 GPL 代码，你发布的软件也必须开源
@@ -196,4 +198,3 @@ dark academic tone, Intellectual Visual System, art taste.
 - 这是容他权的强制执行机制
 
 ---
-

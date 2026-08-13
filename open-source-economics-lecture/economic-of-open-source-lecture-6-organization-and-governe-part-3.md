@@ -33,17 +33,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 封面 slide 包含：主标题、副标题、讲者信息、时间/地点
 - 结尾 slide 包含：讨论问题或延伸思考
 
-## Slide 31
 
-* 视觉隐喻：点线交织象征科技网络、数据连接与万物互联。
+## Slide 31* 视觉隐喻：点线交织象征科技网络、数据连接与万物互联。
 
 - 治理视角下的演变
 
 ---
-
-## Slide 32
-
-* 视觉隐喻：OSPO 四阶段阶梯上升，隐喻开源治理成熟度与执行能力的层层递进。
+## Slide 32* 视觉隐喻：OSPO 四阶段阶梯上升，隐喻开源治理成熟度与执行能力的层层递进。
 
 - 治理的艺术
 - 自发产生的围绕软件项目的在线共同体
@@ -54,10 +50,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 边界划分
 
 ---
-
-## Slide 33
-
-* 视觉隐喻：深普鲁士蓝几何构成与"制度、共识、法律和文化"并列，象征制度分析收束。
+## Slide 33* 视觉隐喻：深普鲁士蓝几何构成与"制度、共识、法律和文化"并列，象征制度分析收束。
 
 - 制度、共识、法律和文化
 - Copyleft 互惠是法律的基石
@@ -68,10 +61,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 协作的文化是扩展的人类秩序
 
 ---
-
-## Slide 34
-
-* 视觉隐喻：深普鲁士蓝几何构成与"如此再回看 OSPO"并列，象征开源经济学议题的无限游戏。
+## Slide 34* 视觉隐喻：深普鲁士蓝几何构成与"如此再回看 OSPO"并列，象征开源经济学议题的无限游戏。
 
 - 如此再回看OSPO
 - 开源无法被忽视
@@ -81,15 +71,15 @@ dark academic tone, Intellectual Visual System, art taste.
 - 如此定义的OSPO，无限的游戏 ～
 
 ---
-
-## Slide 35
+## Slide 35* 视觉隐喻：
+  * 深蓝海图上，标注隐形壁垒的“开放”贸易口岸
 
 - In fact, the dirty secret of the computer industry is that everyone is "open , but not open"; they differ only in degree. Every computer company has proprietary pieces in its solutions, while every company in the industry claims to be "open," including microsoft and IBM. Bill gates likes to say that microsoft is the most open software company in the world because anyone can write an application for microsoft's proprietary APIs.
 - —— Michael A. Cusumano / David B. Yoffie《Competing On Internet Time: Lessons From Netscape And Its Battle With Microsoft》
 
 ---
-
-## Slide 36
+## Slide 36* 视觉隐喻：
+  * 深蓝背景下，卷起的羊皮纸列印后续五章的航海目录
 
 - 预告开源经济学讲座后5期主题（暂定）
 - 第八期： 商业价值与社会价值：开源的政治经济学
@@ -101,8 +91,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ---
-
-## Slide 37
+## Slide 37* 视觉隐喻：
+  * 深蓝议会厅内，阶梯席位与透明监督窗构成的治理秩序
 
 ## 奥斯特罗姆八条设计原则在开源中的对应
 
@@ -116,4 +106,19 @@ dark academic tone, Intellectual Visual System, art taste.
 - 嵌套治理（Nested Enterprises）→ CNCF 的项目→基金会→LF 多层结构
 
 - 理论出处：奥斯特罗姆《公共事物的治理之道》（1990），2009 年诺贝尔经济学奖
+---
 
+## Slide 38
+* 视觉隐喻：
+  * 深普鲁士蓝背景，网络节点与组织层级交织，象征开源共同体中的治理结构。
+
+## 第6期·组织结构与治理 · 推荐阅读
+
+- 《组织的逻辑》，Ray Fisman / Tim Sullivan，九州出版社，2023.04
+- 《企业的性质：起源、演变与发展》，Oliver Williamson / Sidney Winter，商务印书馆，2010.09
+- 《The Wealth of Networks》，Yochai Benkler，Yale Press，2006
+- Spreeuwenberg / Poell, "Android and the political economy of the mobile Internet", First Monday 17(7)，2012
+- 《Burning The Ships》，Marshall Phelps / David Kramer，东方出版社，2010.10
+- 《抵达：一部政治演化史》，包刚升，上海三联书店，2023.07
+- 《开源的成功之路》，Steven Weber，外语教学与研究出版社，2007.06
+- Steven Weber, "The Political Economy of Open Source Software"，2000

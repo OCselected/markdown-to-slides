@@ -111,3 +111,17 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
+## Slide 52
+* 视觉隐喻：
+  * 深普鲁士蓝背景，堆叠的书籍与思想脉络纹理，象征开源历史的层叠积累。
+
+## 第0期·开源与经济学 · 推荐阅读
+
+- 《创新与激励》，苏珊娜·斯科奇姆，格致出版社，2010.05
+- 《制度与经济增长》，姚洋，文汇出版社，2022.08
+- 《开源的成功之路》，Steven Weber，外语教学与研究出版社，2007.06
+- 《资本主义的法律基础》，约翰·R·康芒斯，商务印书馆，2003.04
+- [开源之史]（本博客）/posts/history-of-open-source/summary/
+- 《The Value of Open Source Software》，Hoffmann / Nagle / Zhou，HBS Working Paper 2024.01
+- 《Open Source Software and Global Entrepreneurship》，Wright / Nagle / Greenstein，Research Policy 2023
+- 《Economic Value of Open Source Software》，LF Research（YouTube）
