@@ -91,7 +91,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 50
 
 * 视觉隐喻：
-  * 金色图钉连线——12讲的统一框架：Williamson 制度层级回顾
+  * 金色图钉连线——12讲的统一框架：Williamson L1/L2/L3/L4 四层制度层级回顾
 
 - 第5期：交易成本
 - 罗纳德·科斯与《企业的性质》

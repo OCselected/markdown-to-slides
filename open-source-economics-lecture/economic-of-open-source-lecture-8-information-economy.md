@@ -65,7 +65,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 信息的边际成本为零，传统定价逻辑为何失效？
 - 网络效应如何塑造开源生态的演化方向？
 - 当价格信号消失，价值如何在没有市场的情况下被发现？
-- Williamson L1 的延伸：信息商品需要新的产权界定方式
+- Williamson L2 的延伸：信息商品需要新的产权界定方式（L2 制度环境）
 
 ---
 

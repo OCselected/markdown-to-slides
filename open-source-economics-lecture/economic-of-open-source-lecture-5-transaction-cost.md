@@ -68,7 +68,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 科斯问：为什么有些协作通过市场完成，有些通过企业？
 - 开源给出了第三种答案：通过互联网的虚拟共同体。
 - 路径依赖：技术不是被发明的，而是被累积、被建构的。
-- Williamson L1：开源的协作规范降低了一笔笔交易的协调成本
+- Williamson L1（社会嵌入）：开源的协作规范嵌入文化层面，降低了一笔笔交易的协调成本
 
 ---
 

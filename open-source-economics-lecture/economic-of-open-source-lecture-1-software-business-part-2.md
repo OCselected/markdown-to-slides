@@ -180,7 +180,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 27
 
 * 视觉隐喻：
-  * 深色背景中制度层级金字塔——开源商业模式的 Williamson L1/L2/L3
+  * 深色背景中制度层级金字塔——开源商业模式的 Williamson L1/L2/L3/L4
 - 手动画 Linux 发行版的构建之旅
 
 ---

@@ -67,7 +67,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 黑客伦理、科学伦理、强互惠：开源文化的基因是什么？
 - 信任作为社会系统的运作基础（Luhmann）
 - 回到第0期核心问题：开源是什么？——12讲回顾与适兕的回答
-- Williamson L3：社会规范层是整个制度金字塔的根基
+- Williamson L1：社会嵌入层是整个制度金字塔的根基
 
 ---
 
