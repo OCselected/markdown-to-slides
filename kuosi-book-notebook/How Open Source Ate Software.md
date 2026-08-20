@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 秩序熵增：开源代码的隐性征服
+* **副标题：** 兼论技术加速主义与组织惰性之间的制度经济学批判
+* **视觉隐喻：** 昏暗图书馆，古老石墙被发光代码根系侵蚀，烛光摇曳，阴影深邃，尘埃飞舞，暗金色调，象征开源吞噬传统软件结构。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2021
 * **元数据：** How Open Source Ate Software | Gordon Haff | Apress

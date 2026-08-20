@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 网络丰饶背后的制度性沉默
+* **副标题：** 数字共同体中的非市场生产与权力博弈研究
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2007-10-23
 * **元数据：** The Wealth of Networks | Yochai Benkler | Yale University Press

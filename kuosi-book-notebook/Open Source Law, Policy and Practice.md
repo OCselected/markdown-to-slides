@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 零价之枷：开源生态的法权与伦理博弈
+* **副标题：** 从市场交易到共同体利益的法律机制与社会秩序重构
+* **视觉隐喻：** 昏暗书房，悬浮古老法典，书页化微光飞入阴影，交织成无锁链天平，烛火摇曳，尘埃飞舞，复古质感。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2023-1
 * **元数据：** Open Source Law, Policy and Practice | Amanda Brock | Oxford University Press

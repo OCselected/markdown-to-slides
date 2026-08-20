@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 创新公地：自治共同体的隐秘法则
+* **副标题：** 剖析共享文化背后的制度经济与社会学逻辑
+* **视觉隐喻：** 昏暗古老图书馆，散落手稿与铜制地球仪，无形金丝编织成网，连接书籍与沉默剪影，烛光摇曳，深绿阴影，神秘共享氛围。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2019-8
 * **元数据：** Innovation Commons | Jason Potts | Oxford University Press

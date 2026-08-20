@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 开放与封闭的黑暗契约
+* **副标题：** 制度经济学视角下的软件产业竞争逻辑
+* **视觉隐喻：** 古老维多利亚书房，齿轮石像对峙，电缆如藤蔓缠绕，融化怀表象征互联网时间，阴影隐藏私有锁链，烛光映照科技博弈，尘埃飞舞。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 12 January, 2000
 * **元数据：** Competing On Internet Time: Lessons From Netscape And Its Battle With Microsoft | Michael A. Cusumano/David B. Yoffie | Free Press

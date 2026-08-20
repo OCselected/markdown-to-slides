@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 自由之火的理性枷锁
+* **副标题：** 揭开开源许可背后的制度经济学与社会契约真相
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2004-8
 * **元数据：** Understanding Open Source and Free Software Licensing | Andrew M. St. Laurent | O'Reilly Media

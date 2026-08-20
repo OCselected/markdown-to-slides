@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 数字修道院里的无声劳作与倦怠
+* **副标题：** 剖析开源生态中的劳动异化与制度困境
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2024-4
 * **元数据：** open source projects | John Mertic | Packt

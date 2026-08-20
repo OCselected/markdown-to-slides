@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 代码乌托邦的暗面：开源社区的权力引擎
+* **副标题：** 资本为燃料人力为引擎：开源软件的社会学审视
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2001-12-31
 * **元数据：** Understanding Open Source Software Development | Joseph Feller/Brian Fitzgerald | Addison-Wesley Professional

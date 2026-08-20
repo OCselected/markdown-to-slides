@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 解放的密码：数字公地里的权力博弈与反抗
+* **副标题：** 开源治理的社会技术策略、版权法悖论与公共领域构建
+* **视觉隐喻：** 昏暗书房中，发光二进制藤蔓缠绕古老法典，锈蚀版权枷锁崩裂，显露精密机械内核，烛火摇曳。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2007-08-14
 * **元数据：** Decoding Liberation | Samir Chopra/Scott Dexter/萨米尔·乔普拉 | Routledge

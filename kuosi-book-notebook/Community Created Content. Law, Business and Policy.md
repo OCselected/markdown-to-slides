@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 无形疆域的法理：社群内容的暗涌
+* **副标题：** 论数字时代法律管辖权与经济模式的制度性重构
+* **视觉隐喻：** 昏暗书房，手稿冲刷法律锁链缠绕的青铜地球仪。烛光墙影化作网格，象征创作与政策博弈。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2007-01-12
 * **元数据：** Community Created Content. Law, Business and Policy | Herkko Hietanen; Ville Oksanen; Mikko Valimaki | Turre Publishing

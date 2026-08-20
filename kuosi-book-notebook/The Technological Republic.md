@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 技术共和与文明黄昏
+* **副标题：** 智能算法下的政治经济学与文化秩序重构
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2025-2-18
 * **元数据：** The Technological Republic | Alexander C. Karp/Nicholas W. Zamiska | Crown Currency

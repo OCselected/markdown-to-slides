@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 隐秘的丰饶：开放秩序下的人类知识史
+* **副标题：** 基于制度分析揭示知识共享与全球繁荣的内在逻辑
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2020-9-3
 * **元数据：** Open | Johan Norberg | Atlantic Books, 2020

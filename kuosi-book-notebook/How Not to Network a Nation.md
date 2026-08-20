@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 网络主权的黄昏挽歌
+* **副标题：** 解码数字疆域背后的制度性失灵与经济博弈
+* **视觉隐喻：** 昏暗图书馆废墟，堆满泛黄古籍，石质拱门裂痕溢出蓝色光纤，背景隐约可见崩塌的星形轮廓，冷灰蓝调，神秘孤寂。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2016-3-18
 * **元数据：** How Not to Network a Nation | Benjamin Peters | The MIT Press

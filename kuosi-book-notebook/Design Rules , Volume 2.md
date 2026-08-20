@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 数字疆域之隐秘契约
+* **副标题：** 分布式治理下的组织形态与协同经济机制
+* **视觉隐喻：** 古老藏书阁深处，石质架构与有机根茎交织共生，尘埃微光，羊皮纸质感，深褐墨色，繁复结构隐于暗影，秩序与野性并存
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2024-12-17
 * **元数据：** Design Rules , Volume 2 | Carliss Y. Baldwin | The MIT Press

@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 标准之权：数字时代意识形态的隐秘结构
+* **副标题：** 剖析开放标准如何重塑数字经济的制度逻辑与社会结构
+* **视觉隐喻：** 黑暗石墙图书馆中，锈蚀锁链化为发光数字网格，悬浮于古老卷轴之上，烛光摇曳间象征开源打破封闭，冷峻氛围诠释数字意识形态
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2014
 * **元数据：** Open Standards and the Digital Age | Andrew L. Russell | Cambridge University Press

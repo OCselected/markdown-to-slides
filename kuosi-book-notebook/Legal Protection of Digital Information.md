@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 数字信息的法权枷锁与永恒契约
+* **副标题：** 从安妮法令到数字时代的制度演变与社会控制
+* **视觉隐喻：** 幽暗古书房，羊皮纸卷自动展开，墨迹升华为蓝色数字流，阴影笼罩，古老黄铜印章守护，烛火摇曳，静谧庄严。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 
 * **元数据：** Legal Protection of Digital Information | Hollaar, Lee A. | Bna Books

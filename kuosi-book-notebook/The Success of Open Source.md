@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 逆向版权的隐秘契约
+* **副标题：** 通用公共许可证背后的政治经济学与治理逻辑
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2004-04-30
 * **元数据：** The Success of Open Source | Steven Weber | Harvard University Press

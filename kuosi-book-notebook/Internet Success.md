@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 同伴生产的秩序、混沌与裂隙
+* **副标题：** 本克勒视角下开源协作的通信机制与社会经济分析
+* **视觉隐喻：** 幽暗学术殿堂深处，古老书脊间流淌发光丝线，编织成庞大网络，连接烛火与尘埃，象征开源协作在荒原上的隐秘共生。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2012-6
 * **元数据：** Internet Success | Schweik, Charles M/English, Robert C | The MIT Press

@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 无形公地的黑暗契约
+* **副标题：** 代码自由与资本入侵之间的制度防线
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2003
 * **元数据：** Protecting the Virtual Commons | R. van Wendel de Joode,/J.A. de Bruijn/M.J.G. van Eeten | T.M.C. ASSER PRESS

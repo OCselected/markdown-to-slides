@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 开源异端与数字公社的悖论
+* **副标题：** 剖析代码共享背后的制度逻辑与社群价值冲突
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2008-2
 * **元数据：** The Open Source Alternative | Meeker, Heather J.

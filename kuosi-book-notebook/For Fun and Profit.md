@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 代码圣战与资本主义的阴影
+* **副标题：** 黑客伦理、商业围剿与技术社会制度的演变
+* **视觉隐喻：** 昏暗图书馆角落，复古绿色终端散发幽光，数据流化作烟雾与古老羊皮纸交织，象征早期黑客伦理与知识共享的隐秘网络。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2017-8-11
 * **元数据：** For Fun and Profit | Christopher Tozzi | The MIT Press

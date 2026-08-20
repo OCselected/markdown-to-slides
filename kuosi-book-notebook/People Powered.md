@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 沉默的资本与喧嚣的共同体
+* **副标题：** 解析群体参与背后的隐性经济逻辑与社会资本困境
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2019-11-12
 * **元数据：** People Powered | Jono Bacon/约诺· 培根 | HarperCollins Leadership

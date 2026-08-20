@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 信赖陌生人：专业化秩序的隐秘根基
+* **副标题：** 制度经济学视角下的信任机制与市场秩序重构
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2016-6-14
 * **元数据：** Specialization and Trade | Arnold Kling | Cato Institute (June 14, 2016)

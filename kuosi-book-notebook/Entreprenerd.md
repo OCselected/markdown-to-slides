@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 知识公地的制度性围猎与突围
+* **副标题：** 解析自由软件许可协议背后的制度经济学、商业逻辑与社会学困境
+* **视觉隐喻：** 幽暗古籍室，烛火旁生锈齿轮投射巨大阴影，如日食遮蔽金色企业塔楼，尘埃飞舞，象征开源颠覆垄断，深邃神秘氛围，冷色调光影
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2021-5-21
 * **元数据：** Entreprenerd | Bruno Lowagie | Independently published

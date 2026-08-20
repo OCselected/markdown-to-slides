@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 代码链条上的法理迷踪
+* **副标题：** 解析开源许可下的产权链条与制度约束
+* **视觉隐喻：** 幽暗书房中，陈旧卷轴化作沉重黄铜链条，贯穿法律印章与散页，烛光摇曳间象征代码版权传承的束缚与自由。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2004-07-22
 * **元数据：** Open Source Licensing | Lawrence Rosen | Prentice Hall PTR

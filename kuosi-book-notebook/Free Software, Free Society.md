@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 知识深渊中的自由契约
+* **副标题：** 论数字时代产权制度与公共领域边界的重塑
+* **视觉隐喻：** 幽暗图书馆，锁链崩裂，古书悬浮，代码化作发光白鸽冲破阴影，烛光摇曳照亮自由路径，深色调，神秘氛围
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2002-10
 * **元数据：** Free Software, Free Society | Richard M. Stallman/Lawrence Lessig/Joshua Gay | Free Software Foundation

@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 智性深渊：共生演化与认知枷锁
+* **副标题：** 审视智能协作机制如何重塑社会结构、经济逻辑与认知权力体系
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2025-9-23
 * **元数据：** What Is Intelligence? | Blaise Aguera y Arcas | The MIT Press

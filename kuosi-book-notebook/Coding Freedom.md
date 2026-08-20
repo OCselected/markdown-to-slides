@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 被囚禁的代码：自由主义与数字枷锁
+* **副标题：** 聚焦开源运动中的产权政治与自由主义传统
+* **视觉隐喻：** 幽暗书房内，打字机键帽化作发光羽毛，穿过堆叠的法典与铜线，烛光摇曳，象征代码编织的自由与秩序，阴影深邃。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2012-11-25
 * **元数据：** Coding Freedom | E. Gabriella Coleman | Princeton University Press

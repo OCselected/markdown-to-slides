@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 秩序的阴影：法律基石与社会契约的暗流
+* **副标题：** 解析法律基础设施如何塑造经济行为与社会互动结构
+* **视觉隐喻：** 幽暗图书馆，古老法典堆砌成地基支撑微缩城市，尘埃中烛光摇曳，阴影笼罩，象征法律基石维系社会秩序与繁荣。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2013-1-1
 * **元数据：** Infrastructure | Brett M. Frischmann | Oxford University Press

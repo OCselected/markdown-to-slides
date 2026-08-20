@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 共同体治理的幽暗辩证
+* **副标题：** 基于制度逻辑与社会资本视角的开源协作分析
+* **视觉隐喻：** 昏暗图书馆内，泛黄书页化作金色藤蔓缠绕地球仪，连接各大洲。烛光摇曳，尘埃飞舞，古籍堆叠，光影神秘庄重，隐喻全球协作治理。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2024-11-27
 * **元数据：** Fostering Open Source Culture | Arun Gupta | Apress

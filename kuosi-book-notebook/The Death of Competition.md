@@ -36,8 +36,8 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 竞争消亡：进化论视角的商业葬礼
+* **副标题：** 从生态位博弈到价值网络重构的制度经济学考察
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 1997-4-11
 * **元数据：** The Death of Competition | James F. Moore | Harper Paperbacks

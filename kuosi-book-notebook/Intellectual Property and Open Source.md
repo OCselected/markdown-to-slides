@@ -36,8 +36,9 @@ dark academic tone, Intellectual Visual System, art taste.
 ---
 
 ## Slide 1: Cover
-* **主标题：** [待生成]
-* **副标题：** [待生成]
+* **主标题：** 思想的镣铐与代码的公域解放
+* **副标题：** 解析知识产权制度下开源项目的经济逻辑与社会契约
+* **视觉隐喻：** 昏暗图书馆，旧法典化作金色光流，冲破断裂枷锁，汇入公共领域，象征思想共享，深色学术风格，光影交错，无文字。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2008-7-25
 * **元数据：** Intellectual Property and Open Source | Van Lindberg | O'Reilly Media
