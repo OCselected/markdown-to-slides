@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 数字修道院里的无声劳作与倦怠
 * **副标题：** 剖析开源生态中的劳动异化与制度困境
+* **视觉隐喻：** 昏暗书房，烛光照亮由墨线纠缠而成的地球仪，散落泛黄信件，象征全球异步协作与维护的疲惫，阴影深邃，暗黑学院风。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2024-4
 * **元数据：** open source projects | John Mertic | Packt

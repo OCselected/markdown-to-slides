@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 逆向版权的隐秘契约
 * **副标题：** 通用公共许可证背后的政治经济学与治理逻辑
+* **视觉隐喻：** 幽暗图书馆深处，古籍悬浮于烛火旁，金色锁链崩解为光尘，缠绕住周围阴影中的学者，象征知识共享的隐秘契约。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2004-04-30
 * **元数据：** The Success of Open Source | Steven Weber | Harvard University Press

@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 开源异端与数字公社的悖论
 * **副标题：** 剖析代码共享背后的制度逻辑与社群价值冲突
+* **视觉隐喻：** 幽暗书房，泛黄书页悬浮断裂锁链，烛火照亮飞舞符文，阴影中隐现天平与齿轮，静谧庄重，象征代码自由与法律博弈。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2008-2
 * **元数据：** The Open Source Alternative | Meeker, Heather J.

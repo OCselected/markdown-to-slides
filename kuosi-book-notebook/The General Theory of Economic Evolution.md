@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 规则之影：经济演化与知识秩序的重构
 * **副标题：** 从制度变迁视角审视经济知识生长与规则协调的复杂系统
+* **视觉隐喻：** 昏暗图书馆中，泛黄羊皮卷自动翻页，墨迹化作金色机械藤蔓缠绕沙漏，背后阴影浮现齿轮构成的秩序之树，烛光摇曳，尘埃飞舞。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2007-10
 * **元数据：** The General Theory of Economic Evolution | Dopfer, Kurt/ Potts, Jason

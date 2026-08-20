@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 竞争消亡：进化论视角的商业葬礼
 * **副标题：** 从生态位博弈到价值网络重构的制度经济学考察
+* **视觉隐喻：** 昏暗图书馆角落，旧铜钟内部齿轮与古老藤蔓交织共生，烛光摇曳，尘埃飞舞，深色木质，神秘静谧，深色学术风格，精致细节。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 1997-4-11
 * **元数据：** The Death of Competition | James F. Moore | Harper Paperbacks

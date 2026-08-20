@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 无形公地的黑暗契约
 * **副标题：** 代码自由与资本入侵之间的制度防线
+* **视觉隐喻：** 幽暗图书馆深处，古老石制盾牌守护悬浮的光之河，阴影中无数双手编织无形防线抵御外部吞噬的黑暗，烛光微微摇曳，史诗般厚重质感
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2003
 * **元数据：** Protecting the Virtual Commons | R. van Wendel de Joode,/J.A. de Bruijn/M.J.G. van Eeten | T.M.C. ASSER PRESS

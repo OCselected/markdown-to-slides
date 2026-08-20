@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 开源治理中的文化变革阴影
 * **副标题：** 从自由软件到商业开源的制度演进与文化冲突
+* **视觉隐喻：** 哥特式书房，橡树根系穿透商业契约，枝叶隐入黑暗，烛光映照尘封书堆，微尘飞舞。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 
 * **元数据：** business success with open source | VM (Vicky) Brasseur | The Pragmatic Programmers

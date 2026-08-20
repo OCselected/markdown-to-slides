@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 无序之源：开源经济背后的制度枷锁
 * **副标题：** 论许可证边界、非时限协作与开源社群的社会构成
+* **视觉隐喻：** 古老图书馆阴影中，皮革书籍悬浮咬合成机械心脏，缝隙迸发幽蓝代码火花，隐喻开源经济体系超越时间的自由秩序。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 20 September, 2002
 * **元数据：** The Business and Economics of Linux and Open Source | Martin Fink | Prentice Hall PTR

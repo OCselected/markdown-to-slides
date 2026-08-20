@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 必然性的黄昏：信息稀缺与权力牢笼
 * **副标题：** 剖析信息丰富世界下的注意力稀缺与官僚异化
+* **视觉隐喻：** 古旧书房内，堆积如山的档案化作冰冷铁笼，昏黄烛火旁，沙漏在信息洪流中无声流逝，象征过载下的注意力稀缺。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2016-6-7
 * **元数据：** The Inevitable | Kevin Kelly | Viking

@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 智性深渊：共生演化与认知枷锁
 * **副标题：** 审视智能协作机制如何重塑社会结构、经济逻辑与认知权力体系
+* **视觉隐喻：** 昏暗图书馆内，黄铜齿轮与发光神经脉络交织成网，烛光映照悬浮古籍，象征智慧协作与集体演化，神秘深邃色调。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2025-9-23
 * **元数据：** What Is Intelligence? | Blaise Aguera y Arcas | The MIT Press

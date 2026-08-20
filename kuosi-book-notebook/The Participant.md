@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 沉默的合谋：制度化参与的阴影
 * **副标题：** 制度、经济与社会视角下的现代参与机制及其权力逻辑
+* **视觉隐喻：** 烛光幽暗的档案室，身影融入复杂齿轮，尘埃如雾气扩散，阴影交织成网，象征个体消融于无形程序。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2020-1-21
 * **元数据：** The Participant | Christopher M. Kelty | The University of Chicago Press

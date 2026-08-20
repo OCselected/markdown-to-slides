@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 盲群之智：混沌深渊下的独立理性
 * **副标题：** 剖析开放社会困境与市场随机性背后的集体智慧机制
+* **视觉隐喻：** 哥特图书馆烛光阴影中，无数微小人影与尘埃汇聚成一只深邃巨眼，悬浮于堆叠的旧书之上，凝视虚空。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2005-3
 * **元数据：** The Wisdom of Crowds | Surowiecki, James | Little Brown

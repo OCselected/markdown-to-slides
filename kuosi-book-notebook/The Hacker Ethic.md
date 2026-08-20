@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 数字深渊中的劳动异化与自由重构
 * **副标题：** 关于工作伦理、休闲伦理与知识劳动的社会学批判
+* **视觉隐喻：** 古旧图书馆阴影中，皮革典籍书脊裂开，溢出幽蓝电路脉络，烛光投射悬浮光尘，暗喻创造激情超越生存。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2002-02-12
 * **元数据：** The Hacker Ethic | Pekka Himanen | Random House Trade Paperbacks

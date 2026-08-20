@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 契约之笼：软件授权的法理暗面
 * **副标题：** 从资产保护到开源悖论：制度、经济与知识权力的社会学分析
+* **视觉隐喻：** 橡木书桌，烛光照亮泛黄羊皮卷，墨迹化作二进制代码，铁链锁住卷轴，一束光揭开面纱，契约上闪烁着微弱电子光。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2009-6
 * **元数据：** The Software License Unveiled | Phillips, Douglas E. | OXFORD

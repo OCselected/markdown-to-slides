@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 理性暗影下的伦理扩张
 * **副标题：** 制度演进与社会学视野下的利他主义考察
+* **视觉隐喻：** 幽暗图书馆深处，孤独身影立于复古黄铜滚梯上行，周围悬浮古老书卷，冷冽微光穿透厚重阴影，无尽上升的未知旅程
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 1981
 * **元数据：** the expanding circle | Peter Singer | Oxford University Press

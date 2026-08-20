@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 自由之代价：开源代码背后的权力图谱
 * **副标题：** 基于制度经济学与行为社会学的开源动机解析
+* **视觉隐喻：** 幽暗图书馆，多棱镜折射古籍微光，形成复杂网络，阴影中剪影学者凝视黄铜星盘，冷峻神秘，象征开源协作。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2007-1-26
 * **元数据：** Perspectives on Free and Open Source Software | Feller, Joseph (EDT)/ Fitzgerald, Brian (EDT)/ Hissam, Scott A. (EDT)/ Lakhani, Karim R. (EDT) | The MIT Press

@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 自由之枷：开源许可的隐秘政治
 * **副标题：** 制度变迁视角下的代码权力与社会共同体构建研究
+* **视觉隐喻：** 昏暗烛光下的古老图书馆，石桌中央一本无字古书自动翻开，金色光芒化作发光藤蔓穿透生锈锁链与石墙，照亮黑暗角落。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2005-05
 * **元数据：** The Rise of Open Source Licensing | Mikko Valimaki | Turre Publishing

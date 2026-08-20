@@ -38,6 +38,7 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 1: Cover
 * **主标题：** 繁荣陨落：美国增长神话的黄昏挽歌
 * **副标题：** 剖析品牌制度崛起与家庭生产瓦解背后的社会经济结构变迁
+* **视觉隐喻：** 昏暗图书馆中，古老黄铜齿轮时钟锈蚀崩塌，碎片夹杂维多利亚旧衣物与褪色布标，烛火摇曳，象征经济增长的兴衰与尘埃。
 * **讲者信息：** 「开源之道」·适兕
 * **时间/地点：** 2016-1-12
 * **元数据：** The Rise and Fall of American Growth | Robert J. Gordon/罗伯特·戈登 | Princeton University Press
