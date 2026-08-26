@@ -180,8 +180,17 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 27
 
 * 视觉隐喻：
-  * 深色背景中制度层级金字塔——开源商业模式的 Williamson L1/L2/L3/L4
-- 手动画 Linux 发行版的构建之旅
+  * Gentoo 企鹅站在编译进度条前——从零构建一个发行版的制度之旅
+- **手动画 Gentoo Linux 的构建之旅**——每个包从源码编译，理解发行版如何组织数千个上游项目
+- **1. 硬件就绪**：U 盘刻录 LiveCD ISO，BIOS/UEFI 引导进入临时系统
+- **2. 下载 stage3 快照**：官方预编译的最小镜像（30MB），包含 bash、coreutils、glibc、Portage——这是 Gentoo 的"制度基础"
+- **3. 配置 Portage 同步**：`make.conf` 写入 `ACCEPT_KEYWORDS`、`MAKEOPTS`、`FEATURES`——这是发行版的"宪章"，决定了什么包能装、怎么编译
+- **4. 首次 emerge**：`emerge --sync` 同步 ebuild 仓库（数千个上游项目的元数据），然后 `chroot` 进入新根，`emerge --newuse --deep --update world`——所有已安装包重新编译
+- **5. USE flags 选择**：每个包有一堆 USE flag（`+gtk -qt5 +dbus -java`），同一份源码可以编译成完全不同的样子——发行版的制度选择在这里体现
+- **6. 内核构建**：`genkernel all` 或手动 `make menuconfig`——从 Linux 上游源码选驱动、文件系统、模块，编译成 `bzImage`，这是发行版的"宪法"
+- **7. 用户空间套件**：`emerge xorg-server` 编译 X11，`emerge kde-plasma/plasma-meta` 递归编译 KDE 桌面（~600 个依赖包），每个依赖包各自从源码编译，编译时间以小时计
+- **8. 包管理哲学**：对比 Debian（预编译 deb）→ Fedora（预编译 rpm）→ Gentoo（全部源码编译）——越接近源码，构建越慢，但定制化和透明度越高
+- **9. 制度启示**：发行版 = 一套"制度契约"，把数千个上游项目的协作秩序固化为一套可安装的系统；USE flags 是契约的"弹性条款"，内核配置是"宪法"，stage tarball 是"建国元勋"
 
 ---
 
@@ -206,10 +215,9 @@ dark academic tone, Intellectual Visual System, art taste.
 
 ---
 
-## Slide 30
+## Slide 31
 * 视觉隐喻：
-  * 深普鲁士蓝背景，工厂流水线到云平台的演化路径，象征软件生产方式的变迁。
-
+  * 深普鲁士蓝书架上排列的五本书——制度经济学视角下的软件工业阅读地图
 ## 第1期·软件的生产、分销和消费 · 推荐阅读
 
 - 《大教堂与集市》，Eric S. Raymond，机械工业出版社，2014.05
@@ -217,4 +225,5 @@ dark academic tone, Intellectual Visual System, art taste.
 - 《持续交付2.0》，乔梁，人民邮电出版社，2018.12
 - 《订阅》，Robert S. Kienscherf / Mani Peivand，中信出版社，2018.12
 - 《GO TO》，Steve Lohr，Basic Books，2001.10
+- 《构建之法（第四版）》，邹欣，人民邮电出版社，2026.04
 - Luanne Johnson, "Creating the Software Industry", IEEE Annals of History of Computing, 2002
