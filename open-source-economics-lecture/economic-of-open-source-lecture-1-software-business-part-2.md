@@ -218,12 +218,11 @@ dark academic tone, Intellectual Visual System, art taste.
 ## Slide 31
 * 视觉隐喻：
   * 深普鲁士蓝书架上排列的五本书——制度经济学视角下的软件工业阅读地图
-## 第1期·软件的生产、分销和消费 · 推荐阅读
-
-- 《大教堂与集市》，Eric S. Raymond，机械工业出版社，2014.05
-- 《人月神话》，F. P. Brooks，清华大学出版社，2015.04
-- 《持续交付2.0》，乔梁，人民邮电出版社，2018.12
-- 《订阅》，Robert S. Kienscherf / Mani Peivand，中信出版社，2018.12
-- 《GO TO》，Steve Lohr，Basic Books，2001.10
-- 《构建之法（第四版）》，邹欣，人民邮电出版社，2026.04
-- Luanne Johnson, "Creating the Software Industry", IEEE Annals of History of Computing, 2002
+* 第1期·软件的生产、分销和消费 · 推荐阅读
+* 《大教堂与集市》，Eric S. Raymond，机械工业出版社，2014.05
+* 《人月神话》，F. P. Brooks，清华大学出版社，2015.04
+* 《持续交付2.0》，乔梁，人民邮电出版社，2018.12
+* 《订阅》，Robert S. Kienscherf / Mani Peivand，中信出版社，2018.12
+* 《GO TO》，Steve Lohr，Basic Books，2001.10
+* 《构建之法（第四版）》，邹欣，人民邮电出版社，2026.04
+* Luanne Johnson, "Creating the Software Industry", IEEE Annals of History of Computing, 2002
