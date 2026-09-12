@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>长期演化追踪 · 不是终点</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{
+  --bg:#0f172a;
+  --bg-card:#1E293B;
+  --primary:#00BCD4;
+  --primary-dark:#0097A7;
+  --accent:#FF7043;
+  --text-main:#F1F5F9;
+  --text-muted:#94A3B8;
+  --text-dim:#64748B;
+  --line:rgba(255,255,255,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;}
+body{font-family:'Inter','SF Pro Display','SF Pro Text','PingFang SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;color:var(--text-main);-webkit-font-smoothing:antialiased;}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;}
+#bg{position:absolute;inset:0;z-index:0;background:radial-gradient(1400px 700px at 78% 22%, rgba(0,188,212,0.13), transparent 62%);}
+#ct{position:absolute;inset:0;z-index:1;padding:48px 64px;display:flex;flex-direction:column;}
+.header{display:flex;flex-direction:column;gap:14px;padding-bottom:26px;border-bottom:1px solid var(--line);}
+.kicker{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.32em;color:var(--primary);font-weight:500;text-transform:uppercase;}
+.kicker::before{content:"";display:inline-block;width:28px;height:1px;background:var(--primary);}
+.kicker::after{content:"";display:inline-block;width:6px;height:6px;background:var(--primary);border-radius:50%;box-shadow:0 0 10px rgba(0,188,212,0.9);}
+.title{font-size:46px;font-weight:800;letter-spacing:0.01em;line-height:1.15;color:var(--text-main);}
+.title .accent-word{color:var(--primary);}
+.title .dot{color:var(--text-dim);font-weight:400;margin:0 8px;}
+.subline{font-size:18px;line-height:1.55;color:var(--text-muted);max-width:1000px;font-weight:300;}
+.subline .highlight{color:var(--primary);font-weight:500;}
+.subline .orange{color:var(--accent);font-weight:600;letter-spacing:0.03em;font-style:italic;}
+.main{flex:1;min-height:400px;position:relative;margin-top:20px;}
+.timeline{position:relative;width:100%;height:100%;min-height:400px;}
+.line-row{position:relative;width:100%;height:400px;}
+.line{position:absolute;left:0;right:0;top:200px;height:2px;background:linear-gradient(90deg, rgba(0,188,212,0.95) 0%, rgba(0,188,212,0.8) 60%, rgba(0,188,212,0.35) 92%, transparent 100%);box-shadow:0 0 18px rgba(0,188,212,0.55);}
+.line-glow{position:absolute;left:0;right:0;top:190px;height:24px;background:radial-gradient(ellipse at center, rgba(0,188,212,0.22), transparent 70%);filter:blur(6px);pointer-events:none;}
+.cols{position:relative;display:flex;width:100%;height:400px;}
+.col{flex:1;position:relative;height:400px;}
+.col .side{position:absolute;left:50%;transform:translateX(-50%);}
+.col .side.top{top:0;display:flex;flex-direction:column;align-items:center;}
+.col .side.bot{top:232px;display:flex;flex-direction:column;align-items:center;}
+.connector{width:1px;height:36px;background:linear-gradient(180deg, rgba(0,188,212,0) 0%, rgba(0,188,212,0.7) 100%);}
+.connector-bot{background:linear-gradient(180deg, rgba(0,188,212,0.7) 0%, rgba(0,188,212,0) 100%);}
+.dot-wrap{position:absolute;left:50%;top:184px;transform:translateX(-50%);width:32px;height:32px;display:flex;align-items:center;justify-content:center;z-index:3;}
+.dot-ring{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle, rgba(0,188,212,0) 0%, rgba(0,188,212,0) 30%, rgba(0,188,212,0.35) 55%, rgba(0,188,212,0) 80%);}
+.dot-core{position:relative;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle, #ffffff 0%, var(--primary) 55%, var(--primary-dark) 100%);box-shadow:0 0 24px rgba(0,188,212,0.95),0 0 6px rgba(0,188,212,1);}
+.dot-halo{position:absolute;left:50%;top:200px;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle, rgba(0,188,212,0.25), transparent 70%);filter:blur(6px);pointer-events:none;z-index:1;}
+.node-label{padding:8px 16px;border:1px solid rgba(0,188,212,0.45);background:rgba(0,188,212,0.07);color:var(--primary);font-size:14px;font-weight:600;letter-spacing:0.22em;border-radius:2px;box-shadow:0 0 22px rgba(0,188,212,0.18);}
+.node-desc{padding:8px 16px;background:rgba(30,41,59,0.72);border:1px solid rgba(255,255,255,0.09);color:var(--text-main);font-size:13px;line-height:1.55;font-weight:400;max-width:260px;text-align:center;border-radius:2px;}
+.node-desc .tag{color:var(--primary);font-weight:600;}
+.node-desc .warn{color:var(--accent);font-weight:600;letter-spacing:0.06em;}
+.col.start .side.top{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.col.start .side.top .connector{background:linear-gradient(180deg, rgba(0,188,212,0) 0%, rgba(0,188,212,0.7) 100%);}
+.start-tag{padding:8px 16px;background:rgba(255,112,67,0.08);border:1px solid rgba(255,112,67,0.45);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:0.28em;border-radius:2px;box-shadow:0 0 20px rgba(255,112,67,0.2);}
+.start-date{margin-top:12px;font-size:17px;color:var(--text-main);font-weight:600;letter-spacing:0.04em;font-variant-numeric:tabular-nums;}
+.start-sub{margin-top:8px;font-size:10px;color:var(--text-dim);letter-spacing:0.28em;text-transform:uppercase;}
+.footer{display:grid;grid-template-columns:260px 1fr;gap:32px;margin-top:20px;padding-top:22px;border-top:1px solid var(--line);}
+.footer-header{display:flex;flex-direction:column;gap:6px;}
+.footer-tag{font-size:10px;color:var(--primary);letter-spacing:0.3em;font-weight:600;}
+.footer-title{font-size:19px;color:var(--text-main);font-weight:700;letter-spacing:0.02em;}
+.footer-sub{font-size:11px;color:var(--text-dim);letter-spacing:0.22em;}
+.footer-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.metric{padding:12px 20px;background:rgba(30,41,59,0.5);border-left:2px solid var(--primary);position:relative;}
+.metric-title{font-size:16px;color:var(--text-main);font-weight:600;margin-bottom:4px;letter-spacing:0.02em;}
+.metric-desc{font-size:11px;color:var(--text-muted);line-height:1.5;letter-spacing:0.04em;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+
+    <div class="header">
+      <div class="kicker"><span>EVOLUTION TRACKING · SNAPSHOT 01</span></div>
+      <h1 class="title"><span>长期演化追踪</span><span class="dot">·</span><span class="accent-word">不是终点</span></h1>
+      <p class="subline">进化论的哲学里<span class="highlight">没有终点</span>——<span class="orange">Keep Movement</span></p>
+    </div>
+
+    <div class="main">
+      <div class="timeline">
+        <div class="line-row">
+          <div class="line"></div>
+          <div class="line-glow"></div>
+          <div class="cols">
+            <div class="col start">
+              <div class="side top">
+                <div class="start-tag"><span>START</span></div>
+                <div class="start-date"><span>演讲 · 2026-09-21</span></div>
+                <div class="start-sub"><span>当下快照 · Snapshot Now</span></div>
+                <div class="connector"></div>
+              </div>
+              <div class="dot-halo"></div>
+              <div class="dot-wrap"><span class="dot-ring"></span><span class="dot-core"></span></div>
+            </div>
+            <div class="col">
+              <div class="side top">
+                <div class="node-label"><span>定位</span></div>
+                <div class="connector"></div>
+              </div>
+              <div class="dot-halo"></div>
+              <div class="dot-wrap"><span class="dot-ring"></span><span class="dot-core"></span></div>
+              <div class="side bot">
+                <div class="connector connector-bot"></div>
+                <div class="node-desc"><span>本演讲是<span class="tag">长期演化追踪系统</span>的<span class="tag">第一个快照</span>——记录起点，而非终局。</span></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="side top">
+                <div class="node-label"><span>需求侧</span></div>
+                <div class="connector"></div>
+              </div>
+              <div class="dot-halo"></div>
+              <div class="dot-wrap"><span class="dot-ring"></span><span class="dot-core"></span></div>
+              <div class="side bot">
+                <div class="connector connector-bot"></div>
+                <div class="node-desc"><span>持续追踪 <span class="tag">Issue 演化</span>，每周更新——需求信号随时间沉淀。</span></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="side top">
+                <div class="node-label"><span>供给侧</span></div>
+                <div class="connector"></div>
+              </div>
+              <div class="dot-halo"></div>
+              <div class="dot-wrap"><span class="dot-ring"></span><span class="dot-core"></span></div>
+              <div class="side bot">
+                <div class="connector connector-bot"></div>
+                <div class="node-desc"><span>持续追踪 <span class="tag">PR 演化</span>，每周更新——供给能力随协作生长。</span></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="side top">
+                <div class="node-label"><span>消费侧</span></div>
+                <div class="connector"></div>
+              </div>
+              <div class="dot-halo"></div>
+              <div class="dot-wrap"><span class="dot-ring"></span><span class="dot-core"></span></div>
+              <div class="side bot">
+                <div class="connector connector-bot"></div>
+                <div class="node-desc"><span>寻找<span class="warn">更强信号</span>——涵盖 <span class="tag">PyPI / Docker / Discord</span> 等多元来源。</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-header">
+        <div class="footer-tag"><span>INSTITUTIONAL DIMENSIONS</span></div>
+        <div class="footer-title"><span>制度维度</span></div>
+        <div class="footer-sub"><span>三个并行追踪维度</span></div>
+      </div>
+      <div class="footer-metrics">
+        <div class="metric">
+          <div class="metric-title"><span>度量权</span></div>
+          <div class="metric-desc"><span>谁定义"好"，谁定义"多"——量度标准的分配与共识。</span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-title"><span>可靠性</span></div>
+          <div class="metric-desc"><span>信号是否稳定、可复现、经得起长周期检验。</span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-title"><span>产权</span></div>
+          <div class="metric-desc"><span>数据与信号的归属边界——贡献、复用与流动。</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

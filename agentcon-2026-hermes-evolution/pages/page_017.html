@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>消费侧 · 弱代理的采纳信号 · Page 17</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #00BCD4;
+  --accent: #FF7043;
+  --neutral-dark: #1E293B;
+  --bg-0: #0B1220;
+  --bg-1: #111827;
+  --bg-2: #161E32;
+  --bg-3: #1E293B;
+  --text: #F1F5F9;
+  --text-2: #94A3B8;
+  --text-3: #64748B;
+  --border: #334155;
+  --border-light: #475569;
+  --cool: #475569;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #000;
+  color: var(--text);
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0B1220 0%, #0F172A 45%, #111827 100%);
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#bg .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,188,212,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,188,212,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+#bg .glow-tl {
+  position: absolute;
+  top: -180px;
+  left: -160px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,188,212,0.14) 0%, transparent 70%);
+}
+
+#bg .glow-br {
+  position: absolute;
+  bottom: -200px;
+  right: -180px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,112,67,0.08) 0%, transparent 70%);
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Title area */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title-left { display: flex; align-items: center; gap: 16px; }
+
+.title-badge {
+  width: 8px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 2px;
+  box-shadow: 0 0 16px rgba(0,188,212,0.55);
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.title-sub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-2);
+  letter-spacing: 0.5px;
+}
+
+.title-right { display: flex; align-items: center; gap: 14px; }
+
+.page-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  background: rgba(30,41,59,0.6);
+  font-size: 12px;
+  color: var(--text-2);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.page-tag .num {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.page-tag .divider {
+  width: 4px;
+  height: 4px;
+  background: var(--text-3);
+  border-radius: 50%;
+}
+
+/* Main content */
+.main {
+  display: grid;
+  grid-template-columns: 765px 1fr;
+  gap: 30px;
+  height: 440px;
+}
+
+/* Pyramid chart */
+.chart-wrap {
+  background: linear-gradient(180deg, rgba(30,41,59,0.55) 0%, rgba(11,18,32,0.35) 100%);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.5;
+}
+
+.chart-title {
+  font-size: 13px;
+  color: var(--text-2);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.chart-total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 4px 0 4px;
+}
+
+.chart-total .n {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.chart-total .lbl {
+  font-size: 12px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.pyramid-svg {
+  width: 100%;
+  flex: 1;
+  display: block;
+  margin-top: 4px;
+}
+
+.chart-caption {
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+  margin-top: 6px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* KPI grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  height: 100%;
+}
+
+.kpi {
+  position: relative;
+  padding: 18px 16px 16px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(30,41,59,0.6) 0%, rgba(17,24,39,0.5) 100%);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kpi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--color-bar, var(--primary));
+}
+
+.kpi-metric {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  min-height: 30px;
+}
+
+.kpi-value {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.kpi-value .num {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--color-val, var(--primary));
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.kpi-value .unit {
+  font-size: 14px;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.kpi-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-sub, var(--primary));
+  margin-top: 6px;
+  line-height: 1.2;
+}
+
+.kpi-desc {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(51,65,85,0.5);
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.kpi-1 { --color-bar: var(--primary); --color-val: var(--primary); }
+.kpi-2 { --color-bar: var(--accent); --color-val: var(--accent); --color-sub: var(--accent); }
+.kpi-3 { --color-bar: var(--primary); --color-val: var(--primary); --color-sub: var(--primary); }
+.kpi-4 { --color-bar: var(--cool); --color-val: var(--text-2); --color-sub: var(--text-2); }
+
+/* Footer */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 16px;
+  height: 130px;
+}
+
+.release-card {
+  padding: 16px 20px;
+  background: linear-gradient(90deg, rgba(0,188,212,0.06) 0%, rgba(30,41,59,0.35) 100%);
+  border: 1px solid rgba(0,188,212,0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rc-label {
+  font-size: 12px;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.rc-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.rc-num {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.rc-unit {
+  font-size: 14px;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.rc-date {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.signal-callout {
+  padding: 16px 20px;
+  background: rgba(255,112,67,0.06);
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 0 24px rgba(255,112,67,0.08);
+}
+
+.signal-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(255,112,67,0.45);
+  position: relative;
+}
+
+.signal-icon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,112,67,0.4);
+}
+
+.signal-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.signal-line1 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.signal-line1 .orange {
+  color: var(--accent);
+}
+
+.signal-line2 {
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="grid-lines"></div>
+    <div class="glow-tl"></div>
+    <div class="glow-br"></div>
+  </div>
+
+  <div id="ct">
+    <div class="title-area">
+      <div class="title-left">
+        <div class="title-badge"></div>
+        <div>
+          <h1>消费侧 · 弱代理的采纳信号</h1>
+          <div class="title-sub">Contributor Cohort × Release Cadence · Weak Proxy Indicators</div>
+        </div>
+      </div>
+      <div class="title-right">
+        <div class="page-tag">
+          <span class="num">17</span>
+          <span class="divider"></span>
+          <span>Adoption Signals</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="chart-wrap">
+        <div class="chart-title">Contributor Pyramid</div>
+        <div class="chart-total">
+          <span class="n">397</span>
+          <span class="lbl">Total Contributors</span>
+        </div>
+        <svg class="pyramid-svg" viewBox="0 0 540 432" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="gTop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FF7043"/>
+              <stop offset="1" stop-color="#FF8A5C"/>
+            </linearGradient>
+            <linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#00BCD4"/>
+              <stop offset="1" stop-color="#00ACC1"/>
+            </linearGradient>
+            <linearGradient id="gBot" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#64748B"/>
+              <stop offset="1" stop-color="#475569"/>
+            </linearGradient>
+          </defs>
+
+          <polygon points="270,18 138,132 402,132" fill="url(#gTop)" stroke="#FF7043" stroke-width="1.5"/>
+          <polygon points="138,132 402,132 456,264 84,264" fill="url(#gMid)" stroke="#00BCD4" stroke-width="1.5"/>
+          <polygon points="84,264 456,264 468,414 72,414" fill="url(#gBot)" stroke="#64748B" stroke-width="1.5"/>
+
+          <text x="270" y="106" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">核心 · 21 人 · 5.3%</text>
+          <text x="270" y="208" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">活跃 · 143 人 · 36.0%</text>
+          <text x="270" y="350" text-anchor="middle" fill="#F1F5F9" font-size="17" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">外围 · 233 人 · 58.7%</text>
+        </svg>
+        <div class="chart-caption">Commit bands: 100+ · 10–99 · 1–9</div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi kpi-1">
+          <div class="kpi-metric">总 Contributors</div>
+          <div class="kpi-value"><span class="num">397</span></div>
+          <div class="kpi-sub">Total</div>
+          <div class="kpi-desc">stars/forks ≠ 真实使用<br>是弱代理</div>
+        </div>
+        <div class="kpi kpi-2">
+          <div class="kpi-metric">核心 · 100+ commits</div>
+          <div class="kpi-value"><span class="num">21</span><span class="unit">人</span></div>
+          <div class="kpi-sub">5.3%</div>
+          <div class="kpi-desc">Top 1 teknium1<br>14,638 commits</div>
+        </div>
+        <div class="kpi kpi-3">
+          <div class="kpi-metric">活跃 · 10-99 commits</div>
+          <div class="kpi-value"><span class="num">143</span><span class="unit">人</span></div>
+          <div class="kpi-sub">36.0%</div>
+          <div class="kpi-desc">10-99 commits 持续贡献</div>
+        </div>
+        <div class="kpi kpi-4">
+          <div class="kpi-metric">外围 · 1-9 commits</div>
+          <div class="kpi-value"><span class="num">233</span><span class="unit">人</span></div>
+          <div class="kpi-sub">58.7%</div>
+          <div class="kpi-desc">1-9 commits 一次性接触</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="release-card">
+        <div class="rc-label">Releases · 总发布</div>
+        <div class="rc-value">
+          <span class="rc-num">32</span>
+          <span class="rc-unit">个 release</span>
+        </div>
+        <div class="rc-date">2026-03-12 → 2026-09-07</div>
+      </div>
+      <div class="release-card">
+        <div class="rc-label">Recent Cadence</div>
+        <div class="rc-value">
+          <span class="rc-num">5</span>
+          <span class="rc-unit">release / 8 月</span>
+        </div>
+        <div class="rc-date">近月发布频率提升</div>
+      </div>
+      <div class="signal-callout">
+        <div class="signal-icon">!</div>
+        <div class="signal-content">
+          <div class="signal-line1"><span class="orange">stars/forks ≠ 真实使用</span> —— 是弱代理</div>
+          <div class="signal-line2">需结合 commit depth / release cadence 综合判断真实采纳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>Footprint Ladder · 六级能力阶梯</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --primary: #00BCD4;
+  --accent: #FF7043;
+  --bg: #1E293B;
+  --bg-deep: #0B1220;
+  --text-main: #F1F5F9;
+  --text-dim: #94A3B8;
+  --text-dimmer: #64748B;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0B1220;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0B1220 0%, #1E293B 55%, #0B1220 100%);
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco-grid {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='%2300BCD4' stroke-width='1' opacity='0.06'/></svg>");
+  background-size: 40px 40px;
+}
+
+.deco-glow-cyan {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  top: -350px;
+  left: -350px;
+  background: radial-gradient(circle, rgba(0,188,212,0.28) 0%, rgba(0,188,212,0) 60%);
+}
+
+.deco-glow-orange {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  bottom: -300px;
+  right: -250px;
+  background: radial-gradient(circle, rgba(255,112,67,0.22) 0%, rgba(255,112,67,0) 60%);
+}
+
+.deco-watermark {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 420px;
+  font-weight: 900;
+  color: rgba(0, 188, 212, 0.035);
+  line-height: 0.85;
+  letter-spacing: -18px;
+  user-select: none;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 46px 60px 38px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--primary);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--primary);
+  display: inline-block;
+}
+
+.eyebrow .tag {
+  color: var(--text-dimmer);
+  letter-spacing: 3px;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.title .en {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.title .dot {
+  color: var(--accent);
+  margin: 0 10px;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 19px;
+  color: var(--text-dim);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.subtitle .key {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.ladder {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  padding: 20px 4px 32px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.ladder-baseline {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,188,212,0.3) 10%, rgba(0,188,212,0.7) 50%, rgba(0,188,212,0.3) 90%, transparent 100%);
+}
+
+.ladder-axis-label {
+  position: absolute;
+  bottom: 10px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-dimmer);
+}
+
+.step {
+  flex: 1;
+  border-radius: 10px;
+  padding: 20px 16px 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  background: linear-gradient(180deg, rgba(0,188,212,0.03) 0%, rgba(0,188,212,0.12) 100%);
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+
+.step-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.step-detail {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.step-1 { height: 275px; border-color: rgba(0,188,212,0.2); }
+.step-1::before { opacity: 0.35; height: 2px; }
+.step-1 { background: linear-gradient(180deg, rgba(0,188,212,0.02) 0%, rgba(0,188,212,0.06) 100%); }
+
+.step-2 { height: 310px; border-color: rgba(0,188,212,0.3); }
+.step-2::before { opacity: 0.5; height: 2px; }
+.step-2 { background: linear-gradient(180deg, rgba(0,188,212,0.03) 0%, rgba(0,188,212,0.09) 100%); }
+
+.step-3 { height: 345px; border-color: rgba(0,188,212,0.45); }
+.step-3::before { opacity: 0.7; height: 3px; }
+.step-3 { background: linear-gradient(180deg, rgba(0,188,212,0.04) 0%, rgba(0,188,212,0.14) 100%); }
+
+.step-4 { height: 380px; border-color: rgba(0,188,212,0.6); }
+.step-4::before { opacity: 0.85; height: 3px; }
+.step-4 { background: linear-gradient(180deg, rgba(0,188,212,0.05) 0%, rgba(0,188,212,0.18) 100%); }
+
+.step-5 { height: 415px; border-color: rgba(0,188,212,0.78); border-width: 1.5px; }
+.step-5::before { opacity: 1; height: 4px; }
+.step-5 { background: linear-gradient(180deg, rgba(0,188,212,0.07) 0%, rgba(0,188,212,0.24) 100%); }
+
+.step-6 { 
+  height: 450px; 
+  border-color: rgba(0,188,212,0.95); 
+  border-width: 2px;
+  box-shadow: 0 0 40px rgba(0,188,212,0.3), inset 0 0 30px rgba(0,188,212,0.05);
+}
+.step-6::before { 
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%); 
+  opacity: 1; 
+  height: 5px; 
+}
+.step-6 { background: linear-gradient(180deg, rgba(0,188,212,0.08) 0%, rgba(0,188,212,0.3) 100%); }
+.step-6 .step-name { font-size: 17px; color: var(--primary); }
+.step-6 .step-detail { color: var(--text-main); font-weight: 500; }
+.step-6 .step-num { color: var(--accent); font-size: 15px; }
+
+.footer {
+  padding: 18px 26px 20px;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, rgba(255,112,67,0.1) 0%, rgba(255,112,67,0) 100%);
+  border-radius: 4px;
+  position: relative;
+}
+
+.footer-quote {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+.footer-quote .hi {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.footer-quote .accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  margin-top: 10px;
+  letter-spacing: 3px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="deco-grid"></div>
+    <div class="deco-glow-cyan"></div>
+    <div class="deco-glow-orange"></div>
+    <div class="deco-watermark">06</div>
+  </div>
+  
+  <div id="ct">
+    <div class="header">
+      <div class="eyebrow">
+        <span>FOOTPRINT LADDER</span>
+        <span class="tag">/</span>
+        <span>CAPABILITY LADDER</span>
+      </div>
+      <h1 class="title">
+        <span class="en">Footprint Ladder</span>
+        <span class="dot">·</span>
+        <span>六级能力阶梯</span>
+      </h1>
+      <p class="subtitle">
+        <span class="key">能力必须有明确的落地路径</span> — 从「零新面」到「核心工具」，每一级都是可审计的准入标准。
+      </p>
+    </div>
+    
+    <div class="ladder">
+      <div class="step step-1">
+        <span class="step-num">L1</span>
+        <span class="step-name">Extend existing code</span>
+        <span class="step-detail">零新面 · 仅在既有代码内延伸，不引入任何新接口</span>
+      </div>
+      
+      <div class="step step-2">
+        <span class="step-num">L2</span>
+        <span class="step-name">CLI command + skill</span>
+        <span class="step-detail">hermes webhook / cron / tools 等命令级能力</span>
+      </div>
+      
+      <div class="step step-3">
+        <span class="step-num">L3</span>
+        <span class="step-name">Service-gated tool</span>
+        <span class="step-detail">check_fn 门禁 · 如 Home Assistant 等外部服务</span>
+      </div>
+      
+      <div class="step step-4">
+        <span class="step-num">L4</span>
+        <span class="step-name">Plugin</span>
+        <span class="step-detail">~/.hermes/plugins/ · 承载第三方与 niche 扩展</span>
+      </div>
+      
+      <div class="step step-5">
+        <span class="step-num">L5</span>
+        <span class="step-name">MCP server</span>
+        <span class="step-detail">catalog 内注册 · 工具类，但非核心基础能力</span>
+      </div>
+      
+      <div class="step step-6">
+        <span class="step-num">L6</span>
+        <span class="step-name">New core tool</span>
+        <span class="step-detail">只有 terminal / read_file / web_search 这类够格</span>
+      </div>
+      
+      <div class="ladder-baseline"></div>
+      <div class="ladder-axis-label">
+        <span>← LIGHTER · 更轻</span>
+        <span>HEAVIER · 更重 →</span>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p class="footer-quote">
+        六级能力阶梯从「<span class="hi">零新面</span>」到「<span class="hi">核心工具</span>」——每一级都有明确的落地路径与准入标准。这是「<span class="accent">度量权</span>」问题的答案：每个能力都有<span class="accent">可审计的落地位置</span>。
+      </p>
+      <p class="footer-meta">— FOOTPRINT LADDER · L1 → L6 · 度量权 = 每个能力都有可审计的落地位置</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

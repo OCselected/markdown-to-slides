@@ -1,0 +1,1023 @@
+{
+  "pages": [
+    {
+      "page_no": 1,
+      "page_kind": "cover",
+      "title": "从 Hermes 演化看 Agent 需求与消费演进",
+      "subtitle": "AgentCon 2026 · 北京站 · 「开源之道」·适兕 × 窄廊",
+      "bullets": [
+        {
+          "head": "时间",
+          "detail": "2026-09-21 · AgentCon 北京站"
+        },
+        {
+          "head": "Track",
+          "detail": "Token 经济趋势 · 90 分钟"
+        },
+        {
+          "head": "讲者",
+          "detail": "「开源之道」·适兕 × 窄廊"
+        }
+      ],
+      "narrative": "以 Hermes Agent（NousResearch/hermes-agent, 243K star）为公开样本，用一年多的公开演化数据回答 Agent 从'能用'到'会协作'的三个制度问题：度量权、可靠性、产权。",
+      "data_points": [
+        {
+          "label": "Hermes Stars",
+          "value": "243,919",
+          "context": "GitHub"
+        },
+        {
+          "label": "Data Baseline",
+          "value": "2026-09-11",
+          "context": "本演讲所有数据的时间戳"
+        }
+      ],
+      "visual_hints": "深普鲁士蓝底 + 暖白标题，包豪斯几何构成，右侧极简 Hermes 符号",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "封面视觉锚点",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 2,
+      "page_kind": "content",
+      "title": "引子：为什么开源 Agent 值得观察",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "闭源 Agent",
+          "detail": "WorkBuddy、豆包、Qwen Office——如何演化无从得知"
+        },
+        {
+          "head": "开源 Agent",
+          "detail": "每一条 issue、每一个 PR、每一次 release 都可追溯"
+        },
+        {
+          "head": "方法",
+          "detail": "把 Hermes 当作观察 Agent 演化的公开样本"
+        },
+        {
+          "head": "Hermes 独特性",
+          "detail": "根据用户使用生成 skill，不断自我更新——伟大的进化论实践者"
+        }
+      ],
+      "narrative": "闭源是黑箱，开源是唯一的可研究样本。Hermes 不是产品而是制度实验场——用一年多的公开演化，展示 Agent 从技术到制度的完整链条。",
+      "data_points": [],
+      "visual_hints": "左侧黑盒 vs 右侧透明玻璃盒对比；黑盒标'闭源：无从得知'，玻璃盒标'开源：可追溯'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "黑盒与玻璃盒对比",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 3,
+      "page_kind": "data",
+      "title": "Hermes 项目坐标",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "创建",
+          "detail": "2025-07-22，一年多历史"
+        },
+        {
+          "head": "核心数据",
+          "detail": "Stars 243K / PRs 27.8K / Issues 41.8K / Releases 33"
+        },
+        {
+          "head": "社区",
+          "detail": "397 contributors / 29,205 commits"
+        },
+        {
+          "head": "定位",
+          "detail": "不是产品，是制度实验场"
+        }
+      ],
+      "narrative": "Hermes 用一年多的公开演化，展示 Agent 从技术到制度的完整链条——每个数字都可以追溯到具体的 issue 和 PR。",
+      "data_points": [
+        {
+          "label": "Stars",
+          "value": "243,919"
+        },
+        {
+          "label": "Forks",
+          "value": "50,367"
+        },
+        {
+          "label": "Pull Requests",
+          "value": "27,783"
+        },
+        {
+          "label": "Issues",
+          "value": "41,792"
+        },
+        {
+          "label": "Releases",
+          "value": "33"
+        },
+        {
+          "label": "Contributors",
+          "value": "397"
+        },
+        {
+          "label": "Total Commits",
+          "value": "29,205"
+        }
+      ],
+      "visual_hints": "极简信息卡，大数字网格排列，深普鲁士蓝主色",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "项目数据展示",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 4,
+      "page_kind": "section_header",
+      "title": "第一幕 · Agent 发展简史",
+      "subtitle": "从文本生成器到数字员工，不到 5 年",
+      "bullets": [
+        {
+          "head": "目标",
+          "detail": "勾勒 Agent 发展关键拐点"
+        },
+        {
+          "head": "坐标",
+          "detail": "为后续 Hermes 分析提供历史坐标"
+        }
+      ],
+      "narrative": "Agent 用了不到 5 年走完从学术概念到产品的完整链条——本幕用一张时间线呈现关键拐点。",
+      "data_points": [],
+      "visual_hints": "极简设计 + 一条水平时间线 2022-2026，线上四个节点用小圆点",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 5,
+      "page_kind": "content",
+      "title": "阶段一 · 能力觉醒（2022-2023）",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "ReAct",
+          "detail": "2022-10-06 首次展示推理+行动交织"
+        },
+        {
+          "head": "Toolformer",
+          "detail": "2023-02 LLM 自监督学会调用 API"
+        },
+        {
+          "head": "Function Calling",
+          "detail": "2023-06 主流工具调用 API 原语出现"
+        },
+        {
+          "head": "AutoGPT",
+          "detail": "2023-03 病毒式传播的自主 agent 时刻"
+        },
+        {
+          "head": "制度含义",
+          "detail": "用新范式激活老理论——跨域套利"
+        }
+      ],
+      "narrative": "2022-2023 是 Agent 概念觉醒期：ReAct 论文把 1980 年代 BDI 理论推到产品层，Function Calling 让工具调用 API 原语成为标配。",
+      "data_points": [],
+      "visual_hints": "时间线延续，左侧起点 2022-10-06 ReAct，中间节点：Toolformer/Function Calling/AutoGPT",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "2022-2023 时间线",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 6,
+      "page_kind": "content",
+      "title": "阶段二 · 能力硬化（2024）",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "Anthropic Tool Use GA",
+          "detail": "Claude 3 从 beta 到生产可用"
+        },
+        {
+          "head": "OpenAI Structured Outputs",
+          "detail": "2024-08 强 schema 校验"
+        },
+        {
+          "head": "Anthropic Computer Use",
+          "detail": "2024-10 Agent 从 API 走到 GUI"
+        },
+        {
+          "head": "MCP 发布",
+          "detail": "2024-11-25 首个开放协议标准化 agent-tools 接口"
+        },
+        {
+          "head": "制度含义",
+          "detail": "协议是生态的起点——Computer Use 与 MCP 是能力与生态的分水岭"
+        }
+      ],
+      "narrative": "2024 年 Agent 从能力验证走向协议标准化：Computer Use 扩展能力边界，MCP 定义生态接口——两者的组合让 Agent 具备生态化条件。",
+      "data_points": [
+        {
+          "label": "MCP 发布",
+          "value": "2024-11-25"
+        },
+        {
+          "label": "Computer Use",
+          "value": "2024-10"
+        }
+      ],
+      "visual_hints": "时间线延续，MCP 节点用红色小圆强调",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "2024 年事件时间线",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 7,
+      "page_kind": "content",
+      "title": "阶段三 · 协议成熟（2025-2026）",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "OpenAI 采纳 MCP",
+          "detail": "2025-03 第二个前沿实验室加入"
+        },
+        {
+          "head": "AWS Bedrock AgentCore",
+          "detail": "2025-07 云原生 agent 平台化"
+        },
+        {
+          "head": "A2A 协议",
+          "detail": "2026-01 agent-agent 协作标准"
+        },
+        {
+          "head": "MCP 捐给 LF",
+          "detail": "2026 加入 Agentic AI Foundation（Linux Foundation）"
+        },
+        {
+          "head": "制度含义",
+          "detail": "协议制度化——行政动员失败后的自发秩序"
+        }
+      ],
+      "narrative": "MCP 从 Anthropic 单厂商私产到 Linux Foundation 中立资产，是协议制度化的教科书样本——这不是行政命令能促成的，是多厂商自发采纳后的自然结果。",
+      "data_points": [
+        {
+          "label": "MCP 捐给 LF",
+          "value": "2026"
+        }
+      ],
+      "visual_hints": "时间线延续，MCP 捐给 LF 的节点用大号红圈标注",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "2025-2026 协议成熟阶段",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 8,
+      "page_kind": "content",
+      "title": "MCP 捐给 Linux Foundation",
+      "subtitle": "制度经济学的教科书案例",
+      "bullets": [
+        {
+          "head": "起点",
+          "detail": "2024-11-25 Anthropic 单厂商发布"
+        },
+        {
+          "head": "演化",
+          "detail": "2025-03 OpenAI 采纳；云厂密集加入"
+        },
+        {
+          "head": "终点",
+          "detail": "2026 捐给 Agentic AI Foundation（LF 旗下）"
+        },
+        {
+          "head": "制度含义",
+          "detail": "多厂商自发采纳后的自然结果，非行政命令能促成"
+        },
+        {
+          "head": "对照",
+          "detail": "中国行政开源试图用行政力量复制此流程——制度演化需要时间尺度"
+        }
+      ],
+      "narrative": "MCP 从厂商私产到社区共识的完整演化路径，是制度经济学教科书的经典案例：慢演化、多主体、无中央命令。",
+      "data_points": [
+        {
+          "label": "起点",
+          "value": "2024-11-25"
+        },
+        {
+          "label": "终点",
+          "value": "2026"
+        }
+      ],
+      "visual_hints": "左上 Anthropic 标签 → 中间箭头 → 右上 Linux Foundation 标签，箭头下方标注时间跨度",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 9,
+      "page_kind": "section_header",
+      "title": "第二幕 · Hermes 技术架构",
+      "subtitle": "两条不变量决定了所有设计决策",
+      "bullets": [
+        {
+          "head": "目标",
+          "detail": "先讲不变量，再讲架构，最后讲独特性"
+        },
+        {
+          "head": "方法",
+          "detail": "从设计原则推导出能力落地路径"
+        }
+      ],
+      "narrative": "Hermes 的几乎所有设计决策都从两条不变量推出来——理解不变量才能理解为什么 Hermes 是这个样子。",
+      "data_points": [],
+      "visual_hints": "深普鲁士蓝底色，中央大标题，标题下方两条竖直细线代表'两条不变量'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 10,
+      "page_kind": "content",
+      "title": "两条不变量 · 设计灵魂",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "不变量 #1",
+          "detail": "Prompt Caching is Sacred——任何改变历史上下文的操作都破坏缓存，放大用户成本"
+        },
+        {
+          "head": "不变量 #1 例外",
+          "detail": "唯一例外是 context compression"
+        },
+        {
+          "head": "不变量 #2",
+          "detail": "Core is a Narrow Waist, Capability Lives at the Edges——核心工具门槛极高"
+        },
+        {
+          "head": "不变量 #2 落地",
+          "detail": "新能力通过 CLI+skill、服务门控 tool、plugin、MCP server 落地"
+        },
+        {
+          "head": "设计边界",
+          "detail": "边缘扩张，腰部保守——Hermes 的制度设计原则"
+        }
+      ],
+      "narrative": "Hermes 的两条不变量：Prompt Caching is Sacred 决定所有系统提示变更默认下 session 生效；Narrow Waist 决定新能力必须通过 CLI/skill/plugin 边缘落地，不允许塞进核心图省事。",
+      "data_points": [],
+      "visual_hints": "分左右两半，左'不变量 #1'大圆，右'不变量 #2'大方，中间竖线",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 11,
+      "page_kind": "content",
+      "title": "Footprint Ladder · 六级能力阶梯",
+      "subtitle": "能力必须有明确的落地路径",
+      "bullets": [
+        {
+          "head": "L1",
+          "detail": "Extend existing code——零新面"
+        },
+        {
+          "head": "L2",
+          "detail": "CLI command + skill（hermes webhook/cron/tools）"
+        },
+        {
+          "head": "L3",
+          "detail": "Service-gated tool（check_fn，如 Home Assistant）"
+        },
+        {
+          "head": "L4",
+          "detail": "Plugin（~/.hermes/plugins/，第三方/niche）"
+        },
+        {
+          "head": "L5",
+          "detail": "MCP server（catalog 内，工具类但非核心基础）"
+        },
+        {
+          "head": "L6",
+          "detail": "New core tool（只有 terminal/read_file/web_search 这类够格）"
+        }
+      ],
+      "narrative": "六级能力阶梯从'零新面'到'核心工具'——每一级都有明确的落地路径与准入标准。这是'度量权'问题的答案：每个能力都有可审计的落地位置。",
+      "data_points": [],
+      "visual_hints": "六级阶梯图，从左上向右下延伸，越靠右越'重'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "六级阶梯图",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 12,
+      "page_kind": "content",
+      "title": "Hermes 的独特性 · 闭环学习",
+      "subtitle": "用户生成 skill，agent 随使用自我进化",
+      "bullets": [
+        {
+          "head": "Hermes",
+          "detail": "4,100 tokens/task（最低）/ 55MB RAM / 200+ models via OpenRouter"
+        },
+        {
+          "head": "LangGraph",
+          "detail": "低层编排框架，stateful agents"
+        },
+        {
+          "head": "CrewAI",
+          "detail": "角色扮演驱动，manager-worker-critic"
+        },
+        {
+          "head": "AutoGen",
+          "detail": "多 agent 对话（已进入 maintenance mode）"
+        },
+        {
+          "head": "独特性",
+          "detail": "不是更强的模型，是能力生成的机制"
+        }
+      ],
+      "narrative": "Hermes 的独特性不是'更强的模型'，而是闭环学习机制——用户生成 skill，agent 随使用自我进化。这是四个主流框架中唯一具备闭环能力的项目。",
+      "data_points": [
+        {
+          "label": "Hermes tokens/task",
+          "value": "4,100（最低）"
+        },
+        {
+          "label": "Hermes RAM",
+          "value": "55MB（最低）"
+        }
+      ],
+      "visual_hints": "循环箭头图，中心 Hermes，外围三节点：Skills 生成、Memory 积累、Session 演化",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "闭环学习循环图",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 13,
+      "page_kind": "section_header",
+      "title": "第三幕 · 需求/供给/消费三维分析",
+      "subtitle": "用公开数据观察 Hermes 一年多的演化",
+      "bullets": [
+        {
+          "head": "需求侧",
+          "detail": "用户要什么（issues）"
+        },
+        {
+          "head": "供给侧",
+          "detail": "项目做了什么（PRs/releases）"
+        },
+        {
+          "head": "消费侧",
+          "detail": "采纳信号（stars/forks/contributors）"
+        }
+      ],
+      "narrative": "用需求、供给、消费三维观察 Hermes——数据来自 100 条 issue、100 条 PR 样本，以及 397 位 contributor 分布。",
+      "data_points": [],
+      "visual_hints": "三列并置：需求侧用户图标、供给侧齿轮、消费侧星标",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 14,
+      "page_kind": "data",
+      "title": "需求侧 · 用户要什么",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "类型分布",
+          "detail": "bug 50% / feature 50%——质量诉求与功能诉求等量"
+        },
+        {
+          "head": "组件热度",
+          "detail": "cli/agent/gateway 各 19%（合计 57%）"
+        },
+        {
+          "head": "第二梯队",
+          "detail": "cron/desktop/plugins 各 9%"
+        },
+        {
+          "head": "优先级",
+          "detail": "P3 68% / P2 28% / P1 仅 3 条"
+        },
+        {
+          "head": "制度含义",
+          "detail": "用户是成熟的使用者，不是什么都想要的初用者"
+        }
+      ],
+      "narrative": "41,792 issues 呈现'长尾需求 + 极少火警'结构——P1 仅 3 条，P3 占 68%，用户是成熟的使用者。",
+      "data_points": [
+        {
+          "label": "总 Issues",
+          "value": "41,792"
+        },
+        {
+          "label": "P1",
+          "value": "3 条"
+        },
+        {
+          "label": "P2",
+          "value": "28%"
+        },
+        {
+          "label": "P3",
+          "value": "68%"
+        }
+      ],
+      "visual_hints": "左侧大数据'41,792'，右侧饼图 bug/feature 50/50，下方三个组件标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "需求侧数据展示",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 15,
+      "page_kind": "data",
+      "title": "供给侧 · 项目做了什么",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "类型分布",
+          "detail": "bug fix 50% / feature 50%"
+        },
+        {
+          "head": "组件活跃度",
+          "detail": "agent 26% + gateway 22%（核心层 48%）+ cli 17%"
+        },
+        {
+          "head": "优先级策略",
+          "detail": "P2 全给 bug（89%）+ P3 养 feature（72%）+ P1 缺席"
+        },
+        {
+          "head": "风险分布",
+          "detail": "兼容性 56% / 安全 26% / 消息 22% / 会话 21%"
+        },
+        {
+          "head": "制度含义",
+          "detail": "从扩张期进入稳定化期——存量可靠性优先于增量扩张"
+        }
+      ],
+      "narrative": "27,783 PRs 呈现'收敛型'策略：P2 全给 bug、P3 养 feature、P1 缺席——项目正从扩张期进入稳定化期。",
+      "data_points": [
+        {
+          "label": "总 PRs",
+          "value": "27,783"
+        },
+        {
+          "label": "P1",
+          "value": "0 条"
+        },
+        {
+          "label": "P2 (bug)",
+          "value": "89%"
+        },
+        {
+          "label": "P3 (feature)",
+          "value": "72%"
+        }
+      ],
+      "visual_hints": "左侧大数据'27,783'，右侧饼图，右下角'收敛型'标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "供给侧数据展示",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 16,
+      "page_kind": "data",
+      "title": "供需匹配 · desktop 是唯一缺口",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "类型比例一致",
+          "detail": "需求 53% bug / 供给 50% bug——匹配良好"
+        },
+        {
+          "head": "agent",
+          "detail": "需求 22% / 供给 26% ✅"
+        },
+        {
+          "head": "gateway",
+          "detail": "需求 18% / 供给 22% ✅"
+        },
+        {
+          "head": "cli",
+          "detail": "需求 18% / 供给 17% ✅"
+        },
+        {
+          "head": "desktop ⚠️",
+          "detail": "需求 11% / 供给 8%——供给欠配"
+        }
+      ],
+      "narrative": "桌面端是供需缺口——用户偏新功能，供给以 bug 为主。'生态是结果，不是手段'——能力扩张是用户需求驱动的，不是行政推动的。",
+      "data_points": [
+        {
+          "label": "agent",
+          "value": "22% / 26% ✅"
+        },
+        {
+          "label": "gateway",
+          "value": "18% / 22% ✅"
+        },
+        {
+          "label": "cli",
+          "value": "18% / 17% ✅"
+        },
+        {
+          "label": "desktop",
+          "value": "11% / 8% ⚠️"
+        }
+      ],
+      "visual_hints": "对比表格，desktop 一行用红色标注'⚠️ 供给欠配'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 17,
+      "page_kind": "data",
+      "title": "消费侧 · 弱代理的采纳信号",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "Releases",
+          "detail": "32 个，从 2026-03-12 到 2026-09-07"
+        },
+        {
+          "head": "近期频率",
+          "detail": "8 月 5 个 release"
+        },
+        {
+          "head": "核心 contributor",
+          "detail": "100+ commits：21 人（5.3%）"
+        },
+        {
+          "head": "活跃 contributor",
+          "detail": "10-99 commits：143 人（36.0%）"
+        },
+        {
+          "head": "外围 contributor",
+          "detail": "1-9 commits：233 人（58.7%）"
+        },
+        {
+          "head": "信号局限",
+          "detail": "stars/forks ≠ 真实使用——是弱代理"
+        }
+      ],
+      "narrative": "397 contributors 分层清晰：核心 5.3%、活跃 36%、外围 58.7%。stars/forks 是弱代理——不能反映真实使用频率、场景、付费行为。",
+      "data_points": [
+        {
+          "label": "总 Contributors",
+          "value": "397"
+        },
+        {
+          "label": "核心（100+ commits）",
+          "value": "21 人 / 5.3%"
+        },
+        {
+          "label": "活跃（10-99 commits）",
+          "value": "143 人 / 36%"
+        },
+        {
+          "label": "外围（1-9 commits）",
+          "value": "233 人 / 58.7%"
+        },
+        {
+          "label": "Top 1",
+          "value": "teknium1 (14,638)"
+        }
+      ],
+      "visual_hints": "三层金字塔，底层 233 外围，中层 143 活跃，顶层 21 核心",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "contributor 金字塔",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 18,
+      "page_kind": "content",
+      "title": "三个核心洞察",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "洞察 #1",
+          "detail": "从扩张期进入稳定化期——P2 全给 bug + P1 缺席 + CLI 层 bug 驱动"
+        },
+        {
+          "head": "洞察 #2",
+          "detail": "兼容性是结构性税——56% PR 带兼容性标签，供给侧的隐形成本"
+        },
+        {
+          "head": "洞察 #3",
+          "detail": "消费侧信任是可观察的信号——feature issue 自带安全边界标签"
+        }
+      ],
+      "narrative": "三个洞察：稳定化期、兼容性结构性税、消费侧信任作为可观察信号——从'能用'到'好用'的关键跃迁就在第三个洞察里。",
+      "data_points": [],
+      "visual_hints": "三列并置，每列一个大标题+简短说明，深普鲁士蓝背景",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 19,
+      "page_kind": "content",
+      "title": "案例 · #67002 Safe MCP Reload",
+      "subtitle": "消费侧信任的教科书样本",
+      "bullets": [
+        {
+          "head": "Issue",
+          "detail": "feat(api): add safe MCP reload control endpoint"
+        },
+        {
+          "head": "风险标签",
+          "detail": "risk-message-delivery + blast-moderate"
+        },
+        {
+          "head": "组件/优先级",
+          "detail": "gateway / P3"
+        },
+        {
+          "head": "关键观察",
+          "detail": "用户主动要求'安全的重载端点'——要能力的同时显式要安全收口"
+        },
+        {
+          "head": "制度含义",
+          "detail": "从'能用'到'好用'的关键跃迁——消费侧信任的强信号"
+        }
+      ],
+      "narrative": "#67002 是教科书样本：用户在索取 MCP reload 功能的同时显式要求安全边界。这是'消费侧信任'的可观察信号，也是从'能用'到'好用'的跃迁证据。",
+      "data_points": [
+        {
+          "label": "Issue",
+          "value": "#67002"
+        },
+        {
+          "label": "Labels",
+          "value": "risk-message-delivery, blast-moderate"
+        },
+        {
+          "label": "Priority",
+          "value": "P3"
+        }
+      ],
+      "visual_hints": "左侧 issue 卡片，右侧分析文字，中间竖线分隔",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "GitHub issue 卡片",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 20,
+      "page_kind": "content",
+      "title": "制度经济学视角 · Williamson × Roland",
+      "subtitle": "层次 × 时间的分析矩阵",
+      "bullets": [
+        {
+          "head": "Williamson L1-L4",
+          "detail": "L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置"
+        },
+        {
+          "head": "Roland 2004",
+          "detail": "slow-moving（文化/规范）↔ fast-moving（政治制度）"
+        },
+        {
+          "head": "合用矩阵",
+          "detail": "层次 × 时间——在哪里受阻（Williamson）× 为什么受阻（Roland）"
+        },
+        {
+          "head": "大分流 2.0 应用",
+          "detail": "中国行政开源 = fast-moving 移植；全球协作文化 = slow-moving"
+        }
+      ],
+      "narrative": "Williamson 的静态层次 + Roland 的动态速度 = 层次 × 时间的分析矩阵。'大分流 2.0'的核心问题——中国行政开源卡在哪一层、为什么卡——正是这个矩阵能回答的。",
+      "data_points": [],
+      "visual_hints": "双象限图，左象限 Williamson L1-L4，右象限 Roland fast/slow，交汇处'大分流 2.0'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "层次×时间矩阵",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 21,
+      "page_kind": "content",
+      "title": "行政开源 vs 自发开源 · 大分流 2.0",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "中国行政开源",
+          "detail": "AtomGit / MirrorZ / 中文社区 / 信通院标准"
+        },
+        {
+          "head": "全球自发开源",
+          "detail": "GitHub / Docker Hub / Linux Foundation / OpenSSF"
+        },
+        {
+          "head": "大分流 2.0 核心",
+          "detail": "真开源=FLOSS；伪开源=特许工程代码/局域网共享/赛博庄园"
+        },
+        {
+          "head": "制度含义",
+          "detail": "slow-moving 层协作信任尚未建立，无法一夜改变"
+        }
+      ],
+      "narrative": "中国'行政开源'与全球'自发开源'的分野——真开源是公地开源，伪开源是特许工程代码。行政力量可以改变 fast-moving 层，但 slow-moving 层的协作文化需要几代人的演化。",
+      "data_points": [],
+      "visual_hints": "左右对比图，左'行政开源'右'自发开源'，中间竖线",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "行政vs自发对比",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 22,
+      "page_kind": "content",
+      "title": "长期演化追踪 · 不是终点",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "定位",
+          "detail": "本演讲是长期演化追踪系统的第一个快照"
+        },
+        {
+          "head": "需求侧",
+          "detail": "持续追踪 issue 演化（每周更新）"
+        },
+        {
+          "head": "供给侧",
+          "detail": "持续追踪 PR 演化（每周更新）"
+        },
+        {
+          "head": "消费侧",
+          "detail": "寻找更强信号（PyPI/Docker/Discord）"
+        },
+        {
+          "head": "制度维度",
+          "detail": "度量权 / 可靠性 / 产权——三个并行维度"
+        }
+      ],
+      "narrative": "这不是一次性分析，是长期演化追踪系统的第一个快照。'进化论的哲学里是没有终点的'——Keep Movement。",
+      "data_points": [],
+      "visual_hints": "极简路线图，左侧'演讲 2026-09-21'，右侧延伸长线上有四个节点",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 23,
+      "page_kind": "content",
+      "title": "结语 · 开源之为思想的力量",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "从 Agent 到制度",
+          "detail": "Hermes 是样本，不是终点"
+        },
+        {
+          "head": "开源之道",
+          "detail": "道是思想（idea），不是道路（road）"
+        },
+        {
+          "head": "Keep Movement",
+          "detail": "知识不是静止的，是在移动中产生的"
+        },
+        {
+          "head": "一句留白",
+          "detail": "不是要证明什么——是打开一种思考"
+        }
+      ],
+      "narrative": "'思想是制度的源代码'——不是规则在动，是思想在动。Keep Movement。这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。",
+      "data_points": [],
+      "visual_hints": "深普鲁士蓝底色，中央大字'思想是制度的源代码'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 24,
+      "page_kind": "content",
+      "title": "讨论与延伸阅读",
+      "subtitle": "",
+      "bullets": [
+        {
+          "head": "问题 #1",
+          "detail": "从'能用'到'会协作'，是否还有第五阶段？"
+        },
+        {
+          "head": "问题 #2",
+          "detail": "开源 Agent 的'度量权'应在社区还是标准化？"
+        },
+        {
+          "head": "问题 #3",
+          "detail": "中国'行政开源'的 slow-moving 层会演化出新形态？"
+        },
+        {
+          "head": "延伸阅读",
+          "detail": "Roland 2004 / Williamson 2000 / Akcagün & Sapienza 2016 / Greif & Mokyr 2017"
+        }
+      ],
+      "narrative": "三个开放问题留给 Q&A。延伸阅读覆盖制度经济学的核心文献——从转型经济学到演化制度理论。",
+      "data_points": [],
+      "visual_hints": "极简设计，三个问题列在中央，每个问题前有小圆点",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 25,
+      "page_kind": "closing",
+      "title": "Thank you",
+      "subtitle": "「开源之道」·适兕 × 窄廊 · AgentCon 2026 · 北京",
+      "bullets": [
+        {
+          "head": "讲者",
+          "detail": "「开源之道」·适兕 × 窄廊"
+        },
+        {
+          "head": "英文",
+          "detail": "Open Source Way · Kuosi × Narrow Corridor"
+        },
+        {
+          "head": "数据基线",
+          "detail": "2026-09-11"
+        }
+      ],
+      "narrative": "感谢聆听。本项目后续将持续更新，欢迎交流与引用。",
+      "data_points": [],
+      "visual_hints": "极简设计，中央'Thank you'，下方讲者信息，右下角 Hermes 符号",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    }
+  ]
+}

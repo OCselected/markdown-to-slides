@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>需求侧 · 用户要什么</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+:root {
+  --primary: #00BCD4;
+  --primary-dim: #00838F;
+  --primary-glow: rgba(0, 188, 212, 0.35);
+  --accent: #FF7043;
+  --accent-dim: #E64A19;
+  --bg-dark: #1E293B;
+  --bg-darker: #0F172A;
+  --bg-card: #243447;
+  --bg-card-2: #1a2735;
+  --text-main: #F1F5F9;
+  --text-dim: #94A3B8;
+  --text-mute: #64748B;
+  --border: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.28);
+  --p1: #EF4444;
+  --p2: #FF7043;
+  --p3: #00BCD4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--text-main);
+  background: #000;
+  font-feature-settings: 'tnum' 1, 'ss01' 1;
+}
+.wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; margin: 0 auto; background: var(--bg-darker); }
+#bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at 25% 30%, rgba(0, 188, 212, 0.14), transparent 55%), linear-gradient(180deg, #0F172A 0%, #1E293B 100%); }
+#bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+#ct { position: absolute; inset: 0; z-index: 1; padding: 44px 60px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; }
+
+.page-head { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 16px; border-bottom: 1px solid var(--border); position: relative; }
+.page-head::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 240px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-glow) 60%, transparent 100%);
+}
+.head-left { display: flex; align-items: center; gap: 18px; }
+.page-title { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); }
+.page-title .dot { color: var(--primary); margin: 0 6px; font-weight: 400; }
+.head-meta { display: flex; align-items: center; gap: 22px; font-size: 12px; color: var(--text-dim); letter-spacing: 0.5px; }
+.tag { padding: 5px 12px; border: 1px solid var(--border-strong); border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 11px; color: var(--primary); background: rgba(0,188,212,0.06); }
+.meta-item { display: flex; align-items: center; gap: 6px; }
+.meta-item::before { content: '◈'; color: var(--primary); font-size: 8px; }
+
+.main-content { display: grid; grid-template-columns: 1fr 660px; gap: 22px; height: 456px; }
+
+.hero-left { display: flex; flex-direction: column; gap: 14px; }
+.hero-title { font-size: 12px; color: var(--text-dim); letter-spacing: 3px; font-weight: 600; }
+.hero-title .label-num { color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+.hero-num { font-size: 128px; font-weight: 900; line-height: 0.95; letter-spacing: -4px; background: linear-gradient(180deg, #FFFFFF 0%, var(--primary) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Inter', sans-serif; font-feature-settings: 'tnum' 1; }
+.hero-sub { display: flex; align-items: baseline; gap: 14px; margin-top: 2px; }
+.hero-sub-label { font-size: 22px; font-weight: 700; color: var(--text-main); letter-spacing: 1px; }
+.hero-sub-desc { font-size: 13px; color: var(--text-dim); }
+.hero-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 6px; }
+.metric-card { padding: 14px 12px 12px; background: rgba(30, 41, 59, 0.6); border-left: 2px solid var(--border-strong); border-radius: 4px; position: relative; }
+.metric-card.feat { border-left-color: var(--primary); }
+.metric-card.bug { border-left-color: var(--accent); }
+.metric-card.tail { border-left-color: var(--text-mute); }
+.metric-value { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; font-family: 'Inter', sans-serif; }
+.metric-value .pct { font-size: 15px; color: var(--text-dim); margin-left: 3px; font-weight: 500; }
+.metric-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; letter-spacing: 0.4px; }
+.metric-card.feat .metric-value { color: var(--primary); }
+.metric-card.bug .metric-value { color: var(--accent); }
+.metric-card.tail .metric-value { color: var(--text-main); }
+.metric-trend { font-size: 10px; color: var(--text-mute); margin-top: 4px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; }
+
+.hero-right { display: flex; flex-direction: column; gap: 12px; }
+.chart-card { background: linear-gradient(140deg, rgba(36, 52, 71, 0.72), rgba(30, 41, 59, 0.85)); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px 10px; flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+.chart-title { font-size: 13px; color: var(--text-dim); font-weight: 600; letter-spacing: 1.5px; display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+.chart-title::before { content: ''; width: 3px; height: 12px; background: var(--primary); border-radius: 2px; }
+.chart-title .chart-sub { color: var(--text-mute); font-weight: 400; font-size: 11px; margin-left: auto; letter-spacing: 0.5px; }
+#chart_1 { width: 100%; height: 205px; }
+
+.comp-section { background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; }
+.comp-title { font-size: 12px; color: var(--text-dim); font-weight: 600; letter-spacing: 1.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.comp-title::before { content: ''; width: 3px; height: 12px; background: var(--primary); border-radius: 2px; }
+.comp-title .tier-info { margin-left: auto; display: flex; gap: 12px; font-size: 10px; color: var(--text-mute); letter-spacing: 0.5px; font-weight: 500; }
+.comp-title .tier-info .dot-g, .comp-title .tier-info .dot-o { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
+.comp-title .tier-info .dot-g { background: var(--primary); }
+.comp-title .tier-info .dot-o { background: var(--accent); }
+.comp-row { display: flex; align-items: center; gap: 14px; }
+.comp-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-main); font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+.comp-item .rank { font-size: 10px; color: var(--text-mute); font-weight: 500; font-family: 'Inter', sans-serif; }
+.comp-item.tier1 .rank { color: var(--primary); font-weight: 700; }
+.comp-item.tier2 .rank { color: var(--accent); font-weight: 700; }
+.comp-bar-wrap { flex: 1; height: 6px; background: rgba(148, 163, 184, 0.08); border-radius: 3px; overflow: hidden; }
+.comp-bar { height: 100%; border-radius: 3px; }
+.comp-bar.t1 { background: linear-gradient(90deg, var(--primary-dim), var(--primary)); box-shadow: 0 0 6px rgba(0,188,212,0.3); }
+.comp-bar.t2 { background: linear-gradient(90deg, var(--accent-dim), var(--accent)); box-shadow: 0 0 6px rgba(255,112,67,0.25); }
+.comp-pct { font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; min-width: 44px; text-align: right; }
+.comp-item.tier1 .comp-pct { color: var(--primary); }
+.comp-item.tier2 .comp-pct { color: var(--accent); }
+
+.priority-section { background: linear-gradient(140deg, rgba(36, 52, 71, 0.45), rgba(30, 41, 59, 0.7)); border: 1px solid var(--border); border-radius: 10px; padding: 14px 22px; display: flex; align-items: stretch; gap: 26px; }
+.priority-section::before {
+  content: '';
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 2px;
+  margin-right: -12px;
+}
+.priority-title { flex: 0 0 200px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); padding-right: 20px; }
+.priority-title .lbl { font-size: 11px; color: var(--text-dim); letter-spacing: 2px; font-weight: 600; }
+.priority-title .val { font-size: 22px; font-weight: 800; color: var(--text-main); margin-top: 4px; letter-spacing: -0.3px; }
+.priority-title .val em { font-style: normal; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+.priority-cards { display: flex; gap: 14px; flex: 1; }
+.p-card { flex: 1; display: flex; align-items: center; gap: 14px; padding: 6px 16px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; border-left: 3px solid var(--border-strong); position: relative; }
+.p-card.p1 { border-left-color: var(--p1); }
+.p-card.p2 { border-left-color: var(--p2); }
+.p-card.p3 { border-left-color: var(--p3); }
+.p-badge { font-size: 13px; font-weight: 800; padding: 8px 14px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; color: #0F172A; min-width: 68px; text-align: center; }
+.p1 .p-badge { background: linear-gradient(135deg, #F87171, var(--p1)); }
+.p2 .p-badge { background: linear-gradient(135deg, #FF8A65, var(--p2)); }
+.p3 .p-badge { background: linear-gradient(135deg, #26C6DA, var(--primary)); }
+.p-vals { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.p-pct { font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1; font-family: 'JetBrains Mono', monospace; }
+.p1 .p-pct { color: var(--p1); }
+.p2 .p-pct { color: var(--p2); }
+.p3 .p-pct { color: var(--primary); }
+.p-desc { font-size: 11px; color: var(--text-dim); letter-spacing: 0.5px; }
+.p-desc .num { color: var(--text-main); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.p-tag { font-size: 10px; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.5px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.p1 .p-tag { background: rgba(239, 68, 68, 0.14); color: var(--p1); border: 1px solid rgba(239, 68, 68, 0.35); }
+.p2 .p-tag { background: rgba(255, 112, 67, 0.14); color: var(--accent); border: 1px solid rgba(255, 112, 67, 0.35); }
+.p3 .p-tag { background: rgba(0, 188, 212, 0.14); color: var(--primary); border: 1px solid rgba(0, 188, 212, 0.35); }
+
+.callout { background: linear-gradient(90deg, rgba(0, 188, 212, 0.16) 0%, rgba(255, 112, 67, 0.09) 100%); border: 1px solid rgba(0, 188, 212, 0.4); border-left: 4px solid var(--primary); border-radius: 6px; padding: 12px 22px; display: flex; align-items: center; gap: 18px; position: relative; }
+.callout-icon { font-size: 22px; color: var(--primary); font-weight: 800; flex-shrink: 0; }
+.callout-text { font-size: 17px; color: var(--text-main); font-weight: 500; letter-spacing: 0.3px; }
+.callout-text .em { color: var(--primary); font-weight: 800; }
+.callout-text .warn { color: var(--accent); font-weight: 800; }
+.callout-badge { margin-left: auto; font-size: 10px; color: var(--text-dim); padding: 4px 10px; border: 1px solid var(--border-strong); border-radius: 999px; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+
+    <div class="page-head">
+      <div class="head-left">
+        <span class="tag">P.14 · INSIGHT</span>
+        <div class="page-title"><span>需求侧</span><span class="dot">·</span><span>用户要什么</span></div>
+      </div>
+      <div class="head-meta">
+        <span class="meta-item">41,792 issues</span>
+        <span class="meta-item">18 components</span>
+        <span class="meta-item">3 priority tiers</span>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="hero-left">
+        <div class="hero-title"><span class="label-num">◐</span> 数据锚点 · TOTAL VOLUME</div>
+        <div class="hero-num">41,792</div>
+        <div class="hero-sub">
+          <div class="hero-sub-label">总 Issues</div>
+          <div class="hero-sub-desc">用户反馈的完整诉求图谱</div>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card feat">
+            <div class="metric-value">50<span class="pct">%</span></div>
+            <div class="metric-label">Feature · 功能诉求</div>
+            <div class="metric-trend">≈ 20,896 issues</div>
+          </div>
+          <div class="metric-card bug">
+            <div class="metric-value">50<span class="pct">%</span></div>
+            <div class="metric-label">Bug · 质量诉求</div>
+            <div class="metric-trend">≈ 20,896 issues</div>
+          </div>
+          <div class="metric-card tail">
+            <div class="metric-value">57<span class="pct">%</span></div>
+            <div class="metric-label">Top-3 组件占比</div>
+            <div class="metric-trend">cli / agent / gateway</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="chart-card">
+          <div class="chart-title"><span>问题类型构成 · FEATURE vs BUG</span><span class="chart-sub">各 50% · 需求与质量诉求并存</span></div>
+          <div id="chart_1" style="width:100%;height:205px;"></div>
+        </div>
+        <div class="comp-section">
+          <div class="comp-title"><span>组件热度分布 · COMPONENT HEATMAP</span><span class="tier-info"><span><span class="dot-g"></span>第一梯队</span><span><span class="dot-o"></span>第二梯队</span></span></div>
+          <div class="comp-row">
+            <div class="comp-item tier1"><span class="rank">T1</span><span>cli</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t1" style="width: 100%"></div></div>
+            <div class="comp-pct">19%</div>
+          </div>
+          <div class="comp-row" style="margin-top: 6px;">
+            <div class="comp-item tier1"><span class="rank">T1</span><span>agent</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t1" style="width: 100%"></div></div>
+            <div class="comp-pct">19%</div>
+          </div>
+          <div class="comp-row" style="margin-top: 6px;">
+            <div class="comp-item tier1"><span class="rank">T1</span><span>gateway</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t1" style="width: 100%"></div></div>
+            <div class="comp-pct">19%</div>
+          </div>
+          <div class="comp-row" style="margin-top: 6px;">
+            <div class="comp-item tier2"><span class="rank">T2</span><span>cron</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t2" style="width: 47.4%"></div></div>
+            <div class="comp-pct">9%</div>
+          </div>
+          <div class="comp-row" style="margin-top: 6px;">
+            <div class="comp-item tier2"><span class="rank">T2</span><span>desktop</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t2" style="width: 47.4%"></div></div>
+            <div class="comp-pct">9%</div>
+          </div>
+          <div class="comp-row" style="margin-top: 6px;">
+            <div class="comp-item tier2"><span class="rank">T2</span><span>plugins</span></div>
+            <div class="comp-bar-wrap"><div class="comp-bar t2" style="width: 47.4%"></div></div>
+            <div class="comp-pct">9%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-title">
+        <div class="lbl">优先级分布</div>
+        <div class="val">长尾 <em>P3</em> 主导 · 极少火警</div>
+      </div>
+      <div class="priority-cards">
+        <div class="p-card p3">
+          <div class="p-badge">P3</div>
+          <div class="p-vals">
+            <div class="p-pct">68%</div>
+            <div class="p-desc">普通诉求 · <span class="num">≈ 28,419</span> 条</div>
+          </div>
+          <div class="p-tag">主体</div>
+        </div>
+        <div class="p-card p2">
+          <div class="p-badge">P2</div>
+          <div class="p-vals">
+            <div class="p-pct">28%</div>
+            <div class="p-desc">重要诉求 · <span class="num">≈ 11,702</span> 条</div>
+          </div>
+          <div class="p-tag">重要</div>
+        </div>
+        <div class="p-card p1">
+          <div class="p-badge">P1</div>
+          <div class="p-vals">
+            <div class="p-pct">3 条</div>
+            <div class="p-desc">紧急火警 · 占比 <span class="num">≈ 0.007%</span></div>
+          </div>
+          <div class="p-tag">紧急</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon">▸</div>
+      <div class="callout-text"><span>关键判断：</span>用户是<span class="em">成熟的使用者</span>，不是<span class="warn">什么都想要</span>的初用者</div>
+      <div class="callout-badge">TAKEAWAY</div>
+    </div>
+
+  </div>
+</div>
+
+<script src="../assets/echarts.min.js"></script>
+<script>
+(function(){
+  var el = document.getElementById('chart_1');
+  var chart = echarts.init(el, null, {renderer:'svg'});
+  chart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { show: false },
+    legend: {
+      orient: 'vertical',
+      right: 12,
+      top: 'center',
+      itemGap: 14,
+      icon: 'roundRect',
+      itemWidth: 12,
+      itemHeight: 12,
+      textStyle: { color: '#F1F5F9', fontSize: 12, fontWeight: 600, fontFamily: 'Inter, sans-serif' }
+    },
+    series: [{
+      type: 'pie',
+      radius: ['56%', '86%'],
+      center: ['32%', '52%'],
+      avoidLabelOverlap: false,
+      startAngle: 90,
+      label: { show: false },
+      labelLine: { show: false },
+      itemStyle: {
+        borderColor: '#1E293B',
+        borderWidth: 3
+      },
+      data: [
+        { value: 50, name: 'Feature 功能', itemStyle: { color: '#00BCD4' } },
+        { value: 50, name: 'Bug 缺陷', itemStyle: { color: '#FF7043' } }
+      ]
+    },
+    {
+      type: 'pie',
+      radius: [0, '42%'],
+      center: ['32%', '52%'],
+      silent: true,
+      label: {
+        show: true,
+        position: 'center',
+        formatter: '{a|50} {b|:}\n{c|各占一半}',
+        rich: {
+          a: { fontSize: 30, fontWeight: 800, color: '#FFFFFF', fontFamily: 'JetBrains Mono, monospace', lineHeight: 32 },
+          b: { fontSize: 18, color: '#94A3B8', fontWeight: 600, fontFamily: 'Inter' },
+          c: { fontSize: 11, color: '#94A3B8', fontFamily: 'Inter', lineHeight: 16, letterSpacing: 1 }
+        }
+      },
+      itemStyle: { color: 'transparent', borderWidth: 0 },
+      data: [{ value: 1, name: 'center' }]
+    }]
+  });
+  window.__pptxChartsReady = (window.__pptxChartsReady || 0) + 1;
+})();
+</script>
+</body>
+</html>

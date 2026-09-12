@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>阶段一 · 能力觉醒（2022-2023）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --primary: #00BCD4;
+  --primary-bright: #4DD0E1;
+  --primary-glow: rgba(0, 188, 212, 0.55);
+  --accent: #FF7043;
+  --accent-bright: #FF8A65;
+  --accent-glow: rgba(255, 112, 67, 0.45);
+  --bg-0: #070D18;
+  --bg-1: #0B1424;
+  --bg-2: #1E293B;
+  --text-main: #EAF2F5;
+  --text-dim: rgba(234, 242, 245, 0.68);
+  --text-faint: rgba(234, 242, 245, 0.4);
+  --border: rgba(0, 188, 212, 0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  background: var(--bg-0);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antennaialiased;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #0A111E;
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 12% 18%, rgba(0, 188, 212, 0.16), transparent 62%),
+    radial-gradient(ellipse 700px 500px at 88% 88%, rgba(255, 112, 67, 0.10), transparent 60%),
+    linear-gradient(180deg, #0B1424 0%, #070D18 100%);
+}
+
+.grid-overlay {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,188,212,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,188,212,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: -1px -1px;
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 1400px 800px at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 52px 70px 44px 70px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- HEADER ---- */
+.header { position: relative; }
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.meta-badge {
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--primary);
+  padding: 6px 14px;
+  border: 1px solid var(--primary);
+  border-radius: 3px;
+  background: rgba(0, 188, 212, 0.08);
+  font-weight: 600;
+}
+
+.meta-text {
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.meta-sep {
+  width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 26px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 76px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  background: linear-gradient(135deg, #EAF2F5 0%, #00BCD4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+}
+
+.year-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: var(--primary-bright);
+  padding: 8px 18px;
+  border: 1.5px solid var(--primary);
+  border-radius: 4px;
+  background: rgba(0, 188, 212, 0.06);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  box-shadow: 0 0 24px rgba(0, 188, 212, 0.15), inset 0 0 20px rgba(0, 188, 212, 0.06);
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--text-dim);
+  max-width: 1200px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.subtitle .hi-cyan { color: var(--primary-bright); font-weight: 600; }
+.subtitle .hi-orange { color: var(--accent-bright); font-weight: 600; }
+
+.subtitle-mark {
+  display: inline-block;
+  width: 4px;
+  height: 15px;
+  background: var(--primary);
+  margin-right: 14px;
+  vertical-align: -2px;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* ---- TIMELINE ---- */
+.timeline-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 0 12px 0;
+  position: relative;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 26px;
+  position: relative;
+}
+
+.timeline-rail {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 74px;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 188, 212, 0.1) 5%,
+    rgba(0, 188, 212, 0.7) 15%,
+    rgba(0, 188, 212, 0.9) 50%,
+    rgba(0, 188, 212, 0.7) 85%,
+    rgba(0, 188, 212, 0.1) 95%,
+    transparent 100%);
+  z-index: 1;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
+}
+
+.timeline-rail::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -1px; height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 188, 212, 0.15) 20%,
+    rgba(0, 188, 212, 0.35) 50%,
+    rgba(0, 188, 212, 0.15) 80%,
+    transparent 100%);
+  filter: blur(4px);
+}
+
+.tl-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tl-head {
+  text-align: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.tl-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  color: var(--primary-bright);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(0, 188, 212, 0.45);
+}
+
+.tl-dot-wrap {
+  position: relative;
+  width: 46px; height: 46px;
+  margin-bottom: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.tl-pulse {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  opacity: 0.55;
+  animation: pulse 2.4s ease-out infinite;
+}
+
+.tl-pulse.p2 {
+  animation-delay: 1.2s;
+}
+
+.tl-dot {
+  position: relative;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow:
+    0 0 14px rgba(0, 188, 212, 0.9),
+    0 0 28px rgba(0, 188, 212, 0.55);
+  border: 2px solid #EAF2F5;
+}
+
+.tl-dot::after {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 188, 212, 0.4);
+}
+
+.tl-card {
+  width: 100%;
+  padding: 22px 20px 24px 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.018) 100%);
+  border: 1px solid rgba(0, 188, 212, 0.28);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  min-height: 168px;
+}
+
+.tl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.9;
+}
+
+.tl-card::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; right: -30%;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.tl-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  line-height: 1.15;
+}
+
+.tl-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--primary);
+  margin-bottom: 12px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.tl-divider {
+  width: 28px;
+  height: 2px;
+  background: var(--primary);
+  margin-bottom: 12px;
+  box-shadow: 0 0 8px var(--primary-glow);
+  border-radius: 1px;
+}
+
+.tl-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- BOTTOM STRIP ---- */
+.bottom-strip {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 24px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.implication {
+  position: relative;
+  padding: 22px 26px 22px 28px;
+  background: linear-gradient(135deg, rgba(255, 112, 67, 0.12) 0%, rgba(255, 112, 67, 0.03) 100%);
+  border: 1px solid rgba(255, 112, 67, 0.55);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(255, 112, 67, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.implication::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255, 112, 67, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.implication::after {
+  content: '';
+  position: absolute;
+  right: 20px; top: 20px;
+  width: 60px; height: 60px;
+  border: 1px solid rgba(255, 112, 67, 0.3);
+  border-radius: 50%;
+}
+
+.imp-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.imp-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 112, 67, 0.5);
+  background: rgba(255, 112, 67, 0.08);
+  border-radius: 3px;
+}
+
+.imp-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+}
+
+.imp-text {
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.imp-text .hi {
+  color: var(--accent-bright);
+  font-weight: 700;
+  border-bottom: 1px dashed rgba(255, 112, 67, 0.6);
+  padding-bottom: 1px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  padding: 16px 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 30%; height: 1px;
+  background: var(--primary);
+  opacity: 0.7;
+}
+
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  color: var(--primary-bright);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  text-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+/* ---- TOP-RIGHT DECOR ---- */
+.top-right-decor {
+  position: absolute;
+  top: 52px;
+  right: 70px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+  text-align: right;
+  z-index: 3;
+  font-weight: 500;
+}
+
+.top-right-decor .tr-line {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.top-right-decor .tr-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary-glow);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.top-right-decor .tr-sep {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.6), transparent);
+  margin: 6px 0;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes pulse {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+  </div>
+  <div id="ct">
+
+    <div class="top-right-decor">
+      <div class="tr-line"><span class="tr-dot"></span><span>AGENT EVOLUTION / ACT I</span></div>
+      <div class="tr-sep"></div>
+      <div>SCROLL · 01 / 04</div>
+    </div>
+
+    <div class="header">
+      <div class="meta-row">
+        <div class="meta-badge">ACT · 01 / 04</div>
+        <div class="meta-text">AGENT 演进史</div>
+        <div class="meta-sep"></div>
+      </div>
+
+      <div class="title-row">
+        <h1>阶段一 · 能力觉醒</h1>
+        <div class="year-tag">2022—2023</div>
+      </div>
+
+      <div class="subtitle">
+        <span class="subtitle-mark"></span>2022-2023 是 Agent 概念觉醒期：ReAct 论文把 <span class="hi-cyan">1980 年代 BDI 理论</span>推回产品层，Function Calling 让<span class="hi-orange">工具调用 API 原语</span>成为 LLM 交互的标配。
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <div class="timeline-grid">
+        <div class="timeline-rail"></div>
+
+        <div class="tl-node">
+          <div class="tl-head">
+            <div class="tl-index">NODE · 01</div>
+            <div class="tl-date">2022 · 10 · 06</div>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-pulse"></div>
+            <div class="tl-pulse p2"></div>
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-name">ReAct</div>
+            <div class="tl-tag">REASONING × ACTING</div>
+            <div class="tl-divider"></div>
+            <div class="tl-desc">首次系统性展示"推理"与"行动"交替进行的 Agent 范式，把思维链与外部工具调用缝合起来。</div>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <div class="tl-head">
+            <div class="tl-index">NODE · 02</div>
+            <div class="tl-date">2023 · 02</div>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-pulse"></div>
+            <div class="tl-pulse p2"></div>
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-name">Toolformer</div>
+            <div class="tl-tag">SELF-SUPERVISED TOOLS</div>
+            <div class="tl-divider"></div>
+            <div class="tl-desc">LLM 通过自监督学习自主决定是否调用外部 API，工具调用从"人工设计"走向"内生能力"。</div>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <div class="tl-head">
+            <div class="tl-index">NODE · 03</div>
+            <div class="tl-date">2023 · 03</div>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-pulse"></div>
+            <div class="tl-pulse p2"></div>
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-name">AutoGPT</div>
+            <div class="tl-tag">VIRAL AUTOPILOT</div>
+            <div class="tl-divider"></div>
+            <div class="tl-desc">"自主 Agent 时刻" —— 一个循环调用 LLM 的开源项目病毒式传播，公众第一次大规模围观 Agent。</div>
+          </div>
+        </div>
+
+        <div class="tl-node">
+          <div class="tl-head">
+            <div class="tl-index">NODE · 04</div>
+            <div class="tl-date">2023 · 06</div>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-pulse"></div>
+            <div class="tl-pulse p2"></div>
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-name">Function Calling</div>
+            <div class="tl-tag">STANDARD PRIMITIVE</div>
+            <div class="tl-divider"></div>
+            <div class="tl-desc">主流模型厂商齐发工具调用 API 原语，Agent 从"论文里的实验"变成"可上线的工程能力"。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <div class="implication">
+        <div class="imp-header">
+          <div class="imp-icon">IMPLICATION</div>
+          <div class="imp-title">制度含义</div>
+        </div>
+        <div class="imp-text">用<span class="hi">新范式</span>激活<span class="hi">老理论</span>——跨域套利。</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">04</div>
+          <div class="stat-label">关键节点 · KEY MOMENTS</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">8M</div>
+          <div class="stat-label">ReAct 论文引用 · CITATIONS</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">175K</div>
+          <div class="stat-label">AutoGPT 首周 Star</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1980s</div>
+          <div class="stat-label">BDI 理论来源 · ORIGIN</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

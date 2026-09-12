@@ -1,0 +1,3 @@
+Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
+
+我需要一页 PPT，主题是案例 #67002——Safe MCP Reload，副标题定为"消费侧信任的教科书样本"，这是第 19 页的内容页。版面按左右分栏设计：左侧是一张 Issue 信息卡片，用科技感卡片样式呈现 GitHub issue 的元数据，包含三条数据点——Issue 编号 #67002、Labels 为 risk-message-delivery 与 blast-moderate、Priority 为 P3；卡片下方是 Issue 的具体标题"feat(api): add safe MCP reload control endpoint"。左右两栏之间用一条细的青色竖线做视觉分隔。右侧是分析文字区，围绕两个核心观察展开：一是"关键观察"——用户主动要求"安全的重载端点"，要在拿到能力的同时显式要安全收口；二是"制度含义"——这是从"能用"到"好用"的关键跃迁，也是消费侧信任的强信号。右侧底部再放一段叙事收束句：#67002 是教科书样本，用户在索取 MCP reload 功能的同时显式要求安全边界，这是"消费侧信任"的可观察信号，也是从"能用"到"好用"的跃迁证据。整体风格走科技感深色系，主色青蓝绿 #00BCD4，辅以橘红 #FF7043 做重点强调（比如数据点和关键标签），底色用深灰蓝 #1E293B 营造暗色仪表盘氛围；字体用 Inter 黑体家族，字号基准 16px，标题大、正文清晰。这页没有可用配图，请用纯 CSS 卡片、发光边框、渐变点缀和竖线把版面填满，避免大空白。

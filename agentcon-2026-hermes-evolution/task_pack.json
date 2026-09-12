@@ -1,0 +1,16 @@
+{
+  "deck_id": "agentcon-2026-hermes-evolution",
+  "deck_dir": "/home/lee/developing/markdown-to-slides/agentcon-2026-hermes-evolution",
+  "ppt_mode": "fast",
+  "params": {
+    "role": "「开源之道」·适兕 × 窄廊",
+    "topic": "从 Hermes 项目演化看 Agent 的需求与消费演进",
+    "page_count": 25,
+    "output_format": "pptx"
+  },
+  "source_file": "source.md",
+  "target_pages": 25,
+  "audience": "AgentCon 2026 北京站听众——开发者、工程师、AI Agent 构建者",
+  "language": "zh-Hans",
+  "style": "dark-academic"
+}

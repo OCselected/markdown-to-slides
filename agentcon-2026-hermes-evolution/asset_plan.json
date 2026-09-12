@@ -1,0 +1,156 @@
+{
+  "pages": [
+    {
+      "page_no": 1,
+      "slots": [
+        {
+          "slot_id": "hero",
+          "slot_kind": "decoration",
+          "image_prompt": "Dark futuristic cover art on deep prussian-blue background (#1E293B), Bauhaus-inspired geometric composition with a minimal abstract angular symbol on the right side, sharp intersecting shapes in teal-cyan (#00BCD4) with warm white accents, subtle gradient glow suggesting emerging intelligence, clean minimalist aesthetic with generous negative space on the left for headline overlay, high contrast cinematic lighting, atmospheric depth, sci-fi elegance, no text",
+          "aspect_ratio": "16:9",
+          "image_size": "2k",
+          "local_path": "images/page_001_hero.png",
+          "status": "ok",
+          "quality_review": {
+            "rejected_by": null
+          }
+        }
+      ]
+    },
+    {
+      "page_no": 2,
+      "slots": [
+        {
+          "slot_id": "hero",
+          "slot_kind": "concept_visual",
+          "image_prompt": "Split-screen abstract comparison on dark prussian-blue background (#1E293B), left side a solid opaque obsidian cube shrouded in shadow and mystery with subtle teal (#00BCD4) rim light, right side a transparent glass cube illuminated from within revealing intricate glowing circuit patterns and cyan internal structures, warm white highlights, contrasting opaqueness versus transparency as a conceptual metaphor, minimalist sci-fi aesthetic, dramatic side lighting, no text",
+          "aspect_ratio": "16:9",
+          "image_size": "2k",
+          "local_path": "images/page_002_hero.png",
+          "status": "ok",
+          "quality_review": {
+            "rejected_by": null
+          }
+        }
+      ]
+    },
+    {
+      "page_no": 3,
+      "slots": []
+    },
+    {
+      "page_no": 4,
+      "slots": []
+    },
+    {
+      "page_no": 5,
+      "slots": []
+    },
+    {
+      "page_no": 6,
+      "slots": []
+    },
+    {
+      "page_no": 7,
+      "slots": []
+    },
+    {
+      "page_no": 8,
+      "slots": []
+    },
+    {
+      "page_no": 9,
+      "slots": []
+    },
+    {
+      "page_no": 10,
+      "slots": []
+    },
+    {
+      "page_no": 11,
+      "slots": []
+    },
+    {
+      "page_no": 12,
+      "slots": [
+        {
+          "slot_id": "hero",
+          "slot_kind": "concept_visual",
+          "image_prompt": "Abstract cyclical flow visualization on dark prussian-blue background (#1E293B), three luminous glowing nodes arranged in a circular orbit connected by flowing teal-cyan (#00BCD4) energy streams, central hub of radiating warm white light, continuous self-referential loop suggesting autonomous learning and evolution, particle effects streaming along the orbital paths, deep space aesthetic with subtle warm orange (#FF7043) accent highlights at key nodes, sophisticated sci-fi visualization, no text labels",
+          "aspect_ratio": "16:9",
+          "image_size": "2k",
+          "local_path": "images/page_012_hero.png",
+          "status": "ok",
+          "quality_review": {
+            "rejected_by": null
+          }
+        }
+      ]
+    },
+    {
+      "page_no": 13,
+      "slots": []
+    },
+    {
+      "page_no": 14,
+      "slots": []
+    },
+    {
+      "page_no": 15,
+      "slots": []
+    },
+    {
+      "page_no": 16,
+      "slots": []
+    },
+    {
+      "page_no": 17,
+      "slots": []
+    },
+    {
+      "page_no": 18,
+      "slots": []
+    },
+    {
+      "page_no": 19,
+      "slots": []
+    },
+    {
+      "page_no": 20,
+      "slots": []
+    },
+    {
+      "page_no": 21,
+      "slots": [
+        {
+          "slot_id": "hero",
+          "slot_kind": "concept_visual",
+          "image_prompt": "Diptych-style contrast composition on dark prussian-blue background (#1E293B), left half a rigid geometric lattice of stacked rectangles and hierarchical pyramid structure in cool teal-cyan (#00BCD4) with orderly grid lines suggesting top-down control, right half an organic flowing network of interconnected nodes and branching paths in warm orange (#FF7043) suggesting grassroots emergence, a glowing dividing line between them, conceptual contrast of imposed order versus organic self-organization, minimalist tech aesthetic, no text",
+          "aspect_ratio": "16:9",
+          "image_size": "2k",
+          "local_path": "images/page_021_hero.png",
+          "status": "ok",
+          "quality_review": {
+            "rejected_by": null
+          }
+        }
+      ]
+    },
+    {
+      "page_no": 22,
+      "slots": []
+    },
+    {
+      "page_no": 23,
+      "slots": []
+    },
+    {
+      "page_no": 24,
+      "slots": []
+    },
+    {
+      "page_no": 25,
+      "slots": []
+    }
+  ]
+}

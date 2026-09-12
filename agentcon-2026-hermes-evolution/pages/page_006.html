@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>阶段二 · 能力硬化（2024）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #00BCD4;
+  --primary-glow: rgba(0, 188, 212, 0.35);
+  --accent: #FF7043;
+  --accent-glow: rgba(255, 112, 67, 0.45);
+  --bg-base: #0F172A;
+  --bg-deep: #0B1120;
+  --panel: #1E293B;
+  --panel-2: #243449;
+  --border: #334155;
+  --text-main: #E2E8F0;
+  --text-dim: #94A3B8;
+  --text-mute: #64748B;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: var(--bg-deep);
+  font-family: 'Inter', -apple-system, 'SF Pro Display', 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 15% 25%, rgba(0, 188, 212, 0.10), transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(255, 112, 67, 0.07), transparent 55%), linear-gradient(180deg, #0F172A 0%, #0B1120 100%);
+}
+
+#bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 188, 212, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 188, 212, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 44px 64px 34px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hdr-left { flex: 1; min-width: 0; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  background: rgba(0, 188, 212, 0.08);
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #F8FAFC;
+  line-height: 1.1;
+}
+
+h1 .accent-word {
+  color: var(--primary);
+  position: relative;
+}
+
+h1 .year {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  max-width: 1000px;
+  font-weight: 400;
+}
+
+.subtitle .hl-c { color: var(--primary); font-weight: 600; }
+.subtitle .hl-o { color: var(--accent); font-weight: 700; }
+
+.hdr-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.kpi-row {
+  display: flex;
+  gap: 16px;
+}
+
+.kpi-card {
+  width: 258px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: 10px;
+  padding: 18px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card.orange {
+  border-left-color: var(--accent);
+  background: linear-gradient(135deg, rgba(46, 30, 30, 0.55), rgba(15, 23, 42, 0.95));
+  border-color: rgba(255, 112, 67, 0.35);
+}
+
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.kpi-card.orange::after {
+  background: radial-gradient(circle, rgba(255, 112, 67, 0.22), transparent 70%);
+}
+
+.kpi-label {
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+}
+
+.kpi-card.orange .kpi-value { color: var(--accent); }
+
+.kpi-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.phase-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(0, 188, 212, 0.06);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  border-radius: 8px;
+}
+
+.phase-arrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.phase-arrow .arr {
+  color: var(--primary);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.phase-arrow .arrow-line {
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.tl-area {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.45), rgba(15, 23, 42, 0.25));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 30px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tl-container {
+  position: relative;
+  flex: 1;
+}
+
+.tl-timeline {
+  position: relative;
+  height: 260px;
+  padding: 0;
+}
+
+.tl-line {
+  position: absolute;
+  top: 19px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0, 188, 212, 0.15), rgba(0, 188, 212, 0.6) 35%, rgba(255, 112, 67, 0.75) 72%, rgba(255, 112, 67, 0.35));
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.25);
+}
+
+.tl-node {
+  position: absolute;
+  top: 0;
+  width: 22%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tl-node.n1 { left: 10%; transform: translateX(-50%); }
+.tl-node.n2 { left: 30%; transform: translateX(-50%); }
+.tl-node.n3 { left: 50%; transform: translateX(-50%); }
+.tl-node.n4 { left: 70%; transform: translateX(-50%); }
+.tl-node.n5 { left: 90%; transform: translateX(-50%); }
+
+.tl-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--bg-base);
+  box-shadow: 0 0 0 1px var(--primary), 0 0 14px var(--primary-glow);
+  z-index: 3;
+  position: relative;
+}
+
+.tl-dot.orange {
+  background: var(--accent);
+  border: 3px solid var(--bg-base);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 22px var(--accent-glow);
+  width: 32px;
+  height: 32px;
+  margin-top: -5px;
+}
+
+.tl-dot.orange::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0.55;
+}
+
+.tl-line-vert {
+  width: 1.5px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--primary), rgba(0, 188, 212, 0.2));
+  margin-top: 4px;
+}
+
+.tl-line-vert.orange {
+  background: linear-gradient(180deg, var(--accent), rgba(255, 112, 67, 0.2));
+}
+
+.node-content {
+  text-align: center;
+  padding: 4px 6px 0;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node-date {
+  font-size: 10.5px;
+  color: var(--text-mute);
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.node-date.orange {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.node-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+}
+
+.node-title.highlight {
+  color: var(--accent);
+  font-size: 17px;
+}
+
+.node-title .cn {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-top: 3px;
+  letter-spacing: 0.3px;
+}
+
+.node-desc {
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--text-dim);
+}
+
+.node-tag {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  background: rgba(0, 188, 212, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(0, 188, 212, 0.35);
+}
+
+.node-tag.orange {
+  background: rgba(255, 112, 67, 0.12);
+  color: var(--accent);
+  border-color: rgba(255, 112, 67, 0.45);
+}
+
+.tl-axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.axis-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.axis-label .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.axis-label.left .dot { background: var(--primary); box-shadow: 0 0 10px var(--primary-glow); }
+.axis-label.right .dot { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+
+.axis-label.left { color: var(--primary); }
+.axis-label.right { color: var(--accent); }
+
+.axis-label .sub {
+  color: var(--text-mute);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.axis-arrow {
+  flex: 1;
+  height: 2px;
+  margin: 0 22px;
+  background: linear-gradient(90deg, rgba(0, 188, 212, 0.55), rgba(255, 112, 67, 0.75));
+  position: relative;
+  border-radius: 1px;
+}
+
+.axis-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 10px solid var(--accent);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, rgba(0, 188, 212, 0.06), rgba(255, 112, 67, 0.08));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.footer-mark {
+  width: 30px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.footer-mark.right { background: var(--accent); }
+
+.footer-text {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.6px;
+}
+
+.footer-text .em-c { color: var(--primary); }
+.footer-text .em-o { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+
+    <div class="hdr">
+      <div class="hdr-left">
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span>PHASE&nbsp;II&nbsp;·&nbsp;2024</span></div>
+        <h1>阶段二 · <span class="accent-word">能力硬化</span>（<span class="year">2024</span>）</h1>
+        <div class="subtitle">
+          2024 年 Agent 从能力验证走向协议标准化 —— <span class="hl-c">Computer Use</span> 扩展能力边界，<span class="hl-o">MCP</span> 定义生态接口，两者的组合让 Agent 具备生态化条件。
+        </div>
+      </div>
+      <div class="hdr-right">
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-label">Computer Use</div>
+            <div class="kpi-value">2024-10</div>
+            <div class="kpi-sub">Agent 从 API 走向 GUI</div>
+          </div>
+          <div class="kpi-card orange">
+            <div class="kpi-label">MCP · 发布</div>
+            <div class="kpi-value">11-25</div>
+            <div class="kpi-sub">首个开放协议标准化</div>
+          </div>
+        </div>
+        <div class="phase-indicator">
+          <div class="phase-arrow">
+            <span class="dot" style="width:6px;height:6px;border-radius:50%;background:#00BCD4;"></span>
+            <span class="label">能力验证</span>
+            <span class="arr">→</span>
+            <span class="arr">→</span>
+            <span class="arr">→</span>
+            <span class="label">生态化</span>
+            <span class="dot" style="width:6px;height:6px;border-radius:50%;background:#FF7043;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-area">
+      <div class="tl-container">
+        <div class="tl-timeline">
+          <div class="tl-line"></div>
+
+          <div class="tl-node n1">
+            <div class="tl-dot"></div>
+            <div class="tl-line-vert"></div>
+            <div class="node-content">
+              <div class="node-date">2024 · Q1</div>
+              <div class="node-title">Anthropic Tool Use GA<span class="cn">Claude 3 生产可用</span></div>
+              <div class="node-desc">Claude 3 完成从 beta 到生产可用的跨越，工具调用进入稳定期</div>
+              <div class="node-tag">能力验证</div>
+            </div>
+          </div>
+
+          <div class="tl-node n2">
+            <div class="tl-dot"></div>
+            <div class="tl-line-vert"></div>
+            <div class="node-content">
+              <div class="node-date">2024 · 08</div>
+              <div class="node-title">OpenAI Structured Outputs<span class="cn">强 schema 校验</span></div>
+              <div class="node-desc">OpenAI 推出强 schema 校验输出，Agent 契约能力成型</div>
+              <div class="node-tag">契约成型</div>
+            </div>
+          </div>
+
+          <div class="tl-node n3">
+            <div class="tl-dot"></div>
+            <div class="tl-line-vert"></div>
+            <div class="node-content">
+              <div class="node-date">2024 · 10</div>
+              <div class="node-title">Anthropic Computer Use<span class="cn">Agent 从 API 走到 GUI</span></div>
+              <div class="node-desc">Agent 首次直接操作 GUI，能力边界被打开</div>
+              <div class="node-tag">边界突破</div>
+            </div>
+          </div>
+
+          <div class="tl-node n4">
+            <div class="tl-dot orange"></div>
+            <div class="tl-line-vert orange"></div>
+            <div class="node-content">
+              <div class="node-date orange">2024 · 11 · 25</div>
+              <div class="node-title highlight">MCP 发布<span class="cn">开放协议标准化</span></div>
+              <div class="node-desc">首个开放协议标准化 agent-tools 接口，分水岭节点</div>
+              <div class="node-tag orange">◆ 生态分水岭</div>
+            </div>
+          </div>
+
+          <div class="tl-node n5">
+            <div class="tl-dot"></div>
+            <div class="tl-line-vert"></div>
+            <div class="node-content">
+              <div class="node-date">2024 · 制度含义</div>
+              <div class="node-title">能力与生态的分水岭<span class="cn">总结与展望</span></div>
+              <div class="node-desc">协议是生态的起点，Computer Use 与 MCP 同时打开两条通道</div>
+              <div class="node-tag">协议即生态</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-axis">
+          <div class="axis-label left"><span class="dot"></span><span>能力验证</span><span class="sub">Capability</span></div>
+          <div class="axis-arrow"></div>
+          <div class="axis-label right"><span class="sub">Ecosystem</span><span>生态化</span><span class="dot"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-mark"></span>
+      <div class="footer-text">能力与生态的分水岭已在 <span class="em-c">2024</span> 年被 <span class="em-o">同时</span> 打开 —— Computer Use 撑开能力边界，MCP 铺就生态接口</div>
+      <span class="footer-mark right"></span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
