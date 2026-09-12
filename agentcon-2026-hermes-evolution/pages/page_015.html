@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>供给侧 · 项目做了什么</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+  --primary:#00BCD4;
+  --primary-light:#4DD0E1;
+  --accent:#FF7043;
+  --accent-dark:#E64A19;
+  --bg-deep:#0F172A;
+  --bg-base:#1E293B;
+  --bg-card:#243447;
+  --bg-card-2:#1B2A3E;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --text-main:#F1F5F9;
+  --text-dim:#94A3B8;
+  --text-mute:#64748B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{
+  font-family:'Inter','Noto Sans SC','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#0B1220;
+  color:var(--text-main);
+  font-size:16px;
+  letter-spacing:.01em;
+}
+.wrapper{
+  width:1600px;height:900px;
+  position:relative;overflow:hidden;
+  margin:0 auto;
+  background:linear-gradient(140deg,#0B1220 0%,#1E293B 55%,#0F172A 100%);
+}
+/* fine grid + scanline */
+#bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    radial-gradient(circle at 82% 8%, rgba(0,188,212,.16) 0%, transparent 42%),
+    radial-gradient(circle at 8% 92%, rgba(255,112,67,.08) 0%, transparent 40%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-position:0 0, 0 0, 0 0, 0 0;
+}
+/* corner ticks */
+.tick{position:absolute;width:24px;height:24px;border:2px solid var(--primary);opacity:.5}
+.tick.tl{top:36px;left:36px;border-right:none;border-bottom:none}
+.tick.tr{top:36px;right:36px;border-left:none;border-bottom:none}
+.tick.bl{bottom:36px;left:36px;border-right:none;border-top:none}
+.tick.br{bottom:36px;right:36px;border-left:none;border-top:none}
+
+#ct{position:absolute;inset:0;z-index:1;padding:56px 72px;box-sizing:border-box}
+
+/* ============ HEADER ============ */
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:34px}
+.header-left{max-width:1100px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.3em;color:var(--primary);
+  font-weight:600;text-transform:uppercase;margin-bottom:14px;
+}
+.eyebrow::before{
+  content:'';width:26px;height:1px;background:var(--primary);
+}
+h1{
+  font-size:46px;font-weight:800;letter-spacing:-.01em;color:var(--text-main);
+  line-height:1.15;
+}
+h1 .accent{
+  background:linear-gradient(120deg,var(--primary) 0%,#7CE6F5 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.subtitle{
+  font-size:15px;color:var(--text-dim);margin-top:12px;font-weight:400;
+  line-height:1.55;max-width:900px;
+}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.tag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 16px;
+  border:1px solid rgba(0,188,212,.55);
+  border-radius:2px;
+  background:rgba(0,188,212,.08);
+  font-size:11px;color:var(--primary-light);
+  letter-spacing:.22em;font-weight:600;
+}
+.tag .dot{
+  width:6px;height:6px;background:var(--primary);border-radius:50%;
+  box-shadow:0 0 8px var(--primary);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.page-meta{font-size:11px;color:var(--text-mute);letter-spacing:.24em;font-weight:500}
+
+/* ============ MAIN ============ */
+.main{
+  display:grid;
+  grid-template-columns:432px 1fr;
+  gap:44px;
+  margin-bottom:28px;
+}
+
+/* ============ LEFT: HERO ============ */
+.hero{
+  background:linear-gradient(180deg, rgba(0,188,212,.06) 0%, rgba(255,255,255,.02) 100%);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:36px 32px;
+  position:relative;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;
+  width:60px;height:2px;background:var(--primary);
+}
+.hero-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;color:var(--text-dim);letter-spacing:.28em;
+  text-transform:uppercase;font-weight:600;margin-bottom:18px;
+}
+.hero-label .bar{flex:1;height:1px;background:var(--line-strong)}
+.hero-num{
+  font-size:148px;font-weight:900;line-height:.95;
+  color:var(--primary);
+  letter-spacing:-.03em;
+  text-shadow:0 0 40px rgba(0,188,212,.35);
+  font-variant-numeric:tabular-nums;
+}
+.hero-cap{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-top:12px;padding-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.hero-cap-l{display:flex;flex-direction:column;gap:4px}
+.hero-cap-title{
+  font-size:15px;color:var(--text-main);font-weight:600;
+  letter-spacing:.02em;
+}
+.hero-cap-en{font-size:10px;color:var(--text-mute);letter-spacing:.28em;text-transform:uppercase}
+.hero-cap-r{font-size:11px;color:var(--text-dim);letter-spacing:.14em}
+
+.kpi-title{
+  font-size:11px;color:var(--text-dim);letter-spacing:.28em;
+  margin:22px 0 14px 0;font-weight:600;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.kpi-title .bar{flex:1;height:1px;background:var(--line)}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.kpi{
+  background:rgba(15,23,42,.55);
+  border:1px solid var(--line);
+  border-left:2px solid var(--primary);
+  padding:14px 12px;border-radius:2px;
+  display:flex;flex-direction:column;gap:3px;
+}
+.kpi.warn{border-left-color:var(--accent)}
+.kpi-l{font-size:10px;color:var(--text-dim);letter-spacing:.24em;font-weight:600}
+.kpi-v{
+  font-size:28px;font-weight:800;color:var(--primary);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+}
+.kpi.warn .kpi-v{color:var(--accent)}
+.kpi-s{font-size:10px;color:var(--text-mute);letter-spacing:.06em}
+
+/* ============ RIGHT: DIMENSIONS ============ */
+.dimensions{display:flex;flex-direction:column;gap:14px}
+.dim-row-top{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.dim-card{
+  background:linear-gradient(160deg, rgba(255,255,255,.03) 0%, rgba(15,23,42,.5) 100%);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:16px 16px 15px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.dim-card::before{
+  content:'';position:absolute;top:0;left:0;width:24px;height:2px;
+  background:var(--primary);
+}
+.dim-card.warn::before{background:var(--accent)}
+.dim-head{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:10px;gap:8px;
+}
+.dim-idx{
+  font-size:10px;color:var(--text-mute);letter-spacing:.22em;font-weight:600;
+}
+.dim-title{
+  font-size:15px;font-weight:700;color:var(--text-main);
+  margin-top:3px;letter-spacing:.02em;
+}
+.dim-tag{
+  font-size:9px;letter-spacing:.15em;font-weight:600;
+  padding:3px 7px;border-radius:1px;
+  border:1px solid rgba(0,188,212,.4);
+  color:var(--primary-light);
+  background:rgba(0,188,212,.06);
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.dim-tag.warn{
+  border-color:rgba(255,112,67,.5);
+  color:var(--accent);
+  background:rgba(255,112,67,.08);
+}
+
+.meter{margin-bottom:8px}
+.meter:last-child{margin-bottom:0}
+.meter-top{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12px;margin-bottom:5px;
+}
+.meter-l{color:var(--text-dim);font-weight:500;letter-spacing:.02em}
+.meter-v{
+  color:var(--primary);font-weight:700;font-size:15px;
+  font-variant-numeric:tabular-nums;
+}
+.meter-v.warn{color:var(--accent)}
+.meter-v.absent{color:var(--accent);font-style:italic}
+.meter-bar{
+  height:5px;background:rgba(255,255,255,.06);
+  border-radius:1px;overflow:hidden;position:relative;
+}
+.meter-fill{
+  height:100%;background:linear-gradient(90deg,var(--primary) 0%,var(--primary-light) 100%);
+  box-shadow:0 0 10px rgba(0,188,212,.4);
+}
+.meter-fill.warn{background:linear-gradient(90deg,var(--accent-dark) 0%,var(--accent) 100%);box-shadow:0 0 10px rgba(255,112,67,.4)}
+.meter-fill.absent{
+  background:repeating-linear-gradient(45deg, rgba(255,112,67,.5) 0 4px, transparent 4px 8px);
+  width:100% !important;
+}
+
+/* 制度含义 card - wide */
+.dim-wide{
+  background:linear-gradient(90deg, rgba(255,112,67,.08) 0%, rgba(0,188,212,.06) 100%);
+  border:1px solid rgba(255,112,67,.28);
+  border-radius:4px;
+  padding:16px 20px;
+  display:flex;align-items:center;gap:22px;
+  position:relative;overflow:hidden;
+}
+.dim-wide::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+}
+.dim-wide-head{min-width:180px;flex-shrink:0}
+.transition{
+  display:flex;align-items:center;gap:10px;
+  margin-top:6px;
+}
+.trans-node{
+  padding:6px 10px;
+  border-radius:2px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;
+}
+.trans-node.from{
+  background:rgba(255,112,67,.14);
+  border:1px solid rgba(255,112,67,.5);
+  color:var(--accent);
+}
+.trans-node.to{
+  background:rgba(0,188,212,.14);
+  border:1px solid rgba(0,188,212,.6);
+  color:var(--primary-light);
+}
+.trans-arrow{
+  color:var(--text-dim);font-size:16px;letter-spacing:-.05em;
+}
+.dim-wide-body{
+  flex:1;
+  font-size:14px;color:var(--text-main);
+  line-height:1.6;
+}
+.dim-wide-body .k{color:var(--primary-light);font-weight:700}
+.dim-wide-body .k-warn{color:var(--accent);font-weight:700}
+
+/* ============ BOTTOM SUMMARY ============ */
+.summary{
+  display:flex;align-items:center;gap:22px;
+  padding:18px 24px;
+  background:linear-gradient(90deg, rgba(0,188,212,.08) 0%, rgba(255,112,67,.06) 100%);
+  border:1px solid var(--line-strong);
+  border-left:3px solid var(--primary);
+  border-radius:2px;
+  position:relative;
+}
+.summary::after{
+  content:'';position:absolute;right:-1px;top:-1px;
+  width:60px;height:60px;
+  background:linear-gradient(135deg, transparent 50%, rgba(255,112,67,.14) 50%);
+  border-radius:0 2px 0 0;
+}
+.sum-label{
+  display:flex;flex-direction:column;gap:2px;
+  padding-right:20px;border-right:1px solid var(--line-strong);
+  flex-shrink:0;
+}
+.sum-label-en{font-size:9px;color:var(--text-mute);letter-spacing:.3em;font-weight:600}
+.sum-label-cn{font-size:14px;color:var(--primary-light);font-weight:700;letter-spacing:.05em}
+.sum-text{
+  flex:1;font-size:14px;color:var(--text-main);line-height:1.6;
+  letter-spacing:.01em;
+}
+.sum-text .k{color:var(--primary);font-weight:700;font-variant-numeric:tabular-nums}
+.sum-text .k-warn{color:var(--accent);font-weight:700}
+.sum-text .em{color:var(--text-main);font-weight:600}
+.badge-anchor{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:10px 18px;
+  border:1.5px solid var(--accent);
+  border-radius:2px;
+  background:rgba(255,112,67,.06);
+  min-width:120px;
+  flex-shrink:0;
+  position:relative;
+}
+.badge-anchor::before{
+  content:'';position:absolute;inset:3px;
+  border:1px dashed rgba(255,112,67,.35);
+  border-radius:1px;
+  pointer-events:none;
+}
+.badge-anchor-en{font-size:9px;color:var(--accent);letter-spacing:.24em;font-weight:600;margin-bottom:2px;opacity:.75}
+.badge-anchor-cn{font-size:22px;color:var(--accent);font-weight:800;letter-spacing:.06em;line-height:1}
+.badge-anchor-s{font-size:9px;color:var(--text-dim);letter-spacing:.15em;margin-top:3px;font-weight:500}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <span class="tick tl"></span>
+  <span class="tick tr"></span>
+  <span class="tick bl"></span>
+  <span class="tick br"></span>
+
+  <div id="ct">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow"><span>SUPPLY SIDE · PR ANALYSIS</span></div>
+        <h1>供给侧 · <span class="accent">项目做了什么</span></h1>
+        <p class="subtitle">27,783 条 PR 呈现出<span style="color:var(--primary-light);font-weight:600">收敛型</span>策略——P2 全给 bug、P3 养 feature、P1 缺席，项目正从扩张期进入稳定化期。</p>
+      </div>
+      <div class="header-right">
+        <span class="tag"><span class="dot"></span>DATA · CH.15</span>
+        <span class="page-meta">15 / 22 · SUPPLY SIDE</span>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- LEFT: HERO -->
+      <div class="hero">
+        <div class="hero-label">
+          <span>TOTAL PULL REQUESTS</span>
+          <span class="bar"></span>
+        </div>
+        <div class="hero-num">27,783</div>
+        <div class="hero-cap">
+          <div class="hero-cap-l">
+            <span class="hero-cap-title">总 PRs</span>
+            <span class="hero-cap-en">Cumulative Pull Requests</span>
+          </div>
+          <span class="hero-cap-r">全部维度分析基础</span>
+        </div>
+
+        <div class="kpi-title"><span>关键 KPI</span><span class="bar"></span></div>
+        <div class="kpi-grid">
+          <div class="kpi warn">
+            <span class="kpi-l">P1 · CRITICAL</span>
+            <span class="kpi-v">0</span>
+            <span class="kpi-s">条 · 缺席</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-l">P2 · HIGH</span>
+            <span class="kpi-v">89%</span>
+            <span class="kpi-s">→ Bug 占比</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-l">P3 · MEDIUM</span>
+            <span class="kpi-v">72%</span>
+            <span class="kpi-s">→ Feature 占比</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DIMENSIONS -->
+      <div class="dimensions">
+
+        <div class="dim-row-top">
+
+          <!-- 01 类型分布 -->
+          <div class="dim-card">
+            <div class="dim-head">
+              <div>
+                <span class="dim-idx">DIM · 01</span>
+                <div class="dim-title">类型分布</div>
+              </div>
+              <span class="dim-tag">TYPE</span>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">Bug Fix</span>
+                <span class="meter-v">50%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:50%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">Feature</span>
+                <span class="meter-v">50%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:50%"></div></div>
+            </div>
+          </div>
+
+          <!-- 02 组件活跃度 -->
+          <div class="dim-card">
+            <div class="dim-head">
+              <div>
+                <span class="dim-idx">DIM · 02</span>
+                <div class="dim-title">组件活跃度</div>
+              </div>
+              <span class="dim-tag">CORE 48%</span>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">Agent</span>
+                <span class="meter-v">26%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:52%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">Gateway</span>
+                <span class="meter-v">22%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:44%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">CLI</span>
+                <span class="meter-v">17%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:34%"></div></div>
+            </div>
+          </div>
+
+          <!-- 03 优先级策略 -->
+          <div class="dim-card warn">
+            <div class="dim-head">
+              <div>
+                <span class="dim-idx">DIM · 03</span>
+                <div class="dim-title">优先级策略</div>
+              </div>
+              <span class="dim-tag warn">P1 缺席</span>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">P2 · Bug</span>
+                <span class="meter-v">89%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:89%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">P3 · Feature</span>
+                <span class="meter-v">72%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:72%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">P1 · Critical</span>
+                <span class="meter-v absent">0%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill absent"></div></div>
+            </div>
+          </div>
+
+          <!-- 04 风险分布 -->
+          <div class="dim-card">
+            <div class="dim-head">
+              <div>
+                <span class="dim-idx">DIM · 04</span>
+                <div class="dim-title">风险分布</div>
+              </div>
+              <span class="dim-tag">RISK</span>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">兼容性</span>
+                <span class="meter-v">56%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:56%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">安全</span>
+                <span class="meter-v">26%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:26%"></div></div>
+            </div>
+            <div class="meter">
+              <div class="meter-top">
+                <span class="meter-l">消息 / 会话</span>
+                <span class="meter-v">22 / 21%</span>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width:22%"></div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 05 制度含义 -->
+        <div class="dim-wide">
+          <div class="dim-wide-head">
+            <span class="dim-idx">DIM · 05</span>
+            <div class="dim-title">制度含义</div>
+            <div class="transition">
+              <span class="trans-node from">扩张期</span>
+              <span class="trans-arrow">→</span>
+              <span class="trans-node to">稳定化期</span>
+            </div>
+          </div>
+          <div class="dim-wide-body">
+            从<span class="k-warn">扩张期</span>进入<span class="k">稳定化期</span>——<span class="k">存量可靠性</span>优先于<span class="k-warn">增量扩张</span>；P2 全给 Bug、P3 养 Feature、P1 缺席，共同指向<span class="k">收敛型</span>策略。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTTOM SUMMARY -->
+    <div class="summary">
+      <div class="sum-label">
+        <span class="sum-label-en">NARRATIVE</span>
+        <span class="sum-label-cn">叙事化小结</span>
+      </div>
+      <p class="sum-text">
+        <span class="k">27,783</span> 条 PR 呈现<span class="em">收敛型</span>策略——<span class="k-warn">P2 全给 bug</span>、<span class="k">P3 养 feature</span>、<span class="k-warn">P1 缺席</span>——项目正从<span class="k-warn">扩张期</span>进入<span class="k">稳定化期</span>。
+      </p>
+      <div class="badge-anchor">
+        <span class="badge-anchor-en">CONVERGING</span>
+        <span class="badge-anchor-cn">收敛型</span>
+        <span class="badge-anchor-s">SUPPLY STRATEGY</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

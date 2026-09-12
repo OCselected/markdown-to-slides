@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>制度经济学视角 · Williamson × Roland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#00BCD4;
+  --cyan-soft:rgba(0,188,212,.15);
+  --cyan-line:rgba(0,188,212,.35);
+  --orange:#FF7043;
+  --orange-soft:rgba(255,112,67,.15);
+  --bg:#1E293B;
+  --bg-2:#0F172A;
+  --panel:#243447;
+  --panel-2:#2A3B52;
+  --text:#E2E8F0;
+  --text-dim:#94A3B8;
+  --text-mute:#64748B;
+  --border:rgba(148,163,184,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;font-family:'Inter','Noto Sans SC',sans-serif;font-size:16px;color:var(--text);background:var(--bg-2);}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+#bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 15%,rgba(0,188,212,.12) 0%,transparent 45%),radial-gradient(ellipse at 80% 85%,rgba(255,112,67,.10) 0%,transparent 45%),linear-gradient(135deg,#1E293B 0%,#0F172A 100%);}
+#bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,188,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,188,212,.04) 1px,transparent 1px);background-size:48px 48px;}
+#bg::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan) 30%,var(--orange) 70%,transparent);}
+#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box;display:flex;flex-direction:column;}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.header-left{display:flex;flex-direction:column;gap:8px;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;}
+.eyebrow .dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan);}
+.title{font-size:32px;font-weight:700;letter-spacing:-.01em;color:#fff;line-height:1.15;}
+.title .accent{color:var(--cyan);}
+.title .x{color:var(--orange);font-weight:600;margin:0 4px;}
+.subtitle{font-size:14px;color:var(--text-dim);font-weight:400;letter-spacing:.02em;}
+.subtitle .tag{color:var(--orange);font-weight:500;}
+.header-right{display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.15em;}
+.header-right .badge{padding:5px 10px;border:1px solid var(--cyan-line);border-radius:3px;color:var(--cyan);}
+.header-right .badge.orange{border-color:rgba(255,112,67,.4);color:var(--orange);}
+
+/* Body */
+.body{flex:1;display:grid;grid-template-columns:1fr 220px 1fr;gap:18px;padding-top:22px;}
+
+/* Panel */
+.panel{position:relative;background:linear-gradient(160deg,rgba(36,52,71,.7) 0%,rgba(30,41,59,.5) 100%);border:1px solid var(--border);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;overflow:hidden;}
+.panel::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--cyan);}
+.panel.right::before{background:var(--orange);}
+.panel-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.panel-title{display:flex;flex-direction:column;gap:4px;}
+.panel-title .num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.2em;}
+.panel-title h3{font-size:17px;font-weight:600;color:#fff;letter-spacing:.01em;}
+.panel-title .sub{font-size:11px;color:var(--text-dim);font-weight:400;}
+.panel-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:2px;background:var(--cyan-soft);color:var(--cyan);letter-spacing:.15em;border:1px solid var(--cyan-line);}
+.panel.right .panel-badge{background:var(--orange-soft);color:var(--orange);border-color:rgba(255,112,67,.35);}
+
+/* Williamson hierarchy */
+.levels{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+.level{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:10px 14px;background:rgba(15,23,42,.5);border:1px solid rgba(0,188,212,.18);border-radius:4px;position:relative;transition:none;}
+.level .lv-tag{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;color:var(--cyan);letter-spacing:.05em;}
+.level .lv-info{display:flex;flex-direction:column;gap:2px;}
+.level .lv-name{font-size:13px;font-weight:600;color:#fff;}
+.level .lv-desc{font-size:11px;color:var(--text-dim);}
+.level .lv-scale{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.1em;}
+.level::after{content:"";position:absolute;left:52px;top:100%;width:1px;height:8px;background:var(--cyan-line);}
+.level:last-child::after{display:none;}
+.arrow-flow{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,188,212,.25);display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.1em;}
+.arrow-flow .dir{display:flex;align-items:center;gap:6px;}
+.arrow-flow .dir svg{opacity:.8;}
+.arrow-flow .axis{color:var(--text-mute);}
+
+/* Roland time axis */
+.time-axis{margin-top:6px;position:relative;}
+.time-bar{position:relative;height:64px;background:linear-gradient(90deg,rgba(0,188,212,.25) 0%,rgba(255,112,67,.25) 100%);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;padding:0 18px;}
+.time-bar .slow,.time-bar .fast{flex:1;display:flex;flex-direction:column;gap:2px;}
+.time-bar .fast{align-items:flex-end;text-align:right;}
+.time-bar .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;font-weight:600;}
+.time-bar .slow .label{color:var(--cyan);}
+.time-bar .fast .label{color:var(--orange);}
+.time-bar .caption{font-size:11px;color:var(--text-dim);}
+.time-bar .pivot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--bg);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;font-weight:600;box-shadow:0 0 20px rgba(255,255,255,.3);}
+
+.time-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.tc{padding:12px 14px;background:rgba(15,23,42,.5);border-radius:4px;border:1px solid var(--border);}
+.tc.slow{border-left:3px solid var(--cyan);}
+.tc.fast{border-left:3px solid var(--orange);}
+.tc-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.tc-head .dot{width:8px;height:8px;border-radius:50%;}
+.tc.slow .tc-head .dot{background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+.tc.fast .tc-head .dot{background:var(--orange);box-shadow:0 0 8px var(--orange);}
+.tc-head .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;font-weight:600;}
+.tc.slow .tc-head .lbl{color:var(--cyan);}
+.tc.fast .tc-head .lbl{color:var(--orange);}
+.tc ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.tc li{font-size:11.5px;color:var(--text);padding-left:12px;position:relative;line-height:1.35;}
+.tc li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;background:var(--text-dim);border-radius:50%;}
+
+/* Center column */
+.center{display:flex;flex-direction:column;align-items:stretch;justify-content:center;position:relative;padding:0 4px;}
+.cross-axis{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;}
+.axis-label-x{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.2em;text-transform:uppercase;writing-mode:horizontal-tb;}
+.matrix-core{position:relative;width:100%;aspect-ratio:1/1;max-width:180px;display:flex;align-items:center;justify-content:center;}
+.matrix-core svg{position:absolute;inset:0;width:100%;height:100%;}
+.matrix-core .core-badge{position:relative;z-index:2;background:linear-gradient(135deg,rgba(0,188,212,.9),rgba(255,112,67,.9));border-radius:50%;width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 40px rgba(255,112,67,.35),0 0 60px rgba(0,188,212,.25);}
+.matrix-core .core-badge .kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;opacity:.9;font-weight:500;}
+.matrix-core .core-badge .num{font-size:26px;font-weight:700;line-height:1;margin:6px 0;letter-spacing:-.02em;}
+.matrix-core .core-badge .label{font-size:12px;font-weight:600;letter-spacing:.05em;}
+.core-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--text-mute);text-align:center;}
+
+/* Bottom summary */
+.summary{margin-top:18px;padding:16px 22px;background:linear-gradient(90deg,rgba(0,188,212,.08) 0%,rgba(255,112,67,.08) 100%);border:1px solid var(--border);border-radius:4px;position:relative;display:flex;align-items:center;gap:18px;}
+.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),var(--orange));}
+.summary .icon{width:40px;height:40px;border-radius:50%;background:rgba(15,23,42,.6);border:1px solid var(--cyan-line);display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;}
+.summary .text{font-size:13px;color:var(--text);line-height:1.55;flex:1;}
+.summary .text .k{color:var(--cyan);font-weight:600;}
+.summary .text .k2{color:var(--orange);font-weight:600;}
+.summary .text .em{color:#fff;font-weight:600;}
+
+/* Footer meta */
+.footer{margin-top:10px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.15em;padding-top:6px;}
+
+/* Corner marks */
+.corner{position:absolute;width:14px;height:14px;border:1px solid var(--cyan);}
+.corner.tl{top:8px;left:8px;border-right:0;border-bottom:0;}
+.corner.tr{top:8px;right:8px;border-left:0;border-bottom:0;}
+.corner.bl{bottom:8px;left:8px;border-right:0;border-top:0;}
+.corner.br{bottom:8px;right:8px;border-left:0;border-top:0;}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div id="bg"></div>
+<div id="ct">
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow"><span class="dot"></span><span>INSTITUTIONAL ECONOMICS · FRAMEWORK SYNTHESIS</span></div>
+    <div class="title">制度经济学视角 · <span class="accent">Williamson</span><span class="x">×</span><span class="accent">Roland</span></div>
+    <div class="subtitle">核心命题：<span class="tag">层次 × 时间</span> 的分析矩阵 — 将静态层次链与动态时间轴合二为一，回答改革受阻的空间与速度问题</div>
+  </div>
+  <div class="header-right">
+    <div class="badge">LAYERED × TEMPORAL</div>
+    <div class="badge orange">大分流 2.0</div>
+  </div>
+</div>
+
+<!-- Body grid: left Williamson | center matrix | right Roland -->
+<div class="body">
+
+  <!-- LEFT: Williamson hierarchy -->
+  <div class="panel left">
+    <div class="panel-header">
+      <div class="panel-title">
+        <div class="num">DIMENSION 01 / LAYERED</div>
+        <h3>Williamson 层次链</h3>
+        <div class="sub">L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置</div>
+      </div>
+      <div class="panel-badge">SPATIAL · 在哪里受阻</div>
+    </div>
+
+    <div class="levels">
+      <div class="level">
+        <div class="lv-tag">L1</div>
+        <div class="lv-info">
+          <div class="lv-name">社会嵌入</div>
+          <div class="lv-desc">文化 · 信任 · 非正式规范</div>
+        </div>
+        <div class="lv-scale">DEEPEST</div>
+      </div>
+      <div class="level">
+        <div class="lv-tag">L2</div>
+        <div class="lv-info">
+          <div class="lv-name">制度环境</div>
+          <div class="lv-desc">政治体制 · 宪法规则 · 权力结构</div>
+        </div>
+        <div class="lv-scale">CONSTRAINING</div>
+      </div>
+      <div class="level">
+        <div class="lv-tag">L3</div>
+        <div class="lv-info">
+          <div class="lv-name">治理机制</div>
+          <div class="lv-desc">合同 · 组织架构 · 内部规则</div>
+        </div>
+        <div class="lv-scale">GOVERNANCE</div>
+      </div>
+      <div class="level">
+        <div class="lv-tag">L4</div>
+        <div class="lv-info">
+          <div class="lv-name">资源配置</div>
+          <div class="lv-desc">个体决策 · 市场交易 · 行为</div>
+        </div>
+        <div class="lv-scale">SHALLOWEST</div>
+      </div>
+    </div>
+
+    <div class="arrow-flow">
+      <span class="axis">↑ DEPTH · 由外向内</span>
+      <span class="dir">L4 → L3 → L2 → L1 → 约束递增</span>
+    </div>
+  </div>
+
+  <!-- CENTER: Matrix core -->
+  <div class="center">
+    <div class="cross-axis">
+      <div class="core-tag">— X AXIS · 层次 —</div>
+      <div class="matrix-core">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00BCD4" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#00BCD4" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="95" fill="url(#rg1)"/>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(0,188,212,.35)" stroke-width="1" stroke-dasharray="3 4"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,112,67,.3)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(0,188,212,.5)" stroke-width="1.2"/>
+          <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,112,67,.5)" stroke-width="1.2"/>
+          <polygon points="10,100 0,95 0,105" fill="#00BCD4"/>
+          <polygon points="190,100 200,95 200,105" fill="#00BCD4"/>
+          <polygon points="100,10 95,0 105,0" fill="#FF7043"/>
+          <polygon points="100,190 95,200 105,200" fill="#FF7043"/>
+        </svg>
+        <div class="core-badge">
+          <div class="kicker">FRAMEWORK</div>
+          <div class="num">大分流 2.0</div>
+          <div class="label">大分流 2.0</div>
+        </div>
+      </div>
+      <div class="core-tag">— Y AXIS · 时间 —</div>
+
+      <div style="margin-top:8px;padding:10px 12px;background:rgba(15,23,42,.6);border:1px solid var(--border);border-radius:4px;width:100%;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--text-mute);margin-bottom:6px;">MESHING RULE</div>
+        <div style="font-size:11px;color:var(--text);line-height:1.5;">
+          在<span style="color:var(--cyan);font-weight:600;">L1–L4</span>的哪一层受阻 <span style="color:var(--text-mute);">×</span> 属<span style="color:var(--orange);font-weight:600;">慢/快</span>哪一维
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Roland time -->
+  <div class="panel right">
+    <div class="panel-header">
+      <div class="panel-title">
+        <div class="num">DIMENSION 02 / TEMPORAL</div>
+        <h3>Roland 2004 时间轴</h3>
+        <div class="sub">slow-moving 文化与规范 ↔ fast-moving 政治制度</div>
+      </div>
+      <div class="panel-badge">VELOCITY · 为什么受阻</div>
+    </div>
+
+    <div class="time-axis">
+      <div class="time-bar">
+        <div class="slow">
+          <span class="label">◀ SLOW · 慢变量</span>
+          <span class="caption">文化与规范</span>
+        </div>
+        <div class="pivot">T</div>
+        <div class="fast">
+          <span class="label">FAST · 快变量 ▶</span>
+          <span class="caption">政治制度</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="time-cards">
+      <div class="tc slow">
+        <div class="tc-head"><span class="dot"></span><span class="lbl">SLOW-MOVING</span></div>
+        <ul>
+          <li>文化价值观 · 社会规范</li>
+          <li>非正式约束 · 信任体系</li>
+          <li>代际传递 · 百年尺度</li>
+          <li>深层路径依赖</li>
+        </ul>
+      </div>
+      <div class="tc fast">
+        <div class="tc-head"><span class="dot"></span><span class="lbl">FAST-MOVING</span></div>
+        <ul>
+          <li>政治制度 · 政策工具</li>
+          <li>行政法规 · 治理程序</li>
+          <li>制度移植 · 可跨越边界</li>
+          <li>技术赋能的加速域</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow-flow" style="border-top-color:rgba(255,112,67,.25);color:var(--orange);">
+      <span class="axis" style="color:var(--text-mute);">SLOW ← TIME → FAST</span>
+      <span class="dir">速度差 = 阻塞点</span>
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="summary">
+  <div class="icon">×</div>
+  <div class="text">
+    <span class="em">Williamson</span> 的<span class="k">静态层次</span>（L1–L4）加上 <span class="em">Roland</span> 的<span class="k2">动态速度</span>（slow ↔ fast），构成"<span class="k">层次 × 时间</span>"的分析矩阵。<span class="em">"大分流 2.0"</span>的核心追问——<span class="k">中国行政开源</span>属于 <span class="k2">fast-moving 移植</span>、<span class="k">全球协作文化</span>属于 <span class="k2">slow-moving</span>——正是这个矩阵能回答的：<span class="em">卡在哪一层 · 为什么卡</span>。
+  </div>
+</div>
+
+<div class="footer">
+  <span>THEORY · WILLIAMSON (2000) × ROLAND (2004)</span>
+  <span>SYNTHESIS · 层次矩阵 v1.0</span>
+</div>
+
+</div>
+</div>
+</body>
+</html>

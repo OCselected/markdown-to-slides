@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>案例 · #67002 Safe MCP Reload</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#00BCD4;
+  --accent:#FF7043;
+  --bg:#0F172A;
+  --bg-mid:#1E293B;
+  --card:#152035;
+  --card-inner:#0B1424;
+  --border:rgba(148,163,184,.14);
+  --border-strong:rgba(148,163,184,.24);
+  --text:#E2E8F0;
+  --text-dim:#94A3B8;
+  --text-faint:#64748B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{
+  font-family:'Inter','SF Pro Display','SF Pro Text','PingFang SC','Microsoft YaHei',sans-serif;
+  font-size:16px;line-height:1.5;color:var(--text);
+  background:var(--bg);-webkit-font-smoothing:antialiased;
+}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto}
+#bg{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 90% 10%, rgba(0,188,212,.12), transparent 60%),
+    radial-gradient(ellipse 700px 400px at 10% 95%, rgba(255,112,67,.07), transparent 65%),
+    linear-gradient(180deg,#0B1424 0%,#0F172A 50%,#0B1424 100%);
+}
+#bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 1400px 800px at 50% 50%, black 40%, transparent 90%);
+  -webkit-mask-image:radial-gradient(ellipse 1400px 800px at 50% 50%, black 40%, transparent 90%);
+  pointer-events:none;
+}
+#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box}
+
+/* Header */
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.crumb{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--text-dim);letter-spacing:.14em}
+.crumb-dot{width:6px;height:6px;background:var(--primary);border-radius:50%;box-shadow:0 0 10px var(--primary)}
+.crumb-sep{color:var(--text-faint);opacity:.6}
+.badges{display:flex;gap:8px}
+.badge{
+  font-size:10.5px;letter-spacing:.14em;padding:5px 11px;
+  border-radius:3px;border:1px solid var(--border-strong);color:var(--text-dim);
+  font-family:'JetBrains Mono',monospace;font-weight:500;
+  background:rgba(15,23,42,.55);
+}
+.badge.orange{color:var(--accent);border-color:rgba(255,112,67,.4);background:rgba(255,112,67,.06)}
+.badge.cyan{color:var(--primary);border-color:rgba(0,188,212,.4);background:rgba(0,188,212,.06)}
+
+.title-block{margin-bottom:22px}
+.title-block h1{
+  font-size:36px;font-weight:700;letter-spacing:-.01em;line-height:1.15;
+  color:var(--text);
+}
+.title-block h1 .accent{color:var(--primary)}
+.title-block h1 .hash{color:var(--accent);font-weight:800;margin:0 2px}
+.subtitle{
+  display:flex;align-items:center;gap:14px;
+  font-size:15px;color:var(--text-dim);margin-top:12px;letter-spacing:.02em;
+}
+.subtitle::before{
+  content:'';width:32px;height:1px;background:var(--primary);flex-shrink:0;
+}
+.subtitle em{font-style:normal;color:var(--text);font-weight:500}
+
+/* Main */
+.main{
+  display:grid;grid-template-columns:1fr 1px 1fr;gap:48px;
+  padding-top:8px;height:572px;
+}
+.divider{background:linear-gradient(180deg,transparent 0%,var(--border-strong) 15%,var(--border-strong) 85%,transparent 100%)}
+
+/* LEFT: Issue card */
+.left{display:flex;flex-direction:column}
+.panel-tag{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:10.5px;letter-spacing:.24em;color:var(--primary);
+  font-family:'JetBrains Mono',monospace;font-weight:600;
+  margin-bottom:14px;
+}
+.panel-tag::before{content:'';width:6px;height:6px;background:var(--primary);border-radius:50%;box-shadow:0 0 10px var(--primary)}
+.panel-tag::after{content:'';width:36px;height:1px;background:linear-gradient(90deg,var(--primary),transparent);opacity:.5}
+
+.issue-card{
+  background:var(--card);border:1px solid var(--border-strong);border-radius:8px;
+  padding:22px 24px 20px;position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.issue-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--primary) 0%,var(--primary) 25%,var(--accent) 25%,var(--accent) 45%,transparent 45%);
+}
+
+.issue-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}
+.issue-id-line{display:flex;align-items:center;gap:10px}
+.issue-repo{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);
+  padding:4px 9px;background:rgba(15,23,42,.7);border:1px solid var(--border);border-radius:4px;
+}
+.issue-repo svg{width:12px;height:12px;color:var(--text-dim)}
+.issue-status{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-family:'JetBrains Mono',monospace;
+  padding:4px 9px;border-radius:4px;
+  background:rgba(0,188,212,.10);color:var(--primary);border:1px solid rgba(0,188,212,.35);
+}
+.issue-status .dot{width:5px;height:5px;background:var(--primary);border-radius:50%;box-shadow:0 0 6px var(--primary)}
+
+.issue-title{
+  font-size:17px;font-weight:600;line-height:1.42;
+  color:var(--text);margin-bottom:6px;letter-spacing:-.005em;
+}
+.issue-title .kw{color:var(--primary)}
+.issue-title .kw2{color:var(--accent)}
+.issue-title .fn{font-family:'JetBrains Mono',monospace;font-size:15.5px;font-weight:500}
+
+.issue-meta{
+  font-size:11.5px;color:var(--text-faint);
+  font-family:'JetBrains Mono',monospace;margin-bottom:16px;
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+}
+.issue-meta span{display:inline-flex;align-items:center;gap:5px}
+
+.issue-body{
+  background:var(--card-inner);border:1px solid var(--border);border-radius:6px;
+  padding:14px 15px;margin-bottom:14px;font-size:13px;line-height:1.68;
+  color:var(--text-dim);
+}
+.issue-body .lead{color:var(--text);margin-bottom:8px}
+.issue-body code{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  background:rgba(0,188,212,.10);color:var(--primary);
+  padding:1px 6px;border-radius:3px;border:1px solid rgba(0,188,212,.20);
+}
+.issue-body .quote{
+  padding:8px 12px;border-left:2px solid var(--accent);
+  background:rgba(255,112,67,.06);color:var(--text);font-style:italic;
+  border-radius:0 4px 4px 0;font-size:12.5px;
+}
+
+.issue-fields{display:flex;flex-direction:column;gap:10px}
+.field-row{display:flex;gap:10px;align-items:flex-start}
+.field-label{
+  font-size:10.5px;font-family:'JetBrains Mono',monospace;
+  letter-spacing:.16em;color:var(--text-faint);
+  width:78px;flex-shrink:0;padding-top:5px;font-weight:500;
+}
+.field-val{flex:1;display:flex;flex-wrap:wrap;gap:6px}
+
+.tag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;font-family:'JetBrains Mono',monospace;
+  padding:4px 10px;border-radius:3px;letter-spacing:.02em;font-weight:500;
+}
+.tag-risk{
+  background:rgba(255,112,67,.12);color:#FF9E7A;
+  border:1px solid rgba(255,112,67,.35);
+}
+.tag-risk::before{content:'⚠';font-size:10px}
+.tag-blast{
+  background:rgba(255,112,67,.06);color:#FFB094;
+  border:1px solid rgba(255,112,67,.20);
+}
+.tag-comp{
+  background:rgba(0,188,212,.10);color:var(--primary);
+  border:1px solid rgba(0,188,212,.28);
+}
+.tag-comp::before{content:'▸';font-size:8px;opacity:.7}
+.tag-prio{
+  background:linear-gradient(135deg,rgba(0,188,212,.15),rgba(0,188,212,.05));
+  color:#5DE1F0;border:1px solid rgba(0,188,212,.5);font-weight:700;letter-spacing:.06em;
+}
+
+/* RIGHT: analysis */
+.right{display:flex;flex-direction:column;gap:16px}
+.analysis{
+  background:var(--card);border:1px solid var(--border-strong);border-radius:8px;
+  padding:16px 20px 16px;position:relative;overflow:hidden;
+}
+.analysis.left-accent{border-left:3px solid var(--primary)}
+.analysis.right-accent{border-left:3px solid var(--accent)}
+
+.a-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.a-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  color:var(--primary);letter-spacing:.06em;
+  padding:3px 7px;border:1px solid rgba(0,188,212,.35);
+  background:rgba(0,188,212,.08);border-radius:3px;
+}
+.a-num.orange{color:var(--accent);border-color:rgba(255,112,67,.4);background:rgba(255,112,67,.08)}
+.a-label{
+  font-size:10.5px;font-family:'JetBrains Mono',monospace;
+  color:var(--text-faint);letter-spacing:.22em;
+}
+.a-title{font-size:15px;font-weight:600;color:var(--text);line-height:1.45;margin-bottom:4px}
+.a-title .em{color:var(--primary)}
+.a-title .em-orange{color:var(--accent)}
+.a-body{font-size:12.5px;color:var(--text-dim);line-height:1.6}
+
+.closing{
+  background:linear-gradient(135deg,rgba(0,188,212,.06),rgba(255,112,67,.04) 100%);
+  border:1px solid var(--border-strong);border-left:3px solid var(--accent);
+  border-radius:8px;padding:14px 18px;position:relative;
+}
+.closing-tag{
+  display:flex;align-items:center;gap:8px;
+  font-size:10.5px;font-family:'JetBrains Mono',monospace;
+  color:var(--accent);letter-spacing:.24em;margin-bottom:8px;font-weight:600;
+}
+.closing-tag .arrow{
+  width:14px;height:1px;background:var(--accent);
+}
+.closing-body{font-size:13px;line-height:1.7;color:var(--text)}
+.closing-body .quote-mark{
+  color:var(--accent);font-size:16px;font-family:Georgia,serif;
+  vertical-align:-2px;font-weight:700;margin-right:2px;
+}
+.closing-body .k{color:var(--primary);font-weight:600}
+.closing-body .k2{color:var(--accent);font-weight:600}
+.closing-body .arrow{color:var(--text-faint);margin:0 3px}
+
+/* Footer KPI */
+.footer{
+  position:absolute;left:60px;right:60px;bottom:28px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  padding-top:16px;border-top:1px solid var(--border);
+}
+.kpi{
+  background:var(--card);border:1px solid var(--border-strong);
+  border-radius:6px;padding:12px 16px;position:relative;
+  display:flex;flex-direction:column;gap:3px;
+}
+.kpi .k-label{
+  font-size:9.5px;font-family:'JetBrains Mono',monospace;
+  color:var(--text-faint);letter-spacing:.22em;font-weight:600;
+}
+.kpi .k-value{
+  font-size:14px;color:var(--text);font-weight:600;
+  font-family:'JetBrains Mono',monospace;letter-spacing:.01em;
+}
+.kpi .k-value.cyan{color:var(--primary)}
+.kpi .k-value.orange{color:var(--accent)}
+.kpi .k-value.dim{color:var(--text-dim);font-size:12.5px;font-weight:500}
+.kpi .k-value .sep{color:var(--text-faint);margin:0 4px;font-weight:400}
+.kpi::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:var(--primary);border-radius:3px 0 0 3px;
+}
+.kpi.orange::before{background:var(--accent)}
+
+.corner-mark{
+  position:absolute;top:20px;right:20px;
+  width:12px;height:12px;border-top:1.5px solid var(--primary);
+  border-right:1.5px solid var(--primary);opacity:.55;
+}
+.corner-mark.b{top:auto;right:auto;bottom:20px;left:20px;
+  border:none;border-bottom:1.5px solid var(--accent);border-left:1.5px solid var(--accent);opacity:.55}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div id="bg"></div>
+<div class="corner-mark"></div>
+<div class="corner-mark b"></div>
+<div id="ct">
+
+  <div class="topbar">
+    <div class="crumb">
+      <span class="crumb-dot"></span>
+      <span>CASE STUDY</span>
+      <span class="crumb-sep">/</span>
+      <span>GITHUB ISSUES</span>
+      <span class="crumb-sep">/</span>
+      <span style="color:var(--text-dim)">消费侧信任 · Consumer Trust</span>
+    </div>
+    <div class="badges">
+      <span class="badge cyan">CASE #67002</span>
+      <span class="badge orange">TEXTBOOK</span>
+      <span class="badge">MCP · RELOAD</span>
+    </div>
+  </div>
+
+  <div class="title-block">
+    <h1>案例 · <span class="hash">#67002</span> <span class="accent">Safe MCP Reload</span></h1>
+    <div class="subtitle">
+      <span>消费侧信任的<em>教科书样本</em> · A canonical sample of consumer-side trust</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- LEFT: GitHub Issue -->
+    <div class="left">
+      <div class="panel-tag">GITHUB · ISSUE SNAPSHOT</div>
+      <div class="issue-card">
+        <div class="issue-head">
+          <div class="issue-id-line">
+            <span class="issue-repo">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.45.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              modelcontextprotocol · server
+            </span>
+            <span class="issue-status"><span class="dot"></span>OPEN</span>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-faint);letter-spacing:.06em">#67002</span>
+        </div>
+
+        <div class="issue-title">
+          <span class="fn">#67002 · feat(api):</span> add <span class="kw">safe</span> MCP <span class="kw2">reload</span> control endpoint
+        </div>
+
+        <div class="issue-meta">
+          <span>opened by contributor</span>
+          <span>·</span>
+          <span>2 days ago</span>
+          <span>·</span>
+          <span>label: area/mcp</span>
+        </div>
+
+        <div class="issue-body">
+          <div class="lead">"Please add a control endpoint for reloading the MCP server — but expose it as <code>/reload-safe</code> and require confirmation. I need the capability, but I need it bounded."</div>
+          <div class="quote">"— 用户原话，强调 reload 的<span style="color:var(--accent);font-style:normal;font-weight:600">安全收口</span>，不是纯功能索取。"</div>
+        </div>
+
+        <div class="issue-fields">
+          <div class="field-row">
+            <span class="field-label">RISK</span>
+            <div class="field-val">
+              <span class="tag tag-risk">risk-message-delivery</span>
+              <span class="tag tag-blast">blast-moderate</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <span class="field-label">COMPONENT</span>
+            <div class="field-val">
+              <span class="tag tag-comp">gateway</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <span class="field-label">PRIORITY</span>
+            <div class="field-val">
+              <span class="tag tag-prio">P3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RIGHT: Analysis -->
+    <div class="right">
+      <div class="panel-tag" style="color:var(--accent)">ANALYSIS · 分析</div>
+
+      <div class="analysis left-accent">
+        <div class="a-head">
+          <span class="a-num">01</span>
+          <span class="a-label">KEY OBSERVATION</span>
+        </div>
+        <div class="a-title">关键观察：<span class="em">索取能力的同时，主动索取安全边界</span></div>
+        <div class="a-body">用户主动要求"安全的重载端点"——要能力的同时显式要<span style="color:var(--accent);font-weight:600">安全收口</span>。这不是纯功能请求，而是把<span style="color:var(--primary);font-weight:600">"信任约束"</span>写进了需求语言本身。</div>
+      </div>
+
+      <div class="analysis right-accent">
+        <div class="a-head">
+          <span class="a-num orange">02</span>
+          <span class="a-label">INSTITUTIONAL MEANING</span>
+        </div>
+        <div class="a-title">制度含义：<span class="em-orange">从"能用"到"好用"的关键跃迁</span></div>
+        <div class="a-body">消费侧信任的强信号——用户不再停留在"这个端点有没有"，而是追问"这个端点<span style="color:var(--accent);font-weight:600">怎么收口</span>、谁会被误伤"。产品进入<span style="color:var(--primary);font-weight:600">成熟期</span>的可观察指标。</div>
+      </div>
+
+      <div class="closing">
+        <div class="closing-tag">
+          <span class="arrow"></span>
+          <span>NARRATIVE · 收束</span>
+          <span class="arrow"></span>
+        </div>
+        <div class="closing-body">
+          <span class="quote-mark">"</span>#67002 是<span class="k2">教科书样本</span>：用户在索取 MCP reload 功能的同时显式要求<span class="k">安全边界</span>。这是"消费侧信任"的<span class="k">可观察信号</span>，也是从"能用"<span class="arrow">→</span>"好用"的<span class="k2">跃迁证据</span>。<span class="quote-mark">"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="kpi">
+      <span class="k-label">ISSUE</span>
+      <span class="k-value cyan">#67002</span>
+    </div>
+    <div class="kpi orange">
+      <span class="k-label">LABELS</span>
+      <span class="k-value dim">risk-message-delivery<span class="sep">·</span>blast-moderate</span>
+    </div>
+    <div class="kpi">
+      <span class="k-label">PRIORITY</span>
+      <span class="k-value">P3</span>
+    </div>
+    <div class="kpi orange">
+      <span class="k-label">SIGNAL</span>
+      <span class="k-value orange">CONSUMER TRUST</span>
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>两条不变量 · 设计灵魂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F172A;
+  --bg2:#1E293B;
+  --panel:#16202F;
+  --panel2:#1B2736;
+  --primary:#00BCD4;
+  --primary-soft:rgba(0,188,212,.28);
+  --primary-glow:rgba(0,188,212,.55);
+  --accent:#FF7043;
+  --accent-soft:rgba(255,112,67,.22);
+  --text:#E2E8F0;
+  --text-mid:#94A3B8;
+  --text-dim:#64748B;
+  --border:rgba(148,163,184,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{font-family:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:radial-gradient(ellipse at 50% 110%,#1E293B 0%,#0B1220 70%,#050914 100%)}
+#bg{position:absolute;inset:0;z-index:0}
+#ct{position:absolute;inset:0;z-index:1;padding:36px 64px 32px;box-sizing:border-box;display:flex;flex-direction:column}
+
+/* Header */
+.header{position:relative;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.eyebrow-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.eyebrow{font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:.32em;color:var(--primary);text-transform:uppercase}
+.eyebrow-bar{width:36px;height:2px;background:var(--primary)}
+.title{font-size:44px;font-weight:800;line-height:1.1;letter-spacing:.03em;color:#F8FAFC;display:flex;align-items:center}
+.title-dot{display:inline-block;width:10px;height:10px;background:var(--accent);margin:0 14px;border-radius:1px;box-shadow:0 0 16px var(--accent)}
+.subtitle{font-size:14px;color:var(--text-mid);margin-top:10px;letter-spacing:.14em}
+.meta{font-family:'Inter';font-size:12px;color:var(--text-dim);letter-spacing:.28em;text-align:right;line-height:1.85;padding-top:6px}
+.meta .k{color:var(--text-mid);font-weight:500}
+.meta .v{color:var(--primary)}
+
+/* Divider */
+.divider{position:absolute;top:150px;bottom:88px;left:50%;width:2px;transform:translateX(-50%);pointer-events:none}
+.divider::before{content:'';position:absolute;inset:-10px -30px;background:linear-gradient(180deg,transparent 0%,rgba(0,188,212,.06) 30%,rgba(255,112,67,.06) 70%,transparent 100%);filter:blur(6px)}
+.divider .line{position:absolute;top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%);background:linear-gradient(180deg,transparent 0%,var(--border) 15%,rgba(148,163,184,.42) 50%,var(--border) 85%,transparent 100%)}
+.divider .node{position:absolute;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#0F172A;border:2px solid var(--primary);box-shadow:0 0 20px var(--primary-glow)}
+.divider .node.top{top:0}
+.divider .node.bottom{top:100%;border-color:var(--accent);box-shadow:0 0 20px var(--accent-soft)}
+.divider .center-l{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#0B1220;padding:0 10px;color:var(--text-dim);font-family:'Inter';font-size:10px;letter-spacing:.3em;font-weight:600}
+
+/* Columns */
+.columns{position:relative;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch}
+.col{display:flex;flex-direction:column;padding:6px 4px}
+
+/* Column header */
+.col-num{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.col-num-bar{width:48px;height:3px;background:var(--primary)}
+.col-num-2 .col-num-bar{background:var(--accent)}
+.col-num-label{font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:.36em;color:var(--text-mid)}
+.col-num-2 .col-num-label{color:var(--accent)}
+.col-num-label .accent{color:var(--primary);font-weight:700;margin-left:8px}
+.col-num-2 .col-num-label .accent{color:var(--accent)}
+.col-title{font-size:29px;font-weight:800;color:#F8FAFC;line-height:1.22;margin-bottom:10px;letter-spacing:.005em}
+.col-title-2{letter-spacing:0}
+.col-title .accent{color:var(--primary)}
+.col-title-2 .accent{color:var(--accent)}
+
+/* Visual */
+.visual{margin:6px 0 16px;display:flex;justify-content:center}
+.svg-container{width:100%;height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))}
+.visual-caption{font-size:12px;color:var(--text-mid);letter-spacing:.18em;text-align:center;margin-top:10px;font-weight:500}
+.visual-caption .em{color:var(--primary);font-weight:700}
+.col-2 .visual-caption .em{color:var(--accent)}
+
+/* Body */
+.body{display:flex;flex-direction:column;gap:12px;flex:1}
+.point{display:flex;gap:12px;align-items:flex-start}
+.point .bullet{flex:none;width:8px;height:8px;background:var(--primary);margin-top:8px;border-radius:50%;box-shadow:0 0 12px var(--primary-glow)}
+.col-2 .point .bullet{background:var(--accent);box-shadow:0 0 12px rgba(255,112,67,.6)}
+.point-text{font-size:15px;line-height:1.62;color:#CBD5E1}
+.point-text .em{color:#F8FAFC;font-weight:600}
+.point-text .warn{color:var(--accent);font-weight:600}
+.point-text .safe{color:var(--primary);font-weight:600;border-bottom:1px dashed rgba(0,188,212,.5)}
+.point-text code{font-family:'Inter';font-size:13px;background:rgba(0,188,212,.1);padding:2px 8px;border-radius:4px;color:var(--primary);font-weight:600;border:1px solid rgba(0,188,212,.25)}
+.col-2 .point-text code{background:rgba(255,112,67,.08);color:var(--accent);border-color:rgba(255,112,67,.3)}
+
+.exception-box{margin-top:6px;padding:14px 18px;border-left:3px solid var(--primary);background:linear-gradient(90deg,rgba(0,188,212,.1),rgba(0,188,212,0));display:flex;flex-direction:column;gap:4px}
+.exception-label{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.32em;color:var(--primary)}
+.exception-content{font-size:14px;color:#E2E8F0;line-height:1.55}
+.exception-content code{font-family:'Inter';font-size:13px;background:rgba(0,188,212,.14);padding:2px 8px;border-radius:4px;color:var(--primary);font-weight:600;border:1px solid rgba(0,188,212,.35)}
+
+/* Footer */
+.footer{margin-top:18px;padding:18px 32px;background:linear-gradient(90deg,rgba(0,188,212,.05),rgba(0,188,212,.13) 50%,rgba(255,112,67,.13) 100%);border:1px solid rgba(0,188,212,.24);border-radius:6px;display:flex;align-items:center;justify-content:center;gap:28px;position:relative}
+.footer::before,.footer::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:8px;height:8px}
+.footer::before{left:20px;background:var(--primary);box-shadow:0 0 12px var(--primary-glow);border-radius:50%}
+.footer::after{right:20px;background:var(--accent);box-shadow:0 0 12px rgba(255,112,67,.5);border-radius:50%}
+.footer-text{font-size:19px;font-weight:700;letter-spacing:.06em;color:#F8FAFC}
+.footer-text .em1{color:var(--primary)}
+.footer-text .em2{color:var(--accent)}
+.footer-sep{width:22px;height:1px;background:var(--text-dim)}
+.footer-en{font-family:'Inter';font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--text-dim)}
+
+/* SVG text helpers */
+.svg-text{font-family:'Inter','Noto Sans SC',sans-serif;dominant-baseline:middle;text-anchor:middle}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+
+    <div class="header">
+      <div>
+        <div class="eyebrow-row">
+          <span class="eyebrow-bar"></span>
+          <span class="eyebrow">HERMES · DESIGN INVARIANTS</span>
+        </div>
+        <h1 class="title">两条不变量<span class="title-dot"></span>设计灵魂</h1>
+        <div class="subtitle">TWO INVARIANTS &nbsp;·&nbsp; THE SOUL OF THE ARCHITECTURE</div>
+      </div>
+      <div class="meta">
+        <div><span class="k">SCOPE</span> · <span class="v">CORE ARCHITECTURE</span></div>
+        <div><span class="k">PRINCIPLES</span> · <span class="v">02 / 02</span></div>
+      </div>
+    </div>
+
+    <div class="columns">
+
+      <!-- Left column -->
+      <div class="col col-1">
+        <div class="col-num col-num-1">
+          <div class="col-num-bar"></div>
+          <div class="col-num-label">INVARIANT <span class="accent">#1</span></div>
+        </div>
+        <h2 class="col-title">Prompt Caching <span class="accent">is Sacred</span></h2>
+
+        <div class="visual">
+          <svg viewBox="0 0 520 300" class="svg-container">
+            <defs>
+              <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00BCD4" stop-opacity=".38"/>
+                <stop offset="65%" stop-color="#00BCD4" stop-opacity=".06"/>
+                <stop offset="100%" stop-color="#00BCD4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="260" cy="150" r="128" fill="url(#coreGrad)"/>
+            <circle cx="260" cy="150" r="118" fill="none" stroke="#00BCD4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".55"/>
+            <circle cx="260" cy="150" r="106" fill="#0B1220" stroke="#00BCD4" stroke-width="2.4"/>
+            <circle cx="260" cy="150" r="92" fill="none" stroke="#00BCD4" stroke-width="1" opacity=".45"/>
+            <text x="260" y="132" fill="#F8FAFC" font-size="16" font-weight="700" class="svg-text" letter-spacing="4">CACHE</text>
+            <text x="260" y="152" fill="#00BCD4" font-size="30" font-weight="800" class="svg-text">神圣</text>
+            <text x="260" y="180" fill="#94A3B8" font-size="9" class="svg-text" letter-spacing="4">INVARIANT · 01</text>
+            <circle cx="260" cy="24" r="3" fill="#FF7043"/>
+            <circle cx="260" cy="276" r="3" fill="#FF7043"/>
+            <circle cx="132" cy="150" r="3" fill="#00BCD4"/>
+            <circle cx="388" cy="150" r="3" fill="#00BCD4"/>
+            <text x="30" y="42" fill="#FF7043" font-size="11" font-weight="600" class="svg-text" text-anchor="start" letter-spacing="2">破坏 ✕</text>
+            <text x="490" y="262" fill="#FF7043" font-size="11" font-weight="600" class="svg-text" text-anchor="end" letter-spacing="2">放大 ✕</text>
+          </svg>
+        </div>
+        <div class="visual-caption">缓存 · <span class="em">神圣不可侵犯</span></div>
+
+        <div class="body">
+          <div class="point">
+            <div class="bullet"></div>
+            <div class="point-text">任何改变<span class="em">历史上下文</span>的操作都会<span class="warn">击穿缓存、放大用户成本</span>——这是不可协商的红线。</div>
+          </div>
+          <div class="point">
+            <div class="bullet"></div>
+            <div class="point-text">缓存命中是<span class="em">系统性能的基石</span>，任何破坏它的代价都远高于收益。</div>
+          </div>
+          <div class="exception-box">
+            <div class="exception-label">SOLE EXCEPTION · 唯一例外</div>
+            <div class="exception-content"><code>context compression</code> — 上下文压缩是唯一被许可的、受控的缓存重塑动作。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="col col-2">
+        <div class="col-num col-num-2">
+          <div class="col-num-bar"></div>
+          <div class="col-num-label">INVARIANT <span class="accent">#2</span></div>
+        </div>
+        <h2 class="col-title col-title-2">Core is a Narrow Waist<span class="accent">,</span> Capability Lives at the Edges</h2>
+
+        <div class="visual">
+          <svg viewBox="0 0 560 300" class="svg-container">
+            <defs>
+              <linearGradient id="coreGrad2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF7043" stop-opacity=".3"/>
+                <stop offset="100%" stop-color="#FF7043" stop-opacity=".12"/>
+              </linearGradient>
+            </defs>
+            <rect x="184" y="14" width="192" height="272" rx="10" fill="url(#coreGrad2)" stroke="#FF7043" stroke-width="2.4"/>
+            <rect x="200" y="30" width="160" height="240" rx="4" fill="none" stroke="#FF7043" stroke-width="1" stroke-dasharray="4 4" opacity=".55"/>
+            <text x="280" y="128" fill="#F8FAFC" font-size="16" font-weight="700" class="svg-text" letter-spacing="4">CORE</text>
+            <text x="280" y="156" fill="#FF7043" font-size="28" font-weight="800" class="svg-text">窄腰</text>
+            <text x="280" y="182" fill="#94A3B8" font-size="9" class="svg-text" letter-spacing="3">INVARIANT · 02</text>
+            <rect x="224" y="60" width="112" height="1" fill="#FF7043" opacity=".7"/>
+            <rect x="224" y="240" width="112" height="1" fill="#FF7043" opacity=".7"/>
+            <line x1="15" y1="55" x2="184" y2="55" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="10" y="55" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="start" dominant-baseline="hanging">CLI + Skill</text>
+            <line x1="15" y1="115" x2="184" y2="115" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="10" y="115" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="start" dominant-baseline="hanging">Service-Gated Tool</text>
+            <line x1="15" y1="185" x2="184" y2="185" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="10" y="185" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="start" dominant-baseline="hanging">Plugin</text>
+            <line x1="15" y1="245" x2="184" y2="245" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="10" y="245" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="start" dominant-baseline="hanging">MCP Server</text>
+            <line x1="376" y1="55" x2="545" y2="55" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="550" y="55" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="end" dominant-baseline="hanging">边缘能力</text>
+            <line x1="376" y1="115" x2="545" y2="115" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="550" y="115" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="end" dominant-baseline="hanging">边缘能力</text>
+            <line x1="376" y1="185" x2="545" y2="185" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="550" y="185" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="end" dominant-baseline="hanging">边缘能力</text>
+            <line x1="376" y1="245" x2="545" y2="245" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/>
+            <text x="550" y="245" fill="#00BCD4" font-size="11" font-weight="600" class="svg-text" text-anchor="end" dominant-baseline="hanging">边缘能力</text>
+          </svg>
+        </div>
+        <div class="visual-caption">核心 · <span class="em">极窄</span> &nbsp;|&nbsp; 能力 · <span class="em">极宽</span></div>
+
+        <div class="body">
+          <div class="point">
+            <div class="bullet"></div>
+            <div class="point-text">核心工具的<span class="em">门槛极高、宽度极窄</span>——不是每个能力都值得进入 core。</div>
+          </div>
+          <div class="point">
+            <div class="bullet"></div>
+            <div class="point-text">新能力只允许沿<span class="em">边缘</span>落地，核心保持最小面。</div>
+          </div>
+          <div class="point">
+            <div class="bullet"></div>
+            <div class="point-text">四条明确的扩展路径：<code>CLI+skill</code> · <code>service-gated tool</code> · <code>plugin</code> · <code>MCP server</code>。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="line"></div>
+        <div class="node top"></div>
+        <div class="node bottom"></div>
+        <div class="center-l">VS</div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-text"><span class="em1">边缘扩张</span>，<span class="em2">腰部保守</span>——Hermes 的制度设计原则</div>
+      <div class="footer-sep"></div>
+      <div class="footer-en">EXPAND AT EDGES · GUARD THE WAIST</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

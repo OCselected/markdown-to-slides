@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>MCP 捐给 Linux Foundation — 制度经济学的教科书案例</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root {
+  --cyan: #00BCD4;
+  --cyan-glow: rgba(0,188,212,0.35);
+  --orange: #FF7043;
+  --orange-soft: rgba(255,112,67,0.14);
+  --bg: #1E293B;
+  --bg-darker: #0F172A;
+  --panel: rgba(30,41,59,0.65);
+  --panel-border: rgba(148,163,184,0.16);
+  --text-main: #E2E8F0;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--text-main);
+  background: var(--bg-darker);
+  line-height: 1.5;
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(0,188,212,0.16) 0%, transparent 42%),
+    radial-gradient(circle at 92% 92%, rgba(255,112,67,0.11) 0%, transparent 44%),
+    #1E293B;
+}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 44px 60px 24px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header { margin-bottom: 22px; }
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.title .accent { color: var(--cyan); }
+.subtitle {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.subtitle .em { color: var(--orange); font-weight: 600; }
+
+/* Timeline */
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 20px 0 16px;
+  position: relative;
+}
+.node {
+  width: 320px;
+  height: 232px;
+  padding: 22px 26px;
+  background: var(--panel);
+  border: 1.5px solid var(--panel-border);
+  border-radius: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.node.start, .node.end { border-left: 3px solid var(--cyan); }
+.node.mid {
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 24px rgba(0,188,212,0.14);
+  background: rgba(0,188,212,0.06);
+}
+.node-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.node-head::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--cyan);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--cyan-glow);
+  flex-shrink: 0;
+}
+.node-head.mid-head::before {
+  background: var(--orange);
+  box-shadow: 0 0 10px rgba(255,112,67,0.4);
+}
+.node-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+.node-date {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.node-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Connectors */
+.connector {
+  position: relative;
+  width: 180px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.connector .arrow {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 8px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cyan) 0%, rgba(0,188,212,0.4) 100%);
+  border-radius: 2px;
+}
+.connector .arrow::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid var(--cyan);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  filter: drop-shadow(0 0 4px var(--cyan-glow));
+}
+.connector .dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 12px rgba(255,112,67,0.6);
+}
+
+/* Detail Columns */
+.tl-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+.col {
+  padding: 18px 22px;
+  background: rgba(15,23,42,0.55);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  border-top: 2px solid var(--cyan);
+}
+.col.mid { border-top-color: var(--orange); }
+.col-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(148,163,184,0.2);
+}
+.col-head::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan-glow);
+  align-self: center;
+  flex-shrink: 0;
+}
+.col.mid .col-head::before {
+  background: var(--orange);
+  box-shadow: 0 0 8px rgba(255,112,67,0.4);
+}
+.col-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.col-date {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+}
+.col.mid .col-date { color: var(--orange); }
+.col-body {
+  font-size: 14px;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.col-body .hi { color: var(--cyan); font-weight: 700; }
+.col-body .hi-o { color: var(--orange); font-weight: 700; }
+.bullets { list-style: none; margin-top: 2px; }
+.bullets li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.bullets li::before {
+  content: '›';
+  position: absolute;
+  left: 2px;
+  color: var(--cyan);
+  font-weight: 700;
+}
+.col.mid .bullets li::before { color: var(--orange); }
+
+/* Bottom Narrative */
+.bottom-narr {
+  padding: 14px 26px;
+  background: linear-gradient(90deg, rgba(0,188,212,0.10) 0%, rgba(0,188,212,0) 100%);
+  border-left: 4px solid var(--cyan);
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.bottom-narr p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+.bottom-narr .cyan { color: var(--cyan); font-weight: 700; }
+.bottom-narr .orange { color: var(--orange); font-weight: 700; }
+.bottom-narr .bold { color: #FFFFFF; font-weight: 600; }
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148,163,184,0.12);
+  font-size: 11.5px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+.footer .left { font-weight: 500; }
+.footer .right { color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div id="ct">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="title">MCP 捐给 <span class="accent">Linux Foundation</span></div>
+      <div class="subtitle"><span class="em">制度经济学的教科书案例</span> — 从厂商私产到社区共识的完整演化路径</div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="node start">
+        <div class="node-head"><span class="node-title">Anthropic</span></div>
+        <div class="node-date">2024-11-25</div>
+        <div class="node-desc">单厂商私有发布，作为 Claude 生态的内部工具，尚未公开标准化。</div>
+      </div>
+
+      <div class="connector">
+        <div class="arrow"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="node mid">
+        <div class="node-head mid-head"><span class="node-title">转折点</span></div>
+        <div class="node-date">2025-03</div>
+        <div class="node-desc">OpenAI 率先采纳，Google / Microsoft / 云厂密集加入，生态从"单点"跃迁到"网络"。</div>
+      </div>
+
+      <div class="connector">
+        <div class="arrow"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="node end">
+        <div class="node-head"><span class="node-title">Linux Foundation</span></div>
+        <div class="node-date">2026</div>
+        <div class="node-desc">捐入 LF 旗下 Agentic AI Foundation，成为中立第三方托管的社区标准。</div>
+      </div>
+    </div>
+
+    <!-- Detail Columns -->
+    <div class="tl-section">
+      <div class="col start">
+        <div class="col-head"><span class="col-label">起点</span><span class="col-date">2024-11-25</span></div>
+        <div class="col-body"><span class="hi">Anthropic 单厂商发布</span></div>
+        <ul class="bullets">
+          <li>协议最初为 Claude 内部集成工具服务</li>
+          <li>无跨厂商治理，属典型"厂商私产"形态</li>
+          <li>生态位狭窄，仅覆盖单一产品线</li>
+        </ul>
+      </div>
+
+      <div class="col mid">
+        <div class="col-head"><span class="col-label">演化</span><span class="col-date">2025-03</span></div>
+        <div class="col-body"><span class="hi-o">OpenAI 采纳；云厂密集加入</span></div>
+        <ul class="bullets">
+          <li>OpenAI 率先在 API 侧支持，形成跨平台共识</li>
+          <li>Google / Microsoft / AWS 云侧工具链跟进</li>
+          <li>开源社区涌现实现，多方自发治理雏形</li>
+        </ul>
+      </div>
+
+      <div class="col end">
+        <div class="col-head"><span class="col-label">终点</span><span class="col-date">2026</span></div>
+        <div class="col-body">捐给 <span class="hi">Agentic AI Foundation</span>（LF 旗下）</div>
+        <ul class="bullets">
+          <li>由 Linux Foundation 中立托管、多厂商共同治理</li>
+          <li>协议版本、商标、路线图公开化</li>
+          <li>从"厂商协议"跃迁为"行业标准"</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Narrative -->
+    <div class="bottom-narr">
+      <p><span class="cyan">制度含义 · 教科书案例：</span>MCP 的迁移是<span class="bold">多厂商自发采纳后的自然结果，非行政命令能促成</span>；对照来看，<span class="orange">中国行政开源试图以行政力量复制此流程——制度演化需要时间尺度</span>。</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span class="left">MCP 从厂商私产到社区共识的完整演化路径 —— 制度经济学教科书的经典案例</span>
+      <span class="right">慢演化 · 多主体 · 无中央命令</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

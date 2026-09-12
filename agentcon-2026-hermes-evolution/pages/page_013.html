@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第三幕 · 需求/供给/消费三维分析</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #1E293B;
+  --bg-deep: #0F172A;
+  --primary: #00BCD4;
+  --primary-soft: rgba(0, 188, 212, 0.55);
+  --accent: #FF7043;
+  --text-main: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --line: rgba(148, 163, 184, 0.18);
+}
+
+body {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 16px;
+  color: var(--text-main);
+  background: #0a0f1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+}
+
+/* Decorative large "03" in background */
+.bg-03 {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  font-family: 'Inter', sans-serif;
+  font-size: 280px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0, 188, 212, 0.14);
+  letter-spacing: -12px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Corner brackets */
+.corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
+.corner svg { width: 100%; height: 100%; }
+.corner-tr { top: 24px; right: 24px; }
+.corner-bl { bottom: 24px; left: 24px; }
+
+/* Subtle dot pattern */
+.dot-row {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  pointer-events: none;
+}
+.dot-row .dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 188, 212, 0.35);
+  border-radius: 50%;
+}
+.dots-tl { top: 240px; left: 30px; }
+.dots-br { bottom: 160px; right: 30px; }
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top section */
+.top-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 65px;
+}
+
+.act-num {
+  font-size: 128px;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 0.82;
+  letter-spacing: -4px;
+  font-family: 'Inter', sans-serif;
+  text-shadow: 0 0 40px rgba(0, 188, 212, 0.35);
+}
+
+.title-block {
+  flex: 1;
+  padding-top: 12px;
+}
+
+.kicker {
+  font-size: 13px;
+  color: var(--primary);
+  letter-spacing: 6px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.kicker::before {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: var(--primary);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 70px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -1.5px;
+  line-height: 1.08;
+  margin-bottom: 22px;
+}
+
+.title-rule {
+  width: 100px;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 22px;
+  box-shadow: 0 0 12px rgba(255, 112, 67, 0.55);
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Columns */
+.column {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 20px;
+  height: 500px;
+  margin-top: 20px;
+  align-content: center;
+}
+
+.col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 10px;
+  height: 100%;
+  border-left: 1px solid var(--line);
+}
+.col:first-child { border-left: none; }
+
+.col-index {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--primary);
+  letter-spacing: 5px;
+  font-weight: 600;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-index::before,
+.col-index::after {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: rgba(0, 188, 212, 0.4);
+}
+
+.icon-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.icon-wrap svg {
+  width: 100px;
+  height: 100px;
+  stroke: var(--primary);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-wrap::before {
+  content: '';
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border: 1px dashed rgba(0, 188, 212, 0.15);
+  border-radius: 50%;
+}
+
+.col-label {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 14px;
+  letter-spacing: 3px;
+}
+
+.col-tagline {
+  font-size: 15px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+.col-highlight {
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 112, 67, 0.35);
+  min-width: 120px;
+}
+
+/* Narrative */
+.narrative-wrap {
+  margin-top: 45px;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.narrative-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 188, 212, 0.45) 50%, transparent 100%);
+  margin-bottom: 22px;
+}
+
+.narrative {
+  font-size: 15px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.narrative .num {
+  color: var(--primary);
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  padding: 0 2px;
+}
+
+.narrative .sep {
+  color: rgba(148, 163, 184, 0.35);
+  padding: 0 8px;
+}
+
+.narrative-line-bottom {
+  width: 200px;
+  height: 1px;
+  background: rgba(255, 112, 67, 0.55);
+  margin-top: 22px;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="bg-03">03</div>
+    <div class="corner corner-tr">
+      <svg viewBox="0 0 60 60">
+        <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
+        <path d="M 48 0 L 60 0 L 60 12" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="corner corner-bl">
+      <svg viewBox="0 0 60 60">
+        <path d="M 0 48 L 0 60 L 12 60" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
+        <path d="M 48 60 L 60 60 L 60 48" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="dot-row dots-tl">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <div class="dot-row dots-br">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </div>
+
+  <div id="ct">
+    <div class="top-section">
+      <div class="act-num">
+        <span>03</span>
+      </div>
+      <div class="title-block">
+        <div class="kicker"><span>ACT 3 · SECTION HEADER</span></div>
+        <h1>
+          <span>需求/供给/消费三维分析</span>
+        </h1>
+        <div class="title-rule"></div>
+        <div class="subtitle">
+          <span>用公开数据观察 Hermes 一年多的演化</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="col">
+        <div class="col-index"><span>01</span></div>
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64">
+            <circle cx="22" cy="22" r="9"/>
+            <path d="M8 52 C 8 40, 15 33, 22 33 C 29 33, 36 40, 36 52"/>
+            <circle cx="44" cy="26" r="7"/>
+            <path d="M36 52 C 36 42, 41 36, 46 36 C 51 36, 56 42, 56 52"/>
+          </svg>
+        </div>
+        <div class="col-label"><span>需求侧</span></div>
+        <div class="col-tagline"><span>用户要什么</span></div>
+        <div class="col-highlight"><span>ISSUES</span></div>
+      </div>
+
+      <div class="col">
+        <div class="col-index"><span>02</span></div>
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="26"/>
+            <circle cx="32" cy="32" r="9"/>
+            <line x1="32" y1="6" x2="32" y2="14"/>
+            <line x1="32" y1="50" x2="32" y2="58"/>
+            <line x1="6" y1="32" x2="14" y2="32"/>
+            <line x1="50" y1="32" x2="58" y2="32"/>
+            <line x1="13.5" y1="13.5" x2="19" y2="19"/>
+            <line x1="45" y1="45" x2="50.5" y2="50.5"/>
+            <line x1="13.5" y1="50.5" x2="19" y2="45"/>
+            <line x1="45" y1="19" x2="50.5" y2="13.5"/>
+          </svg>
+        </div>
+        <div class="col-label"><span>供给侧</span></div>
+        <div class="col-tagline"><span>项目做了什么</span></div>
+        <div class="col-highlight"><span>PRs / RELEASES</span></div>
+      </div>
+
+      <div class="col">
+        <div class="col-index"><span>03</span></div>
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64">
+            <path d="M 32 6 L 40 24 L 60 26 L 45 40 L 49 58 L 32 48 L 15 58 L 19 40 L 4 26 L 24 24 Z"/>
+          </svg>
+        </div>
+        <div class="col-label"><span>消费侧</span></div>
+        <div class="col-tagline"><span>采纳信号</span></div>
+        <div class="col-highlight"><span>STARS / FORKS</span></div>
+      </div>
+    </div>
+
+    <div class="narrative-wrap">
+      <div class="narrative-line"></div>
+      <div class="narrative">
+        <span>用需求、供给、消费三维观察 Hermes</span>
+        <span>——</span>
+        <span>数据来自 </span>
+        <span class="num">100</span>
+        <span> 条 issue</span>
+        <span class="sep">·</span>
+        <span class="num">100</span>
+        <span> 条 PR 样本</span>
+        <span class="sep">·</span>
+        <span>以及 </span>
+        <span class="num">397</span>
+        <span> 位 contributor 分布</span>
+      </div>
+      <div class="narrative-line-bottom"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

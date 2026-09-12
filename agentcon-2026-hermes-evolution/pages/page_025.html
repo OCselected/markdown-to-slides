@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Thank you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #00BCD4;
+    --accent: #FF7043;
+    --bg-base: #1E293B;
+    --bg-deep: #0F172A;
+    --text-main: #F1F5F9;
+    --text-dim: #94A3B8;
+    --text-mute: #64748B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 900px; overflow: hidden; }
+  body {
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 16px;
+    color: var(--text-main);
+    background: var(--bg-deep);
+  }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 50% 45%, #24344D 0%, #1E293B 45%, #0F172A 100%);
+  }
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 60px;
+  }
+
+  /* Corner geometric decorations */
+  .corner {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.55;
+  }
+  .corner-tl { top: 44px; left: 44px; }
+  .corner-tr { top: 44px; right: 44px; }
+  .corner-bl { bottom: 44px; left: 44px; }
+  .corner-br { bottom: 44px; right: 44px; }
+
+  .grid-line {
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,188,212,0.35) 50%, transparent 100%);
+  }
+  .grid-line-h {
+    height: 1px;
+    left: 0;
+    right: 0;
+  }
+  .grid-line-h.top { top: 120px; }
+  .grid-line-h.bottom { bottom: 130px; }
+
+  /* Page tag */
+  .page-tag {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .page-tag .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255,112,67,0.7);
+  }
+  .page-tag .line {
+    width: 60px;
+    height: 1px;
+    background: rgba(148,163,184,0.4);
+  }
+
+  /* Center stage */
+  .stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+  }
+
+  .hero-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .hero {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 240px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--text-main);
+    position: relative;
+    z-index: 2;
+  }
+  .hero .u {
+    color: var(--primary);
+    text-shadow: 0 0 40px rgba(0,188,212,0.45);
+  }
+  .hero-outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 240px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,188,212,0.18);
+    transform: translate(14px, 14px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-underline {
+    margin-top: 22px;
+    width: 220px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--accent) 70%, transparent 100%);
+    position: relative;
+  }
+  .hero-underline::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 16px rgba(255,112,67,0.9);
+  }
+
+  /* Meta block */
+  .meta {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+  .meta-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 18px;
+    color: var(--text-main);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .meta-line .marker {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(0,188,212,0.6);
+  }
+  .meta-line-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 0.18em;
+    font-weight: 400;
+    text-transform: none;
+  }
+  .meta-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-mute);
+    letter-spacing: 0.24em;
+    padding: 6px 14px;
+    border: 1px solid rgba(148,163,184,0.25);
+    border-radius: 2px;
+  }
+  .meta-date .tick {
+    width: 4px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+
+  /* Bottom line */
+  .footer-note {
+    position: absolute;
+    bottom: 62px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 3;
+    font-size: 13px;
+    color: var(--text-mute);
+    letter-spacing: 0.08em;
+    font-weight: 400;
+  }
+
+  /* Hermes brand mark */
+  .brand {
+    position: absolute;
+    right: 46px;
+    bottom: 44px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.75;
+  }
+  .brand svg {
+    display: block;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .brand-text .name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--text-dim);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .brand-text .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--text-mute);
+    margin-top: 2px;
+  }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    left: 46px;
+    bottom: 44px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--text-mute);
+  }
+  .page-num .bar {
+    width: 22px;
+    height: 1px;
+    background: rgba(148,163,184,0.4);
+  }
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+
+  <!-- Corner geometric decorations -->
+  <svg class="corner corner-tl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+    <path d="M0 12 L12 12 L12 0" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
+    <path d="M0 24 L24 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+    <path d="M24 0 L24 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+  </svg>
+  <svg class="corner corner-tr" width="60" height="60" viewBox="0 0 60 60" fill="none">
+    <path d="M60 12 L48 12 L48 0" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
+    <path d="M60 24 L36 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+    <path d="M36 0 L36 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+  </svg>
+  <svg class="corner corner-bl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+    <path d="M0 48 L12 48 L12 60" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
+    <path d="M0 36 L24 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+    <path d="M24 60 L24 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+  </svg>
+  <svg class="corner corner-br" width="60" height="60" viewBox="0 0 60 60" fill="none">
+    <path d="M60 48 L48 48 L48 60" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
+    <path d="M60 36 L36 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+    <path d="M36 60 L36 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
+  </svg>
+
+  <!-- Subtle horizontal grid lines -->
+  <div class="grid-line grid-line-h top"></div>
+  <div class="grid-line grid-line-h bottom"></div>
+
+  <div id="ct">
+    <!-- Page tag at top -->
+    <div class="page-tag">
+      <span>END</span>
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+      <span>25 / 25</span>
+    </div>
+
+    <!-- Center stage -->
+    <div class="stage">
+      <div class="hero-wrap">
+        <div class="hero-outline">Thank you</div>
+        <div class="hero"><span>Thank</span> <span class="u">you</span></div>
+      </div>
+
+      <div class="hero-underline"></div>
+
+      <div class="meta">
+        <div class="meta-line">
+          <span class="marker"></span>
+          <span>讲者：「开源之道」· 适兕 × 窄廊</span>
+          <span class="marker"></span>
+        </div>
+        <div class="meta-line-en">Open Source Way · Kuosi × Narrow Corridor</div>
+        <div class="meta-date">
+          <span class="tick"></span>
+          <span>2026 — 09 — 11</span>
+          <span class="tick"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom closing line -->
+    <div class="footer-note">
+      感谢聆听。本项目后续将持续更新，欢迎交流与引用。
+    </div>
+
+    <!-- Page number bottom-left -->
+    <div class="page-num">
+      <span>NO.</span>
+      <span class="bar"></span>
+      <span>25</span>
+    </div>
+
+    <!-- Hermes brand mark bottom-right -->
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+        <!-- Hermes caduceus style mark -->
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#00BCD4" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="16" cy="4" r="1.6" fill="#00BCD4"/>
+        <path d="M9 11 Q12 15 16 15 Q20 15 23 11" stroke="#00BCD4" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M9 11 Q12 8 16 8 Q20 8 23 11" stroke="#FF7043" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M9 21 Q12 18 16 18 Q20 18 23 21" stroke="#FF7043" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M9 21 Q12 24 16 24 Q20 24 23 21" stroke="#00BCD4" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <circle cx="9" cy="11" r="1.4" fill="#FF7043"/>
+        <circle cx="23" cy="11" r="1.4" fill="#FF7043"/>
+        <circle cx="9" cy="21" r="1.4" fill="#00BCD4"/>
+        <circle cx="23" cy="21" r="1.4" fill="#00BCD4"/>
+      </svg>
+      <div class="brand-text">
+        <span class="name">Hermes</span>
+        <span class="sub">PROJECT MARK</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
