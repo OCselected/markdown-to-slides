@@ -1,3 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，作为整份演示文稿的第 25 页、结尾致谢页。整页核心是居中大号的"Thank you"，传达感谢聆听并收尾。风格是科技暗色系，主色是青蓝色 #00BCD4，辅以暖橙 #FF7043 做小范围点缀，背景基调为深灰蓝 #1E293B，字体统一使用 Inter 黑体家族，base size 16px。页面布局极简克制，以留白营造仪式感：画面正中放超大号的"Thank you"，字号要足够大、视觉冲击强，可适当用主色青蓝做文字颜色或描边效果。在大标题下方，用较小的字号依次排列讲者信息和元数据，分三条呈现：第一条是"讲者：「开源之道」·适兕 × 窄廊"，第二条是英文对应"Open Source Way · Kuosi × Narrow Corridor"，第三条是数据基线"2026-09-11"。在右下角放置一个 Hermes 符号作为品牌标识，低调不抢主体。页面底部可以加一行简短的收束语，即"感谢聆听。本项目后续将持续更新，欢迎交流与引用。"，字体偏小、颜色偏灰，语气真诚但克制。整体不要任何配图、表格或图表，不要留大片空白，用微妙的暗色渐变或几何装饰线填补边角即可，保持暗色科技风的干净利落。
+我需要一页 PPT，主题是 Hermes 的 Quicksilver Release 性能爆发案例，标题为「案例 5 · Quicksilver Release · 性能爆发」，副标题引用原句 "Hermes is the messenger god, and this window we made him move like it"，用来点明本次版本的命名意象——信使神 Hermes，让整个窗口像他一样快。整页的叙事核心是：first-token time 下降约 80%，那个"深呼吸"消失了，速度成为消费侧信任的基础。
+
+版面建议这样排：顶部为标题+副标题区，占约 18% 高度，副标题用较小的斜体 serif 呈现，像引言。中部是视觉主角，左侧放一张 hero 配图——`images/page_025_hero.png`，是一张包豪斯风格的暗色几何构图：一道暖琥珀色闪电斜穿深普鲁士蓝羊皮纸背景，左侧是缓慢沉重的剪影，右侧是轻盈快速的几何体，中心向外扩散出同心速度环，隐喻"从迟疑到爆发"的加速瞬间；这张图原生 2752×1536、aspect 约 1.79，建议放在版面左半，宽度约 780px、高度约 435px，保持原生比例不失真，作为前景图片独立呈现，不要当背景、不要压蒙版。右侧与图并列，用一个大号 "~80%" 数字配"First-token 下降"标签，下面接 "4.3s → 0.9s" 冷启动前后对比，箭头可用几何线条画，突出"CLI/gateway/TUI/desktop/cron 全平台"这条信息。
+
+下方用一条 KPI 数据带呈现这轮 release 的规模：窗口 commits 2,245、Merged PRs 1,065、Issues closed 3,300、Contributors 450+，横排四到五个卡片。再往下是六个要点的紧凑列表：Release（v0.19.0 · 2026-07-20 — The Quicksilver Release）、Headline（first-token time 下降 ~80%，"那个深呼吸消失了"）、冷启动（4.3 秒到 0.9 秒，全平台）、Desktop 性能（20+ PR 速度改造，14× 更快 streaming markdown）、Delivery-obligation ledger（响应不会因 gateway 崩溃而丢失，P1 silent-loss 窗口关闭）、制度含义（"速度"是消费侧信任的基础——"如果 Hermes 像要深呼吸"，用户就会离开）。每个要点用 head 加粗小标题 + detail 灰色小字的形式，两栏或三栏排版均可，避免过长句子。
+
+整体风格是 dark academic + 包豪斯几何抽象，气质理性、克制、有智识感。主色是深普鲁士蓝 #1B3B6B，暖琥珀 #B4A078 做强调点缀（闪电、箭头、KPI 数字、序号），背景色 #0F1E33 带一丝羊皮纸质感，正文暖白 #F5F0E8。标题用 Noto Serif SC / Songti SC 这类衬线体，正文用 Noto Sans SC，等宽数字用 JetBrains Mono。装饰只用几何元素——圆点、方块、细线、同心环，不引入图标库，让"速度"的隐喻通过图形而非符号传递。底部可以留一行克制的结语："这个窗口，我们让它像 Hermes 一样移动。"

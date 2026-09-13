@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>案例 9 —— GitHub Issue #67002「Safe MCP Reload」</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0F1E33;
+  --bg-dark: #0A1626;
+  --text: #F5F0E8;
+  --text-muted: rgba(245, 240, 232, 0.72);
+  --text-dim: rgba(245, 240, 232, 0.45);
+  --accent: #B4A078;
+  --accent-bright: #C9B585;
+  --divider: rgba(27, 59, 107, 0.35);
+  --line: rgba(180, 160, 120, 0.22);
+  --tag-bg: rgba(180, 160, 120, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 15% 20%, rgba(180, 160, 120, 0.07), transparent 55%), linear-gradient(135deg, #0F1E33 0%, #0A1626 100%);
+}
+
+.deco-circle-1 {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(180, 160, 120, 0.12);
+  top: -120px;
+  right: -100px;
+}
+
+.deco-circle-2 {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(180, 160, 120, 0.08);
+  top: -110px;
+  right: -20px;
+}
+
+.deco-square {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(180, 160, 120, 0.2);
+  bottom: 200px;
+  right: 40px;
+}
+
+.deco-dot-1 {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 96px;
+  left: 42%;
+}
+
+.deco-dot-2 {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  bottom: 76px;
+  left: 32%;
+}
+
+.deco-line-v {
+  position: absolute;
+  top: 380px;
+  right: 60px;
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, rgba(180,160,120,0.2), transparent);
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 50px 72px 46px;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.header .case-tag {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1.5px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.header h1 .accent {
+  color: var(--accent);
+}
+
+.header .subtitle {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 17px;
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.main {
+  display: flex;
+  gap: 50px;
+  height: calc(100% - 174px);
+}
+
+.left-col {
+  width: 690px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  border-left: 1px solid var(--divider);
+}
+
+.hero-frame {
+  width: 690px;
+  height: 386px;
+  position: relative;
+  border: 1px solid rgba(180, 160, 120, 0.28);
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-caption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2.5px;
+}
+
+.hero-caption .dot {
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.kpi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.kpi-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 9px 14px;
+  border-left: 2px solid var(--accent);
+  background: rgba(180, 160, 120, 0.04);
+}
+
+.kpi-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+  min-width: 84px;
+}
+
+.kpi-value {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.kpi-value .highlight {
+  color: var(--accent-bright);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.kpi-value .tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--tag-bg);
+  border: 1px solid rgba(180, 160, 120, 0.35);
+  color: var(--accent-bright);
+  font-size: 11px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 400;
+  margin-right: 6px;
+  letter-spacing: 0.5px;
+}
+
+.kpi-value .note {
+  color: var(--text-dim);
+  font-size: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.narrative {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--text);
+  padding: 22px 26px 22px 30px;
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(180, 160, 120, 0.08), transparent 80%);
+  margin-bottom: 28px;
+}
+
+.narrative .quote-mark {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--accent);
+  margin-right: 4px;
+  font-weight: 600;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.section-title .rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.point {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.point-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 600;
+  min-width: 30px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.point-body {
+  flex: 1;
+  line-height: 1.55;
+}
+
+.point-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+
+.point-detail {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.point-detail code {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  background: rgba(180, 160, 120, 0.1);
+  color: var(--accent-bright);
+  padding: 1px 6px;
+  border: 1px solid rgba(180, 160, 120, 0.22);
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+}
+
+.point-detail .highlight {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.point-detail .quote {
+  color: var(--text);
+  font-family: 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer {
+  position: absolute;
+  bottom: 18px;
+  left: 72px;
+  right: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.footer .left-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer .square {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="deco-circle-1"></div>
+    <div class="deco-circle-2"></div>
+    <div class="deco-square"></div>
+    <div class="deco-dot-1"></div>
+    <div class="deco-dot-2"></div>
+    <div class="deco-line-v"></div>
+  </div>
+  <div id="ct">
+    <div class="header">
+      <div class="case-tag"><span>案例 09 · GitHub · 消费侧信任分析</span></div>
+      <h1><span>案例 9 —— GitHub Issue #67002「</span><span class="accent">Safe MCP Reload</span><span>」</span></h1>
+      <div class="subtitle"><span>消费侧信任的教科书样本</span></div>
+    </div>
+
+    <div class="main">
+      <div class="left-col">
+        <div class="hero-frame">
+          <img src="../images/page_029_hero.png" alt="金库隐喻 · 功能与边界并存">
+        </div>
+        <div class="hero-caption">
+          <span class="dot"></span>
+          <span>金库隐喻 · 功能与边界并存</span>
+        </div>
+
+        <div class="kpi-list">
+          <div class="kpi-row">
+            <div class="kpi-label"><span>Issue</span></div>
+            <div class="kpi-value"><span class="highlight">#67002</span></div>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi-label"><span>Labels</span></div>
+            <div class="kpi-value"><span><span class="tag">risk-message-delivery</span><span class="tag">blast-moderate</span></span></div>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi-label"><span>Priority</span></div>
+            <div class="kpi-value"><span class="highlight">P3</span></div>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi-label"><span>Comments</span></div>
+            <div class="kpi-value"><span><span class="highlight">14</span> <span class="note">样本最高</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="narrative">
+          <span class="quote-mark">「</span><span>#67002 是教科书样本：用户在索取 MCP reload 功能的同时显式要求安全边界，这是消费侧信任的可观察信号，也是从「能用」到「好用」的跃迁证据。</span><span class="quote-mark">」</span>
+        </div>
+
+        <div class="section-title">
+          <span>观察要点</span>
+          <span class="rule"></span>
+          <span>06</span>
+        </div>
+
+        <div class="points">
+          <div class="point">
+            <div class="point-num"><span>01</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>Issue 标题</span></div>
+              <div class="point-detail"><span><code>feat(api): add safe MCP reload control endpoint</code></span></div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-num"><span>02</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>风险标签</span></div>
+              <div class="point-detail"><span><code>risk-message-delivery</code> + <code>blast-moderate</code></span></div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-num"><span>03</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>组件 / 优先级</span></div>
+              <div class="point-detail"><span>gateway / <span class="highlight">P3</span></span></div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-num"><span>04</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>讨论热度</span></div>
+              <div class="point-detail"><span>comments <span class="highlight">14</span> —— 样本最高</span></div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-num"><span>05</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>关键观察</span></div>
+              <div class="point-detail"><span class="quote">用户主动要求「安全的重载端点」——要能力的同时显式要安全收口。</span></div>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-num"><span>06</span></div>
+            <div class="point-body">
+              <div class="point-title"><span>制度含义</span></div>
+              <div class="point-detail"><span class="quote">从「能用」到「好用」的关键跃迁——消费侧信任的强信号。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="left-mark">
+        <span class="square"></span>
+        <span>SenseNova · 案例研究 · 09</span>
+      </div>
+      <div><span>消费侧信任 · 信号分析</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>洞察 #3 · 信任是 Agent 的跃迁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-1: #0F1E33;
+  --bg-2: #1B3B6B;
+  --bg-3: #0A1628;
+  --ink: #F5F0E8;
+  --ink-dim: rgba(245, 240, 232, 0.64);
+  --ink-mute: rgba(245, 240, 232, 0.42);
+  --accent: #B4A078;
+  --accent-bright: #D4BE94;
+  --rule: rgba(180, 160, 120, 0.32);
+  --rule-soft: rgba(180, 160, 120, 0.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--ink);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 1300px 900px at 30% 20%, #1B3B6B 0%, #0F1E33 55%, #0A1628 100%);
+}
+
+.bg-shape { position: absolute; pointer-events: none; }
+.bg-circle-lg {
+  width: 360px; height: 360px; border-radius: 50%;
+  border: 1px solid rgba(180, 160, 120, 0.14);
+  top: -140px; right: -90px;
+}
+.bg-circle-md {
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(180, 160, 120, 0.04);
+  bottom: -60px; left: 12%;
+}
+.bg-square-rot {
+  width: 110px; height: 110px;
+  border: 1px solid rgba(180, 160, 120, 0.22);
+  transform: rotate(45deg);
+  top: 320px; right: 130px;
+}
+.bg-square-sml {
+  width: 16px; height: 16px;
+  background: rgba(180, 160, 120, 0.4);
+  top: 148px; left: 60%;
+}
+.bg-line-h-1 {
+  width: 220px; height: 1px;
+  background: var(--rule);
+  top: 260px; left: 60px;
+}
+.bg-line-v-1 {
+  width: 1px; height: 200px;
+  background: var(--rule);
+  top: 140px; right: 260px;
+}
+.bg-line-h-2 {
+  width: 180px; height: 1px;
+  background: var(--rule);
+  bottom: 90px; right: 100px;
+}
+.bg-dot-1 {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  top: 88px; right: 88px;
+}
+.bg-dot-2 {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent);
+  bottom: 44px; left: 44px;
+}
+.bg-tri {
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid rgba(180, 160, 120, 0.3);
+  top: 500px; left: 60px;
+  transform: rotate(-15deg);
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 44px 68px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+.header-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.badge-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2px;
+}
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  font-weight: 500;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.badge-tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+.h-eyebrow {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.28em;
+}
+.h-eyebrow .sep { color: var(--accent); margin: 0 10px; }
+
+h1.title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-top: 2px;
+}
+h1.title em {
+  font-style: normal;
+  color: var(--accent-bright);
+  padding: 0 4px;
+}
+.subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: var(--ink-dim);
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.subtitle .code {
+  font-family: 'Noto Serif SC', serif;
+  color: var(--accent);
+  font-weight: 600;
+}
+.subtitle .sep { color: var(--accent); }
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 4px;
+  min-width: 150px;
+}
+.hr-meta {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.32em;
+}
+.hr-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 62px;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hr-underscore {
+  width: 88px;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 4px;
+}
+.hr-caption {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.28em;
+  margin-top: 4px;
+}
+
+/* ===== Main split ===== */
+.main-split {
+  display: grid;
+  grid-template-columns: 1fr 108px 1fr;
+  gap: 0;
+  margin-top: 20px;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  padding: 22px 26px 20px;
+  border: 1px solid rgba(180, 160, 120, 0.28);
+  background: rgba(15, 30, 51, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 20px; height: 20px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 20px; height: 20px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+.card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.card-side-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+}
+.card-side-label.right {
+  justify-content: flex-end;
+}
+.card-side-label .side-line {
+  width: 26px; height: 1px; background: var(--accent);
+}
+.card-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+.card-name .code {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+.card-version {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.06em;
+}
+.card-version .sep { color: var(--accent); margin: 0 8px; }
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.tag {
+  padding: 3px 9px;
+  font-size: 10px;
+  border: 1px solid rgba(180, 160, 120, 0.42);
+  color: var(--accent);
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+.metric-block {
+  padding: 12px 0 10px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+}
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+}
+.metric-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 40px;
+  color: var(--accent-bright);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.metric-num.letters {
+  font-size: 32px;
+  letter-spacing: 0.06em;
+}
+.metric-num .unit {
+  font-size: 15px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-left: 3px;
+}
+.metric-lbl {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+}
+.metric-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--rule);
+  margin: 4px 0;
+}
+
+.card-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.card-desc .hi {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.card-role {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.role-diamond {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ===== Center connector ===== */
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+.conn-label-top {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.4em;
+  text-align: center;
+  line-height: 1.2;
+}
+.conn-line {
+  width: 42px; height: 1px;
+  background: var(--accent);
+}
+.conn-badge {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(15, 30, 51, 0.7);
+}
+.conn-badge::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--rule-soft);
+  border-radius: 50%;
+}
+.conn-badge svg {
+  width: 34px; height: 34px;
+}
+.conn-label-bottom {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.24em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ===== Bottom 4 points ===== */
+.points {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+.point {
+  position: relative;
+  padding: 12px 14px 12px 16px;
+  border-left: 2px solid var(--accent);
+  background: rgba(15, 30, 51, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.point-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+.point-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1;
+}
+.point-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.point-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+.point-text .em {
+  color: var(--accent-bright);
+  font-weight: 500;
+}
+
+/* ===== Footer ===== */
+.footer {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.footer-line {
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.footer-text {
+  flex: 1;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-align: center;
+}
+.footer-text em {
+  font-style: normal;
+  color: var(--accent-bright);
+}
+.footer-tail {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.28em;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="bg-shape bg-circle-lg"></div>
+    <div class="bg-shape bg-circle-md"></div>
+    <div class="bg-shape bg-square-rot"></div>
+    <div class="bg-shape bg-square-sml"></div>
+    <div class="bg-shape bg-line-h-1"></div>
+    <div class="bg-shape bg-line-v-1"></div>
+    <div class="bg-shape bg-line-h-2"></div>
+    <div class="bg-shape bg-dot-1"></div>
+    <div class="bg-shape bg-dot-2"></div>
+    <div class="bg-shape bg-tri"></div>
+  </div>
+
+  <div id="ct">
+    <div class="header">
+      <div class="header-left">
+        <div class="badge-row">
+          <div class="badge-tag"><span class="dot"></span><span>INSIGHT · 洞察</span></div>
+          <div class="h-eyebrow">AGENT EVOLUTION <span class="sep">·</span> 第 03 章 <span class="sep">·</span> 2026</div>
+        </div>
+        <h1 class="title">信任是 Agent 的<em>跃迁</em></h1>
+        <div class="subtitle">
+          <span class="code">Judgment Release</span>
+          <span class="sep">+</span>
+          <span class="code">#67002</span>
+          <span class="sep">·</span>
+          <span>供给侧 × 需求侧 的合题</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="hr-meta">No.</div>
+        <div class="hr-num">03</div>
+        <div class="hr-underscore"></div>
+        <div class="hr-caption">TRUST · LEAP</div>
+      </div>
+    </div>
+
+    <div class="main-split">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-side-label">
+            <span class="side-line"></span>
+            <span>供给侧 · SUPPLY SIDE</span>
+          </div>
+          <div class="card-name">Judgment Release</div>
+          <div class="card-version">v0.18.0 <span class="sep">·</span> 2026-07-01</div>
+          <div class="card-tags">
+            <span class="tag">milestone</span>
+            <span class="tag">quality-baseline</span>
+            <span class="tag">judgment</span>
+          </div>
+        </div>
+
+        <div class="metric-block">
+          <div class="metric-item">
+            <div class="metric-num">692<span class="unit"> items</span></div>
+            <div class="metric-lbl">P0 / P1 全部清零</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-num">12<span class="unit"> 天</span></div>
+            <div class="metric-lbl">战役周期 · DAYS</div>
+          </div>
+        </div>
+
+        <div class="card-desc">
+          一次<span class="hi">P0 / P1 清零战役</span>——在两个工作周内清空 692 项最高优先级事项，主动向市场兑现质量与判断力的信誉基线。
+        </div>
+        <div class="card-role">
+          <span class="role-diamond"></span>
+          <span>主动建立信任 · 供给端的信誉投入</span>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="conn-label-top">合 题</div>
+        <div class="conn-line"></div>
+        <div class="conn-badge">
+          <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 15 L13 15 M10 11 L13 15 L10 19" fill="none" stroke="#D4BE94" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
+            <path d="M26 15 L17 15 M20 11 L17 15 L20 19" fill="none" stroke="#D4BE94" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
+          </svg>
+        </div>
+        <div class="conn-line"></div>
+        <div class="conn-label-bottom">双轴驱动</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-side-label right">
+            <span>需求侧 · DEMAND SIDE</span>
+            <span class="side-line"></span>
+          </div>
+          <div class="card-name"><span class="code">#67002</span> Issue</div>
+          <div class="card-version">Safe MCP Reload <span class="sep">·</span> 用户主动发起</div>
+          <div class="card-tags">
+            <span class="tag">risk-message-delivery</span>
+            <span class="tag">blast-moderate</span>
+            <span class="tag">user-issued</span>
+          </div>
+        </div>
+
+        <div class="metric-block">
+          <div class="metric-item">
+            <div class="metric-num letters">MCP</div>
+            <div class="metric-lbl">协议级 · PROTOCOL</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-num letters">SAFE</div>
+            <div class="metric-lbl">用户指定 · BOUNDARY</div>
+          </div>
+        </div>
+
+        <div class="card-desc">
+          <span class="hi">Safe MCP Reload</span>——用户主动要求为能力接入加装安全边界，把"能连上"改造成"敢用 · 可控 · 可回收"。
+        </div>
+        <div class="card-role">
+          <span class="role-diamond"></span>
+          <span>主动收口边界 · 需求端的信任契约</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="points">
+      <div class="point">
+        <div class="point-header">
+          <span class="point-num">01</span>
+          <span class="point-title">信任定义</span>
+        </div>
+        <div class="point-text">用户在索取能力的同时，<span class="em">显式要求安全收口</span>——这就是 Agent 语境下的信任。</div>
+      </div>
+      <div class="point">
+        <div class="point-header">
+          <span class="point-num">02</span>
+          <span class="point-title">制度含义</span>
+        </div>
+        <div class="point-text">信任是 Agent 从<span class="em">"能用"到"好用"</span>的关键跃迁：能力 × 边界。</div>
+      </div>
+      <div class="point">
+        <div class="point-header">
+          <span class="point-num">03</span>
+          <span class="point-title">案例组合</span>
+        </div>
+        <div class="point-text">供给侧（Judgment）<span class="em">+ 需求侧（#67002）</span>= 完整画面，缺一不可。</div>
+      </div>
+      <div class="point">
+        <div class="point-header">
+          <span class="point-num">04</span>
+          <span class="point-title">观察方法</span>
+        </div>
+        <div class="point-text">用<span class="em">"能力索取 × 安全收口"</span>双轴审视，才能识别 Agent 真正的跃迁。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-text">信任是 <em>Agent 的跃迁</em>——不是能力上限，而是<em>信任半径</em>的扩张</div>
+      <div class="footer-line"></div>
+      <div class="footer-tail">INSIGHT · 03</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

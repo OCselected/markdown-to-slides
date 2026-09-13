@@ -4,417 +4,308 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>第三幕 · 需求/供给/消费三维分析</title>
+<title>Agent 演化方法论 · 田野观察</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg-deep:#0F1E33;
+  --bg-mid:#132A47;
+  --primary:#1B3B6B;
+  --primary-soft:#22497E;
+  --text-warm:#F5F0E8;
+  --text-muted:#B8B0A1;
+  --text-dim:#8B8678;
+  --gold:#B4A078;
+  --gold-bright:#D4BC8F;
+  --gold-dim:#7E6E52;
+  --hair:rgba(180,160,120,0.32);
+  --hair-strong:rgba(180,160,120,0.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden;background:#0B1826;font-family:'Noto Sans SC',-apple-system,sans-serif;color:var(--text-warm)}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg-deep)}
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+#bg::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 15%, rgba(27,59,107,0.45), transparent 55%),
+             radial-gradient(ellipse at 85% 90%, rgba(180,160,120,0.10), transparent 60%);
+}
+#bg::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%, transparent 60%, rgba(15,30,51,0.65) 100%);
+}
+.bg-shape{position:absolute}
+.bg-circle-1{width:520px;height:520px;border:1px solid rgba(180,160,120,0.10);border-radius:50%;top:-180px;left:-140px}
+.bg-circle-2{width:180px;height:180px;border:1px solid rgba(180,160,120,0.18);border-radius:50%;bottom:130px;right:90px}
+.bg-square-1{width:110px;height:110px;border:1px solid rgba(180,160,120,0.14);top:340px;right:-30px;transform:rotate(15deg)}
+.bg-line-1{position:absolute;left:0;right:0;top:200px;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 20%,var(--hair) 80%,transparent)}
+.bg-line-2{position:absolute;left:0;right:0;top:720px;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 20%,var(--hair) 80%,transparent)}
+.bg-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;position:absolute}
 
-:root {
-  --bg: #1E293B;
-  --bg-deep: #0F172A;
-  --primary: #00BCD4;
-  --primary-soft: rgba(0, 188, 212, 0.55);
-  --accent: #FF7043;
-  --text-main: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --line: rgba(148, 163, 184, 0.18);
-}
+#ct{position:absolute;inset:0;z-index:1;padding:52px 72px 44px 72px;display:flex;flex-direction:column}
 
-body {
-  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 16px;
-  color: var(--text-main);
-  background: #0a0f1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+/* HEADER */
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
+.header-left{max-width:1100px}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:12px;font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:0.34em;color:var(--gold);text-transform:uppercase;font-weight:500}
+.eyebrow .bar{width:44px;height:1px;background:var(--gold)}
+.eyebrow .dot{width:5px;height:5px;background:var(--gold);border-radius:50%}
+h1{font-family:'Noto Serif SC',serif;font-size:44px;font-weight:600;color:var(--text-warm);letter-spacing:0.03em;line-height:1.15}
+h1 .sep{color:var(--gold);margin:0 10px;font-weight:400}
+h1 .accent{color:var(--gold-bright)}
+.subtitle{margin-top:10px;font-family:'Noto Serif SC',serif;font-size:17px;color:var(--text-muted);font-weight:400;letter-spacing:0.06em;font-style:italic}
+.subtitle::before{content:'— ';color:var(--gold)}
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
+.chapter{display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:4px}
+.chapter-num{font-family:'Noto Serif SC',serif;font-size:78px;font-weight:300;color:var(--gold);line-height:1;letter-spacing:0.02em;position:relative}
+.chapter-num::after{content:'';position:absolute;right:-16px;top:14px;width:8px;height:8px;background:var(--gold);border-radius:50%}
+.chapter-label{font-family:'Noto Sans SC',sans-serif;font-size:10px;color:var(--text-dim);letter-spacing:0.4em;font-weight:400;margin-top:2px}
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-}
+/* MAIN 3-COLUMN */
+.main{display:grid;grid-template-columns:340px 1fr 1fr;gap:28px;margin-top:14px;flex:1;min-height:0}
 
-/* Decorative large "03" in background */
-.bg-03 {
-  position: absolute;
-  top: 30px;
-  right: 60px;
-  font-family: 'Inter', sans-serif;
-  font-size: 280px;
-  font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(0, 188, 212, 0.14);
-  letter-spacing: -12px;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
+.col{position:relative;display:flex;flex-direction:column;padding:22px 24px;border:1px solid rgba(180,160,120,0.20);background:rgba(19,42,71,0.42)}
+.col-tag{display:flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:10.5px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+.col-tag .sq{width:12px;height:12px;background:var(--gold)}
+.col-num{font-family:'Noto Serif SC',serif;font-size:11px;color:var(--text-dim);letter-spacing:0.3em}
+.col-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:600;color:var(--text-warm);letter-spacing:0.04em;margin-bottom:4px;line-height:1.25}
+.col-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:12px;color:var(--text-dim);letter-spacing:0.08em;margin-bottom:18px}
 
-/* Corner brackets */
-.corner {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  pointer-events: none;
-}
-.corner svg { width: 100%; height: 100%; }
-.corner-tr { top: 24px; right: 24px; }
-.corner-bl { bottom: 24px; left: 24px; }
+/* COL 1 - SAMPLE */
+.sample-name{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.sample-name .brand{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;color:var(--text-warm);letter-spacing:0.02em}
+.sample-name .mark{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--gold);letter-spacing:0.3em;font-weight:500}
+.sample-sub{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:18px;letter-spacing:0.02em}
 
-/* Subtle dot pattern */
-.dot-row {
-  position: absolute;
-  display: flex;
-  gap: 10px;
-  pointer-events: none;
-}
-.dot-row .dot {
-  width: 4px;
-  height: 4px;
-  background: rgba(0, 188, 212, 0.35);
-  border-radius: 50%;
-}
-.dots-tl { top: 240px; left: 30px; }
-.dots-br { bottom: 160px; right: 30px; }
+.metrics{display:flex;flex-direction:column;gap:14px;margin-bottom:16px}
+.metric{display:flex;align-items:baseline;justify-content:space-between;padding:10px 12px;border-left:2px solid var(--gold);background:rgba(27,59,107,0.35)}
+.metric-val{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:600;color:var(--gold-bright);letter-spacing:0.02em;line-height:1}
+.metric-val .unit{font-size:14px;font-weight:400;color:var(--gold);margin-left:4px;letter-spacing:0.05em}
+.metric-label{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-muted);letter-spacing:0.24em;text-align:right}
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
+.sample-quote{margin-top:auto;padding-top:14px;border-top:1px solid var(--hair);font-family:'Noto Serif SC',serif;font-style:italic;font-size:13px;color:var(--text-warm);line-height:1.55;letter-spacing:0.03em;position:relative}
+.sample-quote::before{content:'"';position:absolute;top:6px;left:-6px;font-family:'Noto Serif SC',serif;font-size:36px;color:var(--gold);line-height:1;opacity:0.5}
+.sample-quote{padding-left:18px}
 
-/* Top section */
-.top-section {
-  display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  margin-top: 65px;
-}
+/* COL 2 - THREE DIMS */
+.dims{display:flex;flex-direction:column;gap:11px;margin-bottom:14px}
+.dim{display:flex;gap:14px;align-items:stretch;padding:12px 14px;background:rgba(15,30,51,0.55);border:1px solid rgba(180,160,120,0.14);position:relative}
+.dim-idx{width:36px;height:36px;background:var(--gold);color:var(--bg-deep);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;flex-shrink:0}
+.dim-body{flex:1;min-width:0}
+.dim-head{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
+.dim-name{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;color:var(--text-warm);letter-spacing:0.04em}
+.dim-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:11px;color:var(--gold);letter-spacing:0.08em}
+.dim-metric{font-family:'Noto Sans SC',sans-serif;font-size:11.5px;color:var(--text-muted);letter-spacing:0.05em;line-height:1.5}
+.dim-metric b{color:var(--gold-bright);font-weight:600}
 
-.act-num {
-  font-size: 128px;
-  font-weight: 900;
-  color: var(--primary);
-  line-height: 0.82;
-  letter-spacing: -4px;
-  font-family: 'Inter', sans-serif;
-  text-shadow: 0 0 40px rgba(0, 188, 212, 0.35);
-}
+.dim-footer{margin-top:auto;padding-top:10px;border-top:1px solid var(--hair);display:flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-dim);letter-spacing:0.22em}
+.dim-footer .line{flex:1;height:1px;background:var(--hair)}
 
-.title-block {
-  flex: 1;
-  padding-top: 12px;
-}
+/* COL 3 - 12 CASES */
+.cases-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;gap:8px;margin-bottom:14px}
+.case-block{padding:10px 12px;border:1px solid rgba(180,160,120,0.18);background:rgba(15,30,51,0.55);position:relative;display:flex;flex-direction:column;gap:3px}
+.case-block.featured{grid-column:span 2}
+.case-count{display:flex;align-items:baseline;gap:8px}
+.case-num{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:600;color:var(--gold-bright);line-height:1;letter-spacing:0.01em}
+.case-num .plus{font-size:14px;color:var(--gold);margin:0 3px;font-weight:400}
+.case-name{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:var(--text-warm);font-weight:500;letter-spacing:0.04em}
+.case-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:10px;color:var(--text-dim);letter-spacing:0.08em}
+.case-mark{position:absolute;top:8px;right:10px;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:0.65}
 
-.kicker {
-  font-size: 13px;
-  color: var(--primary);
-  letter-spacing: 6px;
-  font-weight: 600;
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.kicker::before {
-  content: '';
-  width: 36px;
-  height: 1px;
-  background: var(--primary);
-  display: inline-block;
-}
+.method-box{margin-top:auto;padding:14px 16px;border:1px dashed var(--hair-strong);background:rgba(19,42,71,0.6);position:relative}
+.method-title{font-family:'Noto Sans SC',sans-serif;font-size:10.5px;color:var(--gold);letter-spacing:0.34em;font-weight:500;margin-bottom:10px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.method-title .sq{width:8px;height:8px;background:var(--gold)}
+.method-flow{display:flex;align-items:stretch;gap:6px}
+.method-step{flex:1;padding:8px 6px;background:rgba(15,30,51,0.7);text-align:center;border-top:2px solid var(--gold)}
+.method-step-cn{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;color:var(--text-warm);letter-spacing:0.08em;line-height:1.2}
+.method-step-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:9.5px;color:var(--text-dim);letter-spacing:0.1em;margin-top:3px}
+.method-arrow{align-self:center;color:var(--gold);font-family:'Noto Serif SC',serif;font-size:16px;font-weight:300}
 
-h1 {
-  font-size: 70px;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -1.5px;
-  line-height: 1.08;
-  margin-bottom: 22px;
-}
-
-.title-rule {
-  width: 100px;
-  height: 3px;
-  background: var(--accent);
-  margin-bottom: 22px;
-  box-shadow: 0 0 12px rgba(255, 112, 67, 0.55);
-}
-
-.subtitle {
-  font-size: 20px;
-  color: var(--text-secondary);
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-/* Columns */
-.column {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 60px;
-  padding: 0 20px;
-  height: 500px;
-  margin-top: 20px;
-  align-content: center;
-}
-
-.col {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px 10px;
-  height: 100%;
-  border-left: 1px solid var(--line);
-}
-.col:first-child { border-left: none; }
-
-.col-index {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: var(--primary);
-  letter-spacing: 5px;
-  font-weight: 600;
-  margin-bottom: 26px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.col-index::before,
-.col-index::after {
-  content: '';
-  width: 18px;
-  height: 1px;
-  background: rgba(0, 188, 212, 0.4);
-}
-
-.icon-wrap {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 36px;
-}
-.icon-wrap svg {
-  width: 100px;
-  height: 100px;
-  stroke: var(--primary);
-  stroke-width: 1.4;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.icon-wrap::before {
-  content: '';
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  border: 1px dashed rgba(0, 188, 212, 0.15);
-  border-radius: 50%;
-}
-
-.col-label {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 14px;
-  letter-spacing: 3px;
-}
-
-.col-tagline {
-  font-size: 15px;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
-  line-height: 1.6;
-}
-
-.col-highlight {
-  font-size: 13px;
-  color: var(--accent);
-  letter-spacing: 3px;
-  font-weight: 700;
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 112, 67, 0.35);
-  min-width: 120px;
-}
-
-/* Narrative */
-.narrative-wrap {
-  margin-top: 45px;
-  padding: 0 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.narrative-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 188, 212, 0.45) 50%, transparent 100%);
-  margin-bottom: 22px;
-}
-
-.narrative {
-  font-size: 15px;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.narrative .num {
-  color: var(--primary);
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  padding: 0 2px;
-}
-
-.narrative .sep {
-  color: rgba(148, 163, 184, 0.35);
-  padding: 0 8px;
-}
-
-.narrative-line-bottom {
-  width: 200px;
-  height: 1px;
-  background: rgba(255, 112, 67, 0.55);
-  margin-top: 22px;
-}
-
+/* FOOTER */
+.footer{margin-top:18px;padding-top:16px;border-top:1px solid var(--hair-strong);display:flex;flex-direction:column;gap:6px}
+.footer-narrative{font-family:'Noto Serif SC',serif;font-size:13.5px;color:var(--text-muted);line-height:1.6;letter-spacing:0.04em}
+.footer-narrative b{color:var(--gold-bright);font-weight:600;font-style:italic}
+.footer-point{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--text-warm);font-weight:600;line-height:1.5;letter-spacing:0.03em;display:flex;align-items:center;gap:12px}
+.footer-point .accent-line{width:36px;height:2px;background:var(--gold);flex-shrink:0}
+.footer-point em{font-style:italic;color:var(--gold-bright)}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-03">03</div>
-    <div class="corner corner-tr">
-      <svg viewBox="0 0 60 60">
-        <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
-        <path d="M 48 0 L 60 0 L 60 12" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
-      </svg>
-    </div>
-    <div class="corner corner-bl">
-      <svg viewBox="0 0 60 60">
-        <path d="M 0 48 L 0 60 L 12 60" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
-        <path d="M 48 60 L 60 60 L 60 48" stroke="rgba(0, 188, 212, 0.55)" stroke-width="1.5" fill="none"/>
-      </svg>
-    </div>
-    <div class="dot-row dots-tl">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
-    <div class="dot-row dots-br">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
+    <div class="bg-shape bg-circle-1"></div>
+    <div class="bg-shape bg-circle-2"></div>
+    <div class="bg-shape bg-square-1"></div>
+    <div class="bg-line-1"></div>
+    <div class="bg-line-2"></div>
   </div>
-
   <div id="ct">
-    <div class="top-section">
-      <div class="act-num">
-        <span>03</span>
-      </div>
-      <div class="title-block">
-        <div class="kicker"><span>ACT 3 · SECTION HEADER</span></div>
-        <h1>
-          <span>需求/供给/消费三维分析</span>
-        </h1>
-        <div class="title-rule"></div>
-        <div class="subtitle">
-          <span>用公开数据观察 Hermes 一年多的演化</span>
+
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow">
+          <span class="bar"></span>
+          <span>METHODOLOGY · FIELD OBSERVATION</span>
+          <span class="dot"></span>
+          <span>方法论 · 田野观察</span>
         </div>
+        <h1>Agent 演化方法论<span class="sep">·</span><span class="accent">田野观察</span></h1>
+        <div class="subtitle">以 Hermes 为样本的观察方法 · An Ethnographic Approach</div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">13</div>
+        <div class="chapter-label">CHAPTER</div>
       </div>
     </div>
 
-    <div class="column">
+    <div class="main">
+
+      <!-- COL 1: SAMPLE -->
       <div class="col">
-        <div class="col-index"><span>01</span></div>
-        <div class="icon-wrap">
-          <svg viewBox="0 0 64 64">
-            <circle cx="22" cy="22" r="9"/>
-            <path d="M8 52 C 8 40, 15 33, 22 33 C 29 33, 36 40, 36 52"/>
-            <circle cx="44" cy="26" r="7"/>
-            <path d="M36 52 C 36 42, 41 36, 46 36 C 51 36, 56 42, 56 52"/>
-          </svg>
+        <div class="col-tag"><span class="sq"></span><span>01 · 样本</span><span class="col-num">SAMPLE</span></div>
+        <div class="col-title">公开样本 · 一个可考的锚点</div>
+        <div class="col-en">The Canonical Open Specimen</div>
+
+        <div class="sample-name">
+          <span class="brand">Hermes</span>
+          <span class="mark">AGENT</span>
         </div>
-        <div class="col-label"><span>需求侧</span></div>
-        <div class="col-tagline"><span>用户要什么</span></div>
-        <div class="col-highlight"><span>ISSUES</span></div>
+        <div class="sample-sub">作为本演讲的公开演化样本，其社区数据、发布节奏、贡献者结构完整可考，构成分析 Agent 演化的天然标本。</div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-val">243<span class="unit">K ★</span></div>
+            <div class="metric-label">STARS · 消费</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">33<span class="unit"> 个</span></div>
+            <div class="metric-label">RELEASES · 供给</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">397<span class="unit"> 位</span></div>
+            <div class="metric-label">CONTRIBUTORS · 协作</div>
+          </div>
+        </div>
+
+        <div class="sample-quote">
+          公开演化数据丰富的样本——从需求、供给到消费，均有可交叉验证的社区痕迹。
+        </div>
       </div>
 
+      <!-- COL 2: THREE DIMENSIONS -->
       <div class="col">
-        <div class="col-index"><span>02</span></div>
-        <div class="icon-wrap">
-          <svg viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="26"/>
-            <circle cx="32" cy="32" r="9"/>
-            <line x1="32" y1="6" x2="32" y2="14"/>
-            <line x1="32" y1="50" x2="32" y2="58"/>
-            <line x1="6" y1="32" x2="14" y2="32"/>
-            <line x1="50" y1="32" x2="58" y2="32"/>
-            <line x1="13.5" y1="13.5" x2="19" y2="19"/>
-            <line x1="45" y1="45" x2="50.5" y2="50.5"/>
-            <line x1="13.5" y1="50.5" x2="19" y2="45"/>
-            <line x1="45" y1="19" x2="50.5" y2="13.5"/>
-          </svg>
+        <div class="col-tag"><span class="sq"></span><span>02 · 三维观察</span><span class="col-num">TRIPLE LENS</span></div>
+        <div class="col-title">需求 · 供给 · 消费</div>
+        <div class="col-en">The Three-Axis Observation Framework</div>
+
+        <div class="dims">
+          <div class="dim">
+            <div class="dim-idx">01</div>
+            <div class="dim-body">
+              <div class="dim-head">
+                <span class="dim-name">需求侧</span>
+                <span class="dim-en">Demand · Issues</span>
+              </div>
+              <div class="dim-metric">社区 <b>Issues</b> 提出什么——用户在期待 Agent 解决哪些新问题</div>
+            </div>
+          </div>
+          <div class="dim">
+            <div class="dim-idx">02</div>
+            <div class="dim-body">
+              <div class="dim-head">
+                <span class="dim-name">供给侧</span>
+                <span class="dim-en">Supply · PRs</span>
+              </div>
+              <div class="dim-metric">社区 <b>PRs</b> 交付了什么——工程师把什么能力真正加进主干</div>
+            </div>
+          </div>
+          <div class="dim">
+            <div class="dim-idx">03</div>
+            <div class="dim-body">
+              <div class="dim-head">
+                <span class="dim-name">消费侧</span>
+                <span class="dim-en">Consumption · Stars / Releases</span>
+              </div>
+              <div class="dim-metric"><b>Stars · Contributors · Releases</b>——谁在用、谁在用得多、节奏如何</div>
+            </div>
+          </div>
         </div>
-        <div class="col-label"><span>供给侧</span></div>
-        <div class="col-tagline"><span>项目做了什么</span></div>
-        <div class="col-highlight"><span>PRs / RELEASES</span></div>
+
+        <div class="dim-footer">
+          <span>三维互为证据</span>
+          <span class="line"></span>
+          <span>交叉印证演化路径</span>
+        </div>
       </div>
 
+      <!-- COL 3: 12 CASES -->
       <div class="col">
-        <div class="col-index"><span>03</span></div>
-        <div class="icon-wrap">
-          <svg viewBox="0 0 64 64">
-            <path d="M 32 6 L 40 24 L 60 26 L 45 40 L 49 58 L 32 48 L 15 58 L 19 40 L 4 26 L 24 24 Z"/>
-          </svg>
+        <div class="col-tag"><span class="sq"></span><span>03 · 十二案例</span><span class="col-num">CASE STUDIES</span></div>
+        <div class="col-title">12 个田野案例 · 构成</div>
+        <div class="col-en">6 Releases + 5 Issues + 1 Dataset</div>
+
+        <div class="cases-grid">
+          <div class="case-block featured">
+            <span class="case-mark"></span>
+            <div class="case-count">
+              <span class="case-num">6<span class="plus">+</span></span>
+              <span class="case-name">命名 Release</span>
+            </div>
+            <div class="case-en">Named Releases · 版本节点</div>
+          </div>
+          <div class="case-block">
+            <span class="case-mark"></span>
+            <div class="case-count">
+              <span class="case-num">5</span>
+              <span class="case-name">典型 Issue</span>
+            </div>
+            <div class="case-en">Typical Issues</div>
+          </div>
+          <div class="case-block">
+            <span class="case-mark"></span>
+            <div class="case-count">
+              <span class="case-num">1</span>
+              <span class="case-name">数据案例</span>
+            </div>
+            <div class="case-en">Data Case</div>
+          </div>
         </div>
-        <div class="col-label"><span>消费侧</span></div>
-        <div class="col-tagline"><span>采纳信号</span></div>
-        <div class="col-highlight"><span>STARS / FORKS</span></div>
+
+        <div class="method-box">
+          <div class="method-title"><span class="sq"></span><span>FIELD METHOD · 田野三段式</span></div>
+          <div class="method-flow">
+            <div class="method-step">
+              <div class="method-step-cn">现象</div>
+              <div class="method-step-en">Phenomenon</div>
+            </div>
+            <div class="method-arrow">→</div>
+            <div class="method-step">
+              <div class="method-step-cn">数据</div>
+              <div class="method-step-en">Data</div>
+            </div>
+            <div class="method-arrow">→</div>
+            <div class="method-step">
+              <div class="method-step-cn">解读</div>
+              <div class="method-step-en">Interpretation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-narrative">
+        本演讲的方法论：以 <b>Hermes</b> 作为公开样本，用 <b>三维（需求 / 供给 / 消费）</b>+ <b>12 案例</b>观察 Agent 演化，每个案例是 <b>现象 → 数据 → 解读</b>的三段式田野考察。
+      </div>
+      <div class="footer-point">
+        <span class="accent-line"></span>
+        <span>理解 Agent 从<em>「能用」</em>到<em>「好用」</em>的演化路径——<span style="color:var(--text-muted);font-weight:400">不是理论分析，是社区观察。</span></span>
       </div>
     </div>
 
-    <div class="narrative-wrap">
-      <div class="narrative-line"></div>
-      <div class="narrative">
-        <span>用需求、供给、消费三维观察 Hermes</span>
-        <span>——</span>
-        <span>数据来自 </span>
-        <span class="num">100</span>
-        <span> 条 issue</span>
-        <span class="sep">·</span>
-        <span class="num">100</span>
-        <span> 条 PR 样本</span>
-        <span class="sep">·</span>
-        <span>以及 </span>
-        <span class="num">397</span>
-        <span> 位 contributor 分布</span>
-      </div>
-      <div class="narrative-line-bottom"></div>
-    </div>
   </div>
 </div>
 </body>

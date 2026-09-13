@@ -1,0 +1,5 @@
+Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
+
+我需要一页内容页，主题是"洞察 #1 · 可靠性是 Agent 的底线"，副标题为"Tenacity Release + #107070"。整体采用深色暗调的学术科技风格，背景是深普鲁士蓝羊皮纸质感（#0F1E33），文字用暖白色（#F5F0E8），强调色用深普鲁士蓝（#1B3B6B）和暖金色（#B4A078），标题用衬线字体（Noto Serif SC）营造智识感，正文用无衬线字体，装饰用包豪斯几何元素（圆、方、线），不依赖图标。
+
+页面顶部放大号标题"洞察 #1 · 可靠性是 Agent 的底线"，下方紧跟副标题"Tenacity Release + #107070"。核心区域采用左右分栏加中间箭头的布局：左侧是 Tenacity Release 的徽章式卡片，标注版本"v0.13.0 (2026-05-07)"，说明它是 Kanban 多 agent 平台，包含 heartbeat/reclaim/zombie detection 机制，代表供给侧的任务持久性方案；右侧是 #107070 的 issue 卡片，标注"P1 / risk-session-state"，说明这是会话重放污染历史的 P1 缺陷，代表需求侧的可靠性问题；两个卡片之间用几何箭头连接，呼应"供给侧 + 需求侧 = 完整画面"的叙事逻辑。下方或侧边补充两个关键要点的文字说明：一是可靠性定义——不是"能不能用"，而是"能否信任 agent 记住正确的历史"；二是制度含义——可靠性是 Agent 的底线，是用户信任的前提。页面底部用简短总结收束：可靠性是 Agent 的底线，Tenacity Release 用 Kanban 平台解决任务持久性，#107070 暴露会话重放污染历史的 P1 缺陷，供给侧与需求侧共同构成完整画面。

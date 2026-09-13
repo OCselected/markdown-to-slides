@@ -1,0 +1,9 @@
+Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
+
+我需要一页内容型PPT，主题是"案例 10 · #66353 Telegram Topic Titles"，副标题点明这是一个"三风险叠加的田野观察"。整体风格要走 dark academic 路线，深普鲁士蓝 #1B3B6B 为主色，背景用 #0F1E33 的深色基调，文字以暖白色 #F5F0E8 呈现，标题用衬线字体（Noto Serif SC）营造学术感，正文用无衬线字体，整体装饰只用包豪斯几何元素（圆、方、线），不依赖图标。
+
+版面采用左右分栏结构：左侧是一张 issue 卡片，呈现该 issue 的概要信息——标题为 "feat(telegram): add compact topic titles and semantic icons"，并附带关键数据：Issue 编号 #66353、讨论热度 comments 12，注明这是"高讨论度的 gateway/平台 feature"。右侧是三个风险标签的堆叠图形，从上到下依次展示 risk-message-delivery、risk-compatibility、blast-broad 三个标签，其中 blast-broad 特别突出，表示"大爆炸面——影响所有 Telegram 用户"。页面底部用大字呈现"blast-broad"，强化这一核心风险标签的视觉冲击。
+
+在分栏下方或侧边，用叙事文字串联关键洞察："feature 类 issue 普遍自带兼容性风险——用户要功能时也知道风险"以及"消费侧信任是双向的——用户索取能力的同时主动索取安全收口"。这段叙述说明 #66353 作为 gateway/平台 feature 的典型样本，三个风险标签叠加（含 blast-broad 大爆炸面），讨论度高的 feature 普遍自带兼容性风险，这是消费侧信任的强信号。
+
+这页没有可用的配图，请用纯文字搭配 CSS 几何装饰把版面填满，不要留大片空白，保持理性、克制、智识感的整体调性。

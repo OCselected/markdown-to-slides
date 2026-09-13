@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>感谢聆听</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0F1E33;
+    --ink: #F5F0E8;
+    --ink-68: rgba(245, 240, 232, 0.68);
+    --ink-40: rgba(245, 240, 232, 0.40);
+    --gold: #B4A078;
+    --gold-soft: rgba(180, 160, 120, 0.55);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg);
+  }
+
+  /* Subtle parchment/noise layer */
+  .noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(245,240,232,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(245,240,232,0.018) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+
+  /* Bauhaus geometric: large top-left arc */
+  .arc-tl {
+    position: absolute;
+    top: -260px;
+    left: -260px;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    border: 1.2px solid var(--gold-soft);
+    opacity: 0.55;
+  }
+  .arc-tl::after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,160,120,0.28);
+  }
+
+  /* Bauhaus: small solid square accent top-right */
+  .sq-tr {
+    position: absolute;
+    top: 96px;
+    right: 132px;
+    width: 46px;
+    height: 46px;
+    background: var(--gold);
+    opacity: 0.85;
+  }
+  .sq-tr-dot {
+    position: absolute;
+    top: 116px;
+    right: 108px;
+    width: 6px;
+    height: 6px;
+    background: var(--ink);
+    opacity: 0.5;
+    border-radius: 50%;
+  }
+
+  /* Small bottom-left circle */
+  .circle-bl {
+    position: absolute;
+    left: 130px;
+    bottom: 168px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-soft);
+    opacity: 0.6;
+  }
+
+  /* Horizontal thin gold line across page */
+  .hairline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 604px;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(180,160,120,0.15) 8%,
+      var(--gold) 50%,
+      rgba(180,160,120,0.15) 92%,
+      transparent 100%);
+    opacity: 0.7;
+  }
+
+  /* Small tick marks on hairline */
+  .hairline-ticks {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 600px;
+    height: 9px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 220px;
+    opacity: 0.5;
+  }
+  .hairline-ticks span {
+    width: 1px;
+    height: 9px;
+    background: var(--gold);
+  }
+
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 60px;
+  }
+
+  /* Top eyebrow */
+  .eyebrow {
+    position: absolute;
+    top: 128px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    letter-spacing: 0.5em;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .eyebrow .dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 14px;
+    transform: translateY(-2px);
+  }
+
+  /* Main title */
+  .title-block {
+    position: absolute;
+    top: 244px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .main-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-weight: 600;
+    font-size: 168px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .main-title .stroke {
+    display: inline-block;
+    position: relative;
+  }
+  .main-title .stroke::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    width: 14px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .main-title .stroke::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    width: 14px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .subtitle {
+    margin-top: 42px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    opacity: 0.92;
+  }
+  .subtitle .sep {
+    color: var(--gold);
+    margin: 0 14px;
+    font-weight: 300;
+  }
+
+  /* Info block */
+  .info-block {
+    position: absolute;
+    top: 648px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+  }
+
+  .info-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(245,240,232,0.18);
+    border-bottom: 1px solid rgba(245,240,232,0.18);
+    padding: 22px 0;
+  }
+
+  .info-item {
+    padding: 0 20px;
+    border-right: 1px solid rgba(245,240,232,0.10);
+  }
+  .info-item:last-child { border-right: none; }
+
+  .info-label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .info-value {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .info-value .en {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-68);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* Closing note */
+  .closing {
+    margin-top: 34px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink-68);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+  .closing .em {
+    color: var(--ink);
+    opacity: 0.85;
+  }
+
+  /* Hermes symbol bottom-right */
+  .hermes {
+    position: absolute;
+    right: 96px;
+    bottom: 78px;
+    width: 120px;
+    height: 60px;
+  }
+  .hermes-label {
+    position: absolute;
+    right: 96px;
+    bottom: 60px;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    width: 120px;
+    text-align: right;
+    opacity: 0.75;
+  }
+
+  /* Page marker top-left */
+  .page-marker {
+    position: absolute;
+    top: 96px;
+    left: 132px;
+    font-size: 11px;
+    color: var(--ink-68);
+    letter-spacing: 0.32em;
+  }
+  .page-marker .num {
+    color: var(--gold);
+    margin-right: 10px;
+  }
+
+  /* Vertical side label */
+  .side-label {
+    position: absolute;
+    left: 44px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--ink-40);
+    white-space: nowrap;
+  }
+  .side-label-r {
+    position: absolute;
+    right: 44px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--ink-40);
+    white-space: nowrap;
+  }
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div id="bg">
+    <div class="noise"></div>
+    <div class="arc-tl"></div>
+    <div class="sq-tr"></div>
+    <div class="sq-tr-dot"></div>
+    <div class="circle-bl"></div>
+    <div class="hairline"></div>
+    <div class="hairline-ticks">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div id="ct">
+
+    <div class="page-marker"><span class="num">07</span>FIN · CLOSING</div>
+
+    <div class="side-label">OPEN SOURCE WAY · 2026</div>
+    <div class="side-label-r">HERMES FIELD NOTE</div>
+
+    <div class="eyebrow">
+      <span>EPICOLOGUE</span>
+      <span class="dot"></span>
+      <span>致谢 · 收尾页</span>
+      <span class="dot"></span>
+      <span>ACKNOWLEDGEMENT</span>
+    </div>
+
+    <div class="title-block">
+      <h1 class="main-title">
+        <span class="stroke">感谢聆听</span>
+      </h1>
+      <div class="subtitle">
+        「开源之道」<span class="sep">·</span>适兕<span class="sep">×</span>窄廊
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-label">讲者 / Speaker</div>
+          <div class="info-value">
+            「开源之道」·适兕 × 窄廊
+            <span class="en">Kuosi × Narrow Corridor</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">英文标识 / Title</div>
+          <div class="info-value">
+            Open Source Way
+            <span class="en">Kuosi × Narrow Corridor</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">数据基线 / Baseline</div>
+          <div class="info-value">
+            2026 — 09 — 11
+            <span class="en">Data cutoff · September 2026</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">田野考察 / Fieldwork</div>
+          <div class="info-value">
+            感谢 Hermes 社区
+            <span class="en">Every issue · PR · release</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing">
+        感谢聆听，感谢 Hermes 社区 —— <span class="em">每个 issue / PR / release 都是田野材料。</span><br>
+        本项目后续将持续更新，欢迎交流与引用。
+      </div>
+    </div>
+
+    <!-- Hermes symbol: caduceus-like twin waves with a center mark -->
+    <svg class="hermes" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left wing wave -->
+      <path d="M 4 30 Q 14 12, 24 30 T 44 30" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <!-- Right wing wave -->
+      <path d="M 76 30 Q 86 12, 96 30 T 116 30" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <!-- Center rod -->
+      <line x1="60" y1="8" x2="60" y2="52" stroke="#B4A078" stroke-width="1.2"/>
+      <!-- Center knot -->
+      <circle cx="60" cy="30" r="3.2" stroke="#B4A078" stroke-width="1.2" fill="none"/>
+      <!-- Top ornament -->
+      <circle cx="60" cy="8" r="1.6" fill="#B4A078"/>
+      <circle cx="60" cy="52" r="1.6" fill="#B4A078"/>
+    </svg>
+    <div class="hermes-label">HERMES</div>
+
+  </div>
+</div>
+</body>
+</html>

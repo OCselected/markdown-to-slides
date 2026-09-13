@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>三个共性问题 · 可靠性/兼容性/信任</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+:root {
+  --bg-deep: #0F1E33;
+  --bg-mid: #142744;
+  --primary: #1B3B6B;
+  --primary-light: #2A5590;
+  --accent: #B4A078;
+  --accent-warm: #C4B287;
+  --text-warm: #F5F0E8;
+  --text-muted: #A9B5C9;
+  --text-faint: #8B95A8;
+  --line: rgba(180,160,120,0.25);
+}
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-warm);
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(43, 85, 144, 0.28) 0%, rgba(15, 30, 51, 0) 55%), linear-gradient(180deg, #10203A 0%, #0F1E33 100%);
+}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 55px 80px 45px;
+  box-sizing: border-box;
+}
+h1, h2, h3, .title, .subtitle, .hero-caption, .summary-text {
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif;
+}
+
+/* Bauhaus geometric corner decorations */
+.deco-corner {
+  position: absolute;
+  z-index: 1;
+}
+.deco-tr {
+  top: 40px;
+  right: 40px;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(180,160,120,0.35);
+  transform: rotate(45deg);
+}
+.deco-tr::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+}
+.deco-bl {
+  bottom: 32px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid rgba(180,160,120,0.28);
+  border-radius: 50%;
+}
+
+/* Title area */
+.title-area {
+  width: 820px;
+}
+.title {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text-warm);
+  letter-spacing: 2.5px;
+  line-height: 1.2;
+}
+.subtitle {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 18px;
+  color: var(--accent-warm);
+  margin-top: 14px;
+  letter-spacing: 4px;
+  font-weight: 400;
+}
+.subtitle::before {
+  content: "";
+  display: inline-block;
+  width: 42px;
+  height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 14px;
+  opacity: 0.7;
+}
+
+/* Hero image */
+.hero {
+  position: absolute;
+  top: 48px;
+  right: 80px;
+  width: 640px;
+}
+.hero img {
+  display: block;
+  width: 640px;
+  height: 358px;
+  object-fit: cover;
+  border: 1px solid rgba(180,160,120,0.28);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.hero-caption {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 10px;
+  letter-spacing: 3px;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+}
+
+/* Three pillars */
+.pillars {
+  position: absolute;
+  top: 428px;
+  left: 80px;
+  width: 1440px;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.pillar {
+  width: 380px;
+  padding: 24px 22px;
+  background: rgba(27, 59, 107, 0.28);
+  border-top: 3px solid var(--accent);
+  border-left: 1px solid rgba(180,160,120,0.18);
+  border-right: 1px solid rgba(180,160,120,0.18);
+  border-bottom: 1px solid rgba(180,160,120,0.18);
+  box-sizing: border-box;
+  position: relative;
+}
+.pillar-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.pillar-num {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+.pillar-title {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-warm);
+  letter-spacing: 5px;
+}
+.cases {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.case-tag {
+  padding: 0;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+.case-tag span {
+  display: block;
+  padding: 12px 16px;
+  background: rgba(15, 30, 51, 0.55);
+  border-left: 2px solid var(--accent);
+  border-radius: 2px;
+  color: var(--text-warm);
+  box-shadow: inset 0 0 0 1px rgba(180,160,120,0.08);
+}
+.case-tag.lead span {
+  background: rgba(27, 59, 107, 0.6);
+  border-left: 2px solid var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(180,160,120,0.2);
+  color: var(--text-warm);
+}
+
+/* Connectors */
+.connector {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.connector-line {
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 40%, var(--accent) 60%, transparent 100%);
+  opacity: 0.75;
+}
+.connector-text {
+  font-size: 11px;
+  color: var(--accent-warm);
+  letter-spacing: 4px;
+  white-space: nowrap;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+}
+.connector-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.connector-arrow {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* Summary */
+.summary {
+  position: absolute;
+  bottom: 72px;
+  left: 80px;
+  width: 1440px;
+  padding: 20px 28px;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, rgba(180,160,120,0.06) 0%, rgba(180,160,120,0) 60%);
+}
+.summary-text {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-warm);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.summary-text .highlight {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 24px;
+}
+.summary-text .quote {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 22px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 4px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(180,160,120,0.12);
+}
+.footer-left { display: flex; align-items: center; gap: 10px; }
+.footer-left::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div class="deco-corner deco-tr"></div>
+  <div class="deco-corner deco-bl"></div>
+  <div id="ct">
+    <div class="title-area">
+      <div class="title"><span>三个共性问题 · 可靠性/兼容性/信任</span></div>
+      <div class="subtitle"><span>田野考察的横切视角</span></div>
+    </div>
+
+    <div class="hero">
+      <img src="../images/page_033_hero.png" alt="三根抽象立柱：可靠性 · 兼容性 · 信任">
+      <div class="hero-caption"><span>Reliability · Compatibility · Trust — 三根支柱</span></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-head">
+          <span class="pillar-num"><span>I</span></span>
+          <span class="pillar-title"><span>可靠性</span></span>
+        </div>
+        <div class="cases">
+          <div class="case-tag lead"><span>#107070 会话重放</span></div>
+          <div class="case-tag"><span>Tenacity Release kanban</span></div>
+          <div class="case-tag"><span>Quicksilver delivery ledger</span></div>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-text"><span>基础 → 前提</span></div>
+        <div class="connector-line"></div>
+        <div class="connector-label">
+          <span class="connector-arrow"><span>→</span></span>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <span class="pillar-num"><span>II</span></span>
+          <span class="pillar-title"><span>兼容性</span></span>
+        </div>
+        <div class="cases">
+          <div class="case-tag lead"><span>#101600 Windows 自锁</span></div>
+          <div class="case-tag"><span>Surface Release 多平台 desktop</span></div>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-text"><span>前提 → 跨越</span></div>
+        <div class="connector-line"></div>
+        <div class="connector-label">
+          <span class="connector-arrow"><span>→</span></span>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-head">
+          <span class="pillar-num"><span>III</span></span>
+          <span class="pillar-title"><span>信任</span></span>
+        </div>
+        <div class="cases">
+          <div class="case-tag lead"><span>#67002 Safe MCP Reload</span></div>
+          <div class="case-tag"><span>#66353 三风险叠加</span></div>
+          <div class="case-tag"><span>Judgment P0/P1 清零</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-text"><span><span class="highlight">可靠性 / 兼容性 / 信任</span> —— Agent 从<span class="quote">"能用"</span>到<span class="quote">"好用"</span>的三道分水岭</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-left"><span>横切总结 · Cross-Cutting Summary</span></div>
+      <div class="footer-right"><span>12 个案例 · 三道分水岭</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

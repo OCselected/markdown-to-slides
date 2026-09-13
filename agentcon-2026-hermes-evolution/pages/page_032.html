@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>案例 12 · desktop 供需缺口</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0F1E33;
+    --primary: #1B3B6B;
+    --gold: #B4A078;
+    --cream: #F5F0E8;
+    --muted: rgba(245,240,232,.62);
+    --line: rgba(180,160,120,.22);
+    --warn: #E58A5A;
+    --warn-bg: rgba(229,138,90,.10);
+    --parchment: url('../images/page_012_parchment.png');
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: #0F1E33;
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #0F1E33;
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 8% 4%, rgba(27,59,107,0.75) 0%, rgba(15,30,51,0.10) 42%, rgba(15,30,51,0) 68%),
+      var(--parchment);
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 88% 82%, rgba(180,160,120,0.10) 0%, rgba(15,30,51,0) 42%);
+  }
+  .geo-circle, .geo-square, .geo-line, .geo-square-2 {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .geo-circle {
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,160,120,0.16);
+    top: -220px; right: -200px;
+  }
+  .geo-square {
+    width: 24px; height: 24px;
+    background: rgba(180,160,120,0.28);
+    top: 210px; right: 88px;
+  }
+  .geo-line {
+    width: 1px; height: 900px;
+    background: rgba(180,160,120,0.08);
+    top: 0; left: 60px;
+  }
+  .geo-square-2 {
+    width: 10px; height: 10px;
+    background: rgba(180,160,120,0.45);
+    bottom: 96px; right: 140px;
+  }
+
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 56px 60px 56px 60px;
+  }
+
+  /* Header */
+  .header {
+    height: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+  }
+  .title-block { display: flex; align-items: flex-start; gap: 20px; }
+  .title-square {
+    width: 22px; height: 22px;
+    background: var(--gold);
+    margin-top: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(180,160,120,0.10);
+  }
+  .titles { display: flex; flex-direction: column; gap: 10px; }
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  h1 .case-num {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 34px;
+    margin-right: 12px;
+    vertical-align: 4px;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1.8px;
+    padding-left: 2px;
+  }
+  .header-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    padding-top: 6px;
+  }
+  .header-line {
+    width: 96px; height: 1px;
+    background: var(--gold);
+    opacity: .7;
+  }
+  .meta-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
+
+  /* KPI row */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+    margin-top: 20px;
+  }
+  .kpi {
+    padding: 20px 26px;
+    background: rgba(27,59,107,0.24);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    position: relative;
+    min-height: 130px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .kpi.warn {
+    border-top-color: var(--warn);
+    background: rgba(229,138,90,0.09);
+  }
+  .kpi-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
+  .kpi-value {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 4px 0 2px 0;
+  }
+  .kpi-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .kpi-unit {
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .kpi.warn .kpi-num,
+  .kpi.warn .kpi-unit { color: var(--warn); }
+  .kpi-sub {
+    font-size: 13px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+  .kpi-sub-en {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }
+
+  /* Table */
+  .table-section {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(15,30,51,0.55);
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .table thead th {
+    background: rgba(27,59,107,0.55);
+    color: var(--gold);
+    padding: 13px 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 3.5px;
+    font-family: 'Noto Serif SC', serif;
+    border-bottom: 1px solid var(--gold);
+  }
+  .table tbody td {
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(180,160,120,0.10);
+    vertical-align: middle;
+  }
+  .table tbody tr:last-child td { border-bottom: none; }
+  .table tbody tr.warn {
+    background: var(--warn-bg);
+  }
+  .table tbody tr.warn td:first-child {
+    border-left: 3px solid var(--warn);
+    padding-left: 21px;
+  }
+  .comp-cell {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .warn .dot { background: var(--warn); }
+  .comp-name {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num .pct {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 3px;
+    font-weight: 400;
+  }
+  .num.warn { color: var(--warn); }
+  .num.warn .pct { color: rgba(229,138,90,0.7); }
+  .badge-mini {
+    display: inline-block;
+    padding: 4px 11px;
+    background: var(--warn);
+    color: #1F0E05;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+  .badge-ok {
+    display: inline-block;
+    padding: 4px 11px;
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.32);
+    color: rgba(245,240,232,0.82);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+
+  .table-caption {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .badge-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 9px 20px;
+    border: 1px solid var(--gold);
+    background: rgba(180,160,120,0.10);
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+  }
+  .badge-gold .dot-gold {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .caption-note {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  /* Narrative */
+  .narrative {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.05fr 1.3fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .narrative-left {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .nar-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .nar-line {
+    font-size: 13.5px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.65;
+    letter-spacing: 0.4px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .nar-line .num-inline {
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0 2px;
+  }
+  .nar-line .step {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+
+  .quote-block {
+    display: flex; align-items: center; gap: 22px;
+  }
+  .quote-ring {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .quote-text {
+    flex: 1;
+  }
+  .quote-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.35;
+    letter-spacing: 1px;
+  }
+  .quote-sub {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.55;
+  }
+  .quote-accent {
+    color: var(--gold);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div class="geo-circle"></div>
+  <div class="geo-square"></div>
+  <div class="geo-line"></div>
+  <div class="geo-square-2"></div>
+
+  <div id="ct">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="title-block">
+        <div class="title-square"></div>
+        <div class="titles">
+          <h1><span class="case-num">案例 12</span>desktop 供需缺口</h1>
+          <div class="subtitle">数据案例：唯一失衡的组件 · Supply – Demand Gap · Component Level</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="header-line"></div>
+        <div class="meta-text">SUPPLY · DEMAND · AUDIT</div>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-label">DESKTOP 需求</div>
+        <div class="kpi-value"><span class="kpi-num">11</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">用户主动要求的功能占比<br><span class="kpi-sub-en">DEMAND SHARE</span></div>
+      </div>
+      <div class="kpi warn">
+        <div class="kpi-label">DESKTOP 供给</div>
+        <div class="kpi-value"><span class="kpi-num">8</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">以 bug 修复为主的产出<br><span class="kpi-sub-en">SUPPLY SHARE</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">SURFACE RELEASE</div>
+        <div class="kpi-value"><span class="kpi-num">100</span><span class="kpi-unit">PRs / 周</span></div>
+        <div class="kpi-sub">集中投入至 desktop 组件<br><span class="kpi-sub-en">PR THROUGHPUT</span></div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-section">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:28%;">组件 Component</th>
+            <th style="width:14%;">需求占比</th>
+            <th style="width:14%;">供给占比</th>
+            <th>供需匹配评估</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warn">
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">desktop</span></div></td>
+            <td><span class="num warn">11<span class="pct">%</span></span></td>
+            <td><span class="num warn">8<span class="pct">%</span></span></td>
+            <td><span class="badge-mini">⚠ 供给欠配</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">agent</span></div></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="num">26<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">gateway</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">cli</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">17<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-caption">
+        <div class="badge-gold">
+          <span class="dot-gold"></span>
+          Surface Release · 2026-06-05 一周 100 PRs
+        </div>
+        <div class="caption-note">— 团队对 desktop 的集中投入已在产出端显现</div>
+      </div>
+    </div>
+
+    <!-- Narrative -->
+    <div class="narrative">
+      <div class="narrative-left">
+        <div class="nar-label">观 察 · INSIGHTS</div>
+        <div class="nar-line"><span class="step">01</span>需求 <span class="num-inline">11%</span> 高于供给 <span class="num-inline">8%</span>，是四个组件中唯一失衡</div>
+        <div class="nar-line"><span class="step">02</span>类型错配：需求偏新功能，供给偏 bug 修复</div>
+        <div class="nar-line"><span class="step">03</span>Surface Release 一周 <span class="num-inline">100 PRs</span>，集中投入已启动</div>
+      </div>
+
+      <div class="quote-block">
+        <div class="quote-ring">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="26" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.75"/>
+            <circle cx="28" cy="28" r="7" fill="#B4A078"/>
+          </svg>
+        </div>
+        <div class="quote-text">
+          <div class="quote-main">"生态是结果，不是手段。"</div>
+          <div class="quote-sub">能力扩张由<span class="quote-accent">用户需求</span>驱动，而非行政推动。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

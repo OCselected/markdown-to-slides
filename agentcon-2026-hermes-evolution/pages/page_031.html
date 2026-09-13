@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>案例 11 · #84672 内容扫描误判</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root{
+    --bg:#0F1E33;
+    --primary:#1B3B6B;
+    --accent:#B4A078;
+    --text:#F5F0E8;
+    --muted:rgba(245,240,232,0.62);
+    --dim:rgba(245,240,232,0.36);
+    --line:rgba(180,160,120,0.32);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+
+  .wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+
+  #bg{position:absolute;inset:0;z-index:0;}
+  #ct{position:absolute;inset:0;z-index:1;padding:44px 60px 42px 60px;box-sizing:border-box;display:flex;flex-direction:column;}
+
+  /* decorative bauhaus */
+  .deco-circle-1{
+    position:absolute;top:-120px;right:-120px;
+    width:280px;height:280px;border-radius:50%;
+    background:transparent;border:1px solid rgba(180,160,120,0.15);
+  }
+  .deco-circle-1::before{
+    content:'';position:absolute;top:32px;left:32px;right:32px;bottom:32px;
+    border-radius:50%;background:transparent;border:1px solid rgba(27,59,107,0.55);
+  }
+  .deco-circle-2{
+    position:absolute;bottom:-70px;left:-70px;
+    width:200px;height:200px;border-radius:50%;
+    background:transparent;border:1px solid rgba(180,160,120,0.10);
+  }
+  .deco-line-h{
+    position:absolute;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent 0%,rgba(180,160,120,0.22) 45%,rgba(180,160,120,0.22) 55%,transparent 100%);
+  }
+  .deco-line-h.top{top:132px;}
+  .deco-line-h.bot{bottom:82px;}
+  .deco-dot{
+    position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
+  .deco-dot.d1{top:76px;left:60px;}
+  .deco-dot.d2{top:132px;right:60px;}
+  .deco-dot.d3{bottom:82px;left:60px;}
+  .deco-square{
+    position:absolute;right:60px;bottom:82px;width:14px;height:14px;background:transparent;border:1px solid var(--accent);
+  }
+
+  /* header */
+  .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+  .header-left{display:flex;flex-direction:column;gap:8px;}
+  .page-mark{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:12px;color:var(--accent);letter-spacing:0.45em;font-weight:500;
+    display:flex;align-items:center;gap:14px;
+  }
+  .page-mark::after{content:'';width:80px;height:1px;background:var(--line);}
+  .title{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:38px;font-weight:700;letter-spacing:0.02em;line-height:1.15;
+    color:var(--text);margin:0;
+  }
+  .subtitle{
+    font-family:'Noto Serif SC',Georgia,serif;font-style:italic;
+    font-size:16px;color:var(--muted);letter-spacing:0.15em;font-weight:400;
+  }
+  .header-right{text-align:right;display:flex;flex-direction:column;gap:6px;padding-top:4px;}
+  .chapter{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:64px;font-weight:700;color:var(--accent);line-height:0.9;
+  }
+  .chapter-sub{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:10px;color:var(--muted);letter-spacing:0.5em;
+  }
+
+  /* main */
+  .main{
+    display:grid;grid-template-columns:45% 55%;gap:44px;
+    align-items:stretch;margin-bottom:22px;
+  }
+
+  .issue-block{
+    padding:24px 28px 24px 28px;
+    background:linear-gradient(180deg,rgba(27,59,107,0.28) 0%,rgba(15,30,51,0.55) 100%);
+    border-left:2px solid var(--accent);
+    position:relative;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .issue-block::before{
+    content:'';position:absolute;top:20px;right:20px;
+    width:14px;height:14px;border:1px solid var(--accent);
+  }
+
+  .tags{display:flex;flex-direction:column;gap:6px;}
+  .tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;color:var(--accent);letter-spacing:0.32em;
+    text-transform:uppercase;font-family:'Noto Sans SC',sans-serif;
+  }
+  .tag-square{width:10px;height:10px;background:var(--accent);flex-shrink:0;}
+  .tag-circle{width:10px;height:10px;border:1.5px solid var(--accent);border-radius:50%;flex-shrink:0;}
+
+  .divider{width:44px;height:1px;background:var(--accent);margin:14px 0;}
+
+  .hero-num{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:92px;font-weight:700;color:var(--accent);line-height:0.9;
+    letter-spacing:-0.02em;
+  }
+  .hero-caption{
+    font-size:11px;color:var(--muted);letter-spacing:0.32em;
+    text-transform:uppercase;margin-top:6px;
+  }
+  .hero-desc{font-size:13px;color:var(--text);line-height:1.85;margin-top:14px;}
+
+  .narrative-block{
+    padding:6px 4px 6px 22px;
+    border-left:1px solid rgba(180,160,120,0.25);
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .quote-mark{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:64px;color:var(--accent);line-height:0.4;
+    margin-bottom:6px;font-weight:700;
+  }
+  .narrative{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:19px;line-height:1.9;color:var(--text);font-weight:400;
+  }
+  .narrative em{font-style:normal;color:var(--accent);font-weight:500;}
+  .narrative-signoff{
+    font-family:'Noto Serif SC',Georgia,serif;font-style:italic;
+    font-size:13px;color:var(--muted);letter-spacing:0.2em;
+    margin-top:14px;display:flex;align-items:center;gap:12px;
+  }
+  .narrative-signoff::before{
+    content:'';width:28px;height:1px;background:var(--line);
+  }
+
+  /* card grid */
+  .card-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:12px 25px;flex:0 0 auto;
+  }
+  .card{
+    background:rgba(27,59,107,0.16);
+    border:1px solid rgba(180,160,120,0.18);
+    padding:16px 20px;
+    min-height:122px;
+    position:relative;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .card::before{
+    content:'';position:absolute;top:0;left:0;
+    width:22px;height:2px;background:var(--accent);
+  }
+  .card-head{
+    font-family:'Noto Serif SC',Georgia,serif;
+    font-size:12px;color:var(--accent);letter-spacing:0.32em;
+    font-weight:500;display:flex;align-items:center;gap:10px;
+  }
+  .card-head::before{
+    content:'';width:6px;height:6px;background:var(--accent);
+    flex-shrink:0;
+  }
+  .card-body{
+    font-size:13px;color:var(--text);line-height:1.75;font-weight:400;
+  }
+
+  /* footer */
+  .footer{
+    display:flex;align-items:center;gap:20px;
+    margin-top:18px;
+  }
+  .footer-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+  .footer-text{
+    font-family:'Noto Serif SC',Georgia,serif;font-style:italic;
+    font-size:13px;color:var(--muted);letter-spacing:0.22em;
+    white-space:nowrap;
+  }
+  .footer-dots{display:flex;gap:8px;}
+  .footer-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+  .footer-dot.hollow{background:transparent;border:1px solid var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="deco-circle-1"></div>
+    <div class="deco-circle-2"></div>
+    <div class="deco-line-h top"></div>
+    <div class="deco-line-h bot"></div>
+    <div class="deco-dot d1"></div>
+    <div class="deco-dot d2"></div>
+    <div class="deco-dot d3"></div>
+    <div class="deco-square"></div>
+  </div>
+
+  <div id="ct">
+    <div class="header">
+      <div class="header-left">
+        <div class="page-mark"><span>案例观察 · Case Observation</span></div>
+        <h1 class="title"><span>案例 11 · #84672 内容扫描误判</span></h1>
+        <div class="subtitle"><span>安全治理的长正文田野观察</span></div>
+      </div>
+      <div class="header-right">
+        <div class="chapter"><span>011</span></div>
+        <div class="chapter-sub"><span>SAFETY · GOVERNANCE</span></div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="issue-block">
+        <div class="tags">
+          <div class="tag"><span class="tag-square"></span><span>Issue #84672</span></div>
+          <div class="tag"><span class="tag-circle"></span><span>Component: cron</span></div>
+        </div>
+        <div>
+          <div class="divider"></div>
+          <div class="hero-num"><span>11,754</span></div>
+          <div class="hero-caption"><span>Body Length · Characters</span></div>
+        </div>
+        <div class="hero-desc">
+          <span>body_len 11,754 chars —— 样本最长，远超第二名 7,019</span>
+        </div>
+      </div>
+
+      <div class="narrative-block">
+        <div>
+          <div class="quote-mark"><span>"</span></div>
+          <div class="narrative">
+            <span>内容扫描器把<em>安全文档</em>误判为攻击，是横切的<em>安全治理</em>问题；用户对安全扫描误报的深度关注，反映了 <em>"信任"</em> 作为消费侧信号的可观察性。</span>
+          </div>
+        </div>
+        <div class="narrative-signoff"><span>Field Notes · 田野笔记 № 11</span></div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-head"><span>Issue</span></div>
+        <div class="card-body"><span>[Bug]: Content scanners flag security documentation as attacks</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>组件</span></div>
+        <div class="card-body"><span>cron</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>Body 长度</span></div>
+        <div class="card-body"><span>11,754 字符 —— 样本最长，远超第二名 7,019</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>关键观察</span></div>
+        <div class="card-body"><span>cron 内容扫描器把安全文档误判为攻击 —— 横切安全问题</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>问题描述</span></div>
+        <div class="card-body"><span>复现充分 —— 用户对安全扫描误报的深度关注</span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>制度含义</span></div>
+        <div class="card-body"><span>"安全扫描"不是技术工具，是制度契约 —— 误判率决定用户是否信任系统</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-dots">
+        <span class="footer-dot"></span>
+        <span class="footer-dot hollow"></span>
+        <span class="footer-dot"></span>
+      </div>
+      <div class="footer-text"><span>内容扫描误判 · 安全治理的长正文田野观察</span></div>
+      <div class="footer-dots">
+        <span class="footer-dot"></span>
+        <span class="footer-dot hollow"></span>
+        <span class="footer-dot"></span>
+      </div>
+      <div class="footer-line"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

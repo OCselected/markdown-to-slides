@@ -1,0 +1,9 @@
+Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
+
+我需要一页 PPT，页面主题围绕"洞察 #3 · 信任是 Agent 的跃迁"，副标题写"Judgment Release + #67002"。整体采用深普鲁士蓝（#0F1E33 / #1B3B6B）羊皮纸质感暗色背景，配暖白（#F5F0E8）文字与琥珀金（#B4A078）点缀，带包豪斯几何元素（圆、方、线）作克制装饰，标题用 Noto Serif SC 衬线体，正文用 Noto Sans SC 无衬线体，传达理性、克制、有智识感的学术气质。
+
+版面采用左右分栏 + 中间箭头的结构：左侧是一张 Judgment Release 徽章卡片，标注版本信息 v0.18.0（2026-07-01），核心内容是"P0/P1 清零战役——692 items / 12 days"，代表供给侧主动建立信任；右侧是一张 #67002 issue 卡片，标注 risk-message-delivery + blast-moderate，核心内容是"Safe MCP Reload——用户主动要求安全边界"，代表需求侧的主动收口。中间用一个几何化的箭头或连接元素串联，暗示两者合力构成完整画面。
+
+下方用四个小要点补齐叙事：一是"信任定义——用户在索取能力的同时显式要求安全收口"，二是"制度含义——信任是 Agent 从'能用'到'好用'的跃迁"，三是"案例组合——供给侧（Judgment）+ 需求侧（#67002）= 完整画面"。底部收束一句强调"信任是 Agent 的跃迁"这一核心洞察。
+
+这页没有可用的继承图片和 slot 配图，请用纯文字排版 + CSS 几何装饰把版面填满，注意卡片间的对比层级，保持左右两块的视觉分量均衡。

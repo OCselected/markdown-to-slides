@@ -4,321 +4,723 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>制度经济学视角 · Williamson × Roland</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Release 命名文化 · 田野观察第 1 章</title>
+<script src="../assets/echarts.min.js"></script>
 <style>
-:root{
-  --cyan:#00BCD4;
-  --cyan-soft:rgba(0,188,212,.15);
-  --cyan-line:rgba(0,188,212,.35);
-  --orange:#FF7043;
-  --orange-soft:rgba(255,112,67,.15);
-  --bg:#1E293B;
-  --bg-2:#0F172A;
-  --panel:#243447;
-  --panel-2:#2A3B52;
-  --text:#E2E8F0;
-  --text-dim:#94A3B8;
-  --text-mute:#64748B;
-  --border:rgba(148,163,184,.15);
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:100%;height:100%;font-family:'Inter','Noto Sans SC',sans-serif;font-size:16px;color:var(--text);background:var(--bg-2);}
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
-#bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 15%,rgba(0,188,212,.12) 0%,transparent 45%),radial-gradient(ellipse at 80% 85%,rgba(255,112,67,.10) 0%,transparent 45%),linear-gradient(135deg,#1E293B 0%,#0F172A 100%);}
-#bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,188,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,188,212,.04) 1px,transparent 1px);background-size:48px 48px;}
-#bg::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan) 30%,var(--orange) 70%,transparent);}
-#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box;display:flex;flex-direction:column;}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-/* Header */
-.header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:18px;border-bottom:1px solid var(--border);}
-.header-left{display:flex;flex-direction:column;gap:8px;}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;}
-.eyebrow .dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan);}
-.title{font-size:32px;font-weight:700;letter-spacing:-.01em;color:#fff;line-height:1.15;}
-.title .accent{color:var(--cyan);}
-.title .x{color:var(--orange);font-weight:600;margin:0 4px;}
-.subtitle{font-size:14px;color:var(--text-dim);font-weight:400;letter-spacing:.02em;}
-.subtitle .tag{color:var(--orange);font-weight:500;}
-.header-right{display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.15em;}
-.header-right .badge{padding:5px 10px;border:1px solid var(--cyan-line);border-radius:3px;color:var(--cyan);}
-.header-right .badge.orange{border-color:rgba(255,112,67,.4);color:var(--orange);}
+  :root {
+    --bg-deep: #0F1E33;
+    --primary: #1B3B6B;
+    --primary-light: #2A4E82;
+    --accent: #B4A078;
+    --accent-dim: #8A7A5A;
+    --text: #F5F0E8;
+    --text-dim: rgba(245, 240, 232, 0.62);
+    --text-faint: rgba(245, 240, 232, 0.32);
+    --line: rgba(180, 160, 120, 0.30);
+    --line-faint: rgba(245, 240, 232, 0.14);
+  }
 
-/* Body */
-.body{flex:1;display:grid;grid-template-columns:1fr 220px 1fr;gap:18px;padding-top:22px;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Panel */
-.panel{position:relative;background:linear-gradient(160deg,rgba(36,52,71,.7) 0%,rgba(30,41,59,.5) 100%);border:1px solid var(--border);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;overflow:hidden;}
-.panel::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--cyan);}
-.panel.right::before{background:var(--orange);}
-.panel-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
-.panel-title{display:flex;flex-direction:column;gap:4px;}
-.panel-title .num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.2em;}
-.panel-title h3{font-size:17px;font-weight:600;color:#fff;letter-spacing:.01em;}
-.panel-title .sub{font-size:11px;color:var(--text-dim);font-weight:400;}
-.panel-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:2px;background:var(--cyan-soft);color:var(--cyan);letter-spacing:.15em;border:1px solid var(--cyan-line);}
-.panel.right .panel-badge{background:var(--orange-soft);color:var(--orange);border-color:rgba(255,112,67,.35);}
+  html, body { width: 100%; height: 100%; }
 
-/* Williamson hierarchy */
-.levels{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
-.level{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:10px 14px;background:rgba(15,23,42,.5);border:1px solid rgba(0,188,212,.18);border-radius:4px;position:relative;transition:none;}
-.level .lv-tag{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;color:var(--cyan);letter-spacing:.05em;}
-.level .lv-info{display:flex;flex-direction:column;gap:2px;}
-.level .lv-name{font-size:13px;font-weight:600;color:#fff;}
-.level .lv-desc{font-size:11px;color:var(--text-dim);}
-.level .lv-scale{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.1em;}
-.level::after{content:"";position:absolute;left:52px;top:100%;width:1px;height:8px;background:var(--cyan-line);}
-.level:last-child::after{display:none;}
-.arrow-flow{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,188,212,.25);display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.1em;}
-.arrow-flow .dir{display:flex;align-items:center;gap:6px;}
-.arrow-flow .dir svg{opacity:.8;}
-.arrow-flow .axis{color:var(--text-mute);}
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text);
+    background: #05091a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* Roland time axis */
-.time-axis{margin-top:6px;position:relative;}
-.time-bar{position:relative;height:64px;background:linear-gradient(90deg,rgba(0,188,212,.25) 0%,rgba(255,112,67,.25) 100%);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;padding:0 18px;}
-.time-bar .slow,.time-bar .fast{flex:1;display:flex;flex-direction:column;gap:2px;}
-.time-bar .fast{align-items:flex-end;text-align:right;}
-.time-bar .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;font-weight:600;}
-.time-bar .slow .label{color:var(--cyan);}
-.time-bar .fast .label{color:var(--orange);}
-.time-bar .caption{font-size:11px;color:var(--text-dim);}
-.time-bar .pivot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--bg);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;font-weight:600;box-shadow:0 0 20px rgba(255,255,255,.3);}
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: var(--bg-deep);
+  }
 
-.time-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
-.tc{padding:12px 14px;background:rgba(15,23,42,.5);border-radius:4px;border:1px solid var(--border);}
-.tc.slow{border-left:3px solid var(--cyan);}
-.tc.fast{border-left:3px solid var(--orange);}
-.tc-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.tc-head .dot{width:8px;height:8px;border-radius:50%;}
-.tc.slow .tc-head .dot{background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
-.tc.fast .tc-head .dot{background:var(--orange);box-shadow:0 0 8px var(--orange);}
-.tc-head .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;font-weight:600;}
-.tc.slow .tc-head .lbl{color:var(--cyan);}
-.tc.fast .tc-head .lbl{color:var(--orange);}
-.tc ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
-.tc li{font-size:11.5px;color:var(--text);padding-left:12px;position:relative;line-height:1.35;}
-.tc li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;background:var(--text-dim);border-radius:50%;}
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 15% 10%, rgba(42, 78, 130, 0.35), transparent 55%);
+  }
 
-/* Center column */
-.center{display:flex;flex-direction:column;align-items:stretch;justify-content:center;position:relative;padding:0 4px;}
-.cross-axis{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;}
-.axis-label-x{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.2em;text-transform:uppercase;writing-mode:horizontal-tb;}
-.matrix-core{position:relative;width:100%;aspect-ratio:1/1;max-width:180px;display:flex;align-items:center;justify-content:center;}
-.matrix-core svg{position:absolute;inset:0;width:100%;height:100%;}
-.matrix-core .core-badge{position:relative;z-index:2;background:linear-gradient(135deg,rgba(0,188,212,.9),rgba(255,112,67,.9));border-radius:50%;width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 40px rgba(255,112,67,.35),0 0 60px rgba(0,188,212,.25);}
-.matrix-core .core-badge .kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;opacity:.9;font-weight:500;}
-.matrix-core .core-badge .num{font-size:26px;font-weight:700;line-height:1;margin:6px 0;letter-spacing:-.02em;}
-.matrix-core .core-badge .label{font-size:12px;font-weight:600;letter-spacing:.05em;}
-.core-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--text-mute);text-align:center;}
+  .bg-circle {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid var(--line-faint);
+    border-radius: 50%;
+    right: -180px;
+    top: -220px;
+  }
+  .bg-circle-inner {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    right: -80px;
+    top: -120px;
+  }
+  .bg-square {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--line-faint);
+    left: -50px;
+    bottom: -40px;
+    transform: rotate(15deg);
+  }
+  .bg-square-inner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(180, 160, 120, 0.06);
+    left: 80px;
+    bottom: 40px;
+    transform: rotate(15deg);
+  }
+  .bg-vline {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, var(--line-faint) 30%, var(--line-faint) 70%, transparent 100%);
+  }
+  .bg-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    left: calc(50% - 3px);
+    top: 48%;
+    opacity: 0.75;
+  }
+  .bg-hline-top {
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    width: 120px;
+    height: 1px;
+    background: var(--line);
+  }
+  .bg-corner-tag {
+    position: absolute;
+    right: 30px;
+    bottom: 18px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+  }
 
-/* Bottom summary */
-.summary{margin-top:18px;padding:16px 22px;background:linear-gradient(90deg,rgba(0,188,212,.08) 0%,rgba(255,112,67,.08) 100%);border:1px solid var(--border);border-radius:4px;position:relative;display:flex;align-items:center;gap:18px;}
-.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),var(--orange));}
-.summary .icon{width:40px;height:40px;border-radius:50%;background:rgba(15,23,42,.6);border:1px solid var(--cyan-line);display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;}
-.summary .text{font-size:13px;color:var(--text);line-height:1.55;flex:1;}
-.summary .text .k{color:var(--cyan);font-weight:600;}
-.summary .text .k2{color:var(--orange);font-weight:600;}
-.summary .text .em{color:#fff;font-weight:600;}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 44px 60px 40px 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
 
-/* Footer meta */
-.footer{margin-top:10px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-mute);letter-spacing:.15em;padding-top:6px;}
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-left { flex: 1; min-width: 0; }
 
-/* Corner marks */
-.corner{position:absolute;width:14px;height:14px;border:1px solid var(--cyan);}
-.corner.tl{top:8px;left:8px;border-right:0;border-bottom:0;}
-.corner.tr{top:8px;right:8px;border-left:0;border-bottom:0;}
-.corner.bl{bottom:8px;left:8px;border-right:0;border-top:0;}
-.corner.br{bottom:8px;right:8px;border-left:0;border-top:0;}
+  .chapter-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .chapter-label .cl-line {
+    width: 44px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .h1-dot { color: var(--accent); font-weight: 400; }
+
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(245, 240, 232, 0.78);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .subtitle-quote {
+    color: var(--accent);
+    font-weight: 500;
+    padding: 0 2px;
+  }
+  .subtitle-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-left: 12px;
+    letter-spacing: 1px;
+  }
+
+  .h-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .h-divider-line { width: 56px; height: 1px; background: var(--accent); }
+  .h-divider-bar { width: 22px; height: 1px; background: var(--text-faint); }
+  .h-divider-square { width: 5px; height: 5px; background: var(--accent); }
+  .h-divider-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  /* KPI block */
+  .header-right {
+    display: flex;
+    gap: 16px;
+    padding-top: 4px;
+  }
+  .kpi {
+    background: linear-gradient(155deg, rgba(27, 59, 107, 0.65), rgba(15, 30, 51, 0.35));
+    border: 1px solid var(--line-faint);
+    padding: 16px 20px 14px 20px;
+    min-width: 138px;
+    position: relative;
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent);
+  }
+  .kpi-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .kpi-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+  .kpi-value.accent { color: var(--accent); }
+  .kpi-unit {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 400;
+    margin-left: 5px;
+    letter-spacing: 1px;
+  }
+  .kpi-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .kpi-bar {
+    display: inline-block;
+    height: 2px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  /* ===== MAIN ===== */
+  .main {
+    display: flex;
+    gap: 44px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .narrative {
+    width: 372px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 2px;
+  }
+  .nar-eyebrow {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .nar-marker {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .nar-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .nar-highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .nar-mid {
+    color: var(--accent);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 0 2px;
+  }
+  .nar-em {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+  }
+  .nar-quote {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .nar-meta {
+    border-top: 1px solid var(--line-faint);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .meta-key {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+  .meta-val {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .meta-val em {
+    color: var(--accent);
+    font-style: italic;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .nar-bar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+  }
+  .nar-bar-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  }
+  .nar-bar-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* Cards grid */
+  .cards {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .card {
+    background: linear-gradient(160deg, rgba(27, 59, 107, 0.55) 0%, rgba(15, 30, 51, 0.75) 100%);
+    border: 1px solid var(--line-faint);
+    border-top: 2px solid var(--accent);
+    padding: 16px 18px 14px 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .card-idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  .card-marker {
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .card-marker.square { border-radius: 0; transform: rotate(45deg); }
+  .card-marker.hollow {
+    background: transparent;
+    border: 1px solid var(--accent);
+  }
+  .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+  .card-name-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .card-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .card-note {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .card-num {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    padding: 0 1px;
+  }
+  .card-en-quote {
+    font-style: italic;
+    color: rgba(245, 240, 232, 0.88);
+  }
+  .card-code {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* Corner geometry on cards */
+  .card::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 14px;
+    height: 14px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-bar {
+    width: 44px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .foot-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
+  .foot-chap {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+    font-weight: 500;
+  }
+  .foot-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-square {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+  }
+  .foot-line {
+    width: 22px;
+    height: 1px;
+    background: var(--line);
+  }
+  .closing {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 1.2px;
+    font-weight: 500;
+  }
+  .closing .close-a { color: var(--accent); font-weight: 600; }
+  .closing .close-eq {
+    color: var(--accent);
+    padding: 0 6px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+  }
+  .closing .close-e { color: var(--accent); font-style: italic; font-weight: 500; }
 
 </style>
 </head>
 <body>
 <div class="wrapper">
-<div id="bg"></div>
-<div id="ct">
-
-<div class="corner tl"></div>
-<div class="corner tr"></div>
-<div class="corner bl"></div>
-<div class="corner br"></div>
-
-<!-- Header -->
-<div class="header">
-  <div class="header-left">
-    <div class="eyebrow"><span class="dot"></span><span>INSTITUTIONAL ECONOMICS · FRAMEWORK SYNTHESIS</span></div>
-    <div class="title">制度经济学视角 · <span class="accent">Williamson</span><span class="x">×</span><span class="accent">Roland</span></div>
-    <div class="subtitle">核心命题：<span class="tag">层次 × 时间</span> 的分析矩阵 — 将静态层次链与动态时间轴合二为一，回答改革受阻的空间与速度问题</div>
+  <div id="bg">
+    <div class="bg-hline-top"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle-inner"></div>
+    <div class="bg-vline"></div>
+    <div class="bg-dot"></div>
+    <div class="bg-square"></div>
+    <div class="bg-square-inner"></div>
+    <div class="bg-corner-tag">HERMES · CULTURE OBSERVATION</div>
   </div>
-  <div class="header-right">
-    <div class="badge">LAYERED × TEMPORAL</div>
-    <div class="badge orange">大分流 2.0</div>
+  <div id="ct">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <div class="chapter-label"><span>CHAPTER 01</span><span class="cl-line"></span><span>FIELD NOTES</span></div>
+        <h1>Release 命名文化 <span class="h1-dot">·</span> 田野观察第 1 章</h1>
+        <div class="subtitle">
+          <span class="subtitle-quote">「 把 release 当作文化事件 」</span>
+          <span class="subtitle-en">Treating a release as a cultural event</span>
+        </div>
+        <div class="h-divider">
+          <span class="h-divider-line"></span>
+          <span class="h-divider-bar"></span>
+          <span class="h-divider-square"></span>
+          <span class="h-divider-text">命名 · 仪式 · 制度</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="kpi">
+          <div class="kpi-label">RELEASES · 总量</div>
+          <div class="kpi-value">33<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:28px;"></span>全部发布</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">命名 RELEASE · 命名</div>
+          <div class="kpi-value accent">06<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:10px;"></span>文化事件</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- Narrative -->
+      <div class="narrative">
+        <div class="nar-eyebrow">FIELD OBSERVATION · 田野观察</div>
+        <div class="nar-marker">■</div>
+        <p class="nar-text">
+          <span class="nar-highlight">Hermes</span> 的 release 不是版本号，是文化事件。<span class="nar-highlight">6 个</span>命名 release 用<span class="nar-mid">希腊神话 / 概念词汇</span>命名，每个命名背后都是一个<span class="nar-em">制度主张</span>——这是开源项目的<span class="nar-quote">"仪式"</span>。
+        </p>
+
+        <div class="nar-meta">
+          <div class="meta-row">
+            <span class="meta-key">命名法</span>
+            <span class="meta-val">希腊神话 <em>·</em> 概念词汇</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">制度主张</span>
+            <span class="meta-val">每个命名 = 一个 claim</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">仪式化</span>
+            <span class="meta-val">开源项目的 "仪式"</span>
+          </div>
+        </div>
+
+        <div class="nar-bar">
+          <span class="nar-bar-line"></span>
+          <span class="nar-bar-tag">OBSERVATION / 01</span>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">01 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Judgment</div>
+          <div class="card-name-en">判 · 决</div>
+          <div class="card-divider"></div>
+          <div class="card-note">P0/P1 清零战役——<span class="card-num">700</span> highest-priority items cleared in <span class="card-num">12</span> days</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">02 / 06</span>
+            <span class="card-marker square"></span>
+          </div>
+          <div class="card-name">Tenacity</div>
+          <div class="card-name-en">韧 · 性</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"finishes what it starts"</span>——多 agent kanban 平台</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">03 / 06</span>
+            <span class="card-marker hollow"></span>
+          </div>
+          <div class="card-name">Surface</div>
+          <div class="card-name-en">表 · 面</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"Hermes meets you wherever you work"</span>——原生 desktop + Web admin</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">04 / 06</span>
+            <span class="card-marker square"></span>
+          </div>
+          <div class="card-name">Velocity</div>
+          <div class="card-name-en">速 · 度</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"16,000 行 → 3,821 行"</span>——大重构</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">05 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Quicksilver</div>
+          <div class="card-name-en">流 · 银</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"first token time 80% 下降"</span>——性能爆发</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">06 / 06</span>
+            <span class="card-marker hollow"></span>
+          </div>
+          <div class="card-name">Patch</div>
+          <div class="card-name-en">修 · 补</div>
+          <div class="card-divider"></div>
+          <div class="card-note">热修复——<span class="card-code">dashboard 401 reload loop</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="foot-left">
+        <span class="foot-bar"></span>
+        <span class="foot-year">2024</span>
+        <span class="foot-chap">HERMES · 01 / CULTURE</span>
+      </div>
+      <div class="foot-right">
+        <span class="foot-square"></span>
+        <span class="closing"><span class="close-a">release 命名</span><span class="close-eq">=</span>制度主张的<span class="close-e">仪式化表达</span></span>
+        <span class="foot-line"></span>
+      </div>
+    </div>
+
   </div>
-</div>
-
-<!-- Body grid: left Williamson | center matrix | right Roland -->
-<div class="body">
-
-  <!-- LEFT: Williamson hierarchy -->
-  <div class="panel left">
-    <div class="panel-header">
-      <div class="panel-title">
-        <div class="num">DIMENSION 01 / LAYERED</div>
-        <h3>Williamson 层次链</h3>
-        <div class="sub">L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置</div>
-      </div>
-      <div class="panel-badge">SPATIAL · 在哪里受阻</div>
-    </div>
-
-    <div class="levels">
-      <div class="level">
-        <div class="lv-tag">L1</div>
-        <div class="lv-info">
-          <div class="lv-name">社会嵌入</div>
-          <div class="lv-desc">文化 · 信任 · 非正式规范</div>
-        </div>
-        <div class="lv-scale">DEEPEST</div>
-      </div>
-      <div class="level">
-        <div class="lv-tag">L2</div>
-        <div class="lv-info">
-          <div class="lv-name">制度环境</div>
-          <div class="lv-desc">政治体制 · 宪法规则 · 权力结构</div>
-        </div>
-        <div class="lv-scale">CONSTRAINING</div>
-      </div>
-      <div class="level">
-        <div class="lv-tag">L3</div>
-        <div class="lv-info">
-          <div class="lv-name">治理机制</div>
-          <div class="lv-desc">合同 · 组织架构 · 内部规则</div>
-        </div>
-        <div class="lv-scale">GOVERNANCE</div>
-      </div>
-      <div class="level">
-        <div class="lv-tag">L4</div>
-        <div class="lv-info">
-          <div class="lv-name">资源配置</div>
-          <div class="lv-desc">个体决策 · 市场交易 · 行为</div>
-        </div>
-        <div class="lv-scale">SHALLOWEST</div>
-      </div>
-    </div>
-
-    <div class="arrow-flow">
-      <span class="axis">↑ DEPTH · 由外向内</span>
-      <span class="dir">L4 → L3 → L2 → L1 → 约束递增</span>
-    </div>
-  </div>
-
-  <!-- CENTER: Matrix core -->
-  <div class="center">
-    <div class="cross-axis">
-      <div class="core-tag">— X AXIS · 层次 —</div>
-      <div class="matrix-core">
-        <svg viewBox="0 0 200 200">
-          <defs>
-            <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00BCD4" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#00BCD4" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="100" cy="100" r="95" fill="url(#rg1)"/>
-          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(0,188,212,.35)" stroke-width="1" stroke-dasharray="3 4"/>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,112,67,.3)" stroke-width="1" stroke-dasharray="3 4"/>
-          <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(0,188,212,.5)" stroke-width="1.2"/>
-          <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,112,67,.5)" stroke-width="1.2"/>
-          <polygon points="10,100 0,95 0,105" fill="#00BCD4"/>
-          <polygon points="190,100 200,95 200,105" fill="#00BCD4"/>
-          <polygon points="100,10 95,0 105,0" fill="#FF7043"/>
-          <polygon points="100,190 95,200 105,200" fill="#FF7043"/>
-        </svg>
-        <div class="core-badge">
-          <div class="kicker">FRAMEWORK</div>
-          <div class="num">大分流 2.0</div>
-          <div class="label">大分流 2.0</div>
-        </div>
-      </div>
-      <div class="core-tag">— Y AXIS · 时间 —</div>
-
-      <div style="margin-top:8px;padding:10px 12px;background:rgba(15,23,42,.6);border:1px solid var(--border);border-radius:4px;width:100%;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--text-mute);margin-bottom:6px;">MESHING RULE</div>
-        <div style="font-size:11px;color:var(--text);line-height:1.5;">
-          在<span style="color:var(--cyan);font-weight:600;">L1–L4</span>的哪一层受阻 <span style="color:var(--text-mute);">×</span> 属<span style="color:var(--orange);font-weight:600;">慢/快</span>哪一维
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT: Roland time -->
-  <div class="panel right">
-    <div class="panel-header">
-      <div class="panel-title">
-        <div class="num">DIMENSION 02 / TEMPORAL</div>
-        <h3>Roland 2004 时间轴</h3>
-        <div class="sub">slow-moving 文化与规范 ↔ fast-moving 政治制度</div>
-      </div>
-      <div class="panel-badge">VELOCITY · 为什么受阻</div>
-    </div>
-
-    <div class="time-axis">
-      <div class="time-bar">
-        <div class="slow">
-          <span class="label">◀ SLOW · 慢变量</span>
-          <span class="caption">文化与规范</span>
-        </div>
-        <div class="pivot">T</div>
-        <div class="fast">
-          <span class="label">FAST · 快变量 ▶</span>
-          <span class="caption">政治制度</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="time-cards">
-      <div class="tc slow">
-        <div class="tc-head"><span class="dot"></span><span class="lbl">SLOW-MOVING</span></div>
-        <ul>
-          <li>文化价值观 · 社会规范</li>
-          <li>非正式约束 · 信任体系</li>
-          <li>代际传递 · 百年尺度</li>
-          <li>深层路径依赖</li>
-        </ul>
-      </div>
-      <div class="tc fast">
-        <div class="tc-head"><span class="dot"></span><span class="lbl">FAST-MOVING</span></div>
-        <ul>
-          <li>政治制度 · 政策工具</li>
-          <li>行政法规 · 治理程序</li>
-          <li>制度移植 · 可跨越边界</li>
-          <li>技术赋能的加速域</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="arrow-flow" style="border-top-color:rgba(255,112,67,.25);color:var(--orange);">
-      <span class="axis" style="color:var(--text-mute);">SLOW ← TIME → FAST</span>
-      <span class="dir">速度差 = 阻塞点</span>
-    </div>
-  </div>
-</div>
-
-<!-- Summary -->
-<div class="summary">
-  <div class="icon">×</div>
-  <div class="text">
-    <span class="em">Williamson</span> 的<span class="k">静态层次</span>（L1–L4）加上 <span class="em">Roland</span> 的<span class="k2">动态速度</span>（slow ↔ fast），构成"<span class="k">层次 × 时间</span>"的分析矩阵。<span class="em">"大分流 2.0"</span>的核心追问——<span class="k">中国行政开源</span>属于 <span class="k2">fast-moving 移植</span>、<span class="k">全球协作文化</span>属于 <span class="k2">slow-moving</span>——正是这个矩阵能回答的：<span class="em">卡在哪一层 · 为什么卡</span>。
-  </div>
-</div>
-
-<div class="footer">
-  <span>THEORY · WILLIAMSON (2000) × ROLAND (2004)</span>
-  <span>SYNTHESIS · 层次矩阵 v1.0</span>
-</div>
-
-</div>
 </div>
 </body>
 </html>

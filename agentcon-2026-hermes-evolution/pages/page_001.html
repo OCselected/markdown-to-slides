@@ -5,149 +5,411 @@
 <head>
 <meta charset="UTF-8">
 <title>从 Hermes 演化看 Agent 需求与消费演进</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
 :root{
-  --bg:#1E293B;
-  --bg-deep:#0F172A;
-  --accent:#00BCD4;
-  --accent-warm:#FF7043;
-  --text:#F5F5F7;
-  --text-muted:rgba(245,245,247,0.68);
-  --text-faint:rgba(245,245,247,0.42);
-  --line:rgba(0,188,212,0.32);
+  --bg-deep:#0F1E33;
+  --primary:#1B3B6B;
+  --primary-soft:#254D82;
+  --amber:#B4A078;
+  --amber-glow:#D9C39A;
+  --text-main:#F5F0E8;
+  --text-sub:#8FA0B8;
+  --text-mute:#6B7E97;
+  --line:rgba(180,160,120,0.22);
+  --line-strong:rgba(180,160,120,0.45);
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:var(--bg-deep);color:var(--text);font-family:'Inter','Noto Sans SC','PingFang SC','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;}
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
-#bg{position:absolute;inset:0;z-index:0;}
-#bg .bg-photo{width:100%;height:100%;object-fit:cover;object-position:center right;display:block;}
-#bg .bg-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(15,23,42,0.92) 0%,rgba(15,23,42,0.78) 38%,rgba(15,23,42,0.30) 68%,rgba(15,23,42,0.05) 100%);}
-#bg .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 55%,transparent 40%,rgba(15,23,42,0.55) 100%);}
-#ct{position:absolute;inset:0;z-index:1;padding:60px 72px 56px;display:flex;flex-direction:column;}
 
-/* TOP BAR */
-.topbar{display:flex;justify-content:space-between;align-items:center;height:34px;}
-.brand{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:0.32em;color:var(--text);font-weight:600;}
-.brand-dot{width:11px;height:11px;background:var(--accent);border-radius:2px;box-shadow:0 0 14px rgba(0,188,212,0.75);}
-.brand-en{color:var(--accent);font-weight:500;letter-spacing:0.36em;font-size:11px;}
-.meta-row{display:flex;gap:28px;align-items:center;font-family:'JetBrains Mono','Inter',monospace;font-size:10.5px;letter-spacing:0.18em;color:var(--text-muted);}
-.meta-row span{display:flex;align-items:center;gap:8px;}
-.meta-row .m-dot{width:6px;height:6px;background:var(--accent-warm);border-radius:50%;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC',sans-serif}
+body{background:#08111E}
 
-.rule{position:absolute;left:72px;top:118px;width:120px;height:3px;background:linear-gradient(90deg,var(--accent) 0%,transparent 100%);}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto}
 
-/* TITLE BLOCK */
-.title-block{margin-top:170px;max-width:1080px;}
-.title{font-size:92px;font-weight:900;color:var(--text);line-height:1.04;letter-spacing:-0.02em;font-family:'Inter','Noto Sans SC','SF Pro Display',sans-serif;}
-.title .accent{color:var(--accent);position:relative;display:inline-block;}
-.title .accent::after{content:'';position:absolute;left:0;bottom:10px;width:64px;height:5px;background:var(--accent-warm);}
-.subtitle{margin-top:34px;font-size:20px;color:var(--text-muted);font-weight:400;letter-spacing:0.14em;}
-.subtitle .mid{color:var(--accent);margin:0 12px;font-weight:500;}
-.subtitle .strong{color:var(--text);}
+/* ============ 背景层：deep prussian blue parchment + subtle texture ============ */
+#bg{position:absolute;inset:0;z-index:0;background:#0F1E33}
+#bg .vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 35%, rgba(37,77,130,0.55) 0%, rgba(15,30,51,0) 55%),
+             radial-gradient(ellipse at 90% 85%, rgba(11,22,40,0.9) 0%, rgba(15,30,51,0) 60%);
+  mix-blend-mode:normal;
+}
+#bg .paper-noise{
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,240,220,0.012) 0px, rgba(255,240,220,0.012) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(0deg, rgba(255,240,220,0.010) 0px, rgba(255,240,220,0.010) 1px, transparent 1px, transparent 4px);
+  opacity:0.6;
+}
+#bg .frame{
+  position:absolute;inset:24px;
+  border:1px solid rgba(180,160,120,0.14);
+  pointer-events:none;
+}
+#bg .corner{
+  position:absolute;width:34px;height:34px;
+  border:1.2px solid var(--amber);
+  opacity:0.75;
+}
+#bg .c-tl{top:24px;left:24px;border-right:none;border-bottom:none}
+#bg .c-tr{top:24px;right:24px;border-left:none;border-bottom:none}
+#bg .c-bl{bottom:24px;left:24px;border-right:none;border-top:none}
+#bg .c-br{bottom:24px;right:24px;border-left:none;border-top:none}
 
-/* TAGLINE */
-.tagline{margin-top:30px;max-width:820px;font-size:14px;line-height:1.75;color:var(--text-faint);letter-spacing:0.03em;}
-.tagline b{color:var(--accent);font-weight:500;}
+/* ============ 内容层 ============ */
+#ct{position:absolute;inset:0;z-index:1;padding:56px 60px 44px 60px;display:flex;flex-direction:column}
 
-/* BOTTOM AREA */
-.bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:56px;}
-.infos{display:flex;gap:64px;}
-.info{min-width:210px;padding-left:20px;position:relative;}
-.info::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--accent);}
-.info .label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:var(--accent);font-weight:600;margin-bottom:12px;}
-.info .value{font-size:17px;font-weight:600;color:var(--text);letter-spacing:0.02em;line-height:1.35;}
-.info .value .mono{font-family:'JetBrains Mono',monospace;font-weight:500;}
+/* --- 顶部 meta row --- */
+.top-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:14px;margin-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.brand-mark{display:flex;align-items:center;gap:14px}
+.brand-mark .dot{
+  width:9px;height:9px;background:var(--amber);
+  box-shadow:0 0 12px rgba(180,160,120,0.7);
+  border-radius:50%;
+}
+.brand-mark .label{
+  font-family:'Noto Serif SC',serif;font-weight:700;
+  font-size:15px;letter-spacing:0.28em;color:var(--text-main);
+}
+.brand-mark .sep{width:1px;height:14px;background:var(--line-strong)}
+.brand-mark .edition{
+  font-family:'Noto Sans SC',sans-serif;font-weight:300;
+  font-size:12px;letter-spacing:0.32em;color:var(--text-sub);
+  text-transform:uppercase;
+}
+.top-row .edition-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:0.28em;color:var(--text-mute);
+  border:1px solid var(--line-strong);padding:5px 12px;
+}
 
-/* DATA HIGHLIGHTS */
-.data-block{display:flex;flex-direction:column;gap:14px;align-items:flex-end;}
-.badge{display:flex;align-items:center;gap:14px;padding:12px 20px;border:1px solid var(--line);background:rgba(30,41,59,0.55);backdrop-filter:blur(6px);border-radius:2px;}
-.badge .b-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;color:var(--text-muted);font-weight:500;}
-.badge .b-value{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--accent);letter-spacing:0.02em;}
-.badge.warm .b-value{color:var(--accent-warm);}
-.badge .b-marker{width:8px;height:8px;background:var(--accent);border-radius:1px;box-shadow:0 0 10px rgba(0,188,212,0.7);}
-.badge.warm .b-marker{background:var(--accent-warm);box-shadow:0 0 10px rgba(255,112,67,0.7);}
+/* --- HERO area: title left, image right --- */
+.hero-area{
+  flex:1;min-height:0;
+  display:grid;grid-template-columns:1fr 820px;
+  gap:44px;align-items:start;
+  padding-bottom:22px;
+}
 
-/* FOOTER STRIP */
-.footline{position:absolute;left:72px;right:72px;bottom:26px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.36em;color:var(--text-faint);}
-.footline .tick{display:flex;align-items:center;gap:10px;}
-.footline .sq{width:6px;height:6px;background:var(--accent);}
+/* title column */
+.title-col{display:flex;flex-direction:column;justify-content:flex-start;padding-top:6px;min-width:0}
+.eyebrow{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.eyebrow .dash{width:32px;height:1px;background:var(--amber)}
+.eyebrow .txt{
+  font-family:'Noto Sans SC',sans-serif;font-weight:500;
+  font-size:13px;letter-spacing:0.36em;color:var(--amber);
+}
+.main-title{
+  font-family:'Noto Serif SC',serif;
+  font-weight:900;
+  font-size:50px;
+  line-height:1.18;
+  color:var(--text-main);
+  letter-spacing:0.01em;
+  margin-bottom:22px;
+}
+.main-title .accent{color:var(--amber-glow);position:relative}
+.main-title .accent::after{
+  content:'';position:absolute;left:0;right:0;bottom:-4px;
+  height:2px;background:var(--amber);opacity:0.55;
+}
+.subtitle{
+  font-family:'Noto Serif SC',serif;
+  font-weight:500;
+  font-size:19px;
+  line-height:1.55;
+  color:var(--text-sub);
+  letter-spacing:0.02em;
+  padding-left:16px;
+  border-left:2px solid var(--amber);
+  margin-bottom:22px;
+}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap}
+.tag{
+  font-family:'Noto Sans SC',sans-serif;font-weight:400;
+  font-size:12px;letter-spacing:0.22em;
+  padding:6px 14px;
+  border:1px solid var(--line-strong);
+  color:var(--text-sub);
+  background:rgba(27,59,107,0.28);
+}
+.tag.amber{color:var(--amber-glow);border-color:rgba(180,160,120,0.55);background:rgba(180,160,120,0.08)}
+
+/* image column */
+.image-col{
+  position:relative;
+  width:820px;height:460px;
+  display:flex;align-items:center;justify-content:center;
+  margin-left:auto;
+}
+.image-col .badge-tick{
+  position:absolute;top:-18px;right:0;
+  display:flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.28em;color:var(--amber);
+}
+.image-col .badge-tick .sq{width:6px;height:6px;background:var(--amber)}
+.image-col .hero-frame{
+  position:relative;
+  width:100%;height:100%;
+  border:1px solid var(--line-strong);
+  padding:8px;
+  background:rgba(15,30,51,0.4);
+  box-shadow:0 20px 60px rgba(0,0,0,0.45);
+}
+.image-col .hero-frame img{
+  display:block;width:100%;height:100%;
+  object-fit:contain;
+  background:#0F1E33;
+}
+.image-col .cross-tick{
+  position:absolute;width:14px;height:14px;
+  border:1px solid var(--amber);opacity:0.85;
+}
+.image-col .cross-tick::before,.image-col .cross-tick::after{
+  content:'';position:absolute;background:var(--amber);opacity:0.85;
+}
+.image-col .cross-tick::before{left:50%;top:-4px;bottom:-4px;width:1px;transform:translateX(-50%)}
+.image-col .cross-tick::after{top:50%;left:-4px;right:-4px;height:1px;transform:translateY(-50%)}
+.image-col .cx-tl{top:-7px;left:-7px}
+.image-col .cx-tr{top:-7px;right:-7px}
+.image-col .cx-bl{bottom:-7px;left:-7px}
+.image-col .cx-br{bottom:-7px;right:-7px}
+
+/* --- 4 meta cards --- */
+.meta-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+.meta-card{
+  position:relative;
+  padding:14px 16px 14px 20px;
+  background:linear-gradient(135deg, rgba(27,59,107,0.35) 0%, rgba(15,30,51,0.6) 100%);
+  border:1px solid var(--line);
+}
+.meta-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--amber);
+}
+.meta-card .idx{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.24em;
+  color:var(--amber);opacity:0.9;
+  margin-bottom:6px;
+}
+.meta-card .label{
+  font-family:'Noto Sans SC',sans-serif;font-weight:400;
+  font-size:10.5px;letter-spacing:0.28em;
+  color:var(--text-mute);
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.meta-card .value{
+  font-family:'Noto Serif SC',serif;font-weight:500;
+  font-size:14.5px;
+  color:var(--text-main);
+  line-height:1.4;
+  letter-spacing:0.01em;
+}
+.meta-card .value .em{color:var(--amber-glow);font-weight:700}
+
+/* --- Data baseline anchor row --- */
+.baseline-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border-top:1px solid var(--line-strong);
+  border-bottom:1px solid var(--line-strong);
+  margin-bottom:14px;
+}
+.baseline-cell{
+  background:#0F1E33;
+  padding:11px 18px;
+  display:flex;flex-direction:column;gap:4px;
+}
+.baseline-cell .k{
+  font-family:'Noto Sans SC',sans-serif;font-weight:400;
+  font-size:10px;letter-spacing:0.28em;
+  color:var(--text-mute);text-transform:uppercase;
+}
+.baseline-cell .v{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  font-size:20px;
+  color:var(--text-main);
+  letter-spacing:0.02em;
+  display:flex;align-items:baseline;gap:8px;
+}
+.baseline-cell .v .unit{
+  font-family:'Noto Sans SC',sans-serif;
+  font-weight:400;font-size:11px;
+  color:var(--text-sub);letter-spacing:0.16em;
+}
+.baseline-cell .v .sub{
+  font-family:'Noto Sans SC',sans-serif;font-weight:400;
+  font-size:11px;color:var(--text-sub);letter-spacing:0.1em;
+}
+
+/* --- Narrative footer --- */
+.narrative{
+  display:flex;align-items:flex-start;gap:14px;
+  padding-top:12px;
+}
+.narrative .qmark{
+  font-family:'Noto Serif SC',serif;
+  font-size:34px;line-height:0.9;
+  color:var(--amber);opacity:0.7;
+  padding-top:2px;
+}
+.narrative .text{
+  font-family:'Noto Serif SC',serif;font-weight:400;
+  font-size:13px;line-height:1.75;
+  color:var(--text-sub);
+  letter-spacing:0.01em;
+}
+.narrative .text .hi{color:var(--amber-glow);font-weight:500}
+.narrative .text .k{color:var(--text-main);font-weight:500}
+
+/* bottom bar */
+.bottom-bar{
+  margin-top:8px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
+.bottom-bar .l,.bottom-bar .r{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.28em;
+  color:var(--text-mute);
+}
+.bottom-bar .l .amber{color:var(--amber)}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <img class="bg-photo" src="../images/page_001_hero.png" alt="">
-    <div class="bg-overlay"></div>
     <div class="vignette"></div>
+    <div class="paper-noise"></div>
+    <div class="frame"></div>
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
   </div>
-
   <div id="ct">
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="brand">
-        <span class="brand-dot"></span>
-        <span>AGENTCON 2026</span>
-        <span class="brand-en">BEIJING / TOKEN ECONOMY</span>
+
+    <!-- 顶部 meta -->
+    <div class="top-row">
+      <div class="brand-mark">
+        <span class="dot"></span>
+        <span class="label">FIELDWORK&nbsp;·&nbsp;田野考察</span>
+        <span class="sep"></span>
+        <span class="edition">VOL.01 · OPEN SOURCE DOSSIER</span>
       </div>
-      <div class="meta-row">
-        <span><span class="m-dot"></span>COVER · 01 / 01</span>
-        <span>OPEN-SOURCE TRACK</span>
-      </div>
+      <div class="edition-tag">2026 / 09 / BEIJING</div>
     </div>
 
-    <div class="rule"></div>
-
-    <!-- TITLE BLOCK -->
-    <div class="title-block">
-      <h1 class="title">
-        从 <span class="accent">Hermes</span> 演化看<br>
-        Agent 需求与消费演进
-      </h1>
-      <div class="subtitle">
-        <span class="strong">AgentCon 2026</span><span class="mid">·</span>北京站<span class="mid">·</span>「开源之道」<span class="mid">·</span>适兕 <span class="strong">×</span> 窄廊
-      </div>
-      <p class="tagline">
-        以 <b>NousResearch / hermes-agent</b>（243K star）为公开样本，用一年多的公开演化数据回答 Agent 从「能用」到「会协作」的三个制度问题——度量权、可靠性、产权。
-      </p>
-    </div>
-
-    <!-- BOTTOM -->
-    <div class="bottom">
-      <div class="infos">
-        <div class="info">
-          <div class="label">DATE</div>
-          <div class="value"><span class="mono">2026-09-21</span><br>AgentCon 北京站</div>
+    <!-- HERO: 标题 + 主视觉 -->
+    <div class="hero-area">
+      <div class="title-col">
+        <div class="eyebrow">
+          <span class="dash"></span>
+          <span class="txt">COVERAGE&nbsp;·&nbsp;主论题</span>
         </div>
-        <div class="info">
-          <div class="label">TRACK</div>
-          <div class="value">Token 经济趋势<br><span class="mono">90 min · Keynote</span></div>
-        </div>
-        <div class="info">
-          <div class="label">SPEAKERS</div>
-          <div class="value">「开源之道」<br>适兕 × 窄廊</div>
+        <h1 class="main-title">从 <span class="accent">Hermes</span> 演化看<br>Agent 需求与消费演进</h1>
+        <div class="subtitle">AgentCon 2026 · 北京站<br>「开源之道」· 适兕 × 窄廊</div>
+        <div class="tag-row">
+          <span class="tag amber">TOKEN 经济</span>
+          <span class="tag">ISSUE / PR / RELEASE</span>
+          <span class="tag">90 MIN</span>
         </div>
       </div>
 
-      <div class="data-block">
-        <div class="badge">
-          <span class="b-marker"></span>
-          <span class="b-label">HERMES · STARS</span>
-          <span class="b-value">243,919</span>
+      <div class="image-col">
+        <div class="badge-tick">
+          <span class="sq"></span>
+          <span>COVER&nbsp;VISUAL&nbsp;·&nbsp;BAUHAUS&nbsp;DARK&nbsp;ACADEMIC</span>
         </div>
-        <div class="badge warm">
-          <span class="b-marker"></span>
-          <span class="b-label">DATA BASELINE</span>
-          <span class="b-value">2026-09-11</span>
+        <div class="hero-frame">
+          <div class="cross-tick cx-tl"></div>
+          <div class="cross-tick cx-tr"></div>
+          <div class="cross-tick cx-bl"></div>
+          <div class="cross-tick cx-br"></div>
+          <img src="../images/page_001_hero.png" alt="包豪斯式 dark academic 封面视觉：深蓝羊皮纸底上的同心圆、放射线、交错方框，琥珀色高光暗示理性构成与田野研究氛围">
         </div>
       </div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footline">
-      <span class="tick"><span class="sq"></span>NOUNSRESEARCH · HERMES-AGENT · PUBLIC EVOLUTION 2025 — 2026</span>
-      <span class="tick">METRICS · RELIABILITY · PROPERTY RIGHTS</span>
+    <!-- 4 元信息卡片 -->
+    <div class="meta-row">
+      <div class="meta-card">
+        <div class="idx">01</div>
+        <div class="label">DATE · 时间</div>
+        <div class="value"><span class="em">2026-09-21</span><br>AgentCon 北京站</div>
+      </div>
+      <div class="meta-card">
+        <div class="idx">02</div>
+        <div class="label">TRACK · 主题</div>
+        <div class="value">Token 经济趋势<br><span class="em">90 分钟</span></div>
+      </div>
+      <div class="meta-card">
+        <div class="idx">03</div>
+        <div class="label">SPEAKERS · 讲者</div>
+        <div class="value">「开源之道」<br><span class="em">适兕 × 窄廊</span></div>
+      </div>
+      <div class="meta-card">
+        <div class="idx">04</div>
+        <div class="label">PERSPECTIVE · 视角</div>
+        <div class="value">田野考察——<br>把 <span class="em">issue / PR / release</span><br>当文化现象</div>
+      </div>
     </div>
+
+    <!-- 4 数据基线锚点 -->
+    <div class="baseline-row">
+      <div class="baseline-cell">
+        <div class="k">HERMES&nbsp;STARS&nbsp;·&nbsp;GitHub</div>
+        <div class="v">243,919 <span class="unit">STARS</span></div>
+      </div>
+      <div class="baseline-cell">
+        <div class="k">RELEASES · 发布</div>
+        <div class="v">33 <span class="sub">含 6 个命名 release</span></div>
+      </div>
+      <div class="baseline-cell">
+        <div class="k">CONTRIBUTORS · 贡献者</div>
+        <div class="v">397 <span class="unit">PEOPLE</span></div>
+      </div>
+      <div class="baseline-cell">
+        <div class="k">DATA BASELINE · 数据基线</div>
+        <div class="v">2026-09-11</div>
+      </div>
+    </div>
+
+    <!-- 叙事收束 -->
+    <div class="narrative">
+      <span class="qmark">「</span>
+      <div class="text">
+        以 <span class="hi">Hermes Agent</span>（<span class="k">NousResearch/hermes-agent</span>，<span class="k">243K star</span>）为公开样本，用一年多的公开演化数据回答 Agent 从「能用」到「会协作」的 <span class="hi">三个制度问题</span>——本演讲是一次<span class="k">田野考察</span>，不是数据观察，而是文化现象描述。
+      </div>
+    </div>
+
+    <!-- 底部 bar -->
+    <div class="bottom-bar">
+      <div class="l"><span class="amber">●</span>&nbsp;&nbsp;OPEN SOURCE · FIELDWORK DOSSIER · 001</div>
+      <div class="r">HERMES × AGENT&nbsp;·&nbsp;CULTURAL STUDY</div>
+    </div>
+
   </div>
 </div>
 </body>

@@ -4,343 +4,424 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>行政开源 vs 自发开源 · 大分流 2.0</title>
+<title>案例 1 · Judgment Release · P0/P1 清零</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --primary: #00BCD4;
-  --accent: #FF7043;
-  --bg: #1E293B;
-  --bg-dark: #0F172A;
-  --text: #E2E8F0;
-  --text-dim: #94A3B8;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-  color: var(--text);
-  background: var(--bg-dark);
-  letter-spacing: -0.005em;
-  line-height: 1.5;
-}
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: linear-gradient(180deg, #1E293B 0%, #172033 100%);
-}
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.glow-tl, .glow-tr, .glow-br {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.14;
-}
-.glow-tl { width: 460px; height: 460px; top: -180px; left: -160px; background: radial-gradient(circle, #00BCD4, transparent 65%); }
-.glow-tr { width: 420px; height: 420px; top: -160px; right: -140px; background: radial-gradient(circle, #FF7043, transparent 65%); opacity: 0.11; }
-.glow-br { width: 340px; height: 340px; bottom: -140px; right: 200px; background: radial-gradient(circle, #00BCD4, transparent 65%); opacity: 0.07; }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 48px 60px 40px;
-}
-.header {
-  position: relative;
-  height: 36px;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  flex-direction: column;
-  gap: 4px;
-}
-.eyebrow {
-  font-size: 11px;
-  color: var(--primary);
-  letter-spacing: 0.34em;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.title {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-.t-accent { color: var(--accent); }
-.t-cyan { color: var(--primary); }
-
-.v-divider {
-  position: absolute;
-  left: 798px;
-  top: 84px;
-  width: 4px;
-  height: 800px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(148,163,184,0.15) 6%,
-    rgba(148,163,184,0.4) 16%,
-    rgba(148,163,184,0.7) 50%,
-    rgba(148,163,184,0.4) 84%,
-    rgba(148,163,184,0.15) 94%,
-    transparent 100%);
-  box-shadow: 0 0 18px rgba(148,163,184,0.45);
-  z-index: 0;
+:root{
+  --bg:#0F1E33;
+  --bg-deep:#0A1626;
+  --prussian:#1B3B6B;
+  --prussian-soft:#244E85;
+  --text:#F5F0E8;
+  --text-dim:#B8BFCB;
+  --text-mute:#7C889E;
+  --gold:#B4A078;
+  --gold-bright:#C9B58A;
 }
 
-.hero-area {
-  position: relative;
-  height: 460px;
-  margin-top: 28px;
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%}
+body{
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
 }
-.hero-img-wrap {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-img-wrap img {
-  width: 822px;
-  height: 460px;
-  display: block;
-  object-fit: contain;
-}
-.hero-label {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 12px 20px;
-  background: rgba(30, 41, 59, 0.9);
-  border: 1.5px solid;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 180px;
-  backdrop-filter: blur(4px);
-}
-.hero-label.left { left: 60px; border-color: var(--primary); }
-.hero-label.right { right: 60px; border-color: var(--accent); }
-.hero-label .lbl-tag {
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.hero-label .lbl-title {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-.hero-label .lbl-sub {
-  font-size: 11px;
-  color: var(--text-dim);
-  font-weight: 500;
-  margin-top: 2px;
-  letter-spacing: 0.05em;
-}
-.hero-label.left .lbl-tag { color: var(--primary); }
-.hero-label.left .lbl-title { color: var(--primary); }
-.hero-label.right .lbl-tag { color: var(--accent); }
-.hero-label.right .lbl-title { color: var(--accent); }
 
-.cards-row {
-  position: absolute;
-  top: 696px;
-  left: 60px;
-  right: 60px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+.wrapper{
+  width:1600px;height:900px;
+  position:relative;overflow:hidden;
+  margin:0 auto;
+  background:#0F1E33;
 }
-.card {
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.85));
-  border: 1px solid rgba(148,163,184,0.15);
-  padding: 14px 16px;
-  position: relative;
-  height: 130px;
-}
-.card.cyan { border-left: 3px solid var(--primary); }
-.card.orange { border-left: 3px solid var(--accent); }
-.card-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.card-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-.card.cyan .card-num { background: rgba(0,188,212,0.18); color: var(--primary); border: 1px solid rgba(0,188,212,0.45); }
-.card.orange .card-num { background: rgba(255,112,67,0.18); color: var(--accent); border: 1px solid rgba(255,112,67,0.45); }
-.card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.card.cyan .card-title { color: var(--primary); }
-.card.orange .card-title { color: var(--accent); }
-.bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0;
-}
-.bullets li {
-  font-size: 13px;
-  line-height: 1.35;
-  color: var(--text);
-  padding-left: 12px;
-  position: relative;
-  font-weight: 400;
-}
-.bullets li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-}
-.card.cyan .bullets li::before { background: var(--primary); }
-.card.orange .bullets li::before { background: var(--accent); }
 
-.footer {
-  position: absolute;
-  bottom: 40px;
-  left: 60px;
-  right: 60px;
-  height: 58px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(148,163,184,0.2);
+#bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(135deg,#0F1E33 0%,#0A1626 100%);
 }
-.footer-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--primary);
-  box-shadow: 0 0 10px rgba(0,188,212,0.8);
-  flex-shrink: 0;
-  transform: rotate(45deg);
+
+#ct{
+  position:absolute;inset:0;z-index:1;
+  padding:54px 60px 44px;
 }
-.footer-text {
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.55;
-  font-weight: 400;
-  letter-spacing: 0.005em;
+
+/* Bauhaus decoration */
+.deco-circle{position:absolute;border-radius:50%;}
+.deco-square{position:absolute;}
+.deco-line{position:absolute;}
+.deco-line-h{height:1px;background:var(--gold);}
+.deco-line-v{width:1px;background:var(--gold);}
+
+/* Header */
+.header{
+  position:relative;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(180,160,120,.32);
+  margin-bottom:30px;
+  height:162px;
 }
-.footer-text .em-c { color: var(--primary); font-weight: 700; }
-.footer-text .em-a { color: var(--accent); font-weight: 700; }
-.footer-text .em-w { color: var(--text); font-weight: 600; }
+.header-left{display:flex;flex-direction:column;gap:14px;position:relative;z-index:2;}
+.tag-row{display:flex;gap:10px;align-items:center;}
+.tag{
+  display:inline-block;
+  padding:5px 12px;
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2.2px;
+  font-weight:500;
+  font-family:"Noto Sans SC",sans-serif;
+}
+.header h1{
+  font-family:"Noto Serif SC","Songti SC","STSong",serif;
+  font-size:46px;
+  font-weight:700;
+  color:var(--text);
+  line-height:1.1;
+  letter-spacing:.5px;
+}
+.header h1 .accent{color:var(--gold);}
+.header h1 .sub-en{font-size:26px;color:var(--text-dim);font-weight:500;letter-spacing:1.2px;}
+
+.header-right{
+  display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+  position:relative;z-index:2;
+}
+.subtitle{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:20px;
+  color:var(--gold);
+  letter-spacing:3px;
+  font-weight:500;
+}
+.subtitle-en{
+  font-family:"Noto Sans SC",sans-serif;
+  font-size:11px;
+  color:var(--text-mute);
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+/* Two columns */
+.grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:720px 1fr;
+  gap:44px;
+  height:664px;
+}
+
+/* Left column */
+.left-panel{position:relative;display:flex;flex-direction:column;gap:22px;}
+
+.hero-number-wrap{
+  position:relative;
+  padding:6px 0 22px;
+  border-bottom:1px solid rgba(180,160,120,.25);
+}
+.hero-number{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:224px;
+  font-weight:900;
+  color:var(--text);
+  line-height:.92;
+  letter-spacing:-6px;
+  display:flex;align-items:baseline;gap:20px;
+}
+.hero-number .unit{
+  font-family:"Noto Sans SC",sans-serif;
+  font-size:16px;
+  color:var(--gold);
+  letter-spacing:5px;
+  font-weight:400;
+  transform:translateY(-8px);
+}
+.hero-label{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:6px;
+  padding-top:12px;
+  border-top:1px dashed rgba(180,160,120,.28);
+}
+.hero-label .l{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:18px;color:var(--gold);
+  letter-spacing:2.4px;
+}
+.hero-label .r{
+  font-size:11px;color:var(--text-mute);letter-spacing:3px;
+  font-weight:400;
+}
+
+/* KPI 2x2 grid */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.card{
+  position:relative;
+  padding:22px 22px 20px;
+  background:rgba(27,59,107,.24);
+  border-left:3px solid var(--gold);
+  box-shadow:0 0 0 1px rgba(180,160,120,.10);
+  min-height:140px;
+}
+.card::after{
+  content:'';position:absolute;
+  top:16px;right:16px;
+  width:6px;height:6px;
+  background:var(--gold);
+}
+.card .label{
+  font-size:11px;
+  color:var(--gold);
+  letter-spacing:2.5px;
+  margin-bottom:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  font-family:"Noto Sans SC",sans-serif;
+}
+.card .value{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:30px;
+  color:var(--text);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:.5px;
+  margin-bottom:8px;
+}
+.card .sub{
+  font-size:12px;
+  color:var(--text-dim);
+  line-height:1.55;
+  letter-spacing:.8px;
+}
+
+/* Right column */
+.right-panel{position:relative;display:flex;flex-direction:column;gap:20px;}
+
+.hero-image-wrap{
+  position:relative;
+  width:616px;
+  height:344px;
+  overflow:hidden;
+  border:1px solid rgba(180,160,120,.38);
+  box-shadow:0 0 0 6px rgba(27,59,107,.18);
+  flex-shrink:0;
+  margin-left:auto;
+}
+.hero-image-wrap img{
+  width:100%;height:100%;
+  display:block;
+  object-fit:cover;
+}
+.contributor-badge{
+  position:absolute;
+  top:14px;right:14px;
+  display:flex;align-items:center;gap:10px;
+  padding:8px 14px;
+  background:rgba(15,30,51,.86);
+  border:1px solid var(--gold);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+.contributor-badge .avatar{
+  width:30px;height:30px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:14px;
+  color:var(--gold);
+  font-weight:700;
+}
+.contributor-badge .info{display:flex;flex-direction:column;line-height:1.25;}
+.contributor-badge .name{
+  font-family:"Noto Sans SC",sans-serif;
+  font-size:13px;
+  color:var(--text);
+  font-weight:600;
+  letter-spacing:.6px;
+}
+.contributor-badge .role{
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-family:"Noto Sans SC",sans-serif;
+}
+
+.image-caption{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:14px;
+  color:var(--gold);
+  letter-spacing:1.8px;
+  padding-left:14px;
+  border-left:2px solid var(--gold);
+  line-height:1.55;
+}
+
+.narrative-block{
+  position:relative;
+  padding:22px 26px;
+  background:rgba(27,59,107,.20);
+  border-top:1px solid rgba(180,160,120,.35);
+  border-bottom:1px solid rgba(180,160,120,.35);
+  margin-top:2px;
+}
+.narrative-block .n-title{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:15px;
+  color:var(--gold);
+  letter-spacing:2.4px;
+  font-weight:600;
+  margin-bottom:12px;
+  padding-bottom:10px;
+  border-bottom:1px dashed rgba(180,160,120,.28);
+}
+.narrative-block p{
+  font-size:13.5px;
+  color:var(--text);
+  line-height:1.8;
+  letter-spacing:.5px;
+}
+.narrative-block p + p{margin-top:8px;}
+.narrative-block .highlight{color:var(--gold);font-weight:600;}
+.narrative-block .muted{color:var(--text-dim);font-style:italic;}
+
+.quote{
+  position:relative;
+  padding:14px 22px;
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:14px;
+  color:var(--gold-bright);
+  letter-spacing:1.2px;
+  line-height:1.65;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.quote .mark{
+  font-family:"Noto Serif SC","Songti SC",serif;
+  font-size:42px;
+  line-height:.6;
+  color:var(--gold);
+  font-weight:900;
+  flex-shrink:0;
+  margin-top:6px;
+}
+.quote .txt{flex:1;}
+
+/* Corners */
+.cnr-tl{position:absolute;top:22px;left:22px;width:32px;height:32px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.cnr-br{position:absolute;bottom:22px;right:22px;width:32px;height:32px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="glow-tl"></div>
-    <div class="glow-tr"></div>
-    <div class="glow-br"></div>
-  </div>
+  <div id="bg"></div>
   <div id="ct">
-    <div class="v-divider"></div>
+
+    <!-- decorative -->
+    <div class="deco-circle" style="top:110px;right:52%;width:5px;height:5px;background:var(--gold);"></div>
+    <div class="deco-circle" style="top:126px;right:51.5%;width:3px;height:3px;background:var(--gold);opacity:.65;"></div>
+    <div class="deco-square" style="top:132px;right:50.6%;width:4px;height:4px;background:var(--gold);opacity:.5;"></div>
+    <div class="deco-circle" style="top:806px;left:290px;width:8px;height:8px;border:1px solid var(--gold);"></div>
+    <div class="deco-line deco-line-h" style="top:822px;left:302px;width:120px;opacity:.45;"></div>
+    <div class="deco-circle" style="top:842px;left:300px;width:4px;height:4px;background:var(--gold);"></div>
+    <div class="deco-circle" style="top:842px;left:310px;width:3px;height:3px;background:var(--gold);opacity:.6;"></div>
+    <div class="deco-circle" style="top:842px;left:318px;width:2px;height:2px;background:var(--gold);opacity:.4;"></div>
+    <div class="deco-square" style="top:130px;left:26%;width:5px;height:5px;background:var(--gold);transform:rotate(45deg);"></div>
+
+    <!-- Header -->
     <div class="header">
-      <div class="eyebrow"><span>PAGE 21 · OPEN SOURCE BIFURCATION</span></div>
-      <h1 class="title"><span>行政开源 </span><span class="t-accent">vs</span><span> 自发开源 · 大分流 2.0</span></h1>
-    </div>
-    <div class="hero-area">
-      <div class="hero-label left">
-        <div class="lbl-tag"><span>行政开源</span></div>
-        <div class="lbl-title"><span>自上而下的秩序</span></div>
-        <div class="lbl-sub"><span>Top-down · Regulated</span></div>
-      </div>
-      <div class="hero-img-wrap">
-        <img src="../images/page_021_hero.png" alt="行政开源与自发开源双联画式对比视觉">
-      </div>
-      <div class="hero-label right">
-        <div class="lbl-tag"><span>自发开源</span></div>
-        <div class="lbl-title"><span>自下而上的涌现</span></div>
-        <div class="lbl-sub"><span>Bottom-up · Emergent</span></div>
-      </div>
-    </div>
-    <div class="cards-row">
-      <div class="card cyan">
-        <div class="card-head">
-          <span class="card-num"><span>01</span></span>
-          <span class="card-title"><span>中国行政开源</span></span>
+      <div class="header-left">
+        <div class="tag-row">
+          <span class="tag">CASE · 01</span>
+          <span class="tag">HERMES</span>
+          <span class="tag">P0 / P1</span>
         </div>
-        <ul class="bullets">
-          <li><span>AtomGit / MirrorZ 平台</span></li>
-          <li><span>中文开源社区</span></li>
-          <li><span>信通院标准</span></li>
-          <li><span>官方治理 · 政策驱动</span></li>
-        </ul>
+        <h1>案例 1 · Judgment Release · <span class="sub-en">P0/P1 清零</span></h1>
       </div>
-      <div class="card orange">
-        <div class="card-head">
-          <span class="card-num"><span>02</span></span>
-          <span class="card-title"><span>全球自发开源</span></span>
-        </div>
-        <ul class="bullets">
-          <li><span>GitHub · Docker Hub</span></li>
-          <li><span>Linux Foundation / OpenSSF</span></li>
-          <li><span>FLOSS 协议生态</span></li>
-          <li><span>分布式 · 草根涌现</span></li>
-        </ul>
+      <div class="header-right">
+        <div class="subtitle">12 天战役的田野观察</div>
+        <div class="subtitle-en">A TWELVE-DAY FIELD OBSERVATION</div>
       </div>
-      <div class="card cyan">
-        <div class="card-head">
-          <span class="card-num"><span>03</span></span>
-          <span class="card-title"><span>大分流 2.0 核心</span></span>
+      <div class="cnr-tl"></div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="grid">
+      <!-- Left -->
+      <div class="left-panel">
+        <div class="hero-number-wrap">
+          <div class="hero-number">
+            <span>692</span>
+            <span class="unit">ITEMS</span>
+          </div>
+          <div class="hero-label">
+            <span class="l">items / 12 days</span>
+            <span class="r">HIGHEST-PRIORITY · CLEARED</span>
+          </div>
         </div>
-        <ul class="bullets">
-          <li><span>真开源 = FLOSS 公地</span></li>
-          <li><span>伪开源 = 特许工程代码</span></li>
-          <li><span>局域网共享 · 赛博庄园</span></li>
-          <li><span>本质是特权的另一种包装</span></li>
-        </ul>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="label"><span>P0 CLOSED</span></div>
+            <div class="value"><span>3 issues + 8 PRs</span></div>
+            <div class="sub"><span>最紧迫级别 · 12 天内全部关闭</span></div>
+          </div>
+          <div class="card">
+            <div class="label"><span>P1 CLOSED</span></div>
+            <div class="value"><span>493 issues + 188 PRs</span></div>
+            <div class="sub"><span>高优先级别 · 集中兵力清空</span></div>
+          </div>
+          <div class="card">
+            <div class="label"><span>TOTAL P0 / P1</span></div>
+            <div class="value"><span>692 items / 12 days</span></div>
+            <div class="sub"><span>战役窗口内清零的全部工作量</span></div>
+          </div>
+          <div class="card">
+            <div class="label"><span>WINDOW COMMITS</span></div>
+            <div class="value"><span>1,720 commits / 998 PRs</span></div>
+            <div class="sub"><span>12 天窗口内累计交付密度</span></div>
+          </div>
+        </div>
       </div>
-      <div class="card orange">
-        <div class="card-head">
-          <span class="card-num"><span>04</span></span>
-          <span class="card-title"><span>制度含义</span></span>
+
+      <!-- Right -->
+      <div class="right-panel">
+        <div class="hero-image-wrap">
+          <img src="../images/page_021_hero.png" alt="包豪斯几何战役视觉：右侧几何高塔，塔身布满暖琥珀光点，左侧斜线汇聚冲击塔身，暖金勾勒边缘，象征 12 天清零的战役完成" width="616" height="344">
+          <div class="contributor-badge">
+            <div class="avatar">K</div>
+            <div class="info">
+              <div class="name">@kshitijk4poor</div>
+              <div class="role">KEY CONTRIBUTOR</div>
+            </div>
+          </div>
         </div>
-        <ul class="bullets">
-          <li><span>fast-moving 层 · 可行政改变</span></li>
-          <li><span>slow-moving 层 · 协作信任未建</span></li>
-          <li><span>无法一夜改变</span></li>
-          <li><span>需几代人演化</span></li>
-        </ul>
+
+        <div class="image-caption">
+          12 天集中兵力、清零 P0/P1 的战场视觉
+        </div>
+
+        <div class="narrative-block">
+          <div class="n-title">FIELD NOTES · 田野观察</div>
+          <p>Judgment Release 是 Hermes 的一次「战役」——<span class="highlight">12 天清零 P0/P1</span>，是开源项目罕见的集中兵力文化事件。</p>
+          <p class="muted">@kshitijk4poor 的通宵作战是这段历史的脚注。</p>
+          <p><span class="highlight">「把 P0/P1 保持为 0」</span>是文化承诺，不是 KPI。</p>
+        </div>
+
+        <div class="quote">
+          <div class="mark">"</div>
+          <div class="txt">We're keeping P0/P1 at 0 from here forward —— 可靠性不是 KPI，是制度契约。</div>
+        </div>
       </div>
     </div>
-    <div class="footer">
-      <div class="footer-dot"></div>
-      <div class="footer-text"><span>中国"行政开源"与全球"自发开源"的分野——<span class="em-c">真开源</span>是公地开源，<span class="em-a">伪开源</span>是特许工程代码；<span class="em-w">行政力量</span>可以改变 fast-moving 层，但 <span class="em-a">slow-moving 层</span>的协作文化需要几代人的演化。</span></div>
-    </div>
+
+    <div class="cnr-br"></div>
   </div>
 </div>
 </body>

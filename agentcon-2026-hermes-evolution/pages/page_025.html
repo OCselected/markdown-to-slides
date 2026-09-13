@@ -4,28 +4,33 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Thank you</title>
+<title>案例 5 · Quicksilver Release · 性能爆发</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #00BCD4;
-    --accent: #FF7043;
-    --bg-base: #1E293B;
-    --bg-deep: #0F172A;
-    --text-main: #F1F5F9;
-    --text-dim: #94A3B8;
-    --text-mute: #64748B;
+    --bg: #0F1E33;
+    --bg-deep: #0A1524;
+    --primary: #1B3B6B;
+    --primary-bright: #2C5599;
+    --accent: #B4A078;
+    --accent-bright: #D4B98A;
+    --text: #F5F0E8;
+    --text-muted: #8E99AD;
+    --text-dim: #6E7889;
+    --line: rgba(180,160,120,0.28);
+    --card-bg: rgba(27,59,107,0.28);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1600px; height: 900px; overflow: hidden; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    font-size: 16px;
-    color: var(--text-main);
-    background: var(--bg-deep);
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text);
+    background: #050A12;
   }
+
   .wrapper {
     width: 1600px;
     height: 900px;
@@ -33,367 +38,440 @@
     overflow: hidden;
     margin: 0 auto;
   }
+
   #bg {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: radial-gradient(ellipse at 50% 45%, #24344D 0%, #1E293B 45%, #0F172A 100%);
+    background: var(--bg);
   }
+
   #ct {
     position: absolute;
     inset: 0;
     z-index: 1;
-    padding: 60px;
-  }
-
-  /* Corner geometric decorations */
-  .corner {
-    position: absolute;
-    z-index: 1;
-    opacity: 0.55;
-  }
-  .corner-tl { top: 44px; left: 44px; }
-  .corner-tr { top: 44px; right: 44px; }
-  .corner-bl { bottom: 44px; left: 44px; }
-  .corner-br { bottom: 44px; right: 44px; }
-
-  .grid-line {
-    position: absolute;
-    z-index: 1;
-    background: linear-gradient(90deg, transparent 0%, rgba(0,188,212,0.35) 50%, transparent 100%);
-  }
-  .grid-line-h {
-    height: 1px;
-    left: 0;
-    right: 0;
-  }
-  .grid-line-h.top { top: 120px; }
-  .grid-line-h.bottom { bottom: 130px; }
-
-  /* Page tag */
-  .page-tag {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 12px;
-    letter-spacing: 0.4em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .page-tag .dot {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(255,112,67,0.7);
-  }
-  .page-tag .line {
-    width: 60px;
-    height: 1px;
-    background: rgba(148,163,184,0.4);
-  }
-
-  /* Center stage */
-  .stage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding: 54px 72px 44px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
   }
 
-  .hero-wrap {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-  }
-  .hero {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: 240px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--text-main);
-    position: relative;
-    z-index: 2;
-  }
-  .hero .u {
-    color: var(--primary);
-    text-shadow: 0 0 40px rgba(0,188,212,0.45);
-  }
-  .hero-outline {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: 240px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(0,188,212,0.18);
-    transform: translate(14px, 14px);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .hero-underline {
-    margin-top: 22px;
-    width: 220px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--accent) 70%, transparent 100%);
-    position: relative;
-  }
-  .hero-underline::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 16px rgba(255,112,67,0.9);
-  }
-
-  /* Meta block */
-  .meta {
-    margin-top: 44px;
+  .header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-  }
-  .meta-line {
-    display: flex;
-    align-items: center;
     gap: 14px;
-    font-size: 18px;
-    color: var(--text-main);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  .meta-line .marker {
-    width: 8px;
-    height: 8px;
-    background: var(--primary);
-    transform: rotate(45deg);
-    box-shadow: 0 0 10px rgba(0,188,212,0.6);
-  }
-  .meta-line-en {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: var(--text-dim);
-    letter-spacing: 0.18em;
-    font-weight: 400;
-    text-transform: none;
-  }
-  .meta-date {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text-mute);
-    letter-spacing: 0.24em;
-    padding: 6px 14px;
-    border: 1px solid rgba(148,163,184,0.25);
-    border-radius: 2px;
-  }
-  .meta-date .tick {
-    width: 4px;
-    height: 4px;
-    background: var(--primary);
-    border-radius: 50%;
+    margin-bottom: 22px;
   }
 
-  /* Bottom line */
-  .footer-note {
-    position: absolute;
-    bottom: 62px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 3;
-    font-size: 13px;
-    color: var(--text-mute);
-    letter-spacing: 0.08em;
-    font-weight: 400;
+  .accent-line {
+    width: 64px;
+    height: 3px;
+    background: var(--accent);
   }
 
-  /* Hermes brand mark */
-  .brand {
-    position: absolute;
-    right: 46px;
-    bottom: 44px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0.75;
+  h1 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    line-height: 1.15;
   }
-  .brand svg {
+
+  .subtitle {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--accent-bright);
+    max-width: 1200px;
+    line-height: 1.5;
+    padding-left: 14px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .hero-row {
+    display: grid;
+    grid-template-columns: 510px 1fr;
+    gap: 34px;
+    margin-bottom: 24px;
+  }
+
+  .hero-img {
+    width: 510px;
+    height: 285px;
+    object-fit: cover;
+    border: 1px solid rgba(180,160,120,0.35);
     display: block;
   }
-  .brand-text {
+
+  .big-stat {
+    background: var(--card-bg);
+    border: 1px solid rgba(180,160,120,0.32);
+    border-left: 4px solid var(--accent);
+    padding: 20px 26px 18px;
+    position: relative;
+    height: 285px;
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    justify-content: center;
+    gap: 14px;
   }
-  .brand-text .name {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.32em;
-    color: var(--text-dim);
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .brand-text .sub {
+
+  .big-stat-topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.24em;
-    color: var(--text-mute);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .stat-square {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+
+  .big-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 104px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 0.92;
+    letter-spacing: -2px;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 21px;
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 1.2px;
     margin-top: 2px;
   }
 
-  /* Page number */
-  .page-num {
-    position: absolute;
-    left: 46px;
-    bottom: 44px;
-    z-index: 3;
+  .divider-h {
+    height: 1px;
+    background: var(--line);
+    margin: 2px 0;
+  }
+
+  .cold-start-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .cold-start-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    padding-right: 14px;
+    border-right: 1px solid var(--line);
+    font-weight: 500;
+  }
+
+  .cold-start-val {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .cs-before { color: var(--text-muted); }
+  .cs-after { color: var(--accent-bright); }
+
+  .arrow {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--accent);
+    font-size: 22px;
+    margin: 0 4px;
+    font-weight: 700;
+  }
+
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    letter-spacing: 1.6px;
+    border-radius: 2px;
+    margin-left: 4px;
+    text-transform: uppercase;
+  }
+
+  .platform-line {
+    margin-top: 4px;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    color: var(--text-mute);
-  }
-  .page-num .bar {
-    width: 22px;
-    height: 1px;
-    background: rgba(148,163,184,0.4);
+    flex-wrap: wrap;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(180,160,120,0.18);
   }
 
+  .platform-line span:first-child {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2.2px;
+    font-weight: 500;
+  }
+
+  .platform-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    padding: 3px 10px;
+    background: rgba(180,160,120,0.10);
+    border: 1px solid rgba(180,160,120,0.30);
+    letter-spacing: 0.8px;
+  }
+
+  .kpi-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .kpi-card {
+    background: rgba(27,59,107,0.18);
+    border: 1px solid rgba(180,160,120,0.22);
+    padding: 14px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    min-height: 80px;
+  }
+
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: var(--accent);
+  }
+
+  .kpi-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .kpi-lbl {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin-top: 3px;
+    opacity: 0.9;
+  }
+
+  .bullet-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+    margin-bottom: 12px;
+  }
+
+  .bullet {
+    padding: 5px 0;
+    border-top: 1px solid rgba(180,160,120,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .bullet-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.8px;
+  }
+
+  .bullet-head::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .bullet-detail {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding-left: 17px;
+    letter-spacing: 0.2px;
+  }
+
+  .bullet-detail em {
+    color: var(--accent-bright);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .bullet-detail .mono {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text);
+    font-size: 11.5px;
+  }
+
+  .tag-inline {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 1px 6px;
+    background: rgba(180,160,120,0.15);
+    border: 1px solid rgba(180,160,120,0.4);
+    color: var(--accent);
+    margin-right: 8px;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+  }
+
+  .footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+  }
+
+  .footer-line {
+    width: 140px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+
+  .footer-text {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 2.5px;
+  }
+
+  .footer-text .dot {
+    color: var(--accent);
+    font-style: normal;
+    margin: 0 8px;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg"></div>
-
-  <!-- Corner geometric decorations -->
-  <svg class="corner corner-tl" width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <path d="M0 12 L12 12 L12 0" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
-    <path d="M0 24 L24 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-    <path d="M24 0 L24 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-  </svg>
-  <svg class="corner corner-tr" width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <path d="M60 12 L48 12 L48 0" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
-    <path d="M60 24 L36 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-    <path d="M36 0 L36 24" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-  </svg>
-  <svg class="corner corner-bl" width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <path d="M0 48 L12 48 L12 60" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
-    <path d="M0 36 L24 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-    <path d="M24 60 L24 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-  </svg>
-  <svg class="corner corner-br" width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <path d="M60 48 L48 48 L48 60" stroke="#00BCD4" stroke-width="1.5" opacity="0.7"/>
-    <path d="M60 36 L36 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-    <path d="M36 60 L36 36" stroke="#00BCD4" stroke-width="1" opacity="0.3"/>
-  </svg>
-
-  <!-- Subtle horizontal grid lines -->
-  <div class="grid-line grid-line-h top"></div>
-  <div class="grid-line grid-line-h bottom"></div>
-
   <div id="ct">
-    <!-- Page tag at top -->
-    <div class="page-tag">
-      <span>END</span>
-      <span class="line"></span>
-      <span class="dot"></span>
-      <span class="line"></span>
-      <span>25 / 25</span>
+    <div class="header">
+      <div class="accent-line"></div>
+      <h1>案例 5 · Quicksilver Release · 性能爆发</h1>
+      <div class="subtitle">"Hermes is the messenger god, and this window we made him move like it"</div>
     </div>
 
-    <!-- Center stage -->
-    <div class="stage">
-      <div class="hero-wrap">
-        <div class="hero-outline">Thank you</div>
-        <div class="hero"><span>Thank</span> <span class="u">you</span></div>
-      </div>
+    <div class="hero-row">
+      <img class="hero-img" src="../images/page_025_hero.png" alt="Quicksilver Release 视觉隐喻：从迟疑到爆发">
 
-      <div class="hero-underline"></div>
-
-      <div class="meta">
-        <div class="meta-line">
-          <span class="marker"></span>
-          <span>讲者：「开源之道」· 适兕 × 窄廊</span>
-          <span class="marker"></span>
+      <div class="big-stat">
+        <div class="big-stat-topline">
+          <span>Performance · Headline Metric</span>
+          <span class="stat-square"></span>
         </div>
-        <div class="meta-line-en">Open Source Way · Kuosi × Narrow Corridor</div>
-        <div class="meta-date">
-          <span class="tick"></span>
-          <span>2026 — 09 — 11</span>
-          <span class="tick"></span>
+        <div>
+          <span class="big-number">~80%</span>
+          <div class="stat-label">First-token 下降</div>
+        </div>
+        <div class="divider-h"></div>
+        <div class="cold-start-row">
+          <span class="cold-start-label">冷启动</span>
+          <span class="cold-start-val cs-before">4.3s</span>
+          <span class="arrow">→</span>
+          <span class="cold-start-val cs-after">0.9s</span>
+          <span class="pill">全平台</span>
+        </div>
+        <div class="platform-line">
+          <span>Platforms</span>
+          <span class="platform-tag">CLI</span>
+          <span class="platform-tag">gateway</span>
+          <span class="platform-tag">TUI</span>
+          <span class="platform-tag">desktop</span>
+          <span class="platform-tag">cron</span>
         </div>
       </div>
     </div>
 
-    <!-- Bottom closing line -->
-    <div class="footer-note">
-      感谢聆听。本项目后续将持续更新，欢迎交流与引用。
-    </div>
-
-    <!-- Page number bottom-left -->
-    <div class="page-num">
-      <span>NO.</span>
-      <span class="bar"></span>
-      <span>25</span>
-    </div>
-
-    <!-- Hermes brand mark bottom-right -->
-    <div class="brand">
-      <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
-        <!-- Hermes caduceus style mark -->
-        <line x1="16" y1="4" x2="16" y2="28" stroke="#00BCD4" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="16" cy="4" r="1.6" fill="#00BCD4"/>
-        <path d="M9 11 Q12 15 16 15 Q20 15 23 11" stroke="#00BCD4" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        <path d="M9 11 Q12 8 16 8 Q20 8 23 11" stroke="#FF7043" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        <path d="M9 21 Q12 18 16 18 Q20 18 23 21" stroke="#FF7043" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        <path d="M9 21 Q12 24 16 24 Q20 24 23 21" stroke="#00BCD4" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-        <circle cx="9" cy="11" r="1.4" fill="#FF7043"/>
-        <circle cx="23" cy="11" r="1.4" fill="#FF7043"/>
-        <circle cx="9" cy="21" r="1.4" fill="#00BCD4"/>
-        <circle cx="23" cy="21" r="1.4" fill="#00BCD4"/>
-      </svg>
-      <div class="brand-text">
-        <span class="name">Hermes</span>
-        <span class="sub">PROJECT MARK</span>
+    <div class="kpi-band">
+      <div class="kpi-card">
+        <div class="kpi-num">2,245</div>
+        <div class="kpi-lbl">Commits · 窗口提交</div>
       </div>
+      <div class="kpi-card">
+        <div class="kpi-num">1,065</div>
+        <div class="kpi-lbl">Merged PRs</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">3,300</div>
+        <div class="kpi-lbl">Issues Closed</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">450+</div>
+        <div class="kpi-lbl">Contributors</div>
+      </div>
+    </div>
+
+    <div class="bullet-list">
+      <div class="bullet">
+        <div class="bullet-head">Release</div>
+        <div class="bullet-detail"><span class="tag-inline">v0.19.0</span><span class="mono">2026-07-20</span> &nbsp;The Quicksilver Release</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-head">Headline</div>
+        <div class="bullet-detail">First-token time 下降 <em>~80%</em>，<em>"那个深呼吸消失了"</em>——迟疑与等待，被彻底抹掉。</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-head">冷启动</div>
+        <div class="bullet-detail"><span class="mono">4.3s → 0.9s</span>，覆盖 <em>CLI / gateway / TUI / desktop / cron</em> 全平台。</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-head">Desktop 性能</div>
+        <div class="bullet-detail"><em>20+ PR</em> 速度改造，streaming markdown <em>14× 更快</em>——大段输出不再卡顿。</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-head">Delivery-obligation Ledger</div>
+        <div class="bullet-detail">响应不会因 gateway 崩溃而丢失，<em>P1 silent-loss 窗口关闭</em>。</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-head">制度含义</div>
+        <div class="bullet-detail">速度是消费侧信任的基础——<em>"如果 Hermes 像要深呼吸"，用户就会离开</em>。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-text">这个窗口<span class="dot">·</span>我们让它像 Hermes 一样移动</div>
     </div>
   </div>
 </div>

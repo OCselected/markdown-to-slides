@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>案例 10 · #66353 Telegram Topic Titles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F1E33;
+  --primary:#1B3B6B;
+  --primary-deep:#12294E;
+  --primary-light:#2A4E7E;
+  --accent:#4A90D9;
+  --warning:#D97A2A;
+  --text:#F5F0E8;
+  --text-dim:#B8B4A8;
+  --text-mute:#7E7A70;
+  --border:rgba(245,240,232,0.10);
+  --border-strong:rgba(245,240,232,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Noto Serif SC',Georgia,'Times New Roman',serif}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg)}
+#bg{position:absolute;inset:0;z-index:0;background:linear-gradient(160deg,#0B1830 0%,#0F1E33 55%,#122342 100%)}
+#ct{position:absolute;inset:0;z-index:1;padding:52px 60px 40px;box-sizing:border-box;display:flex;flex-direction:column}
+.page-inner{position:relative;flex:1;display:grid;grid-template-columns:560px 1fr;gap:44px;height:100%}
+
+/* Left column: issue card */
+.issue-card{position:relative;background:linear-gradient(180deg,#12294E 0%,#0C1E3A 100%);border:1px solid var(--border-strong);padding:32px 34px;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+.issue-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--accent) 0%,var(--warning) 100%)}
+.issue-card-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:22px}
+.issue-card-head .label{font-size:11px;letter-spacing:0.32em;color:var(--text-mute);font-weight:500}
+.issue-card-head .num{font-size:15px;color:var(--text-dim);letter-spacing:0.05em}
+.issue-title{font-size:25px;line-height:1.35;color:var(--text);font-weight:500;margin-bottom:26px;letter-spacing:-0.005em}
+.issue-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.meta-item{padding:14px 16px;border:1px solid var(--border);background:rgba(245,240,232,0.025);position:relative;overflow:hidden}
+.meta-item::before{content:'';position:absolute;top:0;right:0;width:24px;height:24px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+.meta-item .k{font-size:10.5px;letter-spacing:0.22em;color:var(--text-mute);font-weight:500;margin-bottom:8px}
+.meta-item .v{font-size:36px;font-weight:600;color:var(--accent);line-height:1;letter-spacing:-0.02em;font-family:'Noto Serif SC',serif}
+.meta-item .sub{font-size:11px;color:var(--text-dim);margin-top:7px;letter-spacing:0.04em}
+.issue-note{font-size:14px;line-height:1.7;color:var(--text-dim);padding:16px 18px;background:rgba(74,144,217,0.06);border-left:3px solid var(--accent);margin-bottom:22px}
+.issue-note b{color:var(--text);font-weight:500}
+.issue-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:auto}
+.tag{padding:6px 12px;border:1px solid var(--border-strong);font-size:11.5px;color:var(--text-dim);letter-spacing:0.05em}
+.tag.warn{border-color:rgba(217,122,42,0.45);color:#E6A25A}
+.issue-card-bottom{margin-top:22px;padding-top:18px;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.24em;color:var(--text-mute)}
+
+/* Right column */
+.risk-col{position:relative;display:flex;flex-direction:column;gap:24px}
+.risk-stack{display:flex;flex-direction:column;gap:14px}
+.risk-card{position:relative;background:rgba(245,240,232,0.025);border:1px solid var(--border-strong);padding:18px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:82px}
+.risk-card .rc-left{display:flex;align-items:center;gap:18px}
+.risk-card .badge{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.risk-card .rc-name{font-size:19px;color:var(--text);font-weight:500;letter-spacing:0.02em}
+.risk-card .rc-en{font-size:11px;color:var(--text-mute);letter-spacing:0.28em;margin-top:3px;font-weight:500}
+.risk-card .rc-right{font-size:12.5px;color:var(--text-dim);text-align:right;line-height:1.5;max-width:190px}
+.risk-card.warn{border-color:rgba(217,122,42,0.42);background:rgba(217,122,42,0.05)}
+
+/* Hero: blast-broad */
+.hero-card{position:relative;background:linear-gradient(135deg,#1B3B6B 0%,#12294E 100%);border:1px solid rgba(217,122,42,0.65);padding:26px 32px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.5),inset 0 1px 0 rgba(245,240,232,0.08)}
+.hero-card::before{content:'';position:absolute;right:-70px;top:-70px;width:200px;height:200px;border:1px solid rgba(217,122,42,0.28);border-radius:50%;pointer-events:none}
+.hero-card::after{content:'';position:absolute;left:0;top:0;width:5px;bottom:0;background:var(--warning)}
+.hero-card .hero-label{font-size:11px;letter-spacing:0.38em;color:#E6A25A;font-weight:600;margin-bottom:12px}
+.hero-card h2{font-size:46px;font-weight:600;color:var(--text);letter-spacing:-0.01em;margin-bottom:10px;line-height:1.05}
+.hero-card .hero-zh{font-size:17px;color:#F0D9B8;font-weight:500;margin-bottom:6px;line-height:1.5}
+.hero-card .hero-en{font-size:12.5px;color:var(--text-dim);letter-spacing:0.15em;font-weight:400}
+
+/* Narrative */
+.narrative{position:relative;padding:22px 26px;background:rgba(245,240,232,0.025);border-left:3px solid var(--accent)}
+.narrative p{font-size:14.5px;line-height:1.85;color:var(--text);margin-bottom:12px}
+.narrative p:last-child{margin-bottom:0}
+.narrative .quote-mark{font-family:'Noto Serif SC',serif;color:var(--accent);font-size:18px;font-weight:600;letter-spacing:0.1em;margin-right:4px}
+.narrative em{color:var(--text);font-style:normal;font-weight:600;border-bottom:1px dashed rgba(245,240,232,0.35);padding-bottom:1px}
+.narrative .final{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:13.5px;color:var(--text-dim);line-height:1.7}
+.narrative .final b{color:#E6A25A;font-weight:600}
+
+/* Footer */
+.footer{position:absolute;left:60px;right:60px;bottom:22px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:0.28em;color:var(--text-mute);border-top:1px solid var(--border);padding-top:14px}
+.footer .foot-left{display:flex;align-items:center;gap:14px}
+.footer .foot-left .dot{width:5px;height:5px;background:var(--warning);border-radius:50%}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <svg width="1600" height="900" viewBox="0 0 1600 900" style="position:absolute;inset:0;opacity:0.55">
+      <circle cx="60" cy="60" r="130" fill="none" stroke="rgba(245,240,232,0.05)" stroke-width="1"/>
+      <circle cx="60" cy="60" r="70" fill="none" stroke="rgba(245,240,232,0.08)" stroke-width="1"/>
+      <circle cx="1540" cy="840" r="150" fill="none" stroke="rgba(74,144,217,0.10)" stroke-width="1"/>
+      <line x1="0" y1="480" x2="1600" y2="480" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
+      <line x1="920" y1="0" x2="920" y2="900" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div id="ct">
+    <div class="page-inner">
+      <!-- Left: Issue card -->
+      <div class="issue-card">
+        <div class="issue-card-head">
+          <span class="label serif">案例档案 · CASE FILE</span>
+          <span class="num">CASE #010</span>
+        </div>
+        <div class="issue-title serif">feat(telegram):<br>add compact topic titles<br>and semantic icons</div>
+        <div class="issue-meta">
+          <div class="meta-item">
+            <div class="k">ISSUE</div>
+            <div class="v">#66353</div>
+            <div class="sub">GITHUB · 公开讨论</div>
+          </div>
+          <div class="meta-item">
+            <div class="k">COMMENTS</div>
+            <div class="v">12</div>
+            <div class="sub">社区讨论热度</div>
+          </div>
+        </div>
+        <div class="issue-note"><b>高讨论度的 gateway/平台 feature</b>——触及 Telegram 平台级能力边界，用户诉求直接映射产品能力。</div>
+        <div class="issue-tags">
+          <span class="tag">#telegram</span>
+          <span class="tag">#gateway</span>
+          <span class="tag">#feature</span>
+          <span class="tag">#topic-titles</span>
+          <span class="tag warn">#blast-broad</span>
+        </div>
+        <div class="issue-card-bottom">
+          <span>TELEGRAM GATEWAY</span>
+          <span>·</span>
+          <span>消费侧信任样本 · CONSUMER-TRUST SAMPLE</span>
+        </div>
+      </div>
+
+      <!-- Right: Risk stack + narrative -->
+      <div class="risk-col">
+        <div class="risk-stack">
+          <div class="risk-card">
+            <div class="rc-left">
+              <span class="badge" style="background:#7CB8FF"></span>
+              <div>
+                <div class="rc-name">risk-message-delivery</div>
+                <div class="rc-en">RISK · MESSAGE DELIVERY</div>
+              </div>
+            </div>
+            <div class="rc-right">消息推送链路变更<br>潜在送达时序与状态同步风险</div>
+          </div>
+          <div class="risk-card warn">
+            <div class="rc-left">
+              <span class="badge" style="background:#E6A25A"></span>
+              <div>
+                <div class="rc-name">risk-compatibility</div>
+                <div class="rc-en">RISK · COMPATIBILITY</div>
+              </div>
+            </div>
+            <div class="rc-right">API / 版本 / 客户端兼容<br>feature 类 issue 普遍自带</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-label">RISK · BLAST-BROAD</div>
+            <h2 class="serif">blast-broad</h2>
+            <div class="hero-zh">大爆炸面 · 影响所有 Telegram 用户</div>
+            <div class="hero-en">Affects every Telegram user</div>
+          </div>
+        </div>
+
+        <div class="narrative">
+          <p><span class="quote-mark">「</span>feature 类 issue 普遍自带兼容性风险——用户要功能时也知道风险。<span>」</span></p>
+          <p><span class="quote-mark">「</span>消费侧信任是双向的——用户索取能力的同时主动索取安全收口。<span>」</span></p>
+          <div class="final">#66353 作为 gateway/平台 feature 的<em>典型样本</em>，三个风险标签叠加（含 <b>blast-broad</b> 大爆炸面），讨论度高的 feature 普遍自带兼容性风险——这是<em>消费侧信任的强信号</em>。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="foot-left">
+      <span class="dot"></span>
+      <span>CASE #66353 · TELEGRAM GATEWAY · 消费侧信任样本</span>
+    </div>
+    <div>案例 10 / FIELD NOTES · 2024</div>
+  </div>
+</div>
+</body>
+</html>

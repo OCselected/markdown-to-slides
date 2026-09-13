@@ -4,370 +4,451 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>MCP 捐给 Linux Foundation — 制度经济学的教科书案例</title>
+<title>第二幕 · Hermes 技术架构</title>
+<script src="../assets/echarts.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
 :root {
-  --cyan: #00BCD4;
-  --cyan-glow: rgba(0,188,212,0.35);
-  --orange: #FF7043;
-  --orange-soft: rgba(255,112,67,0.14);
-  --bg: #1E293B;
-  --bg-darker: #0F172A;
-  --panel: rgba(30,41,59,0.65);
-  --panel-border: rgba(148,163,184,0.16);
-  --text-main: #E2E8F0;
-  --text-muted: #94A3B8;
-  --text-dim: #64748B;
+  --bg: #0F1E33;
+  --bg-deep: #0A1526;
+  --primary: #1B3B6B;
+  --accent: #B4A078;
+  --text: #F5F0E8;
+  --text-soft: rgba(245, 240, 232, 0.68);
+  --text-faint: rgba(245, 240, 232, 0.42);
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  color: var(--text-main);
-  background: var(--bg-darker);
-  line-height: 1.5;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text);
 }
+
 .wrapper {
   width: 1600px;
   height: 900px;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
+  background: var(--bg);
 }
+
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(circle at 8% 12%, rgba(0,188,212,0.16) 0%, transparent 42%),
-    radial-gradient(circle at 92% 92%, rgba(255,112,67,0.11) 0%, transparent 44%),
-    #1E293B;
+  background: radial-gradient(ellipse at 50% 40%, #142844 0%, #0F1E33 55%, #0A1526 100%);
 }
+
+.bg-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(180,160,120,0.4) 0, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(245,240,232,0.3) 0, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(180,160,120,0.3) 0, transparent 1px);
+  background-size: 80px 80px, 120px 120px, 40px 40px;
+}
+
+.bauhaus-square {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  right: -60px;
+  border: 1.5px solid rgba(180, 160, 120, 0.25);
+}
+
+.bauhaus-circle {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  bottom: -140px;
+  left: -120px;
+  border: 1.5px solid rgba(245, 240, 232, 0.10);
+}
+
+.bauhaus-inner-circle {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  top: 140px;
+  left: 140px;
+  background: rgba(180, 160, 120, 0.18);
+}
+
+.bauhaus-line-h {
+  position: absolute;
+  left: 60px;
+  top: 140px;
+  width: 80px;
+  height: 1.5px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.bauhaus-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  top: 136px;
+  left: 148px;
+}
+
+.bauhaus-square-tr {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  right: 80px;
+  border: 1.5px solid var(--accent);
+  opacity: 0.7;
+}
+
+.bauhaus-line-v {
+  position: absolute;
+  bottom: 80px;
+  right: 160px;
+  width: 1.5px;
+  height: 60px;
+  background: var(--accent);
+  opacity: 0.55;
+}
+
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 44px 60px 24px;
-  box-sizing: border-box;
-}
-
-/* Header */
-.header { margin-bottom: 22px; }
-.title {
-  font-size: 42px;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-}
-.title .accent { color: var(--cyan); }
-.subtitle {
-  margin-top: 12px;
-  font-size: 16px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-.subtitle .em { color: var(--orange); font-weight: 600; }
-
-/* Timeline */
-.timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  padding: 20px 0 16px;
-  position: relative;
-}
-.node {
-  width: 320px;
-  height: 232px;
-  padding: 22px 26px;
-  background: var(--panel);
-  border: 1.5px solid var(--panel-border);
-  border-radius: 14px;
-  position: relative;
+  padding: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
-.node.start, .node.end { border-left: 3px solid var(--cyan); }
-.node.mid {
-  border: 2px solid var(--cyan);
-  box-shadow: 0 0 24px rgba(0,188,212,0.14);
-  background: rgba(0,188,212,0.06);
-}
-.node-head {
+
+.chapter-mark {
+  position: absolute;
+  top: 60px;
+  left: 60px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 14px;
+  z-index: 3;
 }
-.node-head::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: var(--cyan);
-  border-radius: 2px;
-  box-shadow: 0 0 10px var(--cyan-glow);
-  flex-shrink: 0;
+
+.chapter-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  line-height: 1;
 }
-.node-head.mid-head::before {
-  background: var(--orange);
-  box-shadow: 0 0 10px rgba(255,112,67,0.4);
+
+.chapter-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 6px;
+  font-weight: 500;
+  opacity: 0.85;
 }
-.node-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.04em;
+
+.chapter-label-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: rgba(180,160,120,0.6);
+  letter-spacing: 4px;
+  font-style: italic;
+  margin-top: 4px;
 }
-.node-date {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--cyan);
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-.node-desc {
+
+.act-roman {
+  position: absolute;
+  top: 62px;
+  right: 60px;
+  font-family: 'Noto Serif SC', serif;
   font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.55;
+  color: var(--accent);
+  letter-spacing: 8px;
+  opacity: 0.8;
+  font-style: italic;
+  z-index: 3;
 }
 
-/* Connectors */
-.connector {
+.hero {
+  margin-top: 100px;
+  text-align: center;
   position: relative;
-  width: 180px;
-  height: 40px;
-  flex-shrink: 0;
-}
-.connector .arrow {
-  position: absolute;
-  top: 18px;
-  left: 0;
-  right: 8px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--cyan) 0%, rgba(0,188,212,0.4) 100%);
-  border-radius: 2px;
-}
-.connector .arrow::after {
-  content: '';
-  position: absolute;
-  right: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 14px solid var(--cyan);
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  filter: drop-shadow(0 0 4px var(--cyan-glow));
-}
-.connector .dot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--orange);
-  box-shadow: 0 0 12px rgba(255,112,67,0.6);
+  z-index: 2;
 }
 
-/* Detail Columns */
-.tl-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 22px;
+.act-eyebrow {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 12px;
   margin-bottom: 22px;
+  font-weight: 500;
+  opacity: 0.9;
 }
-.col {
-  padding: 18px 22px;
-  background: rgba(15,23,42,0.55);
-  border: 1px solid var(--panel-border);
-  border-radius: 12px;
-  border-top: 2px solid var(--cyan);
+
+.hero-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 84px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+  line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
-.col.mid { border-top-color: var(--orange); }
-.col-head {
+
+.hero-title .dot {
+  color: var(--accent);
+  margin: 0 12px;
+  font-weight: 400;
+}
+
+.hero-title .en {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text);
+}
+
+.hero-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.72);
+  letter-spacing: 4px;
+  margin-top: 24px;
+}
+
+.two-lines {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px dashed rgba(148,163,184,0.2);
-}
-.col-head::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 8px var(--cyan-glow);
-  align-self: center;
-  flex-shrink: 0;
-}
-.col.mid .col-head::before {
-  background: var(--orange);
-  box-shadow: 0 0 8px rgba(255,112,67,0.4);
-}
-.col-label {
-  font-size: 15px;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-.col-date {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--cyan);
-  letter-spacing: 0.04em;
-}
-.col.mid .col-date { color: var(--orange); }
-.col-body {
-  font-size: 14px;
-  color: var(--text-main);
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-.col-body .hi { color: var(--cyan); font-weight: 700; }
-.col-body .hi-o { color: var(--orange); font-weight: 700; }
-.bullets { list-style: none; margin-top: 2px; }
-.bullets li {
+  justify-content: center;
+  gap: 28px;
+  margin-top: 34px;
   position: relative;
-  padding-left: 14px;
-  margin-bottom: 4px;
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.55;
+  z-index: 2;
 }
-.bullets li::before {
-  content: '›';
+
+.two-lines::before, .two-lines::after {
+  content: '';
   position: absolute;
-  left: 2px;
-  color: var(--cyan);
-  font-weight: 700;
+  top: -8px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
 }
-.col.mid .bullets li::before { color: var(--orange); }
+.two-lines::before { left: calc(50% - 14px); }
+.two-lines::after { left: calc(50% + 8px); }
 
-/* Bottom Narrative */
-.bottom-narr {
-  padding: 14px 26px;
-  background: linear-gradient(90deg, rgba(0,188,212,0.10) 0%, rgba(0,188,212,0) 100%);
-  border-left: 4px solid var(--cyan);
-  border-radius: 6px;
-  margin-bottom: 10px;
+.v-line {
+  width: 2px;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent 0%, var(--text) 20%, var(--text) 80%, transparent 100%);
+  opacity: 0.85;
 }
-.bottom-narr p {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--text-main);
-}
-.bottom-narr .cyan { color: var(--cyan); font-weight: 700; }
-.bottom-narr .orange { color: var(--orange); font-weight: 700; }
-.bottom-narr .bold { color: #FFFFFF; font-weight: 600; }
 
-/* Footer */
-.footer {
+.invariant-labels {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 12px;
-  border-top: 1px solid rgba(148,163,184,0.12);
-  font-size: 11.5px;
-  color: var(--text-dim);
-  letter-spacing: 0.06em;
+  justify-content: center;
+  gap: 140px;
+  margin-top: 12px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 6px;
+  opacity: 0.75;
+  font-style: italic;
 }
-.footer .left { font-weight: 500; }
-.footer .right { color: var(--text-dim); }
+
+.guiding {
+  margin-top: 36px;
+  text-align: center;
+  max-width: 1100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.68);
+  line-height: 1.85;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+.guiding .em {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.two-cols {
+  display: flex;
+  gap: 80px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1180px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.col {
+  flex: 1;
+  max-width: 460px;
+  padding: 24px 32px;
+  border-top: 1.5px solid rgba(180,160,120,0.55);
+  position: relative;
+}
+
+.col-num {
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  background: var(--bg);
+  padding: 0 10px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 4px;
+  font-style: italic;
+}
+
+.col-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 8px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.col-detail {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.footer-line {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.42);
+  letter-spacing: 8px;
+  font-style: italic;
+}
+
+.footer-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.footer-mark .mini-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(180,160,120,0.4);
+}
+
+.footer-mark .mini-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: rgba(180,160,120,0.6);
+  letter-spacing: 5px;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="bg-texture"></div>
+    <div class="bauhaus-square"></div>
+    <div class="bauhaus-circle"></div>
+    <div class="bauhaus-inner-circle"></div>
+    <div class="bauhaus-square-tr"></div>
+    <div class="bauhaus-line-v"></div>
+    <div class="bauhaus-line-h"></div>
+    <div class="bauhaus-dot"></div>
+  </div>
+
   <div id="ct">
-
-    <!-- Header -->
-    <div class="header">
-      <div class="title">MCP 捐给 <span class="accent">Linux Foundation</span></div>
-      <div class="subtitle"><span class="em">制度经济学的教科书案例</span> — 从厂商私产到社区共识的完整演化路径</div>
-    </div>
-
-    <!-- Timeline -->
-    <div class="timeline">
-      <div class="node start">
-        <div class="node-head"><span class="node-title">Anthropic</span></div>
-        <div class="node-date">2024-11-25</div>
-        <div class="node-desc">单厂商私有发布，作为 Claude 生态的内部工具，尚未公开标准化。</div>
-      </div>
-
-      <div class="connector">
-        <div class="arrow"></div>
-        <div class="dot"></div>
-      </div>
-
-      <div class="node mid">
-        <div class="node-head mid-head"><span class="node-title">转折点</span></div>
-        <div class="node-date">2025-03</div>
-        <div class="node-desc">OpenAI 率先采纳，Google / Microsoft / 云厂密集加入，生态从"单点"跃迁到"网络"。</div>
-      </div>
-
-      <div class="connector">
-        <div class="arrow"></div>
-        <div class="dot"></div>
-      </div>
-
-      <div class="node end">
-        <div class="node-head"><span class="node-title">Linux Foundation</span></div>
-        <div class="node-date">2026</div>
-        <div class="node-desc">捐入 LF 旗下 Agentic AI Foundation，成为中立第三方托管的社区标准。</div>
+    <div class="chapter-mark">
+      <div class="chapter-num"><span>02</span></div>
+      <div>
+        <div class="chapter-label"><span>CHAPTER</span></div>
+        <div class="chapter-label-sub"><span>SECOND ACT</span></div>
       </div>
     </div>
 
-    <!-- Detail Columns -->
-    <div class="tl-section">
-      <div class="col start">
-        <div class="col-head"><span class="col-label">起点</span><span class="col-date">2024-11-25</span></div>
-        <div class="col-body"><span class="hi">Anthropic 单厂商发布</span></div>
-        <ul class="bullets">
-          <li>协议最初为 Claude 内部集成工具服务</li>
-          <li>无跨厂商治理，属典型"厂商私产"形态</li>
-          <li>生态位狭窄，仅覆盖单一产品线</li>
-        </ul>
-      </div>
+    <div class="act-roman"><span>ACT &nbsp; II</span></div>
 
-      <div class="col mid">
-        <div class="col-head"><span class="col-label">演化</span><span class="col-date">2025-03</span></div>
-        <div class="col-body"><span class="hi-o">OpenAI 采纳；云厂密集加入</span></div>
-        <ul class="bullets">
-          <li>OpenAI 率先在 API 侧支持，形成跨平台共识</li>
-          <li>Google / Microsoft / AWS 云侧工具链跟进</li>
-          <li>开源社区涌现实现，多方自发治理雏形</li>
-        </ul>
-      </div>
+    <div class="hero">
+      <div class="act-eyebrow"><span>第 &nbsp; 二 &nbsp; 幕</span></div>
+      <h1 class="hero-title">
+        <span>第二幕</span><span class="dot">·</span><span class="en">Hermes 技术架构</span>
+      </h1>
+      <div class="hero-sub"><span>两条不变量决定了所有设计决策</span></div>
+    </div>
 
-      <div class="col end">
-        <div class="col-head"><span class="col-label">终点</span><span class="col-date">2026</span></div>
-        <div class="col-body">捐给 <span class="hi">Agentic AI Foundation</span>（LF 旗下）</div>
-        <ul class="bullets">
-          <li>由 Linux Foundation 中立托管、多厂商共同治理</li>
-          <li>协议版本、商标、路线图公开化</li>
-          <li>从"厂商协议"跃迁为"行业标准"</li>
-        </ul>
+    <div class="two-lines">
+      <div class="v-line"></div>
+      <div class="v-line"></div>
+    </div>
+
+    <div class="invariant-labels">
+      <span>IN VARIANS &nbsp; I</span>
+      <span>IN VARIANS &nbsp; II</span>
+    </div>
+
+    <div class="guiding">
+      <span>Hermes 的几乎所有设计决策都从</span><span class="em">两条不变量</span><span>推出来——理解不变量，才能理解为什么 Hermes 是这个样子。</span>
+    </div>
+
+    <div class="two-cols">
+      <div class="col">
+        <div class="col-num"><span>I.</span></div>
+        <div class="col-title"><span>目 标 · GOAL</span></div>
+        <div class="col-detail"><span>先讲不变量，再讲架构，最后讲独特性——从根因出发，层层展开。</span></div>
+      </div>
+      <div class="col">
+        <div class="col-num"><span>II.</span></div>
+        <div class="col-title"><span>方 法 · METHOD</span></div>
+        <div class="col-detail"><span>从设计原则推导出能力落地路径——让每个能力都能回溯到不变量。</span></div>
       </div>
     </div>
 
-    <!-- Bottom Narrative -->
-    <div class="bottom-narr">
-      <p><span class="cyan">制度含义 · 教科书案例：</span>MCP 的迁移是<span class="bold">多厂商自发采纳后的自然结果，非行政命令能促成</span>；对照来看，<span class="orange">中国行政开源试图以行政力量复制此流程——制度演化需要时间尺度</span>。</p>
-    </div>
-
-    <!-- Footer -->
     <div class="footer">
-      <span class="left">MCP 从厂商私产到社区共识的完整演化路径 —— 制度经济学教科书的经典案例</span>
-      <span class="right">慢演化 · 多主体 · 无中央命令</span>
+      <div class="footer-line"><span>理解不变量，方能读懂 Hermes</span></div>
+      <div class="footer-mark">
+        <span class="mini-line"></span>
+        <span class="mini-text"><span>HERMES &nbsp; · &nbsp; ARCHITECTURE</span></span>
+        <span class="mini-line"></span>
+      </div>
     </div>
-
   </div>
 </div>
 </body>

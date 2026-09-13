@@ -17,9 +17,13 @@
         {
           "head": "讲者",
           "detail": "「开源之道」·适兕 × 窄廊"
+        },
+        {
+          "head": "视角",
+          "detail": "田野考察——把 issue/PR/release 当文化现象"
         }
       ],
-      "narrative": "以 Hermes Agent（NousResearch/hermes-agent, 243K star）为公开样本，用一年多的公开演化数据回答 Agent 从'能用'到'会协作'的三个制度问题：度量权、可靠性、产权。",
+      "narrative": "以 Hermes Agent（NousResearch/hermes-agent, 243K star）为公开样本，用一年多的公开演化数据回答 Agent 从'能用'到'会协作'的三个制度问题。本演讲是一次田野考察——不是数据观察，而是文化现象描述。",
       "data_points": [
         {
           "label": "Hermes Stars",
@@ -27,12 +31,20 @@
           "context": "GitHub"
         },
         {
+          "label": "Releases",
+          "value": "33",
+          "context": "含 6 个命名 release"
+        },
+        {
+          "label": "Contributors",
+          "value": "397"
+        },
+        {
           "label": "Data Baseline",
-          "value": "2026-09-11",
-          "context": "本演讲所有数据的时间戳"
+          "value": "2026-09-11"
         }
       ],
-      "visual_hints": "深普鲁士蓝底 + 暖白标题，包豪斯几何构成，右侧极简 Hermes 符号",
+      "visual_hints": "深普鲁士蓝底 + 暖白标题，包豪斯几何构成，右上角极简 Hermes 符号",
       "use_table": null,
       "use_image": null,
       "asset_slots": [
@@ -51,24 +63,24 @@
       "bullets": [
         {
           "head": "闭源 Agent",
-          "detail": "WorkBuddy、豆包、Qwen Office——如何演化无从得知"
+          "detail": "WorkBuddy、豆包、Qwen Office——如何演化无从可知"
         },
         {
           "head": "开源 Agent",
           "detail": "每一条 issue、每一个 PR、每一次 release 都可追溯"
         },
         {
-          "head": "方法",
+          "head": "田野考察",
           "detail": "把 Hermes 当作观察 Agent 演化的公开样本"
         },
         {
           "head": "Hermes 独特性",
-          "detail": "根据用户使用生成 skill，不断自我更新——伟大的进化论实践者"
+          "detail": "命名 release、闭环学习、文化事件——伟大的进化论实践者"
         }
       ],
-      "narrative": "闭源是黑箱，开源是唯一的可研究样本。Hermes 不是产品而是制度实验场——用一年多的公开演化，展示 Agent 从技术到制度的完整链条。",
+      "narrative": "闭源是黑箱，开源是唯一的可研究样本。本演讲采用田野考察方法——把 issue/PR/release 当作文化现象的标本，而不是数据点。类似人类学对仪式、禁忌、符号的观察方式。",
       "data_points": [],
-      "visual_hints": "左侧黑盒 vs 右侧透明玻璃盒对比；黑盒标'闭源：无从得知'，玻璃盒标'开源：可追溯'",
+      "visual_hints": "左侧黑盒 vs 右侧透明玻璃盒；黑盒标'闭源：无从得知'，玻璃盒标'开源：可追溯'",
       "use_table": null,
       "use_image": null,
       "asset_slots": [
@@ -81,71 +93,6 @@
     },
     {
       "page_no": 3,
-      "page_kind": "data",
-      "title": "Hermes 项目坐标",
-      "subtitle": "",
-      "bullets": [
-        {
-          "head": "创建",
-          "detail": "2025-07-22，一年多历史"
-        },
-        {
-          "head": "核心数据",
-          "detail": "Stars 243K / PRs 27.8K / Issues 41.8K / Releases 33"
-        },
-        {
-          "head": "社区",
-          "detail": "397 contributors / 29,205 commits"
-        },
-        {
-          "head": "定位",
-          "detail": "不是产品，是制度实验场"
-        }
-      ],
-      "narrative": "Hermes 用一年多的公开演化，展示 Agent 从技术到制度的完整链条——每个数字都可以追溯到具体的 issue 和 PR。",
-      "data_points": [
-        {
-          "label": "Stars",
-          "value": "243,919"
-        },
-        {
-          "label": "Forks",
-          "value": "50,367"
-        },
-        {
-          "label": "Pull Requests",
-          "value": "27,783"
-        },
-        {
-          "label": "Issues",
-          "value": "41,792"
-        },
-        {
-          "label": "Releases",
-          "value": "33"
-        },
-        {
-          "label": "Contributors",
-          "value": "397"
-        },
-        {
-          "label": "Total Commits",
-          "value": "29,205"
-        }
-      ],
-      "visual_hints": "极简信息卡，大数字网格排列，深普鲁士蓝主色",
-      "use_table": null,
-      "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "项目数据展示",
-          "aspect_ratio": "16:9"
-        }
-      ]
-    },
-    {
-      "page_no": 4,
       "page_kind": "section_header",
       "title": "第一幕 · Agent 发展简史",
       "subtitle": "从文本生成器到数字员工，不到 5 年",
@@ -159,7 +106,7 @@
           "detail": "为后续 Hermes 分析提供历史坐标"
         }
       ],
-      "narrative": "Agent 用了不到 5 年走完从学术概念到产品的完整链条——本幕用一张时间线呈现关键拐点。",
+      "narrative": "Agent 用了不到 5 年走完从学术概念到产品的完整链条。本幕用一张时间线呈现关键拐点。",
       "data_points": [],
       "visual_hints": "极简设计 + 一条水平时间线 2022-2026，线上四个节点用小圆点",
       "use_table": null,
@@ -167,7 +114,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 5,
+      "page_no": 4,
       "page_kind": "content",
       "title": "阶段一 · 能力觉醒（2022-2023）",
       "subtitle": "",
@@ -193,21 +140,15 @@
           "detail": "用新范式激活老理论——跨域套利"
         }
       ],
-      "narrative": "2022-2023 是 Agent 概念觉醒期：ReAct 论文把 1980 年代 BDI 理论推到产品层，Function Calling 让工具调用 API 原语成为标配。",
+      "narrative": "2022-2023 是 Agent 概念觉醒期：ReAct 把 1980 年代 BDI 理论推到产品层，Function Calling 让工具调用 API 原语成为标配。",
       "data_points": [],
       "visual_hints": "时间线延续，左侧起点 2022-10-06 ReAct，中间节点：Toolformer/Function Calling/AutoGPT",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "2022-2023 时间线",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
-      "page_no": 6,
+      "page_no": 5,
       "page_kind": "content",
       "title": "阶段二 · 能力硬化（2024）",
       "subtitle": "",
@@ -247,16 +188,10 @@
       "visual_hints": "时间线延续，MCP 节点用红色小圆强调",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "2024 年事件时间线",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
-      "page_no": 7,
+      "page_no": 6,
       "page_kind": "content",
       "title": "阶段三 · 协议成熟（2025-2026）",
       "subtitle": "",
@@ -292,16 +227,10 @@
       "visual_hints": "时间线延续，MCP 捐给 LF 的节点用大号红圈标注",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "2025-2026 协议成熟阶段",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
-      "page_no": 8,
+      "page_no": 7,
       "page_kind": "content",
       "title": "MCP 捐给 Linux Foundation",
       "subtitle": "制度经济学的教科书案例",
@@ -344,7 +273,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 9,
+      "page_no": 8,
       "page_kind": "section_header",
       "title": "第二幕 · Hermes 技术架构",
       "subtitle": "两条不变量决定了所有设计决策",
@@ -361,6 +290,45 @@
       "narrative": "Hermes 的几乎所有设计决策都从两条不变量推出来——理解不变量才能理解为什么 Hermes 是这个样子。",
       "data_points": [],
       "visual_hints": "深普鲁士蓝底色，中央大标题，标题下方两条竖直细线代表'两条不变量'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 9,
+      "page_kind": "content",
+      "title": "Hermes 项目坐标",
+      "subtitle": "243K star · 33 releases · 397 contributors",
+      "bullets": [
+        {
+          "head": "Stars",
+          "detail": "243K+ · 持续上升"
+        },
+        {
+          "head": "Contributors",
+          "detail": "397 · 活跃社区"
+        },
+        {
+          "head": "Releases",
+          "detail": "33 · 2026-03-12 到 2026-09-11"
+        }
+      ],
+      "narrative": "Hermes 是一个活跃、快速增长的开源项目，是 Agent 演化分析的合适样本。",
+      "data_points": [
+        {
+          "label": "Stars",
+          "value": "243K+"
+        },
+        {
+          "label": "Contributors",
+          "value": "397"
+        },
+        {
+          "label": "Releases",
+          "value": "33"
+        }
+      ],
+      "visual_hints": "大数字网格，深普鲁士蓝主色",
       "use_table": null,
       "use_image": null,
       "asset_slots": []
@@ -494,9 +462,83 @@
     },
     {
       "page_no": 13,
+      "page_kind": "content",
+      "title": "Agent 演化方法论 · 田野观察",
+      "subtitle": "以 Hermes 为样本的观察方法",
+      "bullets": [
+        {
+          "head": "样本选择",
+          "detail": "Hermes Agent（243K star, 33 releases, 397 contributors）——公开演化数据丰富的样本"
+        },
+        {
+          "head": "观察维度",
+          "detail": "需求（issues）/ 供给（PRs）/ 消费（stars/contributors/release）——三维观察"
+        },
+        {
+          "head": "案例驱动",
+          "detail": "6 命名 release + 5 典型 issue + 1 数据案例——12 个田野样本"
+        },
+        {
+          "head": "三段式",
+          "detail": "每个案例：现象 → 数据 → 解读——田野考察的方法论"
+        },
+        {
+          "head": "目的",
+          "detail": "理解 Agent 从'能用'到'好用'的演化路径——不是理论分析，是社区观察"
+        }
+      ],
+      "narrative": "本演讲的方法论：以 Hermes 作为公开样本，用三维（需求/供给/消费）+ 12 案例观察 Agent 演化。每个案例是'现象 → 数据 → 解读'三段式田野考察。",
+      "data_points": [],
+      "visual_hints": "左侧'样本'图标（Hermes）+ 中间三维观察（需求/供给/消费）+ 右侧'12 案例'网格",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Agent 演化方法论",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 14,
+      "page_kind": "content",
+      "title": "田野考察方法论",
+      "subtitle": "把 issue/PR/release 当文化现象",
+      "bullets": [
+        {
+          "head": "田野考察",
+          "detail": "类似人类学/社会学对仪式、禁忌、符号的观察方式"
+        },
+        {
+          "head": "不是数据观察",
+          "detail": "数据点没有故事——文化现象才有说服力"
+        },
+        {
+          "head": "案例驱动",
+          "detail": "每个案例都是一次田野观察：现象 → 数据 → 制度解读"
+        },
+        {
+          "head": "消费侧信任",
+          "detail": "feature issue 自带安全边界标签是'信任信号'的可观察证据"
+        },
+        {
+          "head": "命名 release",
+          "detail": "Judgment/Tenacity/Surface/Velocity/Quicksilver——文化事件"
+        }
+      ],
+      "narrative": "本演讲采用田野考察方法——把 Hermes 的 issue/PR/release 当作文化现象的标本，而不是数据点。每个案例都按'现象→数据→制度解读'三段式呈现。",
+      "data_points": [],
+      "visual_hints": "极简设计，三个抽象符号（issue/PR/release）并置，每个下方标注'文化现象'",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 15,
       "page_kind": "section_header",
-      "title": "第三幕 · 需求/供给/消费三维分析",
-      "subtitle": "用公开数据观察 Hermes 一年多的演化",
+      "title": "第三幕 · 田野考察",
+      "subtitle": "从数据观察到文化现象描述",
       "bullets": [
         {
           "head": "需求侧",
@@ -509,19 +551,23 @@
         {
           "head": "消费侧",
           "detail": "采纳信号（stars/forks/contributors）"
+        },
+        {
+          "head": "12 个案例",
+          "detail": "6 个命名 release + 5 个典型 issue + 1 个数据案例"
         }
       ],
-      "narrative": "用需求、供给、消费三维观察 Hermes——数据来自 100 条 issue、100 条 PR 样本，以及 397 位 contributor 分布。",
+      "narrative": "本幕用三个数据维度（需求/供给/消费）+ 12 个案例，把 Hermes 的演化当作一次田野考察。每个案例都是一次文化现象描述。",
       "data_points": [],
-      "visual_hints": "三列并置：需求侧用户图标、供给侧齿轮、消费侧星标",
+      "visual_hints": "三列并置：需求侧用户图标、供给侧齿轮、消费侧星标，下方'12 案例'大字",
       "use_table": null,
       "use_image": null,
       "asset_slots": []
     },
     {
-      "page_no": 14,
+      "page_no": 16,
       "page_kind": "data",
-      "title": "需求侧 · 用户要什么",
+      "title": "需求侧总览 · 用户要什么",
       "subtitle": "",
       "bullets": [
         {
@@ -567,18 +613,12 @@
       "visual_hints": "左侧大数据'41,792'，右侧饼图 bug/feature 50/50，下方三个组件标签",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "需求侧数据展示",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
-      "page_no": 15,
+      "page_no": 17,
       "page_kind": "data",
-      "title": "供给侧 · 项目做了什么",
+      "title": "供给侧总览 · 项目做了什么",
       "subtitle": "",
       "bullets": [
         {
@@ -624,78 +664,21 @@
       "visual_hints": "左侧大数据'27,783'，右侧饼图，右下角'收敛型'标签",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "供给侧数据展示",
-          "aspect_ratio": "16:9"
-        }
-      ]
-    },
-    {
-      "page_no": 16,
-      "page_kind": "data",
-      "title": "供需匹配 · desktop 是唯一缺口",
-      "subtitle": "",
-      "bullets": [
-        {
-          "head": "类型比例一致",
-          "detail": "需求 53% bug / 供给 50% bug——匹配良好"
-        },
-        {
-          "head": "agent",
-          "detail": "需求 22% / 供给 26% ✅"
-        },
-        {
-          "head": "gateway",
-          "detail": "需求 18% / 供给 22% ✅"
-        },
-        {
-          "head": "cli",
-          "detail": "需求 18% / 供给 17% ✅"
-        },
-        {
-          "head": "desktop ⚠️",
-          "detail": "需求 11% / 供给 8%——供给欠配"
-        }
-      ],
-      "narrative": "桌面端是供需缺口——用户偏新功能，供给以 bug 为主。'生态是结果，不是手段'——能力扩张是用户需求驱动的，不是行政推动的。",
-      "data_points": [
-        {
-          "label": "agent",
-          "value": "22% / 26% ✅"
-        },
-        {
-          "label": "gateway",
-          "value": "18% / 22% ✅"
-        },
-        {
-          "label": "cli",
-          "value": "18% / 17% ✅"
-        },
-        {
-          "label": "desktop",
-          "value": "11% / 8% ⚠️"
-        }
-      ],
-      "visual_hints": "对比表格，desktop 一行用红色标注'⚠️ 供给欠配'",
-      "use_table": null,
-      "use_image": null,
       "asset_slots": []
     },
     {
-      "page_no": 17,
+      "page_no": 18,
       "page_kind": "data",
-      "title": "消费侧 · 弱代理的采纳信号",
+      "title": "消费侧总览 · 弱代理的采纳信号",
       "subtitle": "",
       "bullets": [
         {
           "head": "Releases",
-          "detail": "32 个，从 2026-03-12 到 2026-09-07"
+          "detail": "33 个，从 2026-03-12 到 2026-09-11"
         },
         {
-          "head": "近期频率",
-          "detail": "8 月 5 个 release"
+          "head": "命名 release",
+          "detail": "6 个命名 release——文化事件"
         },
         {
           "head": "核心 contributor",
@@ -749,7 +732,7 @@
       ]
     },
     {
-      "page_no": 18,
+      "page_no": 19,
       "page_kind": "content",
       "title": "三个核心洞察",
       "subtitle": "",
@@ -772,12 +755,563 @@
       "visual_hints": "三列并置，每列一个大标题+简短说明，深普鲁士蓝背景",
       "use_table": null,
       "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "三个核心洞察",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 20,
+      "page_kind": "content",
+      "title": "Release 命名文化 · 田野观察第 1 章",
+      "subtitle": "把 release 当作文化事件",
+      "bullets": [
+        {
+          "head": "6 个命名 release",
+          "detail": "Judgment / Tenacity / Surface / Velocity / Quicksilver / Patch"
+        },
+        {
+          "head": "Judgment",
+          "detail": "P0/P1 清零战役——700 highest-priority items cleared in 12 days"
+        },
+        {
+          "head": "Tenacity",
+          "detail": "'finishes what it starts'——多 agent kanban 平台"
+        },
+        {
+          "head": "Surface",
+          "detail": "'Hermes meets you wherever you work'——原生 desktop + Web admin"
+        },
+        {
+          "head": "Velocity",
+          "detail": "'16,000 行 → 3,821 行'——大重构"
+        },
+        {
+          "head": "Quicksilver",
+          "detail": "'first token time 80% 下降'——性能爆发"
+        },
+        {
+          "head": "Patch",
+          "detail": "热修复——dashboard 401 reload loop"
+        }
+      ],
+      "narrative": "Hermes 的 release 不是版本号，是文化事件。6 个命名 release 用希腊神话/概念词汇命名，每个命名背后都是一个制度主张——这是开源项目的'仪式'。",
+      "data_points": [
+        {
+          "label": "Releases",
+          "value": "33 个"
+        },
+        {
+          "label": "命名 Release",
+          "value": "6 个"
+        }
+      ],
+      "visual_hints": "6 个 release 名称横向排列，每个下方一句话注解，深普鲁士蓝背景",
+      "use_table": null,
+      "use_image": null,
       "asset_slots": []
     },
     {
-      "page_no": 19,
+      "page_no": 21,
       "page_kind": "content",
-      "title": "案例 · #67002 Safe MCP Reload",
+      "title": "案例 1 · Judgment Release · P0/P1 清零",
+      "subtitle": "12 天战役的田野观察",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.18.0 (2026-07-01) — The Judgment Release"
+        },
+        {
+          "head": "战役",
+          "detail": "12 天清零整个 repo 的 P0/P1——零遗漏"
+        },
+        {
+          "head": "数据",
+          "detail": "496 P0/P1 issues + 196 PRs = 692 highest-priority items"
+        },
+        {
+          "head": "关键贡献者",
+          "detail": "@kshitijk4poor 通宵作战，与核心团队并肩"
+        },
+        {
+          "head": "承诺",
+          "detail": "'We're keeping P0/P1 at 0 from here forward'"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'可靠性'作为文化承诺——不是 KPI，是制度契约"
+        }
+      ],
+      "narrative": "Judgment Release 是 Hermes 的一次'战役'——12 天清零 P0/P1，是开源项目罕见的'集中兵力'文化事件。@kshitijk4poor 的通宵作战是这段历史的脚注。'把 P0/P1 保持为 0'是文化承诺，不是 KPI。",
+      "data_points": [
+        {
+          "label": "P0 closed",
+          "value": "3 issues + 8 PRs"
+        },
+        {
+          "label": "P1 closed",
+          "value": "493 issues + 188 PRs"
+        },
+        {
+          "label": "总 P0/P1",
+          "value": "692 items / 12 days"
+        },
+        {
+          "label": "窗口 commits",
+          "value": "1,720 commits / 998 PRs"
+        }
+      ],
+      "visual_hints": "左侧大数字'692'，右侧 12 天日历网格，下方 @kshitijk4poor 的贡献者徽章",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Judgment 战役视觉",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 22,
+      "page_kind": "content",
+      "title": "案例 2 · Tenacity Release · 多 Agent Kanban",
+      "subtitle": "'finishes what it starts' 的文化承诺",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.13.0 (2026-05-07) — The Tenacity Release"
+        },
+        {
+          "head": "核心能力",
+          "detail": "Kanban 多 agent 平台——heartbeat、reclaim、zombie detection"
+        },
+        {
+          "head": "/goal 命令",
+          "detail": "Ralph loop——agent 锁定目标跨 turn 执行"
+        },
+        {
+          "head": "Checkpoints v2",
+          "detail": "state 持久化重写，真剪枝，磁盘护栏"
+        },
+        {
+          "head": "Sessions survive restarts",
+          "detail": "gateway 崩溃后自动恢复"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'可靠性'从代码质量延伸到任务持久性——agent 必须'把开始的事做完'"
+        }
+      ],
+      "narrative": "Tenacity Release 的核心是'可靠性'——agent 必须'把开始的事做完'。Kanban 多 agent 平台的 heartbeat/reclaim/zombie detection 机制，让任务不会因崩溃而丢失。/goal 命令让 agent 跨 turn 锁定目标。",
+      "data_points": [
+        {
+          "label": "窗口 commits",
+          "value": "864"
+        },
+        {
+          "label": "Merged PRs",
+          "value": "588"
+        },
+        {
+          "label": "Issues closed",
+          "value": "282（13 P0 + 36 P1）"
+        },
+        {
+          "label": "Contributors",
+          "value": "295"
+        }
+      ],
+      "visual_hints": "左侧 Kanban 看板图形，右侧 /goal 命令高亮，下方 heartbeat 心跳符号",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Tenacity kanban 视觉",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 23,
+      "page_kind": "content",
+      "title": "案例 3 · Surface Release · 原生 Desktop",
+      "subtitle": "'Hermes meets you wherever you work'",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.16.0 (2026-06-05) — The Surface Release"
+        },
+        {
+          "head": "Headline",
+          "detail": "100 PRs + 159 commits 一周内做出原生 desktop app（macOS/Linux/Windows）"
+        },
+        {
+          "head": "Web admin panel",
+          "detail": "从'view sessions'进化到完整浏览器管理面板"
+        },
+        {
+          "head": "中文 UI",
+          "detail": "完整简体中文翻译——桌面应用支持 zh-Hans"
+        },
+        {
+          "head": "远程 Hermes",
+          "detail": "desktop 可连接远程 Hermes gateway（OAuth/username-password）"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'surface'是接触面的扩大——从 CLI 到 desktop、从本地到远程、从英文到中文"
+        }
+      ],
+      "narrative": "Surface Release 是 Hermes 从'技术工具'到'日常工具'的关键跃迁——原生 desktop + Web admin + 中文 UI + 远程连接。一周内 100 PRs 的密度，体现了开源社区的'集中兵力'文化。",
+      "data_points": [
+        {
+          "label": "窗口 commits",
+          "value": "874"
+        },
+        {
+          "label": "Merged PRs",
+          "value": "542"
+        },
+        {
+          "label": "Issues closed",
+          "value": "399（2 P0 + 62 P1）"
+        },
+        {
+          "label": "Contributors",
+          "value": "170"
+        }
+      ],
+      "visual_hints": "左侧 desktop app 截图风格图形，右侧多语言图标，下方'1 周 100 PRs'徽章",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Surface desktop 视觉",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 24,
+      "page_kind": "content",
+      "title": "案例 4 · Velocity Release · 大重构",
+      "subtitle": "'16,000 行 → 3,821 行' 的制度设计",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.15.0 (2026-05-28) — The Velocity Release"
+        },
+        {
+          "head": "核心动作",
+          "detail": "run_agent.py 从 16,083 行坍缩到 3,821 行（-76%）"
+        },
+        {
+          "head": "重构方式",
+          "detail": "提取到 14 个 cohesion agent/* 模块——行为不变"
+        },
+        {
+          "head": "冷启动",
+          "detail": "又一秒节省，47% 更少 per-turn function calls"
+        },
+        {
+          "head": "session_search",
+          "detail": "4,500× 更快，0 LLM 调用——免费"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'速度'不是优化，是制度设计——重构让未来开发更快、插件作者能 grep"
+        }
+      ],
+      "narrative": "Velocity Release 的核心是'速度'——不是性能优化，是制度设计。run_agent.py 从 16,083 行坍缩到 3,821 行，行为不变，但未来开发速度、插件作者 grep 体验、编辑器加载时间都大幅提升。",
+      "data_points": [
+        {
+          "label": "窗口 commits",
+          "value": "1,302"
+        },
+        {
+          "label": "Merged PRs",
+          "value": "747"
+        },
+        {
+          "label": "Issues closed",
+          "value": "560+（15 P0 + 65 P1）"
+        },
+        {
+          "label": "Contributors",
+          "value": "321"
+        }
+      ],
+      "visual_hints": "左侧'16,083 行'大数字，中间箭头，右侧'3,821 行'小数字，下方'14 modules'标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Velocity 大重构视觉",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 25,
+      "page_kind": "content",
+      "title": "案例 5 · Quicksilver Release · 性能爆发",
+      "subtitle": "'Hermes is the messenger god, and this window we made him move like it'",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.19.0 (2026-07-20) — The Quicksilver Release"
+        },
+        {
+          "head": "Headline",
+          "detail": "first-token time 下降 ~80%——'那个深呼吸消失了'"
+        },
+        {
+          "head": "冷启动",
+          "detail": "从 4.3 秒到 0.9 秒——CLI/gateway/TUI/desktop/cron 全平台"
+        },
+        {
+          "head": "Desktop 性能",
+          "detail": "20+ PR 速度改造——14× 更快 streaming markdown"
+        },
+        {
+          "head": "Delivery-obligation ledger",
+          "detail": "响应不会因 gateway 崩溃而丢失——P1 silent-loss 窗口关闭"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'速度'是消费侧信任的基础——'如果 Hermes 像要深呼吸'，用户就会离开"
+        }
+      ],
+      "narrative": "Quicksilver Release 的命名来自 Hermes（信使神）——'this window we made him move like it'。first-token time 下降 80% 是消费侧信任的基础：如果 agent 像要深呼吸，用户就会离开。",
+      "data_points": [
+        {
+          "label": "窗口 commits",
+          "value": "2,245"
+        },
+        {
+          "label": "Merged PRs",
+          "value": "1,065"
+        },
+        {
+          "label": "Issues closed",
+          "value": "3,300"
+        },
+        {
+          "label": "Contributors",
+          "value": "450+"
+        },
+        {
+          "label": "First-token 下降",
+          "value": "~80%"
+        }
+      ],
+      "visual_hints": "左侧闪电符号 + '80%'大数字，右侧'4.3s → 0.9s'对比，下方'信使神 Hermes'神话引用",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "Quicksilver 性能爆发视觉",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 26,
+      "page_kind": "content",
+      "title": "案例 6 · Patch Release · 热修复",
+      "subtitle": "同日 hotfix 的田野观察",
+      "bullets": [
+        {
+          "head": "Release",
+          "detail": "v0.15.1 (2026-05-29) — The Patch Release"
+        },
+        {
+          "head": "时间",
+          "detail": "同日热修复 v0.15.0——28 commits + 21 PRs"
+        },
+        {
+          "head": "Headline",
+          "detail": "dashboard 401 reload loop——loopback 模式无限重载"
+        },
+        {
+          "head": "根因",
+          "detail": "stale-token reload guard 把每个 401 当旋转的 session token"
+        },
+        {
+          "head": "修复",
+          "detail": "fetchJSON 加 allowUnauthorized opt-out——401 仍抛异常但跳过 reload"
+        },
+        {
+          "head": "制度含义",
+          "detail": "热修复也是文化事件——'我们承认错了，并立刻修好'是开源信任的基石"
+        }
+      ],
+      "narrative": "Patch Release 是开源项目的'认错仪式'——同日热修复，28 commits + 21 PRs。dashboard 401 reload loop 是 v0.15.0 的严重缺陷，团队立即定位并修复。'我们承认错了，并立刻修好'是开源信任的基石。",
+      "data_points": [
+        {
+          "label": "窗口 commits",
+          "value": "28"
+        },
+        {
+          "label": "Merged PRs",
+          "value": "21"
+        },
+        {
+          "label": "Contributors",
+          "value": "9"
+        },
+        {
+          "label": "时间",
+          "value": "v0.15.0 + 1 天"
+        }
+      ],
+      "visual_hints": "左侧'v0.15.0'红色标签 + 箭头 + 右侧'v0.15.1'绿色标签，下方'+1 天'时间徽章",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 27,
+      "page_kind": "content",
+      "title": "案例 7 · #107070 会话重放污染历史",
+      "subtitle": "P1 可靠性里程碑",
+      "bullets": [
+        {
+          "head": "Issue",
+          "detail": "user turns persisted after a transient failure are replayed days later"
+        },
+        {
+          "head": "类型/优先级",
+          "detail": "P1 / bug / agent 组件"
+        },
+        {
+          "head": "风险标签",
+          "detail": "risk-session-state + risk-message-delivery"
+        },
+        {
+          "head": "body 长度",
+          "detail": "6,707 字符——样本最长之一，问题描述详尽、复现充分"
+        },
+        {
+          "head": "影响",
+          "detail": "会话持久化在瞬时故障后被'隔日重放'，直接污染用户对话历史"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'可靠性'不只是'能不能用'，而是'能否信任 agent 记住正确的历史'"
+        }
+      ],
+      "narrative": "#107070 是 P1 级别、命中两个最高感知风险的缺陷：会话持久化在瞬时故障后被'隔日重放'，直接污染用户对话历史。这是 agent 组件最应优先修复项——可靠性不是'能不能用'，是'能否信任 agent 记住正确的历史'。",
+      "data_points": [
+        {
+          "label": "Issue",
+          "value": "#107070"
+        },
+        {
+          "label": "Priority",
+          "value": "P1"
+        },
+        {
+          "label": "Component",
+          "value": "agent"
+        },
+        {
+          "label": "body_len",
+          "value": "6,707 chars"
+        },
+        {
+          "label": "Risks",
+          "value": "risk-session-state, risk-message-delivery"
+        }
+      ],
+      "visual_hints": "左侧 GitHub issue 卡片（P1 红色标签），右侧分析文字。中间竖线分隔。视觉焦点是'重放'——像一段被错误拷贝到几日后才播放的录像带",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "P1 会话重放 issue 卡片",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 28,
+      "page_kind": "content",
+      "title": "案例 8 · #101600 Windows 自锁",
+      "subtitle": "P1 兼容性里程碑",
+      "bullets": [
+        {
+          "head": "Issue",
+          "detail": "Windows update handoff races gateway restart and self-locks hermes.exe"
+        },
+        {
+          "head": "类型/优先级",
+          "detail": "P1 / bug / cli 组件"
+        },
+        {
+          "head": "风险标签",
+          "detail": "risk-compatibility + risk-platform-windows"
+        },
+        {
+          "head": "讨论热度",
+          "detail": "comments 5——P1 中唯一触及平台的缺陷"
+        },
+        {
+          "head": "影响",
+          "detail": "Windows 更新时升级流程与 gateway 重启竞态，hermes.exe 自锁——用户机器被锁死"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'兼容性'不是次要的技术债——用户被'锁在门外'时，'能用'和'好用'的边界被重新划定"
+        }
+      ],
+      "narrative": "#101600 是 P1 中唯一触及平台的缺陷：Windows 更新与 gateway 重启竞态导致 hermes.exe 自锁，用户机器被锁死。兼容性不是次要的技术债——当用户被'锁在门外'时，'能用'和'好用'的边界被重新划定。",
+      "data_points": [
+        {
+          "label": "Issue",
+          "value": "#101600"
+        },
+        {
+          "label": "Priority",
+          "value": "P1"
+        },
+        {
+          "label": "Component",
+          "value": "cli"
+        },
+        {
+          "label": "Comments",
+          "value": "5"
+        },
+        {
+          "label": "Risks",
+          "value": "risk-compatibility, risk-platform-windows"
+        }
+      ],
+      "visual_hints": "左侧 GitHub issue 卡片（P1 红色标签 + Windows 图标），右侧分析文字。视觉焦点是'自锁'——像一扇被自己关上的门",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "P1 Windows 自锁 issue 卡片",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 29,
+      "page_kind": "content",
+      "title": "案例 9 · #67002 Safe MCP Reload",
       "subtitle": "消费侧信任的教科书样本",
       "bullets": [
         {
@@ -791,6 +1325,10 @@
         {
           "head": "组件/优先级",
           "detail": "gateway / P3"
+        },
+        {
+          "head": "讨论热度",
+          "detail": "comments 14——样本最高"
         },
         {
           "head": "关键观察",
@@ -814,6 +1352,10 @@
         {
           "label": "Priority",
           "value": "P3"
+        },
+        {
+          "label": "Comments",
+          "value": "14"
         }
       ],
       "visual_hints": "左侧 issue 卡片，右侧分析文字，中间竖线分隔",
@@ -828,102 +1370,588 @@
       ]
     },
     {
-      "page_no": 20,
+      "page_no": 30,
       "page_kind": "content",
-      "title": "制度经济学视角 · Williamson × Roland",
-      "subtitle": "层次 × 时间的分析矩阵",
+      "title": "案例 10 · #66353 Telegram Topic Titles",
+      "subtitle": "三风险叠加的田野观察",
       "bullets": [
         {
-          "head": "Williamson L1-L4",
-          "detail": "L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置"
+          "head": "Issue",
+          "detail": "feat(telegram): add compact topic titles and semantic icons"
         },
         {
-          "head": "Roland 2004",
-          "detail": "slow-moving（文化/规范）↔ fast-moving（政治制度）"
+          "head": "风险标签",
+          "detail": "risk-message-delivery + risk-compatibility + blast-broad"
         },
         {
-          "head": "合用矩阵",
-          "detail": "层次 × 时间——在哪里受阻（Williamson）× 为什么受阻（Roland）"
+          "head": "讨论热度",
+          "detail": "comments 12——高讨论度的 gateway/平台 feature"
         },
         {
-          "head": "大分流 2.0 应用",
-          "detail": "中国行政开源 = fast-moving 移植；全球协作文化 = slow-moving"
-        }
-      ],
-      "narrative": "Williamson 的静态层次 + Roland 的动态速度 = 层次 × 时间的分析矩阵。'大分流 2.0'的核心问题——中国行政开源卡在哪一层、为什么卡——正是这个矩阵能回答的。",
-      "data_points": [],
-      "visual_hints": "双象限图，左象限 Williamson L1-L4，右象限 Roland fast/slow，交汇处'大分流 2.0'",
-      "use_table": null,
-      "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "层次×时间矩阵",
-          "aspect_ratio": "16:9"
-        }
-      ]
-    },
-    {
-      "page_no": 21,
-      "page_kind": "content",
-      "title": "行政开源 vs 自发开源 · 大分流 2.0",
-      "subtitle": "",
-      "bullets": [
-        {
-          "head": "中国行政开源",
-          "detail": "AtomGit / MirrorZ / 中文社区 / 信通院标准"
+          "head": "blast-broad",
+          "detail": "大爆炸面——影响所有 Telegram 用户"
         },
         {
-          "head": "全球自发开源",
-          "detail": "GitHub / Docker Hub / Linux Foundation / OpenSSF"
-        },
-        {
-          "head": "大分流 2.0 核心",
-          "detail": "真开源=FLOSS；伪开源=特许工程代码/局域网共享/赛博庄园"
+          "head": "关键观察",
+          "detail": "feature 类 issue 普遍自带兼容性风险——用户要功能时也知道风险"
         },
         {
           "head": "制度含义",
-          "detail": "slow-moving 层协作信任尚未建立，无法一夜改变"
+          "detail": "消费侧信任是双向的——用户索取能力的同时主动索取安全收口"
         }
       ],
-      "narrative": "中国'行政开源'与全球'自发开源'的分野——真开源是公地开源，伪开源是特许工程代码。行政力量可以改变 fast-moving 层，但 slow-moving 层的协作文化需要几代人的演化。",
+      "narrative": "#66353 是 gateway/平台 feature 的典型样本：三个风险标签叠加（含 blast-broad 大爆炸面）。讨论度高的 feature 普遍自带兼容性风险，这是消费侧信任的强信号。",
+      "data_points": [
+        {
+          "label": "Issue",
+          "value": "#66353"
+        },
+        {
+          "label": "Risks",
+          "value": "risk-message-delivery, risk-compatibility, blast-broad"
+        },
+        {
+          "label": "Comments",
+          "value": "12"
+        }
+      ],
+      "visual_hints": "左侧 issue 卡片，右侧三风险标签堆叠图形，下方'blast-broad'大字",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 31,
+      "page_kind": "content",
+      "title": "案例 11 · #84672 内容扫描误判",
+      "subtitle": "安全治理的长正文田野观察",
+      "bullets": [
+        {
+          "head": "Issue",
+          "detail": "[Bug]: Content scanners flag security documentation as attacks"
+        },
+        {
+          "head": "组件",
+          "detail": "cron"
+        },
+        {
+          "head": "body 长度",
+          "detail": "11,754 字符——样本最长，远超第二名 7,019"
+        },
+        {
+          "head": "关键观察",
+          "detail": "cron 内容扫描器把安全文档误判为攻击——横切安全问题"
+        },
+        {
+          "head": "问题描述",
+          "detail": "复现充分——用户对安全扫描误报的深度关注"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'安全扫描'不是技术工具，是制度契约——误判率决定用户是否信任系统"
+        }
+      ],
+      "narrative": "#84672 是 cron 组件的长正文 issue——11,754 字符，远超样本第二名。内容扫描器把安全文档误判为攻击，是横切的安全治理问题。用户对安全扫描误报的深度关注，反映了'信任'作为消费侧信号的可观察性。",
+      "data_points": [
+        {
+          "label": "Issue",
+          "value": "#84672"
+        },
+        {
+          "label": "Component",
+          "value": "cron"
+        },
+        {
+          "label": "body_len",
+          "value": "11,754 chars"
+        },
+        {
+          "label": "排名",
+          "value": "样本最长（第二名 7,019）"
+        }
+      ],
+      "visual_hints": "左侧 issue 卡片 + '11,754'大数字，右侧长正文示意，下方'内容扫描误判'标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 32,
+      "page_kind": "content",
+      "title": "案例 12 · desktop 供需缺口",
+      "subtitle": "数据案例：唯一失衡的组件",
+      "bullets": [
+        {
+          "head": "需求",
+          "detail": "desktop 需求 11%——用户主动要求新功能"
+        },
+        {
+          "head": "供给",
+          "detail": "desktop 供给 8%——以 bug 为主"
+        },
+        {
+          "head": "类型不匹配",
+          "detail": "需求偏新功能，供给以 bug 为主——类型也对不上"
+        },
+        {
+          "head": "对照",
+          "detail": "agent/gateway/cli 供需匹配良好（22%/26%, 18%/22%, 18%/17%）"
+        },
+        {
+          "head": "Surface Release",
+          "detail": "2026-06-05 一周 100 PRs——团队对 desktop 的集中投入"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'生态是结果，不是手段'——能力扩张是用户需求驱动的，不是行政推动的"
+        }
+      ],
+      "narrative": "desktop 是供需缺口——用户偏新功能，供给以 bug 为主。但 Surface Release（一周 100 PRs）显示团队对 desktop 的集中投入。'生态是结果，不是手段'——能力扩张是用户需求驱动的。",
+      "data_points": [
+        {
+          "label": "desktop 需求",
+          "value": "11%"
+        },
+        {
+          "label": "desktop 供给",
+          "value": "8%"
+        },
+        {
+          "label": "Surface Release",
+          "value": "100 PRs / 1 周"
+        }
+      ],
+      "visual_hints": "对比表格，desktop 一行用红色标注'⚠️ 供给欠配'，下方 Surface Release 徽章",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 33,
+      "page_kind": "content",
+      "title": "三个共性问题 · 可靠性/兼容性/信任",
+      "subtitle": "田野考察的横切视角",
+      "bullets": [
+        {
+          "head": "可靠性",
+          "detail": "#107070 会话重放、Tenacity Release kanban、Quicksilver delivery ledger"
+        },
+        {
+          "head": "兼容性",
+          "detail": "#101600 Windows 自锁、Surface Release 多平台 desktop"
+        },
+        {
+          "head": "信任",
+          "detail": "#67002 Safe MCP Reload、#66353 三风险叠加、Judgment P0/P1 清零"
+        },
+        {
+          "head": "横切",
+          "detail": "三个问题不是独立的——可靠性是兼容性的基础，兼容性是信任的前提"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'可靠性/兼容性/信任'是 Agent 从'能用'到'好用'的三道分水岭"
+        }
+      ],
+      "narrative": "12 个案例的横切视角：可靠性、兼容性、信任是三个共性问题。三者不是独立的——可靠性是兼容性的基础，兼容性是信任的前提。这是 Agent 从'能用'到'好用'的三道分水岭。",
       "data_points": [],
-      "visual_hints": "左右对比图，左'行政开源'右'自发开源'，中间竖线",
+      "visual_hints": "三列并置：可靠性/兼容性/信任，每列下方 3 个案例标签",
       "use_table": null,
       "use_image": null,
       "asset_slots": [
         {
           "slot_id": "hero",
-          "intent": "行政vs自发对比",
+          "intent": "三个共性问题",
           "aspect_ratio": "16:9"
         }
       ]
     },
     {
-      "page_no": 22,
+      "page_no": 34,
       "page_kind": "content",
-      "title": "长期演化追踪 · 不是终点",
-      "subtitle": "",
+      "title": "从'能用'到'好用'的跃迁",
+      "subtitle": "消费侧信任作为可观察信号",
+      "bullets": [
+        {
+          "head": "'能用'",
+          "detail": "功能可用——CLI 能启动、gateway 能连接、agent 能响应"
+        },
+        {
+          "head": "'好用'",
+          "detail": "信任可用——历史不被污染、平台不被锁死、能力有安全边界"
+        },
+        {
+          "head": "跃迁证据",
+          "detail": "feature issue 自带安全边界标签——#67002、#66353"
+        },
+        {
+          "head": "跃迁证据 2",
+          "detail": "P1 清零承诺——Judgment Release 'keeping P0/P1 at 0'"
+        },
+        {
+          "head": "制度含义",
+          "detail": "消费侧信任是可观察的信号——用户在索取能力的同时主动索取安全收口"
+        }
+      ],
+      "narrative": "从'能用'到'好用'的跃迁，是可观察的信号——feature issue 自带安全边界标签、P1 清零承诺。用户在索取能力的同时主动索取安全收口，这是'消费侧信任'的田野证据。",
+      "data_points": [],
+      "visual_hints": "左侧'能用'大字 + 右侧'好用'大字，中间箭头，下方'跃迁证据'标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 35,
+      "page_kind": "content",
+      "title": "Release 节奏观察",
+      "subtitle": "33 releases / 180 天",
+      "bullets": [
+        {
+          "head": "密度",
+          "detail": "33 releases / 180 天 ≈ 5.5 天/release"
+        },
+        {
+          "head": "命名",
+          "detail": "6 命名 release（2026-05 到 2026-07）"
+        },
+        {
+          "head": "Patch",
+          "detail": "同日热修复——'认错仪式'"
+        }
+      ],
+      "narrative": "Release 节奏是社区自我组织的节奏——不是行政命令能促成的。",
+      "data_points": [
+        {
+          "label": "总 Releases",
+          "value": "33"
+        },
+        {
+          "label": "窗口",
+          "value": "180 天"
+        },
+        {
+          "label": "命名 Release",
+          "value": "6 个"
+        }
+      ],
+      "visual_hints": "时间线 + 33 个圆点，命名 release 用红圈标注",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 36,
+      "page_kind": "content",
+      "title": "田野考察小结",
+      "subtitle": "12 案例的横切视角",
+      "bullets": [
+        {
+          "head": "6 个命名 release",
+          "detail": "Judgment/Tenacity/Surface/Velocity/Quicksilver/Patch——文化事件"
+        },
+        {
+          "head": "5 个典型 issue",
+          "detail": "#107070/#101600/#67002/#66353/#84672——制度标本"
+        },
+        {
+          "head": "1 个数据案例",
+          "detail": "desktop 供需缺口——扩张期信号"
+        },
+        {
+          "head": "三个共性问题",
+          "detail": "可靠性/兼容性/信任——从'能用'到'好用'的三道分水岭"
+        },
+        {
+          "head": "核心洞察",
+          "detail": "消费侧信任是可观察的信号——开源 Agent 的'度量权'在社区手里"
+        }
+      ],
+      "narrative": "12 个案例的横切视角：6 个命名 release + 5 个典型 issue + 1 个数据案例 = 三个共性问题（可靠性/兼容性/信任）。核心洞察：消费侧信任是可观察的信号——开源 Agent 的'度量权'在社区手里。",
+      "data_points": [],
+      "visual_hints": "12 个案例标签网格排列，下方三个共性问题大字",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "12 案例网格",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 37,
+      "page_kind": "content",
+      "title": "田野考察方法论复盘",
+      "subtitle": "为什么需要田野考察？",
+      "bullets": [
+        {
+          "head": "数据观察的局限",
+          "detail": "数据点没有故事——41,792 issues 无法说清'用户在要什么'"
+        },
+        {
+          "head": "田野考察的方法",
+          "detail": "把 issue/PR/release 当文化现象——类似人类学对仪式、禁忌、符号的观察"
+        },
+        {
+          "head": "案例驱动",
+          "detail": "每个案例都是'现象→数据→制度解读'三段式"
+        },
+        {
+          "head": "独特视角",
+          "detail": "纯数据表格任何工具都能出——'文化现象描述'只有人能写"
+        },
+        {
+          "head": "制度含义",
+          "detail": "'度量权'在社区手里——田野考察是开源 Agent 的'社会学方法'"
+        }
+      ],
+      "narrative": "田野考察不是'看数据'，是'看文化现象'。每个案例都是'现象→数据→制度解读'三段式。纯数据表格任何工具都能出——'文化现象描述'只有人能写。这是开源 Agent 的'社会学方法'。",
+      "data_points": [],
+      "visual_hints": "左侧'数据观察'灰字 + 右侧'田野考察'高亮字，中间箭头，下方'三段式'标签",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 38,
+      "page_kind": "section_header",
+      "title": "第四幕 · Agent 演化洞察",
+      "subtitle": "从 12 案例中提炼的演化规律",
+      "bullets": [
+        {
+          "head": "核心",
+          "detail": "从'能用'到'好用'的三道分水岭"
+        },
+        {
+          "head": "方法",
+          "detail": "12 案例 → 3 共性 → 3 洞察"
+        },
+        {
+          "head": "目标",
+          "detail": "理解 Agent 演化的内在规律"
+        }
+      ],
+      "narrative": "本幕从 12 个案例中提炼 Agent 演化规律——从'能用'到'好用'的三道分水岭：可靠性、兼容性、信任。",
+      "data_points": [],
+      "visual_hints": "深普鲁士蓝底色，中央大字'Agent 演化洞察'，下方三道分水岭",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 39,
+      "page_kind": "content",
+      "title": "三道分水岭 · 可靠性/兼容性/信任",
+      "subtitle": "从'能用'到'好用'的关键跃迁",
+      "bullets": [
+        {
+          "head": "可靠性",
+          "detail": "能否信任 agent 记住正确的历史（#107070 + Tenacity）"
+        },
+        {
+          "head": "兼容性",
+          "detail": "用户不会被'锁在门外'（#101600 + Surface）"
+        },
+        {
+          "head": "信任",
+          "detail": "能力有安全边界（#67002 + Judgment）"
+        }
+      ],
+      "narrative": "三道分水岭是 Agent 从'能用'到'好用'的关键跃迁。顺序不是独立的——可靠性是兼容性的基础，兼容性是信任的前提。",
+      "data_points": [],
+      "visual_hints": "三道分水岭并排：可靠性/兼容性/信任",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "三道分水岭",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 40,
+      "page_kind": "content",
+      "title": "洞察 #1 · 可靠性是 Agent 的底线",
+      "subtitle": "Tenacity Release + #107070",
+      "bullets": [
+        {
+          "head": "Tenacity Release",
+          "detail": "Kanban 多 agent 平台——heartbeat/reclaim/zombie detection"
+        },
+        {
+          "head": "#107070",
+          "detail": "会话重放污染历史——P1 缺陷"
+        },
+        {
+          "head": "可靠性定义",
+          "detail": "不是'能不能用'，是'能否信任 agent 记住正确的历史'"
+        },
+        {
+          "head": "制度含义",
+          "detail": "可靠性是 Agent 的底线——用户信任的前提"
+        },
+        {
+          "head": "案例组合",
+          "detail": "供给侧（Tenacity）+ 需求侧（#107070）= 完整画面"
+        }
+      ],
+      "narrative": "可靠性是 Agent 的底线——Tenacity Release 用 Kanban 平台解决任务持久性，#107070 是会话重放污染历史的 P1 缺陷。供给侧（Tenacity）+ 需求侧（#107070）= 完整画面。",
+      "data_points": [
+        {
+          "label": "Tenacity Release",
+          "value": "v0.13.0 (2026-05-07)"
+        },
+        {
+          "label": "#107070",
+          "value": "P1 / risk-session-state"
+        }
+      ],
+      "visual_hints": "左侧 Tenacity Release 徽章 + 右侧 #107070 issue 卡片，中间箭头",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 41,
+      "page_kind": "content",
+      "title": "洞察 #2 · 兼容性是 Agent 的边界",
+      "subtitle": "Surface Release + #101600",
+      "bullets": [
+        {
+          "head": "Surface Release",
+          "detail": "原生 desktop（macOS/Linux/Windows）"
+        },
+        {
+          "head": "#101600",
+          "detail": "Windows 自锁——P1 缺陷"
+        },
+        {
+          "head": "洞察",
+          "detail": "兼容性是 Agent 的边界——跨平台扩展的前提"
+        }
+      ],
+      "narrative": "兼容性是 Agent 的边界——Surface Release 做出跨平台 desktop，#101600 是 Windows 自锁的 P1 缺陷。供给侧 + 需求侧 = 完整画面。",
+      "data_points": [
+        {
+          "label": "Surface Release",
+          "value": "v0.16.0 (2026-06-05)"
+        },
+        {
+          "label": "#101600",
+          "value": "P1 / risk-compatibility"
+        }
+      ],
+      "visual_hints": "左侧 Surface Release 徽章 + 右侧 #101600 issue 卡片",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 42,
+      "page_kind": "content",
+      "title": "洞察 #3 · 信任是 Agent 的跃迁",
+      "subtitle": "Judgment Release + #67002",
+      "bullets": [
+        {
+          "head": "Judgment Release",
+          "detail": "P0/P1 清零战役——692 items / 12 days"
+        },
+        {
+          "head": "#67002",
+          "detail": "Safe MCP Reload——用户主动要求安全边界"
+        },
+        {
+          "head": "信任定义",
+          "detail": "用户在索取能力的同时显式要求安全收口"
+        },
+        {
+          "head": "制度含义",
+          "detail": "信任是 Agent 从'能用'到'好用'的跃迁"
+        },
+        {
+          "head": "案例组合",
+          "detail": "供给侧（Judgment）+ 需求侧（#67002）= 完整画面"
+        }
+      ],
+      "narrative": "信任是 Agent 的跃迁——Judgment Release 用 P0/P1 清零建立信任，#67002 是用户主动要求安全边界。供给侧（Judgment）+ 需求侧（#67002）= 完整画面。",
+      "data_points": [
+        {
+          "label": "Judgment Release",
+          "value": "v0.18.0 (2026-07-01)"
+        },
+        {
+          "label": "#67002",
+          "value": "risk-message-delivery + blast-moderate"
+        }
+      ],
+      "visual_hints": "左侧 Judgment Release 徽章 + 右侧 #67002 issue 卡片，中间箭头",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 43,
+      "page_kind": "content",
+      "title": "MCP 演化路径 · 从厂商私产到中立基金会",
+      "subtitle": "生态演化的一个案例",
+      "bullets": [
+        {
+          "head": "起点",
+          "detail": "2024-11-25 Anthropic 单厂商发布"
+        },
+        {
+          "head": "采纳",
+          "detail": "2025-03 OpenAI 采纳——第二个前沿实验室加入"
+        },
+        {
+          "head": "云厂",
+          "detail": "2025 云厂密集加入——AWS Bedrock AgentCore 等"
+        },
+        {
+          "head": "捐给 LF",
+          "detail": "2026 加入 Agentic AI Foundation（Linux Foundation 旗下）"
+        },
+        {
+          "head": "观察",
+          "detail": "MCP 演化是社区自我组织的自然结果——不是行政命令能促成的"
+        }
+      ],
+      "narrative": "MCP 演化路径：从 Anthropic 单厂商私产到 Linux Foundation 中立基金会。多厂商自发采纳后的自然结果——这是 Agent 生态演化的一个典型案例。",
+      "data_points": [
+        {
+          "label": "起点",
+          "value": "2024-11-25"
+        },
+        {
+          "label": "终点",
+          "value": "2026"
+        }
+      ],
+      "visual_hints": "左上 Anthropic → 中间箭头 → 右上 Linux Foundation，箭头下方标注时间跨度",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 44,
+      "page_kind": "section_header",
+      "title": "Epilogue · 长期演化追踪",
+      "subtitle": "不是终点",
       "bullets": [
         {
           "head": "定位",
           "detail": "本演讲是长期演化追踪系统的第一个快照"
         },
         {
-          "head": "需求侧",
-          "detail": "持续追踪 issue 演化（每周更新）"
+          "head": "三个维度",
+          "detail": "度量权 / 可靠性 / 产权——并行维度，非线性递进"
         },
         {
-          "head": "供给侧",
-          "detail": "持续追踪 PR 演化（每周更新）"
-        },
-        {
-          "head": "消费侧",
-          "detail": "寻找更强信号（PyPI/Docker/Discord）"
-        },
-        {
-          "head": "制度维度",
-          "detail": "度量权 / 可靠性 / 产权——三个并行维度"
+          "head": "Keep Movement",
+          "detail": "进化论的哲学里是没有终点的"
         }
       ],
       "narrative": "这不是一次性分析，是长期演化追踪系统的第一个快照。'进化论的哲学里是没有终点的'——Keep Movement。",
@@ -934,7 +1962,41 @@
       "asset_slots": []
     },
     {
-      "page_no": 23,
+      "page_no": 45,
+      "page_kind": "content",
+      "title": "长期演化追踪系统",
+      "subtitle": "下一个快照是什么？",
+      "bullets": [
+        {
+          "head": "需求侧",
+          "detail": "持续追踪 issue 演化（每周更新）"
+        },
+        {
+          "head": "供给侧",
+          "detail": "持续追踪 PR 演化（每周更新）"
+        },
+        {
+          "head": "消费侧",
+          "detail": "寻找更强信号（PyPI downloads、Docker pulls、Discord 活跃度）"
+        },
+        {
+          "head": "制度维度",
+          "detail": "度量权 / 可靠性 / 产权——三个并行维度"
+        },
+        {
+          "head": "田野考察",
+          "detail": "新增案例（issue/PR/release）每月更新"
+        }
+      ],
+      "narrative": "长期演化追踪系统的下一个快照：需求侧/供给侧/消费侧每周更新，新增案例每月更新，制度维度并行追踪。'Keep Movement'——知识不是静止的，是在移动中产生的。",
+      "data_points": [],
+      "visual_hints": "时间线 + 四个节点（需求/供给/消费/制度），线上有'每周/每月/持续'标注",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 46,
       "page_kind": "content",
       "title": "结语 · 开源之为思想的力量",
       "subtitle": "",
@@ -964,10 +2026,10 @@
       "asset_slots": []
     },
     {
-      "page_no": 24,
+      "page_no": 47,
       "page_kind": "content",
-      "title": "讨论与延伸阅读",
-      "subtitle": "",
+      "title": "讨论问题",
+      "subtitle": "留给 Q&A 的三个开放问题",
       "bullets": [
         {
           "head": "问题 #1",
@@ -982,11 +2044,11 @@
           "detail": "中国'行政开源'的 slow-moving 层会演化出新形态？"
         },
         {
-          "head": "延伸阅读",
-          "detail": "Roland 2004 / Williamson 2000 / Akcagün & Sapienza 2016 / Greif & Mokyr 2017"
+          "head": "田野考察",
+          "detail": "欢迎补充案例——issue/PR/release 都是田野材料"
         }
       ],
-      "narrative": "三个开放问题留给 Q&A。延伸阅读覆盖制度经济学的核心文献——从转型经济学到演化制度理论。",
+      "narrative": "三个开放问题留给 Q&A。田野考察是开放的——欢迎补充案例，issue/PR/release 都是田野材料。",
       "data_points": [],
       "visual_hints": "极简设计，三个问题列在中央，每个问题前有小圆点",
       "use_table": null,
@@ -994,7 +2056,71 @@
       "asset_slots": []
     },
     {
-      "page_no": 25,
+      "page_no": 48,
+      "page_kind": "content",
+      "title": "延伸阅读",
+      "subtitle": "制度经济学核心文献",
+      "bullets": [
+        {
+          "head": "转型经济学",
+          "detail": "Roland 2004 · Understanding Institutional Change"
+        },
+        {
+          "head": "交易成本经济学",
+          "detail": "Williamson 2000 · The New Institutional Economics"
+        },
+        {
+          "head": "认知制度",
+          "detail": "Akcagün & Sapienza 2016 · Cognitive Rules of Growth"
+        },
+        {
+          "head": "演化制度理论",
+          "detail": "Greif & Mokyr 2017 · Journal of Institutional Economics"
+        },
+        {
+          "head": "开源经济学",
+          "detail": "Lerner & Tirole 2002 · The Economics of Open Source Software"
+        }
+      ],
+      "narrative": "延伸阅读覆盖制度经济学的核心文献——从转型经济学到演化制度理论，从交易成本到开源经济学。",
+      "data_points": [],
+      "visual_hints": "5 本书籍封面横向排列，深普鲁士蓝背景",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 49,
+      "page_kind": "content",
+      "title": "致谢",
+      "subtitle": "「开源之道」·适兕 × 窄廊",
+      "bullets": [
+        {
+          "head": "讲者",
+          "detail": "「开源之道」·适兕 × 窄廊"
+        },
+        {
+          "head": "英文",
+          "detail": "Open Source Way · Kuosi × Narrow Corridor"
+        },
+        {
+          "head": "数据基线",
+          "detail": "2026-09-11"
+        },
+        {
+          "head": "田野考察",
+          "detail": "感谢 Hermes 社区——每个 issue/PR/release 都是田野材料"
+        }
+      ],
+      "narrative": "感谢聆听。感谢 Hermes 社区——每个 issue/PR/release 都是田野材料。本项目后续将持续更新，欢迎交流与引用。",
+      "data_points": [],
+      "visual_hints": "极简设计，中央'感谢聆听'，下方讲者信息，右下角 Hermes 符号",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": []
+    },
+    {
+      "page_no": 50,
       "page_kind": "closing",
       "title": "Thank you",
       "subtitle": "「开源之道」·适兕 × 窄廊 · AgentCon 2026 · 北京",
@@ -1008,11 +2134,15 @@
           "detail": "Open Source Way · Kuosi × Narrow Corridor"
         },
         {
+          "head": "Track",
+          "detail": "Token 经济趋势 · AgentCon 2026 北京站"
+        },
+        {
           "head": "数据基线",
           "detail": "2026-09-11"
         }
       ],
-      "narrative": "感谢聆听。本项目后续将持续更新，欢迎交流与引用。",
+      "narrative": "感谢聆听。Keep Movement——知识不是静止的，是在移动中产生的。",
       "data_points": [],
       "visual_hints": "极简设计，中央'Thank you'，下方讲者信息，右下角 Hermes 符号",
       "use_table": null,

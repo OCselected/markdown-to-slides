@@ -1,41 +1,32 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>阶段一 · 能力觉醒（2022-2023）</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>阶段二 · 能力硬化 (2024)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
 
 :root {
-  --primary: #00BCD4;
-  --primary-bright: #4DD0E1;
-  --primary-glow: rgba(0, 188, 212, 0.55);
-  --accent: #FF7043;
-  --accent-bright: #FF8A65;
-  --accent-glow: rgba(255, 112, 67, 0.45);
-  --bg-0: #070D18;
-  --bg-1: #0B1424;
-  --bg-2: #1E293B;
-  --text-main: #EAF2F5;
-  --text-dim: rgba(234, 242, 245, 0.68);
-  --text-faint: rgba(234, 242, 245, 0.4);
-  --border: rgba(0, 188, 212, 0.22);
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --gold: #B4A078;
+  --ink: #F5F0E8;
+  --ink-dim: #C7BDA6;
+  --ink-muted: #8E8A7C;
+  --red: #C0392B;
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-  font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  background: var(--bg-0);
-  color: var(--text-main);
-  line-height: 1.5;
-  -webkit-font-smoothing: antennaialiased;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
 }
 
 .wrapper {
@@ -44,638 +35,433 @@ body {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  background: #0A111E;
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 900px 700px at 12% 18%, rgba(0, 188, 212, 0.16), transparent 62%),
-    radial-gradient(ellipse 700px 500px at 88% 88%, rgba(255, 112, 67, 0.10), transparent 60%),
-    linear-gradient(180deg, #0B1424 0%, #070D18 100%);
+  background-image: url('../images/page_011_parchment.png');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg);
 }
 
-.grid-overlay {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(0,188,212,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,188,212,0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: -1px -1px;
-  pointer-events: none;
+#bg .bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,30,51,0.55) 0%, rgba(15,30,51,0.35) 45%, rgba(15,30,51,0.8) 100%);
 }
 
-.vignette {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 1400px 800px at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
-  pointer-events: none;
+.bg-geo-tl {
+  position: absolute;
+  top: -70px;
+  left: -70px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(180,160,120,0.16);
+  border-radius: 50%;
+}
+.bg-geo-tr {
+  position: absolute;
+  top: 60px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(180,160,120,0.14);
+  transform: rotate(15deg);
+}
+.bg-geo-br {
+  position: absolute;
+  bottom: -60px;
+  right: 220px;
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(180,160,120,0.12);
+  transform: rotate(30deg);
+}
+.bg-geo-bl {
+  position: absolute;
+  bottom: -80px;
+  left: 380px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(180,160,120,0.10);
+  border-radius: 50%;
 }
 
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 52px 70px 44px 70px;
-  box-sizing: border-box;
+  padding: 44px 60px 40px;
   display: flex;
   flex-direction: column;
 }
 
-/* ---- HEADER ---- */
-.header { position: relative; }
-
-.meta-row {
+.header {
+  margin-bottom: 30px;
+}
+.header-row {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 22px;
+  align-items: flex-end;
+  gap: 28px;
+  border-left: 5px solid var(--gold);
+  padding-left: 22px;
 }
-
-.meta-badge {
-  font-family: 'JetBrains Mono', 'Inter', monospace;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  color: var(--primary);
-  padding: 6px 14px;
-  border: 1px solid var(--primary);
-  border-radius: 3px;
-  background: rgba(0, 188, 212, 0.08);
-  font-weight: 600;
+.title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 68px;
+  letter-spacing: 6px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.05;
 }
-
-.meta-text {
-  font-family: 'JetBrains Mono', 'Inter', monospace;
+.year-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-left: auto;
+}
+.year-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.year-label {
   font-size: 12px;
-  letter-spacing: 0.35em;
-  color: var(--text-faint);
+  letter-spacing: 5px;
+  color: var(--ink-muted);
+  writing-mode: vertical-rl;
+}
+.narrative {
+  margin: 24px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+  max-width: 1360px;
+  letter-spacing: 0.6px;
+}
+.narrative .hi-gold {
+  color: var(--gold);
+  font-weight: 500;
+}
+.narrative .hi-red {
+  color: var(--red);
   font-weight: 500;
 }
 
-.meta-sep {
-  width: 40px; height: 1px;
-  background: linear-gradient(90deg, var(--primary), transparent);
+.timeline-block {
+  margin-top: 18px;
 }
-
-.title-row {
+.timeline {
+  position: relative;
   display: flex;
-  align-items: flex-end;
-  gap: 26px;
-  margin-bottom: 20px;
+  flex-direction: column;
 }
-
-h1 {
-  font-size: 76px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  background: linear-gradient(135deg, #EAF2F5 0%, #00BCD4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+.timeline-items {
+  display: flex;
+  gap: 60px;
 }
-
-.year-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 22px;
-  color: var(--primary-bright);
-  padding: 8px 18px;
-  border: 1.5px solid var(--primary);
-  border-radius: 4px;
-  background: rgba(0, 188, 212, 0.06);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  margin-bottom: 10px;
-  box-shadow: 0 0 24px rgba(0, 188, 212, 0.15), inset 0 0 20px rgba(0, 188, 212, 0.06);
-}
-
-.subtitle {
-  font-size: 17px;
-  color: var(--text-dim);
-  max-width: 1200px;
-  line-height: 1.7;
-  letter-spacing: 0.01em;
-}
-
-.subtitle .hi-cyan { color: var(--primary-bright); font-weight: 600; }
-.subtitle .hi-orange { color: var(--accent-bright); font-weight: 600; }
-
-.subtitle-mark {
-  display: inline-block;
-  width: 4px;
-  height: 15px;
-  background: var(--primary);
-  margin-right: 14px;
-  vertical-align: -2px;
-  box-shadow: 0 0 8px var(--primary-glow);
-}
-
-/* ---- TIMELINE ---- */
-.timeline-section {
+.node {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 28px 0 12px 0;
-  position: relative;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.node .date {
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+.node .title-en {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-top: 1px;
+  white-space: nowrap;
 }
 
-.timeline-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 26px;
+.timeline-row {
   position: relative;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
-
-.timeline-rail {
+.accent-line {
   position: absolute;
+  top: 120px;
   left: 20px;
   right: 20px;
-  top: 74px;
   height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0, 188, 212, 0.1) 5%,
-    rgba(0, 188, 212, 0.7) 15%,
-    rgba(0, 188, 212, 0.9) 50%,
-    rgba(0, 188, 212, 0.7) 85%,
-    rgba(0, 188, 212, 0.1) 95%,
-    transparent 100%);
+  background: linear-gradient(90deg, rgba(180,160,120,0.15) 0%, var(--gold) 20%, var(--gold) 80%, rgba(180,160,120,0.15) 100%);
   z-index: 1;
-  box-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
 }
-
-.timeline-rail::before {
+.accent-line::before,
+.accent-line::after {
   content: '';
   position: absolute;
-  left: 0; right: 0;
-  top: -1px; height: 4px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0, 188, 212, 0.15) 20%,
-    rgba(0, 188, 212, 0.35) 50%,
-    rgba(0, 188, 212, 0.15) 80%,
-    transparent 100%);
-  filter: blur(4px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
 }
+.accent-line::before { left: -3px; }
+.accent-line::after { right: -3px; }
 
-.tl-node {
+.timeline-row-inner {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+  align-items: flex-start;
+  z-index: 2;
+}
+.timeline-row-inner .node {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-.tl-head {
-  text-align: center;
-  margin-bottom: 24px;
   width: 100%;
 }
-
-.tl-index {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  color: var(--text-faint);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.tl-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 20px;
-  color: var(--primary-bright);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 12px rgba(0, 188, 212, 0.45);
-}
-
-.tl-dot-wrap {
-  position: relative;
-  width: 46px; height: 46px;
-  margin-bottom: 22px;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.tl-pulse {
-  position: absolute; inset: 0;
+.dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 2px solid var(--primary);
-  opacity: 0.55;
-  animation: pulse 2.4s ease-out infinite;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(15,30,51,0.9);
 }
-
-.tl-pulse.p2 {
-  animation-delay: 1.2s;
-}
-
-.tl-dot {
-  position: relative;
-  width: 18px; height: 18px;
+.circle-red {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--primary);
-  box-shadow:
-    0 0 14px rgba(0, 188, 212, 0.9),
-    0 0 28px rgba(0, 188, 212, 0.55);
-  border: 2px solid #EAF2F5;
-}
-
-.tl-dot::after {
-  content: '';
-  position: absolute; inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 188, 212, 0.4);
-}
-
-.tl-card {
-  width: 100%;
-  padding: 22px 20px 24px 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.018) 100%);
-  border: 1px solid rgba(0, 188, 212, 0.28);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: var(--bg);
+  border: 2.5px solid var(--red);
   position: relative;
-  overflow: hidden;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  min-height: 168px;
-}
-
-.tl-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  opacity: 0.9;
-}
-
-.tl-card::after {
-  content: '';
-  position: absolute;
-  bottom: -50%; right: -30%;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.08), transparent 70%);
-  pointer-events: none;
-}
-
-.tl-name {
-  font-size: 22px;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
-  margin-bottom: 6px;
-  font-family: 'Inter', 'Noto Sans SC', sans-serif;
-  line-height: 1.15;
-}
-
-.tl-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--primary);
-  margin-bottom: 12px;
-  font-weight: 500;
-  opacity: 0.85;
-}
-
-.tl-divider {
-  width: 28px;
-  height: 2px;
-  background: var(--primary);
-  margin-bottom: 12px;
-  box-shadow: 0 0 8px var(--primary-glow);
-  border-radius: 1px;
-}
-
-.tl-desc {
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.65;
-  position: relative;
-  z-index: 1;
-}
-
-/* ---- BOTTOM STRIP ---- */
-.bottom-strip {
-  display: grid;
-  grid-template-columns: 480px 1fr;
-  gap: 24px;
-  margin-top: 18px;
-  position: relative;
-}
-
-.implication {
-  position: relative;
-  padding: 22px 26px 22px 28px;
-  background: linear-gradient(135deg, rgba(255, 112, 67, 0.12) 0%, rgba(255, 112, 67, 0.03) 100%);
-  border: 1px solid rgba(255, 112, 67, 0.55);
-  border-left: 4px solid var(--accent);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow:
-    0 8px 32px rgba(255, 112, 67, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.implication::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(255, 112, 67, 0.15), transparent 70%);
-  pointer-events: none;
-}
-
-.implication::after {
-  content: '';
-  position: absolute;
-  right: 20px; top: 20px;
-  width: 60px; height: 60px;
-  border: 1px solid rgba(255, 112, 67, 0.3);
-  border-radius: 50%;
-}
-
-.imp-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+  justify-content: center;
+  box-shadow: 0 0 0 6px rgba(192,57,43,0.15), 0 0 20px rgba(192,57,43,0.35);
+  margin-top: 14px;
+  margin-bottom: -14px;
 }
-
-.imp-icon {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  color: var(--accent);
-  font-weight: 600;
-  padding: 4px 10px;
-  border: 1px solid rgba(255, 112, 67, 0.5);
-  background: rgba(255, 112, 67, 0.08);
-  border-radius: 3px;
-}
-
-.imp-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
-  font-family: 'Inter', 'Noto Sans SC', sans-serif;
-}
-
-.imp-text {
-  font-size: 15px;
-  color: var(--text-main);
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
-}
-
-.imp-text .hi {
-  color: var(--accent-bright);
-  font-weight: 700;
-  border-bottom: 1px dashed rgba(255, 112, 67, 0.6);
-  padding-bottom: 1px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.stat {
-  padding: 16px 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(0, 188, 212, 0.2);
-  border-radius: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.stat::before {
+.circle-red::after {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 30%; height: 1px;
-  background: var(--primary);
-  opacity: 0.7;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px rgba(192,57,43,0.6);
 }
-
-.stat-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 26px;
-  color: var(--primary-bright);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  text-shadow: 0 0 12px rgba(0, 188, 212, 0.4);
-}
-
-.stat-label {
-  font-size: 11px;
-  color: var(--text-faint);
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-}
-
-/* ---- TOP-RIGHT DECOR ---- */
-.top-right-decor {
+.red-tick {
   position: absolute;
-  top: 52px;
-  right: 70px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  color: var(--text-faint);
-  text-align: right;
+  width: 2px;
+  height: 12px;
+  background: var(--red);
+  top: 124px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3;
-  font-weight: 500;
+}
+.description {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-dim);
+  text-align: center;
+  max-width: 260px;
+  margin-top: 12px;
+  letter-spacing: 0.4px;
+}
+.description.hi {
+  color: var(--ink);
 }
 
-.top-right-decor .tr-line {
-  margin-bottom: 4px;
+.cards-row {
+  display: flex;
+  gap: 28px;
+  margin-top: 40px;
+}
+.card {
+  flex: 1;
+  padding: 24px 28px;
+  background: linear-gradient(180deg, rgba(27,59,107,0.35) 0%, rgba(27,59,107,0.10) 100%);
+  border-left: 4px solid var(--gold);
+  position: relative;
+  border-top: 1px solid rgba(180,160,120,0.15);
+  border-bottom: 1px solid rgba(180,160,120,0.10);
+  border-right: 1px solid rgba(180,160,120,0.10);
+}
+.card.mcp {
+  border-left-color: var(--red);
+  background: linear-gradient(180deg, rgba(192,57,43,0.14) 0%, rgba(27,59,107,0.20) 100%);
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.card-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--ink-muted);
+}
+.card-tag {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  padding: 3px 10px;
+  border: 1px solid rgba(180,160,120,0.4);
+  border-radius: 2px;
+  font-family: var(--font-serif);
+}
+.card-tag.red {
+  color: var(--red);
+  border-color: rgba(192,57,43,0.55);
+}
+.card-value {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin: 6px 0 10px;
+}
+.card-value.red { color: var(--red); }
+.card-sub {
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 42px;
+  height: 3px;
+  background: var(--gold);
+}
+.card.mcp::after {
+  background: var(--red);
+}
+
+.footer {
+  margin-top: 32px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
+  gap: 18px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(180,160,120,0.22);
 }
-
-.top-right-decor .tr-dot {
-  width: 6px; height: 6px;
+.footer-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
   border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 8px var(--primary-glow);
-  animation: blink 1.6s ease-in-out infinite;
+  flex-shrink: 0;
 }
-
-.top-right-decor .tr-sep {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.6), transparent);
-  margin: 6px 0;
+.footer-text {
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: 2px;
+  font-family: var(--font-serif);
 }
-
-/* ---- ANIMATIONS ---- */
-@keyframes pulse {
-  0% { transform: scale(0.5); opacity: 0.8; }
-  70% { transform: scale(1.8); opacity: 0; }
-  100% { transform: scale(1.8); opacity: 0; }
+.footer-text .sep {
+  color: var(--gold);
+  margin: 0 6px;
 }
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+.footer-text .em {
+  color: var(--gold);
 }
-
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="grid-overlay"></div>
-    <div class="vignette"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-geo-tl"></div>
+    <div class="bg-geo-tr"></div>
+    <div class="bg-geo-br"></div>
+    <div class="bg-geo-bl"></div>
   </div>
   <div id="ct">
-
-    <div class="top-right-decor">
-      <div class="tr-line"><span class="tr-dot"></span><span>AGENT EVOLUTION / ACT I</span></div>
-      <div class="tr-sep"></div>
-      <div>SCROLL · 01 / 04</div>
-    </div>
-
     <div class="header">
-      <div class="meta-row">
-        <div class="meta-badge">ACT · 01 / 04</div>
-        <div class="meta-text">AGENT 演进史</div>
-        <div class="meta-sep"></div>
+      <div class="header-row">
+        <h1 class="title"><span>阶段二 · 能力硬化</span></h1>
+        <div class="year-tag">
+          <span class="year-num">2024</span>
+          <span class="year-label">YEAR</span>
+        </div>
       </div>
-
-      <div class="title-row">
-        <h1>阶段一 · 能力觉醒</h1>
-        <div class="year-tag">2022—2023</div>
-      </div>
-
-      <div class="subtitle">
-        <span class="subtitle-mark"></span>2022-2023 是 Agent 概念觉醒期：ReAct 论文把 <span class="hi-cyan">1980 年代 BDI 理论</span>推回产品层，Function Calling 让<span class="hi-orange">工具调用 API 原语</span>成为 LLM 交互的标配。
-      </div>
+      <p class="narrative"><span>2024 年 Agent 从能力验证走向协议标准化——</span><span class="hi-gold">Computer Use</span><span> 扩展能力边界，</span><span class="hi-red">MCP</span><span> 定义生态接口，两者组合让 Agent 具备生态化条件。</span></p>
     </div>
 
-    <div class="timeline-section">
-      <div class="timeline-grid">
-        <div class="timeline-rail"></div>
-
-        <div class="tl-node">
-          <div class="tl-head">
-            <div class="tl-index">NODE · 01</div>
-            <div class="tl-date">2022 · 10 · 06</div>
-          </div>
-          <div class="tl-dot-wrap">
-            <div class="tl-pulse"></div>
-            <div class="tl-pulse p2"></div>
-            <div class="tl-dot"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-name">ReAct</div>
-            <div class="tl-tag">REASONING × ACTING</div>
-            <div class="tl-divider"></div>
-            <div class="tl-desc">首次系统性展示"推理"与"行动"交替进行的 Agent 范式，把思维链与外部工具调用缝合起来。</div>
-          </div>
+    <div class="timeline-block">
+      <div class="timeline">
+        <div class="timeline-items">
+          <div class="node"><span class="date">2024</span><span class="title-en">Anthropic Tool Use GA</span></div>
+          <div class="node"><span class="date">2024-08</span><span class="title-en">OpenAI Structured Outputs</span></div>
+          <div class="node"><span class="date">2024-10</span><span class="title-en">Anthropic Computer Use</span></div>
+          <div class="node"><span class="date">2024-11-25</span><span class="title-en">MCP 发布</span></div>
+          <div class="node"><span class="date">制度含义</span><span class="title-en">协议即生态起点</span></div>
         </div>
 
-        <div class="tl-node">
-          <div class="tl-head">
-            <div class="tl-index">NODE · 02</div>
-            <div class="tl-date">2023 · 02</div>
+        <div class="timeline-row">
+          <div class="accent-line"></div>
+          <div class="timeline-row-inner">
+            <div class="node"><span class="dot"></span><p class="description">Claude 3 从 beta 走向生产可用，工具调用正式 GA</p></div>
+            <div class="node"><span class="dot"></span><p class="description">强 schema 校验，让输出结构可预测、可组合</p></div>
+            <div class="node"><span class="dot"></span><p class="description">Agent 从 API 走到 GUI，接管人类操作界面</p></div>
+            <div class="node">
+              <div class="circle-red"></div>
+              <span class="red-tick"></span>
+              <p class="description hi">首个开放协议标准化 agent-tools 接口，分水岭事件</p>
+            </div>
+            <div class="node"><span class="dot"></span><p class="description">协议是生态的起点；Computer Use 与 MCP 是能力与生态的分水岭</p></div>
           </div>
-          <div class="tl-dot-wrap">
-            <div class="tl-pulse"></div>
-            <div class="tl-pulse p2"></div>
-            <div class="tl-dot"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-name">Toolformer</div>
-            <div class="tl-tag">SELF-SUPERVISED TOOLS</div>
-            <div class="tl-divider"></div>
-            <div class="tl-desc">LLM 通过自监督学习自主决定是否调用外部 API，工具调用从"人工设计"走向"内生能力"。</div>
-          </div>
-        </div>
-
-        <div class="tl-node">
-          <div class="tl-head">
-            <div class="tl-index">NODE · 03</div>
-            <div class="tl-date">2023 · 03</div>
-          </div>
-          <div class="tl-dot-wrap">
-            <div class="tl-pulse"></div>
-            <div class="tl-pulse p2"></div>
-            <div class="tl-dot"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-name">AutoGPT</div>
-            <div class="tl-tag">VIRAL AUTOPILOT</div>
-            <div class="tl-divider"></div>
-            <div class="tl-desc">"自主 Agent 时刻" —— 一个循环调用 LLM 的开源项目病毒式传播，公众第一次大规模围观 Agent。</div>
-          </div>
-        </div>
-
-        <div class="tl-node">
-          <div class="tl-head">
-            <div class="tl-index">NODE · 04</div>
-            <div class="tl-date">2023 · 06</div>
-          </div>
-          <div class="tl-dot-wrap">
-            <div class="tl-pulse"></div>
-            <div class="tl-pulse p2"></div>
-            <div class="tl-dot"></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-name">Function Calling</div>
-            <div class="tl-tag">STANDARD PRIMITIVE</div>
-            <div class="tl-divider"></div>
-            <div class="tl-desc">主流模型厂商齐发工具调用 API 原语，Agent 从"论文里的实验"变成"可上线的工程能力"。</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="bottom-strip">
-      <div class="implication">
-        <div class="imp-header">
-          <div class="imp-icon">IMPLICATION</div>
-          <div class="imp-title">制度含义</div>
-        </div>
-        <div class="imp-text">用<span class="hi">新范式</span>激活<span class="hi">老理论</span>——跨域套利。</div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-num">04</div>
-          <div class="stat-label">关键节点 · KEY MOMENTS</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">8M</div>
-          <div class="stat-label">ReAct 论文引用 · CITATIONS</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">175K</div>
-          <div class="stat-label">AutoGPT 首周 Star</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">1980s</div>
-          <div class="stat-label">BDI 理论来源 · ORIGIN</div>
         </div>
       </div>
     </div>
 
+    <div class="cards-row">
+      <div class="card mcp">
+        <div class="card-head">
+          <span class="card-label">MCP 发布</span>
+          <span class="card-tag red">分水岭</span>
+        </div>
+        <div class="card-value red">2024-11-25</div>
+        <p class="card-sub">Model Context Protocol — Anthropic 主导，开放生态的第一份公共契约</p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <span class="card-label">Computer Use</span>
+          <span class="card-tag">能力边界</span>
+        </div>
+        <div class="card-value">2024-10</div>
+        <p class="card-sub">Claude 3.5 Sonnet 首次支持像素级 GUI 操作，Agent 从 API 走向桌面</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-dot"></div>
+      <div class="footer-text"><span class="em">能力 · 协议 · 生态</span><span>是一组递进关系——协议是生态的起点。</span></div>
+    </div>
   </div>
 </div>
 </body>

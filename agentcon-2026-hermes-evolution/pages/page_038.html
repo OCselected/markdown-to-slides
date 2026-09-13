@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>第四幕 · Agent 演化洞察</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --bg: #0F1E33;
+  --accent: #1B3B6B;
+  --gold: #B4A078;
+  --warm-white: #F5F0E8;
+  --warm-white-dim: rgba(245, 240, 232, 0.72);
+  --warm-white-faint: rgba(245, 240, 232, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0F1E33;
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96  0 0 0 0 0.94  0 0 0 0 0.91  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.9;
+}
+
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 40% 40%, rgba(27, 59, 107, 0.22) 0%, rgba(15, 30, 51, 0) 70%);
+}
+
+.bauhaus-decor {
+  position: absolute;
+  top: 90px;
+  right: 100px;
+  width: 260px;
+  height: 200px;
+  z-index: 0;
+  opacity: 0.92;
+}
+
+.bauhaus-decor-sm {
+  position: absolute;
+  top: 280px;
+  right: 40px;
+  width: 90px;
+  height: 90px;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px 100px;
+  color: var(--warm-white);
+}
+
+.top-marker {
+  position: absolute;
+  top: 60px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.marker-accent-bar {
+  width: 4px;
+  height: 44px;
+  background: var(--gold);
+}
+
+.marker-text .marker-act {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.marker-text .marker-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: rgba(245, 240, 232, 0.5);
+  margin-top: 6px;
+}
+
+.center-block {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  right: 100px;
+}
+
+.pre-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.6em;
+  color: var(--warm-white-faint);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 124px;
+  font-weight: 700;
+  color: var(--warm-white);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.main-title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.55em;
+  color: rgba(245, 240, 232, 0.42);
+  margin-top: 22px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 24px;
+  color: var(--warm-white-dim);
+  margin-top: 34px;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+}
+
+.subtitle-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.32);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.divider-row {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 610px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.divider-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  letter-spacing: 0.55em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(27, 59, 107, 0.9);
+}
+
+.divider-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.narrative-cols {
+  position: absolute;
+  top: 660px;
+  left: 100px;
+  right: 100px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.col {
+  flex: 1;
+  padding: 0 40px;
+}
+
+.col:first-child { padding-left: 0; }
+.col:last-child { padding-right: 0; }
+
+.col-tag {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.tag-line {
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.tag-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.col-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin: 0 0 14px 0;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.col-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: var(--warm-white-dim);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.col-divider {
+  width: 1px;
+  height: 130px;
+  background: rgba(245, 240, 232, 0.14);
+  align-self: center;
+}
+
+.bottom-preview {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.7em;
+  color: rgba(245, 240, 232, 0.28);
+  font-weight: 300;
+}
+
+.page-foot {
+  position: absolute;
+  bottom: 34px;
+  right: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.22);
+  font-weight: 300;
+}
+
+.page-foot-left {
+  position: absolute;
+  bottom: 34px;
+  left: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.22);
+  font-weight: 300;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="bg-vignette"></div>
+    <div class="bg-noise"></div>
+    <svg class="bauhaus-decor" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="20" x2="260" y2="20" stroke="#1B3B6B" stroke-width="1"/>
+      <circle cx="200" cy="60" r="42" fill="#B4A078"/>
+      <rect x="40" y="90" width="60" height="60" fill="none" stroke="#1B3B6B" stroke-width="2"/>
+      <circle cx="120" cy="150" r="10" fill="#1B3B6B"/>
+      <line x1="140" y1="130" x2="260" y2="130" stroke="#F5F0E8" stroke-width="1" opacity="0.35"/>
+      <rect x="150" y="10" width="8" height="8" fill="#F5F0E8" opacity="0.5"/>
+      <line x1="0" y1="180" x2="120" y2="180" stroke="#B4A078" stroke-width="1" opacity="0.6"/>
+    </svg>
+    <svg class="bauhaus-decor-sm" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="0" x2="90" y2="90" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
+      <line x1="90" y1="0" x2="0" y2="90" stroke="#1B3B6B" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div id="ct">
+    <div class="top-marker">
+      <div class="marker-accent-bar"></div>
+      <div class="marker-text">
+        <div class="marker-act">ACT&nbsp;IV</div>
+        <div class="marker-num">04&nbsp;/&nbsp;04</div>
+      </div>
+    </div>
+
+    <div class="center-block">
+      <div class="pre-title">PART&nbsp;IV&nbsp;·&nbsp;THE&nbsp;FOURTH&nbsp;ACT</div>
+      <h1 class="main-title">Agent 演化洞察</h1>
+      <div class="main-title-en">AGENT · EVOLUTIONARY INSIGHTS</div>
+      <div class="subtitle">从 12 案例中提炼的演化规律</div>
+      <div class="subtitle-en">EVOLUTIONARY LAWS EXTRACTED FROM TWELVE CASE STUDIES</div>
+    </div>
+
+    <div class="divider-row">
+      <div class="divider-label">本幕叙事骨架</div>
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+    </div>
+
+    <div class="narrative-cols">
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">核心</div>
+        </div>
+        <h3 class="col-title">从"能用"到"好用"的三道分水岭</h3>
+        <p class="col-desc">在能力阈值之上，Agent 才真正跨越体验的门槛。</p>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">方法</div>
+        </div>
+        <h3 class="col-title">12 案例 → 3 共性 → 3 洞察</h3>
+        <p class="col-desc">自下而上的归纳路径，从样本抽离出可迁移的结构。</p>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">目标</div>
+        </div>
+        <h3 class="col-title">理解 Agent 演化的内在规律</h3>
+        <p class="col-desc">看清技术迭代之下的驱动逻辑与演化节奏。</p>
+      </div>
+    </div>
+
+    <div class="page-foot-left">SECTION&nbsp;·&nbsp;IV</div>
+    <div class="bottom-preview">可靠性&nbsp;&nbsp;·&nbsp;&nbsp;兼容性&nbsp;&nbsp;·&nbsp;&nbsp;信任</div>
+    <div class="page-foot">END&nbsp;·&nbsp;OVERVIEW</div>
+  </div>
+</div>
+</body>
+</html>

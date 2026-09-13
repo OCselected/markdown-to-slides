@@ -1,547 +1,564 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>消费侧 · 弱代理的采纳信号 · Page 17</title>
+<title>供给侧总览 · 项目做了什么</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-:root {
-  --primary: #00BCD4;
-  --accent: #FF7043;
-  --neutral-dark: #1E293B;
-  --bg-0: #0B1220;
-  --bg-1: #111827;
-  --bg-2: #161E32;
-  --bg-3: #1E293B;
-  --text: #F1F5F9;
-  --text-2: #94A3B8;
-  --text-3: #64748B;
-  --border: #334155;
-  --border-light: #475569;
-  --cool: #475569;
+:root{
+  --bg:#0F1E33;
+  --bg-deep:#0A1626;
+  --accent:#1B3B6B;
+  --accent-2:#2C5088;
+  --gold:#B4A078;
+  --gold-dim:#7A6D4F;
+  --text:#F5F0E8;
+  --text-dim:#A9B3C4;
+  --text-fade:#77839A;
+  --line:rgba(180,160,120,0.22);
+  --line-soft:rgba(245,240,232,0.12);
+  --ink:#F5F0E8;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{box-sizing:border-box;}
 
-html, body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: #000;
-  color: var(--text);
+body{
+  margin:0;padding:0;
+  background:var(--bg-deep);
+  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #0B1220 0%, #0F172A 45%, #111827 100%);
+.wrapper{
+  width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;
+  background:linear-gradient(180deg, #0F1E33 0%, #0A1626 100%);
 }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+/* 背景装饰层：几何 + 微光 */
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.geo-circle{position:absolute;border:1px solid rgba(180,160,120,0.12);border-radius:50%;}
+.geo-square{position:absolute;border:1px solid rgba(180,160,120,0.10);}
+.geo-line{position:absolute;background:rgba(180,160,120,0.18);}
+.bg-glow{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;}
+.vignette{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(10,22,38,0.55) 100%);
+}
+.corner-tl{position:absolute;top:0;left:0;width:80px;height:80px;
+  border-top:1px solid rgba(180,160,120,0.55);
+  border-left:1px solid rgba(180,160,120,0.55);}
+.corner-br{position:absolute;bottom:0;right:0;width:80px;height:80px;
+  border-bottom:1px solid rgba(180,160,120,0.55);
+  border-right:1px solid rgba(180,160,120,0.55);}
+
+/* 内容层 */
+#ct{position:absolute;inset:0;z-index:1;padding:42px 60px 40px;
+  display:flex;flex-direction:column;gap:20px;}
+
+/* 顶部标题栏 */
+.header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.header::after{
+  content:'';position:absolute;bottom:-5px;left:0;width:56px;height:1px;background:var(--gold);
+}
+.h-left{display:flex;flex-direction:column;gap:6px;}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:0.28em;color:var(--gold);}
+.eyebrow .eb-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;}
+.eyebrow .eb-line{width:44px;height:1px;background:var(--gold);opacity:0.7;}
+h1{margin:0;font-family:'Noto Serif SC',serif;font-weight:600;font-size:36px;
+  letter-spacing:0.05em;color:var(--text);}
+.h1 .dotsep{color:var(--gold);margin:0 14px;font-weight:400;font-size:28px;}
+.h1 .sub{font-weight:400;font-size:26px;color:var(--text-dim);letter-spacing:0.03em;}
+.h-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-bottom:4px;}
+.h-meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;
+  color:var(--text-fade);text-transform:uppercase;}
+.h-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;
+  border:1px solid rgba(180,160,120,0.5);font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:0.25em;color:var(--gold);}
+.h-tag .tg-mark{width:5px;height:5px;background:var(--gold);display:inline-block;}
+
+/* 中部：大数字 + 图表 */
+.hero{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:44px;
+  flex:0 0 auto;height:428px;
 }
 
-#bg .grid-lines {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,188,212,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,188,212,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
+.hero-left{display:flex;flex-direction:column;}
+.big-number-block{display:flex;flex-direction:column;gap:12px;}
+.big-num-label{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:0.32em;color:var(--gold);}
+.big-num-label .bnl-bar{width:38px;height:1px;background:var(--gold);}
+.big-num-label .bnl-cn{letter-spacing:0.24em;}
+.big-num{
+  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:168px;
+  line-height:0.92;letter-spacing:-0.03em;color:var(--text);
+  display:flex;align-items:baseline;gap:22px;margin-top:6px;
+}
+.big-num .bn-unit{font-family:'Noto Serif SC',serif;font-weight:400;font-size:24px;
+  color:var(--text-dim);letter-spacing:0.14em;align-self:flex-end;padding-bottom:26px;}
+.big-num-desc{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:var(--text-dim);
+  line-height:1.7;margin-top:2px;padding-left:2px;}
+.big-num-desc .en{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-fade);
+  letter-spacing:0.12em;margin-left:8px;}
+
+.kpi-block{margin-top:22px;padding-top:20px;border-top:1px solid var(--line-soft);}
+.kpi-grid{display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:22px;}
+.kpi-item{display:flex;flex-direction:column;gap:4px;}
+.kpi-item .kpi-tag{
+  display:inline-block;padding:3px 10px;font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.22em;
+  border:1px solid rgba(180,160,120,0.5);color:var(--gold);width:fit-content;
+}
+.kpi-item .kpi-num{display:flex;align-items:baseline;gap:4px;margin-top:6px;}
+.kpi-item .kpi-num .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:52px;
+  line-height:1;color:var(--text);letter-spacing:-0.02em;}
+.kpi-item .kpi-num .unit{font-family:'Noto Sans SC',sans-serif;font-size:15px;
+  color:var(--text-dim);}
+.kpi-item .kpi-desc{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text-dim);
+  line-height:1.4;}
+.kpi-item.zero .kpi-num .num{color:var(--gold);}
+.kpi-item .kpi-tag.absent{
+  border-style:dashed;background:rgba(180,160,120,0.06);
 }
 
-#bg .glow-tl {
-  position: absolute;
-  top: -180px;
-  left: -160px;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,188,212,0.14) 0%, transparent 70%);
+.hero-right{display:flex;flex-direction:column;gap:10px;padding-left:32px;
+  border-left:1px solid var(--line-soft);position:relative;}
+.hero-right::before{
+  content:'';position:absolute;left:-5px;top:6px;width:9px;height:9px;background:var(--gold);
+  border-radius:50%;
 }
-
-#bg .glow-br {
-  position: absolute;
-  bottom: -200px;
-  right: -180px;
-  width: 560px;
-  height: 560px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,112,67,0.08) 0%, transparent 70%);
+.chart-title{display:flex;align-items:center;justify-content:space-between;}
+.chart-title .ct-main{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--text);
+  letter-spacing:0.06em;}
+.chart-title .ct-en{font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--text-fade);letter-spacing:0.22em;}
+#chart_1{width:520px;height:340px;}
+.chart-note{
+  display:flex;align-items:center;gap:12px;justify-content:center;
+  padding:8px 14px;border:1px solid var(--line);
+  font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text-dim);
+  letter-spacing:0.06em;line-height:1.4;
 }
+.chart-note .en{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);
+  letter-spacing:0.2em;margin-right:4px;}
+.chart-note .accent-mark{width:6px;height:6px;background:var(--gold);border-radius:50%;
+  flex-shrink:0;}
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 40px 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+/* 下部卡片行 */
+.cards-row{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
+  flex:1;min-height:0;
 }
-
-/* Title area */
-.title-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+.ct-card{
+  display:flex;flex-direction:column;padding:18px 18px 16px;
+  background:rgba(27,59,107,0.18);
+  border:1px solid var(--line-soft);
+  border-top:2px solid var(--accent-2);
+  position:relative;
+  overflow:hidden;
 }
+.ct-card .card-index{position:absolute;top:10px;right:12px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;
+  color:var(--gold-dim);}
+.ct-card .card-index .ci-num{color:var(--gold);}
+.ct-card .card-head{display:flex;flex-direction:column;gap:3px;padding-bottom:10px;
+  border-bottom:1px solid var(--line-soft);margin-bottom:12px;}
+.ct-card .card-title{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--text);
+  letter-spacing:0.06em;font-weight:500;}
+.ct-card .card-en{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-fade);
+  letter-spacing:0.22em;}
+.ct-card .card-body{display:flex;flex-direction:column;gap:9px;flex:1;}
 
-.title-left { display: flex; align-items: center; gap: 16px; }
+.bar-item{display:flex;flex-direction:column;gap:4px;}
+.bar-item .bi-row{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;}
+.bar-item .bi-name{color:var(--text);}
+.bar-item .bi-num{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:var(--gold);}
+.bar-item .bi-bar{width:100%;height:4px;background:rgba(180,160,120,0.14);position:relative;}
+.bar-item .bi-bar .fill{position:absolute;top:0;left:0;height:100%;background:var(--gold);}
+.bar-item.dim .bi-num{color:var(--text-dim);}
+.bar-item.dim .bi-bar .fill{background:var(--text-fade);opacity:0.7;}
+.bar-item.mute .bi-name{color:var(--text-fade);}
+.bar-item.mute .bi-num{color:var(--text-fade);}
+.bar-item.mute .bi-bar .fill{background:var(--text-fade);opacity:0.55;}
 
-.title-badge {
-  width: 8px;
-  height: 40px;
-  background: var(--primary);
-  border-radius: 2px;
-  box-shadow: 0 0 16px rgba(0,188,212,0.55);
+.prio-item{display:flex;gap:10px;align-items:flex-start;}
+.prio-item .pi-mark{width:28px;height:28px;border:1px solid rgba(180,160,120,0.55);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--gold);}
+.prio-item.absent .pi-mark{border-style:dashed;color:var(--text-fade);}
+.prio-item .pi-content{display:flex;flex-direction:column;gap:2px;flex:1;}
+.prio-item .pi-hint{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text);line-height:1.35;}
+.prio-item .pi-hint .hi-absent{color:var(--text-fade);font-style:italic;}
+.prio-item .pi-tag{font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--gold);letter-spacing:0.18em;}
+.prio-item.absent .pi-tag{color:var(--text-fade);}
+
+.card-body.text{gap:8px;}
+.card-body.text .ct-lead{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text-dim);
+  line-height:1.55;}
+.card-body.text .ct-lead .hi{color:var(--gold);font-weight:500;}
+.card-body.text .ct-hi{display:flex;align-items:baseline;gap:4px;padding:8px 10px;
+  background:rgba(180,160,120,0.10);border-left:2px solid var(--gold);}
+.card-body.text .ct-hi .hi-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:28px;
+  color:var(--gold);line-height:1;}
+.card-body.text .ct-hi .hi-u{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-dim);}
+.card-body.text .ct-hi .hi-l{margin-left:8px;font-family:'Noto Sans SC',sans-serif;font-size:11px;
+  color:var(--text);}
+
+.flow-item{display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Noto Sans SC',sans-serif;font-size:13px;padding:6px 4px;
+  border:1px solid var(--line-soft);background:rgba(15,30,51,0.4);}
+.flow-item .flow-arrow{color:var(--gold);font-size:11px;}
+.flow-item.current{border-color:var(--gold);background:rgba(180,160,120,0.14);
+  color:var(--text);font-weight:600;}
+.flow-item.current .fa-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;}
+.flow-note{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-dim);
+  line-height:1.55;}
+.flow-note .hi{color:var(--gold);}
+
+.seal-tag{
+  margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:10px;
+  border-top:1px dashed rgba(180,160,120,0.3);
+  font-family:'Noto Serif SC',serif;font-size:16px;color:var(--gold);letter-spacing:0.08em;
 }
+.seal-tag .seal-icon{width:18px;height:18px;border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:700;transform:rotate(45deg);}
+.seal-tag .seal-icon span{transform:rotate(-45deg);}
+.seal-tag .st-l{color:var(--text);}
 
-h1 {
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--text);
+/* 印章 */
+.seal{
+  position:absolute;right:52px;bottom:52px;
+  width:150px;height:150px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  background:radial-gradient(circle,rgba(180,160,120,0.16) 0%, rgba(15,30,51,0.55) 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 0 6px rgba(15,30,51,0.55), 0 0 30px rgba(180,160,120,0.10);
+  z-index:5;
 }
-
-.title-sub {
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--text-2);
-  letter-spacing: 0.5px;
+.seal::before{
+  content:'';position:absolute;inset:9px;border-radius:50%;
+  border:1px dashed rgba(180,160,120,0.55);
 }
+.seal-mark{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);
+  letter-spacing:0.22em;}
+.seal-line{width:36px;height:1px;background:rgba(180,160,120,0.55);margin:6px 0;}
+.seal-text{font-family:'Noto Serif SC',serif;font-size:30px;color:var(--gold);
+  letter-spacing:0.14em;font-weight:600;line-height:1;}
+.seal-sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);
+  letter-spacing:0.24em;margin-top:5px;}
 
-.title-right { display: flex; align-items: center; gap: 14px; }
+/* 页面右下角微页码 */
+.page-mark{position:absolute;left:60px;bottom:14px;font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--text-fade);letter-spacing:0.2em;z-index:4;}
 
-.page-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  background: rgba(30,41,59,0.6);
-  font-size: 12px;
-  color: var(--text-2);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.page-tag .num {
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.page-tag .divider {
-  width: 4px;
-  height: 4px;
-  background: var(--text-3);
-  border-radius: 50%;
-}
-
-/* Main content */
-.main {
-  display: grid;
-  grid-template-columns: 765px 1fr;
-  gap: 30px;
-  height: 440px;
-}
-
-/* Pyramid chart */
-.chart-wrap {
-  background: linear-gradient(180deg, rgba(30,41,59,0.55) 0%, rgba(11,18,32,0.35) 100%);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 22px 22px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.chart-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  opacity: 0.5;
-}
-
-.chart-title {
-  font-size: 13px;
-  color: var(--text-2);
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  align-self: flex-start;
-  margin-bottom: 4px;
-}
-
-.chart-total {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin: 4px 0 4px;
-}
-
-.chart-total .n {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: -0.5px;
-  line-height: 1;
-}
-
-.chart-total .lbl {
-  font-size: 12px;
-  color: var(--text-2);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.pyramid-svg {
-  width: 100%;
-  flex: 1;
-  display: block;
-  margin-top: 4px;
-}
-
-.chart-caption {
-  font-size: 11px;
-  color: var(--text-3);
-  letter-spacing: 0.5px;
-  margin-top: 6px;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* KPI grid */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 12px;
-  height: 100%;
-}
-
-.kpi {
-  position: relative;
-  padding: 18px 16px 16px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(30,41,59,0.6) 0%, rgba(17,24,39,0.5) 100%);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.kpi::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: var(--color-bar, var(--primary));
-}
-
-.kpi-metric {
-  font-size: 12px;
-  color: var(--text-2);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-  line-height: 1.3;
-  min-height: 30px;
-}
-
-.kpi-value {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
-  margin-bottom: 2px;
-  line-height: 1;
-}
-
-.kpi-value .num {
-  font-size: 38px;
-  font-weight: 800;
-  color: var(--color-val, var(--primary));
-  letter-spacing: -1px;
-  line-height: 1;
-}
-
-.kpi-value .unit {
-  font-size: 14px;
-  color: var(--text-2);
-  font-weight: 500;
-}
-
-.kpi-sub {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-sub, var(--primary));
-  margin-top: 6px;
-  line-height: 1.2;
-}
-
-.kpi-desc {
-  font-size: 11px;
-  color: var(--text-3);
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid rgba(51,65,85,0.5);
-  line-height: 1.5;
-  letter-spacing: 0.2px;
-}
-
-.kpi-1 { --color-bar: var(--primary); --color-val: var(--primary); }
-.kpi-2 { --color-bar: var(--accent); --color-val: var(--accent); --color-sub: var(--accent); }
-.kpi-3 { --color-bar: var(--primary); --color-val: var(--primary); --color-sub: var(--primary); }
-.kpi-4 { --color-bar: var(--cool); --color-val: var(--text-2); --color-sub: var(--text-2); }
-
-/* Footer */
-.footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.4fr;
-  gap: 16px;
-  height: 130px;
-}
-
-.release-card {
-  padding: 16px 20px;
-  background: linear-gradient(90deg, rgba(0,188,212,0.06) 0%, rgba(30,41,59,0.35) 100%);
-  border: 1px solid rgba(0,188,212,0.3);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.rc-label {
-  font-size: 12px;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.rc-value {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.rc-num {
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1;
-  letter-spacing: -0.5px;
-}
-
-.rc-unit {
-  font-size: 14px;
-  color: var(--text-2);
-  font-weight: 500;
-}
-
-.rc-date {
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--text-2);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.5px;
-}
-
-.signal-callout {
-  padding: 16px 20px;
-  background: rgba(255,112,67,0.06);
-  border: 1.5px solid var(--accent);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 0 24px rgba(255,112,67,0.08);
-}
-
-.signal-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 800;
-  flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(255,112,67,0.45);
-  position: relative;
-}
-
-.signal-icon::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,112,67,0.4);
-}
-
-.signal-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.signal-line1 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.35;
-  letter-spacing: 0.2px;
-}
-
-.signal-line1 .orange {
-  color: var(--accent);
-}
-
-.signal-line2 {
-  font-size: 12px;
-  color: var(--text-2);
-  margin-top: 4px;
-  line-height: 1.5;
-}
 </style>
 </head>
 <body>
 <div class="wrapper">
+
   <div id="bg">
-    <div class="grid-lines"></div>
-    <div class="glow-tl"></div>
-    <div class="glow-br"></div>
+    <div class="geo-circle" style="width:600px;height:600px;top:-200px;right:-180px;"></div>
+    <div class="geo-circle" style="width:340px;height:340px;bottom:-120px;left:-80px;border-color:rgba(180,160,120,0.08);"></div>
+    <div class="geo-square" style="width:120px;height:120px;top:170px;right:180px;transform:rotate(45deg);"></div>
+    <div class="geo-square" style="width:60px;height:60px;top:660px;left:820px;transform:rotate(15deg);border-color:rgba(180,160,120,0.08);"></div>
+    <div class="geo-line" style="width:1px;height:220px;top:210px;left:560px;"></div>
+    <div class="geo-line" style="width:220px;height:1px;bottom:170px;left:820px;"></div>
+    <div class="bg-glow" style="width:520px;height:520px;left:-100px;top:120px;background:rgba(27,59,107,0.55);"></div>
+    <div class="bg-glow" style="width:420px;height:420px;right:-100px;bottom:-100px;background:rgba(180,160,120,0.08);"></div>
+    <div class="vignette"></div>
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
   </div>
 
   <div id="ct">
-    <div class="title-area">
-      <div class="title-left">
-        <div class="title-badge"></div>
-        <div>
-          <h1>消费侧 · 弱代理的采纳信号</h1>
-          <div class="title-sub">Contributor Cohort × Release Cadence · Weak Proxy Indicators</div>
+
+    <!-- 顶部标题栏 -->
+    <div class="header">
+      <div class="h-left">
+        <div class="eyebrow">
+          <span class="eb-dot"></span>
+          <span>PROJECT OVERVIEW</span>
+          <span class="eb-line"></span>
+          <span>CHAPTER I</span>
         </div>
+        <h1 class="h1">
+          供给侧总览<span class="dotsep">·</span><span class="sub">项目做了什么</span>
+        </h1>
       </div>
-      <div class="title-right">
-        <div class="page-tag">
-          <span class="num">17</span>
-          <span class="divider"></span>
-          <span>Adoption Signals</span>
+      <div class="h-right">
+        <div class="h-meta">SUPPLY · 27,783 PRs · ANALYSIS 01</div>
+        <div class="h-tag">
+          <span class="tg-mark"></span>
+          <span>PR ANALYSIS</span>
         </div>
       </div>
     </div>
 
-    <div class="main">
-      <div class="chart-wrap">
-        <div class="chart-title">Contributor Pyramid</div>
-        <div class="chart-total">
-          <span class="n">397</span>
-          <span class="lbl">Total Contributors</span>
+    <!-- 中部：大数字 + 图表 -->
+    <div class="hero">
+      <div class="hero-left">
+        <div class="big-number-block">
+          <div class="big-num-label">
+            <span class="bnl-bar"></span>
+            <span>TOTAL PULL REQUESTS</span>
+            <span class="bnl-cn">总 提 交</span>
+          </div>
+          <div class="big-num">
+            <span class="bn-val">27,783</span>
+            <span class="bn-unit">条 PR</span>
+          </div>
+          <div class="big-num-desc">
+            过去分析窗口内的完整 PR 提交总量，构成本次供给侧观测的基数。<span class="en">BASE OF SUPPLY-LEVEL OBSERVATION</span>
+          </div>
         </div>
-        <svg class="pyramid-svg" viewBox="0 0 540 432" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="gTop" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#FF7043"/>
-              <stop offset="1" stop-color="#FF8A5C"/>
-            </linearGradient>
-            <linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#00BCD4"/>
-              <stop offset="1" stop-color="#00ACC1"/>
-            </linearGradient>
-            <linearGradient id="gBot" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#64748B"/>
-              <stop offset="1" stop-color="#475569"/>
-            </linearGradient>
-          </defs>
-
-          <polygon points="270,18 138,132 402,132" fill="url(#gTop)" stroke="#FF7043" stroke-width="1.5"/>
-          <polygon points="138,132 402,132 456,264 84,264" fill="url(#gMid)" stroke="#00BCD4" stroke-width="1.5"/>
-          <polygon points="84,264 456,264 468,414 72,414" fill="url(#gBot)" stroke="#64748B" stroke-width="1.5"/>
-
-          <text x="270" y="106" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">核心 · 21 人 · 5.3%</text>
-          <text x="270" y="208" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">活跃 · 143 人 · 36.0%</text>
-          <text x="270" y="350" text-anchor="middle" fill="#F1F5F9" font-size="17" font-weight="700" font-family="Inter, PingFang SC, Microsoft YaHei, sans-serif">外围 · 233 人 · 58.7%</text>
-        </svg>
-        <div class="chart-caption">Commit bands: 100+ · 10–99 · 1–9</div>
+        <div class="kpi-block">
+          <div class="kpi-grid">
+            <div class="kpi-item zero">
+              <span class="kpi-tag absent">P1 · ABSENT</span>
+              <div class="kpi-num"><span class="num">0</span><span class="unit">条</span></div>
+              <div class="kpi-desc">最高优先级缺席，无关键告警</div>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-tag">P2 · BUG</span>
+              <div class="kpi-num"><span class="num">89</span><span class="unit">%</span></div>
+              <div class="kpi-desc">中优先级全部投入 bug 修复</div>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-tag">P3 · FEATURE</span>
+              <div class="kpi-num"><span class="num">72</span><span class="unit">%</span></div>
+              <div class="kpi-desc">低优先级承载 feature 增长</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="kpi-grid">
-        <div class="kpi kpi-1">
-          <div class="kpi-metric">总 Contributors</div>
-          <div class="kpi-value"><span class="num">397</span></div>
-          <div class="kpi-sub">Total</div>
-          <div class="kpi-desc">stars/forks ≠ 真实使用<br>是弱代理</div>
+      <div class="hero-right">
+        <div class="chart-title">
+          <span class="ct-main">类型分布</span>
+          <span class="ct-en">TYPE DISTRIBUTION</span>
         </div>
-        <div class="kpi kpi-2">
-          <div class="kpi-metric">核心 · 100+ commits</div>
-          <div class="kpi-value"><span class="num">21</span><span class="unit">人</span></div>
-          <div class="kpi-sub">5.3%</div>
-          <div class="kpi-desc">Top 1 teknium1<br>14,638 commits</div>
-        </div>
-        <div class="kpi kpi-3">
-          <div class="kpi-metric">活跃 · 10-99 commits</div>
-          <div class="kpi-value"><span class="num">143</span><span class="unit">人</span></div>
-          <div class="kpi-sub">36.0%</div>
-          <div class="kpi-desc">10-99 commits 持续贡献</div>
-        </div>
-        <div class="kpi kpi-4">
-          <div class="kpi-metric">外围 · 1-9 commits</div>
-          <div class="kpi-value"><span class="num">233</span><span class="unit">人</span></div>
-          <div class="kpi-sub">58.7%</div>
-          <div class="kpi-desc">1-9 commits 一次性接触</div>
+        <div id="chart_1" style="width:520px;height:340px;"></div>
+        <div class="chart-note">
+          <span class="accent-mark"></span>
+          <span><span class="en">NOTE</span> 类型层面呈 50 : 50 均衡 — 收敛并非通过偏重 bug 达成</span>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="release-card">
-        <div class="rc-label">Releases · 总发布</div>
-        <div class="rc-value">
-          <span class="rc-num">32</span>
-          <span class="rc-unit">个 release</span>
+    <!-- 底部 5 张卡片 -->
+    <div class="cards-row">
+      <div class="ct-card">
+        <div class="card-index"><span class="ci-num">01</span> / 05</div>
+        <div class="card-head">
+          <span class="card-title">组件活跃度</span>
+          <span class="card-en">COMPONENT ACTIVE</span>
         </div>
-        <div class="rc-date">2026-03-12 → 2026-09-07</div>
-      </div>
-      <div class="release-card">
-        <div class="rc-label">Recent Cadence</div>
-        <div class="rc-value">
-          <span class="rc-num">5</span>
-          <span class="rc-unit">release / 8 月</span>
+        <div class="card-body">
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">Agent</span><span class="bi-num">26%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:26%;"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">Gateway</span><span class="bi-num">22%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:22%;"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">核心层合计</span><span class="bi-num">48%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:48%;"></div></div>
+          </div>
+          <div class="bar-item dim">
+            <div class="bi-row"><span class="bi-name">CLI</span><span class="bi-num">17%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:17%;"></div></div>
+          </div>
         </div>
-        <div class="rc-date">近月发布频率提升</div>
       </div>
-      <div class="signal-callout">
-        <div class="signal-icon">!</div>
-        <div class="signal-content">
-          <div class="signal-line1"><span class="orange">stars/forks ≠ 真实使用</span> —— 是弱代理</div>
-          <div class="signal-line2">需结合 commit depth / release cadence 综合判断真实采纳</div>
+
+      <div class="ct-card">
+        <div class="card-index"><span class="ci-num">02</span> / 05</div>
+        <div class="card-head">
+          <span class="card-title">优先级策略</span>
+          <span class="card-en">PRIORITY STRATEGY</span>
+        </div>
+        <div class="card-body">
+          <div class="prio-item absent">
+            <div class="pi-mark">P1</div>
+            <div class="pi-content">
+              <span class="pi-hint"><span class="hi-absent">缺席</span> · 无 P1 类任务</span>
+              <span class="pi-tag">0 / 100</span>
+            </div>
+          </div>
+          <div class="prio-item">
+            <div class="pi-mark">P2</div>
+            <div class="pi-content">
+              <span class="pi-hint">全给 <span style="color:var(--gold);">Bug</span> 修复</span>
+              <span class="pi-tag">89 / 100</span>
+            </div>
+          </div>
+          <div class="prio-item">
+            <div class="pi-mark">P3</div>
+            <div class="pi-content">
+              <span class="pi-hint">养 <span style="color:var(--gold);">Feature</span> 增量</span>
+              <span class="pi-tag">72 / 100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-card">
+        <div class="card-index"><span class="ci-num">03</span> / 05</div>
+        <div class="card-head">
+          <span class="card-title">风险分布</span>
+          <span class="card-en">RISK DISTRIBUTION</span>
+        </div>
+        <div class="card-body">
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">兼容性</span><span class="bi-num">56%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:56%;"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">安全</span><span class="bi-num">26%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:26%;"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bi-row"><span class="bi-name">消息</span><span class="bi-num">22%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:22%;"></div></div>
+          </div>
+          <div class="bar-item mute">
+            <div class="bi-row"><span class="bi-name">会话</span><span class="bi-num">21%</span></div>
+            <div class="bi-bar"><div class="fill" style="width:21%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-card">
+        <div class="card-index"><span class="ci-num">04</span> / 05</div>
+        <div class="card-head">
+          <span class="card-title">制度含义</span>
+          <span class="card-en">STRUCTURAL MEANING</span>
+        </div>
+        <div class="card-body text">
+          <div class="ct-lead">项目正从 <span class="hi">扩张期</span> 进入 <span class="hi">稳定化期</span>，治理重心从"做更多"转向"守更牢"。</div>
+          <div class="ct-hi">
+            <span class="hi-n">48%</span><span class="hi-u">核心层</span>
+            <span class="hi-l">承担过半交付</span>
+          </div>
+          <div class="ct-lead" style="font-size:11px;">
+            <span style="color:var(--gold);">→</span> 存量可靠性 优先于 增量扩张
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-card">
+        <div class="card-index"><span class="ci-num">05</span> / 05</div>
+        <div class="card-head">
+          <span class="card-title">项目阶段</span>
+          <span class="card-en">LIFECYCLE STAGE</span>
+        </div>
+        <div class="card-body">
+          <div class="flow-item">
+            <span>扩张期</span>
+            <span class="flow-arrow">▶</span>
+          </div>
+          <div class="flow-item current">
+            <span class="fa-dot"></span>
+            <span style="margin-left:4px;">稳定化期</span>
+          </div>
+          <div class="flow-item">
+            <span class="flow-arrow">▶</span>
+            <span style="margin-left:4px;">维护期</span>
+          </div>
+          <div class="flow-note">
+            当前位于 <span class="hi">稳定化期</span>：交付收敛至核心层，边界明确、优先次序清晰。
+          </div>
+          <div class="seal-tag">
+            <span class="seal-icon"><span>◆</span></span>
+            <span>结论 · 收敛型</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- 右下印章 -->
+    <div class="seal">
+      <span class="seal-mark">CONVERGENT</span>
+      <span class="seal-line"></span>
+      <span class="seal-text">收敛型</span>
+      <span class="seal-sub">STRATEGY</span>
+    </div>
+
+    <div class="page-mark">P.01 — SUPPLY / OVERVIEW</div>
+
   </div>
-</div>
+
+  <script src="../assets/echarts.min.js"></script>
+  <script>
+  (function(){
+    var dom = document.getElementById('chart_1');
+    var chart = echarts.init(dom, null, {renderer:'svg'});
+    var option = {
+      backgroundColor:'transparent',
+      tooltip:{show:false},
+      legend:{
+        orient:'vertical',
+        right:'2%',
+        top:'center',
+        itemGap:22,
+        icon:'rect',
+        itemWidth:14,
+        itemHeight:14,
+        textStyle:{color:'#F5F0E8',fontSize:13,family:'Noto Sans SC',fontWeight:400},
+        data:[
+          {name:'Bug Fix'},
+          {name:'Feature'}
+        ],
+        formatter:function(name){
+          return name === 'Bug Fix' ? 'Bug Fix  修复类   50%' : 'Feature  特性类   50%';
+        }
+      },
+      series:[{
+        type:'pie',
+        radius:['46%','72%'],
+        center:['28%','50%'],
+        avoidLabelOverlap:false,
+        label:{
+          show:true,
+          position:'center',
+          formatter:[
+            '{a|50 : 50}',
+            '{b|BALANCED}',
+            '{c|TYPE SPLIT}'
+          ].join('\n'),
+          rich:{
+            a:{fontSize:24,color:'#F5F0E8',fontFamily:'JetBrains Mono',fontWeight:700,lineHeight:32,letterSpacing:2},
+            b:{fontSize:10,color:'#B4A078',fontFamily:'JetBrains Mono',letterSpacing:4,lineHeight:18},
+            c:{fontSize:9,color:'#77839A',fontFamily:'JetBrains Mono',letterSpacing:2,lineHeight:14}
+          }
+        },
+        labelLine:{show:false},
+        itemStyle:{
+          borderColor:'#0F1E33',
+          borderWidth:2
+        },
+        emphasis:{scale:false,itemStyle:{borderColor:'#B4A078',borderWidth:2}},
+        data:[
+          {value:50,name:'Bug Fix',itemStyle:{color:'#1B3B6B'}},
+          {value:50,name:'Feature',itemStyle:{color:'#B4A078'}}
+        ]
+      }]
+    };
+    chart.setOption(option);
+    window.__pptxChartsReady = (window.__pptxChartsReady || 0) + 1;
+  })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>Release 节奏观察</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary: #1B3B6B;
+  --bg: #0F1E33;
+  --text: #F5F0E8;
+  --amber: #B4A078;
+  --amber-bright: #D4B886;
+  --muted: rgba(245,240,232,0.55);
+  --dot-muted: rgba(245,240,232,0.65);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 25% 15%, rgba(27,59,107,0.55) 0%, rgba(15,30,51,1) 65%);
+}
+
+.bg-warmth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 85% 90%, rgba(180,160,120,0.07) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px;
+}
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+.deco-circle-tr {
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(180,160,120,0.20);
+  top: -260px; right: -160px;
+}
+.deco-square-bl {
+  width: 90px; height: 90px;
+  background: rgba(180,160,120,0.14);
+  bottom: 160px; left: -30px;
+}
+.deco-line-h-top {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 100px;
+  height: 1px;
+  background: rgba(180,160,120,0.35);
+  z-index: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 15px;
+}
+
+.title-block {
+  max-width: 780px;
+}
+
+h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--amber-bright);
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.subtitle-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--amber);
+  margin-right: 16px;
+}
+
+.kpi-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.kpi {
+  min-width: 150px;
+  padding: 14px 22px;
+  border: 1px solid rgba(180,160,120,0.35);
+  background: rgba(27,59,107,0.35);
+  position: relative;
+}
+.kpi-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.kpi-value {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.kpi-unit {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--amber);
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.timeline-section {
+  margin-top: 48px;
+  position: relative;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  padding: 0 20px;
+}
+
+.timeline-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--amber);
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.timeline-meta {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.timeline {
+  position: relative;
+  height: 140px;
+  margin: 0 20px;
+}
+
+.timeline-axis {
+  position: absolute;
+  top: 70px;
+  left: 0; right: 0;
+  height: 1px;
+  background: rgba(245,240,232,0.35);
+}
+
+.timeline-band {
+  position: absolute;
+  top: 45px;
+  left: 42%;
+  width: 20%;
+  height: 50px;
+  background: rgba(180,160,120,0.12);
+  border-top: 1px solid rgba(180,160,120,0.5);
+  border-bottom: 1px solid rgba(180,160,120,0.5);
+}
+
+.timeline-band-label {
+  position: absolute;
+  top: 14px;
+  left: 42%;
+  width: 20%;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--amber-bright);
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.dot {
+  position: absolute;
+  top: 66px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-muted);
+  transform: translateX(-50%);
+}
+
+.dot.named {
+  width: 16px;
+  height: 16px;
+  top: 62px;
+  background: var(--amber-bright);
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 0 4px rgba(180,160,120,0.15);
+}
+
+.timeline-scale {
+  position: relative;
+  height: 30px;
+  margin: 0 20px;
+  margin-top: 6px;
+}
+
+.scale-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.tick-mark {
+  width: 1px;
+  height: 8px;
+  background: rgba(245,240,232,0.35);
+  margin: 0 auto;
+}
+
+.tick-label {
+  margin-top: 6px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.insight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--amber);
+  background: rgba(27,59,107,0.30);
+  position: relative;
+}
+
+.insight-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--amber);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.insight-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.insight-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.quote-wrap {
+  position: absolute;
+  bottom: 44px;
+  left: 60px;
+  right: 60px;
+  text-align: center;
+}
+
+.quote-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(180,160,120,0.6);
+  margin: 0 auto 16px;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+  <div class="bg-warmth"></div>
+
+  <div class="deco deco-circle-tr"></div>
+  <div class="deco deco-square-bl"></div>
+  <div class="deco deco-line-h-top"></div>
+
+  <div id="ct">
+    <div class="header">
+      <div class="title-block">
+        <h1>Release 节奏观察</h1>
+        <div class="subtitle"><span class="subtitle-line"></span><span>33 releases / 180 天</span></div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-label"><span>总 Releases</span></div>
+          <div class="kpi-value">33</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label"><span>窗口</span></div>
+          <div class="kpi-value">180<span class="kpi-unit">天</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label"><span>命名 Release</span></div>
+          <div class="kpi-value">6<span class="kpi-unit">个</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <div class="timeline-header">
+        <span class="timeline-title">发布节奏 · 时间线</span>
+        <span class="timeline-meta">180 天 · 33 次发布</span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-band-label"><span>命名 Release 密集区 · 2026-05 → 2026-07</span></div>
+        <div class="timeline-band"></div>
+        <div class="timeline-axis"></div>
+
+        <div class="dot" style="left:0.5%"></div>
+        <div class="dot" style="left:3%"></div>
+        <div class="dot" style="left:6%"></div>
+        <div class="dot" style="left:9%"></div>
+        <div class="dot" style="left:12%"></div>
+        <div class="dot" style="left:15%"></div>
+        <div class="dot" style="left:18%"></div>
+        <div class="dot" style="left:21%"></div>
+        <div class="dot" style="left:24%"></div>
+        <div class="dot" style="left:27%"></div>
+        <div class="dot" style="left:30%"></div>
+        <div class="dot" style="left:33%"></div>
+        <div class="dot" style="left:36%"></div>
+        <div class="dot" style="left:39%"></div>
+        <div class="dot" style="left:42%"></div>
+        <div class="dot" style="left:63%"></div>
+        <div class="dot" style="left:66%"></div>
+        <div class="dot" style="left:69%"></div>
+        <div class="dot" style="left:72%"></div>
+        <div class="dot" style="left:75%"></div>
+        <div class="dot" style="left:78%"></div>
+        <div class="dot" style="left:81%"></div>
+        <div class="dot" style="left:84%"></div>
+        <div class="dot" style="left:87%"></div>
+        <div class="dot" style="left:90%"></div>
+        <div class="dot" style="left:93%"></div>
+        <div class="dot" style="left:96%"></div>
+
+        <div class="dot named" style="left:45%"></div>
+        <div class="dot named" style="left:48%"></div>
+        <div class="dot named" style="left:51%"></div>
+        <div class="dot named" style="left:54%"></div>
+        <div class="dot named" style="left:57%"></div>
+        <div class="dot named" style="left:60%"></div>
+      </div>
+
+      <div class="timeline-scale">
+        <div class="scale-tick" style="left:0%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 0 天</div>
+        </div>
+        <div class="scale-tick" style="left:25%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 45 天</div>
+        </div>
+        <div class="scale-tick" style="left:50%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 90 天</div>
+        </div>
+        <div class="scale-tick" style="left:75%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 135 天</div>
+        </div>
+        <div class="scale-tick" style="left:100%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 180 天</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights">
+      <div class="insight">
+        <div class="insight-num"><span>01 / 密度</span></div>
+        <div class="insight-title">≈ 5.5 天 / Release</div>
+        <div class="insight-desc">33 次发布摊到 180 天窗口，平均不到一周一次——持续、稳定、有节制的推送。</div>
+      </div>
+      <div class="insight">
+        <div class="insight-num"><span>02 / 命名</span></div>
+        <div class="insight-title">6 次命名 Release</div>
+        <div class="insight-desc">集中在 2026-05 至 2026-07，是节奏中最亮的一段——项目被赋予名字，也意味着承诺。</div>
+      </div>
+      <div class="insight">
+        <div class="insight-num"><span>03 / Patch</span></div>
+        <div class="insight-title">"认错仪式"</div>
+        <div class="insight-desc">同日热修复紧随其后，被称作社区式的认错仪式——承认错误，然后立即修复，这是节奏的一部分。</div>
+      </div>
+    </div>
+
+    <div class="quote-wrap">
+      <div class="quote-line"></div>
+      <div class="quote-text">Release 节奏是社区自我组织的节奏——不是行政命令能促成的。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

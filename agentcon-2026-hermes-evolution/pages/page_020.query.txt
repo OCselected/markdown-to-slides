@@ -1,9 +1,5 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是制度经济学视角下的 Williamson 与 Roland 理论框架的交叉融合，核心概念是"层次 × 时间的分析矩阵"。页面顶部以主标题"制度经济学视角 · Williamson × Roland"呈现，副标题写明"层次 × 时间的分析矩阵"，点明这一页要把两个理论维度合二为一。
+我需要一页 PPT，主题是"Release 命名文化 · 田野观察第 1 章"，副标题点明"把 release 当作文化事件"。整体风格是深普鲁士蓝底（#0F1E33）的暗色学术调性，主色为深普鲁士蓝（#1B3B6B），辅色用暖金色 #B4A078 做点缀，正文用暖白 #F5F0E8，字体上标题用衬线（Noto Serif SC），正文用无衬线（Noto Sans SC），装饰以包豪斯几何元素（圆、方、线）为主，不依赖图标，气质克制、理性、有智识感。
 
-核心视觉区域建议做成一个双象限/分栏的结构：左半侧对应 Williamson 的 L1-L4 层次递进（L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置），右半侧对应 Roland 2004 的快慢维度（slow-moving 的文化和规范 ↔ fast-moving 的政治制度），两个象限交汇的中心区域标注"大分流 2.0"，体现层次与时间维度的交叉。四个要点分别是：Williamson L1-L4 的层次链条、Roland 2004 的快慢对比、合用矩阵——层次 × 时间回答"在哪里受阻"与"为什么受阻"两个问题、以及"大分流 2.0"的应用——中国行政开源属于 fast-moving 移植，全球协作文化属于 slow-moving。
-
-底部用一行叙事性总结收束：Williamson 的静态层次加上 Roland 的动态速度，构成"层次 × 时间"的分析矩阵，"大分流 2.0"的核心问题——中国行政开源卡在哪一层、为什么卡——正是这个矩阵能回答的。
-
-整页没有可用的配图，请用纯文字与 CSS 装饰把版面填满，不要留大片空白。风格上追求科技感、暗色系，主色是青蓝绿 #00BCD4，点缀色为暖橙 #FF7043，背景采用深色系 #1E293B，字体以 Inter 无衬线为主，字号基准 16px。整体排版要专业、清晰，有层次递进与维度的对比感，体现分析矩阵的严谨与前沿。
+页面版式建议：顶部左对齐写大标题与副标题，右上角放两个 KPI 数字——"Releases 33 个"和"命名 Release 6 个"，用小号标签 + 大号数字的对比。中部左侧是一段叙事短文，原文如下："Hermes 的 release 不是版本号，是文化事件。6 个命名 release 用希腊神话/概念词汇命名，每个命名背后都是一个制度主张——这是开源项目的'仪式'。" 右侧主体是 6 张卡片，按 2 行 3 列排布，每张卡片一个 release 名 + 一句注解，内容依次是：Judgment——"P0/P1 清零战役——700 highest-priority items cleared in 12 days"；Tenacity——"'finishes what it starts'——多 agent kanban 平台"；Surface——"'Hermes meets you wherever you work'——原生 desktop + Web admin"；Velocity——"'16,000 行 → 3,821 行'——大重构"；Quicksilver——"'first token time 80% 下降'——性能爆发"；Patch——"热修复——dashboard 401 reload loop"。卡片之间用细线或几何分隔，保持呼吸感。底部可放一句收束："release 命名 = 制度主张的仪式化表达"。这一页没有可用的配图，请用纯文字 + CSS 几何装饰把版面填满，不要留大片空白，也请保留所有原始英文引号内容不做翻译。

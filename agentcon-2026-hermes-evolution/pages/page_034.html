@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>从"能用"到"好用"的跃迁</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1E33;
+  --accent-blue: #1B3B6B;
+  --accent-blue-bright: #3A6BB0;
+  --accent-gold: #B4A078;
+  --accent-gold-bright: #D4BE95;
+  --text: #F5F0E8;
+  --text-muted: #9AA8BC;
+  --text-dim: #6C7B91;
+  --line: rgba(245, 240, 232, 0.12);
+  --line-strong: rgba(245, 240, 232, 0.28);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 1000px 750px at 22% 12%, rgba(27, 59, 107, 0.6), transparent 65%);
+}
+.parchment-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 800px 600px at 78% 82%, rgba(180, 160, 120, 0.07), transparent 65%);
+}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 48px 72px 44px 72px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bauhaus decorations */
+.deco-ring {
+  position: absolute;
+  top: -110px;
+  right: -80px;
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(180, 160, 120, 0.22);
+  border-radius: 50%;
+}
+.deco-square {
+  position: absolute;
+  bottom: 46px;
+  left: 42px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(180, 160, 120, 0.5);
+}
+.deco-line-v {
+  position: absolute;
+  top: 200px;
+  left: 42px;
+  width: 1px;
+  height: 180px;
+  background: rgba(180, 160, 120, 0.28);
+}
+.deco-dot-gold {
+  position: absolute;
+  top: 260px;
+  right: 42px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+}
+.deco-dot-blue {
+  position: absolute;
+  top: 280px;
+  right: 42px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-blue-bright);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.marker-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+}
+.marker-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+}
+.marker-text .sep {
+  color: var(--text-dim);
+  margin: 0 6px;
+}
+.page-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--text-dim);
+}
+
+/* Title */
+.title-block {
+  padding: 26px 0 32px 0;
+}
+h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+h1 .q {
+  color: var(--accent-gold);
+  font-weight: 900;
+}
+.subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+.subtitle .sep {
+  color: var(--accent-gold);
+  margin: 0 12px;
+}
+
+/* Clash */
+.clash {
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  align-items: center;
+  gap: 32px;
+  padding: 30px 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+.side {
+  display: flex;
+  flex-direction: column;
+}
+.side-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+.side-tag .num {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+.big-word {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 132px;
+  line-height: 1;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+.big-word.gold {
+  color: var(--accent-gold-bright);
+}
+.side-divider {
+  width: 52px;
+  height: 2px;
+  background: var(--text-dim);
+  margin-bottom: 14px;
+}
+.side-divider.gold {
+  background: var(--accent-gold);
+}
+.side-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  max-width: 560px;
+}
+.side-desc .em {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Arrow */
+.arrow-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.arrow-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  color: var(--accent-gold);
+  padding-left: 0.5em;
+}
+.arrow-visual {
+  display: flex;
+  align-items: center;
+}
+.arrow-line {
+  width: 70px;
+  height: 2px;
+  background: var(--accent-gold);
+}
+.arrow-head {
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid var(--accent-gold);
+  margin-left: -1px;
+}
+
+/* Evidence */
+.evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+.ev-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ev-marker {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-blue-bright);
+  position: relative;
+  flex-shrink: 0;
+}
+.ev-marker::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--accent-gold);
+}
+.ev-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text);
+}
+.ev-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.ev-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.ev-card {
+  border: 1px solid var(--line-strong);
+  padding: 22px 26px;
+  background: rgba(15, 30, 51, 0.4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ev-card-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--accent-gold);
+}
+.ev-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--text-dim);
+}
+.ev-card-tag .num {
+  color: var(--accent-gold);
+}
+.ev-card-body {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+  font-weight: 500;
+}
+.ev-card-body .hl {
+  color: var(--accent-gold);
+}
+.ev-card-codes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--accent-gold);
+  background: rgba(180, 160, 120, 0.08);
+  padding: 4px 10px;
+  border: 1px solid rgba(180, 160, 120, 0.3);
+  letter-spacing: 0.02em;
+}
+.code.dim {
+  color: var(--text-muted);
+  background: rgba(245, 240, 232, 0.03);
+  border-color: var(--line);
+}
+
+.footnote {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.footnote-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: 1px solid rgba(180, 160, 120, 0.35);
+}
+.footnote-text {
+  color: var(--text-muted);
+}
+.footnote-text .em {
+  color: var(--text);
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="parchment-glow"></div>
+    <div class="deco-ring"></div>
+    <div class="deco-square"></div>
+    <div class="deco-line-v"></div>
+    <div class="deco-dot-gold"></div>
+    <div class="deco-dot-blue"></div>
+  </div>
+  <div id="ct">
+    <div class="top-bar">
+      <div class="marker">
+        <div class="marker-dot"></div>
+        <div class="marker-text">田野摘录<span class="sep">·</span>消费侧信任研究</div>
+      </div>
+      <div class="page-num">§ 01</div>
+    </div>
+
+    <div class="title-block">
+      <h1>从<span class="q">"能用"</span>到<span class="q">"好用"</span>的跃迁</h1>
+      <div class="subtitle">消费侧信任<span class="sep">·</span>作为可观察信号</div>
+    </div>
+
+    <div class="clash">
+      <div class="side side-left">
+        <div class="side-tag"><span class="num">01</span> · 起 点</div>
+        <div class="big-word">能用</div>
+        <div class="side-divider"></div>
+        <div class="side-desc">
+          <span class="em">功能可用</span>——CLI 能启动、gateway 能连接、agent 能响应。
+        </div>
+      </div>
+
+      <div class="arrow-zone">
+        <div class="arrow-label">跃 迁</div>
+        <div class="arrow-visual">
+          <div class="arrow-line"></div>
+          <div class="arrow-head"></div>
+        </div>
+      </div>
+
+      <div class="side side-right">
+        <div class="side-tag"><span class="num">02</span> · 目 标</div>
+        <div class="big-word gold">好用</div>
+        <div class="side-divider gold"></div>
+        <div class="side-desc">
+          <span class="em">信任可用</span>——历史不被污染、平台不被锁死、能力有安全边界。
+        </div>
+      </div>
+    </div>
+
+    <div class="evidence">
+      <div class="ev-header">
+        <div class="ev-marker"></div>
+        <div class="ev-title">跃迁证据</div>
+        <div class="ev-rule"></div>
+      </div>
+      <div class="ev-cards">
+        <div class="ev-card">
+          <div class="ev-card-bar"></div>
+          <div class="ev-card-tag"><span class="num">A</span> · 证据 · 特征侧</div>
+          <div class="ev-card-body">feature issue 自带<span class="hl">安全边界标签</span></div>
+          <div class="ev-card-codes">
+            <span class="code">#67002</span>
+            <span class="code">#66353</span>
+          </div>
+        </div>
+        <div class="ev-card">
+          <div class="ev-card-bar"></div>
+          <div class="ev-card-tag"><span class="num">B</span> · 证据 · 承诺侧</div>
+          <div class="ev-card-body"><span class="hl">P1</span> 清零承诺</div>
+          <div class="ev-card-codes">
+            <span class="code dim">Judgment Release</span>
+            <span class="code dim">"keeping P0/P1 at 0"</span>
+          </div>
+        </div>
+      </div>
+      <div class="footnote">
+        <div class="footnote-label">制度含义</div>
+        <div class="footnote-text">
+          <span class="em">消费侧信任是可观察的信号</span>——用户在索取能力的同时，主动索取安全收口。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

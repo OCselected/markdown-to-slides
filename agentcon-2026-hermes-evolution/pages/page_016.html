@@ -1,326 +1,387 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>供需匹配 · desktop 是唯一缺口</title>
+<title>需求侧总览 · 用户要什么</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="../assets/echarts.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap');
+  :root{
+    --bg:#0F1E33;
+    --prussian:#1B3B6B;
+    --prussian-light:#2C5A96;
+    --gold:#B4A078;
+    --gold-dim:#8C7D5F;
+    --ink:#F5F0E8;
+    --ink-soft:rgba(245,240,232,0.62);
+    --ink-mute:rgba(245,240,232,0.42);
+    --line:rgba(180,160,120,0.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#08111F;color:var(--ink);font-family:"Noto Sans SC","Inter",sans-serif;}
+  .wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+  #bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  #ct{position:absolute;inset:0;z-index:2;padding:52px 68px 44px;box-sizing:border-box;}
 
-:root{
-  --bg:#0B1220;
-  --panel:#1E293B;
-  --panel-2:#172033;
-  --line:#2B3A55;
-  --primary:#00BCD4;
-  --primary-soft:rgba(0,188,212,0.15);
-  --warn:#FF7043;
-  --warn-soft:rgba(255,112,67,0.18);
-  --text:#E6EEF7;
-  --text-dim:#8FA3BD;
-  --text-mute:#5B6C86;
-}
+  /* ===== 背景装饰层（包豪斯几何） ===== */
+  #bg .parchment{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(135deg,#0F1E33 0%,#12294A 55%,#0F1E33 100%);
+  }
+  #bg .grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(180,160,120,0.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(180,160,120,0.05) 1px,transparent 1px);
+    background-size:80px 80px;
+    opacity:.7;
+  }
+  #bg .corner-tl{position:absolute;top:0;left:0;width:180px;height:180px;}
+  #bg .corner-tl .sq{position:absolute;top:44px;left:44px;width:78px;height:78px;border:1.5px solid var(--gold);opacity:.4;}
+  #bg .corner-tl .dot{position:absolute;top:0;left:0;width:16px;height:16px;background:var(--gold);opacity:.7;}
+  #bg .corner-tr{position:absolute;top:0;right:0;width:360px;height:220px;}
+  #bg .corner-tr .ring{position:absolute;top:24px;right:52px;width:160px;height:160px;border-radius:50%;border:1.5px solid var(--gold);opacity:.35;}
+  #bg .corner-tr .ring2{position:absolute;top:60px;right:88px;width:88px;height:88px;border-radius:50%;border:1px solid var(--gold);opacity:.5;}
+  #bg .corner-tr .hline{position:absolute;top:110px;right:0;width:220px;height:1px;background:var(--gold);opacity:.55;}
+  #bg .corner-bl{position:absolute;bottom:0;left:0;width:280px;height:180px;}
+  #bg .corner-bl .vline{position:absolute;left:80px;bottom:0;width:1px;height:140px;background:var(--gold);opacity:.45;}
+  #bg .corner-bl .sq{position:absolute;bottom:32px;left:32px;width:48px;height:48px;background:var(--gold);opacity:.14;}
+  #bg .corner-br{position:absolute;bottom:0;right:0;width:340px;height:220px;}
+  #bg .corner-br .arc{position:absolute;bottom:-80px;right:-80px;width:260px;height:260px;border-radius:50%;border:1.5px solid var(--gold);opacity:.3;}
+  #bg .corner-br .tri{position:absolute;bottom:40px;right:60px;width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:44px solid var(--gold);opacity:.16;}
+  #bg .center-c{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;border:1px dashed rgba(180,160,120,0.10);}
+  #bg .noisy{position:absolute;left:60px;bottom:180px;font-family:"Noto Serif SC",Georgia,serif;font-style:italic;font-size:14px;color:var(--gold);opacity:.45;letter-spacing:2px;}
 
-*{box-sizing:border-box;margin:0;padding:0;}
+  /* ===== 顶部标题区 ===== */
+  .topbar{position:relative;height:120px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+  .topbar::after{content:"";position:absolute;left:0;bottom:-1px;width:120px;height:2px;background:var(--gold);}
+  .topbar .row1{display:flex;align-items:baseline;gap:22px;}
+  .topbar .num{font-family:"Inter",sans-serif;font-weight:600;font-size:13px;color:var(--gold);letter-spacing:3px;}
+  .topbar h1{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:40px;color:var(--ink);letter-spacing:1px;}
+  .topbar .en{font-family:"Inter",sans-serif;font-weight:300;font-size:13px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;margin-left:auto;}
+  .topbar .row2{margin-top:14px;display:flex;align-items:flex-start;gap:16px;}
+  .topbar .marker{width:4px;height:56px;background:var(--gold);flex-shrink:0;margin-top:4px;}
+  .topbar .narrative{font-family:"Noto Sans SC",sans-serif;font-size:16.5px;line-height:1.65;color:var(--ink-soft);max-width:1180px;}
+  .topbar .narrative strong{color:var(--ink);font-weight:500;}
+  .topbar .narrative .hi{color:var(--gold);font-weight:600;}
 
-html,body{background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans SC',sans-serif;letter-spacing:0.01em;}
+  /* ===== 主体 ===== */
+  .body{position:relative;display:grid;grid-template-columns:560px 1fr;gap:44px;margin-top:26px;height:570px;}
 
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+  /* ----- 左列 ----- */
+  .col-left{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding-right:12px;}
+  .anchor{position:relative;padding:8px 0 18px;border-bottom:1px solid var(--line);}
+  .anchor .kicker{font-family:"Inter",sans-serif;font-size:12px;color:var(--gold);letter-spacing:5px;margin-bottom:6px;}
+  .anchor .big{font-family:"Noto Serif SC",Georgia,serif;font-weight:900;font-size:158px;line-height:.95;color:var(--ink);letter-spacing:-3px;position:relative;display:inline-block;}
+  .anchor .big .comma{color:var(--gold);}
+  .anchor .big-wrap{position:relative;display:inline-block;padding-right:6px;}
+  .anchor .big-wrap::before{content:"";position:absolute;left:-16px;top:14px;width:6px;height:6px;background:var(--gold);}
+  .anchor .big-wrap::after{content:"";position:absolute;right:-32px;bottom:22px;width:34px;height:1.5px;background:var(--gold);}
+  .anchor .cap{margin-top:10px;display:flex;align-items:center;gap:12px;}
+  .anchor .cap .sq{width:12px;height:12px;background:var(--gold);}
+  .anchor .cap .lbl{font-family:"Noto Sans SC",sans-serif;font-weight:500;font-size:19px;color:var(--ink);letter-spacing:2px;}
+  .anchor .cap .en{font-family:"Inter",sans-serif;font-weight:300;font-size:12px;color:var(--ink-mute);letter-spacing:3px;margin-left:6px;}
 
-#bg{position:absolute;inset:0;z-index:0;}
-.bg-grid{position:absolute;inset:0;background-image:
-  linear-gradient(rgba(0,188,212,0.05) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(0,188,212,0.05) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:radial-gradient(ellipse at 70% 40%,black 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at 70% 40%,black 30%,transparent 75%);
-}
-.bg-glow{position:absolute;top:-160px;right:-160px;width:640px;height:640px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,188,212,0.22),rgba(0,188,212,0) 65%);filter:blur(20px);}
-.bg-glow-2{position:absolute;bottom:-220px;left:-160px;width:560px;height:560px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,112,67,0.14),rgba(255,112,67,0) 65%);filter:blur(20px);}
-.bg-noise{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(11,18,32,0) 0%,rgba(11,18,32,0.55) 100%);}
+  .kpi{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+  .kpi-card{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:linear-gradient(90deg,rgba(27,59,107,0.55),rgba(27,59,107,0.15));border-left:3px solid var(--gold);}
+  .kpi-card .l{display:flex;flex-direction:column;gap:2px;}
+  .kpi-card .p-tag{font-family:"Inter",sans-serif;font-weight:600;font-size:12px;color:var(--gold);letter-spacing:3px;}
+  .kpi-card .p-note{font-family:"Noto Sans SC",sans-serif;font-size:12.5px;color:var(--ink-mute);letter-spacing:1px;}
+  .kpi-card .v{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:44px;color:var(--ink);line-height:1;}
+  .kpi-card .v .unit{font-size:16px;color:var(--gold);margin-left:4px;font-weight:400;}
+  .kpi-card.alert{background:linear-gradient(90deg,rgba(180,160,120,0.28),rgba(180,160,120,0.06));border-left-color:#E8C376;}
+  .kpi-card.alert .v{color:#E8C376;}
 
-#ct{position:absolute;inset:0;z-index:1;padding:44px 56px 40px;box-sizing:border-box;display:flex;flex-direction:column;}
+  /* ----- 右列 ----- */
+  .col-right{position:relative;display:flex;flex-direction:column;gap:18px;}
+  .sec-title{display:flex;align-items:center;gap:14px;}
+  .sec-title .circle{width:10px;height:10px;border-radius:50%;background:var(--gold);}
+  .sec-title .zh{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:2px;}
+  .sec-title .en{font-family:"Inter",sans-serif;font-weight:300;font-size:11px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;}
+  .sec-title .rule{flex:1;height:1px;background:var(--line);}
 
-/* Header */
-.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:18px;border-bottom:1px solid var(--line);position:relative;}
-.head::after{content:"";position:absolute;left:0;bottom:-1px;width:280px;height:2px;background:linear-gradient(90deg,var(--primary),transparent);}
-.head-left{display:flex;flex-direction:column;gap:8px;}
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--primary);letter-spacing:0.28em;font-weight:600;text-transform:uppercase;}
-.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--primary);box-shadow:0 0 12px var(--primary);}
-.eyebrow .pg{color:var(--text-mute);letter-spacing:0.18em;}
-h1{font-size:40px;font-weight:800;line-height:1.1;color:var(--text);letter-spacing:-0.01em;}
-h1 .accent{color:var(--warn);}
-.sub{font-size:14px;color:var(--text-dim);font-weight:400;margin-top:2px;}
+  /* 饼图区 */
+  .chart-block{position:relative;display:grid;grid-template-columns:300px 1fr;gap:24px;padding:14px 20px;background:rgba(15,30,51,0.55);border:1px solid rgba(180,160,120,0.18);}
+  .chart-block .cmark{position:absolute;top:0;left:0;width:36px;height:2px;background:var(--gold);}
+  .chart-block .corner{position:absolute;bottom:0;right:0;width:2px;height:36px;background:var(--gold);}
+  #chart_1{width:300px;height:200px;}
+  .chart-meta{display:flex;flex-direction:column;justify-content:center;gap:8px;padding-left:8px;border-left:1px solid var(--line);padding-top:6px;padding-bottom:6px;}
+  .meta-row{display:flex;align-items:center;gap:12px;}
+  .meta-row .sw{width:14px;height:14px;flex-shrink:0;}
+  .meta-row .sw.a{background:#4A7BB8;}
+  .meta-row .sw.b{background:#B4A078;}
+  .meta-row .name{font-family:"Inter",sans-serif;font-size:12px;color:var(--gold-dim);letter-spacing:2px;min-width:72px;}
+  .meta-row .val{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:24px;color:var(--ink);}
+  .meta-row .val .pct{color:var(--gold);font-size:18px;margin-left:2px;}
+  .meta-row .zh{font-family:"Noto Sans SC",sans-serif;font-size:12.5px;color:var(--ink-soft);margin-left:auto;}
+  .chart-caption{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--ink-mute);line-height:1.5;padding-left:8px;border-left:1px solid var(--line);margin-top:2px;}
+  .chart-caption .hi{color:var(--gold);}
 
-.head-right{display:flex;align-items:center;gap:10px;}
-.chip{padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:rgba(30,41,59,0.6);font-size:12px;color:var(--text-dim);display:flex;align-items:center;gap:8px;font-weight:500;}
-.chip .k{color:var(--primary);font-weight:700;letter-spacing:0.08em;font-size:11px;}
-.chip.warn{border-color:rgba(255,112,67,0.5);background:var(--warn-soft);color:var(--warn);}
-.chip.warn .k{color:var(--warn);}
+  /* 组件热度 */
+  .heat-wrap{display:flex;flex-direction:column;gap:10px;}
+  .heat-rows{display:flex;flex-direction:column;gap:10px;}
+  .heat-row{display:grid;grid-template-columns:110px 1fr 68px;gap:14px;align-items:center;}
+  .heat-row .tier{font-family:"Noto Sans SC",sans-serif;font-size:11px;color:var(--ink-mute);letter-spacing:2px;line-height:1.3;}
+  .heat-row .tier .tag{display:inline-block;padding:2px 6px;background:rgba(180,160,120,0.16);color:var(--gold);border-radius:2px;font-size:10px;letter-spacing:2px;margin-right:6px;}
+  .heat-row .chips{display:flex;gap:10px;}
+  .chip{position:relative;flex:1;padding:10px 14px;background:rgba(27,59,107,0.5);border-left:2px solid var(--gold);display:flex;align-items:center;justify-content:space-between;}
+  .chip.top{background:rgba(180,160,120,0.18);border-left-color:#E8C376;}
+  .chip .n{font-family:"Inter",sans-serif;font-weight:600;font-size:15px;color:var(--ink);letter-spacing:1px;}
+  .chip.top .n{color:#E8C376;}
+  .chip .p{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:20px;color:var(--gold);}
+  .chip.top .p{color:#E8C376;font-size:22px;}
+  .heat-row .total{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:22px;color:var(--ink);text-align:right;}
+  .heat-row .total .s{font-size:11px;color:var(--gold);letter-spacing:2px;display:block;font-family:"Inter",sans-serif;font-weight:400;}
 
-/* Body */
-.body{flex:1;display:grid;grid-template-columns:1fr 340px;gap:24px;margin-top:22px;min-height:0;}
+  .heat-sum{display:flex;align-items:center;gap:14px;padding:10px 16px;background:rgba(15,30,51,0.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .heat-sum .dot{width:8px;height:8px;background:var(--gold);}
+  .heat-sum .txt{font-family:"Noto Sans SC",sans-serif;font-size:13px;color:var(--ink-soft);letter-spacing:1px;}
+  .heat-sum .txt strong{color:var(--gold);font-weight:600;}
+  .heat-sum .bar{flex:1;height:6px;background:rgba(180,160,120,0.12);position:relative;overflow:hidden;}
+  .heat-sum .bar .fill{position:absolute;left:0;top:0;bottom:0;width:57%;background:linear-gradient(90deg,var(--gold) 0%,#E8C376 100%);}
+  .heat-sum .pct{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:18px;color:#E8C376;}
 
-/* Table card */
-.table-card{background:linear-gradient(180deg,rgba(30,41,59,0.85),rgba(23,32,51,0.85));border:1px solid var(--line);border-radius:12px;padding:22px 24px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.table-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--primary) 0%,transparent 60%);}
-
-.tc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.tc-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:0.02em;display:flex;align-items:center;gap:10px;}
-.tc-title .bar{width:3px;height:14px;background:var(--primary);border-radius:2px;box-shadow:0 0 8px var(--primary);}
-.tc-meta{font-size:11px;color:var(--text-mute);letter-spacing:0.12em;font-weight:500;}
-
-table{width:100%;border-collapse:separate;border-spacing:0 6px;font-family:'Inter','Noto Sans SC',sans-serif;}
-thead th{font-size:11px;font-weight:600;color:var(--text-mute);letter-spacing:0.18em;text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px dashed var(--line);}
-thead th.c1{width:26%;}
-thead th.c2{width:36%;}
-thead th.c3{width:38%;text-align:right;}
-
-tbody tr{background:rgba(255,255,255,0.02);transition:all .2s;}
-tbody td{padding:13px 12px;vertical-align:middle;border-top:1px solid rgba(43,58,85,0.5);border-bottom:1px solid rgba(43,58,85,0.5);}
-tbody td:first-child{border-left:1px solid rgba(43,58,85,0.5);border-radius:6px 0 0 6px;}
-tbody td:last-child{border-right:1px solid rgba(43,58,85,0.5);border-radius:0 6px 6px 0;text-align:right;}
-
-.type{display:flex;align-items:center;gap:10px;}
-.type .tag{font-family:'Inter',monospace;font-size:15px;font-weight:700;color:var(--text);letter-spacing:0.02em;}
-.type .marker{width:8px;height:8px;border-radius:2px;background:var(--primary);box-shadow:0 0 6px rgba(0,188,212,0.6);}
-
-.bars{display:flex;align-items:center;gap:12px;}
-.bars .track{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;position:relative;}
-.bars .fill{height:100%;background:linear-gradient(90deg,rgba(0,188,212,0.5),var(--primary));border-radius:4px;box-shadow:0 0 6px rgba(0,188,212,0.4);}
-.bars .num{width:52px;font-size:18px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;text-align:right;}
-
-.gap{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;}
-.gap.pos{color:var(--primary);}
-.gap.neg{color:var(--text-mute);}
-
-/* Highlight row */
-tr.highlight td{background:linear-gradient(90deg,rgba(255,112,67,0.18),rgba(255,112,67,0.08))!important;border-top-color:rgba(255,112,67,0.6)!important;border-bottom-color:rgba(255,112,67,0.6)!important;position:relative;}
-tr.highlight td:first-child{border-left:2px solid var(--warn);border-left-width:2px;}
-tr.highlight td:last-child{border-right:1px solid rgba(255,112,67,0.6);}
-tr.highlight .type .tag{color:var(--warn);}
-tr.highlight .type .marker{background:var(--warn);box-shadow:0 0 8px rgba(255,112,67,0.8);}
-tr.highlight .bars .fill{background:linear-gradient(90deg,rgba(255,112,67,0.5),var(--warn));box-shadow:0 0 8px rgba(255,112,67,0.5);}
-tr.highlight .bars .num{color:var(--warn);}
-tr.highlight .gap.neg{color:var(--warn);}
-.warn-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--warn);border-radius:4px;background:rgba(255,112,67,0.15);color:var(--warn);font-size:11px;font-weight:700;letter-spacing:0.06em;margin-left:10px;}
-
-/* Side column */
-.side{display:flex;flex-direction:column;gap:14px;min-height:0;}
-
-.stat-card{background:linear-gradient(180deg,rgba(30,41,59,0.85),rgba(23,32,51,0.85));border:1px solid var(--line);border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;}
-.stat-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,var(--primary) 0%,transparent 80%);}
-.stat-label{font-size:11px;color:var(--text-mute);letter-spacing:0.16em;font-weight:600;text-transform:uppercase;margin-bottom:10px;}
-.stat-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;}
-.stat-item{flex:1;}
-.stat-item .v{font-size:32px;font-weight:800;color:var(--text);line-height:1;font-variant-numeric:tabular-nums;}
-.stat-item .v.warn{color:var(--warn);}
-.stat-item .v .u{font-size:16px;font-weight:600;color:var(--text-dim);margin-left:2px;}
-.stat-item .l{font-size:11px;color:var(--text-dim);margin-top:4px;letter-spacing:0.08em;font-weight:500;}
-.stat-divider{width:1px;height:36px;background:var(--line);align-self:center;}
-.match-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid rgba(0,188,212,0.4);border-radius:4px;background:var(--primary-soft);color:var(--primary);font-size:11px;font-weight:700;letter-spacing:0.06em;margin-top:8px;}
-.match-badge.warn{border-color:rgba(255,112,67,0.5);background:var(--warn-soft);color:var(--warn);}
-
-.callout{background:linear-gradient(135deg,rgba(0,188,212,0.08),rgba(0,188,212,0.02));border:1px solid rgba(0,188,212,0.25);border-radius:12px;padding:16px 18px;}
-.callout .c-tag{font-size:11px;color:var(--primary);letter-spacing:0.16em;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-.callout .c-tag::before{content:"";width:14px;height:1px;background:var(--primary);}
-.callout .c-text{font-size:13px;color:var(--text);line-height:1.6;font-weight:400;}
-.callout .c-text strong{color:var(--primary);font-weight:700;}
-.callout .c-text .num{color:var(--primary);font-weight:700;font-variant-numeric:tabular-nums;}
-
-.mini-bars{margin-top:12px;display:flex;flex-direction:column;gap:8px;}
-.mb-row{display:flex;align-items:center;gap:10px;font-size:11px;}
-.mb-row .name{width:52px;color:var(--text-dim);font-weight:600;letter-spacing:0.04em;}
-.mb-row .bar{flex:1;height:6px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;position:relative;}
-.mb-row .bar span{display:block;height:100%;background:var(--primary);border-radius:3px;}
-.mb-row .bar span.warn{background:var(--warn);}
-.mb-row .val{width:42px;color:var(--text);font-weight:700;font-variant-numeric:tabular-nums;text-align:right;}
-
-/* Footer */
-.footer{margin-top:16px;padding:16px 22px;background:linear-gradient(90deg,rgba(255,112,67,0.10),rgba(0,188,212,0.06));border:1px solid var(--line);border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:center;gap:20px;}
-.footer::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:linear-gradient(180deg,var(--warn),var(--primary));}
-.footer .ico{font-size:22px;color:var(--warn);flex-shrink:0;}
-.footer .narr{font-size:14px;color:var(--text);line-height:1.6;font-weight:500;flex:1;}
-.footer .narr .h{color:var(--warn);font-weight:700;}
-.footer .narr .g{color:var(--primary);font-weight:700;}
-.footer .narr .sep{color:var(--text-mute);margin:0 8px;}
-.footer .quote{padding-left:20px;border-left:1px solid var(--line);font-size:13px;color:var(--text-dim);line-height:1.55;font-style:italic;max-width:360px;}
-.footer .quote strong{color:var(--primary);font-weight:700;font-style:normal;}
+  /* ===== 底部收束 ===== */
+  .footer{position:relative;margin-top:20px;padding:22px 32px 20px;background:linear-gradient(90deg,rgba(180,160,120,0.08),rgba(180,160,120,0.02));border-left:4px solid var(--gold);display:flex;align-items:center;gap:26px;}
+  .footer::before{content:"";position:absolute;right:32px;top:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);opacity:.35;}
+  .footer .mark{font-family:"Noto Serif SC",Georgia,serif;font-size:44px;color:var(--gold);line-height:1;font-weight:700;}
+  .footer .txt-wrap{flex:1;}
+  .footer .zh{font-family:"Noto Serif SC",Georgia,serif;font-weight:700;font-size:22px;color:var(--ink);letter-spacing:2px;line-height:1.4;}
+  .footer .zh em{color:var(--gold);font-style:normal;font-weight:900;}
+  .footer .en{margin-top:6px;font-family:"Inter",sans-serif;font-weight:300;font-size:11px;color:var(--ink-mute);letter-spacing:4px;text-transform:uppercase;}
+  .footer .stamp{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 14px;border:1px solid var(--gold);opacity:.75;}
+  .footer .stamp .k{font-family:"Inter",sans-serif;font-size:10px;color:var(--gold);letter-spacing:3px;}
+  .footer .stamp .v{font-family:"Noto Serif SC",Georgia,serif;font-size:13px;color:var(--ink);}
 
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-    <div class="bg-noise"></div>
+    <div class="parchment"></div>
+    <div class="grid"></div>
+    <div class="center-c"></div>
+    <div class="corner-tl">
+      <div class="sq"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="corner-tr">
+      <div class="ring"></div>
+      <div class="ring2"></div>
+      <div class="hline"></div>
+    </div>
+    <div class="corner-bl">
+      <div class="vline"></div>
+      <div class="sq"></div>
+    </div>
+    <div class="corner-br">
+      <div class="arc"></div>
+      <div class="tri"></div>
+    </div>
   </div>
 
   <div id="ct">
-    <!-- Header -->
-    <div class="head">
-      <div class="head-left">
-        <div class="eyebrow">
-          <span class="dot"></span>
-          <span>DATA ANALYSIS</span>
-          <span class="pg">/ 04 SUPPLY-DEMAND</span>
-          <span class="pg">· PAGE 16</span>
-        </div>
-        <h1>供需匹配 · <span class="accent">desktop 是唯一缺口</span></h1>
-        <div class="sub">四类形态整体匹配良好，仅桌面端呈现结构性供给欠配</div>
+
+    <!-- 顶部标题区 -->
+    <div class="topbar">
+      <div class="row1">
+        <span class="num">01 / 需求侧总览</span>
+        <h1>用户要什么</h1>
+        <span class="en">Demand Side Overview · Issue Anatomy</span>
       </div>
-      <div class="head-right">
-        <div class="chip"><span class="k">MATCH</span><span>3 / 4</span></div>
-        <div class="chip warn"><span class="k">GAP</span><span>desktop ⚠</span></div>
+      <div class="row2">
+        <div class="marker"></div>
+        <div class="narrative">
+          <strong>41,792</strong> 条 issues 呈现出 <span class="hi">「长尾需求 + 极少火警」</span> 的结构——<strong>P1 仅 3 条</strong>，<strong>P3 占 68%</strong>；用户并非什么都想要的初用者，而是 <span class="hi">成熟的使用者</span>：能自己定位问题、清晰表达诉求、把长尾需求稳稳铺在低优先级上。
+        </div>
       </div>
     </div>
 
-    <!-- Body -->
+    <!-- 主体 -->
     <div class="body">
-      <!-- Table -->
-      <div class="table-card">
-        <div class="tc-head">
-          <div class="tc-title"><span class="bar"></span><span>类型 × 需求占比 × 供给占比</span></div>
-          <div class="tc-meta">DEMAND VS SUPPLY · 2024</div>
+
+      <!-- 左列：大数字 + KPI -->
+      <div class="col-left">
+        <div>
+          <div class="anchor">
+            <div class="kicker">TOTAL ISSUES · 全量样本</div>
+            <div class="big-wrap"><span class="big">41<span class="comma">,</span>792</span></div>
+            <div class="cap">
+              <div class="sq"></div>
+              <span class="lbl">总 Issues 数量</span>
+              <span class="en">Cumulative Volume</span>
+            </div>
+          </div>
+
+          <div class="kpi">
+            <div class="kpi-card alert">
+              <div class="l">
+                <span class="p-tag">P1 · CRITICAL</span>
+                <span class="p-note">火警级 · 全量样本中极少</span>
+              </div>
+              <div class="v">3<span class="unit">条</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="l">
+                <span class="p-tag">P2 · MAJOR</span>
+                <span class="p-note">中等优先级 · 结构性需求</span>
+              </div>
+              <div class="v">28<span class="unit">%</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="l">
+                <span class="p-tag">P3 · MINOR</span>
+                <span class="p-note">低优先级 · 长尾铺陈</span>
+              </div>
+              <div class="v">68<span class="unit">%</span></div>
+            </div>
+          </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th class="c1">类型</th>
-              <th class="c2">需求占比</th>
-              <th class="c3">供给占比 · Δ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="type"><span class="marker"></span><span class="tag">agent</span></div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:88%"></div></div>
-                  <div class="num">22%</div>
-                </div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:104%"></div></div>
-                  <div class="num">26%</div>
-                </div>
-                <div class="gap pos" style="margin-top:6px;text-align:right;">✅ +4%</div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="type"><span class="marker"></span><span class="tag">gateway</span></div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:72%"></div></div>
-                  <div class="num">18%</div>
-                </div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:88%"></div></div>
-                  <div class="num">22%</div>
-                </div>
-                <div class="gap pos" style="margin-top:6px;text-align:right;">✅ +4%</div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="type"><span class="marker"></span><span class="tag">cli</span></div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:72%"></div></div>
-                  <div class="num">18%</div>
-                </div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:68%"></div></div>
-                  <div class="num">17%</div>
-                </div>
-                <div class="gap pos" style="margin-top:6px;text-align:right;">✅ −1%</div>
-              </td>
-            </tr>
-            <tr class="highlight">
-              <td>
-                <div class="type"><span class="marker"></span><span class="tag">desktop</span></div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:44%"></div></div>
-                  <div class="num">11%</div>
-                </div>
-              </td>
-              <td>
-                <div class="bars">
-                  <div class="track"><div class="fill" style="width:32%"></div></div>
-                  <div class="num">8%</div>
-                </div>
-                <div style="margin-top:6px;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:8px;">
-                  <span class="warn-badge">⚠️ 供给欠配</span>
-                  <span class="gap neg">−3%</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
-      <!-- Side -->
-      <div class="side">
-        <div class="stat-card">
-          <div class="stat-label">整体匹配度</div>
-          <div class="stat-row">
-            <div class="stat-item">
-              <div class="v">53<span class="u">%</span></div>
-              <div class="l">需求 · BUG</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="v">50<span class="u">%</span></div>
-              <div class="l">供给 · BUG</div>
-            </div>
-          </div>
-          <div class="match-badge">✓ Δ 3% · 类型比例整体一致</div>
+      <!-- 右列：饼图 + 组件热度 -->
+      <div class="col-right">
+
+        <div class="sec-title">
+          <span class="circle"></span>
+          <span class="zh">诉求类型 · 质量 vs 功能</span>
+          <span class="en">Bug ↔ Feature</span>
+          <span class="rule"></span>
         </div>
 
-        <div class="callout">
-          <div class="c-tag">SUPPLY BREAKDOWN</div>
-          <div class="c-text">
-            需求 <span class="num">53%</span> 集中在 <strong>BUG 修复</strong>，供给 <span class="num">50%</span> 同样以 BUG 为主 —— 总量匹配良好，问题出在<strong>形态分布</strong>。
-          </div>
-          <div class="mini-bars">
-            <div class="mb-row"><span class="name">需求</span><div class="bar"><span style="width:53%"></span></div><span class="val">53%</span></div>
-            <div class="mb-row"><span class="name">供给</span><div class="bar"><span class="warn" style="width:50%"></span></div><span class="val">50%</span></div>
+        <div class="chart-block">
+          <div class="cmark"></div>
+          <div class="corner"></div>
+          <div id="chart_1" style="width:300px;height:200px;"></div>
+          <div>
+            <div class="chart-meta">
+              <div class="meta-row">
+                <span class="sw a"></span>
+                <span class="name">BUG</span>
+                <span class="val">50<span class="pct">%</span></span>
+                <span class="zh">质量诉求</span>
+              </div>
+              <div class="meta-row">
+                <span class="sw b"></span>
+                <span class="name">FEATURE</span>
+                <span class="val">50<span class="pct">%</span></span>
+                <span class="zh">功能诉求</span>
+              </div>
+            </div>
+            <div class="chart-caption">Bug 与 Feature <span class="hi">等量并置</span>：修复诉求与新增诉求各占一半，产品处于<span class="hi">健康的双轨迭代</span>状态。</div>
           </div>
         </div>
+
+        <div class="sec-title">
+          <span class="circle"></span>
+          <span class="zh">组件热度 · 分层热度榜</span>
+          <span class="en">Component Heatmap</span>
+          <span class="rule"></span>
+        </div>
+
+        <div class="heat-wrap">
+          <div class="heat-rows">
+            <div class="heat-row">
+              <div class="tier"><span class="tag">T1</span>核心三件套</div>
+              <div class="chips">
+                <div class="chip top"><span class="n">cli</span><span class="p">19%</span></div>
+                <div class="chip top"><span class="n">agent</span><span class="p">19%</span></div>
+                <div class="chip top"><span class="n">gateway</span><span class="p">19%</span></div>
+              </div>
+              <div class="total">57%<span class="s">TIER-1 合计</span></div>
+            </div>
+            <div class="heat-row">
+              <div class="tier"><span class="tag">T2</span>次要梯队</div>
+              <div class="chips">
+                <div class="chip"><span class="n">cron</span><span class="p">9%</span></div>
+                <div class="chip"><span class="n">desktop</span><span class="p">9%</span></div>
+                <div class="chip"><span class="n">plugins</span><span class="p">9%</span></div>
+              </div>
+              <div class="total">27%<span class="s">TIER-2 合计</span></div>
+            </div>
+          </div>
+
+          <div class="heat-sum">
+            <span class="dot"></span>
+            <span class="txt">T1 + T2 覆盖度 · <strong>84%</strong></span>
+            <span class="bar"><span class="fill"></span></span>
+            <span class="pct">57%</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- 底部收束 -->
     <div class="footer">
-      <div class="ico">◆</div>
-      <div class="narr">
-        <span class="h">桌面端是供需缺口</span><span class="sep">—</span>用户偏新功能，供给以 BUG 为主；<span class="g">能力扩张由用户需求驱动</span>，而非行政推动。
+      <span class="mark">"</span>
+      <div class="txt-wrap">
+        <div class="zh">用户是 <em>成熟的使用者</em>，不是什么都想要的初用者。</div>
+        <div class="en">Mature Users · Not Novice Demander</div>
       </div>
-      <div class="quote">
-        <strong>「生态是结果，不是手段。」</strong>
-        <br>供给结构应向用户真实需求对齐。
+      <div class="stamp">
+        <span class="k">INSIGHT</span>
+        <span class="v">收束</span>
       </div>
     </div>
+
   </div>
 </div>
+
+<script>
+(function(){
+  const el = document.getElementById('chart_1');
+  const chart = echarts.init(el, null, {renderer:'svg'});
+  chart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{show:false},
+    series:[{
+      type:'pie',
+      radius:['46%','78%'],
+      center:['50%','50%'],
+      avoidLabelOverlap:true,
+      startAngle:90,
+      label:{
+        show:true,
+        position:'inside',
+        formatter:'{b}\n{d}%',
+        color:'#0F1E33',
+        fontFamily:'Noto Serif SC, Georgia, serif',
+        fontSize:13,
+        fontWeight:700,
+        lineHeight:16
+      },
+      labelLine:{show:false},
+      itemStyle:{
+        borderColor:'#0F1E33',
+        borderWidth:2
+      },
+      data:[
+        {value:50, name:'Bug', itemStyle:{color:'#4A7BB8'}},
+        {value:50, name:'Feature', itemStyle:{color:'#B4A078'}}
+      ]
+    }],
+    graphic:[{
+      type:'text',
+      left:'center',
+      top:'center',
+      style:{
+        text:'50 / 50',
+        fill:'#F5F0E8',
+        fontSize:16,
+        fontFamily:'Noto Serif SC, Georgia, serif',
+        fontWeight:700,
+        textAlign:'center'
+      }
+    }]
+  });
+  window.__pptxChartsReady = (window.__pptxChartsReady || 0) + 1;
+})();
+</script>
 </body>
 </html>

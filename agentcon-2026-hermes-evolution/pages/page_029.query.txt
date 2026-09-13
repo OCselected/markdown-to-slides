@@ -1,0 +1,5 @@
+Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
+
+我需要一页 PPT，主题是案例 9 —— GitHub Issue #67002「Safe MCP Reload」，副标题是"消费侧信任的教科书样本"，是一个典型的消费侧信任内容页。整体走深色学术（dark academic）调性：深普鲁士蓝 #0F1E33 作背景，暖白 #F5F0E8 作正文文字，强调色用琥珀金 #B4A078 点缀，标题走衬线字体（Noto Serif SC / Songti SC）营造智识感，正文用 Noto Sans SC，可点缀包豪斯几何元素（圆、方、线），不依赖图标。
+
+版面按"左侧 issue 卡片，右侧分析文字，中间竖线分隔"来组织。左侧上部放 hero 图 `images/page_029_hero.png`（原生 2752×1536，aspect 约 1.79，建议显示约 720×400，保持原生比例不拉伸），这张图是深普鲁士蓝羊皮纸质感、包豪斯几何风格的"金库 / 保险库"隐喻——中央一张圆角矩形卡片从几何壁龛里浮现，周围若干层琥珀色同心圆像盾牌一样层层包裹，暖金辉光环绕开口，寓意"用户索取功能的同时显式索要安全边界"，图中无文字与数字。图下方请列出四个关键数据小标签：Issue #67002、Labels 为 risk-message-delivery 与 blast-moderate、Priority P3、Comments 14（样本最高），用 KPI 小卡或纵向列表，数字用琥珀金突出。中间用一条细竖线（rgba(27,59,107,0.35)）分隔左右。右侧顶部用一段 narrative 引入——"#67002 是教科书样本：用户在索取 MCP reload 功能的同时显式要求安全边界，这是消费侧信任的可观察信号，也是从'能用'到'好用'的跃迁证据"。随后展开六条要点，每条有加粗小标题加细节：Issue 是 feat(api): add safe MCP reload control endpoint；风险标签 risk-message-delivery + blast-moderate；组件 / 优先级 gateway / P3；讨论热度 comments 14——样本最高；关键观察是"用户主动要求'安全的重载端点'——要能力的同时显式要安全收口"；制度含义是"从'能用'到'好用'的关键跃迁——消费侧信任的强信号"。整体气质克制、理性、有文献感，留白舒适不拥挤。

@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>结语 · 开源之为思想的力量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --accent: #B4A078;
+  --text: #F5F0E8;
+  --text-soft: rgba(245, 240, 232, 0.68);
+  --text-dim: rgba(245, 240, 232, 0.42);
+  --border: rgba(27, 59, 107, 0.35);
+  --border-soft: rgba(180, 160, 120, 0.28);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(27, 59, 107, 0.45) 0%, rgba(15, 30, 51, 1) 60%, #0A1526 100%);
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(180, 160, 120, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 160, 120, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.6;
+}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 56px 80px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.header-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+.header-right .rule {
+  display: inline-block;
+  width: 48px;
+  height: 4px;
+  background: var(--accent);
+}
+
+/* Decorative geometry */
+.deco { position: absolute; pointer-events: none; }
+.deco-circle-1 {
+  top: 130px; left: 60px;
+  width: 90px; height: 90px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.deco-square-1 {
+  top: 158px; left: 110px;
+  width: 22px; height: 22px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+.deco-line-1 {
+  top: 200px; left: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0.6), rgba(180,160,120,0));
+}
+.deco-circle-2 {
+  top: 150px; right: 70px;
+  width: 60px; height: 60px;
+  border: 1px solid rgba(180,160,120,0.4);
+  border-radius: 50%;
+}
+.deco-square-2 {
+  bottom: 130px; left: 60px;
+  width: 14px; height: 14px;
+  border: 1px solid var(--accent);
+  opacity: 0.6;
+}
+.deco-line-2 {
+  bottom: 120px; right: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0), rgba(180,160,120,0.6));
+}
+.deco-circle-3 {
+  bottom: 110px; right: 70px;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* Center slogan */
+.center-area {
+  margin-top: 62px;
+  text-align: center;
+  position: relative;
+}
+.center-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: var(--accent);
+  margin-bottom: 26px;
+  text-transform: uppercase;
+}
+.center-eyebrow .dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.center-eyebrow .bar {
+  width: 40px; height: 1px;
+  background: var(--accent);
+}
+.slogan {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 92px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  line-height: 1.15;
+  color: var(--text);
+  text-shadow: 0 2px 0 rgba(180, 160, 120, 0.22), 0 4px 18px rgba(180, 160, 120, 0.14);
+  margin: 0;
+}
+.slogan .quote {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 100px;
+  vertical-align: -6px;
+}
+.slogan-under {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+.slogan-under .seg {
+  width: 60px; height: 2px;
+  background: var(--accent);
+}
+
+/* Four cards */
+.cards {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(27, 59, 107, 0.28) 0%, rgba(27, 59, 107, 0.14) 100%);
+  padding: 26px 22px 24px;
+  min-height: 176px;
+  box-sizing: border-box;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 3px;
+  background: var(--accent);
+}
+.card-idx {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-idx .sq {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+}
+.card-head {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.card-head .en {
+  display: block;
+  font-family: Georgia, 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+.card-detail {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+/* Footer narrative */
+.footer {
+  position: absolute;
+  left: 80px; right: 80px;
+  bottom: 56px;
+  text-align: center;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-soft);
+}
+.footer-narrative {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-soft);
+  letter-spacing: 1.5px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-narrative .em {
+  color: var(--accent);
+  font-weight: 500;
+}
+.footer-page {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-dim);
+}
+.footer-page .rule {
+  display: inline-block;
+  width: 30px; height: 1px;
+  background: var(--text-dim);
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg">
+    <div class="bg-grid"></div>
+    <div class="deco deco-circle-1"></div>
+    <div class="deco deco-square-1"></div>
+    <div class="deco deco-line-1"></div>
+    <div class="deco deco-circle-2"></div>
+    <div class="deco deco-square-2"></div>
+    <div class="deco deco-line-2"></div>
+    <div class="deco deco-circle-3"></div>
+  </div>
+
+  <div id="ct">
+    <div class="header">
+      <div class="header-left">
+        <div class="header-mark"></div>
+        <div class="header-title">结语 · 开源之为思想的力量</div>
+      </div>
+      <div class="header-right">
+        <span>CONCLUSION</span>
+        <span class="rule"></span>
+        <span>P. 46</span>
+      </div>
+    </div>
+
+    <div class="center-area">
+      <div class="center-eyebrow">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span>THE SOURCE CODE OF INSTITUTIONS</span>
+        <span class="dot"></span>
+        <span class="bar"></span>
+      </div>
+      <h1 class="slogan">
+        <span class="quote">「</span>思想是制度的源代码<span class="quote">」</span>
+      </h1>
+      <div class="slogan-under">
+        <span class="seg"></span>
+        <span>Keep Movement</span>
+        <span class="seg"></span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>I · FROM AGENT TO INSTITUTION</span></div>
+        <div class="card-head">从 Agent 到制度<span class="en">Agent as Sample</span></div>
+        <div class="card-detail">Hermes 是样本，不是终点。它只是一次实验，真正的题目是它背后的机制如何生长。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>II · THE WAY OF OPENNESS</span></div>
+        <div class="card-head">开源之道<span class="en">Idea, Not Road</span></div>
+        <div class="card-detail">道是思想（idea），不是道路（road）。开源的价值不在通道，在于让想法得以流动。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>III · KEEP MOVEMENT</span></div>
+        <div class="card-head">Keep Movement<span class="en">Knowledge in Motion</span></div>
+        <div class="card-detail">知识不是静止的，是在移动中产生的。任何被冻结的秩序都会失去解释力。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>IV · A BLANK SPACE</span></div>
+        <div class="card-head">一句留白<span class="en">An Opening, Not a Proof</span></div>
+        <div class="card-detail">不是要证明什么——是打开一种思考。答案留给你，把问题还给演化本身。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="footer-narrative">
+        <span class="em">「思想是制度的源代码」</span>——不是规则在动，是思想在动。<span class="em">Keep Movement。</span>这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
+      </p>
+      <div class="footer-page">
+        <span>END OF SPEECH</span>
+        <span class="rule"></span>
+        <span>46 / 46</span>
+        <span class="rule"></span>
+        <span>OPENNESS · INSTITUTION · MOVEMENT</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

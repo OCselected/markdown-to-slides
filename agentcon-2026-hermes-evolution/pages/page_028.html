@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>案例 8 · #101600 Windows 自锁</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0F1E33;
+    --primary: #1B3B6B;
+    --accent: #B4A078;
+    --accent-dim: rgba(180, 160, 120, 0.35);
+    --accent-faint: rgba(180, 160, 120, 0.15);
+    --text: #F5F0E8;
+    --text-dim: #A8A090;
+    --red: #C9756A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 800px 600px at 18% 30%, #172B4A 0%, #0F1E33 55%, #0A1526 100%);
+  }
+
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 55px 60px 60px 60px;
+    box-sizing: border-box;
+  }
+
+  .deco {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .deco-circle-1 {
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-faint);
+    top: -220px;
+    right: -180px;
+  }
+
+  .deco-circle-2 {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(180, 160, 120, 0.06);
+    bottom: 100px;
+    left: -60px;
+  }
+
+  .deco-circle-3 {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: 78px;
+    right: 68px;
+    opacity: 0.7;
+  }
+
+  .deco-square-1 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--accent-dim);
+    top: 42px;
+    left: 42px;
+  }
+
+  .deco-square-2 {
+    width: 20px;
+    height: 20px;
+    background: rgba(180, 160, 120, 0.18);
+    bottom: 90px;
+    right: 110px;
+  }
+
+  .deco-line-v {
+    position: absolute;
+    left: 745px;
+    top: 90px;
+    bottom: 100px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--accent-faint) 15%, var(--accent-faint) 85%, transparent 100%);
+    z-index: 1;
+  }
+
+  .deco-line-h-1 {
+    position: absolute;
+    left: 42px;
+    top: 100px;
+    width: 80px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .deco-line-h-2 {
+    position: absolute;
+    right: 60px;
+    bottom: 90px;
+    width: 120px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 660px 1fr;
+    gap: 60px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-frame {
+    position: relative;
+    width: 640px;
+    height: 357px;
+  }
+
+  .hero-frame img {
+    width: 640px;
+    height: 357px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--accent);
+  }
+
+  .hero-corner-tl { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+  .hero-corner-tr { top: -6px; right: -6px; border-left: none; border-bottom: none; }
+  .hero-corner-bl { bottom: -6px; left: -6px; border-right: none; border-top: none; }
+  .hero-corner-br { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+  .hero-caption {
+    margin-top: 26px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  .hero-caption::before {
+    content: '';
+    display: inline-block;
+    width: 34px;
+    height: 1px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 14px;
+    opacity: 0.7;
+  }
+
+  .hero-caption::after {
+    content: '';
+    display: inline-block;
+    width: 34px;
+    height: 1px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-left: 14px;
+    opacity: 0.7;
+  }
+
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 4px;
+  }
+
+  .case-tag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--accent);
+  }
+
+  .case-tag-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .case-tag-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 5px;
+    flex-shrink: 0;
+  }
+
+  .case-tag-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-dim) 0%, transparent 100%);
+  }
+
+  .title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: 3px;
+  }
+
+  .subtitle-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .narrative {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 22px;
+    padding: 18px 22px;
+    border-left: 2px solid var(--accent);
+    background: rgba(27, 59, 107, 0.3);
+  }
+
+  .narrative em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .issue-card {
+    border: 1px solid var(--accent-dim);
+    padding: 8px 20px;
+    margin-bottom: 20px;
+    background: rgba(15, 30, 51, 0.5);
+  }
+
+  .issue-row {
+    display: flex;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(180, 160, 120, 0.18);
+    font-size: 13px;
+  }
+
+  .issue-row:last-child {
+    border-bottom: none;
+  }
+
+  .issue-key {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    width: 100px;
+    letter-spacing: 2px;
+  }
+
+  .issue-val {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .issue-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .tag-p1 {
+    display: inline-block;
+    padding: 3px 12px;
+    background: var(--red);
+    color: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+  }
+
+  .tag-risk {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+  }
+
+  .key-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .key-point {
+    padding: 14px 16px;
+    border-top: 2px solid var(--accent);
+    background: rgba(27, 59, 107, 0.25);
+    position: relative;
+  }
+
+  .key-point-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+
+  .key-point-text {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  .closing {
+    padding: 16px 22px;
+    border-left: 3px solid var(--accent);
+    background: linear-gradient(90deg, rgba(180, 160, 120, 0.08) 0%, transparent 100%);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .closing strong {
+    color: var(--accent);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 26px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    z-index: 2;
+  }
+
+  .footer-line {
+    flex: 1;
+    height: 1px;
+    background: var(--accent-dim);
+    margin: 0 20px;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div id="bg"></div>
+
+  <div class="deco deco-circle-1"></div>
+  <div class="deco deco-circle-2"></div>
+  <div class="deco deco-circle-3"></div>
+  <div class="deco deco-square-1"></div>
+  <div class="deco deco-square-2"></div>
+  <div class="deco-line-v"></div>
+  <div class="deco-line-h-1"></div>
+  <div class="deco-line-h-2"></div>
+
+  <div id="ct">
+    <div class="content-grid">
+      <div class="left-col">
+        <div class="hero-frame">
+          <div class="hero-corner hero-corner-tl"></div>
+          <div class="hero-corner hero-corner-tr"></div>
+          <div class="hero-corner hero-corner-bl"></div>
+          <div class="hero-corner hero-corner-br"></div>
+          <img src="../images/page_028_hero.png" alt="抽象几何门 - 隐喻 Windows 自锁">
+        </div>
+        <div class="hero-caption"><span>一扇被自己关上的门</span></div>
+      </div>
+
+      <div class="right-col">
+        <div class="case-tag">
+          <span class="case-tag-dot"></span>
+          <span class="case-tag-num">案例 08</span>
+          <span class="case-tag-line"></span>
+        </div>
+
+        <h1 class="title">案例 8 · #101600 Windows 自锁</h1>
+        <div class="subtitle">
+          <span class="subtitle-dot"></span>
+          <span>P1 兼容性里程碑</span>
+        </div>
+
+        <div class="narrative">
+          <em>#101600</em> 是 P1 中唯一触及平台的缺陷：Windows 更新与 gateway 重启竞态导致 hermes.exe 自锁，用户机器被锁死。兼容性不是次要的技术债——当用户被"锁在门外"时，"能用"和"好用"的边界被重新划定。
+        </div>
+
+        <div class="issue-card">
+          <div class="issue-row">
+            <span class="issue-key">Issue</span>
+            <span class="issue-val">
+              <span class="issue-dot"></span>
+              <span>#101600</span>
+            </span>
+          </div>
+          <div class="issue-row">
+            <span class="issue-key">Priority</span>
+            <span class="issue-val">
+              <span class="tag-p1">P1</span>
+            </span>
+          </div>
+          <div class="issue-row">
+            <span class="issue-key">Component</span>
+            <span class="issue-val">
+              <span class="issue-dot"></span>
+              <span>cli</span>
+            </span>
+          </div>
+          <div class="issue-row">
+            <span class="issue-key">Comments</span>
+            <span class="issue-val">
+              <span class="issue-dot"></span>
+              <span>5</span>
+            </span>
+          </div>
+          <div class="issue-row">
+            <span class="issue-key">Risks</span>
+            <span class="issue-val">
+              <span class="tag-risk">risk-compatibility</span>
+              <span class="tag-risk">risk-platform-windows</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="key-points">
+          <div class="key-point">
+            <div class="key-point-num">· 01 ·</div>
+            <div class="key-point-text">comments 5 —— P1 中唯一触及平台的缺陷</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-num">· 02 ·</div>
+            <div class="key-point-text">Windows 更新时升级流程与 gateway 重启竞态，hermes.exe 自锁 —— 用户机器被锁死</div>
+          </div>
+        </div>
+
+        <div class="closing">
+          兼容性不是次要的技术债——用户被"锁在门外"时，<strong>"能用"</strong>和<strong>"好用"</strong>的边界被重新划定。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>P1 兼容性里程碑</span>
+    <span class="footer-line"></span>
+    <span>案例 08 / #101600</span>
+  </div>
+</div>
+</body>
+</html>
