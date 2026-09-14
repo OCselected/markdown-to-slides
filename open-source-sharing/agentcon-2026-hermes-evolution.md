@@ -1,22 +1,22 @@
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途
-用于 AgentCon 2026 北京站（2026-09-21）Token 经济趋势 track 的演讲分享。
+用于 AgentCon 2026 北京站（2026-09-21）Token 经济趋势 track 的演讲分享。50 页田野考察风格。
 
 ## 使用场景
 「开源之道」外部学术性技术分享
 
 ## 听众画像
-开发者、工程师、AI Agent 构建者、开源社区成员、独立研究者。对技术有基本认知，对制度经济学有兴趣或愿意打开兴趣。
+开发者、工程师、AI Agent 构建者、开源社区成员、独立研究者。对技术有基本认知，对开源社区演化有兴趣。
 
 ## 讲者视角
-「开源之道」·适兕 X 窄廊——开源制度分析者、思想启蒙者、社会黑客。
+「开源之道」·适兕 × 窄廊——开源社区内实践者、社会黑客、田野考察者。以开源社区内实践者的身份，批判行政开源。
 
 ## 核心诉求
-用 Hermes Agent 的公开演化数据，展示 Agent 从"能用"到"会协作"的三维演化路径（需求/供给/消费），揭示消费侧信任作为可观察信号的制度含义，说明中国"行政开源"与全球"自发开源"的分野。
+用 Hermes Agent 的公开演化数据（41,792 issues + 27,783 PRs + 33 releases + 397 contributors），展示用户对 Agent 的需求演化轨迹：从"工具"到"伙伴"到"集体智慧"。
 
 ## 核心基调
-dark academic tone, Intellectual Visual System, art taste. 冷静智识感，dark academic 学术风。
+dark academic tone, Intellectual Visual System. 冷静智识感，田野考察风格。从实践出发，非框架先行。
 
 ## 视觉风格关键词
 - 包豪斯几何构成（Bauhaus geometric composition）
@@ -25,8 +25,7 @@ dark academic tone, Intellectual Visual System, art taste. 冷静智识感，dar
 - 极简主义排版，大字号标题，宽松行距
 - 深色学术风格（dark academic），理性、克制、智识感
 - 几何抽象元素——圆、方、线作为装饰，不依赖图标
-- 三阶段演化用时间轴图形，三维分析用三列并置
-- 表格用极简线条+暖白底色，避免高饱和色块
+- 五阶段演化用横向时间线，案例用三栏结构
 
 ## 内容结构约定
 - 每张 slide 包含：视觉隐喻（一句话描述画面）+ 显示要点（3-5 个 bullet point）
@@ -40,286 +39,363 @@ dark academic tone, Intellectual Visual System, art taste. 冷静智识感，dar
 # 幻灯片大纲内容 (Slide Deck Outline)
 
 ## Slide 1: 封面 (Cover)
-* **主标题：** 从 Hermes 项目演化看 Agent 的需求与消费演进
-* **副标题：** 一份关于 Agent 发展的公开数据观察
+* **主标题：** 从 Hermes 演化看 Agent 需求与消费演进
+* **副标题：** Talk & Search → Agent & Decide——两个时代的分叉
 * **讲者信息：** 「开源之道」·适兕 × 窄廊
 * **英文署名：** Open Source Way · Kuosi × Narrow Corridor
 * **时间/地点：** AgentCon 2026 · 北京 · 2026-09-21
 * **Track：** Token 经济趋势
-* **视觉隐喻：**
-  * 深普鲁士蓝底色的羊皮纸质感封面。中央一个大号标题占据视觉焦点。标题下方是一条水平的细线，线上有三个抽象几何图形（圆、方、三角）等距排列，代表"需求、供给、消费"三个观测面。底部一行小字：**"开源项目的每一个细节都可以追溯"**。右上角一个极简的 Hermes 符号（三条竖线，代表三条演化轴）。
+* **视觉隐喻：** 深普鲁士蓝底色封面，中央大号标题。标题下方"Talk & Search → Agent & Decide"横向箭头。底部小字："Talk is expensive, show me the skills."
 
-## Slide 2: 引子——为什么开源 Agent 值得观察
-* **视觉隐喻：**
-  * 左边一个黑盒（闭源产品），右边一个透明玻璃盒（开源项目）。黑盒内部看不清，玻璃盒内部结构一目了然。中间有文字对比："闭源：无从得知"、"开源：可追溯"。
+## Slide 2: 引子——从 Talk & Search 到 Agent & Decide
+* **视觉隐喻：** 左侧"对话气泡"（Talk & Search），中间"→"箭头，右侧"agent 图标"（Agent & Decide）。顶部一句 Hook："Talk is expensive, show me the skills."
 * **显示要点：**
-  * **闭源 Agent 产品（WorkBuddy、豆包、Qwen Office）**：如何制造、如何演化，无从得知。更多是市场营销造就的铺天盖地的广告、免费体验。
-  * **开源 Agent 项目（Hermes）**：每一个细节都可以追溯——每一条 issue、每一个 PR、每一次 release。
-  * **Hermes 的独特性**：根据用户习惯和累积生成 skill，不断自我更新——是伟大的进化论实践者。
-  * **本文方法**：把 Hermes 当作观察 Agent 演化的**公开样本**——因为闭源是黑箱，开源是唯一的可研究样本。
+  * **Hook**："Talk is expensive, show me the skills."
+  * **LLM 时代**：对话与检索（Talk & Search）——人类提问，模型回答
+  * **Agentic 时代**：代理与决断（Agent & Decide）——agent 自主执行，人类验收结果
+  * **本次观察**：透过 Hermes Agent 仓库这个微观透镜，寻找人类心智函数正在发生微小但不可逆分叉的证据
 
-## Slide 3: Hermes 项目坐标
-* **视觉隐喻：**
-  * 一张极简信息卡。左侧是项目 Logo 位置（用抽象几何代表），右侧一列核心数据——像学术论文的信息表。所有数字用大号字呈现，形成视觉冲击。
+## Slide 3: 章节过渡——Agent 发展简史
+* **视觉隐喻：** 深普鲁士蓝底色。中央大字"Agent 发展简史"。下方时间线 2022 → 2026。
 * **显示要点：**
-  * **创建时间**：2025-07-22（一年多）
-  * **Stars**：243,919
-  * **Forks**：50,367
-  * **Pull Requests**：27,783
-  * **Issues**：41,792
-  * **Releases**：33
-  * **Contributors**：397
-  * **总贡献量**：29,205 commits
-  * **一句洞察**：这不是一个"产品"，是一个**制度实验场**——用一年多的公开演化，展示 Agent 从技术到制度的完整链条。
+  * 从"文本生成器"到"数字员工"，Agent 用了不到 5 年
+  * 本部分目标：勾勒 Agent 发展的关键拐点
 
-## Slide 4: 章节过渡——Agent 发展简史
-* **视觉隐喻：**
-  * 全页极简设计。深普鲁士蓝底色。中央大字标题"Agent 发展简史"。标题下方一条时间线，从 2022 延伸到 2026。线上有四个节点（用小圆点），分别标记四个时期。
-* **显示要点：**
-  * 从"文本生成器"到"数字员工"，Agent 用了不到 5 年。
-  * **本部分目标**：勾勒 Agent 发展的关键拐点，为后续 Hermes 分析提供历史坐标。
-
-## Slide 5: 阶段一——能力觉醒（2022-2023）
-* **视觉隐喻：**
-  * 一条时间线从左延伸。左侧起点写"2022-10-06 ReAct 论文"。中间几个关键节点：Toolformer (2023-02)、Function Calling (2023-06)、JSON Mode (2023-11)、AutoGPT (2023-03)。
+## Slide 4: 阶段一——能力觉醒（2022-2023）
 * **显示要点：**
   * **ReAct**：首次展示"推理 + 行动"交织的 agent 模式
   * **Toolformer**：LLM 自监督学会调用 API
   * **OpenAI Function Calling**：主流"函数调用"API 原语首次出现
-  * **ChatGPT Plugins**：首个产品化的"LLM + 工具"（后被废弃）
   * **AutoGPT / BabyAGI**：病毒式传播的"自主 agent"时刻
-  * **制度含义**：这是学术概念（1980s BDI/Contract Net）到产品的**跨域套利**——用新范式激活老理论。
+  * **跨域套利**：从学术（1980s BDI）到产品（LLM tool use）
 
-## Slide 6: 阶段二——能力硬化（2024）
-* **视觉隐喻：**
-  * 时间线延续。中间节点标注：Structured Outputs (2024-08)、Computer Use (2024-10)、MCP 发布 (2024-11-25)。MCP 节点用特殊的强调色（红色小圆）。
+## Slide 5: 阶段二——能力硬化（2024）
 * **显示要点：**
-  * **Anthropic Tool Use GA（Claude 3）**：从 beta 到生产可用
-  * **AWS Bedrock Converse API**：云厂标准化的 function calling 接口
-  * **OpenAI Structured Outputs**：强 schema 校验，工具集成可靠性大幅提升
-  * **Anthropic Computer Use**：Agent 从 API 走到 GUI——鼠标键盘操作
-  * **MCP（Model Context Protocol）发布**：首个开放协议标准化 agent-tools 接口
-  * **制度含义**：Computer Use + MCP 是"能力"与"生态"的分水岭。前者扩展能力边界，后者定义协议——**协议是生态的起点**。
+  * **Anthropic Tool Use GA**：从 beta 到生产可用
+  * **OpenAI Structured Outputs**：强 schema 校验
+  * **Anthropic Computer Use**：Agent 从 API 走到 GUI
+  * **MCP 发布（2024-11-25）**：首个开放协议标准化 agent-tools 接口
+  * **协议是生态的起点**：Computer Use 扩展能力边界，MCP 定义协议
 
-## Slide 7: 阶段三——协议成熟（2025-2026）
-* **视觉隐喻：**
-  * 时间线延续。关键节点：OpenAI 采纳 MCP (2025-03)、MCP 规范修订 (2025-03)、AWS Bedrock AgentCore (2025-07)、A2A 协议 (2026-01)、MCP 捐给 Linux Foundation (2026)。MCP 捐给 LF 的节点用大号红圈标注，配一句标注"行政动员→自发秩序"。
+## Slide 6: 阶段三——协议成熟（2025-2026）
 * **显示要点：**
   * **OpenAI 采纳 MCP**（2025-03）：第二个前沿实验室加入
   * **AWS Bedrock AgentCore**（2025-07）：云原生 agent 平台化
-  * **A2A 协议**（2026-01）：agent-agent 协作标准（与 MCP 纵向互补）
-  * **MCP 捐给 Agentic AI Foundation**（2026，Linux Foundation 旗下）
-  * **制度含义**：这是**协议制度化**阶段——从"一家厂商的设计"到"中立基金会资产"，教科书样本。**行政动员失败后的自发秩序**。
+  * **A2A 协议**（2026-01）：agent-agent 协作标准
+  * **MCP 捐给 Agentic AI Foundation**（2026）
+  * **协议制度化**：从"一家厂商的设计"到"中立基金会资产"
 
-## Slide 8: MCP 捐给 Linux Foundation——制度经济学的教科书案例
-* **视觉隐喻：**
-  * 左上一个"Anthropic"标签，中间是一个箭头，指向右上一个"Linux Foundation"标签。箭头下方有一条小字："2024-11 → 2026"。整张 slide 用极简线条呈现，深普鲁士蓝为主色。
+## Slide 7: MCP 捐给 Linux Foundation
 * **显示要点：**
   * **起点**：2024-11-25，Anthropic 单厂商发布 MCP
-  * **演化**：2025-03，OpenAI 采纳；2025-05，加入 steering committee；2025 云厂密集加入
+  * **演化**：2025-03 OpenAI 采纳；2025 云厂密集加入
   * **终点**：2026，MCP 捐给 Agentic AI Foundation（Linux Foundation 旗下）
-  * **制度含义**：一个协议从厂商私产到社区共识的完整演化路径。这不是行政命令能促成的——是**多厂商自发采纳后的自然结果**。
-  * **对比**：中国"独立开源"试图用行政力量复制这个流程，但**制度演化需要时间尺度**（Roland 2004：slow-moving 文化无法一夜改变）。
+  * **制度含义**：多厂商自发采纳后的自然结果——不是行政命令能促成的
 
-## Slide 9: 章节过渡——Hermes 技术架构
-* **视觉隐喻：**
-  * 深普鲁士蓝底色。中央大字标题"Hermes 技术架构"。标题下方是两条竖直的细线（代表"两条不变量"），线上有文字标注。
+## Slide 8: 章节过渡——Hermes 技术架构
+* **视觉隐喻：** 深普鲁士蓝底色。中央大字"Hermes 技术架构"。下方两条竖线（两条不变量）。
 * **显示要点：**
-  * Hermes 的几乎所有设计决策都从**两条不变量**推出来。
-  * **本部分目标**：先讲不变量，再讲架构，最后讲独特性。
+  * Hermes 的几乎所有设计决策都从两条不变量推出来
+  * 本部分目标：先讲不变量，再讲架构，最后讲独特性
 
-## Slide 10: 两条不变量——Hermes 的设计灵魂
-* **视觉隐喻：**
-  * 一张 slide 分为左右两半。左边写"不变量 #1"，中间一个大圆；右边写"不变量 #2"，中间一个大方。两半中间一条细线分隔，线上标注"设计边界"。
+## Slide 9: Hermes 项目坐标
+* **显示要点：**
+  * **Stars**：243K+ · 持续上升
+  * **Contributors**：397 · 活跃社区
+  * **Releases**：33 · 2026-03-12 到 2026-09-11
+  * **Issues**：41,792 · PRs：27,783
+  * **创建**：2025-07-22
+
+## Slide 10: 两条不变量——设计灵魂
 * **显示要点：**
   * **不变量 #1：Prompt Caching is Sacred**
-    - 长对话复用缓存前缀
-    - 任何改变历史上下文/工具集/系统提示的操作都会破坏缓存、放大用户成本
-    - 唯一例外：context compression
-    - 结果：所有修改系统提示状态的命令默认"下 session 生效"（`--now` 是 opt-in 例外）
+    - 任何改变历史上下文的操作都会破坏缓存、放大用户成本
+    - 结果：所有修改系统提示状态的命令默认"下 session 生效"
   * **不变量 #2：Core is a Narrow Waist, Capability Lives at the Edges**
-    - 每个模型 tool 都随每次 API 调用发送，所以核心工具门槛极高
-    - 新能力通过"CLI + skill"、"服务门控 tool"、"plugin"、"MCP server"落地
-    - "边缘扩张，腰部保守"——**这是 Hermes 的制度设计原则**
+    - 新能力通过"CLI + skill"、"plugin"、"MCP server"落地
+    - "边缘扩张，腰部保守"——Hermes 的制度设计原则
 
-## Slide 11: Footprint Ladder——能力落地的六级阶梯
-* **视觉隐喻：**
-  * 一张极简的六级阶梯图。阶梯从左上向右下延伸，每级台阶一个标签。阶梯越往下（越靠右）越"重"，代表"越靠近核心"。用深普鲁士蓝标注每级台阶。
+## Slide 11: Footprint Ladder——六级能力阶梯
 * **显示要点：**
   * **Level 1**：Extend existing code（零新面）
-  * **Level 2**：CLI command + skill（`hermes webhook`、`hermes cron`、`hermes tools`）
-  * **Level 3**：Service-gated tool（`check_fn`，如 Home Assistant tool）
-  * **Level 4**：Plugin（`~/.hermes/plugins/`，第三方/niche/用户特定）
-  * **Level 5**：MCP server（catalog 内，工具类但非核心基础）
-  * **Level 6**：New core tool（只有 terminal、read_file、web_search、browser_navigate 这类普适工具够格）
-  * **制度含义**：**能力必须有明确的落地路径**，不允许"塞进核心图省事"。这是"度量权"问题——每个能力都有可审计的落地位置。
+  * **Level 2**：CLI command + skill
+  * **Level 3**：Service-gated tool（check_fn）
+  * **Level 4**：Plugin（第三方/niche/用户特定）
+  * **Level 5**：MCP server（catalog 内）
+  * **Level 6**：New core tool（只有普适工具够格）
+  * **度量权**：每个能力都有可审计的落地位置
 
-## Slide 12: Hermes 的独特性——闭环学习 + 边缘扩张
-* **视觉隐喻：**
-  * 一个循环箭头图。中心写"Hermes"，外围三个节点："Skills 生成"、"Memory 积累"、"Session 演化"，三个节点通过循环箭头相连。右侧一个对比表格。
+## Slide 12: Hermes 的独特性——大教堂的瓦解
+* **视觉隐喻：** 左侧"大教堂"（单体建筑），右侧"集市"（多个小摊位），中间"瓦解"箭头。
 * **显示要点：**
-  * **闭环学习（Closed Learning Loop）**：LLM 不是静态的——每次使用都会生成新的 skill
-  * **对比四个主流框架**：
-    - **Hermes**：4,100 tokens/task（最低）/ 55MB RAM（最低）/ 200+ models via OpenRouter
-    - **LangGraph**：低层编排框架，stateful agents
-    - **CrewAI**：角色扮演驱动，manager-worker-critic
-    - **AutoGen**：多 agent 对话（已进入 maintenance mode）
-  * **制度含义**：Hermes 的独特性不是"更强的模型"，是**能力生成的机制**——用户生成 skill，agent 随使用自我进化。
+  * **大教堂 vs 集市**：Monolithic（大教堂思维）→ Modular（集市涌现）——模块化降低新 skill 的"交易成本"
+  * **闭环学习**：每次使用生成新 skill——agent 随使用自我进化
+  * **对比四个框架**：Hermes 4,100 tokens/task（最低）/ 55MB RAM（最低）/ 200+ models via OpenRouter
+  * **消费重构**：从"对标准产品的依赖"到"对个性化技能编排（Composition）的投入"
 
-## Slide 13: 章节过渡——需求/供给/消费的三维分析
-* **视觉隐喻：**
-  * 三列并置的极简图形。左列：一个用户图标 + 上箭头（demand）。中列：一个齿轮图标 + 下箭头（supply）。右列：一个星标图标（adoption）。三列之间有虚线相连。
+## Slide 13: Agent 演化方法论——田野观察
 * **显示要点：**
-  * **需求侧（issues）**：用户要什么
-  * **供给侧（PRs/releases）**：项目做了什么
-  * **消费侧（stars/forks/contributors）**：弱代理的采纳信号
-  * **本部分目标**：用公开数据观察 Hermes 一年多的演化，回答"Agent 如何根据用户需求演化"。
+  * **样本选择**：Hermes Agent（243K star, 33 releases, 397 contributors）——公开演化数据丰富的样本
+  * **观察维度**：需求（issues）/ 供给（PRs）/ 消费（stars/contributors/release）
+  * **案例驱动**：6 命名 release + 5 典型 PR + 1 数据案例——12 个田野样本
+  * **三段式**：现象 → 数据 → 解读
+  * **目的**：理解 Agent 从"能用"到"好用"的演化路径
 
-## Slide 14: 需求侧——用户要什么？
-* **视觉隐喻：**
-  * 左侧一个大数据展示："41,792 issues"。右侧一个饼图（用文字标签）：bug 50% / feature 50%。下方三个组件标签："cli 19% | agent 19% | gateway 19%"。
+## Slide 14: 田野考察方法论
 * **显示要点：**
-  * **类型分布**：bug 50% / feature 50%——功能诉求与质量诉求等量齐观
-  * **组件热度**：cli / agent / gateway 各 19%（合计 57%）
-    - 入口 → 内核 → 接入，主链路
-    - 第二梯队：cron / desktop / plugins 各 9%
+  * **视角**：开源社区内实践者——不是外部观察者
+  * **方法**：从群众中来——从实践出发，非框架先行
+  * **立场**：批判行政开源——用实践检验理论
+  * **局限**：弱代理、单一仓库、关键词分析（非语义）
+  * **下一步**：长期追踪
+
+## Slide 15: 章节过渡——田野考察
+* **视觉隐喻：** 深普鲁士蓝底色。中央大字"第三幕 · 田野考察"。下方"12 案例"网格。
+* **显示要点：**
+  * 6 命名 Release + 5 PR 演化案例 + 1 数据案例
+  * 每个案例：现象 → 数据 → 解读
+
+## Slide 16: 需求侧总览——用户要什么
+* **显示要点：**
+  * **类型**：bug 50% / feature 50%
+  * **组件**：cli / agent / gateway 各 19%（57%）
   * **优先级**：P3 68% / P2 28% / P1 3%
-  * **典型"长尾需求 + 极少火警"结构**
-  * **制度含义**：需求侧显示用户是**成熟的使用者**，不是"什么都想要"的初用者。
+  * **风险谱**：兼容性 > 消息投递 > 安全边界 ≈ 会话状态
+  * **特征**：长尾需求 + 极少火警
 
-## Slide 15: 供给侧——项目做了什么？
-* **视觉隐喻：**
-  * 左侧一个大数据："27,783 PRs"。右侧一个饼图：bug 50% / feature 50%。下方组件分布：agent 26% | gateway 22% | cli 17%。右下角一个"收敛型"标签。
+## Slide 17: 供给侧总览——项目做了什么
 * **显示要点：**
-  * **类型分布**：bug fix 50% / feature 50%
-  * **组件活跃度**：agent 26% + gateway 22%（核心层 48%）+ cli 17%
-  * **优先级策略：收敛型**
-    - P2 全给 bug（89%）
-    - P3 养 feature（72%）
-    - P1 缺席——项目当前没有致命故障
-  * **风险分布**：兼容性 56% / 安全 26% / 消息 22% / 会话 21%
-  * **制度含义**：项目正从**扩张期**进入**稳定化期**——存量可靠性优先于增量扩张。
+  * **类型**：bug fix 50% / feature 50%
+  * **组件**：agent 26% + gateway 22%（48%）
+  * **收敛型策略**：P2 全给 bug（89%）+ P1 缺席
+  * **风险**：兼容性 56%（结构性负担）
+  * **含义**：从扩张期进入稳定化期
 
-## Slide 16: 供需匹配——desktop 是唯一缺口
-* **视觉隐喻：**
-  * 一张对比表格。左列"组件"，中列"需求%"，右列"供给%"。desktop 一行用红色标注"⚠️ 供给欠配"。表格上方一行结论。
+## Slide 18: 消费侧总览——弱代理的采纳信号
 * **显示要点：**
-  * **类型比例一致**：需求 53% bug / 供给 50% bug——匹配良好
-  * **组件对比**：
-    - agent：需求 22% / 供给 26% ✅
-    - gateway：需求 18% / 供给 22% ✅
-    - cli：需求 18% / 供给 17% ✅
-    - **desktop：需求 11% / 供给 8% ⚠️ 供给欠配**
-  * **desktop 深层问题**：需求偏新功能，供给以 bug 为主——**类型也对不上**
-  * **制度含义**：**"生态是结果，不是手段"**——desktop 是用户主动要求扩张的方向，项目供给跟不上，说明"能力扩张"是用户需求驱动的，不是行政推动的。
+  * **Releases 节奏**：33 个 release，8 月 5 个
+  * **Contributor 分布**：核心 21 / 活跃 143 / 外围 233
+  * **Top 3**：teknium1 > OutThisLife > kshitijk4poor
+  * **消费信号局限**：stars/forks ≠ 真实使用——是弱代理
 
-## Slide 17: 消费侧——弱代理的采纳信号
-* **视觉隐喻：**
-  * 一张极简的三层金字塔。底层 233 人（外围，1-9 commits）、中层 143 人（活跃，10-99 commits）、顶层 21 人（核心，100+ commits）。左侧一列 releases 数据：32 releases，2026-03-12 到 2026-09-07。
-* **显示要点：**
-  * **Releases 节奏**：32 个 release，从 2026-03-12 到 2026-09-07
-  * **近期频率极高**：8 月 5 个 release
-  * **Contributor 分布**：
-    - 核心（100+ commits）：21 人（5.3%）
-    - 活跃（10-99 commits）：143 人（36.0%）
-    - 外围（1-9 commits）：233 人（58.7%）
-  * **Top 3**：teknium1（14,638）> OutThisLife（3,406）> kshitijk4poor（2,262）
-  * **消费信号局限**：stars/forks ≠ 真实使用频率、场景、付费行为——**是弱代理**
-
-## Slide 18: 三个核心洞察
-* **视觉隐喻：**
-  * 三列并置。每列一个大标题+一段简短说明。三列之间用极简竖线分隔。背景深普鲁士蓝，标题用暖白色。
+## Slide 19: 三个核心洞察
 * **显示要点：**
   * **洞察 #1：项目正从扩张期进入稳定化期**
-    - 证据：P2 全给 bug（89%）+ P1 缺席 + CLI 层 bug 驱动
-    - 含义：存量可靠性优先于增量扩张
   * **洞察 #2：兼容性是结构性税**
-    - 证据：56% PR 带兼容性标签
-    - 含义：跨平台 + 多 provider 的结构性负担——供给侧的隐形成本，需求侧看不到
   * **洞察 #3：消费侧信任是可观察的信号**
-    - 证据：feature issue 自带安全边界标签（"safe MCP reload"、"service-account auth"）
-    - 含义：用户在索取能力的同时主动索取安全收口——**这是从"能用"到"好用"的关键跃迁**
 
-## Slide 19: 案例——#67002 Safe MCP Reload（信任建构）
-* **视觉隐喻：**
-  * 左侧一个 issue 卡片（模拟 GitHub issue UI），右侧一段分析文字。issue 卡片显示：title、labels、comments 数。中间一条竖线，右侧分析标题"消费侧信任的教科书样本"。
+## Slide 20: Release 命名文化——田野观察第 1 章
 * **显示要点：**
-  * **Issue #67002**：`feat(api): add safe MCP reload control endpoint`
-  * **风险标签**：`risk-message-delivery` + `blast-moderate`
-  * **组件**：gateway，优先级 P3
-  * **关键观察**：用户主动要求"安全的重载端点"——**在要新功能的同时显式要求安全收口**
-  * **制度含义**：这是"消费侧信任"的教科书样本——**用户不再只索取能力，而是同时索取能力的安全边界**。这是从"能用"到"好用"的关键跃迁。
+  * **6 命名 release**：Judgment / Tenacity / Surface / Velocity / Quicksilver / Patch
+  * **命名不是版本**：是社区自我命名的文化事件
+  * **田野意义**：每个命名 release 是一个制度演化节点
 
-## Slide 20: 制度经济学视角——Williamson × Roland
-* **视觉隐喻：**
-  * 一张极简的双象限图。左象限"Williamson L1-L4"（静态层次），右象限"Roland fast/slow"（动态速度）。两象限交汇处写"大分流 2.0"。
+## Slide 21: 案例 1 · Judgment Release · P0/P1 清零
 * **显示要点：**
-  * **Williamson L1-L4**：L1 社会嵌入 → L2 制度环境 → L3 治理机制 → L4 资源配置
-  * **Roland 2004**：slow-moving（文化/规范）↔ fast-moving（政治制度）
-  * **合用矩阵**："层次 × 时间"
-    - 在哪里受阻（Williamson）× 为什么受阻（Roland）
-  * **大分流 2.0 应用**：
-    - 中国行政开源 = fast-moving 制度移植
-    - 全球开源协作文化 = slow-moving 制度
-    - "独立开源"卡在 slow-moving 层——协作信任/规范尚未建立
+  * **版本**：v2026.7.20 "Judgment"
+  * **内容**：P0/P1 清零战役——692 items / 12 days
+  * **Feature 改进**：项目自我修复的"认错仪式"
+  * **信任分水岭**：用户在要能力的同时要求安全边界
+  * **演化意义**：从扩张期进入稳定化期的标志
 
-## Slide 21: 中国"行政开源" vs 全球"自发开源"
-* **视觉隐喻：**
-  * 一张对比图。左侧"行政开源"（中国），右侧"自发开源"（全球）。两侧各有 4 个要点，中间一条竖线。上方写"大分流 2.0"。
+## Slide 22: 案例 2 · Tenacity Release · 多 Agent Kanban
 * **显示要点：**
-  * **中国行政开源**：
-    - AtomGit（代码托管）—— 华为主导
-    - MirrorZ（包镜像）—— 高校/中科院主导
-    - Hermes 中文社区（封闭社群）—— 商业变现
-    - 信通院标准（合规审计）—— 行政标准化
-  * **全球自发开源**：
-    - GitHub / GitLab —— 商业自发
-    - Docker Hub / npm —— 社区自发
-    - Linux Foundation —— 中立基金会
-    - OpenSSF —— 国际标准化
-  * **大分流 2.0 核心**：真开源 = FLOSS / 公地开源；伪开源 = 特许工程代码 / 局域网共享 / 赛博庄园
+  * **版本**：v2026.7.1 "Tenacity"
+  * **内容**：Kanban 多 agent 平台
+  * **Feature 改进**：heartbeat / reclaim / zombie detection——任务持久性保障
+  * **可靠性分水岭**：能否信任 agent 记住正确的历史
+  * **演化意义**：从单 agent 到多 agent 协作
 
-## Slide 22: 长期演化追踪——不是终点
-* **视觉隐喻：**
-  * 一张极简的路线图。左侧写"演讲 2026-09-21"，右侧延伸一条长线，线上有四个节点：需求追踪 / 供给追踪 / 消费追踪 / 制度演化。线的右侧是"..."。
+## Slide 23: 案例 3 · Surface Release · 原生 Desktop
 * **显示要点：**
-  * **这不是一次性分析**——是长期演化追踪系统的**第一个快照**
-  * **需求侧**：持续追踪 issue 演化（每周更新）
-  * **供给侧**：持续追踪 PR 演化（每周更新）
+  * **版本**：v2026.6.5 "Surface"
+  * **内容**：原生 desktop（macOS/Linux/Windows）
+  * **Feature 改进**："Hermes meets you wherever you work"
+  * **兼容性分水岭**：用户不会被"锁在门外"
+  * **演化意义**：跨平台扩展的前提
+
+## Slide 24: 案例 4 · Velocity Release · 大重构
+* **显示要点：**
+  * **版本**：v2026.5.29 "Velocity"
+  * **内容**：性能优化、异步处理
+  * **Feature 改进**：能力硬化阶段的速度跃迁
+  * **演化意义**：从"能用"到"快用"
+
+## Slide 25: 案例 5 · Quicksilver Release · 性能爆发
+* **显示要点：**
+  * **版本**：v2026.5.28 "Quicksilver"
+  * **内容**：快速迭代版本
+  * **Feature 改进**：扩张期的迭代节奏
+  * **演化意义**：快速试错、快速迭代
+
+## Slide 26: 案例 6 · Patch Release · 热修复
+* **显示要点：**
+  * **版本**：v2026.5.7 "Patch"
+  * **内容**：同日热修复
+  * **Feature 改进**：快速响应模式
+  * **演化意义**："认错仪式"——承认错误并快速修复
+
+## Slide 27: PR #5143 · 多角色自动路由
+* **显示要点：**
+  * **需求信号**：28,040 body · 11 comments · comp/gateway · area/sessions · needs-decision
+  * **用户需求**：从"一个 agent 处理一切"到"专业化角色分工"——agent 从工具到团队
+  * **演化意义**：Phase 2 标志性提案——平台扩展期用户要求 agent 专业化能力
+
+## Slide 28: PR #53871 · 给 Hermes 一个灵魂
+* **显示要点：**
+  * **需求信号**：27,518 body · comp/agent · tool/memory · area/sessions
+  * **用户需求**：从"用完即走"到"希望 agent 有自己的生命"——agent 从工具到伙伴
+  * **演化意义**：Phase 3 标志性提案——用户要求 agent 有生命感、记忆延续、自主性
+
+## Slide 29: PR #61044 · Cron-native Batch API
+* **显示要点：**
+  * **需求信号**：35,660 body · comp/agent · comp/cron · innovation
+  * **用户需求**：从"手动触发"到"自主调度"——agent 定时自主执行复杂任务
+  * **演化意义**：Phase 3 标志性提案——用户要求 agent 有自主调度能力
+
+## Slide 30: PR #82198 · Skill-Persistence EPIC
+* **显示要点：**
+  * **需求信号**：54,633 body（最大 EPIC）· comp/agent · tool/skills · area/memory · needs-decision
+  * **用户需求**：从"临时 skill"到"持久 skill"——agent 自我组织、持久化知识、管理存储边界
+  * **演化意义**：Phase 4 标志性提案——EPIC 级设计文档，用户要求 agent 有自我组织能力
+
+## Slide 31: PR #94266 · Collective Wisdom Agent
+* **显示要点：**
+  * **需求信号**：52,295 body · 9 comments · comp/agent · tool/skills · area/config · needs-decision
+  * **用户需求**：从"个体 agent"到"集体智慧"——多个 agent session 的知识聚合为集体智慧
+  * **演化意义**：Phase 4 标志性提案——9 comments 讨论活跃，用户要求 agent 有集体智慧能力
+
+## Slide 32: 案例 12 · desktop 供需缺口
+* **显示要点：**
+  * **需求**：desktop 需求 11%（并列第三）
+  * **供给**：desktop 供给仅 8%
+  * **类型也对不上**：需求偏新功能，供给以 bug 为主
+  * **含义**："生态是结果，不是手段"——desktop 是用户主动要求扩张的方向
+
+## Slide 33: 三个共性问题——专业化/生命化/智慧化
+* **显示要点：**
+  * **专业化**：#5143 多角色路由——agent 从"一个处理一切"到"角色分工"
+  * **生命化**：#53871 Soul——agent 有生命感、记忆延续、自主性
+  * **智慧化**：#82198 + #94266——agent 自我组织 + 集体智慧
+  * **共同点**：5 个 PR 都是 needs-decision（待决策）——社区正在讨论这些演化方向
+  * **演化轨迹**：专业化 → 生命化 → 自动化 → 持久化 → 智慧化
+
+## Slide 34: 从"能用"到"好用"的跃迁·五阶段
+* **显示要点：**
+  * **专业化 → 生命化**：#5143 (2026-04) Gateway Hooks → #53871 (2026-06) Soul / Curiosity Engine
+  * **自动化 → 持久化**：#61044 (2026-07) Cron-native Batch API → #82198 (2026-08) Skill-Persistence EPIC (54,633 body)
+  * **智慧化**：#94266 (2026-08) Collective Wisdom Agent V1 (52,295 body)
+
+## Slide 35: Release 节奏观察
+* **显示要点：**
+  * **密度**：33 releases / 180 天 ≈ 5.5 天/release
+  * **命名**：6 命名 release（2026-05 到 2026-07）
+  * **Patch**：同日热修复——"认错仪式"
+  * **含义**：Release 节奏是社区自我组织的节奏
+
+## Slide 36: 田野考察小结
+* **显示要点：**
+  * **6 命名 Release**：Tenacity / Surface / Judgment / Velocity / Quicksilver / Patch——供给侧的叙事化
+  * **5 PR 案例**：#5143 / #53871 / #61044 / #82198 / #94266——需求侧的演化轨迹
+  * **1 数据案例**：desktop 供需缺口
+  * **核心发现**：用户对 agent 的需求从"工具"演化为"伙伴"再演化为"集体智慧"
+  * **方法**：田野考察——从实践中观察，非框架先行
+
+## Slide 37: 田野考察方法论复盘
+* **显示要点：**
+  * **视角**：开源社区内实践者
+  * **方法**：从群众中来
+  * **立场**：批判行政开源
+  * **局限**：弱代理、单一仓库、关键词分析
+  * **下一步**：长期追踪
+
+## Slide 38: 章节过渡——Agent 演化洞察
+* **视觉隐喻：** 深普鲁士蓝底色。中央大字"第四幕 · Agent 演化洞察"。下方三道分水岭。
+* **显示要点：**
+  * 从 12 案例中提炼的演化规律
+  * 从"能用"到"好用"的三道分水岭
+
+## Slide 39: 三道分水岭——可靠性/兼容性/信任
+* **显示要点：**
+  * **可靠性**：能否信任 agent 记住正确的历史（#107070 + Tenacity）
+  * **兼容性**：用户不会被"锁在门外"（#101600 + Surface）
+  * **信任**：能力有安全边界（#67002 + Judgment）
+
+## Slide 40: 洞察 #1 · 可靠性是 Agent 的底线
+* **显示要点：**
+  * **Tenacity Release**：Kanban 多 agent 平台——heartbeat/reclaim/zombie detection
+  * **#107070**：会话重放污染历史——P1 缺陷
+  * **可靠性定义**：不是"能不能用"，是"能否信任 agent 记住正确的历史"
+  * **案例组合**：供给侧（Tenacity）+ 需求侧（#107070）= 完整画面
+
+## Slide 41: 洞察 #2 · 兼容性是 Agent 的边界
+* **显示要点：**
+  * **Surface Release**：原生 desktop（macOS/Linux/Windows）
+  * **#101600**：Windows 自锁——P1 缺陷
+  * **兼容性定义**：不是"次要的技术债"，是"用户不被锁在门外"
+  * **案例组合**：供给侧（Surface）+ 需求侧（#101600）= 完整画面
+
+## Slide 42: 洞察 #3 · 信任是 Agent 的跃迁
+* **显示要点：**
+  * **Judgment Release**：P0/P1 清零战役——692 items / 12 days
+  * **#67002**：Safe MCP Reload——用户主动要求安全边界
+  * **信任定义**：用户在索取能力的同时显式要求安全收口
+  * **案例组合**：供给侧（Judgment）+ 需求侧（#67002）= 完整画面
+
+## Slide 43: MCP 演化路径——从厂商私产到中立基金会
+* **显示要点：**
+  * **起点**：2024-11-25 Anthropic 单厂商发布
+  * **采纳**：2025-03 OpenAI 采纳
+  * **云厂**：2025 云厂密集加入
+  * **捐给 LF**：2026 加入 Agentic AI Foundation（Linux Foundation 旗下）
+  * **观察**：MCP 演化是社区自我组织的自然结果
+
+## Slide 44: 章节过渡——Epilogue
+* **视觉隐喻：** 深普鲁士蓝底色。中央大字"Epilogue · 长期演化追踪"。
+* **显示要点：**
+  * 不是终点，是起点
+
+## Slide 45: 长期演化追踪系统
+* **显示要点：**
+  * **需求侧**：持续追踪 issue 演化（月度）
+  * **供给侧**：持续追踪 PR 演化（月度）
   * **消费侧**：寻找更强信号（PyPI downloads、Docker pulls、Discord 活跃度）
-  * **制度维度**：度量权 / 可靠性 / 产权——三个并行维度，非线性递进
-  * **核心声明**：**进化论的哲学里是没有终点的**
+  * **制度维度**：度量权 / 可靠性 / 产权（长期制度演化追踪）
+  * **核心声明**：进化论的哲学里是没有终点的
 
-## Slide 23: 结语——"开源之为思想的力量"
-* **视觉隐喻：**
-  * 深普鲁士蓝底色。中央一句大字：**"思想是制度的源代码"**。下方一段小字：**"不是规则在动，是思想在动。"**。最下方一行小字讲者信息。
+## Slide 46: 结语——开源之为思想的力量
 * **显示要点：**
-  * **从 Agent 演化到制度演化**：Hermes 是一个样本，但不是终点。
-  * **开源的"道"是思想（idea），不是道路（road）**——"开源之为思想的力量"。
-  * **Keep Movement**：知识不是静止的，是在移动中产生的。
-  * **一句留白**：这个演讲不是要证明什么——是要**打开一种思考**——用制度经济学的眼睛，重新看 Agent 演化。
+  * **从 Agent 演化到制度演化**：Hermes 是一个样本，但不是终点
+  * **开源的"道"是思想（idea）**："开源之为思想的力量"
+  * **Keep Movement**：知识不是静止的，是在移动中产生的
+  * **一句留白**：这个演讲不是要证明什么——是要打开一种思考
 
-## Slide 24: 讨论与延伸
-* **视觉隐喻：**
-  * 极简设计。三个讨论问题列在页面中央。每个问题前面有一个小圆点。页面下方一行小字："欢迎在 Q&A 环节展开讨论"。
+## Slide 47: 讨论问题
 * **显示要点：**
-  * **问题 #1**：从"能用"到"会协作"，是否还有第五阶段？
+  * **问题 #1**：从"能用"到"会协作"，是否还有第六阶段？
   * **问题 #2**：开源 Agent 的"度量权"应该在社区手里，还是应该标准化？
-  * **问题 #3**：中国"行政开源"的 slow-moving 层会不会演化出新的开源形态？
-  * **延伸阅读**：
-    - Roland (2004) *Understanding Institutional Change*
-    - Williamson (2000) *The New Institutional Economics*
-    - Akcagün & Sapienza (2016) *Cognitive Rules of Growth*
-    - Greif & Mokyr (2017) *Journal of Institutional Economics*
-    - Lerner & Tirole (2002) *The Economics of Open Source Software*
+  * **问题 #3**：5 个 needs-decision PR 最终会走向什么？
+  * **问题 #4**：Talk & Search 时代和 Agent & Decide 时代会共存还是替代？
 
-## Slide 25: 致谢与联系方式
-* **视觉隐喻：**
-  * 极简设计。页面中央写"Thank you"，下方是讲者信息。右下角一个抽象的 Hermes 符号。
+## Slide 48: 延伸阅读
+* **显示要点：**
+  * Hermes Agent 仓库：github.com/NousResearch/hermes-agent
+  * AgentCon 2026 北京站：2026-09-21
+  * MCP 规范：modelcontextprotocol.io
+  * Linux Foundation Agentic AI Foundation
+  * 本项目分析报告：Google Drive osw 账户
+
+## Slide 49: 致谢
 * **显示要点：**
   * **讲者**：「开源之道」·适兕 × 窄廊
-  * **英文署名**：Open Source Way · Kuosi × Narrow Corridor
-  * **职位**：Founder, Open Source Way
-  * **照片**：https://opensourceway.blog/public/kuosi-face-of-os.png
-  * **数据基线**：2026-09-11（本演讲所有数据的时间戳）
-  * **长期演化追踪**：本项目后续将持续更新，欢迎交流与引用。
+  * **数据基线**：2026-09-11
+  * **方法论**：田野考察——从群众中来
+  * **立场**：开源社区内实践者
+
+## Slide 50: Thank you
+* **视觉隐喻：** 极简设计。页面中央"Thank you"。下方"Keep Movement"。
+* **显示要点：**
+  * **Thank you**
+  * **Keep Movement**
+  * **「开源之道」·适兕 × 窄廊**
+  * **2026-09-14**
