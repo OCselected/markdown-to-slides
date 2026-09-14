@@ -1,7 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是 GitHub PR #5143 的核心提案介绍，标题写"PR #5143 · 多角色自动路由"，副标题为"Gateway Hooks · 专业化分化（2026-04）"，定位为一个 GitHub 提案的案例研究页。整体风格是深色学术调性（dark academic），深普鲁士蓝 #0F1E33 做背景，羊皮纸质感的暖白 #F5F0E8 作为主文字色，用金色 #B4A078 和青色蓝绿作为点缀色，标题用思源宋体类衬线字体（Noto Serif SC）营造学术庄重感，正文用思源黑体（Noto Sans SC），版面里可以点缀包豪斯几何元素（圆、方、细线），不依赖图标，整体气质理性、克制、有智识感。
+我需要一页 PPT，主题是 Hermes 的 Quicksilver Release 性能爆发案例，标题为「案例 5 · Quicksilver Release · 性能爆发」，副标题引用原句 "Hermes is the messenger god, and this window we made him move like it"，用来点明本次版本的命名意象——信使神 Hermes，让整个窗口像他一样快。整页的叙事核心是：first-token time 下降约 80%，那个"深呼吸"消失了，速度成为消费侧信任的基础。
 
-版面按三段式横向布局：左侧区域放一个超大号的"#5143"编号，作为整页的视觉锚点，编号下方可以叠上两个关键数据——Body 28,040 和 Comments 11，用等宽字体（JetBrains Mono）呈现，突出提案的热度信号；中间区域是核心的 Gateway Hooks 路由示意图，用纯 CSS 绘制一个"多角色自动路由"的抽象图示——中心是 gateway hook，向外辐射到不同的 agent 角色节点（例如会话类、执行类、分析类等），用细线和几何圆点表达路由关系，体现"不同任务类型路由到不同 agent 角色"的机制；右侧区域用一个明显的箭头或递进结构，表达"工具 → 团队"的演化跃迁，配合副标题"专业化分化"的语义。
+版面建议这样排：顶部为标题+副标题区，占约 18% 高度，副标题用较小的斜体 serif 呈现，像引言。中部是视觉主角，左侧放一张 hero 配图——`images/page_025_hero.png`，是一张包豪斯风格的暗色几何构图：一道暖琥珀色闪电斜穿深普鲁士蓝羊皮纸背景，左侧是缓慢沉重的剪影，右侧是轻盈快速的几何体，中心向外扩散出同心速度环，隐喻"从迟疑到爆发"的加速瞬间；这张图原生 2752×1536、aspect 约 1.79，建议放在版面左半，宽度约 780px、高度约 435px，保持原生比例不失真，作为前景图片独立呈现，不要当背景、不要压蒙版。右侧与图并列，用一个大号 "~80%" 数字配"First-token 下降"标签，下面接 "4.3s → 0.9s" 冷启动前后对比，箭头可用几何线条画，突出"CLI/gateway/TUI/desktop/cron 全平台"这条信息。
 
-核心信息区要把三条要点都落进去：一是"需求信号"，包含 28,040 body、11 comments、comp/gateway、area/sessions、needs-decision 这些标签；二是"用户需求"，即从"一个 agent 处理一切"到"专业化角色分工"的转变；三是"演化意义"，强调这是 Phase 2 的标志性提案，也是平台扩展期用户要求 agent 专业化能力的关键信号。页面底部用一行叙事性文字收束："#5143 是 Phase 2 的标志性提案——用户要求 gateway hooks 实现多角色自动路由，这是 agent 从'工具'到'团队'的第一个信号。"整页没有可用配图，请全靠文字、几何装饰和排版本身把版面填满，不要留大片空白，保持学术提案档案的厚重与克制。
+下方用一条 KPI 数据带呈现这轮 release 的规模：窗口 commits 2,245、Merged PRs 1,065、Issues closed 3,300、Contributors 450+，横排四到五个卡片。再往下是六个要点的紧凑列表：Release（v0.19.0 · 2026-07-20 — The Quicksilver Release）、Headline（first-token time 下降 ~80%，"那个深呼吸消失了"）、冷启动（4.3 秒到 0.9 秒，全平台）、Desktop 性能（20+ PR 速度改造，14× 更快 streaming markdown）、Delivery-obligation ledger（响应不会因 gateway 崩溃而丢失，P1 silent-loss 窗口关闭）、制度含义（"速度"是消费侧信任的基础——"如果 Hermes 像要深呼吸"，用户就会离开）。每个要点用 head 加粗小标题 + detail 灰色小字的形式，两栏或三栏排版均可，避免过长句子。
+
+整体风格是 dark academic + 包豪斯几何抽象，气质理性、克制、有智识感。主色是深普鲁士蓝 #1B3B6B，暖琥珀 #B4A078 做强调点缀（闪电、箭头、KPI 数字、序号），背景色 #0F1E33 带一丝羊皮纸质感，正文暖白 #F5F0E8。标题用 Noto Serif SC / Songti SC 这类衬线体，正文用 Noto Sans SC，等宽数字用 JetBrains Mono。装饰只用几何元素——圆点、方块、细线、同心环，不引入图标库，让"速度"的隐喻通过图形而非符号传递。底部可以留一行克制的结语："这个窗口，我们让它像 Hermes 一样移动。"

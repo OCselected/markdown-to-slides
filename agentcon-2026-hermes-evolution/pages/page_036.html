@@ -1,587 +1,479 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>田野考察小结 · 12 案例的横切视角</title>
-<script src="../assets/echarts.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<title>从"能用"到"好用"的跃迁 · 五阶段</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-:root{
-  --bg:#0F1E33;
-  --bg-deep:#0A1628;
-  --text:#F5F0E8;
-  --text-dim:#B0AEAA;
-  --text-faint:#6E6F76;
-  --gold:#B4A078;
-  --gold-bright:#D4B87C;
-  --blue:#1B3B6B;
-  --blue-light:#2E5599;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;}
-
-html,body{width:1600px;height:900px;overflow:hidden;background:var(--bg);}
-
-body{
-  font-family:'Noto Sans SC',sans-serif;
-  color:var(--text);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
+:root {
+  --primary: #1B3B6B;
+  --primary-light: #2D5FA3;
+  --bg: #0F1E33;
+  --text: #F5F0E8;
+  --text-sub: rgba(245, 240, 232, 0.68);
+  --text-mute: rgba(245, 240, 232, 0.45);
+  --accent: #B4A078;
+  --accent-glow: rgba(180, 160, 120, 0.25);
 }
 
-.wrapper{
-  width:1600px;height:900px;
-  position:relative;overflow:hidden;
-  margin:0 auto;
-  background:var(--bg);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
-#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box;}
-
-/* Background bauhaus geometry */
-.bg-circle{
-  position:absolute;border-radius:50%;
-}
-.circle-1{
-  width:520px;height:520px;
-  right:-170px;top:-190px;
-  border:1px solid rgba(180,160,120,0.13);
-}
-.circle-2{
-  width:340px;height:340px;
-  right:80px;top:-40px;
-  background:radial-gradient(circle,rgba(180,160,120,0.06),transparent 70%);
-}
-.circle-3{
-  width:220px;height:220px;
-  left:-90px;bottom:-90px;
-  border:1px solid rgba(180,160,120,0.09);
-}
-.bg-square{
-  position:absolute;
-}
-.square-1{
-  width:80px;height:80px;
-  right:180px;bottom:60px;
-  border:1px solid rgba(180,160,120,0.10);
-  transform:rotate(45deg);
-}
-.square-2{
-  width:6px;height:6px;
-  right:80px;top:38%;
-  background:rgba(180,160,120,0.5);
-}
-.bg-line{
-  position:absolute;
-  background:rgba(180,160,120,0.13);
-}
-.line-h1{width:180px;height:1px;left:60px;top:6px;}
-.line-h2{width:2px;height:100px;right:34px;top:80px;background:rgba(180,160,120,0.18);}
-.dot-decor{
-  position:absolute;
-  width:6px;height:6px;
-  border-radius:50%;
-  background:var(--gold);
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
 }
 
-/* ===================== HEADER ===================== */
-.header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding-bottom:12px;
-}
-.header-left{display:flex;align-items:flex-end;gap:24px;}
-.page-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:46px;font-weight:900;
-  color:var(--gold);
-  line-height:0.9;
-  padding-right:22px;
-  border-right:1px solid rgba(180,160,120,0.45);
-}
-.titles{display:flex;flex-direction:column;gap:4px;}
-.title-row{display:flex;align-items:baseline;gap:22px;}
-.main-title{
-  font-family:'Noto Serif SC',serif;
-  font-size:50px;font-weight:700;
-  letter-spacing:6px;color:var(--text);
-}
-.subtitle{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:19px;font-weight:300;
-  color:var(--gold);
-  letter-spacing:3px;
-  position:relative;
-  padding-left:14px;
-}
-.subtitle::before{
-  content:'';position:absolute;left:0;top:52%;
-  width:4px;height:4px;border-radius:50%;
-  background:var(--gold);
-}
-.header-right{
-  text-align:right;
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:11px;color:var(--text-faint);
-  letter-spacing:2px;
-  line-height:1.8;
-}
-.header-right .en{
-  color:var(--gold);
-  letter-spacing:4px;font-weight:500;
-  font-size:12px;
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 45%, #183257 0%, #0F1E33 55%, #08111F 100%);
 }
 
-.gold-divider{
-  height:1px;
-  background:linear-gradient(to right,
-    var(--gold) 0%,var(--gold) 60px,
-    rgba(180,160,120,0.5) 60px,rgba(180,160,120,0.5) 78px,
-    transparent 78px,transparent 100%);
-  position:relative;
-  margin-bottom:22px;
-}
-.gold-divider::after{
-  content:'';position:absolute;
-  right:0;top:-2px;
-  width:5px;height:5px;
-  background:var(--gold);
-  transform:rotate(45deg);
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 48px 60px 40px;
+  box-sizing: border-box;
 }
 
-/* ===================== CATEGORY SECTIONS ===================== */
-.category{margin-bottom:16px;}
-.cat-head{
-  display:flex;align-items:center;gap:14px;
-  margin-bottom:11px;
-}
-.cat-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:14px;font-weight:700;
-  color:var(--gold);
-  padding:3px 9px;
-  border:1px solid rgba(180,160,120,0.5);
-}
-.cat-title{
-  font-family:'Noto Serif SC',serif;
-  font-size:20px;font-weight:700;
-  color:var(--text);letter-spacing:4px;
-}
-.cat-en{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:10px;
-  color:var(--text-faint);
-  letter-spacing:3px;text-transform:uppercase;
-  margin-left:2px;
-}
-.cat-badge{
-  margin-left:auto;
-  font-size:11px;
-  padding:3px 12px;
-  border:1px solid;
-  letter-spacing:1px;
-}
-.cat-badge.count{
-  font-family:'Noto Serif SC',serif;font-weight:600;
-}
-.cat-line{
-  flex:1;height:1px;
-  background:linear-gradient(to right,
-    rgba(180,160,120,0.4),rgba(180,160,120,0.08));
+header {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
 }
 
-/* Cat 1 - blue theme */
-.cat-1 .cat-badge{border-color:rgba(46,85,153,0.7);color:#7FA0DC;}
-/* Cat 2 - gold theme */
-.cat-2 .cat-badge{border-color:rgba(180,160,120,0.7);color:var(--gold);}
-/* Cat 3 - gold fill theme */
-.cat-3 .cat-badge{border-color:var(--gold);color:var(--gold-bright);background:rgba(180,160,120,0.08);}
-
-/* ===================== CARD GRID ===================== */
-.grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
-.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
-.grid-1{display:grid;grid-template-columns:1.6fr 0.9fr;gap:14px;}
-
-.card{
-  padding:11px 14px 12px;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(46,85,153,0.45);
-  border-radius:3px;
-  position:relative;
-  min-height:70px;
-}
-.card::before{
-  content:'';
-  position:absolute;left:0;top:0;
-  width:2px;height:14px;
-  background:var(--gold);
-}
-.card-name{
-  font-family:'Noto Serif SC',serif;
-  font-size:18px;font-weight:700;
-  color:var(--text);
-  margin-bottom:4px;
-  letter-spacing:0.5px;
-  line-height:1.15;
-}
-.card-issue{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:16px;font-weight:600;
-  color:var(--text);
-  margin-bottom:4px;
-  letter-spacing:0.5px;
-  line-height:1.2;
-}
-.card-desc{
-  font-size:11.5px;
-  color:var(--text-dim);
-  letter-spacing:0.5px;
-  line-height:1.4;
-}
-.card-tag{
-  position:absolute;top:9px;right:11px;
-  font-size:9px;
-  color:var(--gold);
-  letter-spacing:1px;
+.header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 16px;
 }
 
-/* Gold variant */
-.cat-2 .card{
-  border-color:rgba(180,160,120,0.4);
-  background:rgba(180,160,120,0.03);
-}
-.cat-2 .card::before{background:var(--blue-light);}
-
-/* Gold fill variant */
-.cat-3 .card-main{
-  border-color:rgba(180,160,120,0.5);
-  background:linear-gradient(90deg,rgba(180,160,120,0.07),rgba(180,160,120,0.01));
-}
-.cat-3 .card-main::before{background:var(--gold-bright);height:20px;}
-
-.card-highlight{
-  padding:11px 14px 12px;
-  border:1px dashed rgba(180,160,120,0.35);
-  border-radius:3px;
-  display:flex;flex-direction:column;justify-content:center;gap:2px;
-  min-height:70px;
-}
-.highlight-label{
-  font-size:10px;
-  color:var(--gold);
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-family:'Noto Sans SC',sans-serif;
-}
-.highlight-value{
-  font-family:'Noto Serif SC',serif;
-  font-size:15px;font-weight:700;
-  color:var(--gold-bright);
-  letter-spacing:1px;
+h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.15;
+  color: var(--text);
 }
 
-/* ===================== THREE MODULES ===================== */
-.three-modules{
-  display:flex;
-  align-items:stretch;
-  justify-content:space-between;
-  margin-top:18px;padding:14px 0 12px;
-  border-top:1px solid rgba(180,160,120,0.22);
-  border-bottom:1px solid rgba(180,160,120,0.22);
-  position:relative;
+h1 .accent { color: var(--accent); }
+h1 .dot {
+  color: var(--accent);
+  font-weight: 400;
+  margin: 0 4px;
 }
-.three-modules::before,.three-modules::after{
-  content:'';position:absolute;
-  width:8px;height:8px;
-  background:var(--gold);
-  transform:rotate(45deg);
-}
-.three-modules::before{left:-4px;top:-4px;}
-.three-modules::after{right:-4px;bottom:-4px;}
+h1 .sep { color: var(--text-mute); margin: 0 10px; font-weight: 400; }
 
-.module{
-  display:flex;align-items:center;gap:14px;
-  padding:0 30px;
-  flex:1;
-}
-.module + .module{
-  border-left:1px solid rgba(180,160,120,0.2);
-}
-.m-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:12px;color:var(--gold);
-  letter-spacing:1px;font-weight:700;
-}
-.m-glyph{
-  font-family:'Noto Serif SC',serif;
-  font-size:48px;font-weight:900;
-  color:var(--text);
-  line-height:1;
-  letter-spacing:2px;
-}
-.m-info{display:flex;flex-direction:column;gap:2px;}
-.m-en{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:10px;color:var(--gold);
-  letter-spacing:3px;
-}
-.m-desc{
-  font-size:11px;color:var(--text-dim);
-  letter-spacing:1px;
+.subtitle {
+  text-align: right;
+  flex-shrink: 0;
 }
 
-/* ===================== INSIGHT ===================== */
-.insight{
-  margin-top:16px;
-  display:flex;align-items:center;gap:16px;
-  padding:10px 16px 12px;
-}
-.quote-mark{
-  font-family:'Noto Serif SC',serif;
-  font-size:56px;line-height:0.5;
-  color:var(--gold);
-  font-weight:900;
-  flex-shrink:0;
-  margin-top:22px;
-}
-.insight-content{flex:1;}
-.insight-text{
-  font-family:'Noto Serif SC',serif;
-  font-size:20px;font-weight:600;
-  color:var(--text);
-  letter-spacing:2px;
-  line-height:1.4;
-}
-.insight-text .underline{
-  text-decoration:underline;
-  text-decoration-color:var(--gold);
-  text-decoration-thickness:2px;
-  text-underline-offset:6px;
-  color:var(--gold-bright);
-  font-weight:700;
-}
-.insight-en{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:10px;color:var(--text-faint);
-  letter-spacing:3px;
-  margin-top:5px;
-  text-transform:uppercase;
-}
-.insight-end{
-  width:4px;height:4px;
-  background:var(--gold);
-  flex-shrink:0;
-  align-self:flex-end;
-  margin-bottom:6px;
+.subtitle-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
-/* ===================== FOOTER ===================== */
-.footer{
-  position:absolute;bottom:16px;left:60px;right:60px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:10px;color:var(--text-faint);
-  letter-spacing:3px;
-}
-.footer-line{
-  flex:1;height:1px;
-  margin:0 16px;
-  background:rgba(180,160,120,0.2);
+.subtitle-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: var(--text-sub);
+  letter-spacing: 2px;
 }
 
+h1::before {
+  content: '';
+  position: absolute;
+  left: 60px;
+  top: 48px;
+  width: 30px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.intro {
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  max-width: 1100px;
+}
+
+.intro-mark { color: var(--accent); font-weight: 700; margin-right: 8px; font-family: 'Noto Serif SC', serif; }
+
+.stages-inline {
+  color: var(--text);
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+}
+
+.stages-inline .arrow {
+  color: var(--accent);
+  margin: 0 6px;
+  font-weight: 400;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.section-bar {
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 6px;
+  font-weight: 600;
+}
+
+.section-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  margin-left: auto;
+}
+
+.visual-area {
+  position: relative;
+  height: 430px;
+}
+
+#timeline-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.top-labels, .bottom-labels {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.top-labels { top: 0; }
+.bottom-labels { top: 165px; }
+
+.top-label, .bottom-label {
+  position: absolute;
+  width: 260px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.top-label .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.top-label .pr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.top-label .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 1.5px;
+}
+
+.bottom-label .stage-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+  margin-bottom: 9px;
+  line-height: 1;
+}
+
+.bottom-label .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.bottom-label .vol {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 1.5px;
+}
+
+.transition-labels {
+  position: absolute;
+  left: 0;
+  top: 92px;
+  width: 100%;
+  height: 0;
+}
+
+.tl-item {
+  position: absolute;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.tl-item .lbl {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 3px;
+  margin-bottom: 2px;
+}
+
+.tl-item .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 2px;
+}
+
+.pair-group {
+  position: absolute;
+  top: 0;
+  height: 130px;
+}
+
+.footer {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 46px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 34px;
+  border-top: 1px solid rgba(180, 160, 120, 0.3);
+  border-bottom: 1px solid rgba(180, 160, 120, 0.15);
+  background: linear-gradient(90deg, rgba(27, 59, 107, 0.35) 0%, rgba(27, 59, 107, 0.1) 100%);
+}
+
+.footer-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.footer-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: 3px;
+  line-height: 1.4;
+  flex: 1;
+  font-weight: 500;
+}
+
+.footer-quote .g { color: var(--accent); font-weight: 700; }
+
+.footer-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  text-align: right;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-circle circle-1"></div>
-    <div class="bg-circle circle-2"></div>
-    <div class="bg-circle circle-3"></div>
-    <div class="bg-square square-1"></div>
-    <div class="dot-decor" style="right:60px;top:230px;"></div>
-    <div class="bg-line line-h1"></div>
-    <div class="bg-line line-h2"></div>
+    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;opacity:0.5;">
+      <rect x="30" y="30" width="1540" height="840" fill="none" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
+      <rect x="30" y="30" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
+      <rect x="1530" y="867" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
+      <circle cx="1560" cy="30" r="4" fill="none" stroke="rgba(180,160,120,0.25)" stroke-width="1"/>
+      <rect x="30" y="867" width="4" height="4" fill="rgba(180,160,120,0.25)"/>
+    </svg>
   </div>
 
   <div id="ct">
-
-    <!-- HEADER -->
-    <div class="header">
-      <div class="header-left">
-        <div class="page-num">36</div>
-        <div class="titles">
-          <div class="title-row">
-            <h1 class="main-title">田野考察小结</h1>
-            <span class="subtitle">12 案例的横切视角</span>
-          </div>
+    <header>
+      <div class="header-row">
+        <h1>从<span class="accent">"能用"</span>到<span class="accent">"好用"</span>的跃迁<span class="sep">·</span>五阶段</h1>
+        <div class="subtitle">
+          <div class="subtitle-en">USER NEED · EVOLUTION ARC</div>
+          <div class="subtitle-cn">用户需求演化的完整轨迹</div>
         </div>
       </div>
-      <div class="header-right">
-        <div class="en">FIELD WORK · CROSS-CUT</div>
-        <div>横切分析 · TRANSVERSAL LENS</div>
-      </div>
+      <p class="intro">
+        <span class="intro-mark">◆</span>从"能用"到"好用"的跃迁是五步 —— <span class="stages-inline">专业化<span class="arrow">→</span>生命化<span class="arrow">→</span>自动化<span class="arrow">→</span>持久化<span class="arrow">→</span>智慧化</span>，每一步都代表用户对 agent 的需求提升。
+      </p>
+    </header>
+
+    <div class="section-head">
+      <div class="section-bar"></div>
+      <div class="section-title">TIMELINE OF EVOLUTION</div>
+      <div class="section-note">2026 · Q2 — Q3</div>
     </div>
 
-    <div class="gold-divider"></div>
+    <div class="visual-area">
+      <svg id="timeline-svg" width="1480" height="130" viewBox="0 0 1480 130" xmlns="http://www.w3.org/2000/svg">
+        <line x1="147" y1="65" x2="408" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="408" y1="65" x2="670" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="670" y1="65" x2="931" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="931" y1="65" x2="1193" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="1221" y1="65" x2="1454" y2="65" stroke="rgba(180,160,120,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
 
-    <!-- Category 1: 文化事件 -->
-    <div class="category cat-1">
-      <div class="cat-head">
-        <span class="cat-num">01</span>
-        <span class="cat-title">文化事件</span>
-        <span class="cat-en">Cultural Events</span>
-        <span class="cat-line"></span>
-        <span class="cat-badge count">× 6</span>
-      </div>
-      <div class="grid-6">
-        <div class="card">
-          <div class="card-name">Judgment</div>
-          <div class="card-desc">判断力</div>
-          <div class="card-tag">REL</div>
-        </div>
-        <div class="card">
-          <div class="card-name">Tenacity</div>
-          <div class="card-desc">韧性</div>
-          <div class="card-tag">REL</div>
-        </div>
-        <div class="card">
-          <div class="card-name">Surface</div>
-          <div class="card-desc">表层界面</div>
-          <div class="card-tag">COMPAT</div>
-        </div>
-        <div class="card">
-          <div class="card-name">Velocity</div>
-          <div class="card-desc">速度</div>
-          <div class="card-tag">TRUST</div>
-        </div>
-        <div class="card">
-          <div class="card-name">Quicksilver</div>
-          <div class="card-desc">易变 / 流动性</div>
-          <div class="card-tag">COMPAT</div>
-        </div>
-        <div class="card">
-          <div class="card-name">Patch</div>
-          <div class="card-desc">补丁</div>
-          <div class="card-tag">REL</div>
-        </div>
-      </div>
-    </div>
+        <line x1="277" y1="40" x2="277" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="539" y1="40" x2="539" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="802" y1="40" x2="802" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1062" y1="40" x2="1062" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
 
-    <!-- Category 2: 制度标本 -->
-    <div class="category cat-2">
-      <div class="cat-head">
-        <span class="cat-num">02</span>
-        <span class="cat-title">制度标本</span>
-        <span class="cat-en">Institutional Cases</span>
-        <span class="cat-line"></span>
-        <span class="cat-badge count">× 5</span>
-      </div>
-      <div class="grid-5">
-        <div class="card">
-          <div class="card-issue">#107070</div>
-          <div class="card-desc">典型 issue 编号</div>
-          <div class="card-tag">ISSUE</div>
-        </div>
-        <div class="card">
-          <div class="card-issue">#101600</div>
-          <div class="card-desc">典型 issue 编号</div>
-          <div class="card-tag">ISSUE</div>
-        </div>
-        <div class="card">
-          <div class="card-issue">#67002</div>
-          <div class="card-desc">典型 issue 编号</div>
-          <div class="card-tag">ISSUE</div>
-        </div>
-        <div class="card">
-          <div class="card-issue">#66353</div>
-          <div class="card-desc">典型 issue 编号</div>
-          <div class="card-tag">ISSUE</div>
-        </div>
-        <div class="card">
-          <div class="card-issue">#84672</div>
-          <div class="card-desc">典型 issue 编号</div>
-          <div class="card-tag">ISSUE</div>
-        </div>
-      </div>
-    </div>
+        <polygon points="279,59 292,65 279,71" fill="#B4A078"/>
+        <polygon points="541,59 554,65 541,71" fill="#B4A078"/>
+        <polygon points="804,59 817,65 804,71" fill="#B4A078"/>
+        <polygon points="1064,59 1077,65 1064,71" fill="#B4A078"/>
+        <polygon points="1456,57 1472,65 1456,73" fill="rgba(180,160,120,0.65)"/>
 
-    <!-- Category 3: 数据案例 -->
-    <div class="category cat-3">
-      <div class="cat-head">
-        <span class="cat-num">03</span>
-        <span class="cat-title">数据案例</span>
-        <span class="cat-en">Data Case</span>
-        <span class="cat-line"></span>
-        <span class="cat-badge count">× 1</span>
-      </div>
-      <div class="grid-1">
-        <div class="card card-main">
-          <div class="card-name">Desktop 供需缺口</div>
-          <div class="card-desc">扩张期信号 · Expansion Phase Signal</div>
-          <div class="card-tag">DATA</div>
-        </div>
-        <div class="card-highlight">
-          <span class="highlight-label">Signal →</span>
-          <span class="highlight-value">扩张期 · 需求外溢</span>
-        </div>
-      </div>
-    </div>
+        <circle cx="147" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <rect x="394" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <circle cx="670" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <rect x="917" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <circle cx="1193" cy="65" r="22" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.5"/>
+        <rect x="1177" y="49" width="32" height="32" fill="#1B3B6B" stroke="#B4A078" stroke-width="2"/>
 
-    <!-- Three common problems -->
-    <div class="three-modules">
-      <div class="module">
-        <div class="m-num">①</div>
-        <div class="m-glyph">可靠性</div>
-        <div class="m-info">
-          <span class="m-en">RELIABILITY</span>
-          <span class="m-desc">稳定可预期</span>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-num">②</div>
-        <div class="m-glyph">兼容性</div>
-        <div class="m-info">
-          <span class="m-en">COMPATIBILITY</span>
-          <span class="m-desc">跨语境可迁移</span>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-num">③</div>
-        <div class="m-glyph">信任</div>
-        <div class="m-info">
-          <span class="m-en">TRUST</span>
-          <span class="m-desc">可观察 · 可度量</span>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:var(--gold);letter-spacing:5px;margin-top:-4px;">
-      从 "能用" 到 "好用" 的三道分水岭
-    </div>
+        <text x="147" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">01</text>
+        <text x="408" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">02</text>
+        <text x="670" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">03</text>
+        <text x="931" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">04</text>
+        <text x="1193" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">05</text>
+      </svg>
 
-    <!-- Core insight -->
-    <div class="insight">
-      <div class="quote-mark">"</div>
-      <div class="insight-content">
-        <div class="insight-text">
-          <span class="underline">消费侧信任是可观察的信号</span>——开源 Agent 的"度量权"在社区手里。
+      <div class="top-labels">
+        <div class="top-label" style="left:147px;">
+          <div class="num">STAGE 01</div>
+          <div class="pr">#5143</div>
+          <div class="date">2026 · 04</div>
         </div>
-        <div class="insight-en">Consumer Trust · An Observable Signal · The Right to Measure Lives in the Community</div>
+        <div class="top-label" style="left:408px;">
+          <div class="num">STAGE 02</div>
+          <div class="pr">#53871</div>
+          <div class="date">2026 · 06</div>
+        </div>
+        <div class="top-label" style="left:670px;">
+          <div class="num">STAGE 03</div>
+          <div class="pr">#61044</div>
+          <div class="date">2026 · 07</div>
+        </div>
+        <div class="top-label" style="left:931px;">
+          <div class="num">STAGE 04</div>
+          <div class="pr">#82198</div>
+          <div class="date">2026 · 08</div>
+        </div>
+        <div class="top-label" style="left:1193px;">
+          <div class="num">STAGE 05 · FINAL</div>
+          <div class="pr">#94266</div>
+          <div class="date">2026 · 08</div>
+        </div>
       </div>
-      <div class="insight-end"></div>
+
+      <div class="bottom-labels">
+        <div class="bottom-label" style="left:147px;">
+          <div class="stage-name">专业化</div>
+          <div class="tag">Gateway Hooks</div>
+          <div class="vol">— 工具层 · 接入就绪 —</div>
+        </div>
+        <div class="bottom-label" style="left:408px;">
+          <div class="stage-name">生命化</div>
+          <div class="tag">Soul / Curiosity Engine</div>
+          <div class="vol">— 内驱力 · 好奇心 —</div>
+        </div>
+        <div class="bottom-label" style="left:670px;">
+          <div class="stage-name">自动化</div>
+          <div class="tag">Cron-native Batch API</div>
+          <div class="vol">— 定时批处理 —</div>
+        </div>
+        <div class="bottom-label" style="left:931px;">
+          <div class="stage-name">持久化</div>
+          <div class="tag">Skill-Persistence EPIC</div>
+          <div class="vol">54,633 · body</div>
+        </div>
+        <div class="bottom-label" style="left:1193px;">
+          <div class="stage-name">智慧化</div>
+          <div class="tag">Collective Wisdom · V1</div>
+          <div class="vol">52,295 · body</div>
+        </div>
+      </div>
+
+      <div class="transition-labels">
+        <div class="tl-item" style="left:284px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">TOOL → LIFE</div>
+        </div>
+        <div class="tl-item" style="left:545px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">LIFE → AUTO</div>
+        </div>
+        <div class="tl-item" style="left:808px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">AUTO → PERSIST</div>
+        </div>
+        <div class="tl-item" style="left:1068px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">PERSIST → WISDOM</div>
+        </div>
+      </div>
     </div>
 
     <div class="footer">
-      <span>FIELDWORK · CROSS-CUT REVIEW</span>
-      <span class="footer-line"></span>
-      <span>P.36 / 田野考察小结</span>
+      <div class="footer-mark"></div>
+      <div class="footer-quote">从<span class="g">工具</span>到<span class="g">伙伴</span>，从伙伴到<span class="g">自我组织</span>，最终走向<span class="g">集体智慧</span></div>
+      <div class="footer-en">FROM TOOL · TO PARTNER ·<br>TO SELF-ORGANIZATION · TO WISDOM</div>
     </div>
-
   </div>
 </div>
 </body>

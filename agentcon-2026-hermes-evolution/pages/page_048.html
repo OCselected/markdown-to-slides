@@ -4,321 +4,384 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>延伸阅读 · 制度经济学核心文献</title>
+<title>结语 · 开源之为思想的力量</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-deep: #0F1E33;
-    --bg-panel: #1B3B6B;
-    --accent-gold: #B4A078;
-    --accent-gold-dim: rgba(180, 160, 120, 0.42);
-    --accent-gold-faint: rgba(180, 160, 120, 0.14);
-    --text-warm: #F5F0E8;
-    --text-muted: rgba(245, 240, 232, 0.62);
-    --text-dim: rgba(245, 240, 232, 0.44);
-    --hairline: rgba(245, 240, 232, 0.16);
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: "Noto Sans SC", "PingFang SC", -apple-system, "Helvetica Neue", sans-serif;
-    background: #0F1E33;
-    color: var(--text-warm);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    background: linear-gradient(180deg, #0F1E33 0%, #0B1830 100%);
-  }
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .top-line {
-    position: absolute;
-    top: 82px;
-    left: 60px;
-    width: 1480px;
-    height: 1px;
-    background: var(--accent-gold-dim);
-  }
-  .top-square {
-    position: absolute;
-    top: 60px;
-    right: 60px;
-    width: 22px;
-    height: 22px;
-    background: var(--accent-gold);
-  }
-  .accent-circle-lg {
-    position: absolute;
-    top: -140px;
-    right: -120px;
-    width: 340px;
-    height: 340px;
-    border: 1px solid rgba(180, 160, 120, 0.28);
-    border-radius: 50%;
-  }
-  .accent-circle-lg::after {
-    content: '';
-    position: absolute;
-    bottom: 24px;
-    left: 40px;
-    width: 8px;
-    height: 8px;
-    background: var(--accent-gold);
-    border-radius: 50%;
-  }
-  .accent-circle-md {
-    position: absolute;
-    bottom: -120px;
-    left: -100px;
-    width: 280px;
-    height: 280px;
-    background: rgba(180, 160, 120, 0.05);
-    border-radius: 50%;
-  }
-  .accent-square-lg {
-    position: absolute;
-    bottom: 88px;
-    right: 90px;
-    width: 46px;
-    height: 46px;
-    background: transparent;
-    border: 1px solid rgba(180, 160, 120, 0.35);
-  }
-  .accent-square-sm {
-    position: absolute;
-    bottom: 148px;
-    right: 70px;
-    width: 14px;
-    height: 14px;
-    background: var(--accent-gold);
-  }
-  .accent-square-bl {
-    position: absolute;
-    bottom: 22px;
-    left: 60px;
-    width: 10px;
-    height: 10px;
-    background: var(--accent-gold);
-  }
-  .accent-tick {
-    position: absolute;
-    top: 208px;
-    left: 60px;
-    width: 40px;
-    height: 2px;
-    background: var(--accent-gold);
-  }
+:root {
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --accent: #B4A078;
+  --text: #F5F0E8;
+  --text-soft: rgba(245, 240, 232, 0.68);
+  --text-dim: rgba(245, 240, 232, 0.42);
+  --border: rgba(27, 59, 107, 0.35);
+  --border-soft: rgba(180, 160, 120, 0.28);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(27, 59, 107, 0.45) 0%, rgba(15, 30, 51, 1) 60%, #0A1526 100%);
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(180, 160, 120, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 160, 120, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.6;
+}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 56px 80px;
+  box-sizing: border-box;
+}
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 34px 60px 30px;
-    display: flex;
-    flex-direction: column;
-  }
-  .header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .header-left { display: flex; align-items: flex-end; gap: 34px; }
-  .title-block {
-    position: relative;
-    padding-left: 22px;
-  }
-  .title-block::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 4px;
-    height: 70px;
-    background: var(--accent-gold);
-  }
-  .title {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 60px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    color: var(--text-warm);
-    margin: 0;
-  }
-  .subtitle-block {
-    padding-bottom: 6px;
-    min-width: 260px;
-  }
-  .subtitle {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 22px;
-    color: var(--accent-gold);
-    letter-spacing: 0.2em;
-    font-weight: 500;
-    margin: 0 0 6px 0;
-  }
-  .subtitle-en {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    font-weight: 400;
-  }
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.header-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+.header-right .rule {
+  display: inline-block;
+  width: 48px;
+  height: 4px;
+  background: var(--accent);
+}
 
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-top: 32px;
-  }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 34px;
-    grid-template-rows: 90px 32px 46px;
-    row-gap: 16px;
-  }
-  .card-image {
-    position: relative;
-    height: 90px;
-    background: var(--accent-gold);
-    overflow: hidden;
-  }
-  .card-image::before {
-    content: '';
-    position: absolute;
-    left: 16px;
-    top: 0;
-    width: 12px;
-    height: 90px;
-    background: var(--bg-panel);
-  }
-  .card-image::after {
-    content: '';
-    position: absolute;
-    left: 28px;
-    top: 0;
-    width: 3px;
-    height: 90px;
-    background: var(--accent-gold);
-    opacity: 0.5;
-  }
-  .card-title {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-warm);
-    letter-spacing: 0.08em;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  .card-source {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.55;
-    font-style: italic;
-    letter-spacing: 0.03em;
-  }
-  .card-source .year {
-    color: var(--accent-gold);
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    margin-right: 4px;
-  }
-  .card-source .work {
-    display: block;
-    color: var(--text-warm);
-    font-style: italic;
-    margin-top: 3px;
-    opacity: 0.9;
-  }
+/* Decorative geometry */
+.deco { position: absolute; pointer-events: none; }
+.deco-circle-1 {
+  top: 130px; left: 60px;
+  width: 90px; height: 90px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.deco-square-1 {
+  top: 158px; left: 110px;
+  width: 22px; height: 22px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+.deco-line-1 {
+  top: 200px; left: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0.6), rgba(180,160,120,0));
+}
+.deco-circle-2 {
+  top: 150px; right: 70px;
+  width: 60px; height: 60px;
+  border: 1px solid rgba(180,160,120,0.4);
+  border-radius: 50%;
+}
+.deco-square-2 {
+  bottom: 130px; left: 60px;
+  width: 14px; height: 14px;
+  border: 1px solid var(--accent);
+  opacity: 0.6;
+}
+.deco-line-2 {
+  bottom: 120px; right: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0), rgba(180,160,120,0.6));
+}
+.deco-circle-3 {
+  bottom: 110px; right: 70px;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
 
-  .footer {
-    margin-top: auto;
-    padding-top: 22px;
-    position: relative;
-  }
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--hairline);
-  }
-  .footer-text {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    letter-spacing: 0.06em;
-    font-weight: 300;
-  }
-  .footer-text .em { color: var(--text-warm); font-weight: 500; }
+/* Center slogan */
+.center-area {
+  margin-top: 62px;
+  text-align: center;
+  position: relative;
+}
+.center-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: var(--accent);
+  margin-bottom: 26px;
+  text-transform: uppercase;
+}
+.center-eyebrow .dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.center-eyebrow .bar {
+  width: 40px; height: 1px;
+  background: var(--accent);
+}
+.slogan {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 92px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  line-height: 1.15;
+  color: var(--text);
+  text-shadow: 0 2px 0 rgba(180, 160, 120, 0.22), 0 4px 18px rgba(180, 160, 120, 0.14);
+  margin: 0;
+}
+.slogan .quote {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 100px;
+  vertical-align: -6px;
+}
+.slogan-under {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+.slogan-under .seg {
+  width: 60px; height: 2px;
+  background: var(--accent);
+}
+
+/* Four cards */
+.cards {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(27, 59, 107, 0.28) 0%, rgba(27, 59, 107, 0.14) 100%);
+  padding: 26px 22px 24px;
+  min-height: 176px;
+  box-sizing: border-box;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 3px;
+  background: var(--accent);
+}
+.card-idx {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-idx .sq {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+}
+.card-head {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.card-head .en {
+  display: block;
+  font-family: Georgia, 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+.card-detail {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+/* Footer narrative */
+.footer {
+  position: absolute;
+  left: 80px; right: 80px;
+  bottom: 56px;
+  text-align: center;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-soft);
+}
+.footer-narrative {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-soft);
+  letter-spacing: 1.5px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-narrative .em {
+  color: var(--accent);
+  font-weight: 500;
+}
+.footer-page {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-dim);
+}
+.footer-page .rule {
+  display: inline-block;
+  width: 30px; height: 1px;
+  background: var(--text-dim);
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="top-line"></div>
-    <div class="top-square"></div>
-    <div class="accent-circle-lg"></div>
-    <div class="accent-circle-md"></div>
-    <div class="accent-square-lg"></div>
-    <div class="accent-square-sm"></div>
-    <div class="accent-square-bl"></div>
-    <div class="accent-tick"></div>
+    <div class="bg-grid"></div>
+    <div class="deco deco-circle-1"></div>
+    <div class="deco deco-square-1"></div>
+    <div class="deco deco-line-1"></div>
+    <div class="deco deco-circle-2"></div>
+    <div class="deco deco-square-2"></div>
+    <div class="deco deco-line-2"></div>
+    <div class="deco deco-circle-3"></div>
   </div>
+
   <div id="ct">
     <div class="header">
       <div class="header-left">
-        <div class="title-block">
-          <h1 class="title">延伸阅读</h1>
-        </div>
-        <div class="subtitle-block">
-          <div class="subtitle">制度经济学核心文献</div>
-          <div class="subtitle-en">CORE READINGS · INSTITUTIONAL ECONOMICS</div>
-        </div>
+        <div class="header-mark"></div>
+        <div class="header-title">结语 · 开源之为思想的力量</div>
+      </div>
+      <div class="header-right">
+        <span>CONCLUSION</span>
+        <span class="rule"></span>
+        <span>P. 46</span>
       </div>
     </div>
-    <div class="content">
-      <div class="cards">
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-title">转型经济学</div>
-        <div class="card-title">交易成本经济学</div>
-        <div class="card-title">认知制度</div>
-        <div class="card-title">演化制度理论</div>
-        <div class="card-title">开源经济学</div>
-        <div class="card-source"><span class="year">2004</span> · Roland<span class="work">Understanding Institutional Change</span></div>
-        <div class="card-source"><span class="year">2000</span> · Williamson<span class="work">The New Institutional Economics</span></div>
-        <div class="card-source"><span class="year">2016</span> · Akcagün &amp; Sapienza<span class="work">Cognitive Rules of Growth</span></div>
-        <div class="card-source"><span class="year">2017</span> · Greif &amp; Mokyr<span class="work">Journal of Institutional Economics</span></div>
-        <div class="card-source"><span class="year">2002</span> · Lerner &amp; Tirole<span class="work">The Economics of Open Source Software</span></div>
+
+    <div class="center-area">
+      <div class="center-eyebrow">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span>THE SOURCE CODE OF INSTITUTIONS</span>
+        <span class="dot"></span>
+        <span class="bar"></span>
       </div>
-      <div class="footer">
-        <p class="footer-text">延伸阅读覆盖<span class="em">制度经济学的核心文献</span>——从<span class="em">转型经济学</span>到<span class="em">演化制度理论</span>，从<span class="em">交易成本</span>到<span class="em">开源经济学</span>。</p>
+      <h1 class="slogan">
+        <span class="quote">「</span>思想是制度的源代码<span class="quote">」</span>
+      </h1>
+      <div class="slogan-under">
+        <span class="seg"></span>
+        <span>Keep Movement</span>
+        <span class="seg"></span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>I · FROM AGENT TO INSTITUTION</span></div>
+        <div class="card-head">从 Agent 到制度<span class="en">Agent as Sample</span></div>
+        <div class="card-detail">Hermes 是样本，不是终点。它只是一次实验，真正的题目是它背后的机制如何生长。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>II · THE WAY OF OPENNESS</span></div>
+        <div class="card-head">开源之道<span class="en">Idea, Not Road</span></div>
+        <div class="card-detail">道是思想（idea），不是道路（road）。开源的价值不在通道，在于让想法得以流动。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>III · KEEP MOVEMENT</span></div>
+        <div class="card-head">Keep Movement<span class="en">Knowledge in Motion</span></div>
+        <div class="card-detail">知识不是静止的，是在移动中产生的。任何被冻结的秩序都会失去解释力。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>IV · A BLANK SPACE</span></div>
+        <div class="card-head">一句留白<span class="en">An Opening, Not a Proof</span></div>
+        <div class="card-detail">不是要证明什么——是打开一种思考。答案留给你，把问题还给演化本身。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="footer-narrative">
+        <span class="em">「思想是制度的源代码」</span>——不是规则在动，是思想在动。<span class="em">Keep Movement。</span>这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
+      </p>
+      <div class="footer-page">
+        <span>END OF SPEECH</span>
+        <span class="rule"></span>
+        <span>46 / 46</span>
+        <span class="rule"></span>
+        <span>OPENNESS · INSTITUTION · MOVEMENT</span>
       </div>
     </div>
   </div>

@@ -1,9 +1,5 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"案例 2 · Tenacity Release · 多 Agent Kanban"，副标题点出"finishes what it starts"的文化承诺。这是内容页，整体风格走 dark academic 学术风——深普鲁士蓝 #0F1E33 羊皮纸质感底，暖白 #F5F0E8 为主文字色，琥珀色 #B4A078 作为高亮点缀，标题用 Noto Serif SC 宋体系，正文用 Noto Sans SC 黑体系，气质要理性、克制、有智识感，装饰走包豪斯几何（圆、方、线），不要图标堆砌。
+我需要一页 PPT，主题是"Release 命名文化 · 田野观察第 1 章"，副标题点明"把 release 当作文化事件"。整体风格是深普鲁士蓝底（#0F1E33）的暗色学术调性，主色为深普鲁士蓝（#1B3B6B），辅色用暖金色 #B4A078 做点缀，正文用暖白 #F5F0E8，字体上标题用衬线（Noto Serif SC），正文用无衬线（Noto Sans SC），装饰以包豪斯几何元素（圆、方、线）为主，不依赖图标，气质克制、理性、有智识感。
 
-页面顶部左侧放超大号主标题"案例 2 · Tenacity Release · 多 Agent Kanban"，右侧或紧下方放副标题"'finishes what it starts' 的文化承诺"。中部左右分栏：左栏承载叙事与要点，右栏放一张核心配图。左栏先用一行大字标出发布版本"v0.13.0 (2026-05-07) — The Tenacity Release"，随后以卡片或分块形式列出五条核心能力要点：Kanban 多 agent 平台（heartbeat、reclaim、zombie detection）、/goal 命令（Ralph loop——agent 锁定目标跨 turn 执行）、Checkpoints v2（state 持久化重写，真剪枝，磁盘护栏）、Sessions survive restarts（gateway 崩溃后自动恢复）、制度含义（"可靠性"从代码质量延伸到任务持久性——agent 必须"把开始的事做完"）。其中 /goal 命令那一项要特别用琥珀色描边或高亮框突出。
-
-右栏放这张 hero 配图：路径是 `../images/page_022_hero.png`，原生 2752×1536、aspect 约 1.79（接近 16:9）。这是一张包豪斯暗学术风抽象合成图——深普鲁士蓝羊皮纸底上有一张几何网格暗示的看板：三列细长的矩形卡片平面，部分卡片正跨列漂浮仿佛流经工作流阶段，网格下方横贯一条心跳波形，波形末端与一个同心圆目标点对齐，目标点用暖琥珀色点亮，卡片边缘带暖米色高光。整幅图传达"任务持久追踪 + 目标锁定执行"的隐喻。建议放在右栏占约 640×357 的区域，保持原生比例不压扁。配图下方可以写一句贴合内容的 caption，比如"心跳守护任务，锁定不偏离目标"。
-
-页面底部放一行 KPI 数据条，四个数字横向并列：窗口 commits 864、Merged PRs 588、Issues closed 282（含 13 P0 + 36 P1）、Contributors 295。数字用琥珀色或大号 mono 字体（JetBrains Mono）突出，标签用次要文字色 rgba(245,240,232,0.68)。底部再用一句总结收束："可靠性从代码质量延伸到任务持久性——agent 必须把开始的事做完"。
+页面版式建议：顶部左对齐写大标题与副标题，右上角放两个 KPI 数字——"Releases 33 个"和"命名 Release 6 个"，用小号标签 + 大号数字的对比。中部左侧是一段叙事短文，原文如下："Hermes 的 release 不是版本号，是文化事件。6 个命名 release 用希腊神话/概念词汇命名，每个命名背后都是一个制度主张——这是开源项目的'仪式'。" 右侧主体是 6 张卡片，按 2 行 3 列排布，每张卡片一个 release 名 + 一句注解，内容依次是：Judgment——"P0/P1 清零战役——700 highest-priority items cleared in 12 days"；Tenacity——"'finishes what it starts'——多 agent kanban 平台"；Surface——"'Hermes meets you wherever you work'——原生 desktop + Web admin"；Velocity——"'16,000 行 → 3,821 行'——大重构"；Quicksilver——"'first token time 80% 下降'——性能爆发"；Patch——"热修复——dashboard 401 reload loop"。卡片之间用细线或几何分隔，保持呼吸感。底部可放一句收束："release 命名 = 制度主张的仪式化表达"。这一页没有可用的配图，请用纯文字 + CSS 几何装饰把版面填满，不要留大片空白，也请保留所有原始英文引号内容不做翻译。

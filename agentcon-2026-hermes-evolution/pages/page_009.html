@@ -4,434 +4,505 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Hermes 项目坐标</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>MCP 捐给 Linux Foundation</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
+
 :root{
-  --bg:#0F1E33;
-  --bg-2:#0B1729;
-  --primary:#1B3B6B;
-  --primary-2:#244A82;
-  --gold:#B4A078;
-  --gold-dim:#8A7A5A;
-  --text:#F5F0E8;
-  --text-dim:#C9C1B0;
-  --text-mute:#9AA0AE;
-  --line:rgba(180,160,120,0.35);
-  --line-strong:rgba(180,160,120,0.7);
+  --deep:#1B3B6B;
+  --deep-darker:#0F2547;
+  --deep-lighter:#2A5291;
+  --warm-white:#F5F0E8;
+  --warm-white-dim:#D8CDB8;
+  --parchment:#EAE0CE;
+  --accent:#C9A96E;
+  --accent-warm:#D98E5C;
 }
+
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:1600px;height:900px;overflow:hidden;}
-body{font-family:"Noto Sans SC","Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg);}
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
-#bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 40%,#152A48 0%,#0F1E33 45%,#0A1526 100%);}
-#ct{position:absolute;inset:0;z-index:1;padding:56px 80px;box-sizing:border-box;}
 
-/* paper-like subtle grain via repeating linear */
-#bg::before{
-  content:"";position:absolute;inset:0;
-  background-image:
-    repeating-linear-gradient(0deg,rgba(255,255,255,0.012) 0px,rgba(255,255,255,0.012) 1px,transparent 1px,transparent 3px),
-    repeating-linear-gradient(90deg,rgba(0,0,0,0.05) 0px,rgba(0,0,0,0.05) 1px,transparent 1px,transparent 5px);
-  pointer-events:none;
-}
-#bg::after{
-  content:"";position:absolute;inset:0;
-  background-image:radial-gradient(rgba(245,240,232,0.05) 1px,transparent 1px);
-  background-size:7px 7px;
-  opacity:.35;
-  mix-blend-mode:screen;
-  pointer-events:none;
+body{
+  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--deep-darker);
+  color:var(--warm-white);
 }
 
-/* ---- geometric decorations ---- */
-.deco{position:absolute;pointer-events:none;}
-.deco-square-1{
-  top:70px;left:80px;width:14px;height:14px;background:var(--gold);
+.wrapper{
+  width:1600px;
+  height:900px;
+  position:relative;
+  overflow:hidden;
+  margin:0 auto;
+  font-family:'Noto Sans SC','PingFang SC',sans-serif;
 }
-.deco-square-2{
-  top:150px;left:80px;width:6px;height:6px;background:var(--gold-dim);
-}
-.deco-circle-1{
-  top:96px;left:104px;width:20px;height:20px;border:1.5px solid var(--gold);border-radius:50%;
-}
-.deco-line-v-left{
-  top:60px;left:64px;width:1px;height:120px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
-}
-.deco-line-v-right{
-  top:60px;right:64px;width:1px;height:120px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);
-}
-.deco-square-3{
-  top:70px;right:80px;width:14px;height:14px;background:transparent;border:1.5px solid var(--gold);
-}
-.deco-square-4{
-  top:96px;right:112px;width:6px;height:6px;background:var(--gold);
-}
-.deco-circle-2{
-  top:158px;right:80px;width:20px;height:20px;background:var(--gold);border-radius:50%;opacity:.85;
-}
-.deco-line-h-top{
-  top:108px;left:130px;width:220px;height:1px;background:var(--line);
-}
-.deco-line-h-top-2{
-  top:108px;right:130px;width:220px;height:1px;background:var(--line);
-}
-/* big geometric mark on right */
-.deco-big-circle{
-  top:220px;right:120px;width:340px;height:340px;border:1px solid rgba(180,160,120,0.18);border-radius:50%;
-}
-.deco-big-square{
-  top:260px;right:160px;width:260px;height:260px;border:1px solid rgba(180,160,120,0.12);
-  transform:rotate(45deg);
-}
-.deco-dot-a{top:230px;right:130px;width:8px;height:8px;background:var(--gold);border-radius:50%;}
-.deco-dot-b{top:540px;right:440px;width:5px;height:5px;background:var(--gold-dim);border-radius:50%;}
-.deco-dot-c{top:640px;right:160px;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:.7;}
-.deco-dot-d{top:180px;right:440px;width:4px;height:4px;background:var(--gold-dim);border-radius:50%;}
 
-/* ---- header ---- */
-.header{position:relative;height:172px;padding-top:8px;}
+#bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(42,82,145,0.4), transparent 55%),
+    radial-gradient(ellipse at 85% 80%, rgba(42,82,145,0.3), transparent 60%),
+    var(--deep);
+}
+
+.bg-dots{
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle, rgba(245,240,232,0.035) 1px, transparent 1px);
+  background-size:32px 32px;
+}
+
+#ct{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  padding:56px 60px 40px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===== Header ===== */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:44px;
+  position:relative;
+}
+
+.title-block{max-width:1080px;position:relative;padding-left:4px;}
+
+.title-block::before{
+  content:"";
+  position:absolute;
+  left:-16px;
+  top:10px;
+  width:4px;
+  height:88px;
+  background:var(--accent);
+}
+
 .eyebrow{
-  display:flex;align-items:center;gap:14px;
-  font-family:"JetBrains Mono",monospace;
-  font-size:12px;letter-spacing:0.32em;color:var(--gold);
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
-.eyebrow .tag{
-  display:inline-block;padding:4px 10px;
-  border:1px solid var(--line-strong);
-  color:var(--gold);
-  letter-spacing:0.24em;
-  font-size:11px;
-}
-.eyebrow .bar{width:44px;height:1px;background:var(--gold);}
-.eyebrow .idx{color:var(--text-mute);letter-spacing:0.28em;}
-.title{
-  font-family:"Noto Serif SC","Cormorant Garamond",serif;
-  font-weight:700;
-  font-size:80px;
-  line-height:1.02;
-  color:var(--text);
-  letter-spacing:0.02em;
-}
-.title .accent{color:var(--gold);}
-.title-en{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:13px;
+  letter-spacing:0.4em;
+  color:var(--accent);
   font-weight:500;
-  font-size:24px;
-  color:var(--text-mute);
-  margin-top:6px;
-  letter-spacing:0.06em;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
+.eyebrow .eyebrow-bar{display:inline-block;width:28px;height:2px;background:var(--accent);}
+
+h1.main-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:54px;
+  font-weight:700;
+  letter-spacing:0.02em;
+  line-height:1.15;
+  color:var(--warm-white);
+  margin-bottom:14px;
+}
+
 .subtitle{
-  margin-top:18px;
-  display:flex;align-items:center;gap:18px;
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:20px;
-  color:var(--text-dim);
-  letter-spacing:0.14em;
-  font-weight:300;
-}
-.subtitle .dot{width:5px;height:5px;background:var(--gold);border-radius:50%;display:inline-block;}
-.subtitle .sep{color:var(--gold);font-weight:400;}
-.subtitle .num{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:600;font-style:italic;
-  color:var(--gold);
+  font-family:'Noto Serif SC',serif;
   font-size:22px;
+  font-weight:400;
+  color:var(--warm-white-dim);
   letter-spacing:0.05em;
 }
 
-/* rule under header */
-.rule{
-  position:absolute;
-  left:80px;right:80px;top:262px;
-  height:1px;background:var(--line);
-}
-.rule::before{
-  content:"";position:absolute;left:0;top:-2px;width:80px;height:3px;background:var(--gold);
-}
-.rule-mark{
-  position:absolute;left:80px;top:248px;
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;letter-spacing:0.32em;color:var(--gold);
-  background:var(--bg);padding:0 10px 0 0;
-}
-
-/* ---- KPI section ---- */
-.kpi-section{
-  margin-top:50px;
-  position:relative;
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:0;
-  padding:8px 0 4px;
-}
-.kpi{
-  position:relative;
-  padding:20px 40px 24px;
-  display:flex;flex-direction:column;align-items:flex-start;
-}
-.kpi + .kpi::before{
-  content:"";position:absolute;left:0;top:8%;bottom:8%;width:1px;background:var(--line);
-}
-.kpi + .kpi::after{
-  content:"";position:absolute;left:-4px;top:calc(50% - 4px);width:9px;height:9px;
-  background:var(--bg);border:1px solid var(--gold);border-radius:50%;
-}
-.kpi-label{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:13px;
-  color:var(--text-mute);
-  letter-spacing:0.36em;
-  text-transform:uppercase;
-  font-weight:400;
-  margin-bottom:6px;
-}
-.kpi-label-cn{
-  font-family:"Noto Serif SC",serif;
-  font-size:15px;
-  color:var(--gold);
-  letter-spacing:0.32em;
-  font-weight:500;
-  margin-bottom:18px;
-  display:flex;align-items:center;gap:10px;
-}
-.kpi-label-cn::before{
-  content:"";width:22px;height:1px;background:var(--gold);display:inline-block;
-}
-.kpi-num{
-  font-family:"Cormorant Garamond","Noto Serif SC",serif;
-  font-weight:600;
-  font-size:170px;
-  line-height:0.92;
-  color:var(--text);
-  letter-spacing:-0.01em;
-  position:relative;
-}
-.kpi-num .unit{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-weight:500;
-  color:var(--gold);
-  font-size:80px;
-  margin-left:4px;
-  letter-spacing:0;
-}
-.kpi-num .plus{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  color:var(--gold);
-  font-weight:500;
-  font-size:100px;
-  margin-left:2px;
-  vertical-align:top;
-  position:relative;top:12px;
-}
-.kpi-note{
-  margin-top:22px;
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:16px;
-  color:var(--text-dim);
-  letter-spacing:0.08em;
-  font-weight:300;
-  display:flex;align-items:center;gap:10px;
-}
-.kpi-note .arrow{color:var(--gold);font-family:"Cormorant Garamond",serif;font-weight:600;font-size:20px;}
-.kpi-note .mono{
-  font-family:"JetBrains Mono",monospace;
-  font-size:14px;
-  color:var(--gold);
-  letter-spacing:0.06em;
-}
-
-/* small tick marks under each KPI */
-.kpi-tick{
-  position:absolute;
-  left:40px;bottom:6px;
-  display:flex;gap:4px;
-}
-.kpi-tick span{
-  display:block;width:2px;height:10px;background:var(--gold);opacity:0.7;
-}
-.kpi-tick span:nth-child(2){opacity:0.5;height:7px;}
-.kpi-tick span:nth-child(3){opacity:0.35;height:5px;}
-.kpi-tick span:nth-child(4){opacity:0.25;height:4px;}
-.kpi-tick span:nth-child(5){opacity:0.18;height:3px;}
-
-/* ---- narrative band ---- */
-.narrative{
-  position:absolute;
-  left:80px;right:80px;
-  bottom:74px;
-  display:flex;align-items:center;gap:26px;
-}
-.narrative-mark{
-  display:flex;align-items:center;gap:10px;flex-shrink:0;
-}
-.narrative-mark .sq{width:10px;height:10px;background:var(--gold);}
-.narrative-mark .ln{width:36px;height:1px;background:var(--gold);}
-.narrative-mark .ci{width:10px;height:10px;border:1px solid var(--gold);border-radius:50%;}
-.narrative-text{
-  flex:1;
-  font-family:"Noto Serif SC",serif;
-  font-size:20px;
-  color:var(--text-dim);
-  font-weight:400;
-  letter-spacing:0.06em;
-  line-height:1.6;
-}
-.narrative-text em{
-  font-style:normal;color:var(--gold);font-weight:600;
-}
-.narrative-tag{
-  flex-shrink:0;
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;
-  letter-spacing:0.32em;
-  color:var(--text-mute);
-  border-left:1px solid var(--line);
-  padding-left:18px;
-}
-
-/* ---- footer ---- */
-.footer{
-  position:absolute;
-  left:80px;right:80px;
-  bottom:28px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;
-  letter-spacing:0.28em;
-  color:var(--text-mute);
-}
-.footer .l{display:flex;align-items:center;gap:10px;}
-.footer .l::before{
-  content:"";width:24px;height:1px;background:var(--gold);display:inline-block;
-}
-.footer .r{color:var(--gold);}
-
-/* corner mark on big square */
-.corner-note{
-  position:absolute;
-  top:196px;right:64px;
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;
-  letter-spacing:0.28em;
-  color:var(--text-mute);
+.badge{
+  padding:18px 28px;
+  border:1px solid rgba(245,240,232,0.32);
+  background:rgba(15,37,71,0.5);
   text-align:right;
-  line-height:1.7;
-  z-index:2;
+  position:relative;
+  min-width:290px;
 }
-.corner-note b{color:var(--gold);font-weight:500;}
+
+.badge::before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  right:-1px;
+  width:14px;
+  height:14px;
+  border-top:2px solid var(--accent);
+  border-right:2px solid var(--accent);
+}
+
+.badge-label{
+  font-size:11px;
+  letter-spacing:0.32em;
+  color:var(--accent);
+  margin-bottom:10px;
+  font-weight:500;
+}
+.badge-value{
+  font-family:'Noto Serif SC',serif;
+  font-size:22px;
+  font-weight:500;
+  color:var(--warm-white);
+  letter-spacing:0.04em;
+}
+.badge-sub{
+  font-size:12px;
+  color:var(--warm-white-dim);
+  margin-top:10px;
+  letter-spacing:0.15em;
+}
+
+/* ===== Timeline ===== */
+.timeline{
+  position:relative;
+  height:190px;
+  margin-bottom:34px;
+  padding:0 60px;
+}
+
+.timeline-line{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:120px;
+}
+
+.timeline-item{
+  position:absolute;
+  top:80px;
+  width:168px;
+  text-align:center;
+}
+
+.timeline-item.t1{left:0;}
+.timeline-item.t2{left:550px;}
+.timeline-item.t3{left:1160px;}
+
+.timeline-dot{
+  width:36px;
+  height:36px;
+  border:2px solid var(--accent);
+  background:var(--deep);
+  border-radius:50%;
+  margin:0 auto 20px;
+  position:relative;
+}
+
+.timeline-dot::after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  background:var(--accent);
+  border-radius:50%;
+}
+
+.timeline-item.t2 .timeline-dot{
+  width:48px;
+  height:48px;
+  margin-bottom:14px;
+  background:var(--warm-white);
+}
+.timeline-item.t2 .timeline-dot::after{
+  background:var(--deep);
+  inset:9px;
+}
+
+.timeline-label{
+  font-family:'Noto Serif SC',serif;
+  font-size:20px;
+  font-weight:600;
+  color:var(--warm-white);
+  margin-bottom:8px;
+  letter-spacing:0.04em;
+}
+
+.timeline-caption{
+  font-size:13px;
+  color:var(--warm-white-dim);
+  line-height:1.6;
+  letter-spacing:0.05em;
+}
+
+/* Bauhaus geometry decorations */
+.deco-square{
+  position:absolute;
+  width:24px;
+  height:24px;
+  background:var(--accent);
+  top:84px;
+}
+.deco-square.left{left:44px;}
+.deco-square.right{
+  left:1426px;
+  background:transparent;
+  border:2px solid var(--accent-warm);
+}
+
+.deco-circle{
+  position:absolute;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:2px solid var(--warm-white-dim);
+  top:76px;
+  left:1360px;
+  z-index:-1;
+}
+
+.deco-tick{
+  position:absolute;
+  width:2px;
+  height:24px;
+  background:var(--warm-white-dim);
+  opacity:0.4;
+}
+.deco-tick.l{left:170px;top:86px;}
+.deco-tick.c{left:770px;top:86px;}
+.deco-tick.r{left:1380px;top:86px;}
+
+/* ===== Cards ===== */
+.cards{
+  display:flex;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.c-card{
+  flex:1;
+  background:rgba(15,37,71,0.55);
+  border:1px solid rgba(245,240,232,0.15);
+  padding:22px 24px 20px;
+  position:relative;
+  min-height:220px;
+}
+
+.c-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:20px;
+  width:3px;
+  height:38px;
+  background:var(--accent);
+}
+
+.c-card::after{
+  content:"";
+  position:absolute;
+  top:22px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--warm-white-dim);
+  opacity:0.45;
+}
+.c-card--start::after{left:calc(100% - 44px);}
+.c-card--mid::after{left:calc(100% - 68px);}
+.c-card--end::after{left:calc(100% - 44px);}
+
+.c-card--start .c-card-num{color:var(--accent);}
+.c-card--mid .c-card-num{color:var(--accent-warm);}
+.c-card--end .c-card-num{color:var(--warm-white);}
+
+.c-card--insight{
+  background:rgba(42,82,145,0.25);
+  border-color:rgba(201,169,110,0.28);
+}
+
+.c-card-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:13px;
+  letter-spacing:0.28em;
+  margin-bottom:12px;
+  font-weight:500;
+}
+
+.c-card-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--warm-white);
+  margin-bottom:14px;
+  letter-spacing:0.02em;
+  line-height:1.35;
+}
+
+.c-card-body{
+  font-size:14px;
+  line-height:1.75;
+  color:var(--warm-white-dim);
+  letter-spacing:0.02em;
+}
+
+.c-card-body .highlight{color:var(--accent);font-weight:500;}
+.c-card-body .warn{color:var(--accent-warm);font-weight:500;}
+
+/* ===== Quote ===== */
+.quote{
+  display:flex;
+  align-items:center;
+  padding:20px 30px;
+  background:rgba(245,240,232,0.05);
+  border-left:3px solid var(--accent);
+  margin-bottom:24px;
+  position:relative;
+}
+
+.quote::after{
+  content:"";
+  position:absolute;
+  right:32px;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:2px;
+  background:var(--accent);
+  opacity:0.5;
+}
+
+.quote-inner{flex:1;padding-right:60px;}
+
+.quote-mark{
+  font-family:'Noto Serif SC',serif;
+  color:var(--accent);
+  font-size:34px;
+  margin-right:16px;
+  line-height:0.7;
+  vertical-align:-6px;
+  font-weight:700;
+}
+
+.quote-text{
+  font-family:'Noto Serif SC',serif;
+  font-size:17px;
+  color:var(--warm-white);
+  letter-spacing:0.06em;
+  line-height:1.7;
+}
+
+/* ===== Footer ===== */
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:11px;
+  letter-spacing:0.28em;
+  color:var(--warm-white-dim);
+  opacity:0.7;
+  padding-top:2px;
+}
+
+.footer-left{display:flex;align-items:center;gap:12px;}
+.footer-left .bar{width:24px;height:1px;background:var(--accent);}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
-
-  <!-- geometric decorations -->
-  <div class="deco deco-line-v-left"></div>
-  <div class="deco deco-line-v-right"></div>
-  <div class="deco deco-square-1"></div>
-  <div class="deco deco-circle-1"></div>
-  <div class="deco deco-square-2"></div>
-  <div class="deco deco-line-h-top"></div>
-  <div class="deco deco-line-h-top-2"></div>
-  <div class="deco deco-square-3"></div>
-  <div class="deco deco-square-4"></div>
-  <div class="deco deco-circle-2"></div>
-
-  <div class="deco deco-big-square"></div>
-  <div class="deco deco-big-circle"></div>
-  <div class="deco deco-dot-a"></div>
-  <div class="deco deco-dot-b"></div>
-  <div class="deco deco-dot-c"></div>
-  <div class="deco deco-dot-d"></div>
-
+  <div id="bg">
+    <div class="bg-dots"></div>
+  </div>
   <div id="ct">
-
-    <!-- HEADER -->
     <div class="header">
-      <div class="eyebrow">
-        <span class="tag">PROJECT · DOSSIER</span>
-        <span class="bar"></span>
-        <span class="idx">No. 01 / Coordinate Overview</span>
+      <div class="title-block">
+        <div class="eyebrow"><span class="eyebrow-bar"></span><span>INSTITUTIONAL ECONOMICS · 制度经济学</span></div>
+        <h1 class="main-title">MCP 捐给 Linux Foundation</h1>
+        <div class="subtitle">—— 制度经济学的教科书案例</div>
       </div>
-      <h1 class="title">Hermes <span class="accent">项目坐标</span></h1>
-      <div class="title-en">Coordinate Overview · An Open-Source Dossier</div>
-      <div class="subtitle">
-        <span class="num">243K</span>
-        <span>star</span>
-        <span class="sep">·</span>
-        <span class="num">33</span>
-        <span>releases</span>
-        <span class="sep">·</span>
-        <span class="num">397</span>
-        <span>contributors</span>
+      <div class="badge">
+        <div class="badge-label">EVOLUTION · 演化跨度</div>
+        <div class="badge-value">2024-11-25 → 2026</div>
+        <div class="badge-sub">约 14 个月</div>
       </div>
     </div>
 
-    <div class="rule-mark"><span>01 · OVERVIEW</span></div>
-    <div class="rule"></div>
-
-    <div class="corner-note">
-      <b>SCOPE</b> &nbsp; OSS · AGENT<br>
-      <b>WINDOW</b> &nbsp; 2026-Q1 → Q3<br>
-      <b>SAMPLE</b> &nbsp; HERMES
+    <div class="timeline">
+      <div class="timeline-line">
+        <svg width="1320" height="120" viewBox="0 0 1320 120" style="display:block;">
+          <line x1="60" y1="60" x2="1260" y2="60" stroke="rgba(245,240,232,0.22)" stroke-width="1.2" stroke-dasharray="4 6"/>
+          <circle cx="60" cy="60" r="4" fill="#C9A96E"/>
+          <circle cx="1260" cy="60" r="4" fill="#C9A96E"/>
+          <polygon points="180,50 228,60 180,70" fill="#C9A96E"/>
+          <polygon points="662,50 710,60 662,70" fill="#C9A96E"/>
+          <polygon points="1172,50 1220,60 1172,70" fill="#D98E5C"/>
+        </svg>
+      </div>
+      <div class="timeline-item t1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">Anthropic</div>
+        <div class="timeline-caption">2024-11-25 单厂商发布</div>
+      </div>
+      <div class="timeline-item t2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">2025-03 OpenAI 采纳</div>
+        <div class="timeline-caption">云厂密集加入</div>
+      </div>
+      <div class="timeline-item t3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-label">2026 捐给 Agentic AI Foundation</div>
+        <div class="timeline-caption">Linux Foundation 旗下</div>
+      </div>
+      <div class="deco-square left"></div>
+      <div class="deco-tick l"></div>
+      <div class="deco-tick c"></div>
+      <div class="deco-tick r"></div>
+      <div class="deco-square right"></div>
+      <div class="deco-circle"></div>
     </div>
 
-    <!-- KPI GRID -->
-    <div class="kpi-section">
-
-      <div class="kpi">
-        <div class="kpi-label">Stars</div>
-        <div class="kpi-label-cn">关注度</div>
-        <div class="kpi-num">243<span class="unit">K</span><span class="plus">+</span></div>
-        <div class="kpi-note"><span class="arrow">↗</span><span>持续上升 · Sustained growth</span></div>
-        <div class="kpi-tick"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="cards">
+      <div class="c-card c-card--start">
+        <span class="c-card-num">01 · 起点</span>
+        <span class="c-card-title">Anthropic 单厂商发布</span>
+        <span class="c-card-body">
+          <span class="highlight">2024-11-25</span>，MCP 由 Anthropic 一家公司推出，属厂商私产范畴，尚未具备跨主体的公共品属性。
+        </span>
       </div>
-
-      <div class="kpi">
-        <div class="kpi-label">Contributors</div>
-        <div class="kpi-label-cn">共建者</div>
-        <div class="kpi-num">397</div>
-        <div class="kpi-note"><span class="arrow">◆</span><span>活跃社区 · Active community</span></div>
-        <div class="kpi-tick"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="c-card c-card--mid">
+        <span class="c-card-num">02 · 演化</span>
+        <span class="c-card-title">OpenAI 采纳 · 云厂密集加入</span>
+        <span class="c-card-body">
+          <span class="highlight">2025-03</span> OpenAI 采纳 MCP；随后云厂商纷纷加入，跨厂商自发采纳形成社区共识。
+        </span>
       </div>
-
-      <div class="kpi">
-        <div class="kpi-label">Releases</div>
-        <div class="kpi-label-cn">迭代节奏</div>
-        <div class="kpi-num">33</div>
-        <div class="kpi-note"><span class="mono">2026-03-12</span><span style="color:var(--gold);">→</span><span class="mono">2026-09-11</span></div>
-        <div class="kpi-tick"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="c-card c-card--end">
+        <span class="c-card-num">03 · 终点</span>
+        <span class="c-card-title">捐给 Agentic AI Foundation</span>
+        <span class="c-card-body">
+          <span class="highlight">2026</span>，MCP 捐赠给 <span class="highlight">Agentic AI Foundation</span>（Linux Foundation 旗下），完成从厂商私产到社区共识的完整路径。
+        </span>
       </div>
-
     </div>
 
-    <!-- NARRATIVE BAND -->
-    <div class="narrative">
-      <div class="narrative-mark">
-        <span class="sq"></span>
-        <span class="ln"></span>
-        <span class="ci"></span>
+    <div class="cards">
+      <div class="c-card c-card--insight">
+        <span class="c-card-num">◐ 制度含义</span>
+        <span class="c-card-body">
+          多厂商自发采纳后的自然结果，<span class="highlight">非行政命令所能促成</span>——制度演化由参与者博弈与路径依赖自然累积而成。
+        </span>
       </div>
-      <div class="narrative-text">
-        Hermes 是一个<em>活跃、快速增长</em>的开源项目，是 <em>Agent 演化分析</em>的合适样本。
+      <div class="c-card c-card--insight">
+        <span class="c-card-num">◑ 对照</span>
+        <span class="c-card-body">
+          中国行政开源试图用行政力量复制此流程——<span class="warn">制度演化需要时间尺度</span>，无法被行政压缩加速。
+        </span>
       </div>
-      <div class="narrative-tag">CONCLUSION · 收束</div>
     </div>
 
-    <!-- FOOTER -->
+    <div class="quote">
+      <div class="quote-inner">
+        <span class="quote-mark">"</span>
+        <span class="quote-text">MCP 从厂商私产到社区共识的完整演化路径，是制度经济学教科书的经典案例：慢演化、多主体、无中央命令。</span>
+      </div>
+    </div>
+
     <div class="footer">
-      <div class="l">HERMES · COORDINATE OVERVIEW</div>
-      <div class="r">PAGE 01 / DOSSIER</div>
+      <div class="footer-left"><span class="bar"></span>案例研究 · CASE STUDY</div>
+      <div class="footer-right">MCP → LIF · 2024–2026</div>
     </div>
-
   </div>
 </div>
 </body>

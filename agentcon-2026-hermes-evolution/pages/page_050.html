@@ -1,323 +1,326 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>Thank you · 开源之道 · AgentCon 2026</title>
+<title>延伸阅读 · 制度经济学核心文献</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+  :root {
+    --bg-deep: #0F1E33;
+    --bg-panel: #1B3B6B;
+    --accent-gold: #B4A078;
+    --accent-gold-dim: rgba(180, 160, 120, 0.42);
+    --accent-gold-faint: rgba(180, 160, 120, 0.14);
+    --text-warm: #F5F0E8;
+    --text-muted: rgba(245, 240, 232, 0.62);
+    --text-dim: rgba(245, 240, 232, 0.44);
+    --hairline: rgba(245, 240, 232, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", -apple-system, "Helvetica Neue", sans-serif;
+    background: #0F1E33;
+    color: var(--text-warm);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #0F1E33 0%, #0B1830 100%);
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .top-line {
+    position: absolute;
+    top: 82px;
+    left: 60px;
+    width: 1480px;
+    height: 1px;
+    background: var(--accent-gold-dim);
+  }
+  .top-square {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 22px;
+    height: 22px;
+    background: var(--accent-gold);
+  }
+  .accent-circle-lg {
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(180, 160, 120, 0.28);
+    border-radius: 50%;
+  }
+  .accent-circle-lg::after {
+    content: '';
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+  }
+  .accent-circle-md {
+    position: absolute;
+    bottom: -120px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    background: rgba(180, 160, 120, 0.05);
+    border-radius: 50%;
+  }
+  .accent-square-lg {
+    position: absolute;
+    bottom: 88px;
+    right: 90px;
+    width: 46px;
+    height: 46px;
+    background: transparent;
+    border: 1px solid rgba(180, 160, 120, 0.35);
+  }
+  .accent-square-sm {
+    position: absolute;
+    bottom: 148px;
+    right: 70px;
+    width: 14px;
+    height: 14px;
+    background: var(--accent-gold);
+  }
+  .accent-square-bl {
+    position: absolute;
+    bottom: 22px;
+    left: 60px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-gold);
+  }
+  .accent-tick {
+    position: absolute;
+    top: 208px;
+    left: 60px;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-gold);
+  }
 
-:root {
-  --bg-deep: #0F1E33;
-  --primary: #1B3B6B;
-  --warm-white: #F5F0E8;
-  --gold: #B4A078;
-  --warm-white-dim: rgba(245, 240, 232, 0.62);
-  --gold-dim: rgba(180, 160, 120, 0.55);
-}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 34px 60px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-left { display: flex; align-items: flex-end; gap: 34px; }
+  .title-block {
+    position: relative;
+    padding-left: 22px;
+  }
+  .title-block::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 70px;
+    background: var(--accent-gold);
+  }
+  .title {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    color: var(--text-warm);
+    margin: 0;
+  }
+  .subtitle-block {
+    padding-bottom: 6px;
+    min-width: 260px;
+  }
+  .subtitle {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 22px;
+    color: var(--accent-gold);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    margin: 0 0 6px 0;
+  }
+  .subtitle-en {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 34px;
+    grid-template-rows: 90px 32px 46px;
+    row-gap: 16px;
+  }
+  .card-image {
+    position: relative;
+    height: 90px;
+    background: var(--accent-gold);
+    overflow: hidden;
+  }
+  .card-image::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    width: 12px;
+    height: 90px;
+    background: var(--bg-panel);
+  }
+  .card-image::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 3px;
+    height: 90px;
+    background: var(--accent-gold);
+    opacity: 0.5;
+  }
+  .card-title {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-warm);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .card-source {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+  .card-source .year {
+    color: var(--accent-gold);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-right: 4px;
+  }
+  .card-source .work {
+    display: block;
+    color: var(--text-warm);
+    font-style: italic;
+    margin-top: 3px;
+    opacity: 0.9;
+  }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background: #000;
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  color: var(--warm-white);
-}
-
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: var(--bg-deep);
-}
-
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse 90% 65% at 50% 50%, #1B3B6B 0%, #0F1E33 65%);
-}
-
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 60px;
-  box-sizing: border-box;
-}
-
-/* ===== 顶栏装饰 ===== */
-.top-bar {
-  position: absolute;
-  top: 40px;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-
-.top-corner-l,
-.top-corner-r {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  top: 37px;
-}
-.top-corner-l { left: 40px; }
-.top-corner-r { right: 40px; }
-
-.top-diamond {
-  position: absolute;
-  top: 72px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  background: var(--gold);
-}
-
-.side-line-l {
-  position: absolute;
-  top: 80px;
-  left: 60px;
-  width: 140px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-.side-line-r {
-  position: absolute;
-  top: 80px;
-  right: 60px;
-  width: 140px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-
-/* ===== 元信息 ===== */
-.meta-row {
-  position: absolute;
-  top: 108px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.14em;
-  color: var(--warm-white-dim);
-  font-weight: 400;
-}
-
-.meta-row .sep {
-  color: var(--gold);
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-.meta-row .eng {
-  font-style: italic;
-  letter-spacing: 0.05em;
-  color: rgba(245, 240, 232, 0.72);
-}
-
-.meta-row .dot {
-  color: var(--gold);
-  padding: 0 10px;
-}
-
-/* ===== 主标题块 ===== */
-.thank-you-block {
-  position: absolute;
-  top: 195px;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-.gold-line {
-  display: inline-block;
-  width: 110px;
-  height: 1px;
-  background: var(--gold);
-  margin-bottom: 34px;
-}
-
-.thank-you {
-  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
-  font-size: 176px;
-  font-weight: 500;
-  color: var(--warm-white);
-  letter-spacing: 0.05em;
-  line-height: 1;
-  margin-bottom: 38px;
-}
-
-.subtitle {
-  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
-  font-size: 26px;
-  color: var(--warm-white);
-  letter-spacing: 0.14em;
-  opacity: 0.86;
-  font-weight: 400;
-}
-
-.bottom-decor {
-  margin-top: 46px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.bline {
-  display: inline-block;
-  width: 46px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-
-.bdot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-/* ===== 底部金句 ===== */
-.quote {
-  position: absolute;
-  bottom: 70px;
-  right: 60px;
-  font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
-  font-style: italic;
-  font-size: 18px;
-  color: var(--warm-white);
-  opacity: 0.82;
-  letter-spacing: 0.03em;
-  line-height: 1.7;
-  text-align: right;
-  max-width: 720px;
-}
-
-/* ===== 底部几何标记 ===== */
-.bottom-bar {
-  position: absolute;
-  bottom: 30px;
-  left: 60px;
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.hermes {
-  position: absolute;
-  bottom: 30px;
-  right: 60px;
-  width: 1px;
-  height: 60px;
-  background: var(--gold);
-}
-
-.hermes::before {
-  content: "";
-  position: absolute;
-  top: 26px;
-  left: -2px;
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-.hermes::after {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: -2px;
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-/* ===== 侧边点缀 ===== */
-.side-dot-l {
-  position: absolute;
-  top: 480px;
-  left: 40px;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-  opacity: 0.85;
-}
-
-.side-dot-r {
-  position: absolute;
-  top: 480px;
-  right: 40px;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-  opacity: 0.85;
-}
+  .footer {
+    margin-top: auto;
+    padding-top: 22px;
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .footer-text {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+  .footer-text .em { color: var(--text-warm); font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="top-line"></div>
+    <div class="top-square"></div>
+    <div class="accent-circle-lg"></div>
+    <div class="accent-circle-md"></div>
+    <div class="accent-square-lg"></div>
+    <div class="accent-square-sm"></div>
+    <div class="accent-square-bl"></div>
+    <div class="accent-tick"></div>
+  </div>
   <div id="ct">
-    <!-- 顶部装饰 -->
-    <div class="top-bar"></div>
-    <div class="top-corner-l"></div>
-    <div class="top-corner-r"></div>
-    <div class="top-diamond"></div>
-    <div class="side-line-l"></div>
-    <div class="side-line-r"></div>
-
-    <!-- 元信息 -->
-    <div class="meta-row">
-      <span>「开源之道」· 适兕 × 窄廊</span>
-      <span class="sep">·</span>
-      <span class="eng">Open Source Way · Kuosi × Narrow Corridor</span>
-      <span class="sep">·</span>
-      <span>Token 经济趋势 · AgentCon 2026 北京站</span>
-      <span class="dot">·</span>
-      <span>2026-09-11</span>
-    </div>
-
-    <!-- 主标题块 -->
-    <div class="thank-you-block">
-      <div class="gold-line"></div>
-      <h1 class="thank-you">Thank you</h1>
-      <div class="subtitle">「开源之道」· 适兕 × 窄廊 · AgentCon 2026 · 北京</div>
-      <div class="bottom-decor">
-        <span class="bline"></span>
-        <span class="bdot"></span>
-        <span class="bline"></span>
+    <div class="header">
+      <div class="header-left">
+        <div class="title-block">
+          <h1 class="title">延伸阅读</h1>
+        </div>
+        <div class="subtitle-block">
+          <div class="subtitle">制度经济学核心文献</div>
+          <div class="subtitle-en">CORE READINGS · INSTITUTIONAL ECONOMICS</div>
+        </div>
       </div>
     </div>
-
-    <!-- 底部金句 -->
-    <div class="quote">「感谢聆听。Keep Movement —— 知识不是静止的，是在移动中产生的。」</div>
-
-    <!-- 侧边圆点 -->
-    <div class="side-dot-l"></div>
-    <div class="side-dot-r"></div>
-
-    <!-- 底部几何标记 -->
-    <div class="bottom-bar"></div>
-    <div class="hermes"></div>
+    <div class="content">
+      <div class="cards">
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-title">转型经济学</div>
+        <div class="card-title">交易成本经济学</div>
+        <div class="card-title">认知制度</div>
+        <div class="card-title">演化制度理论</div>
+        <div class="card-title">开源经济学</div>
+        <div class="card-source"><span class="year">2004</span> · Roland<span class="work">Understanding Institutional Change</span></div>
+        <div class="card-source"><span class="year">2000</span> · Williamson<span class="work">The New Institutional Economics</span></div>
+        <div class="card-source"><span class="year">2016</span> · Akcagün &amp; Sapienza<span class="work">Cognitive Rules of Growth</span></div>
+        <div class="card-source"><span class="year">2017</span> · Greif &amp; Mokyr<span class="work">Journal of Institutional Economics</span></div>
+        <div class="card-source"><span class="year">2002</span> · Lerner &amp; Tirole<span class="work">The Economics of Open Source Software</span></div>
+      </div>
+      <div class="footer">
+        <p class="footer-text">延伸阅读覆盖<span class="em">制度经济学的核心文献</span>——从<span class="em">转型经济学</span>到<span class="em">演化制度理论</span>，从<span class="em">交易成本</span>到<span class="em">开源经济学</span>。</p>
+      </div>
+    </div>
   </div>
 </div>
 </body>

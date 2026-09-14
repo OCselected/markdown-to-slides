@@ -1,7 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"案例 4 · Velocity Release · 大重构"，副标题是"16,000 行 → 3,821 行的制度设计"，属于内容页，需要传达一个核心叙事：速度不是性能优化，而是制度设计——通过大重构让未来开发更快、插件作者能 grep、编辑器加载更快。
+我需要一页 PPT，主题是"案例 2 · Tenacity Release · 多 Agent Kanban"，副标题点出"finishes what it starts"的文化承诺。这是内容页，整体风格走 dark academic 学术风——深普鲁士蓝 #0F1E33 羊皮纸质感底，暖白 #F5F0E8 为主文字色，琥珀色 #B4A078 作为高亮点缀，标题用 Noto Serif SC 宋体系，正文用 Noto Sans SC 黑体系，气质要理性、克制、有智识感，装饰走包豪斯几何（圆、方、线），不要图标堆砌。
 
-版面上，顶部放主标题和副标题。核心视觉区建议采用"图 + 文"并列布局：左侧大约 55% 面积放一张 Hero 图，路径是 `images/page_024_hero.png`，这张图原生尺寸 2752×1536、aspect 约 1.79，是包豪斯风格的"Velocity 大重构"对比构图——画面左侧是一团混乱纠缠的暖奶油色与蓝色线条（象征庞大的旧代码库），中间是一条强烈的斜向运动箭头（象征压缩与转化），右侧是排列整齐的模块化小矩形网格（象征重构后的清爽结构），前后对比鲜明。建议放在左侧 800px 宽、约 450px 高的区域，保持原生比例不要拉伸。右侧区域承载信息：顶部是"16,083 行 → 3,821 行"的视觉对比（左大右小、中间箭头、下方"14 modules"标签），下面依次列出六个要点——Release 版本 v0.15.0（2026-05-28 The Velocity Release）、核心动作（run_agent.py 从 16,083 行坍缩到 3,821 行，-76%）、重构方式（提取到 14 个 cohesion agent/* 模块，行为不变）、冷启动（又一秒节省，47% 更少 per-turn function calls）、session_search（4,500× 更快，0 LLM 调用，免费）、制度含义（"速度"不是优化，是制度设计，重构让未来开发更快、插件作者能 grep）。页面底部用小卡片展示四个窗口统计数字：commits 1,302、Merged PRs 747、Issues closed 560+（15 P0 + 65 P1）、Contributors 321。
+页面顶部左侧放超大号主标题"案例 2 · Tenacity Release · 多 Agent Kanban"，右侧或紧下方放副标题"'finishes what it starts' 的文化承诺"。中部左右分栏：左栏承载叙事与要点，右栏放一张核心配图。左栏先用一行大字标出发布版本"v0.13.0 (2026-05-07) — The Tenacity Release"，随后以卡片或分块形式列出五条核心能力要点：Kanban 多 agent 平台（heartbeat、reclaim、zombie detection）、/goal 命令（Ralph loop——agent 锁定目标跨 turn 执行）、Checkpoints v2（state 持久化重写，真剪枝，磁盘护栏）、Sessions survive restarts（gateway 崩溃后自动恢复）、制度含义（"可靠性"从代码质量延伸到任务持久性——agent 必须"把开始的事做完"）。其中 /goal 命令那一项要特别用琥珀色描边或高亮框突出。
 
-整体风格是深色学术、包豪斯几何构成感：主色深普鲁士蓝 #1B3B6B，页面背景 #0F1E33，正文暖白 #F5F0E8，点缀色琥珀 #B4A078；标题用 Noto Serif SC 等衬线字体，正文用 Noto Sans SC 等无衬线字体；装饰只用圆、方、线等几何元素，不依赖图标，克制、理性、有智识感。
+右栏放这张 hero 配图：路径是 `../images/page_022_hero.png`，原生 2752×1536、aspect 约 1.79（接近 16:9）。这是一张包豪斯暗学术风抽象合成图——深普鲁士蓝羊皮纸底上有一张几何网格暗示的看板：三列细长的矩形卡片平面，部分卡片正跨列漂浮仿佛流经工作流阶段，网格下方横贯一条心跳波形，波形末端与一个同心圆目标点对齐，目标点用暖琥珀色点亮，卡片边缘带暖米色高光。整幅图传达"任务持久追踪 + 目标锁定执行"的隐喻。建议放在右栏占约 640×357 的区域，保持原生比例不压扁。配图下方可以写一句贴合内容的 caption，比如"心跳守护任务，锁定不偏离目标"。
+
+页面底部放一行 KPI 数据条，四个数字横向并列：窗口 commits 864、Merged PRs 588、Issues closed 282（含 13 P0 + 36 P1）、Contributors 295。数字用琥珀色或大号 mono 字体（JetBrains Mono）突出，标签用次要文字色 rgba(245,240,232,0.68)。底部再用一句总结收束："可靠性从代码质量延伸到任务持久性——agent 必须把开始的事做完"。

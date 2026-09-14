@@ -4,307 +4,571 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Agent 演化方法论 · 田野观察</title>
+<title>Footprint Ladder · 六级能力阶梯</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
-:root{
-  --bg-deep:#0F1E33;
-  --bg-mid:#132A47;
-  --primary:#1B3B6B;
-  --primary-soft:#22497E;
-  --text-warm:#F5F0E8;
-  --text-muted:#B8B0A1;
-  --text-dim:#8B8678;
-  --gold:#B4A078;
-  --gold-bright:#D4BC8F;
-  --gold-dim:#7E6E52;
-  --hair:rgba(180,160,120,0.32);
-  --hair-strong:rgba(180,160,120,0.6);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0F1E33;
+  --bg-light: #162A45;
+  --text: #F5F0E8;
+  --text-dim: #B0A99C;
+  --gold: #B4A078;
+  --gold-light: #D9C9A3;
+  --gold-deep: #8B7954;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1600px;height:900px;overflow:hidden;background:#0B1826;font-family:'Noto Sans SC',-apple-system,sans-serif;color:var(--text-warm)}
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg-deep)}
-#bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-#bg::before{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse at 20% 15%, rgba(27,59,107,0.45), transparent 55%),
-             radial-gradient(ellipse at 85% 90%, rgba(180,160,120,0.10), transparent 60%);
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
 }
-#bg::after{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 50%, transparent 60%, rgba(15,30,51,0.65) 100%);
+
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: var(--text);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
-.bg-shape{position:absolute}
-.bg-circle-1{width:520px;height:520px;border:1px solid rgba(180,160,120,0.10);border-radius:50%;top:-180px;left:-140px}
-.bg-circle-2{width:180px;height:180px;border:1px solid rgba(180,160,120,0.18);border-radius:50%;bottom:130px;right:90px}
-.bg-square-1{width:110px;height:110px;border:1px solid rgba(180,160,120,0.14);top:340px;right:-30px;transform:rotate(15deg)}
-.bg-line-1{position:absolute;left:0;right:0;top:200px;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 20%,var(--hair) 80%,transparent)}
-.bg-line-2{position:absolute;left:0;right:0;top:720px;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 20%,var(--hair) 80%,transparent)}
-.bg-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;position:absolute}
 
-#ct{position:absolute;inset:0;z-index:1;padding:52px 72px 44px 72px;display:flex;flex-direction:column}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
 
-/* HEADER */
-.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
-.header-left{max-width:1100px}
-.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:12px;font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:0.34em;color:var(--gold);text-transform:uppercase;font-weight:500}
-.eyebrow .bar{width:44px;height:1px;background:var(--gold)}
-.eyebrow .dot{width:5px;height:5px;background:var(--gold);border-radius:50%}
-h1{font-family:'Noto Serif SC',serif;font-size:44px;font-weight:600;color:var(--text-warm);letter-spacing:0.03em;line-height:1.15}
-h1 .sep{color:var(--gold);margin:0 10px;font-weight:400}
-h1 .accent{color:var(--gold-bright)}
-.subtitle{margin-top:10px;font-family:'Noto Serif SC',serif;font-size:17px;color:var(--text-muted);font-weight:400;letter-spacing:0.06em;font-style:italic}
-.subtitle::before{content:'— ';color:var(--gold)}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(140deg, #0F1E33 0%, #142A44 45%, #0D1B2E 70%, #16274A 100%);
+}
 
-.chapter{display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:4px}
-.chapter-num{font-family:'Noto Serif SC',serif;font-size:78px;font-weight:300;color:var(--gold);line-height:1;letter-spacing:0.02em;position:relative}
-.chapter-num::after{content:'';position:absolute;right:-16px;top:14px;width:8px;height:8px;background:var(--gold);border-radius:50%}
-.chapter-label{font-family:'Noto Sans SC',sans-serif;font-size:10px;color:var(--text-dim);letter-spacing:0.4em;font-weight:400;margin-top:2px}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 46px 60px 40px 60px;
+  box-sizing: border-box;
+}
 
-/* MAIN 3-COLUMN */
-.main{display:grid;grid-template-columns:340px 1fr 1fr;gap:28px;margin-top:14px;flex:1;min-height:0}
+/* ============ HEADER ============ */
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(180,160,120,0.22);
+}
 
-.col{position:relative;display:flex;flex-direction:column;padding:22px 24px;border:1px solid rgba(180,160,120,0.20);background:rgba(19,42,71,0.42)}
-.col-tag{display:flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:10.5px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:10px}
-.col-tag .sq{width:12px;height:12px;background:var(--gold)}
-.col-num{font-family:'Noto Serif SC',serif;font-size:11px;color:var(--text-dim);letter-spacing:0.3em}
-.col-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:600;color:var(--text-warm);letter-spacing:0.04em;margin-bottom:4px;line-height:1.25}
-.col-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:12px;color:var(--text-dim);letter-spacing:0.08em;margin-bottom:18px}
+.header-left { max-width: 1080px; }
 
-/* COL 1 - SAMPLE */
-.sample-name{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
-.sample-name .brand{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;color:var(--text-warm);letter-spacing:0.02em}
-.sample-name .mark{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--gold);letter-spacing:0.3em;font-weight:500}
-.sample-sub{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:18px;letter-spacing:0.02em}
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 4.5px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
 
-.metrics{display:flex;flex-direction:column;gap:14px;margin-bottom:16px}
-.metric{display:flex;align-items:baseline;justify-content:space-between;padding:10px 12px;border-left:2px solid var(--gold);background:rgba(27,59,107,0.35)}
-.metric-val{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:600;color:var(--gold-bright);letter-spacing:0.02em;line-height:1}
-.metric-val .unit{font-size:14px;font-weight:400;color:var(--gold);margin-left:4px;letter-spacing:0.05em}
-.metric-label{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-muted);letter-spacing:0.24em;text-align:right}
+.title {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
 
-.sample-quote{margin-top:auto;padding-top:14px;border-top:1px solid var(--hair);font-family:'Noto Serif SC',serif;font-style:italic;font-size:13px;color:var(--text-warm);line-height:1.55;letter-spacing:0.03em;position:relative}
-.sample-quote::before{content:'"';position:absolute;top:6px;left:-6px;font-family:'Noto Serif SC',serif;font-size:36px;color:var(--gold);line-height:1;opacity:0.5}
-.sample-quote{padding-left:18px}
+.title .zh { font-weight: 700; }
+.title .sep { color: var(--gold); margin: 0 16px; font-weight: 400; }
 
-/* COL 2 - THREE DIMS */
-.dims{display:flex;flex-direction:column;gap:11px;margin-bottom:14px}
-.dim{display:flex;gap:14px;align-items:stretch;padding:12px 14px;background:rgba(15,30,51,0.55);border:1px solid rgba(180,160,120,0.14);position:relative}
-.dim-idx{width:36px;height:36px;background:var(--gold);color:var(--bg-deep);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;flex-shrink:0}
-.dim-body{flex:1;min-width:0}
-.dim-head{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
-.dim-name{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;color:var(--text-warm);letter-spacing:0.04em}
-.dim-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:11px;color:var(--gold);letter-spacing:0.08em}
-.dim-metric{font-family:'Noto Sans SC',sans-serif;font-size:11.5px;color:var(--text-muted);letter-spacing:0.05em;line-height:1.5}
-.dim-metric b{color:var(--gold-bright);font-weight:600}
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
 
-.dim-footer{margin-top:auto;padding-top:10px;border-top:1px solid var(--hair);display:flex;align-items:center;gap:10px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:var(--text-dim);letter-spacing:0.22em}
-.dim-footer .line{flex:1;height:1px;background:var(--hair)}
+.subtitle .em { color: var(--gold-light); font-weight: 500; }
 
-/* COL 3 - 12 CASES */
-.cases-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;gap:8px;margin-bottom:14px}
-.case-block{padding:10px 12px;border:1px solid rgba(180,160,120,0.18);background:rgba(15,30,51,0.55);position:relative;display:flex;flex-direction:column;gap:3px}
-.case-block.featured{grid-column:span 2}
-.case-count{display:flex;align-items:baseline;gap:8px}
-.case-num{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:600;color:var(--gold-bright);line-height:1;letter-spacing:0.01em}
-.case-num .plus{font-size:14px;color:var(--gold);margin:0 3px;font-weight:400}
-.case-name{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:var(--text-warm);font-weight:500;letter-spacing:0.04em}
-.case-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:10px;color:var(--text-dim);letter-spacing:0.08em}
-.case-mark{position:absolute;top:8px;right:10px;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:0.65}
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding-bottom: 4px;
+}
 
-.method-box{margin-top:auto;padding:14px 16px;border:1px dashed var(--hair-strong);background:rgba(19,42,71,0.6);position:relative}
-.method-title{font-family:'Noto Sans SC',sans-serif;font-size:10.5px;color:var(--gold);letter-spacing:0.34em;font-weight:500;margin-bottom:10px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
-.method-title .sq{width:8px;height:8px;background:var(--gold)}
-.method-flow{display:flex;align-items:stretch;gap:6px}
-.method-step{flex:1;padding:8px 6px;background:rgba(15,30,51,0.7);text-align:center;border-top:2px solid var(--gold)}
-.method-step-cn{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;color:var(--text-warm);letter-spacing:0.08em;line-height:1.2}
-.method-step-en{font-family:'Noto Serif SC',serif;font-style:italic;font-size:9.5px;color:var(--text-dim);letter-spacing:0.1em;margin-top:3px}
-.method-arrow{align-self:center;color:var(--gold);font-family:'Noto Serif SC',serif;font-size:16px;font-weight:300}
+.badge-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 62px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 0.85;
+  letter-spacing: -2px;
+}
 
-/* FOOTER */
-.footer{margin-top:18px;padding-top:16px;border-top:1px solid var(--hair-strong);display:flex;flex-direction:column;gap:6px}
-.footer-narrative{font-family:'Noto Serif SC',serif;font-size:13.5px;color:var(--text-muted);line-height:1.6;letter-spacing:0.04em}
-.footer-narrative b{color:var(--gold-bright);font-weight:600;font-style:italic}
-.footer-point{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--text-warm);font-weight:600;line-height:1.5;letter-spacing:0.03em;display:flex;align-items:center;gap:12px}
-.footer-point .accent-line{width:36px;height:2px;background:var(--gold);flex-shrink:0}
-.footer-point em{font-style:italic;color:var(--gold-bright)}
+.badge-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--text-dim);
+  letter-spacing: 3.5px;
+}
+
+.badge-hint {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(180,160,120,0.3);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+/* ============ LADDER ============ */
+.ladder-wrap {
+  position: absolute;
+  top: 184px;
+  left: 0;
+  width: 1480px;
+  height: 585px;
+}
+
+.axis-legend {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: rgba(180,160,120,0.55);
+  padding: 0 40px;
+}
+
+.axis-legend .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--gold);
+  margin-right: 8px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+.steps-container { position: relative; width: 100%; height: 550px; }
+
+.connector-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.step {
+  position: absolute;
+  padding: 15px 18px 13px 18px;
+  border: 1px solid rgba(180,160,120,0.3);
+  background: rgba(180,160,120,0.04);
+  overflow: hidden;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2.5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  display: block;
+}
+
+.step-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.22;
+  margin-bottom: 6px;
+}
+
+.step-title .en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  color: var(--gold-light);
+  letter-spacing: 0.4px;
+}
+
+.step-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-dim);
+  margin-bottom: 7px;
+}
+
+.step-desc .code {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold-light);
+  background: rgba(180,160,120,0.09);
+  padding: 0 5px;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.step-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(180,160,120,0.85);
+  padding: 3px 7px;
+  border: 1px solid rgba(180,160,120,0.28);
+  letter-spacing: 0.5px;
+}
+
+/* ============ STEPS 1-6 ============ */
+.step1 {
+  left: 0; top: 0; width: 205px; height: 155px;
+  background: rgba(180,160,120,0.025);
+}
+.step1::after {
+  content: ''; position: absolute;
+  top: -14px; right: -14px;
+  width: 44px; height: 44px;
+  border: 1px solid rgba(180,160,120,0.18);
+  border-radius: 50%;
+}
+
+.step2 {
+  left: 213px; top: 35px; width: 225px; height: 155px;
+  background: rgba(180,160,120,0.045);
+}
+.step2::after {
+  content: ''; position: absolute;
+  top: -10px; right: -10px;
+  width: 34px; height: 34px;
+  border: 1px solid rgba(180,160,120,0.22);
+}
+
+.step3 {
+  left: 444px; top: 78px; width: 245px; height: 165px;
+  background: rgba(180,160,120,0.055);
+}
+.step3::after {
+  content: ''; position: absolute;
+  bottom: -8px; left: -8px;
+  width: 22px; height: 22px;
+  background: rgba(180,160,120,0.15);
+}
+
+.step4 {
+  left: 695px; top: 185px; width: 275px; height: 195px;
+  background: rgba(180,160,120,0.075);
+  border-color: rgba(180,160,120,0.4);
+}
+.step4::after {
+  content: ''; position: absolute;
+  bottom: 0; right: 0;
+  width: 22px; height: 22px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.step5 {
+  left: 985px; top: 305px; width: 305px; height: 210px;
+  background: rgba(180,160,120,0.1);
+  border-color: rgba(180,160,120,0.5);
+}
+.step5::after {
+  content: ''; position: absolute;
+  top: -14px; left: 22px;
+  width: 4px; height: 30px;
+  background: var(--gold);
+}
+
+.step6 {
+  left: 1160px; top: 320px; width: 320px; height: 230px;
+  background: linear-gradient(150deg, rgba(180,160,120,0.18), rgba(180,160,120,0.09));
+  border: 1px solid rgba(217,201,163,0.65);
+  box-shadow: 0 10px 32px -10px rgba(180,160,120,0.28);
+  padding: 18px 20px 15px 22px;
+}
+.step6::before {
+  width: 5px;
+  background: linear-gradient(180deg, #D9C9A3, #B4A078);
+}
+.step6::after {
+  content: ''; position: absolute;
+  top: -8px; right: -8px;
+  width: 34px; height: 34px;
+  background: var(--gold);
+  opacity: 0.55;
+  border-radius: 50%;
+}
+.step6 .step-num { color: var(--gold-light); font-size: 12.5px; letter-spacing: 3px; }
+.step6 .step-title { font-size: 20px; color: var(--text); }
+.step6 .step-title .en { font-size: 17px; color: var(--gold-light); }
+.step6 .step-desc { color: rgba(245,240,232,0.88); }
+.step6 .step-tag {
+  background: rgba(217,201,163,0.16);
+  border-color: rgba(217,201,163,0.55);
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  position: absolute;
+  bottom: 38px;
+  left: 0; right: 0;
+  padding: 16px 4px 0 4px;
+  border-top: 1px solid rgba(180,160,120,0.28);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+}
+
+.footer-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  max-width: 900px;
+  line-height: 1.5;
+}
+
+.footer-quote .qm {
+  color: var(--gold);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  line-height: 0;
+  vertical-align: -4px;
+  margin: 0 4px;
+  font-weight: 700;
+}
+
+.footer-quote .em { color: var(--gold-light); font-weight: 600; }
+
+.footer-meta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.meta-block {
+  text-align: right;
+  border-left: 1px solid rgba(180,160,120,0.28);
+  padding-left: 16px;
+}
+
+.meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--gold);
+  letter-spacing: 2.5px;
+  margin-bottom: 4px;
+}
+
+.meta-val {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ============ BAUHAUS DECORATIONS ============ */
+.deco-square {
+  position: absolute;
+  top: 60px; right: 480px;
+  width: 14px; height: 14px;
+  background: var(--gold);
+  opacity: 0.85;
+}
+
+.deco-triangle {
+  position: absolute;
+  bottom: 100px; left: 580px;
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 17px solid var(--gold);
+  opacity: 0.55;
+}
+
+.deco-diamond {
+  position: absolute;
+  bottom: 130px; right: 500px;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+.deco-circle-tl {
+  position: absolute;
+  top: 176px; left: 30px;
+  width: 18px; height: 18px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+.deco-line-vert {
+  position: absolute;
+  top: 178px; left: 1458px;
+  width: 2px; height: 300px;
+  background: linear-gradient(180deg, transparent, rgba(180,160,120,0.45), transparent);
+  opacity: 0.9;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="bg-shape bg-circle-1"></div>
-    <div class="bg-shape bg-circle-2"></div>
-    <div class="bg-shape bg-square-1"></div>
-    <div class="bg-line-1"></div>
-    <div class="bg-line-2"></div>
-  </div>
+  <div id="bg"></div>
   <div id="ct">
 
     <div class="header">
       <div class="header-left">
-        <div class="eyebrow">
-          <span class="bar"></span>
-          <span>METHODOLOGY · FIELD OBSERVATION</span>
-          <span class="dot"></span>
-          <span>方法论 · 田野观察</span>
-        </div>
-        <h1>Agent 演化方法论<span class="sep">·</span><span class="accent">田野观察</span></h1>
-        <div class="subtitle">以 Hermes 为样本的观察方法 · An Ethnographic Approach</div>
+        <div class="eyebrow"><span>CAPABILITY LADDER · 能力落地阶梯</span></div>
+        <div class="title"><span class="zh">Footprint Ladder</span><span class="sep">·</span><span class="zh">六级能力阶梯</span></div>
+        <div class="subtitle"><span class="em">能力必须有明确的落地路径</span> —— 每一级都可审计，每一层都不是"感觉有了"</div>
       </div>
-      <div class="chapter">
-        <div class="chapter-num">13</div>
-        <div class="chapter-label">CHAPTER</div>
+      <div class="header-right">
+        <div class="badge-num">6</div>
+        <div class="badge-lbl">TIERED LAYERS</div>
+        <div class="badge-hint">L1 零新面  ──▶  L6 核心工具</div>
       </div>
     </div>
 
-    <div class="main">
+    <div class="ladder-wrap">
 
-      <!-- COL 1: SAMPLE -->
-      <div class="col">
-        <div class="col-tag"><span class="sq"></span><span>01 · 样本</span><span class="col-num">SAMPLE</span></div>
-        <div class="col-title">公开样本 · 一个可考的锚点</div>
-        <div class="col-en">The Canonical Open Specimen</div>
+      <div class="steps-container">
 
-        <div class="sample-name">
-          <span class="brand">Hermes</span>
-          <span class="mark">AGENT</span>
-        </div>
-        <div class="sample-sub">作为本演讲的公开演化样本，其社区数据、发布节奏、贡献者结构完整可考，构成分析 Agent 演化的天然标本。</div>
+        <svg class="connector-svg" viewBox="0 0 1480 550" preserveAspectRatio="none">
+          <line x1="205" y1="78" x2="213" y2="113" stroke="rgba(180,160,120,0.35)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="438" y1="113" x2="444" y2="161" stroke="rgba(180,160,120,0.35)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="689" y1="161" x2="695" y2="283" stroke="rgba(180,160,120,0.42)" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="970" y1="283" x2="985" y2="410" stroke="rgba(180,160,120,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="1290" y1="410" x2="1160" y2="435" stroke="rgba(180,160,120,0.55)" stroke-width="1.5"/>
+        </svg>
 
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-val">243<span class="unit">K ★</span></div>
-            <div class="metric-label">STARS · 消费</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">33<span class="unit"> 个</span></div>
-            <div class="metric-label">RELEASES · 供给</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">397<span class="unit"> 位</span></div>
-            <div class="metric-label">CONTRIBUTORS · 协作</div>
+        <div class="step step1">
+          <div class="step-body">
+            <div class="step-num"><span>L1 · ENTRY</span></div>
+            <div class="step-title"><span>Extend</span></div>
+            <div class="step-desc">零新面 —— 纯改已有代码，无外部接口。</div>
+            <div class="step-tags"><span class="step-tag">no API</span></div>
           </div>
         </div>
 
-        <div class="sample-quote">
-          公开演化数据丰富的样本——从需求、供给到消费，均有可交叉验证的社区痕迹。
+        <div class="step step2">
+          <div class="step-body">
+            <div class="step-num"><span>L2 · CLI</span></div>
+            <div class="step-title"><span>CLI command</span></div>
+            <div class="step-desc"><span class="code">hermes webhook</span> / <span class="code">cron</span> / <span class="code">tools</span></div>
+            <div class="step-tags"><span class="step-tag">+ skill</span><span class="step-tag">local</span></div>
+          </div>
         </div>
+
+        <div class="step step3">
+          <div class="step-body">
+            <div class="step-num"><span>L3 · SERVICE-GATED</span></div>
+            <div class="step-title"><span>Service-gated tool</span></div>
+            <div class="step-desc">通过 <span class="code">check_fn</span> 接入外部服务（如 Home Assistant）</div>
+            <div class="step-tags"><span class="step-tag">first boundary</span></div>
+          </div>
+        </div>
+
+        <div class="step step4">
+          <div class="step-body">
+            <div class="step-num"><span>L4 · PLUGIN</span></div>
+            <div class="step-title"><span>Plugin</span></div>
+            <div class="step-desc">挂载点 <span class="code">~/.hermes/plugins/</span>，面向第三方与 niche 场景</div>
+            <div class="step-tags"><span class="step-tag">third-party</span><span class="step-tag">niche</span></div>
+          </div>
+        </div>
+
+        <div class="step step5">
+          <div class="step-body">
+            <div class="step-num"><span>L5 · MCP SERVER</span></div>
+            <div class="step-title"><span>MCP server</span></div>
+            <div class="step-desc">进入 <span class="code">catalog</span>，工具类扩展但非核心基础层</div>
+            <div class="step-tags"><span class="step-tag">catalog</span><span class="step-tag">in-tool</span></div>
+          </div>
+        </div>
+
+        <div class="step step6">
+          <div class="step-body">
+            <div class="step-num"><span>L6 · CORE</span></div>
+            <div class="step-title"><span>New core tool</span></div>
+            <div class="step-desc">只有 <span class="code">terminal</span> / <span class="code">read_file</span> / <span class="code">web_search</span> 这类够格。</div>
+            <div class="step-tags"><span class="step-tag">terminal</span><span class="step-tag">read_file</span><span class="step-tag">web_search</span></div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- COL 2: THREE DIMENSIONS -->
-      <div class="col">
-        <div class="col-tag"><span class="sq"></span><span>02 · 三维观察</span><span class="col-num">TRIPLE LENS</span></div>
-        <div class="col-title">需求 · 供给 · 消费</div>
-        <div class="col-en">The Three-Axis Observation Framework</div>
-
-        <div class="dims">
-          <div class="dim">
-            <div class="dim-idx">01</div>
-            <div class="dim-body">
-              <div class="dim-head">
-                <span class="dim-name">需求侧</span>
-                <span class="dim-en">Demand · Issues</span>
-              </div>
-              <div class="dim-metric">社区 <b>Issues</b> 提出什么——用户在期待 Agent 解决哪些新问题</div>
-            </div>
-          </div>
-          <div class="dim">
-            <div class="dim-idx">02</div>
-            <div class="dim-body">
-              <div class="dim-head">
-                <span class="dim-name">供给侧</span>
-                <span class="dim-en">Supply · PRs</span>
-              </div>
-              <div class="dim-metric">社区 <b>PRs</b> 交付了什么——工程师把什么能力真正加进主干</div>
-            </div>
-          </div>
-          <div class="dim">
-            <div class="dim-idx">03</div>
-            <div class="dim-body">
-              <div class="dim-head">
-                <span class="dim-name">消费侧</span>
-                <span class="dim-en">Consumption · Stars / Releases</span>
-              </div>
-              <div class="dim-metric"><b>Stars · Contributors · Releases</b>——谁在用、谁在用得多、节奏如何</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="dim-footer">
-          <span>三维互为证据</span>
-          <span class="line"></span>
-          <span>交叉印证演化路径</span>
-        </div>
-      </div>
-
-      <!-- COL 3: 12 CASES -->
-      <div class="col">
-        <div class="col-tag"><span class="sq"></span><span>03 · 十二案例</span><span class="col-num">CASE STUDIES</span></div>
-        <div class="col-title">12 个田野案例 · 构成</div>
-        <div class="col-en">6 Releases + 5 Issues + 1 Dataset</div>
-
-        <div class="cases-grid">
-          <div class="case-block featured">
-            <span class="case-mark"></span>
-            <div class="case-count">
-              <span class="case-num">6<span class="plus">+</span></span>
-              <span class="case-name">命名 Release</span>
-            </div>
-            <div class="case-en">Named Releases · 版本节点</div>
-          </div>
-          <div class="case-block">
-            <span class="case-mark"></span>
-            <div class="case-count">
-              <span class="case-num">5</span>
-              <span class="case-name">典型 Issue</span>
-            </div>
-            <div class="case-en">Typical Issues</div>
-          </div>
-          <div class="case-block">
-            <span class="case-mark"></span>
-            <div class="case-count">
-              <span class="case-num">1</span>
-              <span class="case-name">数据案例</span>
-            </div>
-            <div class="case-en">Data Case</div>
-          </div>
-        </div>
-
-        <div class="method-box">
-          <div class="method-title"><span class="sq"></span><span>FIELD METHOD · 田野三段式</span></div>
-          <div class="method-flow">
-            <div class="method-step">
-              <div class="method-step-cn">现象</div>
-              <div class="method-step-en">Phenomenon</div>
-            </div>
-            <div class="method-arrow">→</div>
-            <div class="method-step">
-              <div class="method-step-cn">数据</div>
-              <div class="method-step-en">Data</div>
-            </div>
-            <div class="method-arrow">→</div>
-            <div class="method-step">
-              <div class="method-step-cn">解读</div>
-              <div class="method-step-en">Interpretation</div>
-            </div>
-          </div>
-        </div>
+      <div class="axis-legend">
+        <span><span class="dot"></span>轻 · LIGHTWEIGHT</span>
+        <span>越重 · HEAVIER</span>
+        <span>重 · CORE <span class="dot"></span></span>
       </div>
 
     </div>
 
     <div class="footer">
-      <div class="footer-narrative">
-        本演讲的方法论：以 <b>Hermes</b> 作为公开样本，用 <b>三维（需求 / 供给 / 消费）</b>+ <b>12 案例</b>观察 Agent 演化，每个案例是 <b>现象 → 数据 → 解读</b>的三段式田野考察。
+      <div class="footer-quote">
+        <span class="qm">「</span> 能力不落到具体的层，就等于没有；每一级都有可审计的<span class="em">落地位置</span>，这才有意义。<span class="qm">」</span>
       </div>
-      <div class="footer-point">
-        <span class="accent-line"></span>
-        <span>理解 Agent 从<em>「能用」</em>到<em>「好用」</em>的演化路径——<span style="color:var(--text-muted);font-weight:400">不是理论分析，是社区观察。</span></span>
+      <div class="footer-meta">
+        <div class="meta-block">
+          <div class="meta-label">ANSWERS</div>
+          <div class="meta-val">度量权</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">AUDIT</div>
+          <div class="meta-val">可审计</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">LEVELS</div>
+          <div class="meta-val">L1 → L6</div>
+        </div>
       </div>
     </div>
+
+    <div class="deco-square"></div>
+    <div class="deco-triangle"></div>
+    <div class="deco-diamond"></div>
+    <div class="deco-circle-tl"></div>
+    <div class="deco-line-vert"></div>
 
   </div>
 </div>

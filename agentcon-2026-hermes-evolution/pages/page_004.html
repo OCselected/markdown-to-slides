@@ -1,31 +1,35 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>阶段一 · 能力觉醒（2022-2023）</title>
+<title>引子：从 Talk &amp; Search 到 Agent &amp; Decide</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap');
 
 :root {
-  --color-primary: #1B3B6B;
-  --color-bg: #0F1E33;
-  --color-warm-white: #F5F0E8;
-  --color-gold: #B4A078;
-  --color-mist: #6A8499;
-  --color-dim: #C8BFAE;
+  --bg-deep: #0F1E33;
+  --bg-primary: #1B3B6B;
+  --accent-gold: #B4A078;
+  --text-main: #F5F0E8;
+  --text-secondary: rgba(245, 240, 232, 0.68);
+  --border-gold: rgba(180, 160, 120, 0.3);
+  --card-bg: rgba(27, 59, 107, 0.22);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg);
-  font-family: 'Noto Sans SC', sans-serif;
-  color: var(--color-warm-white);
-  -webkit-font-smoothing: antialiased;
+body {
+  background: var(--bg-deep);
+  color: var(--text-main);
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .wrapper {
@@ -34,52 +38,35 @@ html, body {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  background: #0F1E33;
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  overflow: hidden;
+  background: var(--bg-deep);
 }
 
-#bg .bg-shape--circle {
+#bg::before {
+  content: '';
   position: absolute;
-  width: 520px;
-  height: 520px;
-  border: 1px solid rgba(180, 160, 120, 0.10);
+  top: -120px;
+  right: -120px;
+  width: 440px;
+  height: 440px;
   border-radius: 50%;
-  top: -200px;
-  right: -160px;
+  background: radial-gradient(circle, rgba(180, 160, 120, 0.13) 0%, transparent 70%);
 }
 
-#bg .bg-shape--square {
+#bg::after {
+  content: '';
   position: absolute;
-  width: 380px;
-  height: 380px;
-  border: 1px solid rgba(180, 160, 120, 0.06);
-  left: -120px;
   bottom: -120px;
-  transform: rotate(15deg);
-}
-
-#bg .bg-shape--tick-1 {
-  position: absolute;
-  width: 100px;
-  height: 1px;
-  background: rgba(180, 160, 120, 0.15);
-  top: 60px;
-  left: 50%;
-}
-
-#bg .bg-shape--tick-2 {
-  position: absolute;
-  width: 1px;
-  height: 100px;
-  background: rgba(180, 160, 120, 0.10);
-  bottom: 80px;
-  left: 40%;
+  left: -120px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27, 59, 107, 0.55) 0%, transparent 70%);
 }
 
 #ct {
@@ -87,546 +74,378 @@ html, body {
   inset: 0;
   z-index: 1;
   padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ── Header ───────────────────────────────────────── */
-
-.header {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-}
-
-.header::before {
-  content: '';
-  position: absolute;
-  top: -22px;
-  left: 0;
-  width: 52px;
-  height: 3px;
-  background: var(--color-gold);
-}
-
-.title-block {
-  padding-top: 12px;
-}
-
-.eyebrow {
+/* Hook row */
+.hook-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 10px;
-  letter-spacing: 3.5px;
-  color: var(--color-gold);
-  font-weight: 500;
-  margin-bottom: 12px;
+  justify-content: center;
+  gap: 26px;
+  margin-bottom: 22px;
 }
 
-.eyebrow .dot-sep {
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  background: var(--color-gold);
-  border-radius: 50%;
-  opacity: 0.7;
+.hook-line {
+  width: 110px;
+  height: 1px;
+  background: var(--accent-gold);
+  opacity: 0.55;
+}
+
+.hook {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 25px;
+  font-style: italic;
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Title */
+.title-block {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 56px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 40px;
   font-weight: 700;
-  color: var(--color-warm-white);
-  line-height: 1.15;
-  letter-spacing: 1px;
-}
-
-.subtitle-en {
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: var(--color-gold);
-  margin-top: 16px;
-  letter-spacing: 1px;
-  font-weight: 400;
-}
-
-.stage-num {
-  position: relative;
-  padding-left: 32px;
-  text-align: right;
-  font-family: 'Noto Serif SC', serif;
-}
-
-.stage-num::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--color-gold);
-  opacity: 0.45;
-}
-
-.stage-num .num-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 3.5px;
-  color: var(--color-mist);
-  font-family: 'Noto Sans SC', sans-serif;
-  margin-bottom: 4px;
-}
-
-.stage-num .num {
-  display: block;
-  font-size: 44px;
-  color: var(--color-gold);
-  font-weight: 700;
-  line-height: 1;
+  color: var(--text-main);
   letter-spacing: 2px;
-}
-
-.stage-num .num-sub {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--color-mist);
-  margin-top: 8px;
-  font-family: 'Noto Sans SC', sans-serif;
-}
-
-/* ── Timeline ─────────────────────────────────────── */
-
-.timeline {
-  position: relative;
-  width: 100%;
-  height: 434px;
-  margin-top: 44px;
-}
-
-.top-row,
-.bottom-row {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 206px;
-  display: grid;
-  grid-template-columns: 330px 330px 330px 330px;
-  column-gap: 40px;
-  z-index: 3;
-}
-
-.top-row { top: 0; }
-.bottom-row { bottom: 0; }
-
-.card {
-  position: relative;
-  padding: 20px 20px 20px 24px;
-  background: linear-gradient(135deg, rgba(27, 59, 107, 0.6), rgba(15, 30, 51, 0.85));
-  border: 1px solid rgba(180, 160, 120, 0.28);
-}
-
-.card--top::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  width: 3px; height: 100%;
-  background: var(--color-gold);
-}
-
-.card--bottom {
-  background: linear-gradient(315deg, rgba(27, 59, 107, 0.6), rgba(15, 30, 51, 0.85));
-}
-
-.card--bottom::before {
-  content: '';
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 3px; height: 100%;
-  background: var(--color-gold);
-}
-
-.card--top .card-marker {
-  position: absolute;
-  right: 14px;
-  bottom: -4px;
-  width: 8px;
-  height: 8px;
-  background: var(--color-gold);
-}
-
-.card--bottom .card-marker {
-  position: absolute;
-  right: 14px;
-  top: -4px;
-  width: 8px;
-  height: 8px;
-  background: var(--color-gold);
-}
-
-.card-date {
-  font-size: 12px;
-  letter-spacing: 2.5px;
-  color: var(--color-gold);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.card-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-warm-white);
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-
-.card-desc {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--color-dim);
-}
-
-/* Axis line + markers */
-
-.axis-line {
-  position: absolute;
-  top: 230px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(180,160,120,0.4) 8%, rgba(180,160,120,0.5) 92%, transparent 100%);
-  z-index: 1;
-}
-
-.axis-line::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: -4px;
-  width: 9px;
-  height: 9px;
-  border-right: 1px solid var(--color-gold);
-  border-top: 1px solid var(--color-gold);
-  opacity: 0.6;
-}
-
-.axis-line::after {
-  content: '';
-  position: absolute;
-  right: 12px;
-  top: -4px;
-  width: 9px;
-  height: 9px;
-  border-left: 1px solid var(--color-gold);
-  border-top: 1px solid var(--color-gold);
-  opacity: 0.6;
-}
-
-.axis-tick {
-  position: absolute;
-  top: 226px;
-  width: 1px;
-  height: 9px;
-  background: rgba(180, 160, 120, 0.35);
-  z-index: 1;
-}
-
-.axis-year {
-  position: absolute;
-  top: 246px;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--color-mist);
-  font-family: 'Noto Sans SC', sans-serif;
-  z-index: 2;
-}
-
-.axis-year--start { left: 151px; }
-.axis-year--end { left: 1059px; }
-
-.dot {
-  position: absolute;
-  z-index: 5;
-}
-
-.dot::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border: 1px solid rgba(180, 160, 120, 0.28);
-  border-radius: 50%;
-}
-
-.dot::after {
-  content: '';
-  position: absolute;
-  inset: -16px;
-  border: 1px solid rgba(180, 160, 120, 0.10);
-  border-radius: 50%;
-}
-
-.dot-mark {
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  border: 2px solid var(--color-bg);
-  position: relative;
-  z-index: 2;
-}
-
-.dot--above { top: 214px; }
-.dot--below { top: 230px; }
-.d1 { left: 161px; }
-.d2 { left: 515px; }
-.d3 { left: 869px; }
-.d4 { left: 1223px; }
-
-/* ── Footer ───────────────────────────────────────── */
-
-.footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 160px;
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  column-gap: 52px;
-  align-items: start;
-  padding-top: 28px;
-}
-
-.narrative {
-  position: relative;
-  padding-left: 24px;
-}
-
-.narrative::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--color-gold), transparent 90%);
-}
-
-.narrative-text {
-  font-size: 20px;
-  line-height: 1.75;
-  color: var(--color-warm-white);
-}
-
-.narrative-text .accent {
-  color: var(--color-gold);
-  font-weight: 600;
-}
-
-.narrative-text .strong {
-  font-weight: 700;
-  color: var(--color-warm-white);
-}
-
-.qbox {
-  position: relative;
-  padding: 8px 26px 8px 28px;
-}
-
-.qbox::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: var(--color-gold);
-}
-
-.qbox::after {
-  content: '';
-  position: absolute;
-  right: -8px;
-  top: -8px;
-  width: 6px;
-  height: 6px;
-  background: var(--color-gold);
-}
-
-.qmeta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  letter-spacing: 3.5px;
-  color: var(--color-gold);
-  font-weight: 500;
   margin-bottom: 12px;
 }
 
-.qmeta .meta-line {
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  letter-spacing: 8px;
+  position: relative;
   display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--color-gold);
 }
 
-.qtext {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 28px;
-  color: var(--color-warm-white);
-  line-height: 1.35;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.closing-line {
+.subtitle::before,
+.subtitle::after {
+  content: '·';
   position: absolute;
-  bottom: 26px;
-  left: 0;
-  right: 0;
+  color: var(--accent-gold);
+  font-size: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.subtitle::before { left: -30px; }
+.subtitle::after { right: -30px; }
+
+/* Columns */
+.columns {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2px;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--color-mist);
-  font-family: 'Noto Sans SC', sans-serif;
+  gap: 22px;
+  flex: 1;
+  margin-bottom: 24px;
 }
 
-.closing-line .cl-left,
-.closing-line .cl-right {
+.col {
+  flex: 1;
+  padding: 24px 28px 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  position: relative;
   display: flex;
+  flex-direction: column;
+}
+
+.col-left,
+.col-right {
+  border-top: 3px solid var(--accent-gold);
+}
+
+.col-middle {
+  flex: 0 0 170px;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  padding: 0;
 }
 
-.closing-line .cl-square {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--color-gold);
+.era-tag {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.closing-line .cl-circle {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: var(--color-gold);
+.era-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.era-chinese {
+  font-size: 20px;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.visual {
+  flex: 1;
+  position: relative;
+  min-height: 190px;
+  margin-bottom: 18px;
+}
+
+/* Talk circles */
+.bubble {
+  position: absolute;
   border-radius: 50%;
-  opacity: 0.75;
 }
 
+.bubble-lg {
+  width: 130px;
+  height: 130px;
+  border: 2px solid var(--accent-gold);
+  left: 30px;
+  top: 12px;
+}
+
+.bubble-md {
+  width: 82px;
+  height: 82px;
+  background: var(--accent-gold);
+  opacity: 0.75;
+  right: 38px;
+  top: 8px;
+}
+
+.bubble-sm {
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--text-main);
+  left: 140px;
+  bottom: 10px;
+}
+
+.speech-dots {
+  position: absolute;
+  left: 82px;
+  top: 70px;
+  display: flex;
+  gap: 7px;
+}
+
+.speech-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+/* Agent squares */
+.block {
+  position: absolute;
+}
+
+.block-lg {
+  width: 105px;
+  height: 105px;
+  background: var(--accent-gold);
+  left: 35px;
+  top: 18px;
+  opacity: 0.85;
+}
+
+.block-md {
+  width: 78px;
+  height: 78px;
+  border: 2px solid var(--text-main);
+  right: 42px;
+  top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block-sm {
+  width: 52px;
+  height: 52px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-gold);
+  right: 85px;
+  bottom: 12px;
+}
+
+.checkmark {
+  font-size: 30px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Middle fork */
+.fork-line-top,
+.fork-line-bottom {
+  width: 1px;
+  flex: 1;
+  background: var(--accent-gold);
+  opacity: 0.22;
+}
+
+.fork-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.fork-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+
+/* Era desc */
+.era-desc {
+  font-size: 18px;
+  color: var(--text-main);
+  text-align: center;
+  padding: 13px 14px;
+  background: rgba(180, 160, 120, 0.13);
+  border-left: 3px solid var(--accent-gold);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Observation */
+.observation {
+  background: rgba(180, 160, 120, 0.09);
+  border-left: 4px solid var(--accent-gold);
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.obs-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+
+.obs-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--accent-gold);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.obs-content {
+  font-size: 17px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.obs-highlight {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="bg-shape--circle"></div>
-    <div class="bg-shape--square"></div>
-    <div class="bg-shape--tick-1"></div>
-    <div class="bg-shape--tick-2"></div>
-  </div>
-
+  <div id="bg"></div>
   <div id="ct">
-    <div class="header">
-      <div class="title-block">
-        <div class="eyebrow"><span>STAGE I &nbsp;·&nbsp; 2022 — 2023 &nbsp;·&nbsp; AGENT AWARENESS</span></div>
-        <h1 class="title"><span>阶段一 · 能力觉醒（2022–2023）</span></h1>
-        <div class="subtitle-en"><span>— Awakening of Capability · ReAct, Toolformer, AutoGPT, Function Calling —</span></div>
-      </div>
-      <div class="stage-num">
-        <span class="num-label"><span>阶段编号 / STAGE</span></span>
-        <span class="num"><span>01</span></span>
-        <span class="num-sub"><span>OF · 04</span></span>
-      </div>
+
+    <div class="hook-row">
+      <div class="hook-line"></div>
+      <div class="hook">"Talk is expensive, show me the skills."</div>
+      <div class="hook-line"></div>
     </div>
 
-    <div class="timeline">
-      <div class="top-row">
-        <div class="card card--top">
-          <div class="card-date"><span>2022.10.06</span></div>
-          <div class="card-title"><span>ReAct</span></div>
-          <div class="card-desc"><span>首次展示推理与行动交织的循环，为 1980 年代 BDI 理论提供首个可落地的工程实现。</span></div>
-          <div class="card-marker"></div>
+    <div class="title-block">
+      <div class="title">引子：从 Talk &amp; Search 到 Agent &amp; Decide</div>
+      <div class="subtitle"><span>两 个 时 代 的 分 叉</span></div>
+    </div>
+
+    <div class="columns">
+      <div class="col col-left">
+        <div class="era-tag">LLM 时代</div>
+        <div class="era-title">Talk &amp; Search</div>
+        <div class="era-chinese">对话与检索</div>
+        <div class="visual">
+          <div class="bubble bubble-lg"></div>
+          <div class="bubble bubble-md"></div>
+          <div class="bubble bubble-sm"></div>
+          <div class="speech-dots">
+            <div class="speech-dot"></div>
+            <div class="speech-dot"></div>
+            <div class="speech-dot"></div>
+          </div>
         </div>
-        <div class="card card--top">
-          <div class="card-date"><span>2023.02</span></div>
-          <div class="card-title"><span>Toolformer</span></div>
-          <div class="card-desc"><span>大模型以自监督方式学会主动调用外部 API，工具使用从提示转为可训练能力。</span></div>
-          <div class="card-marker"></div>
-        </div>
-        <div class="card card--top">
-          <div class="card-date"><span>2023.03</span></div>
-          <div class="card-title"><span>AutoGPT</span></div>
-          <div class="card-desc"><span>以「自主循环 + 目标链」引爆病毒式传播，成为公众认知中的 Agent 时刻。</span></div>
-          <div class="card-marker"></div>
-        </div>
-        <div class="card card--top">
-          <div class="card-date"><span>2023.06</span></div>
-          <div class="card-title"><span>Function Calling</span></div>
-          <div class="card-desc"><span>主流大模型接口将工具调用 API 原语化，Agent 的工程骨架在此奠基。</span></div>
-          <div class="card-marker"></div>
+        <div class="era-desc">
+          <span>人类提问，模型回答</span>
         </div>
       </div>
 
-      <div class="axis-line"></div>
-      <div class="axis-tick" style="left:168px;"></div>
-      <div class="axis-tick" style="left:1066px;"></div>
-      <div class="axis-year axis-year--start"><span>2022</span></div>
-      <div class="axis-year axis-year--end"><span>2023</span></div>
+      <div class="col col-middle">
+        <div class="fork-line-top"></div>
+        <div class="fork-content">
+          <svg width="160" height="120" viewBox="0 0 160 120" style="display:block;">
+            <line x1="12" y1="60" x2="70" y2="60" stroke="#B4A078" stroke-width="3"/>
+            <circle cx="12" cy="60" r="7" fill="#B4A078"/>
+            <line x1="70" y1="60" x2="130" y2="22" stroke="#B4A078" stroke-width="3"/>
+            <line x1="70" y1="60" x2="130" y2="98" stroke="#B4A078" stroke-width="3"/>
+            <circle cx="70" cy="60" r="6" fill="#B4A078"/>
+            <polyline points="118,12 135,22 122,34" fill="none" stroke="#B4A078" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <polyline points="118,108 135,98 122,86" fill="none" stroke="#B4A078" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <div class="fork-label"><span>FORK</span></div>
+        </div>
+        <div class="fork-line-bottom"></div>
+      </div>
 
-      <div class="dot dot--above d1"><span class="dot-mark"></span></div>
-      <div class="dot dot--below d2"><span class="dot-mark"></span></div>
-      <div class="dot dot--above d3"><span class="dot-mark"></span></div>
-      <div class="dot dot--below d4"><span class="dot-mark"></span></div>
-
-      <div class="bottom-row">
-        <div class="card card--bottom">
-          <div class="card-marker"></div>
-          <div class="card-date"><span>2022.10.06</span></div>
-          <div class="card-title"><span>ReAct</span></div>
-          <div class="card-desc"><span>首次展示推理与行动交织的循环，为 1980 年代 BDI 理论提供首个可落地的工程实现。</span></div>
+      <div class="col col-right">
+        <div class="era-tag">Agentic 时代</div>
+        <div class="era-title">Agent &amp; Decide</div>
+        <div class="era-chinese">代理与决断</div>
+        <div class="visual">
+          <div class="block block-lg"></div>
+          <div class="block block-md">
+            <span class="checkmark">✓</span>
+          </div>
+          <div class="block block-sm"></div>
         </div>
-        <div class="card card--bottom">
-          <div class="card-marker"></div>
-          <div class="card-date"><span>2023.02</span></div>
-          <div class="card-title"><span>Toolformer</span></div>
-          <div class="card-desc"><span>大模型以自监督方式学会主动调用外部 API，工具使用从提示转为可训练能力。</span></div>
-        </div>
-        <div class="card card--bottom">
-          <div class="card-marker"></div>
-          <div class="card-date"><span>2023.03</span></div>
-          <div class="card-title"><span>AutoGPT</span></div>
-          <div class="card-desc"><span>以「自主循环 + 目标链」引爆病毒式传播，成为公众认知中的 Agent 时刻。</span></div>
-        </div>
-        <div class="card card--bottom">
-          <div class="card-marker"></div>
-          <div class="card-date"><span>2023.06</span></div>
-          <div class="card-title"><span>Function Calling</span></div>
-          <div class="card-desc"><span>主流大模型接口将工具调用 API 原语化，Agent 的工程骨架在此奠基。</span></div>
+        <div class="era-desc">
+          <span>agent 自主执行，人类验收结果</span>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="narrative">
-        <div class="narrative-text"><span><span class="strong">2022–2023</span> 是 Agent 概念的觉醒期：<span class="accent">ReAct</span> 把 1980 年代 BDI 理论推到产品层，<span class="accent">Function Calling</span> 让工具调用 API 原语成为标配。</span></div>
-      </div>
-      <div class="qbox">
-        <div class="qmeta"><span class="meta-line"></span><span>制度含义 · INSTITUTIONAL IMPLICATION</span></div>
-        <div class="qtext"><span>用新范式激活老理论——跨域套利</span></div>
+    <div class="observation">
+      <div class="obs-label"><span>本次观察</span></div>
+      <div class="obs-divider"></div>
+      <div class="obs-content">
+        通过 <span class="obs-highlight">Hermes Agent 仓库</span> 这个微观透镜，寻找人类心智函数正在发生<span class="obs-highlight">微小但不可逆的分叉</span>的证据。
       </div>
     </div>
 
-    <div class="closing-line">
-      <div class="cl-left"><span>STAGE 01 · 2022—2023</span><span class="cl-square"></span></div>
-      <div class="cl-right"><span class="cl-circle"></span><span>能力觉醒 · Awakening of Capability</span></div>
-    </div>
   </div>
 </div>
 </body>

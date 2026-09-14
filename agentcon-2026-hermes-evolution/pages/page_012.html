@@ -1,259 +1,504 @@
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Hermes 的独特性</title>
+<title>两条不变量 · 设计灵魂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 :root {
   --bg: #0F1E33;
-  --bg-light: #162A45;
+  --bg-deep: #08111E;
+  --primary: #1B3B6B;
+  --primary-light: #2A5490;
+  --accent: #B4A078;
+  --accent-dim: rgba(180, 160, 120, 0.35);
   --text: #F5F0E8;
-  --text-dim: #B0A99C;
-  --gold: #B4A078;
-  --gold-light: #D9C9A3;
-  --gold-deep: #8B7954;
-  --blue: #1B3B6B;
-  --blue-light: #2A5090;
+  --text-dim: rgba(245, 240, 232, 0.7);
+  --text-mute: rgba(245, 240, 232, 0.42);
+  --rule: rgba(245, 240, 232, 0.14);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   background: var(--bg);
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 'Noto Sans SC', sans-serif;
   color: var(--text);
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
-.wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; }
-#bg {
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(140deg, #0F1E33 0%, #142A44 45%, #0D1B2E 70%, #16274A 100%);
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
 }
-#ct { position: absolute; inset: 0; z-index: 1; padding: 46px 60px 40px 60px; }
 
-/* Geometric decorations */
-.geo-1 {
-  position: absolute; top: 80px; right: 120px;
-  width: 180px; height: 180px;
-  border: 1px solid rgba(180,160,120,0.12);
-  border-radius: 50%;
+#bg {
+  position: absolute;
+  inset: 0;
   z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, #16294A 0%, #0F1E33 50%, #08111E 100%);
 }
-.geo-2 {
-  position: absolute; bottom: 180px; left: 80px;
-  width: 120px; height: 120px;
-  border: 1px solid rgba(180,160,120,0.1);
-  transform: rotate(45deg);
-  z-index: 0;
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 54px 72px 50px 72px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
-.geo-3 {
-  position: absolute; top: 420px; right: 200px;
-  width: 60px; height: 60px;
-  background: rgba(180,160,120,0.06);
-  z-index: 0;
+
+/* Corner marks */
+.corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--accent-dim);
 }
+.corner.tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
+.corner.tr { top: 22px; right: 22px; border-left: none; border-bottom: none; }
+.corner.bl { bottom: 22px; left: 22px; border-right: none; border-top: none; }
+.corner.br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
 
 /* Header */
 .header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  padding-bottom: 18px; border-bottom: 1px solid rgba(180,160,120,0.22);
-  margin-bottom: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 30px;
 }
-.eyebrow {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--gold); letter-spacing: 4.5px; margin-bottom: 12px; font-weight: 500;
+.header-left { display: flex; flex-direction: column; gap: 10px; }
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  color: var(--accent);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.title {
-  font-family: 'Noto Serif SC', serif; font-size: 48px; font-weight: 600;
-  color: var(--text); letter-spacing: 1px; line-height: 1.1; margin-bottom: 10px;
+.header-eyebrow .tag {
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+  font-size: 10px;
+  letter-spacing: 0.3em;
 }
-.title .sep { color: var(--gold); margin: 0 16px; font-weight: 400; }
-.subtitle {
-  font-family: 'Noto Serif SC', serif; font-size: 17px;
-  color: var(--text-dim); letter-spacing: 0.5px; font-weight: 400;
+.header-eyebrow .en {
+  color: var(--text-mute);
+  letter-spacing: 0.28em;
 }
-.subtitle .em { color: var(--gold-light); font-weight: 500; }
+.header-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.header-title .sep { color: var(--accent); margin: 0 12px; }
 
-/* Main content - 3 columns */
-.columns {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;
-  margin-bottom: 36px;
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
 }
-.card {
-  padding: 28px 24px 24px 24px;
-  border: 1px solid rgba(180,160,120,0.22);
-  background: rgba(180,160,120,0.04);
-  position: relative; overflow: hidden;
+.header-mark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.card::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px; background: var(--gold);
+.header-mark .ci {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
 }
-.card-num {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--gold); letter-spacing: 2.5px; margin-bottom: 10px; font-weight: 600;
+.header-mark .li {
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
 }
-.card-title {
-  font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 600;
-  color: var(--text); line-height: 1.3; margin-bottom: 14px;
+.header-mark .sq {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
 }
-.card-title .en {
-  font-family: 'JetBrains Mono', monospace; font-size: 14px;
-  color: var(--gold-light); letter-spacing: 0.4px; display: block; margin-top: 4px;
-}
-.card-desc {
-  font-family: 'Noto Sans SC', sans-serif; font-size: 14px;
-  line-height: 1.65; color: var(--text-dim); margin-bottom: 16px;
-}
-.card-desc .code {
-  font-family: 'JetBrains Mono', monospace; color: var(--gold-light);
-  background: rgba(180,160,120,0.09); padding: 1px 6px; border-radius: 2px; font-size: 13px;
-}
-.card-highlight {
-  font-family: 'Noto Sans SC', sans-serif; font-size: 13px;
-  color: rgba(180,160,120,0.9); letter-spacing: 0.5px;
-  padding-top: 10px; border-top: 1px solid rgba(180,160,120,0.2);
-}
-
-/* Data band */
-.data-band {
-  background: rgba(180,160,120,0.05);
-  border: 1px solid rgba(180,160,120,0.2);
-  padding: 22px 36px;
-  display: flex; justify-content: space-around; align-items: center;
-}
-.data-item {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-}
-.data-value {
-  font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700;
-  color: var(--gold); letter-spacing: -0.5px;
-}
-.data-label {
-  font-family: 'Noto Sans SC', sans-serif; font-size: 12px;
-  color: var(--text-dim); letter-spacing: 1px;
-}
-.data-divider {
-  width: 1px; height: 48px; background: rgba(180,160,120,0.25);
+.header-meta {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.24em;
 }
 
-/* Footer narrative */
-.footer-narrative {
-  position: absolute; bottom: 40px; left: 60px; right: 60px;
-  font-family: 'Noto Sans SC', sans-serif; font-size: 13px;
-  color: rgba(245,240,232,0.55); letter-spacing: 0.3px; line-height: 1.5;
-  text-align: center;
-  border-top: 1px solid rgba(180,160,120,0.12);
-  padding-top: 16px;
+/* Main */
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
 }
-.footer-narrative .em { color: var(--gold-light); }
+.divider {
+  background: var(--rule);
+  position: relative;
+}
+.divider-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(180, 160, 120, 0.15);
+}
 
-/* Geometric accents */
-.acc-line {
-  position: absolute; bottom: 140px; left: 60px; width: 60px; height: 2px;
-  background: var(--gold); opacity: 0.5;
+.col {
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
+
+.col-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  color: var(--accent);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.col-eyebrow .num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+.col-eyebrow .bar {
+  flex: 0 0 40px;
+  height: 1px;
+  background: var(--accent-dim);
+}
+.col-eyebrow .en {
+  color: var(--text-mute);
+  letter-spacing: 0.3em;
+  font-size: 10px;
+}
+
+.shape-row {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Circle */
+.circle-anchor {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.circle-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent-dim);
+}
+.circle-middle {
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+}
+.circle-inner {
+  position: absolute;
+  inset: 65px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.circle-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg);
+}
+.circle-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.circle-dot.d1 { top: -10px; left: 50%; transform: translateX(-50%); }
+.circle-dot.d2 { bottom: -10px; left: 50%; transform: translateX(-50%); }
+.circle-dot.d3 { left: -10px; top: 50%; transform: translateY(-50%); }
+.circle-dot.d4 { right: -10px; top: 50%; transform: translateY(-50%); }
+
+/* Square */
+.square-anchor {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.square-outer {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--accent-dim);
+}
+.square-middle {
+  position: absolute;
+  inset: 30px;
+  border: 1px solid var(--accent);
+}
+.square-inner {
+  position: absolute;
+  inset: 65px;
+  background: var(--accent);
+}
+.square-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg);
+}
+.square-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--accent);
+}
+.square-corner.c1 { top: -7px; left: -7px; border-right: none; border-bottom: none; }
+.square-corner.c2 { top: -7px; right: -7px; border-left: none; border-bottom: none; }
+.square-corner.c3 { bottom: -7px; left: -7px; border-right: none; border-top: none; }
+.square-corner.c4 { bottom: -7px; right: -7px; border-left: none; border-top: none; }
+
+/* Statements */
+.col-statement {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.34;
+  color: var(--text);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.005em;
+}
+.col-statement .accent { color: var(--accent); }
+
+.col-statement-zh {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 0 0 22px 0;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.col-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.col-list li {
+  display: flex;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  color: var(--text-dim);
+}
+.col-list li:last-child { border-bottom: none; }
+.col-list .bullet {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-top: 7px;
+  background: var(--accent);
+}
+.col-list .bullet.ci { border-radius: 50%; }
+.col-list .bullet.sq { border-radius: 0; }
+.col-list .txt { flex: 1; }
+.col-list strong { color: var(--text); font-weight: 500; }
+.col-list em { color: var(--accent); font-style: normal; font-weight: 500; }
+.col-list .tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid var(--accent-dim);
+  color: var(--accent);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  margin: 0 3px;
+  white-space: nowrap;
+}
+
+/* Footer */
+.footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.footer-line {
+  flex: 1;
+  max-width: 220px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+}
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-mark .ci {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.footer-mark .sq {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+.footer-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.footer-text .accent { color: var(--accent); }
+.footer-text .dash { color: var(--accent); margin: 0 6px; }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg"></div>
-  <div class="geo-1"></div>
-  <div class="geo-2"></div>
-  <div class="geo-3"></div>
   <div id="ct">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
 
-    <!-- Header -->
     <div class="header">
       <div class="header-left">
-        <div class="eyebrow">HERMES UNIQUENESS · 02 IN VARIANTS</div>
-        <div class="title">
-          <span class="zh">Hermes 的独特性</span>
-          <span class="sep">·</span>
-          <span class="en" style="font-family:'JetBrains Mono',monospace;font-size:36px;color:var(--gold-light);">Not a Better Model, a Better Mechanism</span>
+        <div class="header-eyebrow">
+          <span class="tag">HERMES</span>
+          <span class="en">DESIGN INVARIANTS · §01</span>
         </div>
-        <div class="subtitle">
-          闭环学习 · 模块化架构 · 模型解耦
-        </div>
+        <h1 class="header-title">两条不变量 <span class="sep">·</span> 设计灵魂</h1>
       </div>
-      <div class="header-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-bottom:4px;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:62px;font-weight:700;color:var(--gold);line-height:0.85;letter-spacing:-2px;">12</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-dim);letter-spacing:3.5px;">SLIDE</div>
-      </div>
-    </div>
-
-    <!-- 3 Columns -->
-    <div class="columns">
-      <div class="card">
-        <div class="card-num">01</div>
-        <div class="card-title">
-          闭环学习
-          <span class="en">Closed-Loop Learning</span>
+      <div class="header-right">
+        <div class="header-mark">
+          <span class="ci"></span>
+          <span class="li"></span>
+          <span class="sq"></span>
         </div>
-        <div class="card-desc">
-          每次使用生成新 <span class="code">skill</span>——agent 随使用自我进化。不是预先写死的能力集，而是随着交互不断生长的能力网络。
-        </div>
-        <div class="card-highlight">
-          You are what you love — 消费重构
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-num">02</div>
-        <div class="card-title">
-          模块化架构
-          <span class="en">Modular Architecture</span>
-        </div>
-        <div class="card-desc">
-          <span class="code">Footprint Ladder</span> 六级能力阶梯——新能力以最低成本落地。Core is a Narrow Waist, Capability Lives at the Edges。
-        </div>
-        <div class="card-highlight">
-          边缘扩张 · 腰部保守
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-num">03</div>
-        <div class="card-title">
-          模型解耦
-          <span class="en">Model Agnostic</span>
-        </div>
-        <div class="card-desc">
-          <span class="code">200+ models</span> via OpenRouter——不绑定单一模型。技术的扩散不可逆，人类不愿接受单一模型的智力垄断。
-        </div>
-        <div class="card-highlight">
-          去中心化的智力来源
-        </div>
+        <span class="header-meta">TWO INVARIANTS · N° 01 — 02</span>
       </div>
     </div>
 
-    <!-- Data Band -->
-    <div class="data-band">
-      <div class="data-item">
-        <div class="data-value">4,100</div>
-        <div class="data-label">TOKENS / TASK（最低）</div>
+    <div class="main">
+      <div class="col">
+        <div class="col-eyebrow">
+          <span class="num">不变量 #01</span>
+          <span class="bar"></span>
+          <span class="en">INVARIANT 01</span>
+        </div>
+        <div class="shape-row">
+          <div class="circle-anchor">
+            <div class="circle-outer"></div>
+            <div class="circle-middle"></div>
+            <div class="circle-inner"></div>
+            <div class="circle-num">01</div>
+            <div class="circle-dot d1"></div>
+            <div class="circle-dot d2"></div>
+            <div class="circle-dot d3"></div>
+            <div class="circle-dot d4"></div>
+          </div>
+        </div>
+        <h2 class="col-statement">Prompt Caching <span class="accent">is</span> Sacred</h2>
+        <p class="col-statement-zh">提示缓存神圣不可侵犯</p>
+        <ul class="col-list">
+          <li><span class="bullet ci"></span><span class="txt">任何改变 <strong>历史上下文</strong> 的操作都会 <strong>破坏缓存</strong>，并成倍放大用户成本</span></li>
+          <li><span class="bullet ci"></span><span class="txt">所有 <strong>系统提示变更</strong> 默认在 <em>session 级别</em> 生效</span></li>
+          <li><span class="bullet ci"></span><span class="txt">唯一例外：<em>context compression</em> 上下文压缩</span></li>
+        </ul>
       </div>
-      <div class="data-divider"></div>
-      <div class="data-item">
-        <div class="data-value">55MB</div>
-        <div class="data-label">RAM 占用（最低）</div>
+
+      <div class="divider">
+        <div class="divider-dot"></div>
       </div>
-      <div class="data-divider"></div>
-      <div class="data-item">
-        <div class="data-value">200+</div>
-        <div class="data-label">MODELS VIA OPENROUTER</div>
+
+      <div class="col">
+        <div class="col-eyebrow">
+          <span class="num">不变量 #02</span>
+          <span class="bar"></span>
+          <span class="en">INVARIANT 02</span>
+        </div>
+        <div class="shape-row">
+          <div class="square-anchor">
+            <div class="square-outer"></div>
+            <div class="square-middle"></div>
+            <div class="square-inner"></div>
+            <div class="square-num">02</div>
+            <div class="square-corner c1"></div>
+            <div class="square-corner c2"></div>
+            <div class="square-corner c3"></div>
+            <div class="square-corner c4"></div>
+          </div>
+        </div>
+        <h2 class="col-statement">Core is a <span class="accent">Narrow Waist</span>, Capability Lives at the <span class="accent">Edges</span></h2>
+        <p class="col-statement-zh">腰部收紧 · 能力生长于边缘</p>
+        <ul class="col-list">
+          <li><span class="bullet sq"></span><span class="txt">核心工具门槛 <strong>极高</strong>——不允许塞进核心图省事</span></li>
+          <li><span class="bullet sq"></span><span class="txt">新能力必须走 <em>边缘路径</em>：<span class="tag">CLI + skill</span><span class="tag">服务门控 tool</span><span class="tag">plugin</span><span class="tag">MCP server</span></span></li>
+          <li><span class="bullet sq"></span><span class="txt">核心保持克制，边缘负责进化</span></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Footer narrative -->
-    <div class="footer-narrative">
-      Hermes 的独特性不是<span class="em">更强的模型</span>，是<span class="em">能力生成的机制</span>——闭环学习让 agent 随使用自我进化，模块化架构让新能力以最低成本落地。
+    <div class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-mark">
+        <span class="ci"></span>
+        <span class="sq"></span>
+      </div>
+      <div class="footer-text">边缘扩张<span class="dash">，</span>腰部保守<span class="dash">——</span><span class="accent">Hermes 的制度设计原则</span></div>
+      <div class="footer-mark">
+        <span class="sq"></span>
+        <span class="ci"></span>
+      </div>
+      <div class="footer-line"></div>
     </div>
-
   </div>
 </div>
 </body>

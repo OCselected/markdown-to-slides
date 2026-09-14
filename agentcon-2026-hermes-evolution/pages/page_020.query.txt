@@ -1,5 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"Release 命名文化 · 田野观察第 1 章"，副标题点明"把 release 当作文化事件"。整体风格是深普鲁士蓝底（#0F1E33）的暗色学术调性，主色为深普鲁士蓝（#1B3B6B），辅色用暖金色 #B4A078 做点缀，正文用暖白 #F5F0E8，字体上标题用衬线（Noto Serif SC），正文用无衬线（Noto Sans SC），装饰以包豪斯几何元素（圆、方、线）为主，不依赖图标，气质克制、理性、有智识感。
+我需要一页数据展示型 PPT，主题是"消费侧总览 · 弱代理的采纳信号"，重点是呈现 397 位 contributors 的三层金字塔结构，并点明 stars/forks 只是弱代理指标、不代表真实使用。整体风格是深色学术（dark academic）气质：主色为深普鲁士蓝 #1B3B6B，底色 #0F1E33，文字用暖白 #F5F0E8，点缀色是羊皮纸感的暗金 #B4A078；标题用思源宋体/Noto Serif SC，正文用思源黑体，装饰用包豪斯式圆、方、线，克制理性，不要任何 emoji 或卡通图标。
 
-页面版式建议：顶部左对齐写大标题与副标题，右上角放两个 KPI 数字——"Releases 33 个"和"命名 Release 6 个"，用小号标签 + 大号数字的对比。中部左侧是一段叙事短文，原文如下："Hermes 的 release 不是版本号，是文化事件。6 个命名 release 用希腊神话/概念词汇命名，每个命名背后都是一个制度主张——这是开源项目的'仪式'。" 右侧主体是 6 张卡片，按 2 行 3 列排布，每张卡片一个 release 名 + 一句注解，内容依次是：Judgment——"P0/P1 清零战役——700 highest-priority items cleared in 12 days"；Tenacity——"'finishes what it starts'——多 agent kanban 平台"；Surface——"'Hermes meets you wherever you work'——原生 desktop + Web admin"；Velocity——"'16,000 行 → 3,821 行'——大重构"；Quicksilver——"'first token time 80% 下降'——性能爆发"；Patch——"热修复——dashboard 401 reload loop"。卡片之间用细线或几何分隔，保持呼吸感。底部可放一句收束："release 命名 = 制度主张的仪式化表达"。这一页没有可用的配图，请用纯文字 + CSS 几何装饰把版面填满，不要留大片空白，也请保留所有原始英文引号内容不做翻译。
+版面建议：顶部左侧放大号标题"消费侧总览"，右侧或下方紧跟副标题"弱代理的采纳信号"，下方用一行小字叙事串联："397 contributors 分层清晰：核心 5.3%、活跃 36%、外围 58.7%。stars/forks 是弱代理，无法反映真实使用频率、场景与付费行为。" 页面中部左侧放一个三层金字塔图（用纯 CSS 梯形/三角形堆叠实现，从下到上依次是：底层外围 233 人 58.7%、中层活跃 143 人 36%、顶层核心 21 人 5.3%，每层旁边标注对应区间定义，如"1–9 commits""10–99 commits""100+ commits"）。金字塔右侧竖排或网格排列 4 张 KPI 卡片：总 Contributors 397、核心（100+ commits）21 人 / 5.3%、活跃（10–99 commits）143 人 / 36%、外围（1–9 commits）233 人 / 58.7%，并把 Top 1 贡献者 teknium1（14,638）作为小徽章或高亮标注贴在核心层旁边。
+
+页面下半部分用一条横向时间线或小卡片列补充 releases 相关事实：Releases 共 33 个，时间跨度 2026-03-12 到 2026-09-11；其中命名 release 6 个，视为文化事件信号。最底部收束一句强调性的总结语："stars/forks ≠ 真实使用——是弱代理"，用衬线字体、大字重、暗金描边或细金线下划线的形式作为视觉重心收口。
+
+这页没有任何可用配图，请完全依靠文字、数字、CSS 几何装饰（金字塔、色块、细分割线、圆点装饰）把版面填满，不要留大片空白，也不要画成花哨的插图。

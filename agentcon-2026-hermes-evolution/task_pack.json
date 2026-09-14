@@ -9,7 +9,7 @@
     "output_format": "pptx"
   },
   "source_file": "source.md",
-  "target_pages": 50,
+  "target_pages": 51,
   "audience": "AgentCon 2026 北京站听众——开发者、工程师、AI Agent 构建者",
   "language": "zh-Hans",
   "style": "dark-academic"

@@ -1,476 +1,748 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Phase 4 · PR #94266 · Collective Wisdom Agent</title>
-<script src="../assets/echarts.min.js"></script>
+<title>PR #61044 · Cron-native Batch API</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root{
-  --bg-deep:#0F1E33;
-  --primary:#1B3B6B;
-  --primary-2:#16305A;
-  --gold:#B4A078;
-  --gold-light:#D6C79F;
-  --gold-dim:#7A6B4E;
-  --text:#F5F0E8;
-  --text-dim:#BFB7A5;
-  --text-mute:#8B8371;
-}
+  :root {
+    --bg-deep: #0F1E33;
+    --bg-mid: #12233D;
+    --primary: #1B3B6B;
+    --copper: #B4A078;
+    --copper-soft: #8C7F61;
+    --cream: #F5F0E8;
+    --cream-dim: rgba(245, 240, 232, 0.62);
+    --cream-faint: rgba(245, 240, 232, 0.32);
+    --hairline: rgba(245, 240, 232, 0.14);
+  }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
 
-body{
-  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  color:var(--text);
-  background:#000;
-}
+  body {
+    background: var(--bg-deep);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt";
+  }
 
-.wrapper{
-  width:1600px;height:900px;
-  position:relative;overflow:hidden;
-  margin:0 auto;
-  background:linear-gradient(140deg,#0C1A2E 0%,#0F1E33 45%,#122341 100%);
-  color:var(--text);
-}
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
 
-#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-#ct{position:absolute;inset:0;z-index:2;padding:48px 60px 40px;box-sizing:border-box;}
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(140deg, #0A1628 0%, #0F1E33 55%, #16294A 100%);
+  }
 
-/* ---- 背景几何装饰 ---- */
-.bg-square{position:absolute;border:1px solid var(--gold-dim);opacity:.12;}
-.bg-square.s1{top:-60px;right:-60px;width:260px;height:260px;border-color:var(--primary);opacity:.55;}
-.bg-square.s2{top:220px;left:-40px;width:80px;height:80px;border-width:2px;opacity:.35;}
-.bg-square.s3{bottom:-50px;right:520px;width:140px;height:140px;opacity:.22;}
-.bg-circle{position:absolute;border-radius:50%;}
-.bg-circle.c1{bottom:180px;left:-70px;width:180px;height:180px;background:var(--primary);opacity:.35;}
-.bg-circle.c2{top:60px;right:180px;width:14px;height:14px;background:var(--gold);opacity:.6;}
-.bg-circle.c3{top:110px;right:220px;width:6px;height:6px;background:var(--gold);opacity:.4;}
-.bg-line{position:absolute;background:var(--gold);}
-.bg-line.l1{top:132px;right:60px;width:110px;height:1px;opacity:.55;}
-.bg-line.l2{bottom:60px;left:60px;width:260px;height:1px;opacity:.35;}
-.bg-line.l3{top:60px;left:160px;width:1px;height:56px;opacity:.4;}
+  .bg-mark {
+    position: absolute;
+    background: var(--copper);
+    opacity: 0.5;
+  }
+  .bg-mark.tl {
+    top: 44px; left: 44px;
+    width: 48px; height: 1.5px;
+    opacity: 0.55;
+  }
+  .bg-mark.br {
+    bottom: 44px; right: 44px;
+    width: 1.5px; height: 48px;
+    opacity: 0.55;
+  }
 
-/* ---- 顶部标题栏 ---- */
-.top{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  padding-bottom:16px;
-  border-bottom:1px solid rgba(180,160,120,0.35);
-}
-.title-block .kicker{
-  font-family:"JetBrains Mono",monospace;
-  color:var(--gold);font-size:11px;letter-spacing:3.5px;
-  margin-bottom:10px;font-weight:600;
-}
-.title-block h1{
-  font-family:"Noto Serif SC",serif;
-  font-size:40px;font-weight:900;color:var(--text);
-  line-height:1.1;letter-spacing:1px;
-}
-.title-block .sub{
-  font-family:"Noto Serif SC",serif;
-  font-size:18px;color:var(--gold-light);margin-top:8px;font-weight:500;
-  letter-spacing:2px;
-}
-.title-side{text-align:right;}
-.title-side .label{
-  font-family:"JetBrains Mono",monospace;font-size:10px;
-  color:var(--text-mute);letter-spacing:2.5px;margin-bottom:6px;
-}
-.title-side .val{
-  font-family:"JetBrains Mono",monospace;font-size:16px;
-  color:var(--gold-light);letter-spacing:1.5px;font-weight:500;
-}
+  .bg-ghost-ring {
+    position: absolute;
+    right: -160px;
+    bottom: -160px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid var(--copper);
+    opacity: 0.06;
+    border-radius: 50%;
+  }
+  .bg-ghost-square {
+    position: absolute;
+    left: -80px;
+    top: 300px;
+    width: 220px;
+    height: 220px;
+    border: 1px solid var(--copper);
+    opacity: 0.05;
+  }
 
-/* ---- 三列 ---- */
-.three-col{
-  display:grid;
-  grid-template-columns:410px 1fr 300px;
-  gap:44px;
-  margin-top:28px;
-  height:322px;
-}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 50px 60px 44px;
+  }
 
-/* 左列 */
-.left-col{position:relative;padding-top:26px;}
-.tag{
-  font-family:"Noto Serif SC",serif;
-  color:var(--gold);font-size:15px;letter-spacing:8px;font-weight:500;
-  display:flex;align-items:center;
-}
-.tag::before{
-  content:"";width:28px;height:1px;background:var(--gold);margin-right:16px;
-}
-.pr-num{
-  font-family:"JetBrains Mono",monospace;
-  font-size:150px;font-weight:700;line-height:.95;
-  color:var(--text);letter-spacing:-4px;
-  margin-top:20px;
-}
-.pr-num .hash{
-  color:var(--gold);font-weight:400;font-size:96px;
-  vertical-align:top;margin-right:2px;
-}
-.divider{
-  width:200px;height:1px;background:var(--gold);
-  margin-top:18px;position:relative;
-}
-.divider::after{
-  content:"";position:absolute;right:-4px;top:-3px;
-  width:7px;height:7px;background:var(--gold);
-}
-.sub-label{
-  font-family:"JetBrains Mono",monospace;
-  font-size:12px;color:var(--gold-light);
-  letter-spacing:3px;margin-top:12px;font-weight:500;
-}
-.sub-cn{
-  font-family:"Noto Serif SC",serif;
-  color:var(--text-dim);font-size:14px;letter-spacing:3px;
-  margin-top:8px;font-weight:400;
-}
-.left-square{
-  position:absolute;bottom:24px;right:6px;
-  width:34px;height:34px;
-  border:1.5px solid var(--gold);opacity:.6;
-}
-.left-circle{
-  position:absolute;bottom:16px;right:52px;
-  width:10px;height:10px;border-radius:50%;
-  background:var(--gold);opacity:.65;
-}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 18px;
+    margin-bottom: 44px;
+  }
 
-/* 中列 */
-.mid-col{display:flex;flex-direction:column;justify-content:flex-start;}
-.mid-head{
-  display:flex;align-items:center;gap:14px;
-  padding-bottom:10px;
-  border-bottom:1px solid rgba(180,160,120,0.35);
-  margin-bottom:14px;
-}
-.mid-head .dot{
-  width:9px;height:9px;background:var(--gold);border-radius:50%;
-}
-.mid-head .title{
-  font-family:"Noto Serif SC",serif;
-  font-size:20px;color:var(--text);font-weight:700;letter-spacing:3px;
-}
-.mid-head .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:2px;
-  margin-left:auto;
-}
-.concept-viz{position:relative;height:206px;}
-.concept-viz svg{position:absolute;inset:0;}
-.concept-caption{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:12.5px;color:var(--text-dim);line-height:1.75;
-  margin-top:12px;letter-spacing:.5px;
-  border-left:2px solid var(--gold);padding-left:12px;
-}
-.concept-caption strong{color:var(--gold-light);font-weight:500;}
+  .header-left { display: flex; flex-direction: column; gap: 10px; }
+  .header-right { text-align: right; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; padding-top: 6px; }
 
-/* 右列 */
-.right-col{position:relative;padding-top:6px;}
-.right-head{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;color:var(--gold);letter-spacing:2.5px;
-  margin-bottom:12px;
-}
-.arrow-col{
-  display:flex;flex-direction:column;align-items:center;
-  padding:2px 0 0;position:relative;
-}
-.arrow-peak{position:relative;width:210px;}
-.arrow-peak .cn{
-  font-family:"Noto Serif SC",serif;
-  font-size:20px;font-weight:700;color:var(--gold-light);
-  letter-spacing:5px;text-align:center;line-height:1.2;
-}
-.arrow-peak .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:9px;color:var(--gold);letter-spacing:2.5px;
-  text-align:center;margin-top:5px;
-}
-.arrow-shape{margin-top:10px;position:relative;width:180px;text-align:center;}
-.arrow-head{
-  width:0;height:0;
-  border-left:20px solid transparent;
-  border-right:20px solid transparent;
-  border-bottom:26px solid var(--gold);
-  margin:0 auto;
-}
-.arrow-stem{
-  width:3px;background:var(--gold);margin:0 auto;height:170px;
-}
-.arrow-tail{
-  width:120px;height:1px;background:var(--gold);margin:0 auto;
-}
-.arrow-base{width:200px;margin-top:14px;}
-.arrow-base .cn{
-  font-family:"Noto Serif SC",serif;
-  font-size:16px;font-weight:500;color:var(--text);
-  letter-spacing:5px;text-align:center;line-height:1.2;
-}
-.arrow-base .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:9px;color:var(--text-mute);letter-spacing:2px;
-  text-align:center;margin-top:5px;
-}
-.arrow-mid{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:1.5px;
-  text-align:center;margin-top:10px;
-}
+  .title {
+    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .title .pr-num {
+    color: var(--copper);
+    font-family: 'Noto Serif SC', Georgia, serif;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--copper);
+    letter-spacing: 0.22em;
+    font-weight: 400;
+  }
+  .subtitle::before {
+    content: '—';
+    margin-right: 12px;
+    color: var(--copper);
+    opacity: 0.8;
+  }
+  .tags-row {
+    display: flex;
+    gap: 8px;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border: 1px solid var(--hairline);
+    color: var(--cream-dim);
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+  }
+  .tag.status {
+    border-color: var(--copper);
+    color: var(--copper);
+  }
+  .meta {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    color: var(--cream-faint);
+  }
+  .vol {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    opacity: 0.75;
+    padding-left: 14px;
+    position: relative;
+  }
+  .vol::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 1px;
+    background: var(--copper);
+  }
 
-/* ---- 中间 KPI + 要点 ---- */
-.metrics-band{
-  display:grid;
-  grid-template-columns:640px 1fr;
-  gap:32px;
-  margin-top:22px;
-}
-.kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.kpi{
-  position:relative;padding:14px 20px 16px;
-  background:var(--primary-2);
-  border-left:3px solid var(--gold);
-}
-.kpi .lbl{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:2px;
-  margin-bottom:4px;font-weight:500;
-}
-.kpi .num{
-  font-family:"JetBrains Mono",monospace;
-  font-size:44px;font-weight:700;color:var(--text);
-  letter-spacing:1px;line-height:1;
-}
-.kpi .desc{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:11.5px;color:var(--text-dim);
-  margin-top:6px;letter-spacing:1.5px;
-}
+  .columns {
+    display: grid;
+    grid-template-columns: 340px 1fr 400px;
+    gap: 50px;
+    margin-bottom: 40px;
+    height: 500px;
+  }
 
-.points{
-  display:grid;grid-template-rows:repeat(3,1fr);gap:8px;
-}
-.point{
-  display:grid;grid-template-columns:36px 130px 1fr;
-  align-items:center;gap:12px;
-  padding:6px 0;
-  border-bottom:1px solid rgba(180,160,120,0.18);
-}
-.point:last-child{border-bottom:none;}
-.point .idx{
-  font-family:"JetBrains Mono",monospace;
-  font-size:15px;color:var(--gold);font-weight:600;
-}
-.point .name{
-  font-family:"Noto Serif SC",serif;
-  font-size:15px;font-weight:700;color:var(--text);letter-spacing:2px;
-}
-.point .txt{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:12px;color:var(--text-dim);line-height:1.55;
-}
-.point .txt code{
-  font-family:"JetBrains Mono",monospace;
-  color:var(--gold-light);font-size:11px;
-  background:rgba(180,160,120,0.10);
-  padding:1px 5px;margin:0 2px;
-  letter-spacing:.5px;
-}
+  .col { position: relative; }
 
-/* ---- 底部 narrative ---- */
-.narrative{
-  margin-top:18px;
-  padding:14px 24px;
-  display:flex;gap:16px;align-items:flex-start;
-  background:var(--primary-2);
-  border-left:2px solid var(--gold);
-  border-right:1px solid rgba(180,160,120,0.28);
-}
-.narrative .mark{
-  font-family:"Noto Serif SC",serif;
-  font-size:38px;color:var(--gold);line-height:1;
-  font-weight:700;flex-shrink:0;
-}
-.narrative .body{
-  font-family:"Noto Serif SC",serif;
-  font-size:14px;color:var(--text);line-height:1.7;letter-spacing:.5px;
-}
-.narrative .body em{
-  color:var(--gold-light);font-style:italic;font-weight:500;
-}
-.narrative .body strong{
-  color:var(--gold-light);font-family:"JetBrains Mono",monospace;
-  font-weight:500;font-size:13px;
-}
+  .col-left { display: flex; flex-direction: column; }
 
-/* ---- footer ---- */
-.footer{
-  position:absolute;bottom:16px;left:60px;right:60px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;color:var(--text-mute);letter-spacing:2px;
-}
+  .num-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .num-block .hash {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 76px;
+    color: var(--copper);
+    line-height: 0.85;
+    font-weight: 400;
+  }
+  .num-block .digits {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 96px;
+    color: var(--cream);
+    line-height: 0.85;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .col-title {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .col-title::before {
+    content: '■ ';
+    font-size: 7px;
+    color: var(--copper);
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
+
+  .rfc-title {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--cream);
+    margin: 0 0 20px 0;
+    letter-spacing: 0.01em;
+  }
+  .rfc-title .en {
+    color: var(--copper);
+    font-style: italic;
+  }
+
+  .signal-desc {
+    font-size: 12px;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .signal-desc .en {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--cream);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+  }
+  .signal-desc .sep {
+    color: var(--copper);
+    margin: 0 6px;
+    opacity: 0.7;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1.5px;
+    background: var(--copper);
+    margin: 4px 0 16px;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: auto;
+  }
+  .status-tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border: 1px solid var(--copper);
+    color: var(--copper);
+    letter-spacing: 0.14em;
+  }
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--copper);
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .col-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .middle-visual {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .middle-visual .label-top {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--copper);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .middle-visual .label-top::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
+  .svg-wrap {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 0 14px;
+  }
+  .middle-visual .desc {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--cream-dim);
+    text-align: center;
+    max-width: 400px;
+    padding: 0 6px;
+  }
+  .middle-visual .desc .hi {
+    color: var(--copper);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+  }
+
+  .middle-bottom {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    width: 100%;
+    justify-content: center;
+  }
+  .mini-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .mini-stat .v {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 20px;
+    color: var(--copper);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .mini-stat .k {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--cream-faint);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .mini-stat .mid-line {
+    width: 1px;
+    height: 26px;
+    background: var(--hairline);
+  }
+
+  .col-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline {
+    margin: 4px 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .step-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    font-weight: 500;
+    width: 20px;
+    text-align: right;
+  }
+  .step-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--copper);
+    opacity: 0.6;
+    position: relative;
+  }
+  .step-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    border-top: 1.5px solid var(--copper);
+    border-right: 1.5px solid var(--copper);
+    transform: rotate(45deg);
+  }
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .step-label {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 17px;
+    color: var(--cream);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+  .step-hint {
+    font-size: 11px;
+    color: var(--cream-faint);
+    letter-spacing: 0.16em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .step-arrow {
+    text-align: center;
+    color: var(--copper);
+    font-size: 18px;
+    margin: 2px 0 2px 4px;
+    opacity: 0.7;
+  }
+
+  .evolution {
+    background: rgba(27, 59, 107, 0.35);
+    border-left: 2px solid var(--copper);
+    padding: 16px 18px;
+  }
+  .evolution-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--copper);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .evolution-label::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
+  .evolution-body {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--cream);
+  }
+  .evolution-body .em {
+    color: var(--copper);
+    font-weight: 600;
+  }
+  .evolution-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .right-deco {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .right-deco .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--copper);
+    border-radius: 50%;
+  }
+  .right-deco .line {
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .right-deco .square {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--copper);
+  }
+
+  .data-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 20px 26px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 22px;
+    background: rgba(27, 59, 107, 0.12);
+    position: relative;
+  }
+  .data-cards::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 40px;
+    height: 3px;
+    background: var(--copper);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--copper);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .card-value {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 24px;
+    color: var(--cream);
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .card-value.mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .card-value.copper {
+    color: var(--copper);
+  }
+  .card-desc {
+    font-size: 11px;
+    color: var(--cream-faint);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .narrative {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 2px;
+  }
+  .narrative .marker {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--copper);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    padding-top: 5px;
+    flex-shrink: 0;
+  }
+  .narrative .marker::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+  }
+  .narrative p {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 14.5px;
+    color: var(--cream);
+    line-height: 1.75;
+    margin: 0;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+  .narrative p .en {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--copper);
+    font-size: 13.5px;
+  }
+  .narrative p .num {
+    color: var(--copper);
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-square s1"></div>
-    <div class="bg-square s2"></div>
-    <div class="bg-square s3"></div>
-    <div class="bg-circle c1"></div>
-    <div class="bg-circle c2"></div>
-    <div class="bg-circle c3"></div>
-    <div class="bg-line l1"></div>
-    <div class="bg-line l2"></div>
-    <div class="bg-line l3"></div>
+    <div class="bg-mark tl"></div>
+    <div class="bg-mark br"></div>
+    <div class="bg-ghost-ring"></div>
+    <div class="bg-ghost-square"></div>
   </div>
 
   <div id="ct">
-    <div class="top">
-      <div class="title-block">
-        <div class="kicker">PHASE 4 &nbsp;·&nbsp; FLAGSHIP PROPOSAL &nbsp;·&nbsp; 标志性提案</div>
-        <h1>PR #94266 · Collective Wisdom Agent</h1>
-        <div class="sub">集体智慧 · 智慧化 &nbsp;&nbsp;<span style="color:var(--text-mute);letter-spacing:1.5px;">— 2026 · 08</span></div>
+    <header class="header">
+      <div class="header-left">
+        <h1 class="title"><span class="pr-num">PR #61044</span> · Cron-native Batch API</h1>
+        <div class="subtitle">自主调度 · 自动化（2026-07）</div>
       </div>
-      <div class="title-side">
-        <div class="label">FEATURE · WISDOM</div>
-        <div class="val">Hermes V1</div>
-        <div class="label" style="margin-top:10px;">CATEGORY</div>
-        <div class="val" style="font-size:13px;">comp · agent · tool · skills</div>
+      <div class="header-right">
+        <div class="tags-row">
+          <span class="tag">comp/agent</span>
+          <span class="tag">comp/cron</span>
+          <span class="tag status">innovation</span>
+        </div>
+        <div class="meta">RFC · OPEN · PRIORITY 3</div>
+        <div class="vol">VOL. III · CRON NATIVE</div>
       </div>
-    </div>
+    </header>
 
-    <div class="three-col">
-      <div class="left-col">
-        <div class="tag"><span>章节标识</span></div>
-        <div class="pr-num"><span class="hash">#</span>94266</div>
+    <section class="columns">
+      <div class="col col-left">
+        <div class="num-block">
+          <span class="hash">#</span><span class="digits">61044</span>
+        </div>
+        <div class="col-title"><span>RFC · CRON-NATIVE BATCH API</span></div>
+        <h2 class="rfc-title">
+          <span class="en">RFC:</span> Cron-native Batch API agent loop for scheduled/background work
+        </h2>
+        <div class="signal-desc">
+          需求信号 · <span class="en">35,660</span> body<br>
+          <span class="en">comp/agent</span><span class="sep">·</span><span class="en">comp/cron</span><span class="sep">·</span><span class="en">innovation</span>
+        </div>
         <div class="divider"></div>
-        <div class="sub-label">Phase 4 · 标志性提案</div>
-        <div class="sub-cn">FLAGSHIP PROPOSAL</div>
-        <div class="left-square"></div>
-        <div class="left-circle"></div>
-      </div>
-
-      <div class="mid-col">
-        <div class="mid-head">
-          <div class="dot"></div>
-          <div class="title"><span>集体智慧 · 概念</span></div>
-          <div class="en"><span>COLLECTIVE · WISDOM</span></div>
-        </div>
-        <div class="concept-viz">
-          <svg viewBox="0 0 600 206" preserveAspectRatio="xMidYMid meet">
-            <line x1="110" y1="55" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-            <line x1="510" y1="42" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-            <line x1="70" y1="140" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <line x1="530" y1="150" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <line x1="110" y1="55" x2="70" y2="140" stroke="#B4A078" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.5"/>
-            <line x1="510" y1="42" x2="530" y2="150" stroke="#B4A078" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.5"/>
-            <line x1="110" y1="55" x2="200" y2="180" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <line x1="200" y1="180" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <line x1="200" y1="180" x2="420" y2="185" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <line x1="420" y1="185" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <line x1="420" y1="185" x2="530" y2="150" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <rect x="52" y="17" width="16" height="16" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <rect x="536" y="17" width="16" height="16" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-
-            <circle cx="110" cy="55" r="7" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="510" cy="42" r="7" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="70" cy="140" r="6" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="530" cy="150" r="6" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="200" cy="180" r="5" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
-            <circle cx="420" cy="185" r="5" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
-            <circle cx="300" cy="103" r="22" fill="#B4A078"/>
-            <circle cx="300" cy="103" r="34" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <circle cx="300" cy="103" r="48" fill="none" stroke="#B4A078" stroke-width="0.7" opacity="0.28"/>
-
-            <text x="110" y="80" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.85">SESSION · 01</text>
-            <text x="510" y="68" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.85">SESSION · 02</text>
-            <text x="70" y="165" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.75">SESSION · 03</text>
-            <text x="530" y="175" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.75">SESSION · 04</text>
-            <text x="300" y="108" fill="#0F1E33" font-family="Noto Serif SC, serif" font-weight="700" font-size="14" letter-spacing="2" text-anchor="middle">集体</text>
-          </svg>
-        </div>
-        <div class="concept-caption">
-          <span>从 <strong>「个体 agent」</strong> 到 <strong>「集体智慧」</strong> —— 多个 agent session 的知识聚合为集体智慧，构成跨会话可复用的智能底座。</span>
+        <div class="status-row">
+          <span class="status-tag"><span class="status-dot"></span>OPEN · P3</span>
         </div>
       </div>
 
-      <div class="right-col">
-        <div class="right-head"><span>能力跃迁 · LEAP</span></div>
-        <div class="arrow-col">
-          <div class="arrow-peak">
-            <div class="cn"><span>集体智慧</span></div>
-            <div class="en"><span>COLLECTIVE WISDOM</span></div>
+      <div class="col col-middle">
+        <div class="middle-visual">
+          <div class="label-top"><span>VISUALIZATION · CRON LOOP</span></div>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 240 240" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="120" cy="120" r="210" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.12"/>
+              <circle cx="120" cy="120" r="170" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.2" stroke-dasharray="3 6"/>
+              <circle cx="120" cy="120" r="120" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.45"/>
+              <circle cx="120" cy="120" r="70" fill="none" stroke="#F5F0E8" stroke-width="0.8" opacity="0.35" stroke-dasharray="1.5 3"/>
+              <circle cx="120" cy="120" r="38" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
+
+              <text x="120" y="116" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#F5F0E8" font-weight="500" letter-spacing="0.1em">Cron-native</text>
+              <text x="120" y="132" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#B4A078" font-style="italic" letter-spacing="0.1em">agent loop</text>
+
+              <circle cx="120" cy="10" r="4.5" fill="#B4A078"/>
+              <circle cx="120" cy="230" r="3" fill="#B4A078" opacity="0.6"/>
+              <circle cx="10" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
+              <circle cx="230" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
+
+              <line x1="120" y1="24" x2="120" y2="32" stroke="#B4A078" stroke-width="1.2"/>
+              <line x1="120" y1="208" x2="120" y2="216" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+              <line x1="24" y1="120" x2="32" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+              <line x1="208" y1="120" x2="216" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+
+              <circle cx="212" cy="55" r="2.5" fill="#B4A078" opacity="0.5"/>
+              <circle cx="28" cy="185" r="2.5" fill="#B4A078" opacity="0.5"/>
+
+              <line x1="220" y1="10" x2="234" y2="10" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
+              <line x1="10" y1="228" x2="22" y2="228" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
+            </svg>
           </div>
-          <div class="arrow-shape">
-            <div class="arrow-head"></div>
-            <div class="arrow-stem"></div>
-            <div class="arrow-tail"></div>
-          </div>
-          <div class="arrow-base">
-            <div class="cn"><span>自我组织</span></div>
-            <div class="en"><span>SELF ORGANIZATION</span></div>
-          </div>
-          <div class="arrow-mid"><span>自我组织 → 集体智慧</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="metrics-band">
-      <div class="kpi-row">
-        <div class="kpi">
-          <div class="lbl"><span>BODY</span></div>
-          <div class="num">52,295</div>
-          <div class="desc"><span>设计文档规模</span></div>
-        </div>
-        <div class="kpi">
-          <div class="lbl"><span>COMMENTS</span></div>
-          <div class="num">9</div>
-          <div class="desc"><span>讨论活跃</span></div>
+          <p class="desc">
+            <span class="hi">agent loop</span> 原生调度循环——<br>
+            由 cron 时序驱动，节点触发，无需人工干预
+          </p>
         </div>
       </div>
 
-      <div class="points">
-        <div class="point">
-          <div class="idx">01</div>
-          <div class="name">需求信号</div>
-          <div class="txt">
-            <code>52,295 body</code> · <code>9 comments</code> · <code>comp / agent</code> · <code>tool / skills</code> · <code>area / config</code> · <code>needs-decision</code>
+      <div class="col col-right">
+        <div class="col-title"><span>FROM MANUAL TO AUTONOMOUS</span></div>
+        <div class="timeline">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <span class="step-label">手动触发</span>
+              <span class="step-hint">MANUAL TRIGGER</span>
+            </div>
+          </div>
+          <div class="step-arrow">↓</div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <span class="step-label">自主调度</span>
+              <span class="step-hint">AUTONOMOUS · CRON-NATIVE</span>
+            </div>
           </div>
         </div>
-        <div class="point">
-          <div class="idx">02</div>
-          <div class="name">用户需求</div>
-          <div class="txt">从个体 agent 到集体智慧 —— 多个 agent session 的知识聚合</div>
+        <div class="evolution">
+          <div class="evolution-label"><span>演化意义 · EVOLUTION</span></div>
+          <p class="evolution-body">
+            <span class="em">Phase 3 标志性提案</span>——用户要求 agent 具备<span class="em">自主调度</span>能力
+          </p>
+          <div class="evolution-tag">
+            <span class="en" style="font-family:'JetBrains Mono', monospace;">innovation</span> 标签 · 被认可的创新提案
+          </div>
         </div>
-        <div class="point">
-          <div class="idx">03</div>
-          <div class="name">演化意义</div>
-          <div class="txt">Phase 4 标志性提案，9 comments 讨论活跃，用户要求 agent 有集体智慧能力</div>
+        <div class="right-deco">
+          <span class="dot"></span>
+          <span class="line"></span>
+          <span class="square"></span>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="narrative">
-      <div class="mark"><span>“</span></div>
-      <div class="body">
-        #94266 是 Phase 4 的另一个标志性提案。<em>「feat(wisdom): add Hermes Collective Wisdom Agent V1」</em> —— <strong>52,295 body + 9 comments</strong> 说明这是活跃讨论的设计文档。
+    <section class="data-cards">
+      <div class="card">
+        <div class="card-label">BODY · 需求信号</div>
+        <div class="card-value">35,660</div>
       </div>
-    </div>
+      <div class="card">
+        <div class="card-label">标签 · TAGS</div>
+        <div class="card-value mono">comp/cron · innovation</div>
+      </div>
+      <div class="card">
+        <div class="card-label">核心 · CORE</div>
+        <div class="card-value mono copper">Cron-native agent loop</div>
+      </div>
+      <div class="card">
+        <div class="card-label">状态 · STATUS</div>
+        <div class="card-value mono">open · P3</div>
+      </div>
+    </section>
 
-    <div class="footer">
-      <span>Phase 4 · 标志性提案 · 2026-08</span>
-      <span>Hermes V1 &nbsp;·&nbsp; Collective Wisdom Agent</span>
-    </div>
+    <section class="narrative">
+      <span class="marker">▍NARRATIVE</span>
+      <p>
+        <span class="num">#61044</span> 是 <span class="en">Phase 3</span> 的标志性 RFC——从手动触发到自主调度的跃迁，<span class="en">innovation</span> 标签说明这是被认可的创新提案。
+      </p>
+    </section>
   </div>
 </div>
 </body>

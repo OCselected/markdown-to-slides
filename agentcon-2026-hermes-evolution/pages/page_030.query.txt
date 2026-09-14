@@ -1,9 +1,7 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"PR #82198 · Skill-Persistence EPIC"，副标题为"自我组织 · 持久化（2026-08）"，属于内容页（第 30 页），整体调性是"Dark Academic + 包豪斯几何"——深普鲁士蓝（#0F1E33）羊皮纸质感底色，暖白（#F5F0E8）为主文字色，主色 #1B3B6B 作为强调，金色 #B4A078 作为点缀，标题用 Noto Serif SC 衬线体，正文用 Noto Sans SC 无衬线体，气质理性、克制、有智识感，装饰仅使用圆、方、线的包豪斯几何元素，不依赖图标。
+我需要一页内容页 PPT，主题是「PR #53871 · 给 Hermes 一个灵魂」，副标题标注「Curiosity Engine · 生命化（2026-06）」。这页是 Phase 3 的标志性提案，讲述 agent 从"工具"到"伙伴"的跃迁，引入 Curiosity Engine、Synthetic Dream Cycle 与 Watchman 三大机制，让 Hermes 在 session 之间拥有自己的"生命"。
 
-版面建议分三栏：左栏用超大号衬线数字 "#82198" 作为视觉锚点，下方依次罗列四个关键数据点——Body 54,633（最大 EPIC）、标签 tool/skills · area/memory、核心 Skill 持久化 + 存储边界、状态 open · needs-decision；中间栏是一个抽象的"架构图"，用 CSS 画的方框、圆形、连线表达三层结构：持久化（skill persistence）→ 存储边界（storage boundary）→ 运维风险（operational-risk conquest），三层之间用箭头或几何连线连接，形成"自我组织"的层次递进；右栏用一个从左到右的箭头可视化"伙伴 → 自我组织者"的跃迁，箭头下方写 evolution 说明。
+版面请采用左-中-右三栏布局。左侧放大号编号"#53871"，作为视觉锚点，下方紧跟"需求信号"标签，标注 body 数据 27,518，并列出话题标签 comp/agent、tool/memory、area/sessions。中间一栏承载"生命"的概念图，用包豪斯几何元素（圆、方、线）抽象表达 Curiosity Engine、Synthetic Dream Cycle、Watchman 三个模块的相互关联，可用环形或三角构图暗示三者围绕"生命"运转；下方用小字写清"核心：Curiosity + Dream + Watchman"。右侧栏呈现"工具 → 伙伴"的演化箭头，从上到下依次列出三条要点：一是"需求信号"——27,518 body，话题聚焦 comp/agent、tool/memory、area/sessions；二是"用户需求"——从"用完即走"到"希望 agent 有自己的生命"，agent 从工具到伙伴；三是"演化意义"——Phase 3 标志性提案，用户要求 agent 有生命感、记忆延续、自主性。底部用一句话收束叙事："Give Hermes a Life Between Sessions——#53871 是 Phase 3 的标志性提案，完成 agent 从工具到伙伴的跃迁。"
 
-五个要点分别呈现：标题为"EPIC: Hermes skill-persistence and storage-boundary operational-risk conquest"；需求信号为"54,633 body（最大 EPIC）· comp/agent · tool/skills · area/memory · needs-decision"；技术复杂性极高——54,633 body 是样本中最大的设计文档之一，涉及 skill 持久化 + 存储边界 + 运维风险；用户需求为"从临时 skill 到持久 skill——agent 自我组织、持久化知识、管理存储边界"；演化意义是"Phase 4 标志性提案——EPIC 级设计文档，用户要求 agent 有自我组织能力"。
-
-底部用一段叙事收束：#82198 是 Phase 4 的标志性 EPIC，54,633 body 是样本中最大的设计文档之一。"skill-persistence and storage-boundary operational-risk conquest"——用户要求 agent 能持久化 skill（知识）、管理存储边界（安全）、征服运维风险（可靠性）。这是 agent 从"伙伴"到"自我组织者"的跃迁。整页没有可用的配图，请全部用纯文字 + CSS 几何装饰把版面填满，不要留大片空白，几何色块要与金/蓝主色呼应。
+整体风格为 dark academic 学术暗色调，深普鲁士蓝羊皮纸质感背景（#0F1E33），暖白文字（#F5F0E8），主色深普鲁士蓝（#1B3B6B）搭配古铜金点缀（#B4A078）；标题用 Noto Serif SC 衬线体强调学术仪式感，正文用 Noto Sans SC 无衬线体，数字用 JetBrains Mono 等宽字体突出数据感。装饰只用包豪斯几何（圆、方、线），不依赖图标，整体理性克制、智识感强，留白讲究。这页没有可用的配图，也没有表格，请纯用文字 + CSS 几何装饰把版面填满，不要留大片空白。

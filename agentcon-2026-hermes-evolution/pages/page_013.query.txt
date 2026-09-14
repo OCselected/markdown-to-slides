@@ -1,7 +1,3 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，第 13 页，主题是"Agent 演化方法论 · 田野观察"，副标题是"以 Hermes 为样本的观察方法"，属于内容页，要传达一种克制的智识感和田野考察的方法论气质。整页用深普鲁士蓝（#0F1E33 底色 + #1B3B6B 主色）配暖白文字（#F5F0E8）与鎏金强调色（#B4A078），字体以 Noto Serif SC / 宋体做标题、Noto Sans SC 做正文，装饰只用包豪斯风格的圆、方、线几何元素，不依赖图标，营造羊皮纸质感的 dark academic 氛围。
-
-版面建议做成三段并列结构：左栏是"样本"——把 Hermes Agent 作为公开样本的核心标签，突出三个关键数字"243K star、33 releases、397 contributors"，配一句"公开演化数据丰富的样本"；中间一栏是"三维观察"——用三个竖排的几何色块或编号标签分别列出需求（issues）、供给（PRs）、消费（stars/contributors/release），对应原文的三维观察框架；右栏是"12 个田野案例"——用一个小网格或分栏文字说明构成"6 命名 release + 5 典型 issue + 1 数据案例"，并强调每个案例采用"现象 → 数据 → 解读"的三段式田野考察方法。顶部左侧放主标题（大号衬线），右侧可留一枚小的章节编号"13"作为章节锚点。底部整行放一句叙事收束："本演讲的方法论：以 Hermes 作为公开样本，用三维（需求/供给/消费）+ 12 案例观察 Agent 演化，每个案例是现象 → 数据 → 解读的三段式田野考察"，再压一句点题："理解 Agent 从'能用'到'好用'的演化路径——不是理论分析，是社区观察"。
-
-这页没有可用配图，也没有表格，请用纯文字 + 包豪斯几何装饰（细线分隔、圆点、方框编号）把版面填满，避免留白空洞，同时保持克制理性、不堆砌花哨元素的学术调性。
+我需要一页PPT，主题是「Footprint Ladder · 六级能力阶梯」，副标题为「能力必须有明确的落地路径」。这是一页内容页，核心要表达六级能力阶梯从「零新面」到「核心工具」——每一级都有明确的落地路径与准入标准，这也是「度量权」问题的答案：每个能力都有可审计的落地位置。版面设计上，顶部放主标题和副标题，中部核心区域用六级阶梯图的布局，从左上向右下阶梯式延伸，越靠右视觉越「重」，依次展示六个层级：L1是Extend existing code——零新面；L2是CLI command + skill（hermes webhook/cron/tools）；L3是Service-gated tool（check_fn，如Home Assistant）；L4是Plugin（~/.hermes/plugins/，第三方/niche）；L5是MCP server（catalog内，工具类但非核心基础）；L6是New core tool（只有terminal/read_file/web_search这类够格）。底部用narrative收束总结。整体风格是dark academic学术感，深普鲁士蓝#0F1E33背景配暖白#F5F0E8文字，金色#B4A078点缀，标题用衬线字体（Noto Serif SC），正文用无衬线字体（Noto Sans SC），装饰用包豪斯几何元素（圆、方、线），追求理性、克制、智识感的视觉系统，背景带羊皮纸质感。这页没有可用配图，请用纯文字加CSS几何装饰把版面填满，不要留大片空白。

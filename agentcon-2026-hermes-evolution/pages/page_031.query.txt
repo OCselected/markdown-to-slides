@@ -1,7 +1,7 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页内容型 PPT，主题是 Phase 4 的另一个标志性提案 PR #94266 · Collective Wisdom Agent，副标题为"集体智慧 · 智慧化（2026-08）"。整体风格是深色学术 / 包豪斯几何美学，背景使用深普鲁士蓝 #0F1E33 的羊皮纸质感，主色是深普鲁士蓝 #1B3B6B，辅以暖金色 #B4A078 点缀，文字为暖白 #F5F0E8；标题使用思源宋体（Noto Serif SC）体现智识感，正文用思源黑体，数字用等宽字体（JetBrains Mono）。装饰只用包豪斯几何元素（圆、方、线），不用图标。
+我需要一页内容型 PPT，主题是 PR #61044《Cron-native Batch API》，副标题写"自主调度 · 自动化（2026-07）"。整体风格走深色学术路线，深普鲁士蓝 #0F1E33 打底，主色是 #1B3B6B 深蓝，辅以 #B4A078 铜金色点缀和 #F5F0E8 羊皮纸暖白文字，衬线字体（Noto Serif SC / Georgia）做大标题、无衬线（Noto Sans SC / PingFang SC）做正文，画面要有理性、克制、智识感，装饰用包豪斯几何元素（圆、方、线），不要图标。
 
-版面按视觉提示分三列并排：最左侧放一个超大号的"#94266"编号作为章节标识，字号要非常有冲击力，下面配一行"Phase 4 · 标志性提案"的小字标签，用暖金色细线分隔。中间列是"集体智慧"的概念区，用几条几何线条连缀若干圆点构成一张简化的"网络图"，象征多个 agent session 的知识聚合，下方用一句小字解释"从'个体 agent'到'集体智慧'——多个 agent session 的知识聚合为集体智慧"。右侧列是一条自下而上的几何箭头，写"自我组织 → 集体智慧"，传达能力跃迁。
+版面按三栏水平展开：左侧是一列大号编号"#61044"，字号要够大够醒目，下方紧跟 RFC 标题"RFC: Cron-native Batch API agent loop for scheduled/background work"，再下面用小字标出"需求信号：35,660 body · comp/agent · comp/cron · innovation"和状态标签"open · P3"；中间是视觉主角——一张用纯 CSS 画出的 cron 循环示意图，用同心圆或圆环加箭头表示"agent loop"原生调度循环，中心可以写"Cron-native agent loop"，周围用细线和铜金色节点表示定时触发；右侧是一个"手动触发 → 自主调度"的箭头过渡，下面配文说明用户需求的跃迁。
 
-在版面底部（或中下方一条横向带）摆两张 KPI 数字卡：第一张是 Body 数 52,295，第二张是 Comments 9（讨论活跃）；旁边再压三条要点，分别标注为"需求信号"（52,295 body · 9 comments · comp/agent · tool/skills · area/config · needs-decision）、"用户需求"（从个体 agent 到集体智慧——多个 agent session 的知识聚合）、"演化意义"（Phase 4 标志性提案，9 comments 讨论活跃，用户要求 agent 有集体智慧能力）。narrative 收束句"#94266 是 Phase 4 的另一个标志性提案。'feat(wisdom): add Hermes Collective Wisdom Agent V1'——52,295 body + 9 comments 说明这是活跃讨论的设计文档"作为底部一段小结呈现，保持克制、理性、有学术感的语气。这页没有可用的配图，请用纯文字 + CSS 几何装饰把版面填满，不要留大片空白。
+页面下方或中下部用一行小卡片串起 4 个数据点：Body 35,660、标签 comp/cron · innovation、核心 Cron-native agent loop、状态 open · P3。再把叙事一句话收束在底部："#61044 是 Phase 3 的标志性 RFC，从手动触发到自主调度的跃迁，innovation 标签说明这是被认可的创新提案。" 页面里还要出现"演化意义：Phase 3 标志性提案——用户要求 agent 有自主调度能力"这条信息，可放在右下角或数据卡片区旁。留白克制但要有节奏，让几何元素和编号成为视觉重心。

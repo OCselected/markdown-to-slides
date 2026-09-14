@@ -1,7 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"案例 12 · desktop 供需缺口"，副标题写"数据案例：唯一失衡的组件"。整体采用深色学术科技风：深普鲁士蓝背景（#0F1E33）叠加羊皮纸质感，主色 #1B3B6B，辅以暖白文字 #F5F0E8 和金色点缀 #B4A078；标题用宋体（Noto Serif SC）以体现智识感，正文用无衬线黑体（Noto Sans SC）。装饰上克制地运用包豪斯几何元素——圆、方、细线，不依赖图标。
+我需要一页 PPT，主题是"PR #82198 · Skill-Persistence EPIC"，副标题为"自我组织 · 持久化（2026-08）"，属于内容页（第 30 页），整体调性是"Dark Academic + 包豪斯几何"——深普鲁士蓝（#0F1E33）羊皮纸质感底色，暖白（#F5F0E8）为主文字色，主色 #1B3B6B 作为强调，金色 #B4A078 作为点缀，标题用 Noto Serif SC 衬线体，正文用 Noto Sans SC 无衬线体，气质理性、克制、有智识感，装饰仅使用圆、方、线的包豪斯几何元素，不依赖图标。
 
-页面结构建议这样组织：顶部居左放超大标题和副标题，标题旁用一个金色小方块作几何点缀。下方第一行放三张 KPI 卡片并排，分别是"desktop 需求 11%"、"desktop 供给 8%"、"Surface Release：100 PRs / 1 周"，三个数字用金色或浅色突出。中部核心区域是一个对比表格，列出 desktop、agent、gateway、cli 四个组件的需求占比与供给占比：desktop 为 11% / 8%（这一行用暖橙红或红色标注"⚠️ 供给欠配"以示失衡），agent 22% / 26%、gateway 18% / 22%、cli 18% / 17%（三者供需匹配良好，用暖白色或正常显示）。表格下方用一行金色徽章样式标注"Surface Release · 2026-06-05 一周 100 PRs"，强调团队对 desktop 的集中投入。
+版面建议分三栏：左栏用超大号衬线数字 "#82198" 作为视觉锚点，下方依次罗列四个关键数据点——Body 54,633（最大 EPIC）、标签 tool/skills · area/memory、核心 Skill 持久化 + 存储边界、状态 open · needs-decision；中间栏是一个抽象的"架构图"，用 CSS 画的方框、圆形、连线表达三层结构：持久化（skill persistence）→ 存储边界（storage boundary）→ 运维风险（operational-risk conquest），三层之间用箭头或几何连线连接，形成"自我组织"的层次递进；右栏用一个从左到右的箭头可视化"伙伴 → 自我组织者"的跃迁，箭头下方写 evolution 说明。
 
-页面底部用叙事文字收束，串联几个要点：需求 11%（用户主动要求新功能）vs 供给 8%（以 bug 为主），类型上也不匹配——需求偏新功能、供给偏 bug 修复；但 Surface Release 一周 100 PRs 显示团队已在集中投入；最终落到制度含义——"'生态是结果，不是手段'——能力扩张是用户需求驱动的，不是行政推动的"。这句金句建议用衬线体放大或加粗，作为整页的思想落点，旁边配一个几何圆环或短横线做视觉收束。整页没有配图，全部靠文字 + CSS 几何装饰填满版面，不要留大片空白。
+五个要点分别呈现：标题为"EPIC: Hermes skill-persistence and storage-boundary operational-risk conquest"；需求信号为"54,633 body（最大 EPIC）· comp/agent · tool/skills · area/memory · needs-decision"；技术复杂性极高——54,633 body 是样本中最大的设计文档之一，涉及 skill 持久化 + 存储边界 + 运维风险；用户需求为"从临时 skill 到持久 skill——agent 自我组织、持久化知识、管理存储边界"；演化意义是"Phase 4 标志性提案——EPIC 级设计文档，用户要求 agent 有自我组织能力"。
+
+底部用一段叙事收束：#82198 是 Phase 4 的标志性 EPIC，54,633 body 是样本中最大的设计文档之一。"skill-persistence and storage-boundary operational-risk conquest"——用户要求 agent 能持久化 skill（知识）、管理存储边界（安全）、征服运维风险（可靠性）。这是 agent 从"伙伴"到"自我组织者"的跃迁。整页没有可用的配图，请全部用纯文字 + CSS 几何装饰把版面填满，不要留大片空白，几何色块要与金/蓝主色呼应。

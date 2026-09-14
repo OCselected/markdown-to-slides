@@ -1,7 +1,7 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页内容型 PPT，主题是 PR #61044《Cron-native Batch API》，副标题写"自主调度 · 自动化（2026-07）"。整体风格走深色学术路线，深普鲁士蓝 #0F1E33 打底，主色是 #1B3B6B 深蓝，辅以 #B4A078 铜金色点缀和 #F5F0E8 羊皮纸暖白文字，衬线字体（Noto Serif SC / Georgia）做大标题、无衬线（Noto Sans SC / PingFang SC）做正文，画面要有理性、克制、智识感，装饰用包豪斯几何元素（圆、方、线），不要图标。
+我需要一页 PPT，主题是 GitHub PR #5143 的核心提案介绍，标题写"PR #5143 · 多角色自动路由"，副标题为"Gateway Hooks · 专业化分化（2026-04）"，定位为一个 GitHub 提案的案例研究页。整体风格是深色学术调性（dark academic），深普鲁士蓝 #0F1E33 做背景，羊皮纸质感的暖白 #F5F0E8 作为主文字色，用金色 #B4A078 和青色蓝绿作为点缀色，标题用思源宋体类衬线字体（Noto Serif SC）营造学术庄重感，正文用思源黑体（Noto Sans SC），版面里可以点缀包豪斯几何元素（圆、方、细线），不依赖图标，整体气质理性、克制、有智识感。
 
-版面按三栏水平展开：左侧是一列大号编号"#61044"，字号要够大够醒目，下方紧跟 RFC 标题"RFC: Cron-native Batch API agent loop for scheduled/background work"，再下面用小字标出"需求信号：35,660 body · comp/agent · comp/cron · innovation"和状态标签"open · P3"；中间是视觉主角——一张用纯 CSS 画出的 cron 循环示意图，用同心圆或圆环加箭头表示"agent loop"原生调度循环，中心可以写"Cron-native agent loop"，周围用细线和铜金色节点表示定时触发；右侧是一个"手动触发 → 自主调度"的箭头过渡，下面配文说明用户需求的跃迁。
+版面按三段式横向布局：左侧区域放一个超大号的"#5143"编号，作为整页的视觉锚点，编号下方可以叠上两个关键数据——Body 28,040 和 Comments 11，用等宽字体（JetBrains Mono）呈现，突出提案的热度信号；中间区域是核心的 Gateway Hooks 路由示意图，用纯 CSS 绘制一个"多角色自动路由"的抽象图示——中心是 gateway hook，向外辐射到不同的 agent 角色节点（例如会话类、执行类、分析类等），用细线和几何圆点表达路由关系，体现"不同任务类型路由到不同 agent 角色"的机制；右侧区域用一个明显的箭头或递进结构，表达"工具 → 团队"的演化跃迁，配合副标题"专业化分化"的语义。
 
-页面下方或中下部用一行小卡片串起 4 个数据点：Body 35,660、标签 comp/cron · innovation、核心 Cron-native agent loop、状态 open · P3。再把叙事一句话收束在底部："#61044 是 Phase 3 的标志性 RFC，从手动触发到自主调度的跃迁，innovation 标签说明这是被认可的创新提案。" 页面里还要出现"演化意义：Phase 3 标志性提案——用户要求 agent 有自主调度能力"这条信息，可放在右下角或数据卡片区旁。留白克制但要有节奏，让几何元素和编号成为视觉重心。
+核心信息区要把三条要点都落进去：一是"需求信号"，包含 28,040 body、11 comments、comp/gateway、area/sessions、needs-decision 这些标签；二是"用户需求"，即从"一个 agent 处理一切"到"专业化角色分工"的转变；三是"演化意义"，强调这是 Phase 2 的标志性提案，也是平台扩展期用户要求 agent 专业化能力的关键信号。页面底部用一行叙事性文字收束："#5143 是 Phase 2 的标志性提案——用户要求 gateway hooks 实现多角色自动路由，这是 agent 从'工具'到'团队'的第一个信号。"整页没有可用配图，请全靠文字、几何装饰和排版本身把版面填满，不要留大片空白，保持学术提案档案的厚重与克制。

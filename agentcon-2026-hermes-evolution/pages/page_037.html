@@ -4,26 +4,32 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>田野考察方法论复盘</title>
+<title>Release 节奏观察</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=wrap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
 :root {
-  --bg: #0F1E33;
   --primary: #1B3B6B;
-  --primary-light: #2B4F82;
+  --bg: #0F1E33;
   --text: #F5F0E8;
-  --text-muted: #C8C0B0;
   --amber: #B4A078;
-  --amber-bright: #D4BE94;
+  --amber-bright: #D4B886;
+  --muted: rgba(245,240,232,0.55);
+  --dot-muted: rgba(245,240,232,0.65);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  background: var(--bg);
+  font-family: 'Noto Sans SC', sans-serif;
   color: var(--text);
+  background: var(--bg);
 }
 
 .wrapper {
@@ -32,71 +38,22 @@ body {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  background: #0F1E33;
+  background: var(--bg);
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(circle at 15% 25%, rgba(27, 59, 107, 0.55), transparent 45%), radial-gradient(circle at 85% 75%, rgba(180, 160, 120, 0.08), transparent 45%);
+  background: radial-gradient(ellipse at 25% 15%, rgba(27,59,107,0.55) 0%, rgba(15,30,51,1) 65%);
 }
 
-.bg-deco { position: absolute; }
-.deco-ring-1 {
-  top: -140px;
-  right: -140px;
-  width: 380px;
-  height: 380px;
-  border: 1px solid rgba(180, 160, 120, 0.20);
-  border-radius: 50%;
-}
-.deco-ring-2 {
-  top: -60px;
-  right: -60px;
-  width: 220px;
-  height: 220px;
-  border: 1px dashed rgba(180, 160, 120, 0.22);
-  border-radius: 50%;
-}
-.deco-ring-3 {
-  bottom: -60px;
-  left: -70px;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(43, 79, 130, 0.8);
-  border-radius: 50%;
-}
-.deco-square-1 {
-  top: 150px;
-  left: 40px;
-  width: 22px;
-  height: 22px;
-  background: var(--amber);
-  opacity: 0.7;
-}
-.deco-square-2 {
-  top: 200px;
-  left: 78px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--amber);
-  opacity: 0.55;
-}
-.deco-square-3 {
-  bottom: 220px;
-  right: 40px;
-  width: 34px;
-  height: 34px;
-  border: 2px solid var(--amber);
-  opacity: 0.4;
-}
-.deco-square-4 {
-  bottom: 280px;
-  right: 88px;
-  width: 12px;
-  height: 12px;
-  background: var(--primary-light);
+.bg-warmth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 85% 90%, rgba(180,160,120,0.07) 0%, transparent 45%);
+  pointer-events: none;
 }
 
 #ct {
@@ -104,353 +61,411 @@ body {
   inset: 0;
   z-index: 1;
   padding: 60px;
-  box-sizing: border-box;
 }
 
-.corner-mark {
+.deco {
   position: absolute;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--amber);
-  z-index: 2;
+  z-index: 0;
+  pointer-events: none;
 }
-.corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
-.corner-tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
-.corner-bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
-.corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
+.deco-circle-tr {
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(180,160,120,0.20);
+  top: -260px; right: -160px;
+}
+.deco-square-bl {
+  width: 90px; height: 90px;
+  background: rgba(180,160,120,0.14);
+  bottom: 160px; left: -30px;
+}
+.deco-line-h-top {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 100px;
+  height: 1px;
+  background: rgba(180,160,120,0.35);
+  z-index: 0;
+}
 
 .header {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 46px;
+  align-items: flex-start;
+  padding-top: 15px;
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  color: var(--amber);
-  font-size: 13px;
-  letter-spacing: 5px;
-  font-weight: 500;
-}
-
-.eyebrow-square {
-  width: 12px;
-  height: 12px;
-  background: var(--amber);
-}
-
-.eyebrow-line {
-  width: 60px;
-  height: 1px;
-  background: var(--amber);
-  opacity: 0.6;
+.title-block {
+  max-width: 780px;
 }
 
 h1 {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 58px;
+  font-family: 'Noto Serif SC', serif;
   font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
+  font-size: 60px;
   line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: 3px;
 }
 
 .subtitle {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 22px;
-  color: var(--amber);
-  letter-spacing: 4px;
-  margin-top: 14px;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.header-right {
-  text-align: right;
-  padding-bottom: 6px;
-}
-
-.header-number {
   font-family: 'Noto Serif SC', serif;
-  font-size: 72px;
-  font-weight: 300;
-  color: var(--primary-light);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--amber-bright);
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.subtitle-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--amber);
+  margin-right: 16px;
+}
+
+.kpi-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.kpi {
+  min-width: 150px;
+  padding: 14px 22px;
+  border: 1px solid rgba(180,160,120,0.35);
+  background: rgba(27,59,107,0.35);
+  position: relative;
+}
+.kpi-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.kpi-value {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--text);
   line-height: 1;
+}
+.kpi-unit {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--amber);
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.timeline-section {
+  margin-top: 48px;
+  position: relative;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  padding: 0 20px;
+}
+
+.timeline-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--amber);
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.timeline-meta {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
   letter-spacing: 2px;
 }
 
-.header-meta {
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--text-muted);
+.timeline {
+  position: relative;
+  height: 140px;
+  margin: 0 20px;
+}
+
+.timeline-axis {
+  position: absolute;
+  top: 70px;
+  left: 0; right: 0;
+  height: 1px;
+  background: rgba(245,240,232,0.35);
+}
+
+.timeline-band {
+  position: absolute;
+  top: 45px;
+  left: 42%;
+  width: 20%;
+  height: 50px;
+  background: rgba(180,160,120,0.12);
+  border-top: 1px solid rgba(180,160,120,0.5);
+  border-bottom: 1px solid rgba(180,160,120,0.5);
+}
+
+.timeline-band-label {
+  position: absolute;
+  top: 14px;
+  left: 42%;
+  width: 20%;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--amber-bright);
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.dot {
+  position: absolute;
+  top: 66px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-muted);
+  transform: translateX(-50%);
+}
+
+.dot.named {
+  width: 16px;
+  height: 16px;
+  top: 62px;
+  background: var(--amber-bright);
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 0 4px rgba(180,160,120,0.15);
+}
+
+.timeline-scale {
+  position: relative;
+  height: 30px;
+  margin: 0 20px;
   margin-top: 6px;
 }
 
-.circles-section {
-  position: relative;
-  padding: 20px 0;
-}
-
-.circles-line {
+.scale-tick {
   position: absolute;
-  top: 145px;
-  left: 40px;
-  right: 40px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.55) 8%, rgba(180, 160, 120, 0.55) 92%, transparent);
-}
-
-.circles-line-dot {
-  position: absolute;
-  top: 141px;
-  width: 9px;
-  height: 9px;
-  background: var(--amber);
-  transform: rotate(45deg);
-  z-index: 3;
-}
-
-.circles-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-}
-
-.circle-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 240px;
-}
-
-.circle-number {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--amber);
-  margin-bottom: 12px;
-  font-weight: 600;
-  line-height: 1;
-  height: 13px;
-}
-
-.circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #2B4F82, #1B3B6B 60%, #0F1E33);
-  border: 2px solid var(--amber);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 0 0 8px #0F1E33, 0 0 0 9px rgba(180, 160, 120, 0.3);
-}
-
-.circle::before {
-  content: '';
-  position: absolute;
-  inset: -18px;
-  border: 1px dashed rgba(180, 160, 120, 0.28);
-  border-radius: 50%;
-}
-
-.circle-keyword {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 44px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
-}
-
-.circle-tag {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--amber-bright);
-  margin-top: 10px;
-  opacity: 0.9;
-  font-family: 'Noto Sans SC', sans-serif;
-}
-
-.circle-desc {
-  margin-top: 38px;
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--text-muted);
+  top: 0;
+  transform: translateX(-50%);
   text-align: center;
-  max-width: 232px;
 }
 
-.circle-desc .highlight {
-  color: var(--amber);
-  font-weight: 600;
+.tick-mark {
+  width: 1px;
+  height: 8px;
+  background: rgba(245,240,232,0.35);
+  margin: 0 auto;
 }
 
-.footer {
-  position: absolute;
-  bottom: 54px;
-  left: 60px;
-  right: 60px;
-  border-top: 1px solid rgba(180, 160, 120, 0.35);
-  padding-top: 22px;
-  display: flex;
-  gap: 22px;
-  align-items: flex-start;
-}
-
-.footer-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding-top: 4px;
-  padding-right: 14px;
-  border-right: 1px solid rgba(180, 160, 120, 0.2);
-}
-
-.footer-square {
-  width: 10px;
-  height: 10px;
-  background: var(--amber);
-}
-
-.footer-label {
-  font-family: 'Noto Serif SC', serif;
+.tick-label {
+  margin-top: 6px;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--amber);
-  writing-mode: vertical-rl;
-  font-weight: 500;
-}
-
-.footer-text {
-  flex: 1;
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text);
-}
-
-.footer-text .k {
-  color: var(--amber);
-  font-weight: 700;
-  margin-right: 6px;
+  color: var(--muted);
   letter-spacing: 1px;
 }
 
-.footer-text .dim {
-  color: var(--text-muted);
+.insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
 }
 
-.footer-text .sep {
+.insight {
+  padding: 22px 24px;
+  border-left: 3px solid var(--amber);
+  background: rgba(27,59,107,0.30);
+  position: relative;
+}
+
+.insight-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
   color: var(--amber);
-  margin: 0 8px;
-  opacity: 0.7;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.insight-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.insight-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.quote-wrap {
+  position: absolute;
+  bottom: 44px;
+  left: 60px;
+  right: 60px;
+  text-align: center;
+}
+
+.quote-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(180,160,120,0.6);
+  margin: 0 auto 16px;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1.6;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="bg-deco deco-ring-1"></div>
-    <div class="bg-deco deco-ring-2"></div>
-    <div class="bg-deco deco-ring-3"></div>
-    <div class="bg-deco deco-square-1"></div>
-    <div class="bg-deco deco-square-2"></div>
-    <div class="bg-deco deco-square-3"></div>
-    <div class="bg-deco deco-square-4"></div>
-  </div>
+  <div id="bg"></div>
+  <div class="bg-warmth"></div>
 
-  <div class="corner-mark corner-tl"></div>
-  <div class="corner-mark corner-tr"></div>
-  <div class="corner-mark corner-bl"></div>
-  <div class="corner-mark corner-br"></div>
+  <div class="deco deco-circle-tr"></div>
+  <div class="deco deco-square-bl"></div>
+  <div class="deco deco-line-h-top"></div>
 
   <div id="ct">
     <div class="header">
-      <div class="header-left">
-        <div class="eyebrow">
-          <div class="eyebrow-square"></div>
-          <span>田野考察 · METHODOLOGY REVIEW</span>
-        </div>
-        <h1><span>田野考察方法论复盘</span></h1>
-        <div class="subtitle"><span>从群众中来的方法 · From the Masses</span></div>
+      <div class="title-block">
+        <h1>Release 节奏观察</h1>
+        <div class="subtitle"><span class="subtitle-line"></span><span>33 releases / 180 天</span></div>
       </div>
-      <div class="header-right">
-        <div class="header-number"><span>§ 01</span></div>
-        <div class="header-meta"><span>FIVE DIMENSIONS</span></div>
-      </div>
-    </div>
-
-    <div class="circles-section">
-      <div class="circles-line"></div>
-      <div class="circles-line-dot" style="left: 275px;"></div>
-      <div class="circles-line-dot" style="left: 585px;"></div>
-      <div class="circles-line-dot" style="left: 895px;"></div>
-      <div class="circles-line-dot" style="left: 1205px;"></div>
-      <div class="circles-row">
-        <div class="circle-card">
-          <div class="circle-number"><span>I.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>视角</span></div>
-            <div class="circle-tag"><span>PERSPECTIVE</span></div>
-          </div>
-          <div class="circle-desc">开源社区<span class="highlight">内实践者</span>，非外部观察者——既是参与者，也是记录者。</div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-label"><span>总 Releases</span></div>
+          <div class="kpi-value">33</div>
         </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>II.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>方法</span></div>
-            <div class="circle-tag"><span>METHOD</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">从群众中来</span>，从实践出发；非框架先行，从案例中提炼，非理论推导。</div>
+        <div class="kpi">
+          <div class="kpi-label"><span>窗口</span></div>
+          <div class="kpi-value">180<span class="kpi-unit">天</span></div>
         </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>III.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>立场</span></div>
-            <div class="circle-tag"><span>STANCE</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">批判行政开源</span>，用实践检验理论，用演化观察制度。</div>
-        </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>IV.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>局限</span></div>
-            <div class="circle-tag"><span>LIMITS</span></div>
-          </div>
-          <div class="circle-desc">弱代理（stars ≠ 使用）、单一仓库、<span class="highlight">关键词分析（非语义）</span>。</div>
-        </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>V.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>下一步</span></div>
-            <div class="circle-tag"><span>NEXT</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">长期追踪</span>，持续观察需求 / 供给 / 消费的演化，寻找更强信号。</div>
+        <div class="kpi">
+          <div class="kpi-label"><span>命名 Release</span></div>
+          <div class="kpi-value">6<span class="kpi-unit">个</span></div>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="footer-marker">
-        <div class="footer-square"></div>
-        <div class="footer-label"><span>SYNTHESIS</span></div>
+    <div class="timeline-section">
+      <div class="timeline-header">
+        <span class="timeline-title">发布节奏 · 时间线</span>
+        <span class="timeline-meta">180 天 · 33 次发布</span>
       </div>
-      <div class="footer-text">
-        <span class="k">方法论复盘</span>视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。<span class="sep">/</span><span class="dim">局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。</span>
+
+      <div class="timeline">
+        <div class="timeline-band-label"><span>命名 Release 密集区 · 2026-05 → 2026-07</span></div>
+        <div class="timeline-band"></div>
+        <div class="timeline-axis"></div>
+
+        <div class="dot" style="left:0.5%"></div>
+        <div class="dot" style="left:3%"></div>
+        <div class="dot" style="left:6%"></div>
+        <div class="dot" style="left:9%"></div>
+        <div class="dot" style="left:12%"></div>
+        <div class="dot" style="left:15%"></div>
+        <div class="dot" style="left:18%"></div>
+        <div class="dot" style="left:21%"></div>
+        <div class="dot" style="left:24%"></div>
+        <div class="dot" style="left:27%"></div>
+        <div class="dot" style="left:30%"></div>
+        <div class="dot" style="left:33%"></div>
+        <div class="dot" style="left:36%"></div>
+        <div class="dot" style="left:39%"></div>
+        <div class="dot" style="left:42%"></div>
+        <div class="dot" style="left:63%"></div>
+        <div class="dot" style="left:66%"></div>
+        <div class="dot" style="left:69%"></div>
+        <div class="dot" style="left:72%"></div>
+        <div class="dot" style="left:75%"></div>
+        <div class="dot" style="left:78%"></div>
+        <div class="dot" style="left:81%"></div>
+        <div class="dot" style="left:84%"></div>
+        <div class="dot" style="left:87%"></div>
+        <div class="dot" style="left:90%"></div>
+        <div class="dot" style="left:93%"></div>
+        <div class="dot" style="left:96%"></div>
+
+        <div class="dot named" style="left:45%"></div>
+        <div class="dot named" style="left:48%"></div>
+        <div class="dot named" style="left:51%"></div>
+        <div class="dot named" style="left:54%"></div>
+        <div class="dot named" style="left:57%"></div>
+        <div class="dot named" style="left:60%"></div>
       </div>
+
+      <div class="timeline-scale">
+        <div class="scale-tick" style="left:0%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 0 天</div>
+        </div>
+        <div class="scale-tick" style="left:25%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 45 天</div>
+        </div>
+        <div class="scale-tick" style="left:50%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 90 天</div>
+        </div>
+        <div class="scale-tick" style="left:75%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 135 天</div>
+        </div>
+        <div class="scale-tick" style="left:100%">
+          <div class="tick-mark"></div>
+          <div class="tick-label">第 180 天</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights">
+      <div class="insight">
+        <div class="insight-num"><span>01 / 密度</span></div>
+        <div class="insight-title">≈ 5.5 天 / Release</div>
+        <div class="insight-desc">33 次发布摊到 180 天窗口，平均不到一周一次——持续、稳定、有节制的推送。</div>
+      </div>
+      <div class="insight">
+        <div class="insight-num"><span>02 / 命名</span></div>
+        <div class="insight-title">6 次命名 Release</div>
+        <div class="insight-desc">集中在 2026-05 至 2026-07，是节奏中最亮的一段——项目被赋予名字，也意味着承诺。</div>
+      </div>
+      <div class="insight">
+        <div class="insight-num"><span>03 / Patch</span></div>
+        <div class="insight-title">"认错仪式"</div>
+        <div class="insight-desc">同日热修复紧随其后，被称作社区式的认错仪式——承认错误，然后立即修复，这是节奏的一部分。</div>
+      </div>
+    </div>
+
+    <div class="quote-wrap">
+      <div class="quote-line"></div>
+      <div class="quote-text">Release 节奏是社区自我组织的节奏——不是行政命令能促成的。</div>
     </div>
   </div>
 </div>

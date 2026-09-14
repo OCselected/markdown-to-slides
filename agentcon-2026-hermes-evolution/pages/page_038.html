@@ -4,377 +4,584 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>第四幕 · Agent 演化洞察</title>
+<title>田野考察小结 · 12 案例的横切视角</title>
+<script src="../assets/echarts.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
 
-:root {
-  --bg: #0F1E33;
-  --accent: #1B3B6B;
-  --gold: #B4A078;
-  --warm-white: #F5F0E8;
-  --warm-white-dim: rgba(245, 240, 232, 0.72);
-  --warm-white-faint: rgba(245, 240, 232, 0.28);
+:root{
+  --bg:#0F1E33;
+  --bg-deep:#0A1628;
+  --text:#F5F0E8;
+  --text-dim:#B0AEAA;
+  --text-faint:#6E6F76;
+  --gold:#B4A078;
+  --gold-bright:#D4B87C;
+  --blue:#1B3B6B;
+  --blue-light:#2E5599;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+html,body{width:1600px;height:900px;overflow:hidden;background:var(--bg);}
+
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: var(--bg);
+.wrapper{
+  width:1600px;height:900px;
+  position:relative;overflow:hidden;
+  margin:0 auto;
+  background:var(--bg);
 }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: #0F1E33;
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box;}
+
+/* Background bauhaus geometry */
+.bg-circle{
+  position:absolute;border-radius:50%;
+}
+.circle-1{
+  width:520px;height:520px;
+  right:-170px;top:-190px;
+  border:1px solid rgba(180,160,120,0.13);
+}
+.circle-2{
+  width:340px;height:340px;
+  right:80px;top:-40px;
+  background:radial-gradient(circle,rgba(180,160,120,0.06),transparent 70%);
+}
+.circle-3{
+  width:220px;height:220px;
+  left:-90px;bottom:-90px;
+  border:1px solid rgba(180,160,120,0.09);
+}
+.bg-square{
+  position:absolute;
+}
+.square-1{
+  width:80px;height:80px;
+  right:180px;bottom:60px;
+  border:1px solid rgba(180,160,120,0.10);
+  transform:rotate(45deg);
+}
+.square-2{
+  width:6px;height:6px;
+  right:80px;top:38%;
+  background:rgba(180,160,120,0.5);
+}
+.bg-line{
+  position:absolute;
+  background:rgba(180,160,120,0.13);
+}
+.line-h1{width:180px;height:1px;left:60px;top:6px;}
+.line-h2{width:2px;height:100px;right:34px;top:80px;background:rgba(180,160,120,0.18);}
+.dot-decor{
+  position:absolute;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--gold);
 }
 
-.bg-noise {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96  0 0 0 0 0.94  0 0 0 0 0.91  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.9;
+/* ===================== HEADER ===================== */
+.header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding-bottom:12px;
+}
+.header-left{display:flex;align-items:flex-end;gap:24px;}
+.page-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:46px;font-weight:900;
+  color:var(--gold);
+  line-height:0.9;
+  padding-right:22px;
+  border-right:1px solid rgba(180,160,120,0.45);
+}
+.titles{display:flex;flex-direction:column;gap:4px;}
+.title-row{display:flex;align-items:baseline;gap:22px;}
+.main-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:50px;font-weight:700;
+  letter-spacing:6px;color:var(--text);
+}
+.subtitle{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:19px;font-weight:300;
+  color:var(--gold);
+  letter-spacing:3px;
+  position:relative;
+  padding-left:14px;
+}
+.subtitle::before{
+  content:'';position:absolute;left:0;top:52%;
+  width:4px;height:4px;border-radius:50%;
+  background:var(--gold);
+}
+.header-right{
+  text-align:right;
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:11px;color:var(--text-faint);
+  letter-spacing:2px;
+  line-height:1.8;
+}
+.header-right .en{
+  color:var(--gold);
+  letter-spacing:4px;font-weight:500;
+  font-size:12px;
 }
 
-.bg-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 90% 70% at 40% 40%, rgba(27, 59, 107, 0.22) 0%, rgba(15, 30, 51, 0) 70%);
+.gold-divider{
+  height:1px;
+  background:linear-gradient(to right,
+    var(--gold) 0%,var(--gold) 60px,
+    rgba(180,160,120,0.5) 60px,rgba(180,160,120,0.5) 78px,
+    transparent 78px,transparent 100%);
+  position:relative;
+  margin-bottom:22px;
+}
+.gold-divider::after{
+  content:'';position:absolute;
+  right:0;top:-2px;
+  width:5px;height:5px;
+  background:var(--gold);
+  transform:rotate(45deg);
 }
 
-.bauhaus-decor {
-  position: absolute;
-  top: 90px;
-  right: 100px;
-  width: 260px;
-  height: 200px;
-  z-index: 0;
-  opacity: 0.92;
+/* ===================== CATEGORY SECTIONS ===================== */
+.category{margin-bottom:16px;}
+.cat-head{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:11px;
+}
+.cat-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:14px;font-weight:700;
+  color:var(--gold);
+  padding:3px 9px;
+  border:1px solid rgba(180,160,120,0.5);
+}
+.cat-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:20px;font-weight:700;
+  color:var(--text);letter-spacing:4px;
+}
+.cat-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;
+  color:var(--text-faint);
+  letter-spacing:3px;text-transform:uppercase;
+  margin-left:2px;
+}
+.cat-badge{
+  margin-left:auto;
+  font-size:11px;
+  padding:3px 12px;
+  border:1px solid;
+  letter-spacing:1px;
+}
+.cat-badge.count{
+  font-family:'Noto Serif SC',serif;font-weight:600;
+}
+.cat-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,
+    rgba(180,160,120,0.4),rgba(180,160,120,0.08));
 }
 
-.bauhaus-decor-sm {
-  position: absolute;
-  top: 280px;
-  right: 40px;
-  width: 90px;
-  height: 90px;
-  z-index: 0;
-  opacity: 0.5;
+/* Cat 1 - blue theme */
+.cat-1 .cat-badge{border-color:rgba(46,85,153,0.7);color:#7FA0DC;}
+/* Cat 2 - gold theme */
+.cat-2 .cat-badge{border-color:rgba(180,160,120,0.7);color:var(--gold);}
+/* Cat 3 - gold fill theme */
+.cat-3 .cat-badge{border-color:var(--gold);color:var(--gold-bright);background:rgba(180,160,120,0.08);}
+
+/* ===================== CARD GRID ===================== */
+.grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.grid-1{display:grid;grid-template-columns:1.6fr 0.9fr;gap:14px;}
+
+.card{
+  padding:11px 14px 12px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(46,85,153,0.45);
+  border-radius:3px;
+  position:relative;
+  min-height:70px;
+}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;
+  width:2px;height:14px;
+  background:var(--gold);
+}
+.card-name{
+  font-family:'Noto Serif SC',serif;
+  font-size:18px;font-weight:700;
+  color:var(--text);
+  margin-bottom:4px;
+  letter-spacing:0.5px;
+  line-height:1.15;
+}
+.card-issue{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:16px;font-weight:600;
+  color:var(--text);
+  margin-bottom:4px;
+  letter-spacing:0.5px;
+  line-height:1.2;
+}
+.card-desc{
+  font-size:11.5px;
+  color:var(--text-dim);
+  letter-spacing:0.5px;
+  line-height:1.4;
+}
+.card-tag{
+  position:absolute;top:9px;right:11px;
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 60px 100px;
-  color: var(--warm-white);
+/* Gold variant */
+.cat-2 .card{
+  border-color:rgba(180,160,120,0.4);
+  background:rgba(180,160,120,0.03);
+}
+.cat-2 .card::before{background:var(--blue-light);}
+
+/* Gold fill variant */
+.cat-3 .card-main{
+  border-color:rgba(180,160,120,0.5);
+  background:linear-gradient(90deg,rgba(180,160,120,0.07),rgba(180,160,120,0.01));
+}
+.cat-3 .card-main::before{background:var(--gold-bright);height:20px;}
+
+.card-highlight{
+  padding:11px 14px 12px;
+  border:1px dashed rgba(180,160,120,0.35);
+  border-radius:3px;
+  display:flex;flex-direction:column;justify-content:center;gap:2px;
+  min-height:70px;
+}
+.highlight-label{
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.highlight-value{
+  font-family:'Noto Serif SC',serif;
+  font-size:15px;font-weight:700;
+  color:var(--gold-bright);
+  letter-spacing:1px;
 }
 
-.top-marker {
-  position: absolute;
-  top: 60px;
-  left: 100px;
-  display: flex;
-  align-items: center;
-  gap: 22px;
+/* ===================== THREE MODULES ===================== */
+.three-modules{
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  margin-top:18px;padding:14px 0 12px;
+  border-top:1px solid rgba(180,160,120,0.22);
+  border-bottom:1px solid rgba(180,160,120,0.22);
+  position:relative;
+}
+.three-modules::before,.three-modules::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.three-modules::before{left:-4px;top:-4px;}
+.three-modules::after{right:-4px;bottom:-4px;}
+
+.module{
+  display:flex;align-items:center;gap:14px;
+  padding:0 30px;
+  flex:1;
+}
+.module + .module{
+  border-left:1px solid rgba(180,160,120,0.2);
+}
+.m-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:12px;color:var(--gold);
+  letter-spacing:1px;font-weight:700;
+}
+.m-glyph{
+  font-family:'Noto Serif SC',serif;
+  font-size:48px;font-weight:900;
+  color:var(--text);
+  line-height:1;
+  letter-spacing:2px;
+}
+.m-info{display:flex;flex-direction:column;gap:2px;}
+.m-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--gold);
+  letter-spacing:3px;
+}
+.m-desc{
+  font-size:11px;color:var(--text-dim);
+  letter-spacing:1px;
 }
 
-.marker-accent-bar {
-  width: 4px;
-  height: 44px;
-  background: var(--gold);
+/* ===================== INSIGHT ===================== */
+.insight{
+  margin-top:16px;
+  display:flex;align-items:center;gap:16px;
+  padding:10px 16px 12px;
+}
+.quote-mark{
+  font-family:'Noto Serif SC',serif;
+  font-size:56px;line-height:0.5;
+  color:var(--gold);
+  font-weight:900;
+  flex-shrink:0;
+  margin-top:22px;
+}
+.insight-content{flex:1;}
+.insight-text{
+  font-family:'Noto Serif SC',serif;
+  font-size:20px;font-weight:600;
+  color:var(--text);
+  letter-spacing:2px;
+  line-height:1.4;
+}
+.insight-text .underline{
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+  color:var(--gold-bright);
+  font-weight:700;
+}
+.insight-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--text-faint);
+  letter-spacing:3px;
+  margin-top:5px;
+  text-transform:uppercase;
+}
+.insight-end{
+  width:4px;height:4px;
+  background:var(--gold);
+  flex-shrink:0;
+  align-self:flex-end;
+  margin-bottom:6px;
 }
 
-.marker-text .marker-act {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  letter-spacing: 0.5em;
-  color: var(--gold);
-  font-weight: 500;
+/* ===================== FOOTER ===================== */
+.footer{
+  position:absolute;bottom:16px;left:60px;right:60px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--text-faint);
+  letter-spacing:3px;
+}
+.footer-line{
+  flex:1;height:1px;
+  margin:0 16px;
+  background:rgba(180,160,120,0.2);
 }
 
-.marker-text .marker-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  letter-spacing: 0.32em;
-  color: rgba(245, 240, 232, 0.5);
-  margin-top: 6px;
-}
-
-.center-block {
-  position: absolute;
-  top: 200px;
-  left: 100px;
-  right: 100px;
-}
-
-.pre-title {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.6em;
-  color: var(--warm-white-faint);
-  margin-bottom: 32px;
-  font-weight: 300;
-}
-
-.main-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 124px;
-  font-weight: 700;
-  color: var(--warm-white);
-  line-height: 1.05;
-  letter-spacing: 0.06em;
-  margin: 0;
-}
-
-.main-title-en {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  letter-spacing: 0.55em;
-  color: rgba(245, 240, 232, 0.42);
-  margin-top: 22px;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.subtitle {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 24px;
-  color: var(--warm-white-dim);
-  margin-top: 34px;
-  letter-spacing: 0.12em;
-  font-weight: 300;
-}
-
-.subtitle-en {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.32);
-  margin-top: 8px;
-  font-weight: 300;
-}
-
-.divider-row {
-  position: absolute;
-  left: 100px;
-  right: 100px;
-  top: 610px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.divider-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  letter-spacing: 0.55em;
-  color: var(--gold);
-  font-weight: 400;
-}
-
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(27, 59, 107, 0.9);
-}
-
-.divider-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.narrative-cols {
-  position: absolute;
-  top: 660px;
-  left: 100px;
-  right: 100px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.col {
-  flex: 1;
-  padding: 0 40px;
-}
-
-.col:first-child { padding-left: 0; }
-.col:last-child { padding-right: 0; }
-
-.col-tag {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.tag-line {
-  width: 24px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.tag-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  letter-spacing: 0.5em;
-  color: var(--gold);
-  font-weight: 400;
-}
-
-.col-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--warm-white);
-  margin: 0 0 14px 0;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-}
-
-.col-desc {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 16px;
-  color: var(--warm-white-dim);
-  line-height: 1.7;
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-}
-
-.col-divider {
-  width: 1px;
-  height: 130px;
-  background: rgba(245, 240, 232, 0.14);
-  align-self: center;
-}
-
-.bottom-preview {
-  position: absolute;
-  bottom: 34px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.7em;
-  color: rgba(245, 240, 232, 0.28);
-  font-weight: 300;
-}
-
-.page-foot {
-  position: absolute;
-  bottom: 34px;
-  right: 100px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.22);
-  font-weight: 300;
-}
-
-.page-foot-left {
-  position: absolute;
-  bottom: 34px;
-  left: 100px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.22);
-  font-weight: 300;
-}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-vignette"></div>
-    <div class="bg-noise"></div>
-    <svg class="bauhaus-decor" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="20" x2="260" y2="20" stroke="#1B3B6B" stroke-width="1"/>
-      <circle cx="200" cy="60" r="42" fill="#B4A078"/>
-      <rect x="40" y="90" width="60" height="60" fill="none" stroke="#1B3B6B" stroke-width="2"/>
-      <circle cx="120" cy="150" r="10" fill="#1B3B6B"/>
-      <line x1="140" y1="130" x2="260" y2="130" stroke="#F5F0E8" stroke-width="1" opacity="0.35"/>
-      <rect x="150" y="10" width="8" height="8" fill="#F5F0E8" opacity="0.5"/>
-      <line x1="0" y1="180" x2="120" y2="180" stroke="#B4A078" stroke-width="1" opacity="0.6"/>
-    </svg>
-    <svg class="bauhaus-decor-sm" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="0" x2="90" y2="90" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-      <line x1="90" y1="0" x2="0" y2="90" stroke="#1B3B6B" stroke-width="1"/>
-    </svg>
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-square square-1"></div>
+    <div class="dot-decor" style="right:60px;top:230px;"></div>
+    <div class="bg-line line-h1"></div>
+    <div class="bg-line line-h2"></div>
   </div>
 
   <div id="ct">
-    <div class="top-marker">
-      <div class="marker-accent-bar"></div>
-      <div class="marker-text">
-        <div class="marker-act">ACT&nbsp;IV</div>
-        <div class="marker-num">04&nbsp;/&nbsp;04</div>
-      </div>
-    </div>
 
-    <div class="center-block">
-      <div class="pre-title">PART&nbsp;IV&nbsp;·&nbsp;THE&nbsp;FOURTH&nbsp;ACT</div>
-      <h1 class="main-title">Agent 演化洞察</h1>
-      <div class="main-title-en">AGENT · EVOLUTIONARY INSIGHTS</div>
-      <div class="subtitle">从 12 案例中提炼的演化规律</div>
-      <div class="subtitle-en">EVOLUTIONARY LAWS EXTRACTED FROM TWELVE CASE STUDIES</div>
-    </div>
-
-    <div class="divider-row">
-      <div class="divider-label">本幕叙事骨架</div>
-      <div class="divider-line"></div>
-      <div class="divider-dot"></div>
-    </div>
-
-    <div class="narrative-cols">
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">核心</div>
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <div class="page-num">36</div>
+        <div class="titles">
+          <div class="title-row">
+            <h1 class="main-title">田野考察小结</h1>
+            <span class="subtitle">12 案例的横切视角</span>
+          </div>
         </div>
-        <h3 class="col-title">从"能用"到"好用"的三道分水岭</h3>
-        <p class="col-desc">在能力阈值之上，Agent 才真正跨越体验的门槛。</p>
       </div>
-      <div class="col-divider"></div>
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">方法</div>
-        </div>
-        <h3 class="col-title">12 案例 → 3 共性 → 3 洞察</h3>
-        <p class="col-desc">自下而上的归纳路径，从样本抽离出可迁移的结构。</p>
-      </div>
-      <div class="col-divider"></div>
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">目标</div>
-        </div>
-        <h3 class="col-title">理解 Agent 演化的内在规律</h3>
-        <p class="col-desc">看清技术迭代之下的驱动逻辑与演化节奏。</p>
+      <div class="header-right">
+        <div class="en">FIELD WORK · CROSS-CUT</div>
+        <div>横切分析 · TRANSVERSAL LENS</div>
       </div>
     </div>
 
-    <div class="page-foot-left">SECTION&nbsp;·&nbsp;IV</div>
-    <div class="bottom-preview">可靠性&nbsp;&nbsp;·&nbsp;&nbsp;兼容性&nbsp;&nbsp;·&nbsp;&nbsp;信任</div>
-    <div class="page-foot">END&nbsp;·&nbsp;OVERVIEW</div>
+    <div class="gold-divider"></div>
+
+    <!-- Category 1: 文化事件 -->
+    <div class="category cat-1">
+      <div class="cat-head">
+        <span class="cat-num">01</span>
+        <span class="cat-title">文化事件</span>
+        <span class="cat-en">Cultural Events</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 6</span>
+      </div>
+      <div class="grid-6">
+        <div class="card">
+          <div class="card-name">Judgment</div>
+          <div class="card-desc">判断力</div>
+          <div class="card-tag">REL</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Tenacity</div>
+          <div class="card-desc">韧性</div>
+          <div class="card-tag">REL</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Surface</div>
+          <div class="card-desc">表层界面</div>
+          <div class="card-tag">COMPAT</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Velocity</div>
+          <div class="card-desc">速度</div>
+          <div class="card-tag">TRUST</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Quicksilver</div>
+          <div class="card-desc">易变 / 流动性</div>
+          <div class="card-tag">COMPAT</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Patch</div>
+          <div class="card-desc">补丁</div>
+          <div class="card-tag">REL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2: 制度标本 -->
+    <div class="category cat-2">
+      <div class="cat-head">
+        <span class="cat-num">02</span>
+        <span class="cat-title">制度标本</span>
+        <span class="cat-en">Institutional Cases</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 5</span>
+      </div>
+      <div class="grid-5">
+        <div class="card">
+          <div class="card-issue">#107070</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#101600</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#67002</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#66353</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#84672</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: 数据案例 -->
+    <div class="category cat-3">
+      <div class="cat-head">
+        <span class="cat-num">03</span>
+        <span class="cat-title">数据案例</span>
+        <span class="cat-en">Data Case</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 1</span>
+      </div>
+      <div class="grid-1">
+        <div class="card card-main">
+          <div class="card-name">Desktop 供需缺口</div>
+          <div class="card-desc">扩张期信号 · Expansion Phase Signal</div>
+          <div class="card-tag">DATA</div>
+        </div>
+        <div class="card-highlight">
+          <span class="highlight-label">Signal →</span>
+          <span class="highlight-value">扩张期 · 需求外溢</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Three common problems -->
+    <div class="three-modules">
+      <div class="module">
+        <div class="m-num">①</div>
+        <div class="m-glyph">可靠性</div>
+        <div class="m-info">
+          <span class="m-en">RELIABILITY</span>
+          <span class="m-desc">稳定可预期</span>
+        </div>
+      </div>
+      <div class="module">
+        <div class="m-num">②</div>
+        <div class="m-glyph">兼容性</div>
+        <div class="m-info">
+          <span class="m-en">COMPATIBILITY</span>
+          <span class="m-desc">跨语境可迁移</span>
+        </div>
+      </div>
+      <div class="module">
+        <div class="m-num">③</div>
+        <div class="m-glyph">信任</div>
+        <div class="m-info">
+          <span class="m-en">TRUST</span>
+          <span class="m-desc">可观察 · 可度量</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:var(--gold);letter-spacing:5px;margin-top:-4px;">
+      从 "能用" 到 "好用" 的三道分水岭
+    </div>
+
+    <!-- Core insight -->
+    <div class="insight">
+      <div class="quote-mark">"</div>
+      <div class="insight-content">
+        <div class="insight-text">
+          <span class="underline">消费侧信任是可观察的信号</span>——开源 Agent 的"度量权"在社区手里。
+        </div>
+        <div class="insight-en">Consumer Trust · An Observable Signal · The Right to Measure Lives in the Community</div>
+      </div>
+      <div class="insight-end"></div>
+    </div>
+
+    <div class="footer">
+      <span>FIELDWORK · CROSS-CUT REVIEW</span>
+      <span class="footer-line"></span>
+      <span>P.36 / 田野考察小结</span>
+    </div>
+
   </div>
 </div>
 </body>

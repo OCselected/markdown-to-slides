@@ -4,474 +4,722 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>案例 2 · Tenacity Release · 多 Agent Kanban</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Release 命名文化 · 田野观察第 1 章</title>
+<script src="../assets/echarts.min.js"></script>
 <style>
-  :root{
-    --bg:#0F1E33;
-    --bg-2:#0A1626;
-    --ink:#F5F0E8;
-    --ink-2:rgba(245,240,232,0.72);
-    --ink-3:rgba(245,240,232,0.48);
-    --amber:#B4A078;
-    --amber-2:#C9B48A;
-    --line:rgba(180,160,120,0.35);
-    --card:rgba(245,240,232,0.045);
-    --card-border:rgba(245,240,232,0.14);
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Noto Sans SC',sans-serif;
-    color:var(--ink);
-    background:#060d18;
-  }
-  .wrapper{
-    width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;
-    background:
-      radial-gradient(1200px 700px at 20% 15%, rgba(180,160,120,0.08), transparent 60%),
-      radial-gradient(900px 600px at 85% 85%, rgba(180,160,120,0.05), transparent 60%),
-      linear-gradient(180deg,#122442 0%,#0F1E33 40%,#0A1626 100%);
-  }
-  #bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-  #ct{position:absolute;inset:0;z-index:1;padding:44px 60px 40px;box-sizing:border-box;}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-  /* Baustyle decorative geometry in bg */
-  .bg-shape{position:absolute;}
-  .bg-circle{
-    left:-120px;top:-140px;width:360px;height:360px;border-radius:50%;
-    border:1px solid rgba(180,160,120,0.18);
-  }
-  .bg-circle-2{
-    right:-160px;bottom:-160px;width:420px;height:420px;border-radius:50%;
-    border:1px solid rgba(180,160,120,0.14);
-  }
-  .bg-square{
-    left:820px;top:-40px;width:120px;height:120px;
-    border:1px solid rgba(180,160,120,0.22);
-    transform:rotate(15deg);
-  }
-  .bg-line-v{
-    left:60px;top:0;width:1px;height:100%;
-    background:linear-gradient(180deg,transparent,rgba(180,160,120,0.25),transparent);
-  }
-  .bg-line-h{
-    left:0;top:460px;height:1px;width:100%;
-    background:linear-gradient(90deg,transparent,rgba(180,160,120,0.18),transparent);
-  }
-  .bg-dot{
-    left:44px;top:460px;width:8px;height:8px;border-radius:50%;
-    background:var(--amber);box-shadow:0 0 12px rgba(180,160,120,0.6);
+  :root {
+    --bg-deep: #0F1E33;
+    --primary: #1B3B6B;
+    --primary-light: #2A4E82;
+    --accent: #B4A078;
+    --accent-dim: #8A7A5A;
+    --text: #F5F0E8;
+    --text-dim: rgba(245, 240, 232, 0.62);
+    --text-faint: rgba(245, 240, 232, 0.32);
+    --line: rgba(180, 160, 120, 0.30);
+    --line-faint: rgba(245, 240, 232, 0.14);
   }
 
-  /* Header */
-  .header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:18px;}
-  .header-left{flex:1;min-width:0;}
-  .kicker{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;letter-spacing:0.22em;color:var(--amber);
-    text-transform:uppercase;margin-bottom:12px;
-  }
-  .kicker .bar{width:28px;height:1px;background:var(--amber);}
-  h1{
-    font-family:'Noto Serif SC',serif;
-    font-weight:900;
-    font-size:44px;line-height:1.15;
-    color:var(--ink);
-    letter-spacing:-0.5px;
-  }
-  h1 .accent{color:var(--amber);}
-  .subtitle{
-    font-family:'Noto Serif SC',serif;
-    font-weight:500;font-style:italic;
-    font-size:18px;color:var(--ink-2);
-    margin-top:10px;letter-spacing:0.5px;
-  }
-  .subtitle .quote{color:var(--amber-2);font-style:italic;}
-  .header-right{
-    display:flex;flex-direction:column;align-items:flex-end;gap:6px;
-    padding-bottom:6px;
-  }
-  .header-right .tag{
-    font-family:'JetBrains Mono',monospace;font-size:11px;
-    letter-spacing:0.2em;color:var(--ink-3);
-  }
-  .header-right .num{
-    font-family:'JetBrains Mono',monospace;font-size:22px;
-    color:var(--amber);letter-spacing:0.05em;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 100%; height: 100%; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text);
+    background: #05091a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .divider{
-    display:flex;align-items:center;gap:14px;margin:6px 0 20px;
-  }
-  .divider .l{flex:1;height:1px;background:linear-gradient(90deg,rgba(180,160,120,0.5),rgba(180,160,120,0.05));}
-  .divider .s{width:10px;height:10px;border:1px solid var(--amber);background:transparent;}
-  .divider .s.f{background:var(--amber);}
-
-  /* Main grid */
-  .main{display:grid;grid-template-columns:820px 1fr;gap:36px;height:520px;}
-
-  .left{display:flex;flex-direction:column;gap:14px;}
-
-  .version-bar{
-    display:flex;align-items:center;gap:16px;
-    padding:14px 20px;
-    background:linear-gradient(90deg,rgba(180,160,120,0.14),rgba(180,160,120,0.02));
-    border-left:3px solid var(--amber);
-    border-radius:2px;
-  }
-  .version-bar .v-tag{
-    font-family:'JetBrains Mono',monospace;
-    font-size:20px;font-weight:700;color:var(--amber);
-    letter-spacing:0.02em;
-  }
-  .version-bar .v-sep{width:1px;height:22px;background:rgba(180,160,120,0.35);}
-  .version-bar .v-date{
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;color:var(--ink-2);letter-spacing:0.05em;
-  }
-  .version-bar .v-name{
-    font-family:'Noto Serif SC',serif;font-weight:700;
-    font-size:16px;color:var(--ink);margin-left:auto;
-  }
-  .version-bar .v-name span{color:var(--amber-2);font-style:italic;}
-
-  .cards{display:flex;flex-direction:column;gap:9px;flex:1;}
-  .card{
-    display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;
-    padding:11px 16px 11px 14px;
-    background:var(--card);
-    border:1px solid var(--card-border);
-    border-radius:2px;
-    position:relative;
-  }
-  .card .idx{
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;color:var(--amber);
-    border-right:1px solid var(--card-border);
-    padding-right:10px;height:100%;display:flex;align-items:flex-start;padding-top:2px;
-    letter-spacing:0.05em;
-  }
-  .card .body{min-width:0;}
-  .card .title{
-    font-family:'Noto Serif SC',serif;font-weight:700;
-    font-size:15px;color:var(--ink);margin-bottom:3px;line-height:1.3;
-  }
-  .card .desc{
-    font-size:12.5px;color:var(--ink-2);line-height:1.5;
-  }
-  .card .desc code{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--amber-2);font-size:12px;
-    padding:1px 5px;background:rgba(180,160,120,0.1);
-    border-radius:2px;
-  }
-  .card.hi{
-    border:1px solid var(--amber);
-    background:linear-gradient(90deg,rgba(180,160,120,0.16),rgba(180,160,120,0.04));
-    box-shadow:0 0 0 1px rgba(180,160,120,0.15) inset;
-  }
-  .card.hi .idx{color:var(--amber);border-right-color:rgba(180,160,120,0.4);}
-  .card.hi .title{color:var(--amber-2);}
-  .card.hi::after{
-    content:'';position:absolute;right:-1px;top:-1px;
-    width:8px;height:8px;background:var(--amber);
-  }
-  .badge{
-    display:inline-block;font-family:'JetBrains Mono',monospace;
-    font-size:10px;color:var(--amber);
-    border:1px solid var(--amber);
-    padding:1px 6px;margin-left:8px;border-radius:2px;
-    letter-spacing:0.1em;vertical-align:2px;
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: var(--bg-deep);
   }
 
-  /* Right column */
-  .right{display:flex;flex-direction:column;gap:12px;}
-  .hero-frame{
-    position:relative;
-    width:100%;
-    aspect-ratio:2752/1536;
-    border:1px solid var(--card-border);
-    background:#0A1626;
-    overflow:hidden;
-  }
-  .hero-frame img{
-    width:100%;height:100%;object-fit:cover;display:block;
-    filter:saturate(0.95) contrast(1.02);
-  }
-  .hero-frame .corner{
-    position:absolute;width:14px;height:14px;
-    border:1px solid var(--amber);
-  }
-  .hero-frame .corner.tl{top:8px;left:8px;border-right:none;border-bottom:none;}
-  .hero-frame .corner.tr{top:8px;right:8px;border-left:none;border-bottom:none;}
-  .hero-frame .corner.bl{bottom:8px;left:8px;border-right:none;border-top:none;}
-  .hero-frame .corner.br{bottom:8px;right:8px;border-left:none;border-top:none;}
-  .hero-frame .meta{
-    position:absolute;top:14px;left:30px;
-    font-family:'JetBrains Mono',monospace;font-size:10px;
-    letter-spacing:0.22em;color:var(--amber);
-    background:rgba(15,30,51,0.7);padding:3px 8px;
-    border:1px solid rgba(180,160,120,0.4);
-  }
-  .caption{
-    display:flex;align-items:center;gap:10px;
-    font-family:'Noto Serif SC',serif;font-style:italic;
-    font-size:13px;color:var(--ink-2);
-  }
-  .caption .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;}
-  .caption .en{
-    font-family:'JetBrains Mono',monospace;font-style:normal;
-    font-size:10px;color:var(--ink-3);letter-spacing:0.15em;
-    margin-left:auto;
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 15% 10%, rgba(42, 78, 130, 0.35), transparent 55%);
   }
 
-  .right-bottom{
-    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;
+  .bg-circle {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid var(--line-faint);
+    border-radius: 50%;
+    right: -180px;
+    top: -220px;
   }
-  .mini{
-    padding:10px 12px;
-    background:var(--card);border:1px solid var(--card-border);border-radius:2px;
+  .bg-circle-inner {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    right: -80px;
+    top: -120px;
   }
-  .mini .lbl{
-    font-family:'JetBrains Mono',monospace;font-size:9.5px;
-    letter-spacing:0.2em;color:var(--ink-3);text-transform:uppercase;margin-bottom:4px;
+  .bg-square {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--line-faint);
+    left: -50px;
+    bottom: -40px;
+    transform: rotate(15deg);
   }
-  .mini .val{
-    font-family:'Noto Serif SC',serif;font-weight:700;
-    font-size:13px;color:var(--amber-2);line-height:1.3;
+  .bg-square-inner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(180, 160, 120, 0.06);
+    left: 80px;
+    bottom: 40px;
+    transform: rotate(15deg);
   }
-  .mini .sub{
-    font-size:11px;color:var(--ink-2);margin-top:2px;line-height:1.4;
+  .bg-vline {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, var(--line-faint) 30%, var(--line-faint) 70%, transparent 100%);
+  }
+  .bg-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    left: calc(50% - 3px);
+    top: 48%;
+    opacity: 0.75;
+  }
+  .bg-hline-top {
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    width: 120px;
+    height: 1px;
+    background: var(--line);
+  }
+  .bg-corner-tag {
+    position: absolute;
+    right: 30px;
+    bottom: 18px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
   }
 
-  /* KPI bar */
-  .kpi{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-    background:var(--card-border);
-    border:1px solid var(--card-border);
-    border-radius:2px;
-    overflow:hidden;
-  }
-  .kpi-cell{
-    background:linear-gradient(180deg,rgba(245,240,232,0.05),rgba(245,240,232,0.02));
-    padding:12px 18px 12px;
-    position:relative;
-  }
-  .kpi-cell .num{
-    font-family:'JetBrains Mono',monospace;
-    font-weight:700;font-size:30px;color:var(--amber);
-    letter-spacing:-0.5px;line-height:1;
-    display:flex;align-items:baseline;gap:6px;
-  }
-  .kpi-cell .num .unit{
-    font-size:13px;color:var(--amber-2);font-weight:500;
-    letter-spacing:0.05em;
-  }
-  .kpi-cell .lbl{
-    font-size:11px;color:var(--ink-2);
-    letter-spacing:0.1em;margin-top:5px;
-    text-transform:uppercase;
-    font-family:'JetBrains Mono',monospace;
-  }
-  .kpi-cell .sub{
-    font-size:10.5px;color:var(--ink-3);margin-top:2px;
-    font-family:'Noto Sans SC',sans-serif;letter-spacing:0.03em;
-  }
-  .kpi-cell::before{
-    content:'';position:absolute;top:0;left:0;width:24px;height:2px;
-    background:var(--amber);
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 44px 60px 40px 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
   }
 
-  /* Summary */
-  .summary{
-    margin-top:12px;display:flex;align-items:center;gap:14px;
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
-  .summary .mark{
-    width:10px;height:10px;background:var(--amber);flex-shrink:0;
-    transform:rotate(45deg);
-  }
-  .summary .text{
-    font-family:'Noto Serif SC',serif;font-weight:500;
-    font-size:13px;color:var(--ink);line-height:1.5;
-  }
-  .summary .text em{color:var(--amber-2);font-style:italic;font-weight:700;}
+  .header-left { flex: 1; min-width: 0; }
 
-  .footer{
-    display:flex;justify-content:space-between;align-items:center;
-    margin-top:8px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;color:var(--ink-3);letter-spacing:0.2em;
+  .chapter-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 500;
   }
-  .footer .l{display:flex;align-items:center;gap:10px;}
-  .footer .dot{width:5px;height:5px;border-radius:50%;background:var(--amber);}
+  .chapter-label .cl-line {
+    width: 44px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .h1-dot { color: var(--accent); font-weight: 400; }
+
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(245, 240, 232, 0.78);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .subtitle-quote {
+    color: var(--accent);
+    font-weight: 500;
+    padding: 0 2px;
+  }
+  .subtitle-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-left: 12px;
+    letter-spacing: 1px;
+  }
+
+  .h-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .h-divider-line { width: 56px; height: 1px; background: var(--accent); }
+  .h-divider-bar { width: 22px; height: 1px; background: var(--text-faint); }
+  .h-divider-square { width: 5px; height: 5px; background: var(--accent); }
+  .h-divider-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  /* KPI block */
+  .header-right {
+    display: flex;
+    gap: 16px;
+    padding-top: 4px;
+  }
+  .kpi {
+    background: linear-gradient(155deg, rgba(27, 59, 107, 0.65), rgba(15, 30, 51, 0.35));
+    border: 1px solid var(--line-faint);
+    padding: 16px 20px 14px 20px;
+    min-width: 138px;
+    position: relative;
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent);
+  }
+  .kpi-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .kpi-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+  .kpi-value.accent { color: var(--accent); }
+  .kpi-unit {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 400;
+    margin-left: 5px;
+    letter-spacing: 1px;
+  }
+  .kpi-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .kpi-bar {
+    display: inline-block;
+    height: 2px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  /* ===== MAIN ===== */
+  .main {
+    display: flex;
+    gap: 44px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .narrative {
+    width: 372px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 2px;
+  }
+  .nar-eyebrow {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .nar-marker {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .nar-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .nar-highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .nar-mid {
+    color: var(--accent);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 0 2px;
+  }
+  .nar-em {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+  }
+  .nar-quote {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .nar-meta {
+    border-top: 1px solid var(--line-faint);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .meta-key {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+  .meta-val {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .meta-val em {
+    color: var(--accent);
+    font-style: italic;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .nar-bar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+  }
+  .nar-bar-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  }
+  .nar-bar-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* Cards grid */
+  .cards {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .card {
+    background: linear-gradient(160deg, rgba(27, 59, 107, 0.55) 0%, rgba(15, 30, 51, 0.75) 100%);
+    border: 1px solid var(--line-faint);
+    border-top: 2px solid var(--accent);
+    padding: 16px 18px 14px 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .card-idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  .card-marker {
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .card-marker.square { border-radius: 0; transform: rotate(45deg); }
+  .card-marker.hollow {
+    background: transparent;
+    border: 1px solid var(--accent);
+  }
+  .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+  .card-name-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .card-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .card-note {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .card-num {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    padding: 0 1px;
+  }
+  .card-en-quote {
+    font-style: italic;
+    color: rgba(245, 240, 232, 0.88);
+  }
+  .card-code {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* Corner geometry on cards */
+  .card::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 14px;
+    height: 14px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-bar {
+    width: 44px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .foot-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
+  .foot-chap {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+    font-weight: 500;
+  }
+  .foot-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-square {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+  }
+  .foot-line {
+    width: 22px;
+    height: 1px;
+    background: var(--line);
+  }
+  .closing {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 1.2px;
+    font-weight: 500;
+  }
+  .closing .close-a { color: var(--accent); font-weight: 600; }
+  .closing .close-eq {
+    color: var(--accent);
+    padding: 0 6px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+  }
+  .closing .close-e { color: var(--accent); font-style: italic; font-weight: 500; }
+
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-shape bg-circle"></div>
-    <div class="bg-shape bg-circle-2"></div>
-    <div class="bg-shape bg-square"></div>
-    <div class="bg-shape bg-line-v"></div>
-    <div class="bg-shape bg-line-h"></div>
-    <div class="bg-shape bg-dot"></div>
+    <div class="bg-hline-top"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle-inner"></div>
+    <div class="bg-vline"></div>
+    <div class="bg-dot"></div>
+    <div class="bg-square"></div>
+    <div class="bg-square-inner"></div>
+    <div class="bg-corner-tag">HERMES · CULTURE OBSERVATION</div>
   </div>
-
   <div id="ct">
-    <!-- Header -->
+
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
-        <div class="kicker"><span class="bar"></span><span>Case Study · 02</span><span class="bar"></span></div>
-        <h1>案例 2 · <span class="accent">Tenacity Release</span> · 多 Agent Kanban</h1>
-        <div class="subtitle">"<span class="quote">finishes what it starts</span>" 的文化承诺 —— 让可靠性成为默认行为</div>
+        <div class="chapter-label"><span>CHAPTER 01</span><span class="cl-line"></span><span>FIELD NOTES</span></div>
+        <h1>Release 命名文化 <span class="h1-dot">·</span> 田野观察第 1 章</h1>
+        <div class="subtitle">
+          <span class="subtitle-quote">「 把 release 当作文化事件 」</span>
+          <span class="subtitle-en">Treating a release as a cultural event</span>
+        </div>
+        <div class="h-divider">
+          <span class="h-divider-line"></span>
+          <span class="h-divider-bar"></span>
+          <span class="h-divider-square"></span>
+          <span class="h-divider-text">命名 · 仪式 · 制度</span>
+        </div>
       </div>
       <div class="header-right">
-        <span class="tag">RELEASE NOTE</span>
-        <span class="num">v0.13.0</span>
-        <span class="tag">2026 · 05 · 07</span>
+        <div class="kpi">
+          <div class="kpi-label">RELEASES · 总量</div>
+          <div class="kpi-value">33<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:28px;"></span>全部发布</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">命名 RELEASE · 命名</div>
+          <div class="kpi-value accent">06<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:10px;"></span>文化事件</div>
+        </div>
       </div>
     </div>
 
-    <div class="divider">
-      <span class="l"></span>
-      <span class="s f"></span>
-      <span class="s"></span>
-      <span class="l"></span>
-    </div>
-
-    <!-- Main two-column -->
+    <!-- MAIN -->
     <div class="main">
-      <!-- Left column -->
-      <div class="left">
-        <div class="version-bar">
-          <span class="v-tag">v0.13.0</span>
-          <span class="v-sep"></span>
-          <span class="v-date">2026-05-07</span>
-          <span class="v-name">— The <span>Tenacity</span> Release</span>
+      <!-- Narrative -->
+      <div class="narrative">
+        <div class="nar-eyebrow">FIELD OBSERVATION · 田野观察</div>
+        <div class="nar-marker">■</div>
+        <p class="nar-text">
+          <span class="nar-highlight">Hermes</span> 的 release 不是版本号，是文化事件。<span class="nar-highlight">6 个</span>命名 release 用<span class="nar-mid">希腊神话 / 概念词汇</span>命名，每个命名背后都是一个<span class="nar-em">制度主张</span>——这是开源项目的<span class="nar-quote">"仪式"</span>。
+        </p>
+
+        <div class="nar-meta">
+          <div class="meta-row">
+            <span class="meta-key">命名法</span>
+            <span class="meta-val">希腊神话 <em>·</em> 概念词汇</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">制度主张</span>
+            <span class="meta-val">每个命名 = 一个 claim</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">仪式化</span>
+            <span class="meta-val">开源项目的 "仪式"</span>
+          </div>
         </div>
 
-        <div class="cards">
-          <div class="card">
-            <div class="idx">01</div>
-            <div class="body">
-              <div class="title">Kanban 多 Agent 平台</div>
-              <div class="desc">
-                <code>heartbeat</code> 心跳保活 · <code>reclaim</code> 失联回收 · <code>zombie detection</code> 僵死检测——把多智能体看板从"能跑"推向"能守"。
-              </div>
-            </div>
-          </div>
-
-          <div class="card hi">
-            <div class="idx">02</div>
-            <div class="body">
-              <div class="title">/goal 命令 · Ralph Loop<span class="badge">CORE</span></div>
-              <div class="desc">
-                Agent 锁定目标跨 turn 执行——不再因单轮结束而放弃；失败即重入、偏离即收敛，目标直至完成方才释放。
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="idx">03</div>
-            <div class="body">
-              <div class="title">Checkpoints v2</div>
-              <div class="desc">
-                State 持久化重写、<code>真剪枝</code> 与磁盘护栏——让长任务在断电级故障后仍可无损续跑。
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="idx">04</div>
-            <div class="body">
-              <div class="title">Sessions Survive Restarts</div>
-              <div class="desc">
-                Gateway 崩溃后自动恢复会话上下文；进程可以死，工作流不能断。
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="idx">05</div>
-            <div class="body">
-              <div class="title">制度含义 · Tenacity as Norm</div>
-              <div class="desc">
-                "可靠性"从代码质量延伸到任务持久性——Agent 必须把开始的事做完。
-              </div>
-            </div>
-          </div>
+        <div class="nar-bar">
+          <span class="nar-bar-line"></span>
+          <span class="nar-bar-tag">OBSERVATION / 01</span>
         </div>
       </div>
 
-      <!-- Right column -->
-      <div class="right">
-        <div class="hero-frame">
-          <img src="../images/page_022_hero.png" alt="多 Agent Kanban 抽象合成图：三列看板、跨列漂浮的任务卡片、心跳波形与同心圆目标点对齐">
-          <span class="corner tl"></span>
-          <span class="corner tr"></span>
-          <span class="corner bl"></span>
-          <span class="corner br"></span>
-          <span class="meta">FIG · TENACITY / 01</span>
-        </div>
-        <div class="caption">
-          <span class="dot"></span>
-          <span>心跳守护任务，锁定不偏离目标</span>
-          <span class="en">HEARTBEAT × GOAL-LOCK</span>
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">01 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Judgment</div>
+          <div class="card-name-en">判 · 决</div>
+          <div class="card-divider"></div>
+          <div class="card-note">P0/P1 清零战役——<span class="card-num">700</span> highest-priority items cleared in <span class="card-num">12</span> days</div>
         </div>
 
-        <div class="right-bottom">
-          <div class="mini">
-            <div class="lbl">Paradigm</div>
-            <div class="val">Reactive → Tenacious</div>
-            <div class="sub">从被动响应到持久追索</div>
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">02 / 06</span>
+            <span class="card-marker square"></span>
           </div>
-          <div class="mini">
-            <div class="lbl">Invariant</div>
-            <div class="val">Session Never Dropped</div>
-            <div class="sub">进程可死，工作流不断</div>
+          <div class="card-name">Tenacity</div>
+          <div class="card-name-en">韧 · 性</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"finishes what it starts"</span>——多 agent kanban 平台</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">03 / 06</span>
+            <span class="card-marker hollow"></span>
           </div>
+          <div class="card-name">Surface</div>
+          <div class="card-name-en">表 · 面</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"Hermes meets you wherever you work"</span>——原生 desktop + Web admin</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">04 / 06</span>
+            <span class="card-marker square"></span>
+          </div>
+          <div class="card-name">Velocity</div>
+          <div class="card-name-en">速 · 度</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"16,000 行 → 3,821 行"</span>——大重构</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">05 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Quicksilver</div>
+          <div class="card-name-en">流 · 银</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"first token time 80% 下降"</span>——性能爆发</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">06 / 06</span>
+            <span class="card-marker hollow"></span>
+          </div>
+          <div class="card-name">Patch</div>
+          <div class="card-name-en">修 · 补</div>
+          <div class="card-divider"></div>
+          <div class="card-note">热修复——<span class="card-code">dashboard 401 reload loop</span></div>
         </div>
       </div>
     </div>
 
-    <!-- KPI bar -->
-    <div class="kpi">
-      <div class="kpi-cell">
-        <div class="num">864</div>
-        <div class="lbl">WINDOW COMMITS</div>
-        <div class="sub">窗口期内累计提交</div>
-      </div>
-      <div class="kpi-cell">
-        <div class="num">588</div>
-        <div class="lbl">MERGED PRs</div>
-        <div class="sub">已合并 Pull Requests</div>
-      </div>
-      <div class="kpi-cell">
-        <div class="num">282</div>
-        <div class="lbl">ISSUES CLOSED</div>
-        <div class="sub">含 13 P0 · 36 P1</div>
-      </div>
-      <div class="kpi-cell">
-        <div class="num">295</div>
-        <div class="lbl">CONTRIBUTORS</div>
-        <div class="sub">参与贡献者</div>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="summary">
-      <span class="mark"></span>
-      <span class="text">可靠性从<em>代码质量</em>延伸到<em>任务持久性</em>——Agent 必须把开始的事做完。</span>
-    </div>
-
+    <!-- FOOTER -->
     <div class="footer">
-      <div class="l">
-        <span class="dot"></span>
-        <span>SENSNOVA · CASE STUDY 02 / TENACITY</span>
+      <div class="foot-left">
+        <span class="foot-bar"></span>
+        <span class="foot-year">2024</span>
+        <span class="foot-chap">HERMES · 01 / CULTURE</span>
       </div>
-      <div>FINISHES WHAT IT STARTS</div>
+      <div class="foot-right">
+        <span class="foot-square"></span>
+        <span class="closing"><span class="close-a">release 命名</span><span class="close-eq">=</span>制度主张的<span class="close-e">仪式化表达</span></span>
+        <span class="foot-line"></span>
+      </div>
     </div>
+
   </div>
 </div>
 </body>

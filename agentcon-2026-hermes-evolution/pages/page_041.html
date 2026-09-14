@@ -1,504 +1,302 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>洞察 #2 · 兼容性是 Agent 的边界</title>
+<title>三道分水岭 · 可靠性/兼容性/信任</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-:root {
-  --bg: #0F1E33;
-  --bg-2: #142744;
-  --bg-3: #1B3B6B;
-  --ink: #F5F0E8;
-  --ink-2: #C9C0B0;
-  --ink-3: #7A8399;
-  --gold: #B4A078;
-  --gold-2: #D8B980;
-  --accent: #6FA8C9;
-  --line: rgba(245, 240, 232, 0.14);
-  --line-strong: rgba(180, 160, 120, 0.35);
-}
+  :root {
+    --bg: #0F1E33;
+    --primary: #1B3B6B;
+    --accent: #B4A078;
+    --text: #F5F0E8;
+    --text-dim: rgba(245, 240, 232, 0.68);
+    --text-faint: rgba(245, 240, 232, 0.42);
+    --border: rgba(180, 160, 120, 0.28);
+    --card-border: rgba(245, 240, 232, 0.14);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: var(--font-sans); color: var(--text); }
 
-body {
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  color: var(--ink);
-  background: var(--bg);
-}
+  .wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; margin: 0 auto; }
+  #bg { position: absolute; inset: 0; z-index: 0; }
+  #ct { position: absolute; inset: 0; z-index: 1; padding: 60px; box-sizing: border-box; }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
+  /* ===== Background decoration ===== */
+  .bg-frame {
+    position: absolute; inset: 30px;
+    border: 1px solid rgba(180, 160, 120, 0.12);
+  }
+  .bg-corner {
+    position: absolute; width: 22px; height: 22px;
+    border: 2px solid var(--accent);
+    opacity: 0.8;
+  }
+  .bg-corner.tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
+  .bg-corner.tr { top: 22px; right: 22px; border-left: none; border-bottom: none; }
+  .bg-corner.bl { bottom: 22px; left: 22px; border-right: none; border-top: none; }
+  .bg-corner.br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse at 30% 20%, #17304F 0%, #0F1E33 55%, #0A1524 100%);
-}
+  /* ===== Header ===== */
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 46px;
+  }
+  .title-left { display: flex; align-items: stretch; gap: 22px; }
+  .title-text { display: flex; flex-direction: column; }
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 3px;
+    color: var(--accent); margin-bottom: 14px; font-weight: 500;
+  }
+  .eyebrow .dash { width: 30px; height: 1px; background: var(--accent); opacity: 0.7; }
+  .title-main {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: 50px; letter-spacing: 5px; color: var(--text); line-height: 1.15;
+  }
+  .title-main .thin { font-weight: 500; opacity: 0.75; font-size: 42px; margin: 0 4px; }
+  .title-sub {
+    font-family: var(--font-sans); font-weight: 300; font-size: 19px;
+    color: var(--text-dim); margin-top: 12px; letter-spacing: 3px;
+  }
+  .title-rule {
+    width: 3px; align-self: stretch;
+    background: linear-gradient(to bottom, var(--accent) 0%, rgba(180,160,120,0) 100%);
+  }
+  .title-right { display: flex; justify-content: flex-end; padding-top: 2px; }
 
-.bg-circle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.bg-c1 {
-  width: 720px; height: 720px;
-  top: -340px; right: -220px;
-  border: 1px solid rgba(180, 160, 120, 0.18);
-  background: radial-gradient(circle at 30% 30%, rgba(180, 160, 120, 0.05), transparent 60%);
-}
-.bg-c2 {
-  width: 460px; height: 460px;
-  bottom: -180px; left: -140px;
-  border: 1px solid rgba(180, 160, 120, 0.14);
-}
-.bg-c3 {
-  width: 14px; height: 14px;
-  bottom: 110px; right: 90px;
-  background: rgba(216, 185, 128, 0.4);
-}
+  /* ===== Connecting line ===== */
+  .line-section { position: relative; height: 22px; margin: 0 0 32px 0; }
 
-.bg-square {
-  position: absolute;
-  pointer-events: none;
-}
-.bg-sq1 {
-  width: 42px; height: 42px;
-  top: 380px; right: 48px;
-  background: var(--gold);
-  opacity: 0.85;
-}
-.bg-sq2 {
-  width: 6px; height: 6px;
-  bottom: 220px; left: 60px;
-  background: var(--gold);
-}
-.bg-sq3 {
-  width: 18px; height: 18px;
-  top: 180px; left: 34px;
-  border: 1px solid var(--gold);
-  opacity: 0.5;
-}
+  /* ===== Cards row ===== */
+  .cards { display: flex; gap: 50px; }
+  .card {
+    width: 460px; height: 550px;
+    background: linear-gradient(180deg, rgba(27, 59, 107, 0.4) 0%, rgba(15, 30, 51, 0.7) 100%);
+    border: 1px solid var(--card-border);
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .card-top {
+    height: 2px; width: 100%;
+    background: linear-gradient(to right, var(--accent) 0%, rgba(180, 160, 120, 0.2) 70%, rgba(180, 160, 120, 0) 100%);
+  }
+  .card-head {
+    padding: 30px 30px 0 30px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .num { width: 64px; height: 64px; position: relative; }
+  .num-name {
+    font-family: var(--font-serif); font-weight: 700; font-size: 38px;
+    color: var(--text); letter-spacing: 10px; line-height: 1;
+    padding-left: 4px;
+  }
+  .card-body {
+    flex: 1; padding: 34px 30px 30px 30px;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 34px;
+  }
+  .bronze-bar {
+    width: 60px; height: 2px; background: var(--accent);
+  }
+  .p-text {
+    font-family: var(--font-sans); font-weight: 300; font-size: 17px;
+    color: var(--text); line-height: 1.9; letter-spacing: 0.5px;
+  }
+  .p-text .em { color: var(--accent); font-weight: 500; }
+  .tag {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 0 0 0;
+    border-top: 1px dashed rgba(180, 160, 120, 0.4);
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent);
+    letter-spacing: 1.5px;
+  }
+  .tag .hash { color: var(--text); font-weight: 700; font-size: 14px; }
+  .tag .kw { color: var(--text); font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; }
+  .card-corner {
+    position: absolute; top: 14px; right: 14px;
+    width: 6px; height: 6px; background: var(--accent); opacity: 0.6;
+  }
 
-.bg-hline {
-  position: absolute;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.22), transparent);
-}
-.bg-hline-1 { top: 300px; }
-.bg-hline-2 { bottom: 178px; }
+  /* ===== Bottom summary ===== */
+  .summary {
+    position: absolute; left: 0; right: 0; bottom: 74px;
+    display: flex; align-items: center; justify-content: center; gap: 22px;
+  }
+  .summary-line {
+    width: 260px; height: 1px;
+    background: linear-gradient(to right, rgba(180,160,120,0) 0%, var(--accent) 100%);
+  }
+  .summary-line.right {
+    background: linear-gradient(to right, var(--accent) 0%, rgba(180,160,120,0) 100%);
+  }
+  .summary-box {
+    padding: 14px 42px;
+    background: rgba(27, 59, 107, 0.35);
+    border: 1px solid var(--border);
+    font-family: var(--font-serif); font-weight: 500; font-size: 17px;
+    color: var(--text); letter-spacing: 2.5px; white-space: nowrap;
+  }
+  .summary-box .em { color: var(--accent); font-weight: 700; }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 48px 60px;
-  display: flex;
-  flex-direction: column;
-}
-
-.header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-
-.insight-label {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.3em;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.insight-label::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-}
-.insight-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, rgba(180,160,120,0.4), transparent);
-}
-
-h1.title {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 54px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 0.01em;
-  margin: 0;
-  color: var(--ink);
-}
-.title-accent {
-  color: var(--gold-2);
-  font-style: italic;
-}
-
-.subtitle-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  color: var(--ink-2);
-  letter-spacing: 0.16em;
-}
-.subtitle-dot {
-  width: 6px; height: 6px;
-  background: var(--gold);
-  display: inline-block;
-}
-.subtitle-divider {
-  width: 40px; height: 1px;
-  background: var(--gold);
-  opacity: 0.5;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 44px;
-  margin-bottom: 24px;
-}
-
-.card {
-  position: relative;
-  background: linear-gradient(155deg, rgba(27,59,107,0.55), rgba(15,30,51,0.85));
-  border: 1px solid var(--line);
-  padding: 28px 32px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 380px;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 60px; height: 3px;
-  background: var(--gold);
-}
-.card::after {
-  content: '';
-  position: absolute;
-  top: -1px; right: -1px;
-  width: 34px; height: 34px;
-  border-right: 1px solid var(--gold);
-  border-top: 1px solid var(--gold);
-  opacity: 0.5;
-}
-
-.card-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--gold);
-}
-.card-tag-badge {
-  width: 46px; height: 22px;
-  border: 1px solid var(--gold);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-}
-.card-tag-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(180, 160, 120, 0.25);
-}
-
-.card-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.card-icon {
-  width: 72px; height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--gold);
-  flex-shrink: 0;
-}
-.icon-square {
-  border: 2px solid var(--gold);
-}
-.icon-circle {
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-}
-
-.card-hero-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.card-title-mono {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-  color: var(--ink);
-}
-.card-sub {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  color: var(--ink-3);
-  letter-spacing: 0.06em;
-}
-
-.card-severity-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.sev-badge {
-  padding: 6px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-weight: 700;
-}
-.sev-badge-outline {
-  border-color: rgba(111, 168, 201, 0.6);
-  color: var(--accent);
-  font-weight: 400;
-}
-
-.card-timestamp {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--ink-3);
-  letter-spacing: 0.1em;
-  padding-top: 12px;
-  border-top: 1px dashed rgba(245, 240, 232, 0.12);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.card-timestamp::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.plat-row {
-  display: flex;
-  gap: 10px;
-}
-.plat {
-  flex: 1;
-  padding: 12px 8px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.02);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-.plat-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--ink);
-  letter-spacing: 0.06em;
-  font-weight: 500;
-}
-.plat-tag {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px;
-  color: var(--ink-3);
-  padding: 1px 8px;
-  border: 1px solid rgba(245,240,232,0.12);
-  letter-spacing: 0.1em;
-}
-
-.card-summary {
-  margin-top: auto;
-  padding: 14px 16px;
-  border-left: 2px solid var(--gold);
-  background: rgba(180, 160, 120, 0.06);
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.card-summary.accent {
-  border-left-color: var(--accent);
-  background: rgba(111, 168, 201, 0.08);
-}
-.card-summary strong {
-  font-weight: 700;
-  color: var(--gold-2);
-  letter-spacing: 0.04em;
-}
-.card-summary.accent strong {
-  color: var(--accent);
-}
-
-.bridge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 12px 0;
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 18px;
-  color: var(--gold);
-  letter-spacing: 0.22em;
-  font-weight: 500;
-  margin-bottom: 18px;
-}
-.bridge::before,
-.bridge::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(180,160,120,0.4), transparent);
-  max-width: 320px;
-}
-.bridge-mid-dot {
-  width: 6px; height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 14px;
-}
-.bottom-bar {
-  flex: 1;
-  height: 1px;
-  max-width: 180px;
-  background: linear-gradient(to right, transparent, var(--gold));
-}
-.bottom-bar.right {
-  background: linear-gradient(to left, transparent, var(--gold));
-}
-.bottom-label {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-.bottom-label .accent {
-  color: var(--gold-2);
-  font-style: italic;
-}
+  /* ===== Footer ===== */
+  .footer {
+    position: absolute; left: 0; right: 0; bottom: 30px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--text-faint); letter-spacing: 2.5px;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-circle bg-c1"></div>
-    <div class="bg-circle bg-c2"></div>
-    <div class="bg-circle bg-c3"></div>
-    <div class="bg-square bg-sq1"></div>
-    <div class="bg-square bg-sq2"></div>
-    <div class="bg-square bg-sq3"></div>
-    <div class="bg-hline bg-hline-1"></div>
-    <div class="bg-hline bg-hline-2"></div>
+    <div class="bg-frame"></div>
+    <div class="bg-corner tl"></div>
+    <div class="bg-corner tr"></div>
+    <div class="bg-corner bl"></div>
+    <div class="bg-corner br"></div>
+
+    <!-- Background geometric motifs (Bauhaus: circle, square, line) -->
+    <svg width="1600" height="900" viewBox="0 0 1600 900" style="position:absolute;inset:0;" aria-hidden="true">
+      <!-- top-right: circle + square -->
+      <g transform="translate(1452, 118)" opacity="0.35">
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#B4A078" stroke-width="1.5"/>
+        <rect x="-8" y="8" width="16" height="16" fill="#B4A078" opacity="0.6"/>
+        <line x1="-42" y1="0" x2="-14" y2="0" stroke="#B4A078" stroke-width="1" opacity="0.8"/>
+      </g>
+      <!-- bottom-right cluster: dot pattern -->
+      <g transform="translate(1388, 872)" opacity="0.4">
+        <circle cx="0" cy="0" r="2" fill="#B4A078"/>
+        <circle cx="12" cy="0" r="2" fill="#B4A078"/>
+        <circle cx="0" cy="12" r="2" fill="#B4A078"/>
+        <circle cx="12" cy="12" r="2" fill="#B4A078"/>
+      </g>
+      <!-- vertical accent line -->
+      <line x1="800" y1="172" x2="800" y2="204" stroke="#B4A078" stroke-width="1" opacity="0.35"/>
+      <!-- small square at top-middle -->
+      <rect x="795" y="180" width="10" height="10" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
+    </svg>
   </div>
+
   <div id="ct">
+    <!-- Header -->
     <div class="header">
-      <div class="insight-label"><span>洞察 #2 &nbsp;/&nbsp; INSIGHT No. 02</span></div>
-      <h1 class="title">兼容性是 Agent 的<span class="title-accent">边界</span></h1>
-      <div class="subtitle-row">
-        <span class="subtitle-dot"></span>
-        <span>Surface Release &nbsp;+&nbsp; #101600</span>
-        <span class="subtitle-divider"></span>
-        <span>供给 &nbsp;·&nbsp; 需求</span>
+      <div class="title-left">
+        <div class="title-text">
+          <div class="eyebrow"><span class="dash"></span><span>PART 03 · THREE THRESHOLDS</span></div>
+          <div class="title-main">三道分水岭 <span class="thin">·</span> 可靠性/兼容性/信任</div>
+          <div class="title-sub">从"能用"到"好用"的关键跃迁</div>
+        </div>
+        <div class="title-rule"></div>
+        <svg class="title-right" width="160" height="118" viewBox="0 0 160 118" aria-hidden="true">
+          <circle cx="42" cy="42" r="34" fill="none" stroke="#B4A078" stroke-width="1.5" opacity="0.85"/>
+          <rect x="70" y="30" width="52" height="52" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
+          <circle cx="98" cy="60" r="7" fill="#B4A078" opacity="0.75"/>
+          <line x1="10" y1="94" x2="140" y2="94" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+        </svg>
       </div>
     </div>
 
+    <!-- Connecting line (progression) -->
+    <div class="line-section">
+      <svg width="1480" height="22" viewBox="0 0 1480 22" aria-hidden="true">
+        <line x1="40" y1="11" x2="1440" y2="11" stroke="rgba(180,160,120,0.35)" stroke-width="1"/>
+        <!-- Dots on each card (progression anchors) -->
+        <circle cx="230" cy="11" r="5" fill="#B4A078"/>
+        <circle cx="230" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
+        <circle cx="740" cy="11" r="5" fill="#B4A078"/>
+        <circle cx="740" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
+        <circle cx="1250" cy="11" r="5" fill="#B4A078"/>
+        <circle cx="1250" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
+        <!-- Arrows between cards (progression direction) -->
+        <g stroke="#B4A078" stroke-width="1.5" fill="none" opacity="0.9">
+          <path d="M 478 11 L 542 11"/>
+          <path d="M 532 5 L 542 11 L 532 17"/>
+          <path d="M 988 11 L 1052 11"/>
+          <path d="M 1042 5 L 1052 11 L 1042 17"/>
+        </g>
+        <circle cx="1440" cy="11" r="2.5" fill="#B4A078"/>
+      </svg>
+    </div>
+
+    <!-- Three cards -->
     <div class="cards">
+      <!-- Card 01: 可靠性 -->
       <div class="card">
-        <div class="card-tag"><span>供给侧 / SUPPLY</span><span class="card-tag-badge">RELEASE</span><span class="card-tag-line"></span></div>
-        <div class="card-main">
-          <div class="card-icon icon-square">v</div>
-          <div class="card-hero-text">
-            <div class="card-title-mono">v0.16.0</div>
-            <div class="card-sub">Surface Release</div>
-          </div>
+        <div class="card-top"></div>
+        <div class="card-corner"></div>
+        <div class="card-head">
+          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="#B4A078" stroke-width="1.8"/>
+            <text x="32" y="41" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">01</text>
+          </svg>
+          <div class="num-name">可靠性</div>
         </div>
-        <div class="card-timestamp"><span>发布日期 · 2026-06-05</span></div>
-        <div class="plat-row">
-          <div class="plat"><span class="plat-label">macOS</span><span class="plat-tag">native</span></div>
-          <div class="plat"><span class="plat-label">Linux</span><span class="plat-tag">native</span></div>
-          <div class="plat"><span class="plat-label">Windows</span><span class="plat-tag">native</span></div>
+        <div class="card-body">
+          <div class="bronze-bar"></div>
+          <p class="p-text">能否<span class="em">信任</span> Agent 记住正确的历史——在长上下文、跨会话、多次交互中，让记忆不失真、结论不漂移。</p>
+          <div class="tag"><span class="hash">#107070</span><span>·</span><span class="kw">Tenacity</span></div>
         </div>
-        <div class="card-summary"><strong>原生 desktop</strong>：macOS / Linux / Windows</div>
       </div>
 
+      <!-- Card 02: 兼容性 -->
       <div class="card">
-        <div class="card-tag"><span>需求侧 / DEMAND</span><span class="card-tag-badge">ISSUE</span><span class="card-tag-line"></span></div>
-        <div class="card-main">
-          <div class="card-icon icon-circle">!</div>
-          <div class="card-hero-text">
-            <div class="card-title-mono">#101600</div>
-            <div class="card-sub">open · blocking</div>
-          </div>
+        <div class="card-top"></div>
+        <div class="card-corner"></div>
+        <div class="card-head">
+          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="10" y="10" width="44" height="44" fill="none" stroke="#B4A078" stroke-width="1.8"/>
+            <text x="32" y="41" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">02</text>
+          </svg>
+          <div class="num-name">兼容性</div>
         </div>
-        <div class="card-severity-row">
-          <span class="sev-badge">P1</span>
-          <span class="sev-badge sev-badge-outline">risk-compatibility</span>
+        <div class="card-body">
+          <div class="bronze-bar"></div>
+          <p class="p-text">用户不会被<span class="em">锁在门外</span>——跨系统、跨平台、跨生态，让每一次协作都在可达的边界之内。</p>
+          <div class="tag"><span class="hash">#101600</span><span>·</span><span class="kw">Surface</span></div>
         </div>
-        <div class="card-timestamp"><span>Windows 原生路径 · self-lock</span></div>
-        <div class="card-summary accent"><strong>Windows 自锁</strong>——P1 缺陷</div>
+      </div>
+
+      <!-- Card 03: 信任 -->
+      <div class="card">
+        <div class="card-top"></div>
+        <div class="card-corner"></div>
+        <div class="card-head">
+          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
+            <line x1="32" y1="8" x2="32" y2="26" stroke="#B4A078" stroke-width="1.8"/>
+            <line x1="32" y1="40" x2="32" y2="56" stroke="#B4A078" stroke-width="1.8"/>
+            <text x="32" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">03</text>
+          </svg>
+          <div class="num-name">信　任</div>
+        </div>
+        <div class="card-body">
+          <div class="bronze-bar"></div>
+          <p class="p-text">能力必须有<span class="em">安全边界</span>——判断何时行动、何时退让，让强大成为可托付的存在，而非风险源。</p>
+          <div class="tag"><span class="hash">#67002</span><span>·</span><span class="kw">Judgment</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="bridge">
-      <span class="bridge-mid-dot"></span>
-      <span>供给侧 &nbsp;+&nbsp; 需求侧 &nbsp;=&nbsp; 完整画面</span>
-      <span class="bridge-mid-dot"></span>
+    <!-- Bottom summary -->
+    <div class="summary">
+      <div class="summary-line"></div>
+      <div class="summary-box">三道分水岭是 Agent 从<span class="em">"能用"</span>到<span class="em">"好用"</span>的关键跃迁，顺序不是独立的</div>
+      <div class="summary-line right"></div>
     </div>
 
-    <div class="bottom">
-      <span class="bottom-bar left"></span>
-      <span class="bottom-label">兼容性 是 <span class="accent">Agent</span> 的边界</span>
-      <span class="bottom-bar right"></span>
+    <!-- Footer -->
+    <div class="footer">
+      <span>AGENT MATURITY · 03 / 03</span>
+      <span>THREE THRESHOLDS OF TRUST</span>
     </div>
   </div>
 </div>

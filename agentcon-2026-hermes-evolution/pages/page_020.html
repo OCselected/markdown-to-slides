@@ -4,720 +4,357 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>Release 命名文化 · 田野观察第 1 章</title>
-<script src="../assets/echarts.min.js"></script>
+<title>消费侧总览 · 弱代理的采纳信号</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-  :root {
-    --bg-deep: #0F1E33;
-    --primary: #1B3B6B;
-    --primary-light: #2A4E82;
-    --accent: #B4A078;
-    --accent-dim: #8A7A5A;
-    --text: #F5F0E8;
-    --text-dim: rgba(245, 240, 232, 0.62);
-    --text-faint: rgba(245, 240, 232, 0.32);
-    --line: rgba(180, 160, 120, 0.30);
-    --line-faint: rgba(245, 240, 232, 0.14);
-  }
+:root{
+  --bg:#0F1E33;
+  --primary:#1B3B6B;
+  --primary-light:#2C5090;
+  --text:#F5F0E8;
+  --text-dim:rgba(245,240,232,0.68);
+  --text-faint:rgba(245,240,232,0.42);
+  --gold:#B4A078;
+  --gold-light:#C9B78F;
+  --gold-dim:rgba(180,160,120,0.55);
+  --gold-line:rgba(180,160,120,0.4);
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1600px;height:900px;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased;}
 
-  html, body { width: 100%; height: 100%; }
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+#bg{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(27,59,107,0.35) 0%,rgba(15,30,51,0) 45%);}
+#bg .deco-circle{position:absolute;border-radius:50%;border:1px solid var(--gold-dim);opacity:0.35;}
+#bg .deco-circle.big{width:340px;height:340px;top:-140px;right:-120px;}
+#bg .deco-circle.small{width:70px;height:70px;bottom:120px;left:80px;border-color:var(--gold);}
+#bg .deco-line-v{position:absolute;top:0;width:1px;background:rgba(180,160,120,0.2);}
+#bg .deco-line-v.a{left:120px;height:100%;}
+#bg .deco-line-v.b{right:120px;height:100%;}
+#bg .deco-line-h{position:absolute;left:120px;right:120px;height:1px;background:rgba(180,160,120,0.15);}
+#bg .deco-line-h.top{top:120px;}
+#bg .deco-dot{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;}
+#bg .deco-dot.a{top:120px;left:116px;}
+#bg .deco-dot.b{top:120px;right:116px;}
+#bg .deco-square{position:absolute;width:14px;height:14px;border:1px solid var(--gold-dim);}
+#bg .deco-square.a{top:120px;left:50%;transform:translateX(-50%) rotate(45deg);}
 
-  body {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--text);
-    background: #05091a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-font-smoothing: antialiased;
-  }
+#ct{position:absolute;inset:0;z-index:1;padding:60px 90px 56px;box-sizing:border-box;}
 
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    background: var(--bg-deep);
-  }
+/* Hero */
+.hero{margin-bottom:26px;}
+.hero-top{display:flex;align-items:flex-end;gap:22px;}
+.hero-title{font-family:'Noto Serif SC',serif;font-size:66px;font-weight:900;color:var(--text);line-height:1;letter-spacing:3px;}
+.hero-sub-wrap{padding-bottom:12px;}
+.hero-sub{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:500;color:var(--gold);letter-spacing:6px;line-height:1;}
+.hero-sub-line{width:64px;height:1px;background:var(--gold);margin-top:12px;}
+.hero-tag{margin-left:auto;padding:10px 20px;border:1px solid var(--gold-dim);color:var(--gold);font-size:11px;letter-spacing:4px;font-weight:500;background:rgba(27,59,107,0.3);}
+.hero-narrative{margin-top:18px;font-size:14.5px;line-height:1.75;color:var(--text-dim);max-width:1220px;letter-spacing:0.3px;}
+.hero-narrative .n-num{color:var(--gold);font-weight:600;font-family:'JetBrains Mono',monospace;}
+.hero-narrative .n-em{color:var(--text);font-weight:500;}
 
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: radial-gradient(ellipse at 15% 10%, rgba(42, 78, 130, 0.35), transparent 55%);
-  }
+/* Section split */
+.section{margin-top:26px;}
 
-  .bg-circle {
-    position: absolute;
-    width: 520px;
-    height: 520px;
-    border: 1px solid var(--line-faint);
-    border-radius: 50%;
-    right: -180px;
-    top: -220px;
-  }
-  .bg-circle-inner {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    right: -80px;
-    top: -120px;
-  }
-  .bg-square {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border: 1px solid var(--line-faint);
-    left: -50px;
-    bottom: -40px;
-    transform: rotate(15deg);
-  }
-  .bg-square-inner {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: rgba(180, 160, 120, 0.06);
-    left: 80px;
-    bottom: 40px;
-    transform: rotate(15deg);
-  }
-  .bg-vline {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent 0%, var(--line-faint) 30%, var(--line-faint) 70%, transparent 100%);
-  }
-  .bg-dot {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    left: calc(50% - 3px);
-    top: 48%;
-    opacity: 0.75;
-  }
-  .bg-hline-top {
-    position: absolute;
-    left: 60px;
-    top: 40px;
-    width: 120px;
-    height: 1px;
-    background: var(--line);
-  }
-  .bg-corner-tag {
-    position: absolute;
-    right: 30px;
-    bottom: 18px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-faint);
-  }
+/* Section title */
+.sec-title-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.sec-title-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:3px;border:1px solid var(--gold-dim);padding:3px 8px;}
+.sec-title-text{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--text);font-weight:600;letter-spacing:3px;}
+.sec-title-line{flex:1;height:1px;background:var(--gold-line);}
+.sec-title-en{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;}
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 44px 60px 40px 60px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
+/* Pyramid section */
+.pyramid-section{display:grid;grid-template-columns:600px 1fr;gap:44px;}
+.pyramid-wrap{position:relative;padding:6px 0;}
+.corner{position:absolute;width:18px;height:18px;border:1px solid var(--gold-dim);}
+.corner.tl{top:0;left:0;border-right:none;border-bottom:none;}
+.corner.tr{top:0;right:0;border-left:none;border-bottom:none;}
+.corner.bl{bottom:0;left:0;border-right:none;border-top:none;}
+.corner.br{bottom:0;right:0;border-left:none;border-top:none;}
 
-  /* ===== HEADER ===== */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .header-left { flex: 1; min-width: 0; }
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 10px;}
+.tier{position:relative;display:flex;align-items:baseline;}
+.tier-body{padding:14px 22px;background:var(--primary);border:1px solid var(--gold-dim);color:var(--text);font-family:'Noto Serif SC',serif;display:flex;align-items:baseline;justify-content:space-between;gap:18px;}
+.tier-num{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--gold);letter-spacing:0.5px;}
+.tier-lbl{font-size:11.5px;color:var(--text-dim);letter-spacing:2px;font-family:'Noto Sans SC',sans-serif;font-weight:400;}
+.tier.core .tier-body{width:180px;clip-path:polygon(50% 0,100% 100%,0 100%);padding:26px 32px 8px;justify-content:center;background:var(--primary-light);border-color:var(--gold);}
+.tier.core .tier-num{font-size:20px;}
+.tier.active .tier-body{width:360px;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);padding:14px 40px 12px;background:var(--primary);}
+.tier.periph .tier-body{width:540px;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);padding:16px 46px 14px;background:#14305A;}
 
-  .chapter-label {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .chapter-label .cl-line {
-    width: 44px;
-    height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
+.tier-label{margin-left:22px;flex:0 0 auto;min-width:130px;}
+.tier-label-name{font-family:'Noto Serif SC',serif;font-size:13px;color:var(--gold);letter-spacing:3px;font-weight:600;}
+.tier-label-range{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-faint);margin-top:5px;letter-spacing:0.5px;}
 
-  h1 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 46px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: 1px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .h1-dot { color: var(--accent); font-weight: 400; }
+.badge{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:24px;padding:10px 16px;border:1px solid var(--gold);background:rgba(180,160,120,0.08);display:flex;flex-direction:column;gap:3px;min-width:150px;}
+.badge-label{font-size:9.5px;color:var(--gold);letter-spacing:3px;font-weight:500;}
+.badge-name{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--text);font-weight:700;letter-spacing:0.5px;}
+.badge-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold-light);padding-left:14px;position:relative;}
 
-  .subtitle {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 19px;
-    font-weight: 400;
-    color: rgba(245, 240, 232, 0.78);
-    letter-spacing: 0.5px;
-    margin-bottom: 14px;
-  }
-  .subtitle-quote {
-    color: var(--accent);
-    font-weight: 500;
-    padding: 0 2px;
-  }
-  .subtitle-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-left: 12px;
-    letter-spacing: 1px;
-  }
+.pyramid-caption{margin-top:22px;text-align:center;font-size:11px;color:var(--text-faint);letter-spacing:2px;font-family:'JetBrains Mono',monospace;}
+.pyramid-caption .caption-dot{display:inline-block;width:4px;height:4px;background:var(--gold);margin:0 10px;transform:translateY(-2px);}
 
-  .h-divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .h-divider-line { width: 56px; height: 1px; background: var(--accent); }
-  .h-divider-bar { width: 22px; height: 1px; background: var(--text-faint); }
-  .h-divider-square { width: 5px; height: 5px; background: var(--accent); }
-  .h-divider-text {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: var(--text-dim);
-    margin-left: 4px;
-    font-weight: 400;
-  }
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.kpi{position:relative;padding:18px 20px;background:rgba(27,59,107,0.45);border:1px solid var(--gold-line);}
+.kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);}
+.kpi-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.kpi-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;}
+.kpi-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+.kpi-name{font-family:'Noto Serif SC',serif;font-size:14px;color:var(--text);font-weight:500;letter-spacing:2px;margin-bottom:6px;}
+.kpi-num{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:0.5px;}
+.kpi-sub{margin-top:6px;font-size:11.5px;color:var(--text-dim);letter-spacing:0.5px;}
+.kpi-sub .mono{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-weight:600;}
 
-  /* KPI block */
-  .header-right {
-    display: flex;
-    gap: 16px;
-    padding-top: 4px;
-  }
-  .kpi {
-    background: linear-gradient(155deg, rgba(27, 59, 107, 0.65), rgba(15, 30, 51, 0.35));
-    border: 1px solid var(--line-faint);
-    padding: 16px 20px 14px 20px;
-    min-width: 138px;
-    position: relative;
-  }
-  .kpi::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent);
-  }
-  .kpi-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-  .kpi-value {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--text);
-    letter-spacing: 0.5px;
-  }
-  .kpi-value.accent { color: var(--accent); }
-  .kpi-unit {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 400;
-    margin-left: 5px;
-    letter-spacing: 1px;
-  }
-  .kpi-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 1.5px;
-    margin-top: 6px;
-    font-weight: 400;
-  }
-  .kpi-bar {
-    display: inline-block;
-    height: 2px;
-    background: var(--accent);
-    vertical-align: middle;
-    margin-right: 6px;
-  }
+.kpi.big .kpi-num{font-size:44px;color:var(--text);}
+.kpi.big{background:linear-gradient(180deg,rgba(27,59,107,0.65) 0%,rgba(27,59,107,0.35) 100%);border-color:var(--gold-dim);}
+.kpi.big::before{width:4px;background:var(--gold);}
 
-  /* ===== MAIN ===== */
-  .main {
-    display: flex;
-    gap: 44px;
-    flex: 1;
-    min-height: 0;
-  }
+/* Timeline */
+.timeline-section{margin-top:24px;}
+.timeline{position:relative;padding:12px 0 8px;}
+.tl-track{position:relative;height:2px;background:var(--gold-line);margin:22px 40px 12px;}
+.tl-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);z-index:2;}
+.tl-dot.big{width:16px;height:16px;background:var(--gold);border-color:var(--gold-light);box-shadow:0 0 0 4px rgba(180,160,120,0.15);}
+.tl-tick{position:absolute;top:calc(100% + 8px);width:1px;height:6px;background:var(--gold-dim);transform:translateX(-50%);}
+.tl-node{position:absolute;top:calc(100% + 20px);transform:translateX(-50%);text-align:center;}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.5px;font-weight:600;}
+.tl-lbl{margin-top:6px;font-size:11px;color:var(--text-dim);letter-spacing:2px;font-family:'Noto Serif SC',serif;}
+.tl-lbl.gold{color:var(--gold);font-weight:600;}
 
-  .narrative {
-    width: 372px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-top: 2px;
-  }
-  .nar-eyebrow {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .nar-marker {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .nar-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    line-height: 1.85;
-    color: var(--text);
-    font-weight: 400;
-    margin-bottom: 22px;
-  }
-  .nar-highlight {
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .nar-mid {
-    color: var(--accent);
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 0 2px;
-  }
-  .nar-em {
-    color: var(--text);
-    font-weight: 600;
-    border-bottom: 1px solid var(--accent-dim);
-    padding-bottom: 1px;
-  }
-  .nar-quote {
-    color: var(--accent);
-    font-style: italic;
-    font-weight: 500;
-  }
+.tl-legend{margin-top:76px;display:flex;align-items:center;justify-content:center;gap:32px;}
+.tl-legend-item{display:flex;align-items:center;gap:10px;}
+.tl-legend-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);border:1px solid var(--gold);}
+.tl-legend-dot.big{width:14px;height:14px;background:var(--gold);box-shadow:0 0 0 3px rgba(180,160,120,0.2);}
+.tl-legend-txt{font-size:12px;color:var(--text-dim);letter-spacing:1px;}
+.tl-legend-txt .mono{font-family:'JetBrains Mono',monospace;color:var(--text);font-weight:600;margin:0 3px;}
+.tl-legend-divider{width:1px;height:18px;background:var(--gold-line);}
+.tl-legend-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-dim);letter-spacing:1.5px;}
 
-  .nar-meta {
-    border-top: 1px solid var(--line-faint);
-    padding-top: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .meta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .meta-key {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
-  .meta-val {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: var(--text);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-  }
-  .meta-val em {
-    color: var(--accent);
-    font-style: italic;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .nar-bar {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 16px;
-  }
-  .nar-bar-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-  }
-  .nar-bar-tag {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
-
-  /* Cards grid */
-  .cards {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
-    gap: 14px;
-    min-width: 0;
-  }
-
-  .card {
-    background: linear-gradient(160deg, rgba(27, 59, 107, 0.55) 0%, rgba(15, 30, 51, 0.75) 100%);
-    border: 1px solid var(--line-faint);
-    border-top: 2px solid var(--accent);
-    padding: 16px 18px 14px 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .card-idx {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    font-weight: 500;
-  }
-  .card-marker {
-    width: 5px;
-    height: 5px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-  .card-marker.square { border-radius: 0; transform: rotate(45deg); }
-  .card-marker.hollow {
-    background: transparent;
-    border: 1px solid var(--accent);
-  }
-  .card-name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 3px;
-    letter-spacing: 0.5px;
-  }
-  .card-name-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
-  .card-divider {
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-    margin-bottom: 10px;
-    opacity: 0.7;
-  }
-  .card-note {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    line-height: 1.65;
-    color: var(--text);
-    font-weight: 400;
-  }
-  .card-num {
-    color: var(--accent);
-    font-weight: 600;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    padding: 0 1px;
-  }
-  .card-en-quote {
-    font-style: italic;
-    color: rgba(245, 240, 232, 0.88);
-  }
-  .card-code {
-    color: var(--accent);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-
-  /* Corner geometry on cards */
-  .card::after {
-    content: '';
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    width: 14px;
-    height: 14px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  /* ===== FOOTER ===== */
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-  }
-  .foot-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .foot-bar {
-    width: 44px;
-    height: 2px;
-    background: var(--accent);
-  }
-  .foot-year {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    color: var(--text-dim);
-    letter-spacing: 3px;
-    font-weight: 500;
-  }
-  .foot-chap {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-faint);
-    font-weight: 500;
-  }
-  .foot-right {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .foot-square {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-  }
-  .foot-line {
-    width: 22px;
-    height: 1px;
-    background: var(--line);
-  }
-  .closing {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: var(--text);
-    letter-spacing: 1.2px;
-    font-weight: 500;
-  }
-  .closing .close-a { color: var(--accent); font-weight: 600; }
-  .closing .close-eq {
-    color: var(--accent);
-    padding: 0 6px;
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 400;
-  }
-  .closing .close-e { color: var(--accent); font-style: italic; font-weight: 500; }
+/* Summary */
+.summary{margin-top:30px;display:flex;align-items:center;justify-content:center;gap:30px;position:relative;}
+.summary-side{flex:0 0 200px;height:1px;background:var(--gold-line);position:relative;}
+.summary-side::after{content:'';position:absolute;top:-3px;width:7px;height:7px;background:var(--gold);border-radius:50%;}
+.summary-side.left::after{right:-3px;}
+.summary-side.right::after{left:-3px;}
+.summary-center{display:flex;align-items:center;gap:22px;padding:16px 30px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);}
+.summary-text{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:var(--text);letter-spacing:4px;}
+.summary-text .st-neq{color:var(--gold);margin:0 8px;font-weight:900;}
+.summary-text .st-em{color:var(--gold);font-weight:900;}
+.summary-en{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-dim);letter-spacing:3px;}
 
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-hline-top"></div>
-    <div class="bg-circle"></div>
-    <div class="bg-circle-inner"></div>
-    <div class="bg-vline"></div>
-    <div class="bg-dot"></div>
-    <div class="bg-square"></div>
-    <div class="bg-square-inner"></div>
-    <div class="bg-corner-tag">HERMES · CULTURE OBSERVATION</div>
+    <div class="deco-circle big"></div>
+    <div class="deco-circle small"></div>
+    <div class="deco-line-v a"></div>
+    <div class="deco-line-v b"></div>
+    <div class="deco-line-h top"></div>
+    <div class="deco-dot a"></div>
+    <div class="deco-dot b"></div>
+    <div class="deco-square a"></div>
   </div>
   <div id="ct">
 
-    <!-- HEADER -->
-    <div class="header">
-      <div class="header-left">
-        <div class="chapter-label"><span>CHAPTER 01</span><span class="cl-line"></span><span>FIELD NOTES</span></div>
-        <h1>Release 命名文化 <span class="h1-dot">·</span> 田野观察第 1 章</h1>
-        <div class="subtitle">
-          <span class="subtitle-quote">「 把 release 当作文化事件 」</span>
-          <span class="subtitle-en">Treating a release as a cultural event</span>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-top">
+        <h1 class="hero-title">消费侧总览</h1>
+        <div class="hero-sub-wrap">
+          <div class="hero-sub">弱代理的采纳信号</div>
+          <div class="hero-sub-line"></div>
         </div>
-        <div class="h-divider">
-          <span class="h-divider-line"></span>
-          <span class="h-divider-bar"></span>
-          <span class="h-divider-square"></span>
-          <span class="h-divider-text">命名 · 仪式 · 制度</span>
+        <div class="hero-tag">CONSUMPTION · WEAK PROXY</div>
+      </div>
+      <p class="hero-narrative">
+        <span class="n-num">397</span> 位 <span class="n-em">contributors</span> 分层清晰：<span class="n-em">核心 5.3%</span>、<span class="n-em">活跃 36%</span>、<span class="n-em">外围 58.7%</span>。stars / forks 是弱代理，无法反映真实使用频率、场景与付费行为。
+      </p>
+    </div>
+
+    <!-- Pyramid + KPI -->
+    <div class="section pyramid-section">
+
+      <div class="pyramid-wrap">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="pyramid">
+          <!-- Top: Core -->
+          <div class="tier core">
+            <div class="tier-body">
+              <span class="tier-num">21 人</span>
+              <span class="tier-lbl">5.3%</span>
+            </div>
+            <div class="badge">
+              <span class="badge-label">TOP 1 · 贡献度</span>
+              <span class="badge-name">teknium1</span>
+              <span class="badge-num">14,638</span>
+            </div>
+          </div>
+          <!-- Middle: Active -->
+          <div class="tier active">
+            <div class="tier-body">
+              <span class="tier-num">143 人</span>
+              <span class="tier-lbl">36.0%</span>
+            </div>
+            <div class="tier-label">
+              <div class="tier-label-name">活跃 ACTIVE</div>
+              <div class="tier-label-range">10 – 99 commits</div>
+            </div>
+          </div>
+          <!-- Bottom: Peripheral -->
+          <div class="tier periph">
+            <div class="tier-body">
+              <span class="tier-num">233 人</span>
+              <span class="tier-lbl">58.7%</span>
+            </div>
+            <div class="tier-label">
+              <div class="tier-label-name">外围 PERIPHERAL</div>
+              <div class="tier-label-range">1 – 9 commits</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pyramid-caption">
+          CONTRIBUTORS · 397<span class="caption-dot"></span>COMMITS 分层
         </div>
       </div>
-      <div class="header-right">
-        <div class="kpi">
-          <div class="kpi-label">RELEASES · 总量</div>
-          <div class="kpi-value">33<span class="kpi-unit">个</span></div>
-          <div class="kpi-sub"><span class="kpi-bar" style="width:28px;"></span>全部发布</div>
+
+      <div class="kpi-grid">
+        <div class="kpi big">
+          <div class="kpi-head">
+            <span class="kpi-tag">K01</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">总 CONTRIBUTORS</div>
+          <div class="kpi-num">397</div>
+          <div class="kpi-sub">去重后累计贡献者</div>
         </div>
         <div class="kpi">
-          <div class="kpi-label">命名 RELEASE · 命名</div>
-          <div class="kpi-value accent">06<span class="kpi-unit">个</span></div>
-          <div class="kpi-sub"><span class="kpi-bar" style="width:10px;"></span>文化事件</div>
+          <div class="kpi-head">
+            <span class="kpi-tag">K02 · CORE</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">核心（100+ commits）</div>
+          <div class="kpi-num">21</div>
+          <div class="kpi-sub"><span class="mono">5.3%</span> · 顶层维护者</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-head">
+            <span class="kpi-tag">K03 · ACTIVE</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">活跃（10 – 99 commits）</div>
+          <div class="kpi-num">143</div>
+          <div class="kpi-sub"><span class="mono">36.0%</span> · 中层持续协作</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-head">
+            <span class="kpi-tag">K04 · PERIPHERAL</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">外围（1 – 9 commits）</div>
+          <div class="kpi-num">233</div>
+          <div class="kpi-sub"><span class="mono">58.7%</span> · 长尾接触</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Releases timeline -->
+    <div class="timeline-section">
+      <div class="sec-title-row">
+        <span class="sec-title-num">03</span>
+        <span class="sec-title-text">Releases · 发布节奏</span>
+        <span class="sec-title-line"></span>
+        <span class="sec-title-en">N = 33 · NAMED = 6</span>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-track">
+          <svg width="100%" height="40" viewBox="0 0 1380 40" preserveAspectRatio="none" style="position:absolute;top:-14px;left:0;width:100%;height:40px;overflow:visible;pointer-events:none;">
+            <circle cx="0" cy="20" r="6" fill="#0F1E33" stroke="#B4A078" stroke-width="2"/>
+            <circle cx="240" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="480" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="720" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="960" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="1140" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="1240" cy="20" r="6" fill="#0F1E33" stroke="#B4A078" stroke-width="2"/>
+            <circle cx="1380" cy="20" r="9" fill="#B4A078" stroke="#C9B78F" stroke-width="2"/>
+          </svg>
+
+          <div class="tl-tick" style="left:0%"></div>
+          <div class="tl-node" style="left:0%">
+            <div class="tl-date">2026-03-12</div>
+            <div class="tl-lbl gold">首次发布</div>
+          </div>
+
+          <div class="tl-node" style="left:18.1%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 8 个</div>
+          </div>
+          <div class="tl-node" style="left:35.1%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 16 个</div>
+          </div>
+          <div class="tl-node" style="left:51.4%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 22 个</div>
+          </div>
+          <div class="tl-node" style="left:67.7%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 28 个</div>
+          </div>
+          <div class="tl-node" style="left:80.5%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 31 个</div>
+          </div>
+
+          <div class="tl-node" style="left:88.3%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 32 个</div>
+          </div>
+
+          <div class="tl-tick" style="left:100%"></div>
+          <div class="tl-node" style="left:100%">
+            <div class="tl-date">2026-09-11</div>
+            <div class="tl-lbl gold">共 33 个 · 收官</div>
+          </div>
+        </div>
+
+        <div class="tl-legend">
+          <div class="tl-legend-item">
+            <span class="tl-legend-dot big"></span>
+            <span class="tl-legend-txt">命名 release <span class="mono">6</span> · 视为文化事件信号</span>
+          </div>
+          <div class="tl-legend-divider"></div>
+          <div class="tl-legend-item">
+            <span class="tl-legend-dot"></span>
+            <span class="tl-legend-txt">常规发布 <span class="mono">27</span> · 累计 33</span>
+          </div>
+          <div class="tl-legend-divider"></div>
+          <div class="tl-legend-item">
+            <span class="tl-legend-meta">跨度 183 天 · 平均间隔 5.8 天</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- MAIN -->
-    <div class="main">
-      <!-- Narrative -->
-      <div class="narrative">
-        <div class="nar-eyebrow">FIELD OBSERVATION · 田野观察</div>
-        <div class="nar-marker">■</div>
-        <p class="nar-text">
-          <span class="nar-highlight">Hermes</span> 的 release 不是版本号，是文化事件。<span class="nar-highlight">6 个</span>命名 release 用<span class="nar-mid">希腊神话 / 概念词汇</span>命名，每个命名背后都是一个<span class="nar-em">制度主张</span>——这是开源项目的<span class="nar-quote">"仪式"</span>。
-        </p>
-
-        <div class="nar-meta">
-          <div class="meta-row">
-            <span class="meta-key">命名法</span>
-            <span class="meta-val">希腊神话 <em>·</em> 概念词汇</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-key">制度主张</span>
-            <span class="meta-val">每个命名 = 一个 claim</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-key">仪式化</span>
-            <span class="meta-val">开源项目的 "仪式"</span>
-          </div>
-        </div>
-
-        <div class="nar-bar">
-          <span class="nar-bar-line"></span>
-          <span class="nar-bar-tag">OBSERVATION / 01</span>
-        </div>
+    <!-- Summary -->
+    <div class="summary">
+      <div class="summary-side left"></div>
+      <div class="summary-center">
+        <span class="summary-text">stars / forks <span class="st-neq">≠</span> 真实使用 —— 是<span class="st-em">弱代理</span></span>
+        <span class="summary-en">WEAK PROXY · NOT ADOPTION</span>
       </div>
-
-      <!-- Cards -->
-      <div class="cards">
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">01 / 06</span>
-            <span class="card-marker"></span>
-          </div>
-          <div class="card-name">Judgment</div>
-          <div class="card-name-en">判 · 决</div>
-          <div class="card-divider"></div>
-          <div class="card-note">P0/P1 清零战役——<span class="card-num">700</span> highest-priority items cleared in <span class="card-num">12</span> days</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">02 / 06</span>
-            <span class="card-marker square"></span>
-          </div>
-          <div class="card-name">Tenacity</div>
-          <div class="card-name-en">韧 · 性</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"finishes what it starts"</span>——多 agent kanban 平台</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">03 / 06</span>
-            <span class="card-marker hollow"></span>
-          </div>
-          <div class="card-name">Surface</div>
-          <div class="card-name-en">表 · 面</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"Hermes meets you wherever you work"</span>——原生 desktop + Web admin</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">04 / 06</span>
-            <span class="card-marker square"></span>
-          </div>
-          <div class="card-name">Velocity</div>
-          <div class="card-name-en">速 · 度</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"16,000 行 → 3,821 行"</span>——大重构</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">05 / 06</span>
-            <span class="card-marker"></span>
-          </div>
-          <div class="card-name">Quicksilver</div>
-          <div class="card-name-en">流 · 银</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"first token time 80% 下降"</span>——性能爆发</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">06 / 06</span>
-            <span class="card-marker hollow"></span>
-          </div>
-          <div class="card-name">Patch</div>
-          <div class="card-name-en">修 · 补</div>
-          <div class="card-divider"></div>
-          <div class="card-note">热修复——<span class="card-code">dashboard 401 reload loop</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      <div class="foot-left">
-        <span class="foot-bar"></span>
-        <span class="foot-year">2024</span>
-        <span class="foot-chap">HERMES · 01 / CULTURE</span>
-      </div>
-      <div class="foot-right">
-        <span class="foot-square"></span>
-        <span class="closing"><span class="close-a">release 命名</span><span class="close-eq">=</span>制度主张的<span class="close-e">仪式化表达</span></span>
-        <span class="foot-line"></span>
-      </div>
+      <div class="summary-side right"></div>
     </div>
 
   </div>

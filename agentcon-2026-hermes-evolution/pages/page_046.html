@@ -1,388 +1,439 @@
+ 前缀 ✓
 
+输出开始。
+</think>
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>结语 · 开源之为思想的力量</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Epilogue · 长期演化追踪</title>
 <style>
-:root {
-  --bg: #0F1E33;
-  --primary: #1B3B6B;
-  --accent: #B4A078;
-  --text: #F5F0E8;
-  --text-soft: rgba(245, 240, 232, 0.68);
-  --text-dim: rgba(245, 240, 232, 0.42);
-  --border: rgba(27, 59, 107, 0.35);
-  --border-soft: rgba(180, 160, 120, 0.28);
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-}
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: var(--bg);
-}
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(27, 59, 107, 0.45) 0%, rgba(15, 30, 51, 1) 60%, #0A1526 100%);
-}
-.bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(180, 160, 120, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 160, 120, 0.035) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.6;
-}
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 56px 80px;
-  box-sizing: border-box;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* Header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--border-soft);
-  position: relative;
-}
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.header-mark {
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-.header-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: var(--text);
-}
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
-}
-.header-right .rule {
-  display: inline-block;
-  width: 48px;
-  height: 4px;
-  background: var(--accent);
-}
+  :root {
+    --bg: #0F1E33;
+    --bg-2: #1B3B6B;
+    --text: #F5F0E8;
+    --text-dim: rgba(245, 240, 232, 0.72);
+    --text-faint: rgba(245, 240, 232, 0.42);
+    --gold: #B4A078;
+    --gold-dim: rgba(180, 160, 120, 0.55);
+    --gold-faint: rgba(180, 160, 120, 0.18);
+    --blue-line: rgba(27, 59, 107, 0.55);
+  }
 
-/* Decorative geometry */
-.deco { position: absolute; pointer-events: none; }
-.deco-circle-1 {
-  top: 130px; left: 60px;
-  width: 90px; height: 90px;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  opacity: 0.5;
-}
-.deco-square-1 {
-  top: 158px; left: 110px;
-  width: 22px; height: 22px;
-  background: var(--accent);
-  opacity: 0.6;
-}
-.deco-line-1 {
-  top: 200px; left: 240px;
-  width: 220px; height: 1px;
-  background: linear-gradient(90deg, rgba(180,160,120,0.6), rgba(180,160,120,0));
-}
-.deco-circle-2 {
-  top: 150px; right: 70px;
-  width: 60px; height: 60px;
-  border: 1px solid rgba(180,160,120,0.4);
-  border-radius: 50%;
-}
-.deco-square-2 {
-  bottom: 130px; left: 60px;
-  width: 14px; height: 14px;
-  border: 1px solid var(--accent);
-  opacity: 0.6;
-}
-.deco-line-2 {
-  bottom: 120px; right: 240px;
-  width: 220px; height: 1px;
-  background: linear-gradient(90deg, rgba(180,160,120,0), rgba(180,160,120,0.6));
-}
-.deco-circle-3 {
-  bottom: 110px; right: 70px;
-  width: 10px; height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Center slogan */
-.center-area {
-  margin-top: 62px;
-  text-align: center;
-  position: relative;
-}
-.center-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 8px;
-  color: var(--accent);
-  margin-bottom: 26px;
-  text-transform: uppercase;
-}
-.center-eyebrow .dot {
-  width: 6px; height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-.center-eyebrow .bar {
-  width: 40px; height: 1px;
-  background: var(--accent);
-}
-.slogan {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 92px;
-  font-weight: 700;
-  letter-spacing: 8px;
-  line-height: 1.15;
-  color: var(--text);
-  text-shadow: 0 2px 0 rgba(180, 160, 120, 0.22), 0 4px 18px rgba(180, 160, 120, 0.14);
-  margin: 0;
-}
-.slogan .quote {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  color: var(--accent);
-  font-weight: 400;
-  font-size: 100px;
-  vertical-align: -6px;
-}
-.slogan-under {
-  margin-top: 22px;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 20px;
-  letter-spacing: 4px;
-  color: var(--accent);
-}
-.slogan-under .seg {
-  width: 60px; height: 2px;
-  background: var(--accent);
-}
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    background: #0F1E33;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* Four cards */
-.cards {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.card {
-  position: relative;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(27, 59, 107, 0.28) 0%, rgba(27, 59, 107, 0.14) 100%);
-  padding: 26px 22px 24px;
-  min-height: 176px;
-  box-sizing: border-box;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 34px; height: 3px;
-  background: var(--accent);
-}
-.card-idx {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-idx .sq {
-  display: inline-block;
-  width: 6px; height: 6px;
-  background: var(--accent);
-}
-.card-head {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 2px;
-  line-height: 1.3;
-  margin-bottom: 14px;
-}
-.card-head .en {
-  display: block;
-  font-family: Georgia, 'Noto Serif SC', serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  color: var(--accent);
-  margin-top: 4px;
-}
-.card-detail {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--text-soft);
-  line-height: 1.7;
-  letter-spacing: 0.5px;
-}
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: radial-gradient(ellipse at 18% 18%, #172a4d 0%, #0F1E33 55%, #0a1524 100%);
+  }
 
-/* Footer narrative */
-.footer {
-  position: absolute;
-  left: 80px; right: 80px;
-  bottom: 56px;
-  text-align: center;
-  padding-top: 22px;
-  border-top: 1px solid var(--border-soft);
-}
-.footer-narrative {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text-soft);
-  letter-spacing: 1.5px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.footer-narrative .em {
-  color: var(--accent);
-  font-weight: 500;
-}
-.footer-page {
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--text-dim);
-}
-.footer-page .rule {
-  display: inline-block;
-  width: 30px; height: 1px;
-  background: var(--text-dim);
-}
+  #bg { position: absolute; inset: 0; z-index: 0; }
+  #ct { position: absolute; inset: 0; z-index: 1; }
+
+  /* 背景装饰几何 */
+  .deco-big-circle {
+    position: absolute;
+    right: -200px;
+    bottom: -200px;
+    width: 520px;
+    height: 520px;
+    border: 1px solid var(--blue-line);
+    border-radius: 50%;
+  }
+  .deco-big-circle-2 {
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    width: 240px;
+    height: 240px;
+    border: 1px solid var(--gold-faint);
+    border-radius: 50%;
+  }
+  .deco-small-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .deco-square {
+    position: absolute;
+    border: 1px solid var(--gold);
+  }
+  .deco-line-v {
+    position: absolute;
+    width: 1px;
+    background: var(--gold-faint);
+  }
+  .deco-line-h {
+    position: absolute;
+    height: 1px;
+    background: var(--gold-faint);
+  }
+
+  /* 顶部栏 */
+  .top-bar {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .top-bar .side {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .top-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .top-square {
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid var(--gold);
+    transform: rotate(45deg);
+  }
+  .top-line {
+    position: absolute;
+    top: 78px;
+    left: 60px;
+    right: 60px;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-dim) 0%, var(--gold-faint) 100%);
+  }
+
+  /* 标题区 */
+  .title-block {
+    position: absolute;
+    top: 148px;
+    left: 60px;
+    max-width: 1300px;
+  }
+  .eyebrow {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 0.55em;
+    color: var(--gold);
+    margin-bottom: 34px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-transform: uppercase;
+  }
+  .eyebrow .marker {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .main-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 118px;
+    font-weight: 700;
+    line-height: 1.02;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 34px;
+  }
+  .sub-title {
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .sub-title .line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* 三条要点 */
+  .points {
+    position: absolute;
+    top: 538px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+  }
+  .point {
+    flex: 1;
+    position: relative;
+    padding-top: 22px;
+  }
+  .point-mark-h {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .point-mark-v {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 22px;
+    background: var(--gold);
+  }
+  .point-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .point-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.45;
+  }
+  .point-desc {
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  /* 底部路线图 */
+  .roadmap {
+    position: absolute;
+    bottom: 132px;
+    left: 60px;
+    right: 60px;
+    height: 40px;
+  }
+  .roadmap-line {
+    position: absolute;
+    left: 190px;
+    right: 40px;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold) 0%, var(--gold) 72%, rgba(180, 160, 120, 0.08) 100%);
+  }
+  .roadmap-start {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .start-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(180, 160, 120, 0.16);
+  }
+  .start-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .start-label {
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .start-date {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    font-weight: 500;
+  }
+  .node {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: var(--bg);
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+  }
+  .node.filled {
+    background: var(--gold);
+  }
+  .arrow-end {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 8px solid rgba(180, 160, 120, 0.4);
+  }
+
+  /* 底部 narrative + 页码 */
+  .footer {
+    position: absolute;
+    bottom: 44px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .narrative {
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 980px;
+  }
+  .narrative em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .page-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-grid"></div>
-    <div class="deco deco-circle-1"></div>
-    <div class="deco deco-square-1"></div>
-    <div class="deco deco-line-1"></div>
-    <div class="deco deco-circle-2"></div>
-    <div class="deco deco-square-2"></div>
-    <div class="deco deco-line-2"></div>
-    <div class="deco deco-circle-3"></div>
+    <!-- 右下角同心大圆 -->
+    <div class="deco-big-circle"></div>
+    <div class="deco-big-circle-2"></div>
+    <!-- 右上角几何装饰 -->
+    <div class="deco-line-v" style="top: 100px; right: 60px; height: 60px;"></div>
+    <div class="deco-line-h" style="top: 160px; right: 60px; width: 60px;"></div>
+    <div class="deco-square" style="top: 168px; right: 68px; width: 14px; height: 14px;"></div>
+    <div class="deco-small-dot" style="top: 138px; right: 220px; width: 6px; height: 6px;"></div>
+    <!-- 右侧散点 -->
+    <div class="deco-small-dot" style="top: 400px; right: 100px; width: 5px; height: 5px;"></div>
+    <div class="deco-small-dot" style="top: 462px; right: 180px; width: 4px; height: 4px; background: rgba(180,160,120,0.55);"></div>
+    <!-- 左侧竖线 -->
+    <div class="deco-line-v" style="top: 500px; left: 32px; height: 168px;"></div>
+    <div class="deco-small-dot" style="top: 500px; left: 29px; width: 7px; height: 7px;"></div>
+    <!-- 左下角方点 -->
+    <div class="deco-square" style="bottom: 96px; left: 32px; width: 10px; height: 10px; background: rgba(180,160,120,0.6); border: none;"></div>
   </div>
-
   <div id="ct">
-    <div class="header">
-      <div class="header-left">
-        <div class="header-mark"></div>
-        <div class="header-title">结语 · 开源之为思想的力量</div>
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+      <div class="side">
+        <span class="top-dot"></span>
+        <span>Chapter · Epilogue</span>
       </div>
-      <div class="header-right">
-        <span>CONCLUSION</span>
-        <span class="rule"></span>
-        <span>P. 46</span>
+      <div class="side">
+        <span>尾声 · 长期演化追踪</span>
+        <span class="top-square"></span>
+      </div>
+    </div>
+    <div class="top-line"></div>
+
+    <!-- 主标题 -->
+    <div class="title-block">
+      <div class="eyebrow">
+        <span class="marker"></span>
+        <span>§ Epilogue · 尾声</span>
+      </div>
+      <h1 class="main-title">长期演化追踪</h1>
+      <div class="sub-title">
+        <span class="line"></span>
+        <span>不是终点</span>
       </div>
     </div>
 
-    <div class="center-area">
-      <div class="center-eyebrow">
-        <span class="bar"></span>
-        <span class="dot"></span>
-        <span>THE SOURCE CODE OF INSTITUTIONS</span>
-        <span class="dot"></span>
-        <span class="bar"></span>
+    <!-- 三条要点 -->
+    <div class="points">
+      <div class="point">
+        <div class="point-mark-h"></div>
+        <div class="point-mark-v"></div>
+        <div class="point-num">01 · 定位</div>
+        <div class="point-label">长期演化追踪系统的<br>第一个快照</div>
+        <div class="point-desc">这不是一次性分析，而是持续观测与复现机制的起点——标记的是时间轴上的一枚锚点。</div>
       </div>
-      <h1 class="slogan">
-        <span class="quote">「</span>思想是制度的源代码<span class="quote">」</span>
-      </h1>
-      <div class="slogan-under">
-        <span class="seg"></span>
-        <span>Keep Movement</span>
-        <span class="seg"></span>
+      <div class="point">
+        <div class="point-mark-h"></div>
+        <div class="point-mark-v"></div>
+        <div class="point-num">02 · 三个维度</div>
+        <div class="point-label">度量权 / 可靠性 / 产权</div>
+        <div class="point-desc">三者是并行维度而非线性递进，交叉支撑长期演化的观测框架，不可相互替代。</div>
       </div>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>I · FROM AGENT TO INSTITUTION</span></div>
-        <div class="card-head">从 Agent 到制度<span class="en">Agent as Sample</span></div>
-        <div class="card-detail">Hermes 是样本，不是终点。它只是一次实验，真正的题目是它背后的机制如何生长。</div>
-      </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>II · THE WAY OF OPENNESS</span></div>
-        <div class="card-head">开源之道<span class="en">Idea, Not Road</span></div>
-        <div class="card-detail">道是思想（idea），不是道路（road）。开源的价值不在通道，在于让想法得以流动。</div>
-      </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>III · KEEP MOVEMENT</span></div>
-        <div class="card-head">Keep Movement<span class="en">Knowledge in Motion</span></div>
-        <div class="card-detail">知识不是静止的，是在移动中产生的。任何被冻结的秩序都会失去解释力。</div>
-      </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>IV · A BLANK SPACE</span></div>
-        <div class="card-head">一句留白<span class="en">An Opening, Not a Proof</span></div>
-        <div class="card-detail">不是要证明什么——是打开一种思考。答案留给你，把问题还给演化本身。</div>
+      <div class="point">
+        <div class="point-mark-h"></div>
+        <div class="point-mark-v"></div>
+        <div class="point-num">03 · Keep Movement</div>
+        <div class="point-label">没有终点的哲学</div>
+        <div class="point-desc">"进化论的哲学里是没有终点的"——追踪本身即是结论，Keep Movement。</div>
       </div>
     </div>
 
+    <!-- 底部路线图 -->
+    <div class="roadmap">
+      <div class="roadmap-start">
+        <div class="start-dot"></div>
+        <div class="start-info">
+          <div class="start-label">Speech · 起点</div>
+          <div class="start-date">2026-09-21</div>
+        </div>
+      </div>
+      <div class="roadmap-line"></div>
+      <div class="node" style="left: 24%;"></div>
+      <div class="node" style="left: 42%;"></div>
+      <div class="node" style="left: 62%;"></div>
+      <div class="node" style="left: 82%;"></div>
+      <div class="arrow-end"></div>
+    </div>
+
+    <!-- 页脚 narrative + 页码 -->
     <div class="footer">
-      <p class="footer-narrative">
-        <span class="em">「思想是制度的源代码」</span>——不是规则在动，是思想在动。<span class="em">Keep Movement。</span>这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
-      </p>
-      <div class="footer-page">
-        <span>END OF SPEECH</span>
-        <span class="rule"></span>
-        <span>46 / 46</span>
-        <span class="rule"></span>
-        <span>OPENNESS · INSTITUTION · MOVEMENT</span>
+      <div class="narrative">
+        这不是一次性分析，是长期演化追踪系统的第一个快照 —— <em>"进化论的哲学里是没有终点的" — Keep Movement</em>
       </div>
+      <div class="page-num">— 44 · Epilogue —</div>
     </div>
   </div>
 </div>

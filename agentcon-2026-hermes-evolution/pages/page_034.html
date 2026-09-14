@@ -1,479 +1,525 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>从"能用"到"好用"的跃迁 · 五阶段</title>
+<title>案例 12 · desktop 供需缺口</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  :root {
+    --bg: #0F1E33;
+    --primary: #1B3B6B;
+    --gold: #B4A078;
+    --cream: #F5F0E8;
+    --muted: rgba(245,240,232,.62);
+    --line: rgba(180,160,120,.22);
+    --warn: #E58A5A;
+    --warn-bg: rgba(229,138,90,.10);
+    --parchment: url('../images/page_012_parchment.png');
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: #0F1E33;
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #0F1E33;
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 8% 4%, rgba(27,59,107,0.75) 0%, rgba(15,30,51,0.10) 42%, rgba(15,30,51,0) 68%),
+      var(--parchment);
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 88% 82%, rgba(180,160,120,0.10) 0%, rgba(15,30,51,0) 42%);
+  }
+  .geo-circle, .geo-square, .geo-line, .geo-square-2 {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .geo-circle {
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,160,120,0.16);
+    top: -220px; right: -200px;
+  }
+  .geo-square {
+    width: 24px; height: 24px;
+    background: rgba(180,160,120,0.28);
+    top: 210px; right: 88px;
+  }
+  .geo-line {
+    width: 1px; height: 900px;
+    background: rgba(180,160,120,0.08);
+    top: 0; left: 60px;
+  }
+  .geo-square-2 {
+    width: 10px; height: 10px;
+    background: rgba(180,160,120,0.45);
+    bottom: 96px; right: 140px;
+  }
 
-:root {
-  --primary: #1B3B6B;
-  --primary-light: #2D5FA3;
-  --bg: #0F1E33;
-  --text: #F5F0E8;
-  --text-sub: rgba(245, 240, 232, 0.68);
-  --text-mute: rgba(245, 240, 232, 0.45);
-  --accent: #B4A078;
-  --accent-glow: rgba(180, 160, 120, 0.25);
-}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 56px 60px 56px 60px;
+  }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  /* Header */
+  .header {
+    height: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+  }
+  .title-block { display: flex; align-items: flex-start; gap: 20px; }
+  .title-square {
+    width: 22px; height: 22px;
+    background: var(--gold);
+    margin-top: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(180,160,120,0.10);
+  }
+  .titles { display: flex; flex-direction: column; gap: 10px; }
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  h1 .case-num {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 34px;
+    margin-right: 12px;
+    vertical-align: 4px;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1.8px;
+    padding-left: 2px;
+  }
+  .header-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    padding-top: 6px;
+  }
+  .header-line {
+    width: 96px; height: 1px;
+    background: var(--gold);
+    opacity: .7;
+  }
+  .meta-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
 
-html, body {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-}
+  /* KPI row */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+    margin-top: 20px;
+  }
+  .kpi {
+    padding: 20px 26px;
+    background: rgba(27,59,107,0.24);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    position: relative;
+    min-height: 130px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .kpi.warn {
+    border-top-color: var(--warn);
+    background: rgba(229,138,90,0.09);
+  }
+  .kpi-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
+  .kpi-value {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 4px 0 2px 0;
+  }
+  .kpi-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .kpi-unit {
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .kpi.warn .kpi-num,
+  .kpi.warn .kpi-unit { color: var(--warn); }
+  .kpi-sub {
+    font-size: 13px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+  .kpi-sub-en {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: var(--bg);
-}
+  /* Table */
+  .table-section {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(15,30,51,0.55);
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .table thead th {
+    background: rgba(27,59,107,0.55);
+    color: var(--gold);
+    padding: 13px 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 3.5px;
+    font-family: 'Noto Serif SC', serif;
+    border-bottom: 1px solid var(--gold);
+  }
+  .table tbody td {
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(180,160,120,0.10);
+    vertical-align: middle;
+  }
+  .table tbody tr:last-child td { border-bottom: none; }
+  .table tbody tr.warn {
+    background: var(--warn-bg);
+  }
+  .table tbody tr.warn td:first-child {
+    border-left: 3px solid var(--warn);
+    padding-left: 21px;
+  }
+  .comp-cell {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .warn .dot { background: var(--warn); }
+  .comp-name {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num .pct {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 3px;
+    font-weight: 400;
+  }
+  .num.warn { color: var(--warn); }
+  .num.warn .pct { color: rgba(229,138,90,0.7); }
+  .badge-mini {
+    display: inline-block;
+    padding: 4px 11px;
+    background: var(--warn);
+    color: #1F0E05;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+  .badge-ok {
+    display: inline-block;
+    padding: 4px 11px;
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.32);
+    color: rgba(245,240,232,0.82);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse at 50% 45%, #183257 0%, #0F1E33 55%, #08111F 100%);
-}
+  .table-caption {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .badge-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 9px 20px;
+    border: 1px solid var(--gold);
+    background: rgba(180,160,120,0.10);
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+  }
+  .badge-gold .dot-gold {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .caption-note {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 48px 60px 40px;
-  box-sizing: border-box;
-}
+  /* Narrative */
+  .narrative {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.05fr 1.3fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .narrative-left {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .nar-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .nar-line {
+    font-size: 13.5px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.65;
+    letter-spacing: 0.4px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .nar-line .num-inline {
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0 2px;
+  }
+  .nar-line .step {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
 
-header {
-  position: relative;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
-}
-
-.header-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 60px;
-  margin-bottom: 16px;
-}
-
-h1 {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  line-height: 1.15;
-  color: var(--text);
-}
-
-h1 .accent { color: var(--accent); }
-h1 .dot {
-  color: var(--accent);
-  font-weight: 400;
-  margin: 0 4px;
-}
-h1 .sep { color: var(--text-mute); margin: 0 10px; font-weight: 400; }
-
-.subtitle {
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.subtitle-en {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.subtitle-cn {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 16px;
-  color: var(--text-sub);
-  letter-spacing: 2px;
-}
-
-h1::before {
-  content: '';
-  position: absolute;
-  left: 60px;
-  top: 48px;
-  width: 30px;
-  height: 3px;
-  background: var(--accent);
-}
-
-.intro {
-  font-size: 15px;
-  color: var(--text-sub);
-  line-height: 1.7;
-  max-width: 1100px;
-}
-
-.intro-mark { color: var(--accent); font-weight: 700; margin-right: 8px; font-family: 'Noto Serif SC', serif; }
-
-.stages-inline {
-  color: var(--text);
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 600;
-}
-
-.stages-inline .arrow {
-  color: var(--accent);
-  margin: 0 6px;
-  font-weight: 400;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-
-.section-bar {
-  width: 4px;
-  height: 16px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.section-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  color: var(--accent);
-  letter-spacing: 6px;
-  font-weight: 600;
-}
-
-.section-note {
-  font-size: 12px;
-  color: var(--text-mute);
-  letter-spacing: 3px;
-  margin-left: auto;
-}
-
-.visual-area {
-  position: relative;
-  height: 430px;
-}
-
-#timeline-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.top-labels, .bottom-labels {
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-.top-labels { top: 0; }
-.bottom-labels { top: 165px; }
-
-.top-label, .bottom-label {
-  position: absolute;
-  width: 260px;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-.top-label .num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 2.5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.top-label .pr {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 18px;
-  color: var(--text);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.top-label .date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-mute);
-  letter-spacing: 1.5px;
-}
-
-.bottom-label .stage-name {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
-  margin-bottom: 9px;
-  line-height: 1;
-}
-
-.bottom-label .tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--accent);
-  letter-spacing: 1.5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.bottom-label .vol {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 1.5px;
-}
-
-.transition-labels {
-  position: absolute;
-  left: 0;
-  top: 92px;
-  width: 100%;
-  height: 0;
-}
-
-.tl-item {
-  position: absolute;
-  transform: translateY(-50%);
-  text-align: left;
-}
-
-.tl-item .lbl {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: var(--accent);
-  letter-spacing: 3px;
-  margin-bottom: 2px;
-}
-
-.tl-item .sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 2px;
-}
-
-.pair-group {
-  position: absolute;
-  top: 0;
-  height: 130px;
-}
-
-.footer {
-  position: absolute;
-  left: 60px;
-  right: 60px;
-  bottom: 46px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 22px 34px;
-  border-top: 1px solid rgba(180, 160, 120, 0.3);
-  border-bottom: 1px solid rgba(180, 160, 120, 0.15);
-  background: linear-gradient(90deg, rgba(27, 59, 107, 0.35) 0%, rgba(27, 59, 107, 0.1) 100%);
-}
-
-.footer-mark {
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.footer-quote {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  color: var(--text);
-  letter-spacing: 3px;
-  line-height: 1.4;
-  flex: 1;
-  font-weight: 500;
-}
-
-.footer-quote .g { color: var(--accent); font-weight: 700; }
-
-.footer-en {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 3px;
-  text-align: right;
-  line-height: 1.6;
-  flex-shrink: 0;
-}
-
-.deco {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-}
+  .quote-block {
+    display: flex; align-items: center; gap: 22px;
+  }
+  .quote-ring {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .quote-text {
+    flex: 1;
+  }
+  .quote-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.35;
+    letter-spacing: 1px;
+  }
+  .quote-sub {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.55;
+  }
+  .quote-accent {
+    color: var(--gold);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;opacity:0.5;">
-      <rect x="30" y="30" width="1540" height="840" fill="none" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
-      <rect x="30" y="30" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
-      <rect x="1530" y="867" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
-      <circle cx="1560" cy="30" r="4" fill="none" stroke="rgba(180,160,120,0.25)" stroke-width="1"/>
-      <rect x="30" y="867" width="4" height="4" fill="rgba(180,160,120,0.25)"/>
-    </svg>
-  </div>
+  <div id="bg"></div>
+  <div class="geo-circle"></div>
+  <div class="geo-square"></div>
+  <div class="geo-line"></div>
+  <div class="geo-square-2"></div>
 
   <div id="ct">
-    <header>
-      <div class="header-row">
-        <h1>从<span class="accent">"能用"</span>到<span class="accent">"好用"</span>的跃迁<span class="sep">·</span>五阶段</h1>
-        <div class="subtitle">
-          <div class="subtitle-en">USER NEED · EVOLUTION ARC</div>
-          <div class="subtitle-cn">用户需求演化的完整轨迹</div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="title-block">
+        <div class="title-square"></div>
+        <div class="titles">
+          <h1><span class="case-num">案例 12</span>desktop 供需缺口</h1>
+          <div class="subtitle">数据案例：唯一失衡的组件 · Supply – Demand Gap · Component Level</div>
         </div>
       </div>
-      <p class="intro">
-        <span class="intro-mark">◆</span>从"能用"到"好用"的跃迁是五步 —— <span class="stages-inline">专业化<span class="arrow">→</span>生命化<span class="arrow">→</span>自动化<span class="arrow">→</span>持久化<span class="arrow">→</span>智慧化</span>，每一步都代表用户对 agent 的需求提升。
-      </p>
-    </header>
-
-    <div class="section-head">
-      <div class="section-bar"></div>
-      <div class="section-title">TIMELINE OF EVOLUTION</div>
-      <div class="section-note">2026 · Q2 — Q3</div>
+      <div class="header-meta">
+        <div class="header-line"></div>
+        <div class="meta-text">SUPPLY · DEMAND · AUDIT</div>
+      </div>
     </div>
 
-    <div class="visual-area">
-      <svg id="timeline-svg" width="1480" height="130" viewBox="0 0 1480 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="147" y1="65" x2="408" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="408" y1="65" x2="670" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="670" y1="65" x2="931" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="931" y1="65" x2="1193" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="1221" y1="65" x2="1454" y2="65" stroke="rgba(180,160,120,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+    <!-- KPI cards -->
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-label">DESKTOP 需求</div>
+        <div class="kpi-value"><span class="kpi-num">11</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">用户主动要求的功能占比<br><span class="kpi-sub-en">DEMAND SHARE</span></div>
+      </div>
+      <div class="kpi warn">
+        <div class="kpi-label">DESKTOP 供给</div>
+        <div class="kpi-value"><span class="kpi-num">8</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">以 bug 修复为主的产出<br><span class="kpi-sub-en">SUPPLY SHARE</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">SURFACE RELEASE</div>
+        <div class="kpi-value"><span class="kpi-num">100</span><span class="kpi-unit">PRs / 周</span></div>
+        <div class="kpi-sub">集中投入至 desktop 组件<br><span class="kpi-sub-en">PR THROUGHPUT</span></div>
+      </div>
+    </div>
 
-        <line x1="277" y1="40" x2="277" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="539" y1="40" x2="539" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="802" y1="40" x2="802" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="1062" y1="40" x2="1062" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Table -->
+    <div class="table-section">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:28%;">组件 Component</th>
+            <th style="width:14%;">需求占比</th>
+            <th style="width:14%;">供给占比</th>
+            <th>供需匹配评估</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warn">
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">desktop</span></div></td>
+            <td><span class="num warn">11<span class="pct">%</span></span></td>
+            <td><span class="num warn">8<span class="pct">%</span></span></td>
+            <td><span class="badge-mini">⚠ 供给欠配</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">agent</span></div></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="num">26<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">gateway</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">cli</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">17<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+        </tbody>
+      </table>
 
-        <polygon points="279,59 292,65 279,71" fill="#B4A078"/>
-        <polygon points="541,59 554,65 541,71" fill="#B4A078"/>
-        <polygon points="804,59 817,65 804,71" fill="#B4A078"/>
-        <polygon points="1064,59 1077,65 1064,71" fill="#B4A078"/>
-        <polygon points="1456,57 1472,65 1456,73" fill="rgba(180,160,120,0.65)"/>
+      <div class="table-caption">
+        <div class="badge-gold">
+          <span class="dot-gold"></span>
+          Surface Release · 2026-06-05 一周 100 PRs
+        </div>
+        <div class="caption-note">— 团队对 desktop 的集中投入已在产出端显现</div>
+      </div>
+    </div>
 
-        <circle cx="147" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <rect x="394" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <circle cx="670" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <rect x="917" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <circle cx="1193" cy="65" r="22" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.5"/>
-        <rect x="1177" y="49" width="32" height="32" fill="#1B3B6B" stroke="#B4A078" stroke-width="2"/>
-
-        <text x="147" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">01</text>
-        <text x="408" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">02</text>
-        <text x="670" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">03</text>
-        <text x="931" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">04</text>
-        <text x="1193" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">05</text>
-      </svg>
-
-      <div class="top-labels">
-        <div class="top-label" style="left:147px;">
-          <div class="num">STAGE 01</div>
-          <div class="pr">#5143</div>
-          <div class="date">2026 · 04</div>
-        </div>
-        <div class="top-label" style="left:408px;">
-          <div class="num">STAGE 02</div>
-          <div class="pr">#53871</div>
-          <div class="date">2026 · 06</div>
-        </div>
-        <div class="top-label" style="left:670px;">
-          <div class="num">STAGE 03</div>
-          <div class="pr">#61044</div>
-          <div class="date">2026 · 07</div>
-        </div>
-        <div class="top-label" style="left:931px;">
-          <div class="num">STAGE 04</div>
-          <div class="pr">#82198</div>
-          <div class="date">2026 · 08</div>
-        </div>
-        <div class="top-label" style="left:1193px;">
-          <div class="num">STAGE 05 · FINAL</div>
-          <div class="pr">#94266</div>
-          <div class="date">2026 · 08</div>
-        </div>
+    <!-- Narrative -->
+    <div class="narrative">
+      <div class="narrative-left">
+        <div class="nar-label">观 察 · INSIGHTS</div>
+        <div class="nar-line"><span class="step">01</span>需求 <span class="num-inline">11%</span> 高于供给 <span class="num-inline">8%</span>，是四个组件中唯一失衡</div>
+        <div class="nar-line"><span class="step">02</span>类型错配：需求偏新功能，供给偏 bug 修复</div>
+        <div class="nar-line"><span class="step">03</span>Surface Release 一周 <span class="num-inline">100 PRs</span>，集中投入已启动</div>
       </div>
 
-      <div class="bottom-labels">
-        <div class="bottom-label" style="left:147px;">
-          <div class="stage-name">专业化</div>
-          <div class="tag">Gateway Hooks</div>
-          <div class="vol">— 工具层 · 接入就绪 —</div>
+      <div class="quote-block">
+        <div class="quote-ring">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="26" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.75"/>
+            <circle cx="28" cy="28" r="7" fill="#B4A078"/>
+          </svg>
         </div>
-        <div class="bottom-label" style="left:408px;">
-          <div class="stage-name">生命化</div>
-          <div class="tag">Soul / Curiosity Engine</div>
-          <div class="vol">— 内驱力 · 好奇心 —</div>
-        </div>
-        <div class="bottom-label" style="left:670px;">
-          <div class="stage-name">自动化</div>
-          <div class="tag">Cron-native Batch API</div>
-          <div class="vol">— 定时批处理 —</div>
-        </div>
-        <div class="bottom-label" style="left:931px;">
-          <div class="stage-name">持久化</div>
-          <div class="tag">Skill-Persistence EPIC</div>
-          <div class="vol">54,633 · body</div>
-        </div>
-        <div class="bottom-label" style="left:1193px;">
-          <div class="stage-name">智慧化</div>
-          <div class="tag">Collective Wisdom · V1</div>
-          <div class="vol">52,295 · body</div>
-        </div>
-      </div>
-
-      <div class="transition-labels">
-        <div class="tl-item" style="left:284px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">TOOL → LIFE</div>
-        </div>
-        <div class="tl-item" style="left:545px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">LIFE → AUTO</div>
-        </div>
-        <div class="tl-item" style="left:808px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">AUTO → PERSIST</div>
-        </div>
-        <div class="tl-item" style="left:1068px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">PERSIST → WISDOM</div>
+        <div class="quote-text">
+          <div class="quote-main">"生态是结果，不是手段。"</div>
+          <div class="quote-sub">能力扩张由<span class="quote-accent">用户需求</span>驱动，而非行政推动。</div>
         </div>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="footer-mark"></div>
-      <div class="footer-quote">从<span class="g">工具</span>到<span class="g">伙伴</span>，从伙伴到<span class="g">自我组织</span>，最终走向<span class="g">集体智慧</span></div>
-      <div class="footer-en">FROM TOOL · TO PARTNER ·<br>TO SELF-ORGANIZATION · TO WISDOM</div>
-    </div>
   </div>
 </div>
 </body>

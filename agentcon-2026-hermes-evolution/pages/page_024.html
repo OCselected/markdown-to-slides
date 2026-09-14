@@ -4,527 +4,473 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>案例 04 · Velocity Release · 大重构</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;600;700;900&display=swap" rel="stylesheet">
+<title>案例 2 · Tenacity Release · 多 Agent Kanban</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0F1E33;
-  --primary: #1B3B6B;
-  --accent: #B4A078;
-  --text: #F5F0E8;
-  --text-dim: rgba(245, 240, 232, 0.62);
-  --text-faint: rgba(245, 240, 232, 0.38);
-  --line: rgba(245, 240, 232, 0.14);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #050d1c; }
-body {
-  font-family: 'Noto Sans SC', -apple-system, sans-serif;
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: #0F1E33;
-}
-#bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-#ct { position: absolute; inset: 0; z-index: 1; padding: 48px 60px 34px 60px; }
+  :root{
+    --bg:#0F1E33;
+    --bg-2:#0A1626;
+    --ink:#F5F0E8;
+    --ink-2:rgba(245,240,232,0.72);
+    --ink-3:rgba(245,240,232,0.48);
+    --amber:#B4A078;
+    --amber-2:#C9B48A;
+    --line:rgba(180,160,120,0.35);
+    --card:rgba(245,240,232,0.045);
+    --card-border:rgba(245,240,232,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans SC',sans-serif;
+    color:var(--ink);
+    background:#060d18;
+  }
+  .wrapper{
+    width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;
+    background:
+      radial-gradient(1200px 700px at 20% 15%, rgba(180,160,120,0.08), transparent 60%),
+      radial-gradient(900px 600px at 85% 85%, rgba(180,160,120,0.05), transparent 60%),
+      linear-gradient(180deg,#122442 0%,#0F1E33 40%,#0A1626 100%);
+  }
+  #bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  #ct{position:absolute;inset:0;z-index:1;padding:44px 60px 40px;box-sizing:border-box;}
 
-/* Bauhaus geometric decorative elements */
-.bg-grad {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 640px;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(27,59,107,0.55) 0%, rgba(27,59,107,0.12) 55%, transparent 100%);
-}
-.bg-arc {
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 320px;
-  height: 320px;
-  border: 1.5px solid rgba(180,160,120,0.28);
-  border-radius: 50%;
-}
-.bg-dot {
-  position: absolute;
-  top: 118px;
-  right: 260px;
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-.bg-sq {
-  position: absolute;
-  bottom: 108px;
-  left: -24px;
-  width: 60px;
-  height: 60px;
-  background: var(--primary);
-}
-.bg-circ-outline {
-  position: absolute;
-  bottom: -110px;
-  left: 500px;
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgba(180,160,120,0.18);
-  border-radius: 50%;
-}
-.bg-hline {
-  position: absolute;
-  top: 140px;
-  right: 0;
-  width: 220px;
-  height: 1px;
-  background: rgba(180,160,120,0.4);
-}
+  /* Baustyle decorative geometry in bg */
+  .bg-shape{position:absolute;}
+  .bg-circle{
+    left:-120px;top:-140px;width:360px;height:360px;border-radius:50%;
+    border:1px solid rgba(180,160,120,0.18);
+  }
+  .bg-circle-2{
+    right:-160px;bottom:-160px;width:420px;height:420px;border-radius:50%;
+    border:1px solid rgba(180,160,120,0.14);
+  }
+  .bg-square{
+    left:820px;top:-40px;width:120px;height:120px;
+    border:1px solid rgba(180,160,120,0.22);
+    transform:rotate(15deg);
+  }
+  .bg-line-v{
+    left:60px;top:0;width:1px;height:100%;
+    background:linear-gradient(180deg,transparent,rgba(180,160,120,0.25),transparent);
+  }
+  .bg-line-h{
+    left:0;top:460px;height:1px;width:100%;
+    background:linear-gradient(90deg,transparent,rgba(180,160,120,0.18),transparent);
+  }
+  .bg-dot{
+    left:44px;top:460px;width:8px;height:8px;border-radius:50%;
+    background:var(--amber);box-shadow:0 0 12px rgba(180,160,120,0.6);
+  }
 
-/* Header */
-.header { margin-bottom: 26px; }
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--accent);
-  font-family: 'Noto Sans SC';
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.32em;
-  margin-bottom: 14px;
-}
-.eyebrow .dash {
-  width: 34px;
-  height: 2px;
-  background: var(--accent);
-}
-.title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 46px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-}
-.title .accent-dot {
-  color: var(--accent);
-  font-weight: 500;
-}
-.subtitle {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 500;
-  font-size: 20px;
-  color: var(--accent);
-  margin-top: 10px;
-  letter-spacing: 0.02em;
-}
-.subtitle .arr { color: var(--accent); }
+  /* Header */
+  .header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:18px;}
+  .header-left{flex:1;min-width:0;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:0.22em;color:var(--amber);
+    text-transform:uppercase;margin-bottom:12px;
+  }
+  .kicker .bar{width:28px;height:1px;background:var(--amber);}
+  h1{
+    font-family:'Noto Serif SC',serif;
+    font-weight:900;
+    font-size:44px;line-height:1.15;
+    color:var(--ink);
+    letter-spacing:-0.5px;
+  }
+  h1 .accent{color:var(--amber);}
+  .subtitle{
+    font-family:'Noto Serif SC',serif;
+    font-weight:500;font-style:italic;
+    font-size:18px;color:var(--ink-2);
+    margin-top:10px;letter-spacing:0.5px;
+  }
+  .subtitle .quote{color:var(--amber-2);font-style:italic;}
+  .header-right{
+    display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+    padding-bottom:6px;
+  }
+  .header-right .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.2em;color:var(--ink-3);
+  }
+  .header-right .num{
+    font-family:'JetBrains Mono',monospace;font-size:22px;
+    color:var(--amber);letter-spacing:0.05em;
+  }
 
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-.divider .bar-thick { width: 56px; height: 4px; background: var(--accent); }
-.divider .bar-thin { width: 220px; height: 1px; background: rgba(245,240,232,0.25); }
-.divider .bar-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 50%;
-}
+  .divider{
+    display:flex;align-items:center;gap:14px;margin:6px 0 20px;
+  }
+  .divider .l{flex:1;height:1px;background:linear-gradient(90deg,rgba(180,160,120,0.5),rgba(180,160,120,0.05));}
+  .divider .s{width:10px;height:10px;border:1px solid var(--amber);background:transparent;}
+  .divider .s.f{background:var(--amber);}
 
-/* Content grid */
-.content {
-  display: grid;
-  grid-template-columns: 800px 1fr;
-  gap: 44px;
-}
+  /* Main grid */
+  .main{display:grid;grid-template-columns:820px 1fr;gap:36px;height:520px;}
 
-/* Left column */
-.hero-block { position: relative; }
-.hero-frame {
-  width: 800px;
-  height: 424px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(180,160,120,0.28);
-  background: var(--primary);
-}
-.hero-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.hero-corner-tl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-}
-.hero-corner-br {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 26px;
-  height: 26px;
-  border-bottom: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-}
-.hero-caption {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--text-dim);
-  letter-spacing: 0.02em;
-}
-.hero-caption .tag {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
-  padding: 3px 10px;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-}
+  .left{display:flex;flex-direction:column;gap:14px;}
 
-/* Right column */
-.right-col { position: relative; }
-.hero-metrics {
-  position: relative;
-  background: rgba(27, 59, 107, 0.5);
-  border: 1px solid rgba(180,160,120,0.3);
-  padding: 20px 24px 22px 24px;
-  display: grid;
-  grid-template-columns: 1fr 60px 1fr;
-  align-items: center;
-  gap: 12px;
-}
-.hero-metrics::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--accent);
-}
-.metric-l, .metric-r { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.metric-label {
-  font-size: 10px;
-  color: var(--text-faint);
-  letter-spacing: 0.3em;
-  font-weight: 500;
-}
-.metric-value {
-  font-family: 'Noto Serif SC', serif;
-  color: var(--text);
-  font-weight: 700;
-  line-height: 1;
-}
-.metric-l .metric-value { font-size: 54px; color: var(--text-dim); }
-.metric-r .metric-value { font-size: 62px; color: var(--accent); }
-.metric-unit {
-  font-size: 10px;
-  color: var(--text-faint);
-  letter-spacing: 0.16em;
-}
-.metric-arrow {
-  font-family: 'Noto Serif SC';
-  color: var(--accent);
-  font-size: 38px;
-  font-weight: 400;
-  line-height: 1;
-  position: relative;
-}
-.metric-arrow::before,
-.metric-arrow::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 26px;
-  height: 1px;
-  background: var(--accent);
-  transform: translateX(-50%);
-}
-.metric-arrow::before { top: 6px; }
-.metric-arrow::after { bottom: 6px; }
-.hero-metrics-foot {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(180,160,120,0.28);
-}
-.mf-tag {
-  font-family: 'Noto Serif SC';
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 15px;
-  letter-spacing: 0.06em;
-}
-.mf-text {
-  font-size: 12px;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
-}
+  .version-bar{
+    display:flex;align-items:center;gap:16px;
+    padding:14px 20px;
+    background:linear-gradient(90deg,rgba(180,160,120,0.14),rgba(180,160,120,0.02));
+    border-left:3px solid var(--amber);
+    border-radius:2px;
+  }
+  .version-bar .v-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:20px;font-weight:700;color:var(--amber);
+    letter-spacing:0.02em;
+  }
+  .version-bar .v-sep{width:1px;height:22px;background:rgba(180,160,120,0.35);}
+  .version-bar .v-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--ink-2);letter-spacing:0.05em;
+  }
+  .version-bar .v-name{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:16px;color:var(--ink);margin-left:auto;
+  }
+  .version-bar .v-name span{color:var(--amber-2);font-style:italic;}
 
-/* Key points */
-.keypoints {
-  list-style: none;
-  margin-top: 20px;
-}
-.keypoints li {
-  display: grid;
-  grid-template-columns: 30px 88px 1fr;
-  gap: 12px;
-  padding: 9px 0;
-  border-bottom: 1px dashed rgba(245,240,232,0.12);
-  align-items: baseline;
-}
-.kp-idx {
-  font-family: 'Noto Serif SC';
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-}
-.kp-tag {
-  font-family: 'Noto Serif SC';
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--text);
-  letter-spacing: 0.06em;
-  padding-right: 4px;
-  border-right: 1px solid rgba(180,160,120,0.32);
-}
-.kp-text {
-  font-size: 12.5px;
-  color: var(--text-dim);
-  line-height: 1.55;
-}
-.kp-text .h {
-  color: var(--accent);
-  font-family: 'Noto Serif SC';
-  font-weight: 600;
-}
-.kp-text em {
-  color: var(--text);
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
+  .cards{display:flex;flex-direction:column;gap:9px;flex:1;}
+  .card{
+    display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;
+    padding:11px 16px 11px 14px;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:2px;
+    position:relative;
+  }
+  .card .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--amber);
+    border-right:1px solid var(--card-border);
+    padding-right:10px;height:100%;display:flex;align-items:flex-start;padding-top:2px;
+    letter-spacing:0.05em;
+  }
+  .card .body{min-width:0;}
+  .card .title{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:15px;color:var(--ink);margin-bottom:3px;line-height:1.3;
+  }
+  .card .desc{
+    font-size:12.5px;color:var(--ink-2);line-height:1.5;
+  }
+  .card .desc code{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--amber-2);font-size:12px;
+    padding:1px 5px;background:rgba(180,160,120,0.1);
+    border-radius:2px;
+  }
+  .card.hi{
+    border:1px solid var(--amber);
+    background:linear-gradient(90deg,rgba(180,160,120,0.16),rgba(180,160,120,0.04));
+    box-shadow:0 0 0 1px rgba(180,160,120,0.15) inset;
+  }
+  .card.hi .idx{color:var(--amber);border-right-color:rgba(180,160,120,0.4);}
+  .card.hi .title{color:var(--amber-2);}
+  .card.hi::after{
+    content:'';position:absolute;right:-1px;top:-1px;
+    width:8px;height:8px;background:var(--amber);
+  }
+  .badge{
+    display:inline-block;font-family:'JetBrains Mono',monospace;
+    font-size:10px;color:var(--amber);
+    border:1px solid var(--amber);
+    padding:1px 6px;margin-left:8px;border-radius:2px;
+    letter-spacing:0.1em;vertical-align:2px;
+  }
 
-/* Bottom stats */
-.bottom-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(180,160,120,0.32);
-  border-bottom: 1px solid rgba(180,160,120,0.14);
-  background: linear-gradient(180deg, rgba(27,59,107,0.42) 0%, rgba(27,59,107,0.1) 100%);
-}
-.stat {
-  padding: 16px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  position: relative;
-}
-.stat + .stat::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 20px;
-  bottom: 20px;
-  width: 1px;
-  background: rgba(245,240,232,0.12);
-}
-.stat-label {
-  font-size: 11px;
-  color: var(--text-faint);
-  letter-spacing: 0.28em;
-  font-weight: 500;
-}
-.stat-value {
-  font-family: 'Noto Serif SC';
-  color: var(--text);
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.stat-value .plus {
-  color: var(--accent);
-  font-size: 20px;
-  font-weight: 500;
-}
-.stat-note {
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
-}
-.stat-note .dot { color: var(--accent); margin: 0 5px; }
+  /* Right column */
+  .right{display:flex;flex-direction:column;gap:12px;}
+  .hero-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:2752/1536;
+    border:1px solid var(--card-border);
+    background:#0A1626;
+    overflow:hidden;
+  }
+  .hero-frame img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(0.95) contrast(1.02);
+  }
+  .hero-frame .corner{
+    position:absolute;width:14px;height:14px;
+    border:1px solid var(--amber);
+  }
+  .hero-frame .corner.tl{top:8px;left:8px;border-right:none;border-bottom:none;}
+  .hero-frame .corner.tr{top:8px;right:8px;border-left:none;border-bottom:none;}
+  .hero-frame .corner.bl{bottom:8px;left:8px;border-right:none;border-top:none;}
+  .hero-frame .corner.br{bottom:8px;right:8px;border-left:none;border-top:none;}
+  .hero-frame .meta{
+    position:absolute;top:14px;left:30px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    letter-spacing:0.22em;color:var(--amber);
+    background:rgba(15,30,51,0.7);padding:3px 8px;
+    border:1px solid rgba(180,160,120,0.4);
+  }
+  .caption{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Noto Serif SC',serif;font-style:italic;
+    font-size:13px;color:var(--ink-2);
+  }
+  .caption .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+  .caption .en{
+    font-family:'JetBrains Mono',monospace;font-style:normal;
+    font-size:10px;color:var(--ink-3);letter-spacing:0.15em;
+    margin-left:auto;
+  }
 
-/* Small signature */
-.sig {
-  position: absolute;
-  top: 46px;
-  right: 60px;
-  text-align: right;
-  font-size: 10px;
-  color: var(--text-faint);
-  letter-spacing: 0.3em;
-  z-index: 2;
-  line-height: 1.8;
-}
-.sig .k { color: var(--accent); }
+  .right-bottom{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;
+  }
+  .mini{
+    padding:10px 12px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:2px;
+  }
+  .mini .lbl{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;
+    letter-spacing:0.2em;color:var(--ink-3);text-transform:uppercase;margin-bottom:4px;
+  }
+  .mini .val{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:13px;color:var(--amber-2);line-height:1.3;
+  }
+  .mini .sub{
+    font-size:11px;color:var(--ink-2);margin-top:2px;line-height:1.4;
+  }
+
+  /* KPI bar */
+  .kpi{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--card-border);
+    border:1px solid var(--card-border);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .kpi-cell{
+    background:linear-gradient(180deg,rgba(245,240,232,0.05),rgba(245,240,232,0.02));
+    padding:12px 18px 12px;
+    position:relative;
+  }
+  .kpi-cell .num{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;font-size:30px;color:var(--amber);
+    letter-spacing:-0.5px;line-height:1;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .kpi-cell .num .unit{
+    font-size:13px;color:var(--amber-2);font-weight:500;
+    letter-spacing:0.05em;
+  }
+  .kpi-cell .lbl{
+    font-size:11px;color:var(--ink-2);
+    letter-spacing:0.1em;margin-top:5px;
+    text-transform:uppercase;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .kpi-cell .sub{
+    font-size:10.5px;color:var(--ink-3);margin-top:2px;
+    font-family:'Noto Sans SC',sans-serif;letter-spacing:0.03em;
+  }
+  .kpi-cell::before{
+    content:'';position:absolute;top:0;left:0;width:24px;height:2px;
+    background:var(--amber);
+  }
+
+  /* Summary */
+  .summary{
+    margin-top:12px;display:flex;align-items:center;gap:14px;
+  }
+  .summary .mark{
+    width:10px;height:10px;background:var(--amber);flex-shrink:0;
+    transform:rotate(45deg);
+  }
+  .summary .text{
+    font-family:'Noto Serif SC',serif;font-weight:500;
+    font-size:13px;color:var(--ink);line-height:1.5;
+  }
+  .summary .text em{color:var(--amber-2);font-style:italic;font-weight:700;}
+
+  .footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;color:var(--ink-3);letter-spacing:0.2em;
+  }
+  .footer .l{display:flex;align-items:center;gap:10px;}
+  .footer .dot{width:5px;height:5px;border-radius:50%;background:var(--amber);}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-grad"></div>
-    <div class="bg-arc"></div>
-    <div class="bg-dot"></div>
-    <div class="bg-sq"></div>
-    <div class="bg-circ-outline"></div>
-    <div class="bg-hline"></div>
+    <div class="bg-shape bg-circle"></div>
+    <div class="bg-shape bg-circle-2"></div>
+    <div class="bg-shape bg-square"></div>
+    <div class="bg-shape bg-line-v"></div>
+    <div class="bg-shape bg-line-h"></div>
+    <div class="bg-shape bg-dot"></div>
   </div>
 
   <div id="ct">
-    <div class="sig">
-      <div>SENSE NOVA · Case Study Series</div>
-      <div class="k">CASE 04 / 08</div>
-    </div>
-
+    <!-- Header -->
     <div class="header">
-      <div class="eyebrow"><span class="dash"></span><span>CASE 04 · DEEP REFACTOR</span></div>
-      <h1 class="title">Velocity Release <span class="accent-dot">·</span> 大重构</h1>
-      <p class="subtitle">16,000 行 <span class="arr">→</span> 3,821 行的制度设计</p>
-      <div class="divider">
-        <span class="bar-thick"></span>
-        <span class="bar-dot"></span>
-        <span class="bar-thin"></span>
+      <div class="header-left">
+        <div class="kicker"><span class="bar"></span><span>Case Study · 02</span><span class="bar"></span></div>
+        <h1>案例 2 · <span class="accent">Tenacity Release</span> · 多 Agent Kanban</h1>
+        <div class="subtitle">"<span class="quote">finishes what it starts</span>" 的文化承诺 —— 让可靠性成为默认行为</div>
+      </div>
+      <div class="header-right">
+        <span class="tag">RELEASE NOTE</span>
+        <span class="num">v0.13.0</span>
+        <span class="tag">2026 · 05 · 07</span>
       </div>
     </div>
 
-    <div class="content">
-      <div class="hero-block">
+    <div class="divider">
+      <span class="l"></span>
+      <span class="s f"></span>
+      <span class="s"></span>
+      <span class="l"></span>
+    </div>
+
+    <!-- Main two-column -->
+    <div class="main">
+      <!-- Left column -->
+      <div class="left">
+        <div class="version-bar">
+          <span class="v-tag">v0.13.0</span>
+          <span class="v-sep"></span>
+          <span class="v-date">2026-05-07</span>
+          <span class="v-name">— The <span>Tenacity</span> Release</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="idx">01</div>
+            <div class="body">
+              <div class="title">Kanban 多 Agent 平台</div>
+              <div class="desc">
+                <code>heartbeat</code> 心跳保活 · <code>reclaim</code> 失联回收 · <code>zombie detection</code> 僵死检测——把多智能体看板从"能跑"推向"能守"。
+              </div>
+            </div>
+          </div>
+
+          <div class="card hi">
+            <div class="idx">02</div>
+            <div class="body">
+              <div class="title">/goal 命令 · Ralph Loop<span class="badge">CORE</span></div>
+              <div class="desc">
+                Agent 锁定目标跨 turn 执行——不再因单轮结束而放弃；失败即重入、偏离即收敛，目标直至完成方才释放。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">03</div>
+            <div class="body">
+              <div class="title">Checkpoints v2</div>
+              <div class="desc">
+                State 持久化重写、<code>真剪枝</code> 与磁盘护栏——让长任务在断电级故障后仍可无损续跑。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">04</div>
+            <div class="body">
+              <div class="title">Sessions Survive Restarts</div>
+              <div class="desc">
+                Gateway 崩溃后自动恢复会话上下文；进程可以死，工作流不能断。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">05</div>
+            <div class="body">
+              <div class="title">制度含义 · Tenacity as Norm</div>
+              <div class="desc">
+                "可靠性"从代码质量延伸到任务持久性——Agent 必须把开始的事做完。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="right">
         <div class="hero-frame">
-          <img src="../images/page_024_hero.png" alt="Velocity 大重构 · 从纠缠的旧代码到清爽模块化">
-          <span class="hero-corner-tl"></span>
-          <span class="hero-corner-br"></span>
+          <img src="../images/page_022_hero.png" alt="多 Agent Kanban 抽象合成图：三列看板、跨列漂浮的任务卡片、心跳波形与同心圆目标点对齐">
+          <span class="corner tl"></span>
+          <span class="corner tr"></span>
+          <span class="corner bl"></span>
+          <span class="corner br"></span>
+          <span class="meta">FIG · TENACITY / 01</span>
         </div>
-        <div class="hero-caption">
-          <span class="tag">FIG. 04</span>
-          <span>纠缠的旧代码 <span style="color:var(--accent);">⇢</span> 模块化新结构</span>
-        </div>
-      </div>
-
-      <div class="right-col">
-        <div class="hero-metrics">
-          <div class="metric-l">
-            <span class="metric-label">BEFORE</span>
-            <span class="metric-value">16,083</span>
-            <span class="metric-unit">行 · LINES</span>
-          </div>
-          <div class="metric-arrow">→</div>
-          <div class="metric-r">
-            <span class="metric-label">AFTER</span>
-            <span class="metric-value">3,821</span>
-            <span class="metric-unit">行 · LINES</span>
-          </div>
-          <div class="hero-metrics-foot">
-            <span class="mf-tag">−76%</span>
-            <span class="mf-text">14 modules · cohesion <code style="color:var(--text);font-family:'Noto Sans SC';">agent/*</code></span>
-          </div>
+        <div class="caption">
+          <span class="dot"></span>
+          <span>心跳守护任务，锁定不偏离目标</span>
+          <span class="en">HEARTBEAT × GOAL-LOCK</span>
         </div>
 
-        <ol class="keypoints">
-          <li>
-            <span class="kp-idx">01</span>
-            <span class="kp-tag">Release</span>
-            <span class="kp-text">v0.15.0 &nbsp;·&nbsp; <span class="h">2026-05-28</span> The Velocity Release</span>
-          </li>
-          <li>
-            <span class="kp-idx">02</span>
-            <span class="kp-tag">核心动作</span>
-            <span class="kp-text"><em>run_agent.py</em> 从 16,083 行坍缩到 3,821 行 &nbsp;<span class="h">−76%</span></span>
-          </li>
-          <li>
-            <span class="kp-idx">03</span>
-            <span class="kp-tag">重构方式</span>
-            <span class="kp-text">提取为 <span class="h">14 个</span> <em>cohesion agent/*</em> 模块 &nbsp;·&nbsp; 行为不变</span>
-          </li>
-          <li>
-            <span class="kp-idx">04</span>
-            <span class="kp-tag">冷启动</span>
-            <span class="kp-text">又一秒节省 &nbsp;·&nbsp; per-turn function calls <span class="h">−47%</span></span>
-          </li>
-          <li>
-            <span class="kp-idx">05</span>
-            <span class="kp-tag">session_search</span>
-            <span class="kp-text"><span class="h">4,500×</span> 更快 &nbsp;·&nbsp; <em>0 LLM 调用</em> &nbsp;·&nbsp; 免费</span>
-          </li>
-          <li>
-            <span class="kp-idx">06</span>
-            <span class="kp-tag">制度含义</span>
-            <span class="kp-text">速度 <em>不是优化，是制度设计</em> — 重构让未来开发更快、插件作者能 grep</span>
-          </li>
-        </ol>
-
-        <div class="bottom-bar">
-          <div class="stat">
-            <span class="stat-label">COMMITS</span>
-            <span class="stat-value">1,302</span>
-            <span class="stat-note">Release 窗口</span>
+        <div class="right-bottom">
+          <div class="mini">
+            <div class="lbl">Paradigm</div>
+            <div class="val">Reactive → Tenacious</div>
+            <div class="sub">从被动响应到持久追索</div>
           </div>
-          <div class="stat">
-            <span class="stat-label">MERGED PRs</span>
-            <span class="stat-value">747</span>
-            <span class="stat-note">Merged PRs</span>
-          </div>
-          <div class="stat">
-            <span class="stat-label">ISSUES CLOSED</span>
-            <span class="stat-value">560<span class="plus">+</span></span>
-            <span class="stat-note">15 P0 <span class="dot">·</span> 65 P1</span>
-          </div>
-          <div class="stat">
-            <span class="stat-label">CONTRIBUTORS</span>
-            <span class="stat-value">321</span>
-            <span class="stat-note">Contributors</span>
+          <div class="mini">
+            <div class="lbl">Invariant</div>
+            <div class="val">Session Never Dropped</div>
+            <div class="sub">进程可死，工作流不断</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- KPI bar -->
+    <div class="kpi">
+      <div class="kpi-cell">
+        <div class="num">864</div>
+        <div class="lbl">WINDOW COMMITS</div>
+        <div class="sub">窗口期内累计提交</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">588</div>
+        <div class="lbl">MERGED PRs</div>
+        <div class="sub">已合并 Pull Requests</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">282</div>
+        <div class="lbl">ISSUES CLOSED</div>
+        <div class="sub">含 13 P0 · 36 P1</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="num">295</div>
+        <div class="lbl">CONTRIBUTORS</div>
+        <div class="sub">参与贡献者</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+      <span class="mark"></span>
+      <span class="text">可靠性从<em>代码质量</em>延伸到<em>任务持久性</em>——Agent 必须把开始的事做完。</span>
+    </div>
+
+    <div class="footer">
+      <div class="l">
+        <span class="dot"></span>
+        <span>SENSNOVA · CASE STUDY 02 / TENACITY</span>
+      </div>
+      <div>FINISHES WHAT IT STARTS</div>
     </div>
   </div>
 </div>

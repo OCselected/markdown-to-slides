@@ -4,745 +4,728 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>PR #61044 · Cron-native Batch API</title>
+<title>PR #5143 · 多角色自动路由</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --bg: #0F1E33;
+  --bg-2: #172B47;
+  --paper: #F5F0E8;
+  --paper-2: #D9CFBC;
+  --paper-mute: #8FA3B8;
+  --gold: #B4A078;
+  --gold-2: #C9B78F;
+  --teal: #4F9C9A;
+  --teal-2: #6AB5B3;
+  --coral: #C97B5C;
+  --blue: #7DA5C9;
+  --line: rgba(180,160,120,0.25);
+  --line-strong: rgba(180,160,120,0.5);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--paper);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.serif { font-family: 'Noto Serif SC', serif; }
+.mono { font-family: 'JetBrains Mono', monospace; }
 
-  :root {
-    --bg-deep: #0F1E33;
-    --bg-mid: #12233D;
-    --primary: #1B3B6B;
-    --copper: #B4A078;
-    --copper-soft: #8C7F61;
-    --cream: #F5F0E8;
-    --cream-dim: rgba(245, 240, 232, 0.62);
-    --cream-faint: rgba(245, 240, 232, 0.32);
-    --hairline: rgba(245, 240, 232, 0.14);
-  }
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #0C1929 0%, #0F1E33 50%, #14263E 100%);
+}
+.bg-circle { position: absolute; pointer-events: none; }
+.bg-circle.c1 {
+  width: 520px; height: 520px; border-radius: 50%;
+  border: 1px solid rgba(180,160,120,0.06);
+  top: -200px; right: -160px;
+}
+.bg-circle.c2 {
+  width: 720px; height: 720px; border-radius: 50%;
+  border: 1px solid rgba(79,156,154,0.05);
+  bottom: -260px; left: -220px;
+}
+.bg-cross { position: absolute; width: 24px; height: 24px; pointer-events: none; }
+.bg-cross::before, .bg-cross::after {
+  content: ''; position: absolute; background: var(--gold); opacity: 0.5;
+}
+.bg-cross::before { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+.bg-cross::after { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+.bg-square { position: absolute; pointer-events: none; }
+.bg-square.s1 { width: 80px; height: 80px; border: 1px solid rgba(180,160,120,0.15); top: 130px; right: 220px; transform: rotate(45deg); }
+.bg-square.s2 { width: 40px; height: 40px; background: rgba(79,156,154,0.06); top: 200px; right: 340px; }
+.bg-square.s3 { width: 24px; height: 24px; border: 1px solid rgba(180,160,120,0.4); bottom: 240px; left: 240px; transform: rotate(20deg); }
+.bg-hline { position: absolute; height: 1px; background: var(--line); pointer-events: none; }
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
 
-  body {
-    background: var(--bg-deep);
-    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-    color: var(--cream);
-    -webkit-font-smoothing: antialiased;
-    font-feature-settings: "palt";
-  }
+/* ===== HEADER ===== */
+.hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.hdr-left .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.hdr-left .kicker span.dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+.title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--paper);
+  letter-spacing: 0.5px;
+}
+.title .num {
+  color: var(--gold-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--paper-2);
+  margin-top: 8px;
+  letter-spacing: 1.5px;
+}
+.subtitle .sep {
+  color: var(--gold);
+  margin: 0 10px;
+  opacity: 0.6;
+}
+.hdr-right {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--paper-mute);
+  line-height: 1.9;
+}
+.hdr-right .val { color: var(--gold); }
 
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-  }
+/* ===== MAIN 3 COLS ===== */
+.main {
+  display: grid;
+  grid-template-columns: 320px 580px 1fr;
+  gap: 40px;
+  flex: 1;
+  min-height: 0;
+}
+.col { display: flex; flex-direction: column; }
 
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: linear-gradient(140deg, #0A1628 0%, #0F1E33 55%, #16294A 100%);
-  }
+/* LEFT COL */
+.case-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.case-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 120px;
+  font-weight: 900;
+  color: var(--gold-2);
+  line-height: 1;
+  letter-spacing: -4px;
+  position: relative;
+}
+.case-num::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 30px;
+  width: 6px;
+  height: 90px;
+  background: var(--teal);
+  border-radius: 1px;
+}
+.case-meta {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  color: var(--paper-mute);
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.case-meta .lbl { color: var(--gold); margin-right: 6px; opacity: 0.7; }
+.signal-section { margin-top: 20px; }
+.signal-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--paper-2);
+  margin-bottom: 14px;
+  letter-spacing: 4px;
+}
+.signal-title::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.signal-row { display: flex; align-items: baseline; margin-bottom: 12px; }
+.signal-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 40px;
+  color: var(--paper);
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.signal-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--paper-mute);
+  margin-left: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.signal-note {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11.5px;
+  color: var(--paper-mute);
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.tag-group { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  color: var(--paper-2);
+  letter-spacing: 1px;
+}
+.tag.hi {
+  background: rgba(180,160,120,0.15);
+  border-color: var(--gold);
+  color: var(--gold-2);
+}
 
-  .bg-mark {
-    position: absolute;
-    background: var(--copper);
-    opacity: 0.5;
-  }
-  .bg-mark.tl {
-    top: 44px; left: 44px;
-    width: 48px; height: 1.5px;
-    opacity: 0.55;
-  }
-  .bg-mark.br {
-    bottom: 44px; right: 44px;
-    width: 1.5px; height: 48px;
-    opacity: 0.55;
-  }
+/* MIDDLE COL */
+.diagram-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: var(--paper);
+  letter-spacing: 5px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.diagram-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.diagram {
+  width: 540px;
+  height: 440px;
+  position: relative;
+  margin: 0 auto;
+}
+.diagram svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hub {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 50% 40%, rgba(79,156,154,0.28), rgba(15,30,51,0.9));
+  border: 1.5px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.hub::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px dashed rgba(180,160,120,0.35);
+}
+.hub::after {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  border: 1px solid rgba(79,156,154,0.18);
+}
+.hub-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.hub-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--paper);
+  text-align: center;
+  line-height: 1.25;
+  padding: 0 6px;
+}
+.hub-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: var(--paper-mute);
+  margin-top: 5px;
+  letter-spacing: 1.5px;
+}
+.node {
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid;
+  background: rgba(15,30,51,0.9);
+  z-index: 2;
+}
+.node-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+.node-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--paper);
+}
+.node-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10.5px;
+  color: var(--paper-2);
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+.node-label.top { bottom: calc(100% + 12px); }
+.node-label.bot { top: calc(100% + 12px); }
+.node-label.lft {
+  right: calc(100% + 12px);
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.node-label.rgt {
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  .bg-ghost-ring {
-    position: absolute;
-    right: -160px;
-    bottom: -160px;
-    width: 500px;
-    height: 500px;
-    border: 1px solid var(--copper);
-    opacity: 0.06;
-    border-radius: 50%;
-  }
-  .bg-ghost-square {
-    position: absolute;
-    left: -80px;
-    top: 300px;
-    width: 220px;
-    height: 220px;
-    border: 1px solid var(--copper);
-    opacity: 0.05;
-  }
+/* RIGHT COL */
+.phase-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.phase-tag .bar {
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+.headline {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--paper);
+  letter-spacing: 2px;
+}
+.headline .arrow {
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 34px;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+.headline .to-team {
+  color: var(--gold-2);
+}
+.stmt {
+  margin-top: 22px;
+  padding: 18px 22px;
+  border-left: 2px solid var(--gold);
+  background: rgba(180,160,120,0.05);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--paper-2);
+  letter-spacing: 0.5px;
+}
+.stmt em {
+  color: var(--gold-2);
+  font-style: normal;
+  font-weight: 500;
+}
+.arrow-box {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.arrow-box .ab-item {
+  flex: 1;
+  text-align: center;
+}
+.ab-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: var(--gold);
+  line-height: 1;
+}
+.ab-lbl {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--paper-2);
+  margin-top: 6px;
+  letter-spacing: 3px;
+}
+.ab-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: var(--teal-2);
+}
+.evo-note {
+  margin-top: 20px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--paper);
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+}
+.evo-note .em {
+  color: var(--gold-2);
+  font-weight: 500;
+}
+.evo-note .em2 {
+  color: var(--teal-2);
+  font-weight: 500;
+}
+.evo-mark {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--paper-mute);
+  letter-spacing: 3px;
+}
+.evo-mark .dot {
+  width: 8px; height: 8px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+.evo-mark .line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 50px 60px 44px;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--hairline);
-    padding-bottom: 18px;
-    margin-bottom: 44px;
-  }
-
-  .header-left { display: flex; flex-direction: column; gap: 10px; }
-  .header-right { text-align: right; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; padding-top: 6px; }
-
-  .title {
-    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
-    font-weight: 600;
-    font-size: 22px;
-    letter-spacing: 0.04em;
-    color: var(--cream);
-    line-height: 1.1;
-  }
-  .title .pr-num {
-    color: var(--copper);
-    font-family: 'Noto Serif SC', Georgia, serif;
-  }
-  .subtitle {
-    font-size: 14px;
-    color: var(--copper);
-    letter-spacing: 0.22em;
-    font-weight: 400;
-  }
-  .subtitle::before {
-    content: '—';
-    margin-right: 12px;
-    color: var(--copper);
-    opacity: 0.8;
-  }
-  .tags-row {
-    display: flex;
-    gap: 8px;
-  }
-  .tag {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px;
-    padding: 4px 10px;
-    border: 1px solid var(--hairline);
-    color: var(--cream-dim);
-    letter-spacing: 0.05em;
-    border-radius: 2px;
-  }
-  .tag.status {
-    border-color: var(--copper);
-    color: var(--copper);
-  }
-  .meta {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 11px;
-    letter-spacing: 0.36em;
-    color: var(--cream-faint);
-  }
-  .vol {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    color: var(--copper);
-    opacity: 0.75;
-    padding-left: 14px;
-    position: relative;
-  }
-  .vol::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 6px;
-    height: 1px;
-    background: var(--copper);
-  }
-
-  .columns {
-    display: grid;
-    grid-template-columns: 340px 1fr 400px;
-    gap: 50px;
-    margin-bottom: 40px;
-    height: 500px;
-  }
-
-  .col { position: relative; }
-
-  .col-left { display: flex; flex-direction: column; }
-
-  .num-block {
-    display: flex;
-    align-items: flex-end;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-  .num-block .hash {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 76px;
-    color: var(--copper);
-    line-height: 0.85;
-    font-weight: 400;
-  }
-  .num-block .digits {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 96px;
-    color: var(--cream);
-    line-height: 0.85;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-  }
-
-  .col-title {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    letter-spacing: 0.28em;
-    color: var(--copper);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .col-title::before {
-    content: '■ ';
-    font-size: 7px;
-    color: var(--copper);
-    vertical-align: 2px;
-    margin-right: 2px;
-    opacity: 0.9;
-  }
-
-  .rfc-title {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--cream);
-    margin: 0 0 20px 0;
-    letter-spacing: 0.01em;
-  }
-  .rfc-title .en {
-    color: var(--copper);
-    font-style: italic;
-  }
-
-  .signal-desc {
-    font-size: 12px;
-    color: var(--cream-dim);
-    line-height: 1.8;
-    margin-bottom: 18px;
-  }
-  .signal-desc .en {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    color: var(--cream);
-    font-size: 11.5px;
-    letter-spacing: 0.03em;
-  }
-  .signal-desc .sep {
-    color: var(--copper);
-    margin: 0 6px;
-    opacity: 0.7;
-  }
-
-  .divider {
-    width: 40px;
-    height: 1.5px;
-    background: var(--copper);
-    margin: 4px 0 16px;
-  }
-
-  .status-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: auto;
-  }
-  .status-tag {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    padding: 6px 12px;
-    border: 1px solid var(--copper);
-    color: var(--copper);
-    letter-spacing: 0.14em;
-  }
-  .status-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--copper);
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-
-  .col-middle {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .middle-visual {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .middle-visual .label-top {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    color: var(--copper);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .middle-visual .label-top::before {
-    content: '■ ';
-    font-size: 7px;
-    vertical-align: 2px;
-    margin-right: 2px;
-    opacity: 0.9;
-  }
-  .svg-wrap {
-    width: 220px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4px 0 14px;
-  }
-  .middle-visual .desc {
-    font-size: 12.5px;
-    line-height: 1.75;
-    color: var(--cream-dim);
-    text-align: center;
-    max-width: 400px;
-    padding: 0 6px;
-  }
-  .middle-visual .desc .hi {
-    color: var(--copper);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 12px;
-  }
-
-  .middle-bottom {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--hairline);
-    width: 100%;
-    justify-content: center;
-  }
-  .mini-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-  .mini-stat .v {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 20px;
-    color: var(--copper);
-    font-weight: 500;
-    line-height: 1;
-  }
-  .mini-stat .k {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: var(--cream-faint);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-  .mini-stat .mid-line {
-    width: 1px;
-    height: 26px;
-    background: var(--hairline);
-  }
-
-  .col-right {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .timeline {
-    margin: 4px 0 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .step {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .step-num {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    color: var(--copper);
-    letter-spacing: 0.14em;
-    font-weight: 500;
-    width: 20px;
-    text-align: right;
-  }
-  .step-line {
-    flex: 0 0 40px;
-    height: 1px;
-    background: var(--copper);
-    opacity: 0.6;
-    position: relative;
-  }
-  .step-line::after {
-    content: '';
-    position: absolute;
-    right: -1px;
-    top: -3px;
-    width: 7px;
-    height: 7px;
-    border-top: 1.5px solid var(--copper);
-    border-right: 1.5px solid var(--copper);
-    transform: rotate(45deg);
-  }
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .step-label {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 17px;
-    color: var(--cream);
-    font-weight: 500;
-    line-height: 1.15;
-  }
-  .step-hint {
-    font-size: 11px;
-    color: var(--cream-faint);
-    letter-spacing: 0.16em;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-  .step-arrow {
-    text-align: center;
-    color: var(--copper);
-    font-size: 18px;
-    margin: 2px 0 2px 4px;
-    opacity: 0.7;
-  }
-
-  .evolution {
-    background: rgba(27, 59, 107, 0.35);
-    border-left: 2px solid var(--copper);
-    padding: 16px 18px;
-  }
-  .evolution-label {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    color: var(--copper);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-  .evolution-label::before {
-    content: '■ ';
-    font-size: 7px;
-    vertical-align: 2px;
-    margin-right: 2px;
-    opacity: 0.9;
-  }
-  .evolution-body {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--cream);
-  }
-  .evolution-body .em {
-    color: var(--copper);
-    font-weight: 600;
-  }
-  .evolution-tag {
-    display: inline-block;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    color: var(--copper);
-    letter-spacing: 0.1em;
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .right-deco {
-    margin-top: auto;
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .right-deco .dot {
-    width: 6px;
-    height: 6px;
-    background: var(--copper);
-    border-radius: 50%;
-  }
-  .right-deco .line {
-    flex: 1;
-    height: 1px;
-    background: var(--hairline);
-  }
-  .right-deco .square {
-    width: 8px;
-    height: 8px;
-    border: 1px solid var(--copper);
-  }
-
-  .data-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    padding: 20px 26px;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    margin-bottom: 22px;
-    background: rgba(27, 59, 107, 0.12);
-    position: relative;
-  }
-  .data-cards::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    width: 40px;
-    height: 3px;
-    background: var(--copper);
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .card-label {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px;
-    color: var(--copper);
-    letter-spacing: 0.2em;
-    font-weight: 500;
-  }
-  .card-value {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 24px;
-    color: var(--cream);
-    line-height: 1.15;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
-  .card-value.mono {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .card-value.copper {
-    color: var(--copper);
-  }
-  .card-desc {
-    font-size: 11px;
-    color: var(--cream-faint);
-    line-height: 1.5;
-    margin-top: 4px;
-  }
-
-  .narrative {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 0 2px;
-  }
-  .narrative .marker {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    color: var(--copper);
-    font-size: 12px;
-    letter-spacing: 0.32em;
-    padding-top: 5px;
-    flex-shrink: 0;
-  }
-  .narrative .marker::before {
-    content: '■ ';
-    font-size: 7px;
-    vertical-align: 2px;
-    margin-right: 2px;
-  }
-  .narrative p {
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-size: 14.5px;
-    color: var(--cream);
-    line-height: 1.75;
-    margin: 0;
-    letter-spacing: 0.02em;
-    font-weight: 400;
-  }
-  .narrative p .en {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    color: var(--copper);
-    font-size: 13.5px;
-  }
-  .narrative p .num {
-    color: var(--copper);
-    font-family: 'Noto Serif SC', Georgia, serif;
-    font-weight: 500;
-  }
+/* BOTTOM NARRATIVE */
+.narrative {
+  padding: 18px 30px;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: linear-gradient(90deg, rgba(180,160,120,0.08) 0%, rgba(79,156,154,0.04) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.narrative::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+}
+.narrative-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  white-space: nowrap;
+  border-right: 1px solid var(--line-strong);
+  padding-right: 26px;
+}
+.narrative-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--paper);
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+.narrative-text .em1 { color: var(--gold-2); font-weight: 500; }
+.narrative-text .em2 { color: var(--teal-2); font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-mark tl"></div>
-    <div class="bg-mark br"></div>
-    <div class="bg-ghost-ring"></div>
-    <div class="bg-ghost-square"></div>
+    <div class="bg-circle c1"></div>
+    <div class="bg-circle c2"></div>
+    <div class="bg-square s1"></div>
+    <div class="bg-square s2"></div>
+    <div class="bg-square s3"></div>
+    <div class="bg-cross" style="top: 90px; left: 100px;"></div>
+    <div class="bg-cross" style="bottom: 210px; right: 80px;"></div>
+    <div class="bg-cross" style="top: 480px; right: 100px;"></div>
+    <div class="bg-hline" style="left: 60px; right: 60px; top: 138px;"></div>
+    <div class="bg-hline" style="left: 60px; right: 60px; bottom: 100px;"></div>
   </div>
 
   <div id="ct">
-    <header class="header">
-      <div class="header-left">
-        <h1 class="title"><span class="pr-num">PR #61044</span> · Cron-native Batch API</h1>
-        <div class="subtitle">自主调度 · 自动化（2026-07）</div>
-      </div>
-      <div class="header-right">
-        <div class="tags-row">
-          <span class="tag">comp/agent</span>
-          <span class="tag">comp/cron</span>
-          <span class="tag status">innovation</span>
+    <!-- HEADER -->
+    <header class="hdr">
+      <div class="hdr-left">
+        <div class="kicker">
+          <span>CASE STUDY</span><span class="dot"></span><span>GITHUB 提案档案</span>
         </div>
-        <div class="meta">RFC · OPEN · PRIORITY 3</div>
-        <div class="vol">VOL. III · CRON NATIVE</div>
+        <h1 class="title"><span class="num">PR #5143</span> · 多角色自动路由</h1>
+        <div class="subtitle">
+          Gateway Hooks <span class="sep">·</span> 专业化分化 <span class="sep">·</span> 2026-04
+        </div>
+      </div>
+      <div class="hdr-right">
+        <div>REPO / <span class="val">AGENT-PLATFORM</span></div>
+        <div>STATUS / <span class="val">PROPOSAL</span></div>
+        <div>PHASE / <span class="val">PHASE 2</span></div>
       </div>
     </header>
 
-    <section class="columns">
-      <div class="col col-left">
-        <div class="num-block">
-          <span class="hash">#</span><span class="digits">61044</span>
+    <!-- 3 COLUMNS -->
+    <div class="main">
+      <!-- LEFT: 需求信号 -->
+      <section class="col">
+        <div class="case-tag">CASE № <span class="mono">5143</span></div>
+        <div class="case-num serif">#5143</div>
+        <div class="case-meta">
+          <div><span class="lbl">CATEGORY</span>COMP</div>
+          <div><span class="lbl">OPENED</span>2026·04</div>
         </div>
-        <div class="col-title"><span>RFC · CRON-NATIVE BATCH API</span></div>
-        <h2 class="rfc-title">
-          <span class="en">RFC:</span> Cron-native Batch API agent loop for scheduled/background work
+
+        <div class="signal-section">
+          <div class="signal-title">需求信号</div>
+          <div class="signal-row">
+            <span class="signal-val">28,040</span>
+            <span class="signal-lbl">BODY CHARS</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-val">11</span>
+            <span class="signal-lbl">COMMENTS</span>
+          </div>
+          <div class="signal-note">Phase 2 中参与度最高的提案之一</div>
+
+          <div class="tag-group">
+            <span class="tag">comp/gateway</span>
+            <span class="tag">area/sessions</span>
+            <span class="tag hi">needs-decision</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIDDLE: DIAGRAM -->
+      <section class="col">
+        <div class="diagram-title">多角色自动路由</div>
+        <div class="diagram-subtitle">GATEWAY HOOKS · AGENT ROUTING</div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 540 440" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#B4A078"/>
+              </marker>
+            </defs>
+            <!-- Outer rings -->
+            <circle cx="270" cy="220" r="185" fill="none" stroke="rgba(180,160,120,0.08)" stroke-width="1"/>
+            <circle cx="270" cy="220" r="120" fill="none" stroke="rgba(79,156,154,0.12)" stroke-width="1" stroke-dasharray="2 4"/>
+            <!-- Connectors -->
+            <line x1="270" y1="220" x2="270" y2="80" stroke="#B4A078" stroke-width="1" stroke-dasharray="4 4" opacity="0.65"/>
+            <line x1="270" y1="220" x2="420" y2="140" stroke="#B4A078" stroke-width="1" stroke-dasharray="4 4" opacity="0.65"/>
+            <line x1="270" y1="220" x2="420" y2="320" stroke="#B4A078" stroke-width="1" stroke-dasharray="4 4" opacity="0.65"/>
+            <line x1="270" y1="220" x2="120" y2="300" stroke="#B4A078" stroke-width="1" stroke-dasharray="4 4" opacity="0.65"/>
+            <line x1="270" y1="220" x2="120" y2="140" stroke="#B4A078" stroke-width="1" stroke-dasharray="4 4" opacity="0.65"/>
+            <!-- Endpoint markers -->
+            <circle cx="270" cy="80" r="3" fill="#4F9C9A"/>
+            <circle cx="420" cy="140" r="3" fill="#C97B5C"/>
+            <circle cx="420" cy="320" r="3" fill="#7DA5C9"/>
+            <circle cx="120" cy="300" r="3" fill="#B4A078"/>
+            <circle cx="120" cy="140" r="3" fill="#6AB5B3"/>
+          </svg>
+
+          <!-- Hub -->
+          <div class="hub">
+            <div class="hub-label">HUB</div>
+            <div class="hub-title">Gateway<br>Hooks</div>
+            <div class="hub-sub">router</div>
+          </div>
+
+          <!-- Nodes -->
+          <div class="node" style="left: 50%; top: 18.2%; border-color: var(--teal-2);">
+            <span class="node-code mono" style="color: var(--teal-2);">SESSIONS</span>
+            <span class="node-name">会话</span>
+          </div>
+          <div class="node-label top" style="left: 50%; top: calc(18.2% - 55px);">对话 · 记忆</div>
+
+          <div class="node" style="left: 77.8%; top: 31.8%; border-color: var(--coral);">
+            <span class="node-code mono" style="color: var(--coral);">SHELL</span>
+            <span class="node-name">执行</span>
+          </div>
+          <div class="node-label rgt" style="left: calc(77.8% + 52px); top: 31.8%;">终端 · 命令</div>
+
+          <div class="node" style="left: 77.8%; top: 72.7%; border-color: var(--blue);">
+            <span class="node-code mono" style="color: var(--blue);">ANALYSIS</span>
+            <span class="node-name">分析</span>
+          </div>
+          <div class="node-label rgt" style="left: calc(77.8% + 52px); top: 72.7%;">推理 · 数据</div>
+
+          <div class="node" style="left: 22.2%; top: 68.2%; border-color: var(--gold);">
+            <span class="node-code mono" style="color: var(--gold);">TOOLS</span>
+            <span class="node-name">工具</span>
+          </div>
+          <div class="node-label bot" style="left: 22.2%; top: calc(68.2% + 55px);">外部调用</div>
+
+          <div class="node" style="left: 22.2%; top: 31.8%; border-color: var(--teal);">
+            <span class="node-code mono" style="color: var(--teal-2);">REVIEW</span>
+            <span class="node-name">审校</span>
+          </div>
+          <div class="node-label lft" style="left: calc(22.2% - 52px); top: 31.8%;">质量把关</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: 演化意义 -->
+      <section class="col">
+        <div class="phase-tag">
+          <span class="bar"></span>
+          <span>PHASE 2 · 标志性提案</span>
+        </div>
+        <h2 class="headline">
+          从 <span>工具</span>
+          <span class="arrow">→</span>
+          <span class="to-team">团队</span>
         </h2>
-        <div class="signal-desc">
-          需求信号 · <span class="en">35,660</span> body<br>
-          <span class="en">comp/agent</span><span class="sep">·</span><span class="en">comp/cron</span><span class="sep">·</span><span class="en">innovation</span>
+
+        <div class="stmt">
+          从 <em>"一个 agent 处理一切"</em>，转向<em>专业化角色分工</em>——由 gateway hooks 按任务类型自动路由到不同 agent 角色。
         </div>
-        <div class="divider"></div>
-        <div class="status-row">
-          <span class="status-tag"><span class="status-dot"></span>OPEN · P3</span>
-        </div>
-      </div>
 
-      <div class="col col-middle">
-        <div class="middle-visual">
-          <div class="label-top"><span>VISUALIZATION · CRON LOOP</span></div>
-          <div class="svg-wrap">
-            <svg viewBox="0 0 240 240" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="120" cy="120" r="210" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.12"/>
-              <circle cx="120" cy="120" r="170" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.2" stroke-dasharray="3 6"/>
-              <circle cx="120" cy="120" r="120" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.45"/>
-              <circle cx="120" cy="120" r="70" fill="none" stroke="#F5F0E8" stroke-width="0.8" opacity="0.35" stroke-dasharray="1.5 3"/>
-              <circle cx="120" cy="120" r="38" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
-
-              <text x="120" y="116" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#F5F0E8" font-weight="500" letter-spacing="0.1em">Cron-native</text>
-              <text x="120" y="132" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#B4A078" font-style="italic" letter-spacing="0.1em">agent loop</text>
-
-              <circle cx="120" cy="10" r="4.5" fill="#B4A078"/>
-              <circle cx="120" cy="230" r="3" fill="#B4A078" opacity="0.6"/>
-              <circle cx="10" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
-              <circle cx="230" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
-
-              <line x1="120" y1="24" x2="120" y2="32" stroke="#B4A078" stroke-width="1.2"/>
-              <line x1="120" y1="208" x2="120" y2="216" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-              <line x1="24" y1="120" x2="32" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-              <line x1="208" y1="120" x2="216" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-
-              <circle cx="212" cy="55" r="2.5" fill="#B4A078" opacity="0.5"/>
-              <circle cx="28" cy="185" r="2.5" fill="#B4A078" opacity="0.5"/>
-
-              <line x1="220" y1="10" x2="234" y2="10" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-              <line x1="10" y1="228" x2="22" y2="228" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
-            </svg>
+        <div class="arrow-box">
+          <div class="ab-item">
+            <div class="ab-num">01</div>
+            <div class="ab-lbl">单体智能</div>
           </div>
-          <p class="desc">
-            <span class="hi">agent loop</span> 原生调度循环——<br>
-            由 cron 时序驱动，节点触发，无需人工干预
-          </p>
-        </div>
-      </div>
-
-      <div class="col col-right">
-        <div class="col-title"><span>FROM MANUAL TO AUTONOMOUS</span></div>
-        <div class="timeline">
-          <div class="step">
-            <span class="step-num">01</span>
-            <div class="step-line"></div>
-            <div class="step-content">
-              <span class="step-label">手动触发</span>
-              <span class="step-hint">MANUAL TRIGGER</span>
-            </div>
+          <div class="ab-arrow">→</div>
+          <div class="ab-item">
+            <div class="ab-num">02</div>
+            <div class="ab-lbl">角色分工</div>
           </div>
-          <div class="step-arrow">↓</div>
-          <div class="step">
-            <span class="step-num">02</span>
-            <div class="step-line"></div>
-            <div class="step-content">
-              <span class="step-label">自主调度</span>
-              <span class="step-hint">AUTONOMOUS · CRON-NATIVE</span>
-            </div>
+          <div class="ab-arrow">→</div>
+          <div class="ab-item">
+            <div class="ab-num">03</div>
+            <div class="ab-lbl">智能团队</div>
           </div>
         </div>
-        <div class="evolution">
-          <div class="evolution-label"><span>演化意义 · EVOLUTION</span></div>
-          <p class="evolution-body">
-            <span class="em">Phase 3 标志性提案</span>——用户要求 agent 具备<span class="em">自主调度</span>能力
-          </p>
-          <div class="evolution-tag">
-            <span class="en" style="font-family:'JetBrains Mono', monospace;">innovation</span> 标签 · 被认可的创新提案
-          </div>
-        </div>
-        <div class="right-deco">
+
+        <p class="evo-note">
+          平台扩展期的关键信号——用户要求 agent 具备<span class="em">专业化能力</span>，
+          而非继续以<span class="em2">单一角色</span>应对所有场景。
+        </p>
+
+        <div class="evo-mark">
           <span class="dot"></span>
+          <span>SIGNAL OF SPECIALIZATION</span>
           <span class="line"></span>
-          <span class="square"></span>
+          <span>04 / 2026</span>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section class="data-cards">
-      <div class="card">
-        <div class="card-label">BODY · 需求信号</div>
-        <div class="card-value">35,660</div>
+    <!-- BOTTOM NARRATIVE -->
+    <div class="narrative">
+      <div class="narrative-tag">
+        NARRATIVE
+        <span style="opacity:0.5;">·</span>
+        CASE CLOSURE
       </div>
-      <div class="card">
-        <div class="card-label">标签 · TAGS</div>
-        <div class="card-value mono">comp/cron · innovation</div>
+      <div class="narrative-text">
+        <span class="em1">#5143</span> 是 <span class="em1">Phase 2</span> 的标志性提案——用户要求 <span class="em2">gateway hooks</span> 实现多角色自动路由，这是 agent 从 <span class="em1">"工具"</span> 到 <span class="em1">"团队"</span> 的第一个信号。
       </div>
-      <div class="card">
-        <div class="card-label">核心 · CORE</div>
-        <div class="card-value mono copper">Cron-native agent loop</div>
-      </div>
-      <div class="card">
-        <div class="card-label">状态 · STATUS</div>
-        <div class="card-value mono">open · P3</div>
-      </div>
-    </section>
-
-    <section class="narrative">
-      <span class="marker">▍NARRATIVE</span>
-      <p>
-        <span class="num">#61044</span> 是 <span class="en">Phase 3</span> 的标志性 RFC——从手动触发到自主调度的跃迁，<span class="en">innovation</span> 标签说明这是被认可的创新提案。
-      </p>
-    </section>
+    </div>
   </div>
 </div>
 </body>
