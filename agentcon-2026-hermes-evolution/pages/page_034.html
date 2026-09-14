@@ -1,475 +1,478 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>从"能用"到"好用"的跃迁</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;display=swap" rel="stylesheet">
+<title>从"能用"到"好用"的跃迁 · 五阶段</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
+  --primary: #1B3B6B;
+  --primary-light: #2D5FA3;
   --bg: #0F1E33;
-  --accent-blue: #1B3B6B;
-  --accent-blue-bright: #3A6BB0;
-  --accent-gold: #B4A078;
-  --accent-gold-bright: #D4BE95;
   --text: #F5F0E8;
-  --text-muted: #9AA8BC;
-  --text-dim: #6C7B91;
-  --line: rgba(245, 240, 232, 0.12);
-  --line-strong: rgba(245, 240, 232, 0.28);
+  --text-sub: rgba(245, 240, 232, 0.68);
+  --text-mute: rgba(245, 240, 232, 0.45);
+  --accent: #B4A078;
+  --accent-glow: rgba(180, 160, 120, 0.25);
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Noto Sans SC', sans-serif;
+
+html, body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
+
 .wrapper {
   width: 1600px;
   height: 900px;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
+  background: var(--bg);
 }
+
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 1000px 750px at 22% 12%, rgba(27, 59, 107, 0.6), transparent 65%);
+  background: radial-gradient(ellipse at 50% 45%, #183257 0%, #0F1E33 55%, #08111F 100%);
 }
-.parchment-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 800px 600px at 78% 82%, rgba(180, 160, 120, 0.07), transparent 65%);
-}
+
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 48px 72px 44px 72px;
-  display: flex;
-  flex-direction: column;
+  padding: 48px 60px 40px;
+  box-sizing: border-box;
 }
 
-/* Bauhaus decorations */
-.deco-ring {
-  position: absolute;
-  top: -110px;
-  right: -80px;
-  width: 240px;
-  height: 240px;
-  border: 1px solid rgba(180, 160, 120, 0.22);
-  border-radius: 50%;
-}
-.deco-square {
-  position: absolute;
-  bottom: 46px;
-  left: 42px;
-  width: 14px;
-  height: 14px;
-  border: 1px solid rgba(180, 160, 120, 0.5);
-}
-.deco-line-v {
-  position: absolute;
-  top: 200px;
-  left: 42px;
-  width: 1px;
-  height: 180px;
-  background: rgba(180, 160, 120, 0.28);
-}
-.deco-dot-gold {
-  position: absolute;
-  top: 260px;
-  right: 42px;
-  width: 6px;
-  height: 6px;
-  background: var(--accent-gold);
-  border-radius: 50%;
-}
-.deco-dot-blue {
-  position: absolute;
-  top: 280px;
-  right: 42px;
-  width: 6px;
-  height: 6px;
-  background: var(--accent-blue-bright);
-  border-radius: 50%;
-  opacity: 0.6;
+header {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
 }
 
-/* Top bar */
-.top-bar {
+.header-row {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.marker {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.marker-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent-gold);
-  border-radius: 50%;
-}
-.marker-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  color: var(--text-muted);
-}
-.marker-text .sep {
-  color: var(--text-dim);
-  margin: 0 6px;
-}
-.page-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--text-dim);
+  gap: 60px;
+  margin-bottom: 16px;
 }
 
-/* Title */
-.title-block {
-  padding: 26px 0 32px 0;
-}
 h1 {
   font-family: 'Noto Serif SC', serif;
-  font-weight: 700;
-  font-size: 52px;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 1px;
   line-height: 1.15;
-  letter-spacing: 0.02em;
   color: var(--text);
-  margin-bottom: 12px;
 }
-h1 .q {
-  color: var(--accent-gold);
-  font-weight: 900;
+
+h1 .accent { color: var(--accent); }
+h1 .dot {
+  color: var(--accent);
+  font-weight: 400;
+  margin: 0 4px;
 }
+h1 .sep { color: var(--text-mute); margin: 0 10px; font-weight: 400; }
+
 .subtitle {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-weight: 300;
-  font-size: 17px;
-  letter-spacing: 0.18em;
-  color: var(--text-muted);
-}
-.subtitle .sep {
-  color: var(--accent-gold);
-  margin: 0 12px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
-/* Clash */
-.clash {
-  display: grid;
-  grid-template-columns: 1fr 130px 1fr;
-  align-items: center;
-  gap: 32px;
-  padding: 30px 24px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 28px;
-}
-.side {
-  display: flex;
-  flex-direction: column;
-}
-.side-tag {
+.subtitle-en {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.35em;
-  color: var(--text-dim);
-  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
-.side-tag .num {
-  color: var(--accent-gold);
-  font-weight: 500;
-}
-.big-word {
+
+.subtitle-cn {
   font-family: 'Noto Serif SC', serif;
-  font-weight: 900;
-  font-size: 132px;
-  line-height: 1;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  margin-bottom: 18px;
+  font-size: 16px;
+  color: var(--text-sub);
+  letter-spacing: 2px;
 }
-.big-word.gold {
-  color: var(--accent-gold-bright);
+
+h1::before {
+  content: '';
+  position: absolute;
+  left: 60px;
+  top: 48px;
+  width: 30px;
+  height: 3px;
+  background: var(--accent);
 }
-.side-divider {
-  width: 52px;
-  height: 2px;
-  background: var(--text-dim);
-  margin-bottom: 14px;
-}
-.side-divider.gold {
-  background: var(--accent-gold);
-}
-.side-desc {
-  font-family: 'Noto Sans SC', sans-serif;
+
+.intro {
   font-size: 15px;
-  line-height: 1.75;
-  color: var(--text-muted);
-  letter-spacing: 0.03em;
-  max-width: 560px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  max-width: 1100px;
 }
-.side-desc .em {
+
+.intro-mark { color: var(--accent); font-weight: 700; margin-right: 8px; font-family: 'Noto Serif SC', serif; }
+
+.stages-inline {
   color: var(--text);
-  font-weight: 500;
-}
-
-/* Arrow */
-.arrow-zone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.arrow-label {
   font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5em;
-  color: var(--accent-gold);
-  padding-left: 0.5em;
-}
-.arrow-visual {
-  display: flex;
-  align-items: center;
-}
-.arrow-line {
-  width: 70px;
-  height: 2px;
-  background: var(--accent-gold);
-}
-.arrow-head {
-  width: 0;
-  height: 0;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 15px solid var(--accent-gold);
-  margin-left: -1px;
+  font-weight: 600;
 }
 
-/* Evidence */
-.evidence {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
+.stages-inline .arrow {
+  color: var(--accent);
+  margin: 0 6px;
+  font-weight: 400;
 }
-.ev-header {
+
+.section-head {
   display: flex;
   align-items: center;
   gap: 14px;
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
-.ev-marker {
-  width: 12px;
-  height: 12px;
-  background: var(--accent-blue-bright);
-  position: relative;
+
+.section-bar {
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
   flex-shrink: 0;
 }
-.ev-marker::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border: 1px solid var(--accent-gold);
-}
-.ev-title {
+
+.section-title {
   font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--text);
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 6px;
+  font-weight: 600;
 }
-.ev-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--line);
+
+.section-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  margin-left: auto;
 }
-.ev-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-.ev-card {
-  border: 1px solid var(--line-strong);
-  padding: 22px 26px;
-  background: rgba(15, 30, 51, 0.4);
+
+.visual-area {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  height: 430px;
 }
-.ev-card-bar {
+
+#timeline-svg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 44px;
-  height: 2px;
-  background: var(--accent-gold);
-}
-.ev-card-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.35em;
-  color: var(--text-dim);
-}
-.ev-card-tag .num {
-  color: var(--accent-gold);
-}
-.ev-card-body {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--text);
-  font-weight: 500;
-}
-.ev-card-body .hl {
-  color: var(--accent-gold);
-}
-.ev-card-codes {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 2px;
-}
-.code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  color: var(--accent-gold);
-  background: rgba(180, 160, 120, 0.08);
-  padding: 4px 10px;
-  border: 1px solid rgba(180, 160, 120, 0.3);
-  letter-spacing: 0.02em;
-}
-.code.dim {
-  color: var(--text-muted);
-  background: rgba(245, 240, 232, 0.03);
-  border-color: var(--line);
 }
 
-.footnote {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  line-height: 1.65;
-  letter-spacing: 0.05em;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-  display: flex;
-  gap: 14px;
-  align-items: baseline;
+.top-labels, .bottom-labels {
+  position: absolute;
+  left: 0;
+  right: 0;
 }
-.footnote-label {
+
+.top-labels { top: 0; }
+.bottom-labels { top: 165px; }
+
+.top-label, .bottom-label {
+  position: absolute;
+  width: 260px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.top-label .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.top-label .pr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.top-label .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 1.5px;
+}
+
+.bottom-label .stage-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+  margin-bottom: 9px;
+  line-height: 1;
+}
+
+.bottom-label .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.bottom-label .vol {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.3em;
-  color: var(--accent-gold);
+  color: var(--text-mute);
+  letter-spacing: 1.5px;
+}
+
+.transition-labels {
+  position: absolute;
+  left: 0;
+  top: 92px;
+  width: 100%;
+  height: 0;
+}
+
+.tl-item {
+  position: absolute;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.tl-item .lbl {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 3px;
+  margin-bottom: 2px;
+}
+
+.tl-item .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 2px;
+}
+
+.pair-group {
+  position: absolute;
+  top: 0;
+  height: 130px;
+}
+
+.footer {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 46px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 34px;
+  border-top: 1px solid rgba(180, 160, 120, 0.3);
+  border-bottom: 1px solid rgba(180, 160, 120, 0.15);
+  background: linear-gradient(90deg, rgba(27, 59, 107, 0.35) 0%, rgba(27, 59, 107, 0.1) 100%);
+}
+
+.footer-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
   flex-shrink: 0;
-  padding: 4px 10px;
-  border: 1px solid rgba(180, 160, 120, 0.35);
 }
-.footnote-text {
-  color: var(--text-muted);
-}
-.footnote-text .em {
+
+.footer-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
   color: var(--text);
+  letter-spacing: 3px;
+  line-height: 1.4;
+  flex: 1;
   font-weight: 500;
+}
+
+.footer-quote .g { color: var(--accent); font-weight: 700; }
+
+.footer-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  text-align: right;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="parchment-glow"></div>
-    <div class="deco-ring"></div>
-    <div class="deco-square"></div>
-    <div class="deco-line-v"></div>
-    <div class="deco-dot-gold"></div>
-    <div class="deco-dot-blue"></div>
+    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;opacity:0.5;">
+      <rect x="30" y="30" width="1540" height="840" fill="none" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
+      <rect x="30" y="30" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
+      <rect x="1530" y="867" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
+      <circle cx="1560" cy="30" r="4" fill="none" stroke="rgba(180,160,120,0.25)" stroke-width="1"/>
+      <rect x="30" y="867" width="4" height="4" fill="rgba(180,160,120,0.25)"/>
+    </svg>
   </div>
+
   <div id="ct">
-    <div class="top-bar">
-      <div class="marker">
-        <div class="marker-dot"></div>
-        <div class="marker-text">田野摘录<span class="sep">·</span>消费侧信任研究</div>
+    <header>
+      <div class="header-row">
+        <h1>从<span class="accent">"能用"</span>到<span class="accent">"好用"</span>的跃迁<span class="sep">·</span>五阶段</h1>
+        <div class="subtitle">
+          <div class="subtitle-en">USER NEED · EVOLUTION ARC</div>
+          <div class="subtitle-cn">用户需求演化的完整轨迹</div>
+        </div>
       </div>
-      <div class="page-num">§ 01</div>
+      <p class="intro">
+        <span class="intro-mark">◆</span>从"能用"到"好用"的跃迁是五步 —— <span class="stages-inline">专业化<span class="arrow">→</span>生命化<span class="arrow">→</span>自动化<span class="arrow">→</span>持久化<span class="arrow">→</span>智慧化</span>，每一步都代表用户对 agent 的需求提升。
+      </p>
+    </header>
+
+    <div class="section-head">
+      <div class="section-bar"></div>
+      <div class="section-title">TIMELINE OF EVOLUTION</div>
+      <div class="section-note">2026 · Q2 — Q3</div>
     </div>
 
-    <div class="title-block">
-      <h1>从<span class="q">"能用"</span>到<span class="q">"好用"</span>的跃迁</h1>
-      <div class="subtitle">消费侧信任<span class="sep">·</span>作为可观察信号</div>
+    <div class="visual-area">
+      <svg id="timeline-svg" width="1480" height="130" viewBox="0 0 1480 130" xmlns="http://www.w3.org/2000/svg">
+        <line x1="147" y1="65" x2="408" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="408" y1="65" x2="670" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="670" y1="65" x2="931" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="931" y1="65" x2="1193" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
+        <line x1="1221" y1="65" x2="1454" y2="65" stroke="rgba(180,160,120,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <line x1="277" y1="40" x2="277" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="539" y1="40" x2="539" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="802" y1="40" x2="802" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1062" y1="40" x2="1062" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
+
+        <polygon points="279,59 292,65 279,71" fill="#B4A078"/>
+        <polygon points="541,59 554,65 541,71" fill="#B4A078"/>
+        <polygon points="804,59 817,65 804,71" fill="#B4A078"/>
+        <polygon points="1064,59 1077,65 1064,71" fill="#B4A078"/>
+        <polygon points="1456,57 1472,65 1456,73" fill="rgba(180,160,120,0.65)"/>
+
+        <circle cx="147" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <rect x="394" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <circle cx="670" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <rect x="917" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
+        <circle cx="1193" cy="65" r="22" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.5"/>
+        <rect x="1177" y="49" width="32" height="32" fill="#1B3B6B" stroke="#B4A078" stroke-width="2"/>
+
+        <text x="147" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">01</text>
+        <text x="408" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">02</text>
+        <text x="670" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">03</text>
+        <text x="931" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">04</text>
+        <text x="1193" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">05</text>
+      </svg>
+
+      <div class="top-labels">
+        <div class="top-label" style="left:147px;">
+          <div class="num">STAGE 01</div>
+          <div class="pr">#5143</div>
+          <div class="date">2026 · 04</div>
+        </div>
+        <div class="top-label" style="left:408px;">
+          <div class="num">STAGE 02</div>
+          <div class="pr">#53871</div>
+          <div class="date">2026 · 06</div>
+        </div>
+        <div class="top-label" style="left:670px;">
+          <div class="num">STAGE 03</div>
+          <div class="pr">#61044</div>
+          <div class="date">2026 · 07</div>
+        </div>
+        <div class="top-label" style="left:931px;">
+          <div class="num">STAGE 04</div>
+          <div class="pr">#82198</div>
+          <div class="date">2026 · 08</div>
+        </div>
+        <div class="top-label" style="left:1193px;">
+          <div class="num">STAGE 05 · FINAL</div>
+          <div class="pr">#94266</div>
+          <div class="date">2026 · 08</div>
+        </div>
+      </div>
+
+      <div class="bottom-labels">
+        <div class="bottom-label" style="left:147px;">
+          <div class="stage-name">专业化</div>
+          <div class="tag">Gateway Hooks</div>
+          <div class="vol">— 工具层 · 接入就绪 —</div>
+        </div>
+        <div class="bottom-label" style="left:408px;">
+          <div class="stage-name">生命化</div>
+          <div class="tag">Soul / Curiosity Engine</div>
+          <div class="vol">— 内驱力 · 好奇心 —</div>
+        </div>
+        <div class="bottom-label" style="left:670px;">
+          <div class="stage-name">自动化</div>
+          <div class="tag">Cron-native Batch API</div>
+          <div class="vol">— 定时批处理 —</div>
+        </div>
+        <div class="bottom-label" style="left:931px;">
+          <div class="stage-name">持久化</div>
+          <div class="tag">Skill-Persistence EPIC</div>
+          <div class="vol">54,633 · body</div>
+        </div>
+        <div class="bottom-label" style="left:1193px;">
+          <div class="stage-name">智慧化</div>
+          <div class="tag">Collective Wisdom · V1</div>
+          <div class="vol">52,295 · body</div>
+        </div>
+      </div>
+
+      <div class="transition-labels">
+        <div class="tl-item" style="left:284px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">TOOL → LIFE</div>
+        </div>
+        <div class="tl-item" style="left:545px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">LIFE → AUTO</div>
+        </div>
+        <div class="tl-item" style="left:808px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">AUTO → PERSIST</div>
+        </div>
+        <div class="tl-item" style="left:1068px;">
+          <div class="lbl">成对跃迁</div>
+          <div class="sub">PERSIST → WISDOM</div>
+        </div>
+      </div>
     </div>
 
-    <div class="clash">
-      <div class="side side-left">
-        <div class="side-tag"><span class="num">01</span> · 起 点</div>
-        <div class="big-word">能用</div>
-        <div class="side-divider"></div>
-        <div class="side-desc">
-          <span class="em">功能可用</span>——CLI 能启动、gateway 能连接、agent 能响应。
-        </div>
-      </div>
-
-      <div class="arrow-zone">
-        <div class="arrow-label">跃 迁</div>
-        <div class="arrow-visual">
-          <div class="arrow-line"></div>
-          <div class="arrow-head"></div>
-        </div>
-      </div>
-
-      <div class="side side-right">
-        <div class="side-tag"><span class="num">02</span> · 目 标</div>
-        <div class="big-word gold">好用</div>
-        <div class="side-divider gold"></div>
-        <div class="side-desc">
-          <span class="em">信任可用</span>——历史不被污染、平台不被锁死、能力有安全边界。
-        </div>
-      </div>
-    </div>
-
-    <div class="evidence">
-      <div class="ev-header">
-        <div class="ev-marker"></div>
-        <div class="ev-title">跃迁证据</div>
-        <div class="ev-rule"></div>
-      </div>
-      <div class="ev-cards">
-        <div class="ev-card">
-          <div class="ev-card-bar"></div>
-          <div class="ev-card-tag"><span class="num">A</span> · 证据 · 特征侧</div>
-          <div class="ev-card-body">feature issue 自带<span class="hl">安全边界标签</span></div>
-          <div class="ev-card-codes">
-            <span class="code">#67002</span>
-            <span class="code">#66353</span>
-          </div>
-        </div>
-        <div class="ev-card">
-          <div class="ev-card-bar"></div>
-          <div class="ev-card-tag"><span class="num">B</span> · 证据 · 承诺侧</div>
-          <div class="ev-card-body"><span class="hl">P1</span> 清零承诺</div>
-          <div class="ev-card-codes">
-            <span class="code dim">Judgment Release</span>
-            <span class="code dim">"keeping P0/P1 at 0"</span>
-          </div>
-        </div>
-      </div>
-      <div class="footnote">
-        <div class="footnote-label">制度含义</div>
-        <div class="footnote-text">
-          <span class="em">消费侧信任是可观察的信号</span>——用户在索取能力的同时，主动索取安全收口。
-        </div>
-      </div>
+    <div class="footer">
+      <div class="footer-mark"></div>
+      <div class="footer-quote">从<span class="g">工具</span>到<span class="g">伙伴</span>，从伙伴到<span class="g">自我组织</span>，最终走向<span class="g">集体智慧</span></div>
+      <div class="footer-en">FROM TOOL · TO PARTNER ·<br>TO SELF-ORGANIZATION · TO WISDOM</div>
     </div>
   </div>
 </div>

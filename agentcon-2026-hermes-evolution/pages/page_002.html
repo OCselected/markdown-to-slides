@@ -1,325 +1,452 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>引子：为什么开源 Agent 值得观察</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<title>引子：从 Talk &amp; Search 到 Agent &amp; Decide</title>
 <style>
-  :root{
-    --bg:#1B3B6B;
-    --bg-deep:#12294F;
-    --ink:#F5F0E8;
-    --ink-mute:rgba(245,240,232,.72);
-    --ink-soft:rgba(245,240,232,.45);
-    --accent:#B4A078;
-    --accent-dim:rgba(180,160,120,.32);
-    --serif:'Noto Serif SC','Songti SC',serif;
-    --sans:'Noto Sans SC','PingFang SC',sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{width:1600px;height:900px;overflow:hidden;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-weight:400;
-    line-height:1.55;
-  }
-  .wrapper{
-    width:1600px;height:900px;position:relative;overflow:hidden;
-    margin:0 auto;
-    background:linear-gradient(140deg,#1F4075 0%, #1B3B6B 55%, #142D55 100%);
-  }
-  #bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-  #ct{position:absolute;inset:0;z-index:1;padding:44px 60px 0;box-sizing:border-box;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap');
 
-  /* Bauhaus decorative shapes */
-  .deco{position:absolute;}
-  .deco-circle{
-    left:85px;top:60px;
-    width:120px;height:120px;border-radius:50%;
-    border:1.5px solid var(--accent);
-    opacity:.7;
-  }
-  .deco-square{
-    left:170px;top:140px;
-    width:44px;height:44px;
-    background:var(--accent);
-    opacity:.85;
-  }
-  .deco-line-h{
-    left:60px;top:502px;
-    width:64px;height:2px;background:var(--accent);
-  }
-  .deco-line-v{
-    right:76px;top:80px;
-    width:2px;height:130px;
-    background:linear-gradient(to bottom,var(--accent) 0%,var(--accent) 55%,transparent 100%);
-  }
-  .deco-dot{
-    left:44px;top:482px;
-    width:10px;height:10px;border-radius:50%;background:var(--accent);
-  }
-  .deco-mini-sq{
-    right:60px;top:60px;
-    width:8px;height:8px;background:var(--accent);opacity:.8;
-  }
+:root {
+  --bg-deep: #0F1E33;
+  --bg-primary: #1B3B6B;
+  --accent-gold: #B4A078;
+  --text-main: #F5F0E8;
+  --text-secondary: rgba(245, 240, 232, 0.68);
+  --border-gold: rgba(180, 160, 120, 0.3);
+  --card-bg: rgba(27, 59, 107, 0.22);
+}
 
-  /* HERO */
-  .hero{position:absolute;left:60px;top:44px;width:780px;}
-  .hero-frame{
-    width:780px;height:436px;
-    border:1px solid var(--accent-dim);
-    overflow:hidden;
-    position:relative;
-    box-shadow:0 24px 60px rgba(0,0,0,.35);
-  }
-  .hero-frame img{display:block;width:100%;height:100%;object-fit:cover;}
-  .hero-corner{position:absolute;width:22px;height:22px;}
-  .hero-corner.tl{left:-1px;top:-1px;border-left:2px solid var(--accent);border-top:2px solid var(--accent);}
-  .hero-corner.br{right:-1px;bottom:-1px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);}
-  .hero-caption{
-    margin-top:18px;
-    display:flex;align-items:baseline;gap:14px;
-    color:var(--ink-mute);
-    font-family:var(--serif);
-  }
-  .hero-caption .tag{
-    font-family:var(--sans);
-    font-size:11px;letter-spacing:.32em;
-    color:var(--accent);
-  }
-  .hero-caption .text{
-    font-size:17px;letter-spacing:.04em;
-    color:var(--ink);
-  }
-  .hero-caption .divider{
-    width:6px;height:6px;background:var(--accent);
-    margin:0 4px;transform:translateY(-3px);
-  }
-  .hero-sub{
-    margin-top:6px;
-    font-size:11px;letter-spacing:.28em;
-    color:var(--ink-soft);
-    font-family:var(--sans);
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  /* RIGHT COLUMN */
-  .right-col{
-    position:absolute;
-    left:880px;top:44px;
-    width:660px;height:600px;
-  }
-  .kicker{
-    display:flex;align-items:center;gap:12px;
-    font-family:var(--sans);
-    font-size:11px;letter-spacing:.42em;
-    color:var(--accent);
-    margin-bottom:14px;
-  }
-  .kicker-line{width:36px;height:1.5px;background:var(--accent);}
-  .title{
-    font-family:var(--serif);
-    font-size:42px;
-    line-height:1.28;
-    font-weight:600;
-    color:var(--ink);
-    letter-spacing:.005em;
-  }
-  .title-accent{
-    color:var(--accent);
-    font-style:italic;
-    font-weight:700;
-    letter-spacing:.02em;
-  }
-  .subtitle{
-    margin-top:16px;
-    padding-left:14px;
-    border-left:2px solid var(--accent);
-    font-family:var(--serif);
-    font-size:15px;line-height:1.7;
-    color:var(--ink-mute);
-    letter-spacing:.02em;
-    max-width:580px;
-  }
+body {
+  background: var(--bg-deep);
+  color: var(--text-main);
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-  .cards{
-    margin-top:28px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr;
-    gap:16px 16px;
-  }
-  .card{
-    position:relative;
-    background:rgba(245,240,232,.045);
-    border:1px solid var(--accent-dim);
-    padding:16px 18px 15px;
-    height:164px;
-  }
-  .card-num{
-    font-family:var(--serif);
-    font-size:10px;letter-spacing:.42em;
-    color:var(--accent);
-    margin-bottom:8px;
-  }
-  .card-title{
-    font-family:var(--serif);
-    font-size:19px;font-weight:600;
-    color:var(--ink);
-    line-height:1.3;
-    margin-bottom:9px;
-    letter-spacing:.01em;
-  }
-  .card-sub{
-    font-family:var(--sans);
-    font-size:10.5px;
-    color:var(--accent);
-    letter-spacing:.14em;
-    margin-bottom:8px;
-    line-height:1.55;
-  }
-  .card-desc{
-    font-family:var(--sans);
-    font-size:12.5px;line-height:1.75;
-    color:var(--ink-mute);
-    letter-spacing:.02em;
-  }
-  .card-tag{
-    position:absolute;
-    top:14px;right:16px;
-    font-family:var(--serif);
-    font-size:10px;letter-spacing:.32em;
-    color:var(--accent);
-  }
-  .card-accent-bar{
-    position:absolute;
-    left:0;top:0;
-    width:2px;height:36px;
-    background:var(--accent);
-  }
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
 
-  /* BOTTOM BAND */
-  .bottom-band{
-    position:absolute;
-    left:60px;bottom:56px;
-    width:1480px;
-    padding:22px 30px 22px 30px;
-    background:rgba(0,0,0,.18);
-    border-top:1px solid var(--accent);
-    border-bottom:1px solid var(--accent-dim);
-  }
-  .bottom-tag{
-    font-family:var(--sans);
-    font-size:10.5px;letter-spacing:.42em;
-    color:var(--accent);
-    margin-bottom:10px;
-    display:flex;align-items:center;gap:12px;
-  }
-  .bottom-tag .dot{
-    width:6px;height:6px;background:var(--accent);
-    border-radius:50%;
-  }
-  .bottom-text{
-    font-family:var(--serif);
-    font-size:16px;line-height:1.75;
-    color:var(--ink);
-    letter-spacing:.03em;
-    font-weight:400;
-  }
-  .bottom-text em{
-    color:var(--accent);
-    font-style:italic;
-    font-weight:500;
-  }
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--bg-deep);
+}
+
+#bg::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180, 160, 120, 0.13) 0%, transparent 70%);
+}
+
+#bg::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27, 59, 107, 0.55) 0%, transparent 70%);
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hook row */
+.hook-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin-bottom: 22px;
+}
+
+.hook-line {
+  width: 110px;
+  height: 1px;
+  background: var(--accent-gold);
+  opacity: 0.55;
+}
+
+.hook {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 25px;
+  font-style: italic;
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Title */
+.title-block {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  letter-spacing: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+.subtitle::before,
+.subtitle::after {
+  content: '·';
+  position: absolute;
+  color: var(--accent-gold);
+  font-size: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.subtitle::before { left: -30px; }
+.subtitle::after { right: -30px; }
+
+/* Columns */
+.columns {
+  display: flex;
+  gap: 22px;
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.col {
+  flex: 1;
+  padding: 24px 28px 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-left,
+.col-right {
+  border-top: 3px solid var(--accent-gold);
+}
+
+.col-middle {
+  flex: 0 0 170px;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.era-tag {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.era-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.era-chinese {
+  font-size: 20px;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.visual {
+  flex: 1;
+  position: relative;
+  min-height: 190px;
+  margin-bottom: 18px;
+}
+
+/* Talk circles */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bubble-lg {
+  width: 130px;
+  height: 130px;
+  border: 2px solid var(--accent-gold);
+  left: 30px;
+  top: 12px;
+}
+
+.bubble-md {
+  width: 82px;
+  height: 82px;
+  background: var(--accent-gold);
+  opacity: 0.75;
+  right: 38px;
+  top: 8px;
+}
+
+.bubble-sm {
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--text-main);
+  left: 140px;
+  bottom: 10px;
+}
+
+.speech-dots {
+  position: absolute;
+  left: 82px;
+  top: 70px;
+  display: flex;
+  gap: 7px;
+}
+
+.speech-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+/* Agent squares */
+.block {
+  position: absolute;
+}
+
+.block-lg {
+  width: 105px;
+  height: 105px;
+  background: var(--accent-gold);
+  left: 35px;
+  top: 18px;
+  opacity: 0.85;
+}
+
+.block-md {
+  width: 78px;
+  height: 78px;
+  border: 2px solid var(--text-main);
+  right: 42px;
+  top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block-sm {
+  width: 52px;
+  height: 52px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-gold);
+  right: 85px;
+  bottom: 12px;
+}
+
+.checkmark {
+  font-size: 30px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Middle fork */
+.fork-line-top,
+.fork-line-bottom {
+  width: 1px;
+  flex: 1;
+  background: var(--accent-gold);
+  opacity: 0.22;
+}
+
+.fork-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.fork-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+
+/* Era desc */
+.era-desc {
+  font-size: 18px;
+  color: var(--text-main);
+  text-align: center;
+  padding: 13px 14px;
+  background: rgba(180, 160, 120, 0.13);
+  border-left: 3px solid var(--accent-gold);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Observation */
+.observation {
+  background: rgba(180, 160, 120, 0.09);
+  border-left: 4px solid var(--accent-gold);
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.obs-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+
+.obs-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--accent-gold);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.obs-content {
+  font-size: 17px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.obs-highlight {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-
-  <div id="bg">
-    <div class="deco deco-circle"></div>
-    <div class="deco deco-square"></div>
-    <div class="deco deco-line-h"></div>
-    <div class="deco deco-line-v"></div>
-    <div class="deco deco-dot"></div>
-    <div class="deco deco-mini-sq"></div>
-  </div>
-
+  <div id="bg"></div>
   <div id="ct">
 
-    <div class="hero">
-      <div class="hero-frame">
-        <img src="../images/page_002_hero.png" alt="左侧哑光密封黑盒与右侧透明玻璃盒的对比构图">
-        <div class="hero-corner tl"></div>
-        <div class="hero-corner br"></div>
-      </div>
-      <div class="hero-caption">
-        <span class="tag">FIG.</span>
-        <span class="text">闭源：无从得知</span>
-        <span class="divider"></span>
-        <span class="text">开源：可追溯</span>
-      </div>
-      <div class="hero-sub">黑箱 vs. 玻璃盒 —— 一种认识论的分野</div>
+    <div class="hook-row">
+      <div class="hook-line"></div>
+      <div class="hook">"Talk is expensive, show me the skills."</div>
+      <div class="hook-line"></div>
     </div>
 
-    <div class="right-col">
-      <div class="kicker">
-        <span class="kicker-line"></span>
-        <span>OPENING · 演讲开篇</span>
-      </div>
-      <h1 class="title">引子：为什么<br><span class="title-accent">开源 Agent</span> 值得观察</h1>
-      <p class="subtitle">在 AI 的闭源洪流中，开源是唯一敞开的田野；<br>我们以人类学的眼光，追踪一场正在发生的文化演化。</p>
+    <div class="title-block">
+      <div class="title">引子：从 Talk &amp; Search 到 Agent &amp; Decide</div>
+      <div class="subtitle"><span>两 个 时 代 的 分 叉</span></div>
+    </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-accent-bar"></div>
-          <div class="card-num">01 / CLOSED</div>
-          <div class="card-tag">闭源</div>
-          <div class="card-title">闭源 Agent</div>
-          <div class="card-sub">WorkBuddy · 豆包 · Qwen Office</div>
-          <div class="card-desc">如何演化，无从可知；<br>每一次迭代都是无声的黑箱。</div>
+    <div class="columns">
+      <div class="col col-left">
+        <div class="era-tag">LLM 时代</div>
+        <div class="era-title">Talk &amp; Search</div>
+        <div class="era-chinese">对话与检索</div>
+        <div class="visual">
+          <div class="bubble bubble-lg"></div>
+          <div class="bubble bubble-md"></div>
+          <div class="bubble bubble-sm"></div>
+          <div class="speech-dots">
+            <div class="speech-dot"></div>
+            <div class="speech-dot"></div>
+            <div class="speech-dot"></div>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-accent-bar"></div>
-          <div class="card-num">02 / OPEN</div>
-          <div class="card-tag">开源</div>
-          <div class="card-title">开源 Agent</div>
-          <div class="card-sub">ISSUE · PR · RELEASE</div>
-          <div class="card-desc">每一条 issue、每一个 PR、<br>每一次 release 都可追溯。</div>
+        <div class="era-desc">
+          <span>人类提问，模型回答</span>
         </div>
-        <div class="card">
-          <div class="card-accent-bar"></div>
-          <div class="card-num">03 / FIELDWORK</div>
-          <div class="card-tag">田野</div>
-          <div class="card-title">田野考察</div>
-          <div class="card-sub">HERMES · 公开样本</div>
-          <div class="card-desc">把 Hermes 当作观察 Agent 演化的<br>第一手公开样本。</div>
+      </div>
+
+      <div class="col col-middle">
+        <div class="fork-line-top"></div>
+        <div class="fork-content">
+          <svg width="160" height="120" viewBox="0 0 160 120" style="display:block;">
+            <line x1="12" y1="60" x2="70" y2="60" stroke="#B4A078" stroke-width="3"/>
+            <circle cx="12" cy="60" r="7" fill="#B4A078"/>
+            <line x1="70" y1="60" x2="130" y2="22" stroke="#B4A078" stroke-width="3"/>
+            <line x1="70" y1="60" x2="130" y2="98" stroke="#B4A078" stroke-width="3"/>
+            <circle cx="70" cy="60" r="6" fill="#B4A078"/>
+            <polyline points="118,12 135,22 122,34" fill="none" stroke="#B4A078" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <polyline points="118,108 135,98 122,86" fill="none" stroke="#B4A078" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <div class="fork-label"><span>FORK</span></div>
         </div>
-        <div class="card">
-          <div class="card-accent-bar"></div>
-          <div class="card-num">04 / SPECIMEN</div>
-          <div class="card-tag">独特性</div>
-          <div class="card-title">Hermes 独特性</div>
-          <div class="card-sub">命名 · 闭环学习 · 文化事件</div>
-          <div class="card-desc">一个伟大的进化论<br>实践者与观察者。</div>
+        <div class="fork-line-bottom"></div>
+      </div>
+
+      <div class="col col-right">
+        <div class="era-tag">Agentic 时代</div>
+        <div class="era-title">Agent &amp; Decide</div>
+        <div class="era-chinese">代理与决断</div>
+        <div class="visual">
+          <div class="block block-lg"></div>
+          <div class="block block-md">
+            <span class="checkmark">✓</span>
+          </div>
+          <div class="block block-sm"></div>
+        </div>
+        <div class="era-desc">
+          <span>agent 自主执行，人类验收结果</span>
         </div>
       </div>
     </div>
 
-    <div class="bottom-band">
-      <div class="bottom-tag"><span class="dot"></span><span>研究方法 · METHODOLOGY</span></div>
-      <div class="bottom-text">
-        闭源是黑箱，开源是<em>唯一的可研究样本</em>。本演讲采用田野考察方法——把 issue / PR / release 当作<em>文化现象的标本</em>，而不是数据点，类似人类学对仪式、禁忌、符号的观察方式。
+    <div class="observation">
+      <div class="obs-label"><span>本次观察</span></div>
+      <div class="obs-divider"></div>
+      <div class="obs-content">
+        通过 <span class="obs-highlight">Hermes Agent 仓库</span> 这个微观透镜，寻找人类心智函数正在发生<span class="obs-highlight">微小但不可逆的分叉</span>的证据。
       </div>
     </div>
 
   </div>
-
 </div>
 </body>
 </html>

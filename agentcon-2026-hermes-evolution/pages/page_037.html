@@ -1,274 +1,455 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>田野考察方法论复盘 · 第 37 页</title>
+<title>田野考察方法论复盘</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=wrap');
 
-:root{
-  --bg:#0F1E33;
-  --prussian:#1B3B6B;
-  --prussian-lt:#2A4E80;
-  --parchment:#F5F0E8;
-  --ochre:#B4A078;
-  --ochre-lt:#D6BF93;
-  --muted:#7A8499;
-  --line:rgba(245,240,232,0.12);
-  --ink:#F5F0E8;
-  --ink-soft:rgba(245,240,232,0.72);
-  --ink-faint:rgba(245,240,232,0.48);
+:root {
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --primary-light: #2B4F82;
+  --text: #F5F0E8;
+  --text-muted: #C8C0B0;
+  --amber: #B4A078;
+  --amber-bright: #D4BE94;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:1600px;height:900px;overflow:hidden;}
-body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:var(--parchment);background:var(--bg);}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;}
-#bg{position:absolute;inset:0;z-index:0;background:linear-gradient(155deg,#0F1E33 0%,#14253E 55%,#0B1830 100%);}
-#ct{position:absolute;inset:0;z-index:1;padding:42px 60px 28px;box-sizing:border-box;}
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-/* ---------- Decorative Bauhaus geometry ---------- */
-.deco{position:absolute;pointer-events:none;}
-.deco-ring{width:520px;height:520px;border:1px solid rgba(180,160,120,0.16);border-radius:50%;right:-220px;top:-180px;}
-.deco-ring-2{width:280px;height:280px;border:1px solid rgba(245,240,232,0.06);border-radius:50%;right:-120px;top:-80px;}
-.deco-square{width:120px;height:120px;border:1px solid rgba(180,160,120,0.28);left:38px;bottom:52px;}
-.deco-dot{width:10px;height:10px;background:var(--ochre);border-radius:50%;right:60px;top:172px;}
-.deco-dot-2{width:6px;height:6px;background:var(--ochre);border-radius:50%;left:44px;top:32px;}
-.deco-line-h{left:60px;top:112px;width:88px;height:1px;background:var(--ochre);opacity:0.85;}
-.deco-tri{position:absolute;right:120px;bottom:60px;width:0;height:0;
-  border-left:14px solid transparent;border-right:14px solid transparent;
-  border-bottom:22px solid rgba(180,160,120,0.55);transform:rotate(20deg);}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #0F1E33;
+}
 
-/* ---------- Header ---------- */
-.top{position:relative;padding-top:2px;}
-.page-meta{display:flex;align-items:baseline;gap:16px;font-size:12px;color:var(--ochre);letter-spacing:0.28em;font-weight:500;}
-.page-meta .dot{width:5px;height:5px;background:var(--ochre);border-radius:50%;display:inline-block;}
-.page-meta .meta-title{color:var(--ink-faint);letter-spacing:0.18em;}
-.title-row{display:flex;align-items:flex-end;justify-content:space-between;margin-top:10px;}
-h1{font-family:'Noto Serif SC','Source Han Serif SC','STSong',serif;font-weight:700;font-size:44px;line-height:1.1;color:var(--parchment);letter-spacing:0.04em;}
-h1 .accent{color:var(--ochre-lt);}
-.subtitle{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-style:italic;color:var(--ochre-lt);font-size:19px;margin-top:8px;letter-spacing:0.06em;font-weight:400;}
-.side-tag{font-size:11px;letter-spacing:0.3em;color:var(--ink-faint);text-align:right;padding-bottom:4px;}
-.side-tag .tag-line{width:36px;height:1px;background:var(--ochre);margin:6px 0 6px auto;}
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 15% 25%, rgba(27, 59, 107, 0.55), transparent 45%), radial-gradient(circle at 85% 75%, rgba(180, 160, 120, 0.08), transparent 45%);
+}
 
-.divider{margin-top:16px;display:flex;align-items:center;gap:12px;}
-.divider .d1{flex:1;height:1px;background:var(--line);}
-.divider .d2{width:80px;height:1px;background:var(--ochre);opacity:0.9;}
-.divider .d-dot{width:6px;height:6px;background:var(--ochre);border-radius:50%;}
+.bg-deco { position: absolute; }
+.deco-ring-1 {
+  top: -140px;
+  right: -140px;
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(180, 160, 120, 0.20);
+  border-radius: 50%;
+}
+.deco-ring-2 {
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border: 1px dashed rgba(180, 160, 120, 0.22);
+  border-radius: 50%;
+}
+.deco-ring-3 {
+  bottom: -60px;
+  left: -70px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(43, 79, 130, 0.8);
+  border-radius: 50%;
+}
+.deco-square-1 {
+  top: 150px;
+  left: 40px;
+  width: 22px;
+  height: 22px;
+  background: var(--amber);
+  opacity: 0.7;
+}
+.deco-square-2 {
+  top: 200px;
+  left: 78px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--amber);
+  opacity: 0.55;
+}
+.deco-square-3 {
+  bottom: 220px;
+  right: 40px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--amber);
+  opacity: 0.4;
+}
+.deco-square-4 {
+  bottom: 280px;
+  right: 88px;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-light);
+}
 
-/* ---------- Comparison ---------- */
-.compare{margin-top:16px;display:grid;grid-template-columns:1fr 96px 1.15fr;gap:0;align-items:stretch;}
-.col{padding:14px 20px 14px;position:relative;height:184px;overflow:hidden;}
-.col-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.col-head .col-marker{width:20px;height:20px;position:relative;}
-.col-head .col-marker::before{content:'';position:absolute;inset:0;border-radius:50%;}
-.col-left .col-marker::before{background:transparent;border:1.5px solid var(--muted);}
-.col-right .col-marker::before{background:var(--ochre);}
-.col-head .col-label{font-size:11px;letter-spacing:0.32em;font-weight:600;}
-.col-left .col-label{color:var(--muted);}
-.col-right .col-label{color:var(--ochre-lt);}
-.col-title{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;letter-spacing:0.04em;}
-.col-left .col-title{color:var(--muted);}
-.col-right .col-title{color:var(--parchment);}
-.col-sub{font-size:13px;line-height:1.55;margin-top:6px;color:var(--ink-soft);}
-.col-left .col-sub{color:rgba(245,240,232,0.5);}
-.col-list{margin-top:9px;list-style:none;}
-.col-list li{font-size:12.5px;line-height:1.7;padding-left:14px;position:relative;}
-.col-list li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:1px;}
-.col-left .col-list li::before{background:var(--muted);}
-.col-left .col-list li{color:rgba(245,240,232,0.5);}
-.col-right .col-list li::before{background:var(--ochre);}
-.col-right .col-list li{color:var(--parchment);}
-.col-right{background:rgba(27,59,107,0.55);border:1px solid rgba(180,160,120,0.4);}
-.col-right::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--ochre) 0%,var(--ochre-lt) 100%);}
-.col-right .corner-sq{position:absolute;top:8px;right:10px;width:12px;height:12px;border:1px solid var(--ochre);}
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px;
+  box-sizing: border-box;
+}
 
-.arrow-box{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.arrow-box .a-label{font-size:10px;letter-spacing:0.28em;color:var(--ochre-lt);margin-bottom:8px;font-weight:600;}
-.arrow-box .a-line{width:1px;height:26px;background:var(--ochre);}
-.arrow-box .a-tri{width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:11px solid var(--ochre);margin-top:-1px;}
-.arrow-box .a-text{font-size:10.5px;letter-spacing:0.18em;color:var(--ochre-lt);margin-top:8px;font-weight:500;text-align:center;line-height:1.4;}
-.arrow-box .a-text-2{font-size:9.5px;letter-spacing:0.14em;color:var(--ink-faint);margin-top:3px;text-align:center;}
+.corner-mark {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--amber);
+  z-index: 2;
+}
+.corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+.corner-tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
+.corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
 
-/* ---------- Three-step pipeline ---------- */
-.pipeline{margin-top:14px;display:grid;grid-template-columns:1fr 42px 1fr 42px 1fr;gap:0;align-items:stretch;}
-.pstep{position:relative;padding:10px 16px;background:rgba(27,59,107,0.35);border:1px solid rgba(180,160,120,0.28);height:60px;display:flex;flex-direction:column;justify-content:center;}
-.pstep .pnum{font-family:'Noto Serif SC',serif;font-size:11px;color:var(--ochre);letter-spacing:0.28em;font-weight:600;}
-.pstep .plabel{font-size:16px;font-weight:700;color:var(--parchment);letter-spacing:0.06em;margin-top:1px;}
-.pstep .pdesc{font-size:10.5px;color:var(--ink-soft);margin-top:1px;letter-spacing:0.02em;}
-.pstep.active{border-color:var(--ochre);background:rgba(27,59,107,0.6);}
-.pstep.active::after{content:'';position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--ochre);}
-.parrow{display:flex;align-items:center;justify-content:center;position:relative;}
-.parrow .paline{width:14px;height:1px;background:var(--ochre);}
-.parrow .patri{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid var(--ochre);margin-left:-1px;}
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 46px;
+}
 
-/* ---------- Five cards ---------- */
-.cards{margin-top:14px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
-.card{position:relative;padding:12px 14px 12px;background:rgba(27,59,107,0.28);border:1px solid rgba(245,240,232,0.09);height:178px;display:flex;flex-direction:column;overflow:hidden;}
-.card::before{content:'';position:absolute;top:0;left:0;width:32px;height:2px;background:var(--ochre);}
-.card .cnum{font-family:'Noto Serif SC',serif;font-size:28px;color:var(--ochre);line-height:1;font-weight:700;letter-spacing:0.02em;}
-.card .cnum .cslash{font-size:12px;color:var(--ink-faint);letter-spacing:0.14em;margin-left:6px;font-weight:400;vertical-align:top;margin-top:10px;display:inline-block;}
-.card .chead{margin-top:8px;font-size:14.5px;font-weight:700;color:var(--parchment);letter-spacing:0.04em;line-height:1.35;}
-.card .cdetail{margin-top:8px;font-size:11.5px;line-height:1.7;color:var(--ink-soft);flex:1;}
-.card .cdetail .em{color:var(--ochre-lt);font-weight:500;}
-.card .ctag{margin-top:6px;font-size:10px;letter-spacing:0.22em;color:var(--ochre);border-top:1px solid rgba(180,160,120,0.25);padding-top:5px;font-weight:500;}
-.card .ctag .dotmark{display:inline-block;width:4px;height:4px;background:var(--ochre);border-radius:50%;margin-right:6px;vertical-align:middle;}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-size: 13px;
+  letter-spacing: 5px;
+  font-weight: 500;
+}
 
-/* ---------- Footer ---------- */
-.footer{margin-top:12px;display:flex;align-items:center;gap:16px;padding-top:10px;border-top:1px solid var(--line);}
-.footer .fquote{font-family:'Noto Serif SC',serif;font-size:16px;color:var(--parchment);letter-spacing:0.06em;line-height:1.4;flex:1;}
-.footer .fquote .q-mark{color:var(--ochre);font-size:22px;font-weight:700;margin-right:4px;font-family:'Noto Serif SC',serif;}
-.footer .fquote .em{color:var(--ochre-lt);font-weight:600;}
-.footer .fmeta{font-size:10.5px;letter-spacing:0.22em;color:var(--ink-faint);text-align:right;white-space:nowrap;}
-.footer .fmeta .fl{width:26px;height:1px;background:var(--ochre);margin:4px 0 4px auto;}
+.eyebrow-square {
+  width: 12px;
+  height: 12px;
+  background: var(--amber);
+}
 
+.eyebrow-line {
+  width: 60px;
+  height: 1px;
+  background: var(--amber);
+  opacity: 0.6;
+}
+
+h1 {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 58px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  color: var(--amber);
+  letter-spacing: 4px;
+  margin-top: 14px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.header-right {
+  text-align: right;
+  padding-bottom: 6px;
+}
+
+.header-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--primary-light);
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.header-meta {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.circles-section {
+  position: relative;
+  padding: 20px 0;
+}
+
+.circles-line {
+  position: absolute;
+  top: 145px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.55) 8%, rgba(180, 160, 120, 0.55) 92%, transparent);
+}
+
+.circles-line-dot {
+  position: absolute;
+  top: 141px;
+  width: 9px;
+  height: 9px;
+  background: var(--amber);
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+.circles-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+}
+
+.circle-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1;
+  height: 13px;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #2B4F82, #1B3B6B 60%, #0F1E33);
+  border: 2px solid var(--amber);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 0 8px #0F1E33, 0 0 0 9px rgba(180, 160, 120, 0.3);
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border: 1px dashed rgba(180, 160, 120, 0.28);
+  border-radius: 50%;
+}
+
+.circle-keyword {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+}
+
+.circle-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber-bright);
+  margin-top: 10px;
+  opacity: 0.9;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.circle-desc {
+  margin-top: 38px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 232px;
+}
+
+.circle-desc .highlight {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.footer {
+  position: absolute;
+  bottom: 54px;
+  left: 60px;
+  right: 60px;
+  border-top: 1px solid rgba(180, 160, 120, 0.35);
+  padding-top: 22px;
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.footer-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+  padding-right: 14px;
+  border-right: 1px solid rgba(180, 160, 120, 0.2);
+}
+
+.footer-square {
+  width: 10px;
+  height: 10px;
+  background: var(--amber);
+}
+
+.footer-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--amber);
+  writing-mode: vertical-rl;
+  font-weight: 500;
+}
+
+.footer-text {
+  flex: 1;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.footer-text .k {
+  color: var(--amber);
+  font-weight: 700;
+  margin-right: 6px;
+  letter-spacing: 1px;
+}
+
+.footer-text .dim {
+  color: var(--text-muted);
+}
+
+.footer-text .sep {
+  color: var(--amber);
+  margin: 0 8px;
+  opacity: 0.7;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="deco deco-ring"></div>
-    <div class="deco deco-ring-2"></div>
-    <div class="deco deco-square"></div>
-    <div class="deco deco-dot"></div>
-    <div class="deco deco-dot-2"></div>
-    <div class="deco deco-line-h"></div>
-    <div class="deco deco-tri"></div>
+    <div class="bg-deco deco-ring-1"></div>
+    <div class="bg-deco deco-ring-2"></div>
+    <div class="bg-deco deco-ring-3"></div>
+    <div class="bg-deco deco-square-1"></div>
+    <div class="bg-deco deco-square-2"></div>
+    <div class="bg-deco deco-square-3"></div>
+    <div class="bg-deco deco-square-4"></div>
   </div>
 
+  <div class="corner-mark corner-tl"></div>
+  <div class="corner-mark corner-tr"></div>
+  <div class="corner-mark corner-bl"></div>
+  <div class="corner-mark corner-br"></div>
+
   <div id="ct">
-    <!-- Header -->
-    <div class="top">
-      <div class="page-meta">
-        <span>PAGE 37 / 方法论复盘</span>
-        <span class="dot"></span>
-        <span class="meta-title">METHOD · RETROSPECTIVE</span>
-      </div>
-      <div class="title-row">
-        <div>
-          <h1>田野考察<span class="accent"> · </span>方法论复盘</h1>
-          <div class="subtitle">为什么需要田野考察？—— 一条比"看数据"更深的路径</div>
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow">
+          <div class="eyebrow-square"></div>
+          <span>田野考察 · METHODOLOGY REVIEW</span>
         </div>
-        <div class="side-tag">
-          <div>CHAPTER · III</div>
-          <div class="tag-line"></div>
-          <div>37 / 01</div>
-        </div>
+        <h1><span>田野考察方法论复盘</span></h1>
+        <div class="subtitle"><span>从群众中来的方法 · From the Masses</span></div>
       </div>
-      <div class="divider">
-        <div class="d1"></div>
-        <div class="d-dot"></div>
-        <div class="d2"></div>
+      <div class="header-right">
+        <div class="header-number"><span>§ 01</span></div>
+        <div class="header-meta"><span>FIVE DIMENSIONS</span></div>
       </div>
     </div>
 
-    <!-- Comparison -->
-    <div class="compare">
-      <div class="col col-left">
-        <div class="col-head">
-          <div class="col-marker"></div>
-          <span class="col-label">PATH · 01</span>
+    <div class="circles-section">
+      <div class="circles-line"></div>
+      <div class="circles-line-dot" style="left: 275px;"></div>
+      <div class="circles-line-dot" style="left: 585px;"></div>
+      <div class="circles-line-dot" style="left: 895px;"></div>
+      <div class="circles-line-dot" style="left: 1205px;"></div>
+      <div class="circles-row">
+        <div class="circle-card">
+          <div class="circle-number"><span>I.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>视角</span></div>
+            <div class="circle-tag"><span>PERSPECTIVE</span></div>
+          </div>
+          <div class="circle-desc">开源社区<span class="highlight">内实践者</span>，非外部观察者——既是参与者，也是记录者。</div>
         </div>
-        <div class="col-title">数据观察</div>
-        <div class="col-sub">把 issue / PR / release 当作统计口径，输出分布、趋势与相关性。</div>
-        <ul class="col-list">
-          <li>41,792 issues 只是一串数字</li>
-          <li>看不见用户的语境、情感与身份</li>
-          <li>结论可复现，但止步于描述</li>
-        </ul>
-      </div>
 
-      <div class="arrow-box">
-        <span class="a-label">跃迁</span>
-        <div class="a-line"></div>
-        <div class="a-tri"></div>
-        <span class="a-text">从描述<br>到理解</span>
-        <span class="a-text-2">DESCRIBE → UNDERSTAND</span>
-      </div>
-
-      <div class="col col-right">
-        <div class="corner-sq"></div>
-        <div class="col-head">
-          <div class="col-marker"></div>
-          <span class="col-label">PATH · 02</span>
+        <div class="circle-card">
+          <div class="circle-number"><span>II.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>方法</span></div>
+            <div class="circle-tag"><span>METHOD</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">从群众中来</span>，从实践出发；非框架先行，从案例中提炼，非理论推导。</div>
         </div>
-        <div class="col-title">田野考察</div>
-        <div class="col-sub">把 issue、PR、release 当作文化现象来观察——像人类学读仪式与禁忌那样。</div>
-        <ul class="col-list">
-          <li>追问：用户在要什么、拒什么、如何表达</li>
-          <li>把讨论视为社区的社会文本</li>
-          <li>抵达数据背后的制度与权力结构</li>
-        </ul>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>III.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>立场</span></div>
+            <div class="circle-tag"><span>STANCE</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">批判行政开源</span>，用实践检验理论，用演化观察制度。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>IV.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>局限</span></div>
+            <div class="circle-tag"><span>LIMITS</span></div>
+          </div>
+          <div class="circle-desc">弱代理（stars ≠ 使用）、单一仓库、<span class="highlight">关键词分析（非语义）</span>。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>V.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>下一步</span></div>
+            <div class="circle-tag"><span>NEXT</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">长期追踪</span>，持续观察需求 / 供给 / 消费的演化，寻找更强信号。</div>
+        </div>
       </div>
     </div>
 
-    <!-- Three-step pipeline -->
-    <div class="pipeline">
-      <div class="pstep">
-        <div><span class="pnum">STEP · 01</span></div>
-        <div class="plabel">现象</div>
-        <div class="pdesc">FIELD · 田野现象观察</div>
-      </div>
-      <div class="parrow"><div class="paline"></div><div class="patri"></div></div>
-      <div class="pstep">
-        <div><span class="pnum">STEP · 02</span></div>
-        <div class="plabel">数据</div>
-        <div class="pdesc">DATA · 量化回溯锚定</div>
-      </div>
-      <div class="parrow"><div class="paline"></div><div class="patri"></div></div>
-      <div class="pstep active">
-        <div><span class="pnum">STEP · 03</span></div>
-        <div class="plabel">制度解读</div>
-        <div class="pdesc">INSTITUTION · 权力与规则</div>
-      </div>
-    </div>
-
-    <!-- Five cards -->
-    <div class="cards">
-      <div class="card">
-        <div class="cnum">01<span class="cslash">/ 05</span></div>
-        <div class="chead">数据观察的局限</div>
-        <div class="cdetail"><span class="em">41,792</span> issues 是一堆数字——它们无法说清用户在要什么、在抗拒什么，数据点没有故事。</div>
-        <div class="ctag"><span class="dotmark"></span>LIMITATION</div>
-      </div>
-      <div class="card">
-        <div class="cnum">02<span class="cslash">/ 05</span></div>
-        <div class="chead">田野考察的方法</div>
-        <div class="cdetail">把 issue / PR / release 当<span class="em">文化现象</span>来观察，类似人类学对仪式、禁忌与符号的读法。</div>
-        <div class="ctag"><span class="dotmark"></span>METHOD</div>
-      </div>
-      <div class="card">
-        <div class="cnum">03<span class="cslash">/ 05</span></div>
-        <div class="chead">案例驱动的三段式</div>
-        <div class="cdetail">每一个案例都遵循 <span class="em">现象 → 数据 → 制度解读</span> 的推进路径，让理解层层落地。</div>
-        <div class="ctag"><span class="dotmark"></span>PROCESS</div>
-      </div>
-      <div class="card">
-        <div class="cnum">04<span class="cslash">/ 05</span></div>
-        <div class="chead">不可复制的视角</div>
-        <div class="cdetail">纯数据表格任何工具都能出；<span class="em">"文化现象描述"</span>——只有人能写，是模型的缺口。</div>
-        <div class="ctag"><span class="dotmark"></span>EDGE</div>
-      </div>
-      <div class="card">
-        <div class="cnum">05<span class="cslash">/ 05</span></div>
-        <div class="chead">制度层面的含义</div>
-        <div class="cdetail"><span class="em">"度量权"</span>留在社区手里；田野考察是开源 Agent 的社会学方法，而非仅工程方法。</div>
-        <div class="ctag"><span class="dotmark"></span>IMPLICATION</div>
-      </div>
-    </div>
-
-    <!-- Footer summary -->
     <div class="footer">
-      <div class="fquote">
-        <span class="q-mark">"</span>田野考察不是<span class="em">看数据</span>，是<span class="em">看文化现象</span>——这是开源 Agent 的社会学方法。
+      <div class="footer-marker">
+        <div class="footer-square"></div>
+        <div class="footer-label"><span>SYNTHESIS</span></div>
       </div>
-      <div class="fmeta">
-        <div>SUMMARY · 037</div>
-        <div class="fl"></div>
-        <div>FIELDWORK · METHODOLOGY</div>
+      <div class="footer-text">
+        <span class="k">方法论复盘</span>视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。<span class="sep">/</span><span class="dim">局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。</span>
       </div>
     </div>
   </div>

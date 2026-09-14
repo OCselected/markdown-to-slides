@@ -1,11 +1,7 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页 PPT，主题是"案例 8 · #101600 Windows 自锁"，副标题是"P1 兼容性里程碑"，属于内容页。整体风格是 dark academic 学术暗调，深普鲁士蓝羊皮纸质感背景（#0F1E33），暖白文字（#F5F0E8），主色为深普鲁士蓝 #1B3B6B，辅以克制的琥珀金 #B4A078 作点缀，字体用衬线宋体做标题、无衬线黑体做正文，带一点包豪斯几何构成感（圆、方、线），理性、克制、有智识感。
+我需要一页内容页 PPT，主题是「PR #53871 · 给 Hermes 一个灵魂」，副标题标注「Curiosity Engine · 生命化（2026-06）」。这页是 Phase 3 的标志性提案，讲述 agent 从"工具"到"伙伴"的跃迁，引入 Curiosity Engine、Synthetic Dream Cycle 与 Watchman 三大机制，让 Hermes 在 session 之间拥有自己的"生命"。
 
-版面建议左右分栏：左侧约占 45% 面积放一张 hero 配图，路径 `../images/page_028_hero.png`，原生 2752×1536、aspect 约 1.79，建议按约 640×357 的区域显示保持原生比例不拉伸。这张图画的是：深普鲁士蓝羊皮纸背景上的抽象几何门，厚重的竖直矩形和粗横门槛构成闭合的门体，门缝后面透出暖奶油色光晕暗示后面有东西却不可及，门把手上挂着一个小锁芯剪影，暖琥珀色描边勾勒门框——隐喻用户机器被"自己关上的门"锁死，没有文字没有 logo。请在图下方加一句简短配文，比如"一扇被自己关上的门"。
+版面请采用左-中-右三栏布局。左侧放大号编号"#53871"，作为视觉锚点，下方紧跟"需求信号"标签，标注 body 数据 27,518，并列出话题标签 comp/agent、tool/memory、area/sessions。中间一栏承载"生命"的概念图，用包豪斯几何元素（圆、方、线）抽象表达 Curiosity Engine、Synthetic Dream Cycle、Watchman 三个模块的相互关联，可用环形或三角构图暗示三者围绕"生命"运转；下方用小字写清"核心：Curiosity + Dream + Watchman"。右侧栏呈现"工具 → 伙伴"的演化箭头，从上到下依次列出三条要点：一是"需求信号"——27,518 body，话题聚焦 comp/agent、tool/memory、area/sessions；二是"用户需求"——从"用完即走"到"希望 agent 有自己的生命"，agent 从工具到伙伴；三是"演化意义"——Phase 3 标志性提案，用户要求 agent 有生命感、记忆延续、自主性。底部用一句话收束叙事："Give Hermes a Life Between Sessions——#53871 是 Phase 3 的标志性提案，完成 agent 从工具到伙伴的跃迁。"
 
-右侧约占 55% 放分析文字，顶部是大号衬线标题"案例 8 · #101600 Windows 自锁"，下方是副标题"P1 兼容性里程碑"。核心是一段叙事："#101600 是 P1 中唯一触及平台的缺陷：Windows 更新与 gateway 重启竞态导致 hermes.exe 自锁，用户机器被锁死。兼容性不是次要的技术债——当用户被'锁在门外'时，'能用'和'好用'的边界被重新划定。"
-
-叙事下方请用一个 5 行的紧凑 issue 卡片列出关键信息（可用小圆点或细分割线分隔）：Issue 是 #101600；Priority 是 P1（用红色或琥珀色标签突出）；Component 是 cli；Comments 是 5；Risks 是 risk-compatibility + risk-platform-windows。再补一条要点说明"comments 5——P1 中唯一触及平台的缺陷"以及影响说明"Windows 更新时升级流程与 gateway 重启竞态，hermes.exe 自锁——用户机器被锁死"。
-
-底部收束一句制度含义："兼容性不是次要的技术债——用户被'锁在门外'时，'能用'和'好用'的边界被重新划定。" 页面不要留大片空白，几何装饰线可用作分栏或区块分隔。
+整体风格为 dark academic 学术暗色调，深普鲁士蓝羊皮纸质感背景（#0F1E33），暖白文字（#F5F0E8），主色深普鲁士蓝（#1B3B6B）搭配古铜金点缀（#B4A078）；标题用 Noto Serif SC 衬线体强调学术仪式感，正文用 Noto Sans SC 无衬线体，数字用 JetBrains Mono 等宽字体突出数据感。装饰只用包豪斯几何（圆、方、线），不依赖图标，整体理性克制、智识感强，留白讲究。这页没有可用的配图，也没有表格，请纯用文字 + CSS 几何装饰把版面填满，不要留大片空白。

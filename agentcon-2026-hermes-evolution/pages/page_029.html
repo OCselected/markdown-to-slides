@@ -1,507 +1,748 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>案例 9 —— GitHub Issue #67002「Safe MCP Reload」</title>
+<title>PR #61044 · Cron-native Batch API</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
-  --bg: #0F1E33;
-  --bg-dark: #0A1626;
-  --text: #F5F0E8;
-  --text-muted: rgba(245, 240, 232, 0.72);
-  --text-dim: rgba(245, 240, 232, 0.45);
-  --accent: #B4A078;
-  --accent-bright: #C9B585;
-  --divider: rgba(27, 59, 107, 0.35);
-  --line: rgba(180, 160, 120, 0.22);
-  --tag-bg: rgba(180, 160, 120, 0.12);
-}
+  :root {
+    --bg-deep: #0F1E33;
+    --bg-mid: #12233D;
+    --primary: #1B3B6B;
+    --copper: #B4A078;
+    --copper-soft: #8C7F61;
+    --cream: #F5F0E8;
+    --cream-dim: rgba(245, 240, 232, 0.62);
+    --cream-faint: rgba(245, 240, 232, 0.32);
+    --hairline: rgba(245, 240, 232, 0.14);
+  }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
 
-body {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    background: var(--bg-deep);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt";
+  }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse at 15% 20%, rgba(180, 160, 120, 0.07), transparent 55%), linear-gradient(135deg, #0F1E33 0%, #0A1626 100%);
-}
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(140deg, #0A1628 0%, #0F1E33 55%, #16294A 100%);
+  }
 
-.deco-circle-1 {
-  position: absolute;
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  border: 1px solid rgba(180, 160, 120, 0.12);
-  top: -120px;
-  right: -100px;
-}
+  .bg-mark {
+    position: absolute;
+    background: var(--copper);
+    opacity: 0.5;
+  }
+  .bg-mark.tl {
+    top: 44px; left: 44px;
+    width: 48px; height: 1.5px;
+    opacity: 0.55;
+  }
+  .bg-mark.br {
+    bottom: 44px; right: 44px;
+    width: 1.5px; height: 48px;
+    opacity: 0.55;
+  }
 
-.deco-circle-2 {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  border: 1px solid rgba(180, 160, 120, 0.08);
-  top: -110px;
-  right: -20px;
-}
+  .bg-ghost-ring {
+    position: absolute;
+    right: -160px;
+    bottom: -160px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid var(--copper);
+    opacity: 0.06;
+    border-radius: 50%;
+  }
+  .bg-ghost-square {
+    position: absolute;
+    left: -80px;
+    top: 300px;
+    width: 220px;
+    height: 220px;
+    border: 1px solid var(--copper);
+    opacity: 0.05;
+  }
 
-.deco-square {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(180, 160, 120, 0.2);
-  bottom: 200px;
-  right: 40px;
-}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 50px 60px 44px;
+  }
 
-.deco-dot-1 {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  top: 96px;
-  left: 42%;
-}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 18px;
+    margin-bottom: 44px;
+  }
 
-.deco-dot-2 {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: var(--accent);
-  border-radius: 50%;
-  bottom: 76px;
-  left: 32%;
-}
+  .header-left { display: flex; flex-direction: column; gap: 10px; }
+  .header-right { text-align: right; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; padding-top: 6px; }
 
-.deco-line-v {
-  position: absolute;
-  top: 380px;
-  right: 60px;
-  width: 1px;
-  height: 200px;
-  background: linear-gradient(180deg, transparent, rgba(180,160,120,0.2), transparent);
-}
+  .title {
+    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .title .pr-num {
+    color: var(--copper);
+    font-family: 'Noto Serif SC', Georgia, serif;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--copper);
+    letter-spacing: 0.22em;
+    font-weight: 400;
+  }
+  .subtitle::before {
+    content: '—';
+    margin-right: 12px;
+    color: var(--copper);
+    opacity: 0.8;
+  }
+  .tags-row {
+    display: flex;
+    gap: 8px;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border: 1px solid var(--hairline);
+    color: var(--cream-dim);
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+  }
+  .tag.status {
+    border-color: var(--copper);
+    color: var(--copper);
+  }
+  .meta {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    color: var(--cream-faint);
+  }
+  .vol {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    opacity: 0.75;
+    padding-left: 14px;
+    position: relative;
+  }
+  .vol::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 1px;
+    background: var(--copper);
+  }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 50px 72px 46px;
-  box-sizing: border-box;
-}
+  .columns {
+    display: grid;
+    grid-template-columns: 340px 1fr 400px;
+    gap: 50px;
+    margin-bottom: 40px;
+    height: 500px;
+  }
 
-.header {
-  margin-bottom: 26px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-}
+  .col { position: relative; }
 
-.header .case-tag {
-  font-size: 11px;
-  letter-spacing: 5px;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 12px;
-}
+  .col-left { display: flex; flex-direction: column; }
 
-.header h1 {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 34px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 1.5px;
-  line-height: 1.25;
-  margin-bottom: 8px;
-}
+  .num-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .num-block .hash {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 76px;
+    color: var(--copper);
+    line-height: 0.85;
+    font-weight: 400;
+  }
+  .num-block .digits {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 96px;
+    color: var(--cream);
+    line-height: 0.85;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 
-.header h1 .accent {
-  color: var(--accent);
-}
+  .col-title {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .col-title::before {
+    content: '■ ';
+    font-size: 7px;
+    color: var(--copper);
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
 
-.header .subtitle {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 17px;
-  color: var(--text-muted);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 1px;
-}
+  .rfc-title {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--cream);
+    margin: 0 0 20px 0;
+    letter-spacing: 0.01em;
+  }
+  .rfc-title .en {
+    color: var(--copper);
+    font-style: italic;
+  }
 
-.main {
-  display: flex;
-  gap: 50px;
-  height: calc(100% - 174px);
-}
+  .signal-desc {
+    font-size: 12px;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .signal-desc .en {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--cream);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+  }
+  .signal-desc .sep {
+    color: var(--copper);
+    margin: 0 6px;
+    opacity: 0.7;
+  }
 
-.left-col {
-  width: 690px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-}
+  .divider {
+    width: 40px;
+    height: 1.5px;
+    background: var(--copper);
+    margin: 4px 0 16px;
+  }
 
-.right-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding-left: 50px;
-  border-left: 1px solid var(--divider);
-}
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: auto;
+  }
+  .status-tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border: 1px solid var(--copper);
+    color: var(--copper);
+    letter-spacing: 0.14em;
+  }
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--copper);
+    border-radius: 50%;
+    margin-right: 8px;
+  }
 
-.hero-frame {
-  width: 690px;
-  height: 386px;
-  position: relative;
-  border: 1px solid rgba(180, 160, 120, 0.28);
-  padding: 5px;
-  background: rgba(0, 0, 0, 0.25);
-}
+  .col-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-.hero-frame img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
+  .middle-visual {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .middle-visual .label-top {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--copper);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .middle-visual .label-top::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
+  .svg-wrap {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 0 14px;
+  }
+  .middle-visual .desc {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--cream-dim);
+    text-align: center;
+    max-width: 400px;
+    padding: 0 6px;
+  }
+  .middle-visual .desc .hi {
+    color: var(--copper);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+  }
 
-.hero-caption {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 2.5px;
-}
+  .middle-bottom {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    width: 100%;
+    justify-content: center;
+  }
+  .mini-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .mini-stat .v {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 20px;
+    color: var(--copper);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .mini-stat .k {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--cream-faint);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .mini-stat .mid-line {
+    width: 1px;
+    height: 26px;
+    background: var(--hairline);
+  }
 
-.hero-caption .dot {
-  width: 5px;
-  height: 5px;
-  background: var(--accent);
-  border-radius: 50%;
-}
+  .col-right {
+    display: flex;
+    flex-direction: column;
+  }
 
-.kpi-list {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: 20px;
-}
+  .timeline {
+    margin: 4px 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .step-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    font-weight: 500;
+    width: 20px;
+    text-align: right;
+  }
+  .step-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--copper);
+    opacity: 0.6;
+    position: relative;
+  }
+  .step-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    border-top: 1.5px solid var(--copper);
+    border-right: 1.5px solid var(--copper);
+    transform: rotate(45deg);
+  }
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .step-label {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 17px;
+    color: var(--cream);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+  .step-hint {
+    font-size: 11px;
+    color: var(--cream-faint);
+    letter-spacing: 0.16em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .step-arrow {
+    text-align: center;
+    color: var(--copper);
+    font-size: 18px;
+    margin: 2px 0 2px 4px;
+    opacity: 0.7;
+  }
 
-.kpi-row {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 9px 14px;
-  border-left: 2px solid var(--accent);
-  background: rgba(180, 160, 120, 0.04);
-}
+  .evolution {
+    background: rgba(27, 59, 107, 0.35);
+    border-left: 2px solid var(--copper);
+    padding: 16px 18px;
+  }
+  .evolution-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--copper);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .evolution-label::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+    opacity: 0.9;
+  }
+  .evolution-body {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--cream);
+  }
+  .evolution-body .em {
+    color: var(--copper);
+    font-weight: 600;
+  }
+  .evolution-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline);
+  }
 
-.kpi-label {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  color: var(--text-muted);
-  font-weight: 500;
-  min-width: 84px;
-}
+  .right-deco {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .right-deco .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--copper);
+    border-radius: 50%;
+  }
+  .right-deco .line {
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .right-deco .square {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--copper);
+  }
 
-.kpi-value {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  color: var(--text);
-  font-weight: 500;
-  line-height: 1.5;
-}
+  .data-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 20px 26px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 22px;
+    background: rgba(27, 59, 107, 0.12);
+    position: relative;
+  }
+  .data-cards::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 40px;
+    height: 3px;
+    background: var(--copper);
+  }
 
-.kpi-value .highlight {
-  color: var(--accent-bright);
-  font-weight: 700;
-  font-size: 17px;
-}
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    color: var(--copper);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .card-value {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 24px;
+    color: var(--cream);
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .card-value.mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .card-value.copper {
+    color: var(--copper);
+  }
+  .card-desc {
+    font-size: 11px;
+    color: var(--cream-faint);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
 
-.kpi-value .tag {
-  display: inline-block;
-  padding: 2px 8px;
-  background: var(--tag-bg);
-  border: 1px solid rgba(180, 160, 120, 0.35);
-  color: var(--accent-bright);
-  font-size: 11px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-weight: 400;
-  margin-right: 6px;
-  letter-spacing: 0.5px;
-}
-
-.kpi-value .note {
-  color: var(--text-dim);
-  font-size: 12px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-weight: 400;
-  margin-left: 4px;
-}
-
-.narrative {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 15.5px;
-  line-height: 1.85;
-  color: var(--text);
-  padding: 22px 26px 22px 30px;
-  border-left: 2px solid var(--accent);
-  background: linear-gradient(90deg, rgba(180, 160, 120, 0.08), transparent 80%);
-  margin-bottom: 28px;
-}
-
-.narrative .quote-mark {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: var(--accent);
-  margin-right: 4px;
-  font-weight: 600;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.section-title .rule {
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-
-.points {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.point {
-  display: flex;
-  gap: 16px;
-  align-items: baseline;
-}
-
-.point-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: var(--accent);
-  font-weight: 600;
-  min-width: 30px;
-  line-height: 1.2;
-  letter-spacing: 1px;
-}
-
-.point-body {
-  flex: 1;
-  line-height: 1.55;
-}
-
-.point-title {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 3px;
-  letter-spacing: 0.5px;
-}
-
-.point-detail {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.55;
-  font-family: 'Noto Sans SC', sans-serif;
-}
-
-.point-detail code {
-  font-family: 'JetBrains Mono', 'Consolas', monospace;
-  background: rgba(180, 160, 120, 0.1);
-  color: var(--accent-bright);
-  padding: 1px 6px;
-  border: 1px solid rgba(180, 160, 120, 0.22);
-  font-size: 11.5px;
-  letter-spacing: 0.3px;
-}
-
-.point-detail .highlight {
-  color: var(--accent-bright);
-  font-weight: 600;
-}
-
-.point-detail .quote {
-  color: var(--text);
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.footer {
-  position: absolute;
-  bottom: 18px;
-  left: 72px;
-  right: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-.footer .left-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer .square {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-}
+  .narrative {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 2px;
+  }
+  .narrative .marker {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--copper);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    padding-top: 5px;
+    flex-shrink: 0;
+  }
+  .narrative .marker::before {
+    content: '■ ';
+    font-size: 7px;
+    vertical-align: 2px;
+    margin-right: 2px;
+  }
+  .narrative p {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 14.5px;
+    color: var(--cream);
+    line-height: 1.75;
+    margin: 0;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+  .narrative p .en {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--copper);
+    font-size: 13.5px;
+  }
+  .narrative p .num {
+    color: var(--copper);
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="deco-circle-1"></div>
-    <div class="deco-circle-2"></div>
-    <div class="deco-square"></div>
-    <div class="deco-dot-1"></div>
-    <div class="deco-dot-2"></div>
-    <div class="deco-line-v"></div>
+    <div class="bg-mark tl"></div>
+    <div class="bg-mark br"></div>
+    <div class="bg-ghost-ring"></div>
+    <div class="bg-ghost-square"></div>
   </div>
+
   <div id="ct">
-    <div class="header">
-      <div class="case-tag"><span>案例 09 · GitHub · 消费侧信任分析</span></div>
-      <h1><span>案例 9 —— GitHub Issue #67002「</span><span class="accent">Safe MCP Reload</span><span>」</span></h1>
-      <div class="subtitle"><span>消费侧信任的教科书样本</span></div>
-    </div>
-
-    <div class="main">
-      <div class="left-col">
-        <div class="hero-frame">
-          <img src="../images/page_029_hero.png" alt="金库隐喻 · 功能与边界并存">
+    <header class="header">
+      <div class="header-left">
+        <h1 class="title"><span class="pr-num">PR #61044</span> · Cron-native Batch API</h1>
+        <div class="subtitle">自主调度 · 自动化（2026-07）</div>
+      </div>
+      <div class="header-right">
+        <div class="tags-row">
+          <span class="tag">comp/agent</span>
+          <span class="tag">comp/cron</span>
+          <span class="tag status">innovation</span>
         </div>
-        <div class="hero-caption">
+        <div class="meta">RFC · OPEN · PRIORITY 3</div>
+        <div class="vol">VOL. III · CRON NATIVE</div>
+      </div>
+    </header>
+
+    <section class="columns">
+      <div class="col col-left">
+        <div class="num-block">
+          <span class="hash">#</span><span class="digits">61044</span>
+        </div>
+        <div class="col-title"><span>RFC · CRON-NATIVE BATCH API</span></div>
+        <h2 class="rfc-title">
+          <span class="en">RFC:</span> Cron-native Batch API agent loop for scheduled/background work
+        </h2>
+        <div class="signal-desc">
+          需求信号 · <span class="en">35,660</span> body<br>
+          <span class="en">comp/agent</span><span class="sep">·</span><span class="en">comp/cron</span><span class="sep">·</span><span class="en">innovation</span>
+        </div>
+        <div class="divider"></div>
+        <div class="status-row">
+          <span class="status-tag"><span class="status-dot"></span>OPEN · P3</span>
+        </div>
+      </div>
+
+      <div class="col col-middle">
+        <div class="middle-visual">
+          <div class="label-top"><span>VISUALIZATION · CRON LOOP</span></div>
+          <div class="svg-wrap">
+            <svg viewBox="0 0 240 240" width="220" height="220" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="120" cy="120" r="210" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.12"/>
+              <circle cx="120" cy="120" r="170" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.2" stroke-dasharray="3 6"/>
+              <circle cx="120" cy="120" r="120" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.45"/>
+              <circle cx="120" cy="120" r="70" fill="none" stroke="#F5F0E8" stroke-width="0.8" opacity="0.35" stroke-dasharray="1.5 3"/>
+              <circle cx="120" cy="120" r="38" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
+
+              <text x="120" y="116" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#F5F0E8" font-weight="500" letter-spacing="0.1em">Cron-native</text>
+              <text x="120" y="132" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="10.5" fill="#B4A078" font-style="italic" letter-spacing="0.1em">agent loop</text>
+
+              <circle cx="120" cy="10" r="4.5" fill="#B4A078"/>
+              <circle cx="120" cy="230" r="3" fill="#B4A078" opacity="0.6"/>
+              <circle cx="10" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
+              <circle cx="230" cy="120" r="3" fill="#B4A078" opacity="0.6"/>
+
+              <line x1="120" y1="24" x2="120" y2="32" stroke="#B4A078" stroke-width="1.2"/>
+              <line x1="120" y1="208" x2="120" y2="216" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+              <line x1="24" y1="120" x2="32" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+              <line x1="208" y1="120" x2="216" y2="120" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
+
+              <circle cx="212" cy="55" r="2.5" fill="#B4A078" opacity="0.5"/>
+              <circle cx="28" cy="185" r="2.5" fill="#B4A078" opacity="0.5"/>
+
+              <line x1="220" y1="10" x2="234" y2="10" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
+              <line x1="10" y1="228" x2="22" y2="228" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
+            </svg>
+          </div>
+          <p class="desc">
+            <span class="hi">agent loop</span> 原生调度循环——<br>
+            由 cron 时序驱动，节点触发，无需人工干预
+          </p>
+        </div>
+      </div>
+
+      <div class="col col-right">
+        <div class="col-title"><span>FROM MANUAL TO AUTONOMOUS</span></div>
+        <div class="timeline">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <span class="step-label">手动触发</span>
+              <span class="step-hint">MANUAL TRIGGER</span>
+            </div>
+          </div>
+          <div class="step-arrow">↓</div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <span class="step-label">自主调度</span>
+              <span class="step-hint">AUTONOMOUS · CRON-NATIVE</span>
+            </div>
+          </div>
+        </div>
+        <div class="evolution">
+          <div class="evolution-label"><span>演化意义 · EVOLUTION</span></div>
+          <p class="evolution-body">
+            <span class="em">Phase 3 标志性提案</span>——用户要求 agent 具备<span class="em">自主调度</span>能力
+          </p>
+          <div class="evolution-tag">
+            <span class="en" style="font-family:'JetBrains Mono', monospace;">innovation</span> 标签 · 被认可的创新提案
+          </div>
+        </div>
+        <div class="right-deco">
           <span class="dot"></span>
-          <span>金库隐喻 · 功能与边界并存</span>
-        </div>
-
-        <div class="kpi-list">
-          <div class="kpi-row">
-            <div class="kpi-label"><span>Issue</span></div>
-            <div class="kpi-value"><span class="highlight">#67002</span></div>
-          </div>
-          <div class="kpi-row">
-            <div class="kpi-label"><span>Labels</span></div>
-            <div class="kpi-value"><span><span class="tag">risk-message-delivery</span><span class="tag">blast-moderate</span></span></div>
-          </div>
-          <div class="kpi-row">
-            <div class="kpi-label"><span>Priority</span></div>
-            <div class="kpi-value"><span class="highlight">P3</span></div>
-          </div>
-          <div class="kpi-row">
-            <div class="kpi-label"><span>Comments</span></div>
-            <div class="kpi-value"><span><span class="highlight">14</span> <span class="note">样本最高</span></span></div>
-          </div>
+          <span class="line"></span>
+          <span class="square"></span>
         </div>
       </div>
+    </section>
 
-      <div class="right-col">
-        <div class="narrative">
-          <span class="quote-mark">「</span><span>#67002 是教科书样本：用户在索取 MCP reload 功能的同时显式要求安全边界，这是消费侧信任的可观察信号，也是从「能用」到「好用」的跃迁证据。</span><span class="quote-mark">」</span>
-        </div>
-
-        <div class="section-title">
-          <span>观察要点</span>
-          <span class="rule"></span>
-          <span>06</span>
-        </div>
-
-        <div class="points">
-          <div class="point">
-            <div class="point-num"><span>01</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>Issue 标题</span></div>
-              <div class="point-detail"><span><code>feat(api): add safe MCP reload control endpoint</code></span></div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-num"><span>02</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>风险标签</span></div>
-              <div class="point-detail"><span><code>risk-message-delivery</code> + <code>blast-moderate</code></span></div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-num"><span>03</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>组件 / 优先级</span></div>
-              <div class="point-detail"><span>gateway / <span class="highlight">P3</span></span></div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-num"><span>04</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>讨论热度</span></div>
-              <div class="point-detail"><span>comments <span class="highlight">14</span> —— 样本最高</span></div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-num"><span>05</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>关键观察</span></div>
-              <div class="point-detail"><span class="quote">用户主动要求「安全的重载端点」——要能力的同时显式要安全收口。</span></div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-num"><span>06</span></div>
-            <div class="point-body">
-              <div class="point-title"><span>制度含义</span></div>
-              <div class="point-detail"><span class="quote">从「能用」到「好用」的关键跃迁——消费侧信任的强信号。</span></div>
-            </div>
-          </div>
-        </div>
+    <section class="data-cards">
+      <div class="card">
+        <div class="card-label">BODY · 需求信号</div>
+        <div class="card-value">35,660</div>
       </div>
-    </div>
-
-    <div class="footer">
-      <div class="left-mark">
-        <span class="square"></span>
-        <span>SenseNova · 案例研究 · 09</span>
+      <div class="card">
+        <div class="card-label">标签 · TAGS</div>
+        <div class="card-value mono">comp/cron · innovation</div>
       </div>
-      <div><span>消费侧信任 · 信号分析</span></div>
-    </div>
+      <div class="card">
+        <div class="card-label">核心 · CORE</div>
+        <div class="card-value mono copper">Cron-native agent loop</div>
+      </div>
+      <div class="card">
+        <div class="card-label">状态 · STATUS</div>
+        <div class="card-value mono">open · P3</div>
+      </div>
+    </section>
+
+    <section class="narrative">
+      <span class="marker">▍NARRATIVE</span>
+      <p>
+        <span class="num">#61044</span> 是 <span class="en">Phase 3</span> 的标志性 RFC——从手动触发到自主调度的跃迁，<span class="en">innovation</span> 标签说明这是被认可的创新提案。
+      </p>
+    </section>
   </div>
 </div>
 </body>

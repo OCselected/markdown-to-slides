@@ -58,35 +58,35 @@
     {
       "page_no": 2,
       "page_kind": "content",
-      "title": "引子：为什么开源 Agent 值得观察",
-      "subtitle": "",
+      "title": "引子：从 Talk & Search 到 Agent & Decide",
+      "subtitle": "两个时代的分叉",
       "bullets": [
         {
-          "head": "闭源 Agent",
-          "detail": "WorkBuddy、豆包、Qwen Office——如何演化无从可知"
+          "head": "Hook",
+          "detail": "\"Talk is expensive, show me the skills.\""
         },
         {
-          "head": "开源 Agent",
-          "detail": "每一条 issue、每一个 PR、每一次 release 都可追溯"
+          "head": "LLM 时代",
+          "detail": "对话与检索（Talk & Search）——人类提问，模型回答"
         },
         {
-          "head": "田野考察",
-          "detail": "把 Hermes 当作观察 Agent 演化的公开样本"
+          "head": "Agentic 时代",
+          "detail": "代理与决断（Agent & Decide）——agent 自主执行，人类验收结果"
         },
         {
-          "head": "Hermes 独特性",
-          "detail": "命名 release、闭环学习、文化事件——伟大的进化论实践者"
+          "head": "本次观察",
+          "detail": "通过 Hermes Agent 仓库这个微观透镜，寻找人类心智函数正在发生微小但不可逆分叉的证据"
         }
       ],
-      "narrative": "闭源是黑箱，开源是唯一的可研究样本。本演讲采用田野考察方法——把 issue/PR/release 当作文化现象的标本，而不是数据点。类似人类学对仪式、禁忌、符号的观察方式。",
+      "narrative": "两个时代的分叉：LLM 时代是'对话与检索'（Talk & Search），Agentic 时代是'代理与决断'（Agent & Decide）。我们从'人类提问，模型回答'转向'agent 自主执行，人类验收结果'。本次观察：透过 Hermes Agent 仓库这个微观透镜，寻找心智函数分叉的证据。",
       "data_points": [],
-      "visual_hints": "左侧黑盒 vs 右侧透明玻璃盒；黑盒标'闭源：无从得知'，玻璃盒标'开源：可追溯'",
+      "visual_hints": "左侧'Talk & Search'（对话气泡）+ 中间'→'箭头 + 右侧'Agent & Decide'（agent 图标）",
       "use_table": null,
       "use_image": null,
       "asset_slots": [
         {
           "slot_id": "hero",
-          "intent": "黑盒与玻璃盒对比",
+          "intent": "Talk & Search vs Agent & Decide",
           "aspect_ratio": "16:9"
         }
       ]
@@ -414,51 +414,21 @@
     {
       "page_no": 12,
       "page_kind": "content",
-      "title": "Hermes 的独特性 · 闭环学习",
-      "subtitle": "用户生成 skill，agent 随使用自我进化",
+      "title": "Hermes 的独特性",
+      "subtitle": "闭环学习 · 模块化架构",
       "bullets": [
-        {
-          "head": "Hermes",
-          "detail": "4,100 tokens/task（最低）/ 55MB RAM / 200+ models via OpenRouter"
-        },
-        {
-          "head": "LangGraph",
-          "detail": "低层编排框架，stateful agents"
-        },
-        {
-          "head": "CrewAI",
-          "detail": "角色扮演驱动，manager-worker-critic"
-        },
-        {
-          "head": "AutoGen",
-          "detail": "多 agent 对话（已进入 maintenance mode）"
-        },
-        {
-          "head": "独特性",
-          "detail": "不是更强的模型，是能力生成的机制"
-        }
+        "**闭环学习**：每次使用生成新 skill——agent 随使用自我进化",
+        "**模块化架构**：Footprint Ladder 六级能力阶梯——新能力以最低成本落地",
+        "**模型解耦**：200+ models via OpenRouter——不绑定单一模型"
       ],
-      "narrative": "Hermes 的独特性不是'更强的模型'，而是闭环学习机制——用户生成 skill，agent 随使用自我进化。这是四个主流框架中唯一具备闭环能力的项目。",
+      "narrative": "Hermes 的独特性不是更强的模型，是能力生成的机制。闭环学习让 agent 随使用自我进化，模块化架构让新能力以最低成本落地。",
       "data_points": [
-        {
-          "label": "Hermes tokens/task",
-          "value": "4,100（最低）"
-        },
-        {
-          "label": "Hermes RAM",
-          "value": "55MB（最低）"
-        }
+        "Hermes: 4,100 tokens/task（最低）| 55MB RAM（最低）| 200+ models via OpenRouter"
       ],
-      "visual_hints": "循环箭头图，中心 Hermes，外围三节点：Skills 生成、Memory 积累、Session 演化",
+      "visual_hints": "Clean comparison layout, no metaphor",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "闭环学习循环图",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
       "page_no": 13,
@@ -1181,241 +1151,171 @@
     {
       "page_no": 27,
       "page_kind": "content",
-      "title": "案例 7 · #107070 会话重放污染历史",
-      "subtitle": "P1 可靠性里程碑",
+      "title": "PR #5143 · 多角色自动路由",
+      "subtitle": "Gateway Hooks · 专业化分化（2026-04）",
       "bullets": [
         {
-          "head": "Issue",
-          "detail": "user turns persisted after a transient failure are replayed days later"
+          "head": "需求信号",
+          "detail": "28,040 body · 11 comments · comp/gateway · area/sessions · needs-decision"
         },
         {
-          "head": "类型/优先级",
-          "detail": "P1 / bug / agent 组件"
+          "head": "用户需求",
+          "detail": "从'一个 agent 处理一切'到'专业化角色分工'——agent 从工具到团队"
         },
         {
-          "head": "风险标签",
-          "detail": "risk-session-state + risk-message-delivery"
-        },
-        {
-          "head": "body 长度",
-          "detail": "6,707 字符——样本最长之一，问题描述详尽、复现充分"
-        },
-        {
-          "head": "影响",
-          "detail": "会话持久化在瞬时故障后被'隔日重放'，直接污染用户对话历史"
-        },
-        {
-          "head": "制度含义",
-          "detail": "'可靠性'不只是'能不能用'，而是'能否信任 agent 记住正确的历史'"
+          "head": "演化意义",
+          "detail": "Phase 2 标志性提案——平台扩展期用户要求 agent 专业化能力"
         }
       ],
-      "narrative": "#107070 是 P1 级别、命中两个最高感知风险的缺陷：会话持久化在瞬时故障后被'隔日重放'，直接污染用户对话历史。这是 agent 组件最应优先修复项——可靠性不是'能不能用'，是'能否信任 agent 记住正确的历史'。",
+      "narrative": "#5143 是 Phase 2 的标志性提案。用户要求 gateway hooks 实现多角色自动路由——不同任务类型路由到不同 agent 角色。这是 agent 从'工具'到'团队'的第一个信号。",
       "data_points": [
         {
-          "label": "Issue",
-          "value": "#107070"
+          "label": "Body",
+          "value": "28,040"
         },
         {
-          "label": "Priority",
-          "value": "P1"
-        },
-        {
-          "label": "Component",
-          "value": "agent"
-        },
-        {
-          "label": "body_len",
-          "value": "6,707 chars"
-        },
-        {
-          "label": "Risks",
-          "value": "risk-session-state, risk-message-delivery"
+          "label": "Comments",
+          "value": "11"
         }
       ],
-      "visual_hints": "左侧 GitHub issue 卡片（P1 红色标签），右侧分析文字。中间竖线分隔。视觉焦点是'重放'——像一段被错误拷贝到几日后才播放的录像带",
+      "visual_hints": "左侧'#5143'大号编号 + 中间 gateway hooks 路由图 + 右侧'工具→团队'箭头",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "P1 会话重放 issue 卡片",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
       "page_no": 28,
       "page_kind": "content",
-      "title": "案例 8 · #101600 Windows 自锁",
-      "subtitle": "P1 兼容性里程碑",
+      "title": "PR #53871 · 给 Hermes 一个灵魂",
+      "subtitle": "Curiosity Engine · 生命化（2026-06）",
       "bullets": [
         {
-          "head": "Issue",
-          "detail": "Windows update handoff races gateway restart and self-locks hermes.exe"
+          "head": "需求信号",
+          "detail": "27,518 body · comp/agent · tool/memory · area/sessions"
         },
         {
-          "head": "类型/优先级",
-          "detail": "P1 / bug / cli 组件"
+          "head": "用户需求",
+          "detail": "从'用完即走'到'希望 agent 有自己的生命'——agent 从工具到伙伴"
         },
         {
-          "head": "风险标签",
-          "detail": "risk-compatibility + risk-platform-windows"
-        },
-        {
-          "head": "讨论热度",
-          "detail": "comments 5——P1 中唯一触及平台的缺陷"
-        },
-        {
-          "head": "影响",
-          "detail": "Windows 更新时升级流程与 gateway 重启竞态，hermes.exe 自锁——用户机器被锁死"
-        },
-        {
-          "head": "制度含义",
-          "detail": "'兼容性'不是次要的技术债——用户被'锁在门外'时，'能用'和'好用'的边界被重新划定"
+          "head": "演化意义",
+          "detail": "Phase 3 标志性提案——用户要求 agent 有生命感、记忆延续、自主性"
         }
       ],
-      "narrative": "#101600 是 P1 中唯一触及平台的缺陷：Windows 更新与 gateway 重启竞态导致 hermes.exe 自锁，用户机器被锁死。兼容性不是次要的技术债——当用户被'锁在门外'时，'能用'和'好用'的边界被重新划定。",
+      "narrative": "#53871 是 Phase 3 的标志性提案。'Give Hermes a Life Between Sessions'——引入 Curiosity Engine、Synthetic Dream Cycle、Watchman。这是 agent 从'工具'到'伙伴'的跃迁。",
       "data_points": [
         {
-          "label": "Issue",
-          "value": "#101600"
+          "label": "Body",
+          "value": "27,518"
         },
         {
-          "label": "Priority",
-          "value": "P1"
-        },
-        {
-          "label": "Component",
-          "value": "cli"
-        },
-        {
-          "label": "Comments",
-          "value": "5"
-        },
-        {
-          "label": "Risks",
-          "value": "risk-compatibility, risk-platform-windows"
+          "label": "核心",
+          "value": "Curiosity + Dream + Watchman"
         }
       ],
-      "visual_hints": "左侧 GitHub issue 卡片（P1 红色标签 + Windows 图标），右侧分析文字。视觉焦点是'自锁'——像一扇被自己关上的门",
+      "visual_hints": "左侧'#53871'大号编号 + 中间'生命'概念图 + 右侧'工具→伙伴'箭头",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "P1 Windows 自锁 issue 卡片",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
       "page_no": 29,
       "page_kind": "content",
-      "title": "案例 9 · #67002 Safe MCP Reload",
-      "subtitle": "消费侧信任的教科书样本",
+      "title": "PR #61044 · Cron-native Batch API",
+      "subtitle": "自主调度 · 自动化（2026-07）",
       "bullets": [
         {
-          "head": "Issue",
-          "detail": "feat(api): add safe MCP reload control endpoint"
+          "head": "标题",
+          "detail": "RFC: Cron-native Batch API agent loop for scheduled/background work"
         },
         {
-          "head": "风险标签",
-          "detail": "risk-message-delivery + blast-moderate"
+          "head": "需求信号",
+          "detail": "35,660 body · comp/agent · comp/cron · innovation"
         },
         {
-          "head": "组件/优先级",
-          "detail": "gateway / P3"
+          "head": "技术复杂性",
+          "detail": "中——cron 层引入 agent loop，批处理调度的原生 agent 循环"
         },
         {
-          "head": "讨论热度",
-          "detail": "comments 14——样本最高"
+          "head": "用户需求",
+          "detail": "从'手动触发'到'自主调度'——agent 定时自主执行复杂任务"
         },
         {
-          "head": "关键观察",
-          "detail": "用户主动要求'安全的重载端点'——要能力的同时显式要安全收口"
-        },
-        {
-          "head": "制度含义",
-          "detail": "从'能用'到'好用'的关键跃迁——消费侧信任的强信号"
+          "head": "演化意义",
+          "detail": "Phase 3 标志性提案——用户要求 agent 有自主调度能力"
         }
       ],
-      "narrative": "#67002 是教科书样本：用户在索取 MCP reload 功能的同时显式要求安全边界。这是'消费侧信任'的可观察信号，也是从'能用'到'好用'的跃迁证据。",
+      "narrative": "#61044 是 Phase 3 的标志性 RFC。'Cron-native Batch API agent loop for scheduled/background work'——用户要求 agent 能定时自主执行复杂任务。从手动触发到自主调度的跃迁。innovation 标签说明这是被认可的创新提案。",
       "data_points": [
         {
-          "label": "Issue",
-          "value": "#67002"
+          "label": "Body",
+          "value": "35,660"
         },
         {
-          "label": "Labels",
-          "value": "risk-message-delivery, blast-moderate"
+          "label": "标签",
+          "value": "comp/cron · innovation"
         },
         {
-          "label": "Priority",
-          "value": "P3"
+          "label": "核心",
+          "value": "Cron-native agent loop"
         },
         {
-          "label": "Comments",
-          "value": "14"
+          "label": "状态",
+          "value": "open · P3"
         }
       ],
-      "visual_hints": "左侧 issue 卡片，右侧分析文字，中间竖线分隔",
+      "visual_hints": "左侧'#61044'大号编号 + 中间 cron 循环图（agent loop 自主调度）+ 右侧'手动→自动'箭头",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "GitHub issue 卡片",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
       "page_no": 30,
       "page_kind": "content",
-      "title": "案例 10 · #66353 Telegram Topic Titles",
-      "subtitle": "三风险叠加的田野观察",
+      "title": "PR #82198 · Skill-Persistence EPIC",
+      "subtitle": "自我组织 · 持久化（2026-08）",
       "bullets": [
         {
-          "head": "Issue",
-          "detail": "feat(telegram): add compact topic titles and semantic icons"
+          "head": "标题",
+          "detail": "EPIC: Hermes skill-persistence and storage-boundary operational-risk conquest"
         },
         {
-          "head": "风险标签",
-          "detail": "risk-message-delivery + risk-compatibility + blast-broad"
+          "head": "需求信号",
+          "detail": "54,633 body（最大 EPIC）· comp/agent · tool/skills · area/memory · needs-decision"
         },
         {
-          "head": "讨论热度",
-          "detail": "comments 12——高讨论度的 gateway/平台 feature"
+          "head": "技术复杂性",
+          "detail": "极高——54,633 body 是样本中最大的设计文档之一，涉及 skill 持久化 + 存储边界 + 运维风险"
         },
         {
-          "head": "blast-broad",
-          "detail": "大爆炸面——影响所有 Telegram 用户"
+          "head": "用户需求",
+          "detail": "从'临时 skill'到'持久 skill'——agent 自我组织、持久化知识、管理存储边界"
         },
         {
-          "head": "关键观察",
-          "detail": "feature 类 issue 普遍自带兼容性风险——用户要功能时也知道风险"
-        },
-        {
-          "head": "制度含义",
-          "detail": "消费侧信任是双向的——用户索取能力的同时主动索取安全收口"
+          "head": "演化意义",
+          "detail": "Phase 4 标志性提案——EPIC 级设计文档，用户要求 agent 有自我组织能力"
         }
       ],
-      "narrative": "#66353 是 gateway/平台 feature 的典型样本：三个风险标签叠加（含 blast-broad 大爆炸面）。讨论度高的 feature 普遍自带兼容性风险，这是消费侧信任的强信号。",
+      "narrative": "#82198 是 Phase 4 的标志性 EPIC。54,633 body 是样本中最大的设计文档之一。'skill-persistence and storage-boundary operational-risk conquest'——用户要求 agent 能持久化 skill（知识）、管理存储边界（安全）、征服运维风险（可靠性）。这是 agent 从'伙伴'到'自我组织者'的跃迁。",
       "data_points": [
         {
-          "label": "Issue",
-          "value": "#66353"
+          "label": "Body",
+          "value": "54,633（最大 EPIC）"
         },
         {
-          "label": "Risks",
-          "value": "risk-message-delivery, risk-compatibility, blast-broad"
+          "label": "标签",
+          "value": "tool/skills · area/memory"
         },
         {
-          "label": "Comments",
-          "value": "12"
+          "label": "核心",
+          "value": "Skill 持久化 + 存储边界"
+        },
+        {
+          "label": "状态",
+          "value": "open · needs-decision"
         }
       ],
-      "visual_hints": "左侧 issue 卡片，右侧三风险标签堆叠图形，下方'blast-broad'大字",
+      "visual_hints": "左侧'#82198'大号编号 + 中间'Skill-Persistence'架构图（持久化 + 边界 + 风险）+ 右侧'伙伴→自我组织'箭头",
       "use_table": null,
       "use_image": null,
       "asset_slots": []
@@ -1423,54 +1323,34 @@
     {
       "page_no": 31,
       "page_kind": "content",
-      "title": "案例 11 · #84672 内容扫描误判",
-      "subtitle": "安全治理的长正文田野观察",
+      "title": "PR #94266 · Collective Wisdom Agent",
+      "subtitle": "集体智慧 · 智慧化（2026-08）",
       "bullets": [
         {
-          "head": "Issue",
-          "detail": "[Bug]: Content scanners flag security documentation as attacks"
+          "head": "需求信号",
+          "detail": "52,295 body · 9 comments · comp/agent · tool/skills · area/config · needs-decision"
         },
         {
-          "head": "组件",
-          "detail": "cron"
+          "head": "用户需求",
+          "detail": "从'个体 agent'到'集体智慧'——多个 agent session 的知识聚合为集体智慧"
         },
         {
-          "head": "body 长度",
-          "detail": "11,754 字符——样本最长，远超第二名 7,019"
-        },
-        {
-          "head": "关键观察",
-          "detail": "cron 内容扫描器把安全文档误判为攻击——横切安全问题"
-        },
-        {
-          "head": "问题描述",
-          "detail": "复现充分——用户对安全扫描误报的深度关注"
-        },
-        {
-          "head": "制度含义",
-          "detail": "'安全扫描'不是技术工具，是制度契约——误判率决定用户是否信任系统"
+          "head": "演化意义",
+          "detail": "Phase 4 标志性提案——9 comments 讨论活跃，用户要求 agent 有集体智慧能力"
         }
       ],
-      "narrative": "#84672 是 cron 组件的长正文 issue——11,754 字符，远超样本第二名。内容扫描器把安全文档误判为攻击，是横切的安全治理问题。用户对安全扫描误报的深度关注，反映了'信任'作为消费侧信号的可观察性。",
+      "narrative": "#94266 是 Phase 4 的另一个标志性提案。'feat(wisdom): add Hermes Collective Wisdom Agent V1'——用户要求 agent 有集体智慧能力。52,295 body + 9 comments 说明这是活跃讨论的设计文档。",
       "data_points": [
         {
-          "label": "Issue",
-          "value": "#84672"
+          "label": "Body",
+          "value": "52,295"
         },
         {
-          "label": "Component",
-          "value": "cron"
-        },
-        {
-          "label": "body_len",
-          "value": "11,754 chars"
-        },
-        {
-          "label": "排名",
-          "value": "样本最长（第二名 7,019）"
+          "label": "Comments",
+          "value": "9（讨论活跃）"
         }
       ],
-      "visual_hints": "左侧 issue 卡片 + '11,754'大数字，右侧长正文示意，下方'内容扫描误判'标签",
+      "visual_hints": "左侧'#94266'大号编号 + 中间'集体智慧'网络图 + 右侧'自我组织→集体智慧'箭头",
       "use_table": null,
       "use_image": null,
       "asset_slots": []
@@ -1529,73 +1409,59 @@
     {
       "page_no": 33,
       "page_kind": "content",
-      "title": "三个共性问题 · 可靠性/兼容性/信任",
-      "subtitle": "田野考察的横切视角",
+      "title": "三个共性问题 · 专业化/生命化/智慧化",
+      "subtitle": "5 个 PR 案例的共性提炼",
       "bullets": [
         {
-          "head": "可靠性",
-          "detail": "#107070 会话重放、Tenacity Release kanban、Quicksilver delivery ledger"
+          "head": "专业化",
+          "detail": "#5143 多角色路由——agent 从'一个处理一切'到'角色分工'"
         },
         {
-          "head": "兼容性",
-          "detail": "#101600 Windows 自锁、Surface Release 多平台 desktop"
+          "head": "生命化",
+          "detail": "#53871 Soul——agent 有生命感、记忆延续、自主性"
         },
         {
-          "head": "信任",
-          "detail": "#67002 Safe MCP Reload、#66353 三风险叠加、Judgment P0/P1 清零"
+          "head": "智慧化",
+          "detail": "#82198 Skill-Persistence + #94266 Collective Wisdom——agent 自我组织 + 集体智慧"
         },
         {
-          "head": "横切",
-          "detail": "三个问题不是独立的——可靠性是兼容性的基础，兼容性是信任的前提"
+          "head": "共同点",
+          "detail": "5 个 PR 都是 needs-decision（待决策）——社区正在讨论这些演化方向"
         },
         {
-          "head": "制度含义",
-          "detail": "'可靠性/兼容性/信任'是 Agent 从'能用'到'好用'的三道分水岭"
+          "head": "演化轨迹",
+          "detail": "专业化 → 生命化 → 自动化 → 持久化 → 智慧化"
         }
       ],
-      "narrative": "12 个案例的横切视角：可靠性、兼容性、信任是三个共性问题。三者不是独立的——可靠性是兼容性的基础，兼容性是信任的前提。这是 Agent 从'能用'到'好用'的三道分水岭。",
+      "narrative": "5 个 PR 案例的共性：用户不再满足于'一个 agent 处理一切'，而是要求 agent 有专业化分工、有生命感、有自主调度、有持久化记忆、有集体智慧。5 个 PR 都是 needs-decision 状态——社区正在讨论这些演化方向。",
       "data_points": [],
-      "visual_hints": "三列并置：可靠性/兼容性/信任，每列下方 3 个案例标签",
+      "visual_hints": "左侧 5 个 PR 编号列 + 中间'专业化→生命化→智慧化'演进箭头 + 右侧 needs-decision 标签",
       "use_table": null,
       "use_image": null,
-      "asset_slots": [
-        {
-          "slot_id": "hero",
-          "intent": "三个共性问题",
-          "aspect_ratio": "16:9"
-        }
-      ]
+      "asset_slots": []
     },
     {
       "page_no": 34,
       "page_kind": "content",
-      "title": "从'能用'到'好用'的跃迁",
-      "subtitle": "消费侧信任作为可观察信号",
+      "title": "从'能用'到'好用'的跃迁 · 五阶段",
+      "subtitle": "用户需求演化的完整轨迹",
       "bullets": [
         {
-          "head": "'能用'",
-          "detail": "功能可用——CLI 能启动、gateway 能连接、agent 能响应"
+          "head": "专业化 → 生命化",
+          "detail": "#5143 (2026-04) Gateway Hooks → #53871 (2026-06) Soul / Curiosity Engine"
         },
         {
-          "head": "'好用'",
-          "detail": "信任可用——历史不被污染、平台不被锁死、能力有安全边界"
+          "head": "自动化 → 持久化",
+          "detail": "#61044 (2026-07) Cron-native Batch API → #82198 (2026-08) Skill-Persistence EPIC (54,633 body)"
         },
         {
-          "head": "跃迁证据",
-          "detail": "feature issue 自带安全边界标签——#67002、#66353"
-        },
-        {
-          "head": "跃迁证据 2",
-          "detail": "P1 清零承诺——Judgment Release 'keeping P0/P1 at 0'"
-        },
-        {
-          "head": "制度含义",
-          "detail": "消费侧信任是可观察的信号——用户在索取能力的同时主动索取安全收口"
+          "head": "智慧化",
+          "detail": "#94266 (2026-08) Collective Wisdom Agent V1 (52,295 body)"
         }
       ],
-      "narrative": "从'能用'到'好用'的跃迁，是可观察的信号——feature issue 自带安全边界标签、P1 清零承诺。用户在索取能力的同时主动索取安全收口，这是'消费侧信任'的田野证据。",
+      "narrative": "从'能用'到'好用'的跃迁是五步：专业化 → 生命化 → 自动化 → 持久化 → 智慧化。每一步都是用户对 agent 的需求提升——从工具到伙伴到自我组织到集体智慧。",
       "data_points": [],
-      "visual_hints": "左侧'能用'大字 + 右侧'好用'大字，中间箭头，下方'跃迁证据'标签",
+      "visual_hints": "五阶段横向时间线，每阶段一个 PR 编号 + 日期 + 核心关键词",
       "use_table": null,
       "use_image": null,
       "asset_slots": []
@@ -1683,32 +1549,32 @@
       "page_no": 37,
       "page_kind": "content",
       "title": "田野考察方法论复盘",
-      "subtitle": "为什么需要田野考察？",
+      "subtitle": "从群众中来的方法",
       "bullets": [
         {
-          "head": "数据观察的局限",
-          "detail": "数据点没有故事——41,792 issues 无法说清'用户在要什么'"
+          "head": "视角",
+          "detail": "开源社区内实践者——不是外部观察者，是参与者和记录者"
         },
         {
-          "head": "田野考察的方法",
-          "detail": "把 issue/PR/release 当文化现象——类似人类学对仪式、禁忌、符号的观察"
+          "head": "方法",
+          "detail": "从群众中来——从实践出发，非框架先行；从案例中提炼，非理论推导"
         },
         {
-          "head": "案例驱动",
-          "detail": "每个案例都是'现象→数据→制度解读'三段式"
+          "head": "立场",
+          "detail": "批判行政开源——用实践检验理论，用演化观察制度"
         },
         {
-          "head": "独特视角",
-          "detail": "纯数据表格任何工具都能出——'文化现象描述'只有人能写"
+          "head": "局限",
+          "detail": "弱代理（stars ≠ 使用）、单一仓库、关键词分析（非语义）"
         },
         {
-          "head": "制度含义",
-          "detail": "'度量权'在社区手里——田野考察是开源 Agent 的'社会学方法'"
+          "head": "下一步",
+          "detail": "长期追踪——持续观察需求/供给/消费的演化，寻找更强信号"
         }
       ],
-      "narrative": "田野考察不是'看数据'，是'看文化现象'。每个案例都是'现象→数据→制度解读'三段式。纯数据表格任何工具都能出——'文化现象描述'只有人能写。这是开源 Agent 的'社会学方法'。",
+      "narrative": "方法论复盘：视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。",
       "data_points": [],
-      "visual_hints": "左侧'数据观察'灰字 + 右侧'田野考察'高亮字，中间箭头，下方'三段式'标签",
+      "visual_hints": "五个圆圈排列：视角/方法/立场/局限/下一步，每个圆圈一个关键词",
       "use_table": null,
       "use_image": null,
       "asset_slots": []

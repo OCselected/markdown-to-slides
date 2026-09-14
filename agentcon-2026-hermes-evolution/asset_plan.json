@@ -6,7 +6,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "decoration",
-          "image_prompt": "Deep Prussian blue background with subtle parchment texture, bauhaus geometric composition featuring abstract circles squares and lines in warm ivory and antique gold, a minimalist stylized winged messenger symbol in the upper right corner, elegant intellectual mood, dark academic aesthetic, cinematic composition suitable for a presentation cover",
+          "image_prompt": "Dark Prussian blue parchment-textured background with subtle warm cream undertones, composed in bauhaus geometric style. Abstract overlapping circles, rectangles, and thin diagonal lines in deep teal-navy #1B3B6B and muted bronze-gold #B4A078, suggesting intellectual evolution and layered architectural growth. Minimal, restrained, rational aesthetic with generous negative space. A single delicate warm gold line accents the upper right corner. No text, no icons, no figures. Deep academic, museum-quality composition evoking a scholarly conference cover.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_001_hero.png",
@@ -21,7 +21,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A stark contrast composition with a solid opaque black cube on the left revealing nothing inside, a transparent glass cube on the right exposing intricate internal network patterns and circuitry, bauhaus geometric style with clean lines, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, metaphor of opacity versus transparency in knowledge systems",
+          "image_prompt": "Abstract conceptual split-composition on dark Prussian blue #0F1E33 background. Left side: soft rounded bubble-like forms in warm cream #F5F0E8 suggesting dialogue and search. Right side: angular geometric shards and directional arrows in deep teal-navy #1B3B6B suggesting autonomous action and decision-making. A subtle warm bronze #B4A078 dividing line separates the two zones, with a gentle gradient suggesting evolution and transition. Bauhaus-inspired geometric abstraction, restrained and rational, no text or labels.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_002_hero.png",
@@ -68,7 +68,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "infographic",
-          "image_prompt": "A diagonal staircase composition ascending from lower-left to upper-right with multiple distinct steps of increasing visual weight, each step marked by bauhaus geometric shapes growing in size from small circles to bold angular forms, warm ivory tones on deep Prussian blue background with antique gold accent lines, dark academic aesthetic, structured visual hierarchy suggesting capability progression",
+          "image_prompt": "Six ascending geometric steps forming a staircase structure rising from left to right on dark Prussian blue #0F1E33 background. Each step is a clean rectangular block in graduated tones from cool teal-navy to warmer bronze-gold #B4A078, representing increasing weight and significance. Bauhaus geometric style with thin warm cream #F5F0E8 outlines separating each step. The steps grow progressively larger and more substantial toward the right. Minimal, structured, rational composition. No text, no numbers, no labels.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_011_hero.png",
@@ -79,26 +79,15 @@
     },
     {
       "page_no": 12,
-      "slots": [
-        {
-          "slot_id": "hero",
-          "slot_kind": "infographic",
-          "image_prompt": "A circular flow diagram with interconnected nodes arranged in a triangular orbit, curved arrows connecting each node in a continuous feedback cycle, bauhaus geometric style with smooth circles and flowing curves, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, representing continuous self-improvement through iterative loops",
-          "aspect_ratio": "16:9",
-          "image_size": "2k",
-          "local_path": "images/page_012_hero.png",
-          "status": "pending",
-          "quality_review": null
-        }
-      ]
+      "slots": []
     },
     {
       "page_no": 13,
       "slots": [
         {
           "slot_id": "hero",
-          "slot_kind": "infographic",
-          "image_prompt": "A multi-axis framework diagram with geometric symbols at each axis terminus, a central cube at the intersection with orbiting satellite elements representing observation dimensions, bauhaus geometric composition on deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, multi-dimensional analytical structure for systematic study",
+          "slot_kind": "concept_visual",
+          "image_prompt": "Abstract three-dimensional observation framework on dark Prussian blue #0F1E33 background. Left: a single focused geometric point in warm bronze-gold #B4A078 representing a sample under examination. Center: three converging thin lines in deep teal creating a triangular observation frame. Right: a compact grid of small squares in graduated teal and cream tones suggesting multiple case studies. Bauhaus geometric style with thin warm cream #F5F0E8 connecting lines. Minimal, rational, no text. Dark academic aesthetic suggesting structured field methodology.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_013_hero.png",
@@ -129,7 +118,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "infographic",
-          "image_prompt": "A multi-tiered pyramid diagram with a wide base tapering to a narrow apex, each tier in distinct warm ivory shades against a deep Prussian blue background, bauhaus geometric circles decorating each tier boundary, antique gold accent lines separating the layers, dark academic aesthetic, representing community contribution stratification with clear hierarchical layers",
+          "image_prompt": "Three-tiered pyramid structure centered on dark Prussian blue #0F1E33 background. The base is a wide trapezoid in deep teal-navy #1B3B6B, the middle tier is a medium trapezoid in a transitional blue tone, and the apex is a small triangle in warm bronze-gold #B4A078. Clean geometric edges, bauhaus style with thin warm cream #F5F0E8 dividing lines between tiers. Proportions emphasize a clear hierarchy with a small elite apex. Minimal, rational, no text or numbers. Dark academic parchment-textured background with subtle warmth.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_018_hero.png",
@@ -143,8 +132,8 @@
       "slots": [
         {
           "slot_id": "hero",
-          "slot_kind": "concept_visual",
-          "image_prompt": "A triptych composition with vertical panels separated by thin antique gold lines, each panel featuring a distinct bauhaus geometric motif including a large circle a square grid and a triangular form, deep Prussian blue background with warm ivory elements, dark academic aesthetic, three interconnected insights presented in parallel visual sections",
+          "slot_kind": "decoration",
+          "image_prompt": "Three parallel vertical columns standing on dark Prussian blue #0F1E33 background, each rendered as a tall geometric pillar in slightly different deep teal tones with warm bronze-gold #B4A078 accents at their bases. Bauhaus geometric composition with thin warm cream #F5F0E8 lines separating the columns. Generous negative space around the pillars. Restrained, intellectual, atmospheric mood. No text, no icons. Dark academic aesthetic suggesting three foundational pillars of understanding in a scholarly context.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_019_hero.png",
@@ -163,7 +152,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A dramatic composition with sweeping diagonal lines and converging geometric shapes suggesting momentum and resolution, bauhaus geometric elements including bold large circles and angular forms, deep Prussian blue background with warm ivory and antique gold highlights, dark academic aesthetic, evoking a decisive clearing campaign and systematic elimination of obstacles",
+          "image_prompt": "Abstract decisive-moment composition on dark Prussian blue #0F1E33 background rendered in bauhaus geometric style. Sharp angular shards and triangular forms in deep teal-navy #1B3B6B arranged in a dynamic sweeping pattern suggesting a concentrated campaign or focused assault. A single warm bronze-gold #B4A078 diagonal line cuts through the composition, representing determination and resolve. Restrained, dramatic but controlled. No figures, no text. Dark academic intellectual mood with parchment-like texture.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_021_hero.png",
@@ -178,7 +167,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A columnar board composition with multiple vertical columns containing small geometric cards, a heartbeat pulse line running horizontally across the bottom edge, bauhaus geometric style with rectangles and circles, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, suggesting task persistence recovery and continuous operation",
+          "image_prompt": "Abstract kanban-board-inspired composition on dark Prussian blue #0F1E33 background. Three vertical rectangular columns of varying heights in graduated deep teal tones, each containing small rectangular card-like shapes in warm cream #F5F0E8 and bronze-gold #B4A078. Bauhaus geometric style with thin warm cream outlines. A subtle pulsing waveform in warm bronze runs horizontally across the base suggesting persistence and continuous monitoring. Minimal, structured, no text or labels. Dark academic aesthetic.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_022_hero.png",
@@ -193,7 +182,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A composition showing multiple device outlines including laptop desktop monitor and mobile screen in a dynamic arrangement, bauhaus geometric style with circles and rectangles forming the device frames, deep Prussian blue background with warm ivory device silhouettes and antique gold connection lines, dark academic aesthetic, representing multi-platform accessibility and interface expansion",
+          "image_prompt": "Abstract multi-screen composition on dark Prussian blue #0F1E33 background. Several overlapping geometric rectangles of different sizes suggesting laptop, tablet, and desktop screens, rendered in graduated deep teal tones with warm bronze-gold #B4A078 edges. Bauhaus geometric style with a connecting thin warm cream #F5F0E8 line running between the screens, suggesting seamless cross-platform connectivity. Generous negative space. No text, no UI elements. Dark academic intellectual mood with parchment texture.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_023_hero.png",
@@ -208,7 +197,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A transformation composition showing a large dense geometric block on the left composed of many small squares, transforming via a bold arrow into a smaller refined clean block on the right, bauhaus geometric style, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, representing dramatic simplification and efficiency through restructuring",
+          "image_prompt": "Abstract transformation composition on dark Prussian blue #0F1E33 background. On the left, a large complex geometric block in deep teal-navy #1B3B6B with dense internal structure; on the right, a much smaller refined form in warm bronze-gold #B4A078. A directional flowing line connects them, suggesting compression and simplification. Bauhaus geometric style with clean edges. The left block is intentionally dense and complex, the right is minimal and efficient. No text or numbers. Dark academic aesthetic with parchment texture.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_024_hero.png",
@@ -223,7 +212,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A dynamic composition with a stylized winged figure in swift motion, speed lines and lightning bolt geometric shapes radiating outward from the figure, bauhaus geometric style with bold curves and angular forms, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, evoking speed messenger mythology and transformative performance",
+          "image_prompt": "Abstract speed and energy burst composition on dark Prussian blue #0F1E33 background. Radiating geometric lines and angular forms in deep teal-navy #1B3B6B and warm bronze-gold #B4A078, emanating from a central point like a lightning strike or swift messenger. Bauhaus geometric style with thin warm cream #F5F0E8 accents. Dynamic but controlled, suggesting explosive performance and rapid delivery. No text, no figures. Dark academic intellectual mood with subtle parchment texture.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_025_hero.png",
@@ -238,48 +227,15 @@
     },
     {
       "page_no": 27,
-      "slots": [
-        {
-          "slot_id": "hero",
-          "slot_kind": "concept_visual",
-          "image_prompt": "A composition showing a fragmented timeline with out-of-order segments replaying across a historical record, bauhaus geometric style with scattered rectangles and broken connecting lines, deep Prussian blue background with warm ivory elements and antique gold highlights on the disrupted segments, dark academic aesthetic, representing data contamination and chronological misalignment",
-          "aspect_ratio": "16:9",
-          "image_size": "2k",
-          "local_path": "images/page_027_hero.png",
-          "status": "pending",
-          "quality_review": null
-        }
-      ]
+      "slots": []
     },
     {
       "page_no": 28,
-      "slots": [
-        {
-          "slot_id": "hero",
-          "slot_kind": "concept_visual",
-          "image_prompt": "A composition of a door or gate mechanism caught in an impossible deadlock state, geometric bars and locks interlocking impossibly, bauhaus geometric style with bold angular forms, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, representing a system self-locking and blocking its own access",
-          "aspect_ratio": "16:9",
-          "image_size": "2k",
-          "local_path": "images/page_028_hero.png",
-          "status": "pending",
-          "quality_review": null
-        }
-      ]
+      "slots": []
     },
     {
       "page_no": 29,
-      "slots": [
-        {
-          "slot_id": "hero",
-          "slot_kind": "concept_visual",
-          "image_prompt": "A composition of a carefully controlled valve or gate mechanism with precision controls and safety indicators, bauhaus geometric style with balanced circles and rectangles, deep Prussian blue background with warm ivory elements and antique gold accent details, dark academic aesthetic, representing capability with explicit safety boundaries and deliberate design",
-          "aspect_ratio": "16:9",
-          "image_size": "2k",
-          "local_path": "images/page_029_hero.png",
-          "status": "pending",
-          "quality_review": null
-        }
-      ]
+      "slots": []
     },
     {
       "page_no": 30,
@@ -295,18 +251,7 @@
     },
     {
       "page_no": 33,
-      "slots": [
-        {
-          "slot_id": "hero",
-          "slot_kind": "concept_visual",
-          "image_prompt": "A triptych composition with distinct vertical sections separated by thin lines, each featuring a different bauhaus geometric motif representing reliability with interlocking shapes compatibility with overlapping circles and trust with a shield form, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, three interconnected themes in parallel",
-          "aspect_ratio": "16:9",
-          "image_size": "2k",
-          "local_path": "images/page_033_hero.png",
-          "status": "pending",
-          "quality_review": null
-        }
-      ]
+      "slots": []
     },
     {
       "page_no": 34,
@@ -322,7 +267,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "infographic",
-          "image_prompt": "A grid layout of small squares arranged in a regular formation, each square containing a distinct bauhaus geometric motif including circles squares triangles and lines, deep Prussian blue background with warm ivory squares and antique gold accents, dark academic aesthetic, representing a structured collection of case studies in a visual array",
+          "image_prompt": "Twelve-cell grid arrangement on dark Prussian blue #0F1E33 background rendered in bauhaus geometric style. Six cells in the top row in deep teal-navy #1B3B6B, five cells in the middle row in graduated blue tones, and one cell in the bottom row in warm bronze-gold #B4A078, suggesting a hierarchical case-study matrix. Each cell is a clean geometric square with thin warm cream #F5F0E8 borders. Minimal, structured, no text or numbers. Dark academic aesthetic with parchment-like background.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_036_hero.png",
@@ -345,7 +290,7 @@
         {
           "slot_id": "hero",
           "slot_kind": "concept_visual",
-          "image_prompt": "A composition of parallel gateways leading to a distant horizon, each gateway with a distinct bauhaus geometric design including an arch a rectangular frame and a circular opening, deep Prussian blue background with warm ivory and antique gold accents, dark academic aesthetic, representing critical transitions in a journey from basic function to trusted capability",
+          "image_prompt": "Three parallel horizontal rivers or channels flowing left to right across a dark Prussian blue #0F1E33 background, each separated by a thin warm bronze-gold #B4A078 dividing line. The rivers are rendered in graduated deep teal tones, suggesting three sequential barriers or thresholds to cross. Bauhaus geometric style with clean horizontal lines and subtle vertical accent marks in warm cream #F5F0E8. Minimal, rational, no text. Dark academic aesthetic evoking crossing from one stage to the next.",
           "aspect_ratio": "16:9",
           "image_size": "2k",
           "local_path": "images/page_039_hero.png",

@@ -2,7 +2,8 @@
   "design_style": {
     "id": 1,
     "name_zh": "科技感",
-    "name_en": "Tech/Futuristic"
+    "name_en": "Tech/Futuristic",
+    "_note": "sn-ppt-standard 目录无 dark-academic 选项；沿用 design_style 1 但覆盖 palette 到 dark academic 调性"
   },
   "color_tone": {
     "id": 1,
@@ -13,16 +14,28 @@
     "id": 6,
     "name_zh": "青色/蓝绿",
     "name_en": "Teal / Cyan",
-    "hex": "#00BCD4"
+    "hex": "#1B3B6B",
+    "_note": "覆盖为深普鲁士蓝 #1B3B6B（dark academic 学术强调色）"
   },
   "palette": {
-    "primary": "#00BCD4",
-    "accent": "#FF7043",
-    "neutral": "#1E293B"
+    "primary": "#1B3B6B",
+    "accent": "#B4A078",
+    "neutral": "#F5F0E8",
+    "bg": "#0F1E33",
+    "text": "#F5F0E8",
+    "muted_text": "rgba(245, 240, 232, 0.68)",
+    "border": "rgba(27, 59, 107, 0.35)"
   },
   "typography": {
-    "heading_font": "Inter, 'SF Pro Display', sans-serif",
-    "body_font": "Inter, 'SF Pro Text', sans-serif",
-    "base_size_px": 16
+    "heading_font": "'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif",
+    "body_font": "'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', Inter, sans-serif",
+    "mono_font": "'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace",
+    "base_size_px": 18
+  },
+  "visual_style": {
+    "aesthetic": "dark academic, intellectual visual system, bauhaus geometric composition",
+    "mood_keywords": ["理性", "克制", "智识感", "羊皮纸质感", "几何抽象"],
+    "decoration": "包豪斯几何元素（圆、方、线），不依赖图标",
+    "background": "深普鲁士蓝羊皮纸质感，暖白为主色调文字"
   }
 }
