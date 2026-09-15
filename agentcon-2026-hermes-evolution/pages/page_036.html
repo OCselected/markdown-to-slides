@@ -4,476 +4,419 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>从"能用"到"好用"的跃迁 · 五阶段</title>
+<title>三个共性问题 · 专业化 / 生命化 / 智慧化</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  :root {
+    --bg-deep: #0F1E33;
+    --primary: #1B3B6B;
+    --primary-light: #2A5A9C;
+    --text-main: #F5F0E8;
+    --accent: #B4A078;
+    --accent-dim: #8C7C58;
+    --muted: #8899B3;
+    --line: #2D4A72;
+    --card: #142842;
+    --card-2: #183457;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; margin: 0 auto; }
+  #bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 85% 15%, #16315C 0%, #0F1E33 55%); }
+  #ct { position: absolute; inset: 0; z-index: 1; padding: 44px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; }
 
-:root {
-  --primary: #1B3B6B;
-  --primary-light: #2D5FA3;
-  --bg: #0F1E33;
-  --text: #F5F0E8;
-  --text-sub: rgba(245, 240, 232, 0.68);
-  --text-mute: rgba(245, 240, 232, 0.45);
-  --accent: #B4A078;
-  --accent-glow: rgba(180, 160, 120, 0.25);
-}
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; }
+  .title-block { flex: 1; }
+  .kicker {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 11px; letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 10px; font-weight: 500;
+  }
+  .kicker .line { width: 42px; height: 1px; background: var(--accent); }
+  .kicker .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+  h1 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 38px; font-weight: 700;
+    line-height: 1.18; color: var(--text-main);
+    letter-spacing: 1px;
+  }
+  h1 .em { color: var(--accent); }
+  h1 .sep { color: var(--muted); font-weight: 400; margin: 0 8px; }
+  .subtitle {
+    margin-top: 10px;
+    font-size: 14px; color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .subtitle .n { color: var(--accent); font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; margin: 0 3px; }
+  .subtitle-en {
+    display: block; margin-top: 3px;
+    font-size: 9.5px; letter-spacing: 3.5px;
+    color: var(--accent-dim); font-weight: 500;
+  }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  .header-deco { width: 220px; height: 90px; position: relative; }
 
-html, body {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-}
+  /* Main */
+  .main { display: flex; gap: 22px; flex: 1; min-height: 0; }
+  .col-left { width: 350px; display: flex; flex-direction: column; }
+  .col-right { flex: 1; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: var(--bg);
-}
+  .col-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+  .col-head h2 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 16px; font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 1px;
+  }
+  .col-head .en { font-size: 10px; letter-spacing: 2px; color: var(--muted); }
+  .col-head .rule { flex: 1; height: 1px; background: var(--line); }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse at 50% 45%, #183257 0%, #0F1E33 55%, #08111F 100%);
-}
+  .pr-list { display: flex; flex-direction: column; gap: 10px; }
+  .pr-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 10px 14px; height: 50px;
+    position: relative;
+  }
+  .pr-card .idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 1.5px; width: 20px;
+  }
+  .pr-card .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--text-main); letter-spacing: 0.5px;
+    min-width: 92px;
+  }
+  .pr-card .head {
+    font-size: 13px; color: var(--accent);
+    flex: 1; line-height: 1.3;
+  }
+  .pr-card .tag {
+    font-size: 9.5px; letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+  }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 48px 60px 40px;
-  box-sizing: border-box;
-}
+  .tags-block {
+    margin-top: 16px;
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+  }
+  .tag-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .tag-row:last-child { margin-bottom: 0; }
+  .tag-label {
+    font-size: 10px; letter-spacing: 1.5px;
+    color: var(--accent); font-weight: 600;
+    padding: 4px 10px;
+    background: rgba(180, 160, 120, 0.14);
+    border: 1px solid var(--accent-dim);
+    min-width: 60px; text-align: center;
+  }
+  .tag-label.common {
+    background: rgba(180, 160, 120, 0.22);
+    border-color: var(--accent);
+    color: var(--text-main);
+  }
+  .tag-text { font-size: 12px; color: var(--muted); line-height: 1.45; flex: 1; }
 
-header {
-  position: relative;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
-}
+  .col-note {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 10.5px; letter-spacing: 1.5px;
+    color: var(--accent-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .col-note .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+  .col-note .line { flex: 1; height: 1px; background: var(--line); }
 
-.header-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 60px;
-  margin-bottom: 16px;
-}
+  /* Evolution */
+  .evolution { display: flex; gap: 10px; align-items: stretch; flex: 1; }
+  .stage {
+    flex: 1;
+    background: var(--card-2);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--primary-light);
+    padding: 18px 18px 16px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .stage::after {
+    content: ''; position: absolute;
+    top: 18px; right: 18px;
+    width: 8px; height: 8px;
+    background: var(--accent); opacity: 0.5;
+  }
+  .stage-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--accent); opacity: 0.28;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stage-name {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .stage-en {
+    font-size: 9.5px; letter-spacing: 2.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .stage-detail { font-size: 13px; line-height: 1.85; color: var(--text-main); }
+  .stage-detail .ref {
+    color: var(--accent); font-weight: 600;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .stage-detail .plus { color: var(--muted); margin: 0 3px; }
+  .stage-detail .arrow { color: var(--accent-dim); font-weight: 400; }
 
-h1 {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  line-height: 1.15;
-  color: var(--text);
-}
+  .arrow {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; flex-shrink: 0;
+  }
+  .arrow svg { width: 44px; height: 24px; }
 
-h1 .accent { color: var(--accent); }
-h1 .dot {
-  color: var(--accent);
-  font-weight: 400;
-  margin: 0 4px;
-}
-h1 .sep { color: var(--text-mute); margin: 0 10px; font-weight: 400; }
+  /* Decision */
+  .decision {
+    display: flex; align-items: center; gap: 18px;
+    background: linear-gradient(90deg, rgba(180,160,120,0.14) 0%, rgba(180,160,120,0) 100%);
+    border: 1px solid var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+  }
+  .decision .badge-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px; font-weight: 700;
+    color: var(--accent); line-height: 1;
+  }
+  .decision .badge-txt {
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--accent-dim);
+    padding: 2px 8px;
+    border: 1px solid var(--accent);
+    align-self: center;
+  }
+  .decision .desc { flex: 1; }
+  .decision .desc .title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 3px; letter-spacing: 0.5px;
+  }
+  .decision .desc .body { font-size: 12.5px; color: var(--text-main); line-height: 1.5; }
 
-.subtitle {
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.subtitle-en {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.subtitle-cn {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 16px;
-  color: var(--text-sub);
-  letter-spacing: 2px;
-}
-
-h1::before {
-  content: '';
-  position: absolute;
-  left: 60px;
-  top: 48px;
-  width: 30px;
-  height: 3px;
-  background: var(--accent);
-}
-
-.intro {
-  font-size: 15px;
-  color: var(--text-sub);
-  line-height: 1.7;
-  max-width: 1100px;
-}
-
-.intro-mark { color: var(--accent); font-weight: 700; margin-right: 8px; font-family: 'Noto Serif SC', serif; }
-
-.stages-inline {
-  color: var(--text);
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 600;
-}
-
-.stages-inline .arrow {
-  color: var(--accent);
-  margin: 0 6px;
-  font-weight: 400;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-
-.section-bar {
-  width: 4px;
-  height: 16px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.section-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  color: var(--accent);
-  letter-spacing: 6px;
-  font-weight: 600;
-}
-
-.section-note {
-  font-size: 12px;
-  color: var(--text-mute);
-  letter-spacing: 3px;
-  margin-left: auto;
-}
-
-.visual-area {
-  position: relative;
-  height: 430px;
-}
-
-#timeline-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.top-labels, .bottom-labels {
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-.top-labels { top: 0; }
-.bottom-labels { top: 165px; }
-
-.top-label, .bottom-label {
-  position: absolute;
-  width: 260px;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-.top-label .num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 2.5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.top-label .pr {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 18px;
-  color: var(--text);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.top-label .date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-mute);
-  letter-spacing: 1.5px;
-}
-
-.bottom-label .stage-name {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
-  margin-bottom: 9px;
-  line-height: 1;
-}
-
-.bottom-label .tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--accent);
-  letter-spacing: 1.5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.bottom-label .vol {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 1.5px;
-}
-
-.transition-labels {
-  position: absolute;
-  left: 0;
-  top: 92px;
-  width: 100%;
-  height: 0;
-}
-
-.tl-item {
-  position: absolute;
-  transform: translateY(-50%);
-  text-align: left;
-}
-
-.tl-item .lbl {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: var(--accent);
-  letter-spacing: 3px;
-  margin-bottom: 2px;
-}
-
-.tl-item .sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 2px;
-}
-
-.pair-group {
-  position: absolute;
-  top: 0;
-  height: 130px;
-}
-
-.footer {
-  position: absolute;
-  left: 60px;
-  right: 60px;
-  bottom: 46px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 22px 34px;
-  border-top: 1px solid rgba(180, 160, 120, 0.3);
-  border-bottom: 1px solid rgba(180, 160, 120, 0.15);
-  background: linear-gradient(90deg, rgba(27, 59, 107, 0.35) 0%, rgba(27, 59, 107, 0.1) 100%);
-}
-
-.footer-mark {
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.footer-quote {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  color: var(--text);
-  letter-spacing: 3px;
-  line-height: 1.4;
-  flex: 1;
-  font-weight: 500;
-}
-
-.footer-quote .g { color: var(--accent); font-weight: 700; }
-
-.footer-en {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-mute);
-  letter-spacing: 3px;
-  text-align: right;
-  line-height: 1.6;
-  flex-shrink: 0;
-}
-
-.deco {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-}
+  /* Bottom */
+  .bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    display: flex; align-items: center; gap: 26px;
+  }
+  .bottom .label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    border-right: 1px solid var(--line);
+    padding-right: 20px;
+  }
+  .bottom .label .en { display: block; font-size: 9px; letter-spacing: 2px; color: var(--muted); margin-top: 2px; font-weight: 400; font-family: 'Noto Sans SC', sans-serif; }
+  .trajectory { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .trajectory .step {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--text-main); letter-spacing: 1px;
+  }
+  .trajectory .ar { color: var(--accent-dim); font-size: 12px; }
+  .final-msg {
+    flex: 1;
+    font-size: 13px; color: var(--text-main);
+    line-height: 1.6;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+  }
+  .final-msg em { color: var(--accent); font-style: normal; font-weight: 600; font-family: 'Noto Serif SC', serif; }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;opacity:0.5;">
-      <rect x="30" y="30" width="1540" height="840" fill="none" stroke="rgba(245,240,232,0.04)" stroke-width="1"/>
-      <rect x="30" y="30" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
-      <rect x="1530" y="867" width="40" height="3" fill="rgba(180,160,120,0.35)"/>
-      <circle cx="1560" cy="30" r="4" fill="none" stroke="rgba(180,160,120,0.25)" stroke-width="1"/>
-      <rect x="30" y="867" width="4" height="4" fill="rgba(180,160,120,0.25)"/>
-    </svg>
-  </div>
-
+  <div id="bg"></div>
   <div id="ct">
-    <header>
-      <div class="header-row">
-        <h1>从<span class="accent">"能用"</span>到<span class="accent">"好用"</span>的跃迁<span class="sep">·</span>五阶段</h1>
+
+    <div class="header">
+      <div class="title-block">
+        <div class="kicker"><span>PR CASES · SYNTHESIS</span><span class="line"></span><span class="dot"></span><span>共性问题提炼</span></div>
+        <h1><span>三个共性问题</span><span class="sep">·</span><span class="em">专业化 / 生命化 / 智慧化</span></h1>
         <div class="subtitle">
-          <div class="subtitle-en">USER NEED · EVOLUTION ARC</div>
-          <div class="subtitle-cn">用户需求演化的完整轨迹</div>
+          <span class="n">5</span><span>个 PR 案例的共性提炼</span>
+          <span class="subtitle-en">FROM 5 PR CASES · A COMMON-PATTERN SYNTHESIS</span>
         </div>
       </div>
-      <p class="intro">
-        <span class="intro-mark">◆</span>从"能用"到"好用"的跃迁是五步 —— <span class="stages-inline">专业化<span class="arrow">→</span>生命化<span class="arrow">→</span>自动化<span class="arrow">→</span>持久化<span class="arrow">→</span>智慧化</span>，每一步都代表用户对 agent 的需求提升。
-      </p>
-    </header>
-
-    <div class="section-head">
-      <div class="section-bar"></div>
-      <div class="section-title">TIMELINE OF EVOLUTION</div>
-      <div class="section-note">2026 · Q2 — Q3</div>
-    </div>
-
-    <div class="visual-area">
-      <svg id="timeline-svg" width="1480" height="130" viewBox="0 0 1480 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="147" y1="65" x2="408" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="408" y1="65" x2="670" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="670" y1="65" x2="931" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="931" y1="65" x2="1193" y2="65" stroke="rgba(245,240,232,0.32)" stroke-width="1.2"/>
-        <line x1="1221" y1="65" x2="1454" y2="65" stroke="rgba(180,160,120,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
-
-        <line x1="277" y1="40" x2="277" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="539" y1="40" x2="539" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="802" y1="40" x2="802" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="1062" y1="40" x2="1062" y2="90" stroke="#B4A078" stroke-width="1.2" stroke-linecap="round"/>
-
-        <polygon points="279,59 292,65 279,71" fill="#B4A078"/>
-        <polygon points="541,59 554,65 541,71" fill="#B4A078"/>
-        <polygon points="804,59 817,65 804,71" fill="#B4A078"/>
-        <polygon points="1064,59 1077,65 1064,71" fill="#B4A078"/>
-        <polygon points="1456,57 1472,65 1456,73" fill="rgba(180,160,120,0.65)"/>
-
-        <circle cx="147" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <rect x="394" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <circle cx="670" cy="65" r="18" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <rect x="917" y="51" width="28" height="28" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.8"/>
-        <circle cx="1193" cy="65" r="22" fill="none" stroke="#B4A078" stroke-width="0.8" opacity="0.5"/>
-        <rect x="1177" y="49" width="32" height="32" fill="#1B3B6B" stroke="#B4A078" stroke-width="2"/>
-
-        <text x="147" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">01</text>
-        <text x="408" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">02</text>
-        <text x="670" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">03</text>
-        <text x="931" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">04</text>
-        <text x="1193" y="70" text-anchor="middle" fill="#F5F0E8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">05</text>
-      </svg>
-
-      <div class="top-labels">
-        <div class="top-label" style="left:147px;">
-          <div class="num">STAGE 01</div>
-          <div class="pr">#5143</div>
-          <div class="date">2026 · 04</div>
-        </div>
-        <div class="top-label" style="left:408px;">
-          <div class="num">STAGE 02</div>
-          <div class="pr">#53871</div>
-          <div class="date">2026 · 06</div>
-        </div>
-        <div class="top-label" style="left:670px;">
-          <div class="num">STAGE 03</div>
-          <div class="pr">#61044</div>
-          <div class="date">2026 · 07</div>
-        </div>
-        <div class="top-label" style="left:931px;">
-          <div class="num">STAGE 04</div>
-          <div class="pr">#82198</div>
-          <div class="date">2026 · 08</div>
-        </div>
-        <div class="top-label" style="left:1193px;">
-          <div class="num">STAGE 05 · FINAL</div>
-          <div class="pr">#94266</div>
-          <div class="date">2026 · 08</div>
-        </div>
-      </div>
-
-      <div class="bottom-labels">
-        <div class="bottom-label" style="left:147px;">
-          <div class="stage-name">专业化</div>
-          <div class="tag">Gateway Hooks</div>
-          <div class="vol">— 工具层 · 接入就绪 —</div>
-        </div>
-        <div class="bottom-label" style="left:408px;">
-          <div class="stage-name">生命化</div>
-          <div class="tag">Soul / Curiosity Engine</div>
-          <div class="vol">— 内驱力 · 好奇心 —</div>
-        </div>
-        <div class="bottom-label" style="left:670px;">
-          <div class="stage-name">自动化</div>
-          <div class="tag">Cron-native Batch API</div>
-          <div class="vol">— 定时批处理 —</div>
-        </div>
-        <div class="bottom-label" style="left:931px;">
-          <div class="stage-name">持久化</div>
-          <div class="tag">Skill-Persistence EPIC</div>
-          <div class="vol">54,633 · body</div>
-        </div>
-        <div class="bottom-label" style="left:1193px;">
-          <div class="stage-name">智慧化</div>
-          <div class="tag">Collective Wisdom · V1</div>
-          <div class="vol">52,295 · body</div>
-        </div>
-      </div>
-
-      <div class="transition-labels">
-        <div class="tl-item" style="left:284px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">TOOL → LIFE</div>
-        </div>
-        <div class="tl-item" style="left:545px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">LIFE → AUTO</div>
-        </div>
-        <div class="tl-item" style="left:808px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">AUTO → PERSIST</div>
-        </div>
-        <div class="tl-item" style="left:1068px;">
-          <div class="lbl">成对跃迁</div>
-          <div class="sub">PERSIST → WISDOM</div>
-        </div>
+      <div class="header-deco">
+        <svg width="220" height="90" viewBox="0 0 220 90">
+          <circle cx="30" cy="45" r="26" fill="none" stroke="#B4A078" stroke-width="1"/>
+          <circle cx="30" cy="45" r="4" fill="#B4A078"/>
+          <line x1="60" y1="45" x2="115" y2="45" stroke="#2D4A72" stroke-width="1"/>
+          <rect x="118" y="30" width="30" height="30" fill="none" stroke="#F5F0E8" stroke-width="1.2"/>
+          <line x1="155" y1="45" x2="200" y2="45" stroke="#2D4A72" stroke-width="1"/>
+          <circle cx="205" cy="45" r="9" fill="none" stroke="#B4A078" stroke-width="1"/>
+          <line x1="30" y1="12" x2="30" y2="78" stroke="#2D4A72" stroke-width="0.5"/>
+          <line x1="133" y1="20" x2="133" y2="70" stroke="#2D4A72" stroke-width="0.5"/>
+        </svg>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="footer-mark"></div>
-      <div class="footer-quote">从<span class="g">工具</span>到<span class="g">伙伴</span>，从伙伴到<span class="g">自我组织</span>，最终走向<span class="g">集体智慧</span></div>
-      <div class="footer-en">FROM TOOL · TO PARTNER ·<br>TO SELF-ORGANIZATION · TO WISDOM</div>
+    <div class="main">
+
+      <div class="col-left">
+        <div class="col-head">
+          <h2>5 个 PR 案例</h2>
+          <span class="en">PR CASES</span>
+          <span class="rule"></span>
+        </div>
+
+        <div class="pr-list">
+          <div class="pr-card">
+            <span class="idx">01</span>
+            <span class="num">#5143</span>
+            <span class="head">多角色路由 · 专业化分工</span>
+            <span class="tag">专业化</span>
+          </div>
+          <div class="pr-card">
+            <span class="idx">02</span>
+            <span class="num">#53871</span>
+            <span class="head">Soul · 记忆延续与自主</span>
+            <span class="tag">生命化</span>
+          </div>
+          <div class="pr-card">
+            <span class="idx">03</span>
+            <span class="num">#82198</span>
+            <span class="head">Skill-Persistence · 技能持久</span>
+            <span class="tag">智慧化</span>
+          </div>
+          <div class="pr-card">
+            <span class="idx">04</span>
+            <span class="num">#94266</span>
+            <span class="head">Collective Wisdom · 集体智慧</span>
+            <span class="tag">智慧化</span>
+          </div>
+        </div>
+
+        <div class="tags-block">
+          <div class="tag-row">
+            <span class="tag-label common">共同点</span>
+            <span class="tag-text">5 个 PR 均指向 agent 从"处理任务"到"具备能力"的演进</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag-label">演化轨迹</span>
+            <span class="tag-text">专业化 → 生命化 → 智慧化</span>
+          </div>
+        </div>
+
+        <div class="col-note">
+          <span class="line"></span>
+          <span>ALL 5 · OPEN / IN DISCUSSION</span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="col-right">
+        <div class="col-head">
+          <h2>三个阶段 · 演进路径</h2>
+          <span class="en">EVOLUTION STAGES</span>
+          <span class="rule"></span>
+        </div>
+
+        <div class="evolution">
+          <div class="stage">
+            <div class="stage-num">01</div>
+            <div class="stage-name">专业化</div>
+            <div class="stage-en">SPECIALIZATION</div>
+            <div class="stage-detail">
+              <span class="ref">#5143</span> 多角色路由<br>
+              <span class="arrow">→</span> agent 从"一个处理一切"到"角色分工"
+            </div>
+          </div>
+
+          <div class="arrow">
+            <svg viewBox="0 0 44 24">
+              <line x1="4" y1="12" x2="38" y2="12" stroke="#B4A078" stroke-width="1.2"/>
+              <polyline points="30,6 38,12 30,18" fill="none" stroke="#B4A078" stroke-width="1.2"/>
+            </svg>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">02</div>
+            <div class="stage-name">生命化</div>
+            <div class="stage-en">LIVING ENTITY</div>
+            <div class="stage-detail">
+              <span class="ref">#53871</span> Soul<br>
+              <span class="arrow">→</span> agent 有生命感、记忆延续、自主性
+            </div>
+          </div>
+
+          <div class="arrow">
+            <svg viewBox="0 0 44 24">
+              <line x1="4" y1="12" x2="38" y2="12" stroke="#B4A078" stroke-width="1.2"/>
+              <polyline points="30,6 38,12 30,18" fill="none" stroke="#B4A078" stroke-width="1.2"/>
+            </svg>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">03</div>
+            <div class="stage-name">智慧化</div>
+            <div class="stage-en">COLLECTIVE WISDOM</div>
+            <div class="stage-detail">
+              <span class="ref">#82198</span> Skill-Persistence<span class="plus">+</span><br>
+              <span class="ref">#94266</span> Collective Wisdom<br>
+              <span class="arrow">→</span> agent 自我组织并汇聚集体智慧
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <span class="badge-num">5</span>
+          <span class="badge-txt">待决策</span>
+          <div class="desc">
+            <div class="title">needs-decision · 全部处于讨论中</div>
+            <div class="body">5 个 PR 均标记 needs-decision，社区正在就这些 agent 演化方向展开讨论。</div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <div class="bottom">
+      <div class="label"><span>演化轨迹</span><span class="en">EVOLUTION ARC</span></div>
+      <div class="trajectory">
+        <span class="step">专业化</span><span class="ar">→</span>
+        <span class="step">生命化</span><span class="ar">→</span>
+        <span class="step">自动化</span><span class="ar">→</span>
+        <span class="step">持久化</span><span class="ar">→</span>
+        <span class="step">智慧化</span>
+      </div>
+      <div class="final-msg">
+        用户不再满足于"一个 agent 处理一切"，而是要求 agent 有 <em>专业化分工</em>、<em>生命感</em>、<em>自主调度</em>、<em>持久化记忆</em>、<em>集体智慧</em>。
+      </div>
+    </div>
+
   </div>
 </div>
 </body>

@@ -4,454 +4,584 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>田野考察方法论复盘</title>
+<title>田野考察小结 · 12 案例的横切视角</title>
+<script src="../assets/echarts.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=wrap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
 
-:root {
-  --bg: #0F1E33;
-  --primary: #1B3B6B;
-  --primary-light: #2B4F82;
-  --text: #F5F0E8;
-  --text-muted: #C8C0B0;
-  --amber: #B4A078;
-  --amber-bright: #D4BE94;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+:root{
+  --bg:#0F1E33;
+  --bg-deep:#0A1628;
+  --text:#F5F0E8;
+  --text-dim:#B0AEAA;
+  --text-faint:#6E6F76;
+  --gold:#B4A078;
+  --gold-bright:#D4B87C;
+  --blue:#1B3B6B;
+  --blue-light:#2E5599;
 }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  background: #0F1E33;
+*{box-sizing:border-box;margin:0;padding:0;}
+
+html,body{width:1600px;height:900px;overflow:hidden;background:var(--bg);}
+
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(circle at 15% 25%, rgba(27, 59, 107, 0.55), transparent 45%), radial-gradient(circle at 85% 75%, rgba(180, 160, 120, 0.08), transparent 45%);
+.wrapper{
+  width:1600px;height:900px;
+  position:relative;overflow:hidden;
+  margin:0 auto;
+  background:var(--bg);
 }
 
-.bg-deco { position: absolute; }
-.deco-ring-1 {
-  top: -140px;
-  right: -140px;
-  width: 380px;
-  height: 380px;
-  border: 1px solid rgba(180, 160, 120, 0.20);
-  border-radius: 50%;
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+#ct{position:absolute;inset:0;z-index:1;padding:44px 60px;box-sizing:border-box;}
+
+/* Background bauhaus geometry */
+.bg-circle{
+  position:absolute;border-radius:50%;
 }
-.deco-ring-2 {
-  top: -60px;
-  right: -60px;
-  width: 220px;
-  height: 220px;
-  border: 1px dashed rgba(180, 160, 120, 0.22);
-  border-radius: 50%;
+.circle-1{
+  width:520px;height:520px;
+  right:-170px;top:-190px;
+  border:1px solid rgba(180,160,120,0.13);
 }
-.deco-ring-3 {
-  bottom: -60px;
-  left: -70px;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(43, 79, 130, 0.8);
-  border-radius: 50%;
+.circle-2{
+  width:340px;height:340px;
+  right:80px;top:-40px;
+  background:radial-gradient(circle,rgba(180,160,120,0.06),transparent 70%);
 }
-.deco-square-1 {
-  top: 150px;
-  left: 40px;
-  width: 22px;
-  height: 22px;
-  background: var(--amber);
-  opacity: 0.7;
+.circle-3{
+  width:220px;height:220px;
+  left:-90px;bottom:-90px;
+  border:1px solid rgba(180,160,120,0.09);
 }
-.deco-square-2 {
-  top: 200px;
-  left: 78px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--amber);
-  opacity: 0.55;
+.bg-square{
+  position:absolute;
 }
-.deco-square-3 {
-  bottom: 220px;
-  right: 40px;
-  width: 34px;
-  height: 34px;
-  border: 2px solid var(--amber);
-  opacity: 0.4;
+.square-1{
+  width:80px;height:80px;
+  right:180px;bottom:60px;
+  border:1px solid rgba(180,160,120,0.10);
+  transform:rotate(45deg);
 }
-.deco-square-4 {
-  bottom: 280px;
-  right: 88px;
-  width: 12px;
-  height: 12px;
-  background: var(--primary-light);
+.square-2{
+  width:6px;height:6px;
+  right:80px;top:38%;
+  background:rgba(180,160,120,0.5);
+}
+.bg-line{
+  position:absolute;
+  background:rgba(180,160,120,0.13);
+}
+.line-h1{width:180px;height:1px;left:60px;top:6px;}
+.line-h2{width:2px;height:100px;right:34px;top:80px;background:rgba(180,160,120,0.18);}
+.dot-decor{
+  position:absolute;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--gold);
 }
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 60px;
-  box-sizing: border-box;
+/* ===================== HEADER ===================== */
+.header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding-bottom:12px;
+}
+.header-left{display:flex;align-items:flex-end;gap:24px;}
+.page-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:46px;font-weight:900;
+  color:var(--gold);
+  line-height:0.9;
+  padding-right:22px;
+  border-right:1px solid rgba(180,160,120,0.45);
+}
+.titles{display:flex;flex-direction:column;gap:4px;}
+.title-row{display:flex;align-items:baseline;gap:22px;}
+.main-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:50px;font-weight:700;
+  letter-spacing:6px;color:var(--text);
+}
+.subtitle{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:19px;font-weight:300;
+  color:var(--gold);
+  letter-spacing:3px;
+  position:relative;
+  padding-left:14px;
+}
+.subtitle::before{
+  content:'';position:absolute;left:0;top:52%;
+  width:4px;height:4px;border-radius:50%;
+  background:var(--gold);
+}
+.header-right{
+  text-align:right;
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:11px;color:var(--text-faint);
+  letter-spacing:2px;
+  line-height:1.8;
+}
+.header-right .en{
+  color:var(--gold);
+  letter-spacing:4px;font-weight:500;
+  font-size:12px;
 }
 
-.corner-mark {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--amber);
-  z-index: 2;
+.gold-divider{
+  height:1px;
+  background:linear-gradient(to right,
+    var(--gold) 0%,var(--gold) 60px,
+    rgba(180,160,120,0.5) 60px,rgba(180,160,120,0.5) 78px,
+    transparent 78px,transparent 100%);
+  position:relative;
+  margin-bottom:22px;
 }
-.corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
-.corner-tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
-.corner-bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
-.corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
-
-.header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 46px;
+.gold-divider::after{
+  content:'';position:absolute;
+  right:0;top:-2px;
+  width:5px;height:5px;
+  background:var(--gold);
+  transform:rotate(45deg);
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  color: var(--amber);
-  font-size: 13px;
-  letter-spacing: 5px;
-  font-weight: 500;
+/* ===================== CATEGORY SECTIONS ===================== */
+.category{margin-bottom:16px;}
+.cat-head{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:11px;
+}
+.cat-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:14px;font-weight:700;
+  color:var(--gold);
+  padding:3px 9px;
+  border:1px solid rgba(180,160,120,0.5);
+}
+.cat-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:20px;font-weight:700;
+  color:var(--text);letter-spacing:4px;
+}
+.cat-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;
+  color:var(--text-faint);
+  letter-spacing:3px;text-transform:uppercase;
+  margin-left:2px;
+}
+.cat-badge{
+  margin-left:auto;
+  font-size:11px;
+  padding:3px 12px;
+  border:1px solid;
+  letter-spacing:1px;
+}
+.cat-badge.count{
+  font-family:'Noto Serif SC',serif;font-weight:600;
+}
+.cat-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,
+    rgba(180,160,120,0.4),rgba(180,160,120,0.08));
 }
 
-.eyebrow-square {
-  width: 12px;
-  height: 12px;
-  background: var(--amber);
+/* Cat 1 - blue theme */
+.cat-1 .cat-badge{border-color:rgba(46,85,153,0.7);color:#7FA0DC;}
+/* Cat 2 - gold theme */
+.cat-2 .cat-badge{border-color:rgba(180,160,120,0.7);color:var(--gold);}
+/* Cat 3 - gold fill theme */
+.cat-3 .cat-badge{border-color:var(--gold);color:var(--gold-bright);background:rgba(180,160,120,0.08);}
+
+/* ===================== CARD GRID ===================== */
+.grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.grid-1{display:grid;grid-template-columns:1.6fr 0.9fr;gap:14px;}
+
+.card{
+  padding:11px 14px 12px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(46,85,153,0.45);
+  border-radius:3px;
+  position:relative;
+  min-height:70px;
+}
+.card::before{
+  content:'';
+  position:absolute;left:0;top:0;
+  width:2px;height:14px;
+  background:var(--gold);
+}
+.card-name{
+  font-family:'Noto Serif SC',serif;
+  font-size:18px;font-weight:700;
+  color:var(--text);
+  margin-bottom:4px;
+  letter-spacing:0.5px;
+  line-height:1.15;
+}
+.card-issue{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:16px;font-weight:600;
+  color:var(--text);
+  margin-bottom:4px;
+  letter-spacing:0.5px;
+  line-height:1.2;
+}
+.card-desc{
+  font-size:11.5px;
+  color:var(--text-dim);
+  letter-spacing:0.5px;
+  line-height:1.4;
+}
+.card-tag{
+  position:absolute;top:9px;right:11px;
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
-.eyebrow-line {
-  width: 60px;
-  height: 1px;
-  background: var(--amber);
-  opacity: 0.6;
+/* Gold variant */
+.cat-2 .card{
+  border-color:rgba(180,160,120,0.4);
+  background:rgba(180,160,120,0.03);
+}
+.cat-2 .card::before{background:var(--blue-light);}
+
+/* Gold fill variant */
+.cat-3 .card-main{
+  border-color:rgba(180,160,120,0.5);
+  background:linear-gradient(90deg,rgba(180,160,120,0.07),rgba(180,160,120,0.01));
+}
+.cat-3 .card-main::before{background:var(--gold-bright);height:20px;}
+
+.card-highlight{
+  padding:11px 14px 12px;
+  border:1px dashed rgba(180,160,120,0.35);
+  border-radius:3px;
+  display:flex;flex-direction:column;justify-content:center;gap:2px;
+  min-height:70px;
+}
+.highlight-label{
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.highlight-value{
+  font-family:'Noto Serif SC',serif;
+  font-size:15px;font-weight:700;
+  color:var(--gold-bright);
+  letter-spacing:1px;
 }
 
-h1 {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 58px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
-  line-height: 1.1;
+/* ===================== THREE MODULES ===================== */
+.three-modules{
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  margin-top:18px;padding:14px 0 12px;
+  border-top:1px solid rgba(180,160,120,0.22);
+  border-bottom:1px solid rgba(180,160,120,0.22);
+  position:relative;
+}
+.three-modules::before,.three-modules::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.three-modules::before{left:-4px;top:-4px;}
+.three-modules::after{right:-4px;bottom:-4px;}
+
+.module{
+  display:flex;align-items:center;gap:14px;
+  padding:0 30px;
+  flex:1;
+}
+.module + .module{
+  border-left:1px solid rgba(180,160,120,0.2);
+}
+.m-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:12px;color:var(--gold);
+  letter-spacing:1px;font-weight:700;
+}
+.m-glyph{
+  font-family:'Noto Serif SC',serif;
+  font-size:48px;font-weight:900;
+  color:var(--text);
+  line-height:1;
+  letter-spacing:2px;
+}
+.m-info{display:flex;flex-direction:column;gap:2px;}
+.m-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--gold);
+  letter-spacing:3px;
+}
+.m-desc{
+  font-size:11px;color:var(--text-dim);
+  letter-spacing:1px;
 }
 
-.subtitle {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 22px;
-  color: var(--amber);
-  letter-spacing: 4px;
-  margin-top: 14px;
-  font-weight: 400;
-  font-style: italic;
+/* ===================== INSIGHT ===================== */
+.insight{
+  margin-top:16px;
+  display:flex;align-items:center;gap:16px;
+  padding:10px 16px 12px;
+}
+.quote-mark{
+  font-family:'Noto Serif SC',serif;
+  font-size:56px;line-height:0.5;
+  color:var(--gold);
+  font-weight:900;
+  flex-shrink:0;
+  margin-top:22px;
+}
+.insight-content{flex:1;}
+.insight-text{
+  font-family:'Noto Serif SC',serif;
+  font-size:20px;font-weight:600;
+  color:var(--text);
+  letter-spacing:2px;
+  line-height:1.4;
+}
+.insight-text .underline{
+  text-decoration:underline;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+  color:var(--gold-bright);
+  font-weight:700;
+}
+.insight-en{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--text-faint);
+  letter-spacing:3px;
+  margin-top:5px;
+  text-transform:uppercase;
+}
+.insight-end{
+  width:4px;height:4px;
+  background:var(--gold);
+  flex-shrink:0;
+  align-self:flex-end;
+  margin-bottom:6px;
 }
 
-.header-right {
-  text-align: right;
-  padding-bottom: 6px;
+/* ===================== FOOTER ===================== */
+.footer{
+  position:absolute;bottom:16px;left:60px;right:60px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:10px;color:var(--text-faint);
+  letter-spacing:3px;
+}
+.footer-line{
+  flex:1;height:1px;
+  margin:0 16px;
+  background:rgba(180,160,120,0.2);
 }
 
-.header-number {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 72px;
-  font-weight: 300;
-  color: var(--primary-light);
-  line-height: 1;
-  letter-spacing: 2px;
-}
-
-.header-meta {
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-
-.circles-section {
-  position: relative;
-  padding: 20px 0;
-}
-
-.circles-line {
-  position: absolute;
-  top: 145px;
-  left: 40px;
-  right: 40px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.55) 8%, rgba(180, 160, 120, 0.55) 92%, transparent);
-}
-
-.circles-line-dot {
-  position: absolute;
-  top: 141px;
-  width: 9px;
-  height: 9px;
-  background: var(--amber);
-  transform: rotate(45deg);
-  z-index: 3;
-}
-
-.circles-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-}
-
-.circle-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 240px;
-}
-
-.circle-number {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--amber);
-  margin-bottom: 12px;
-  font-weight: 600;
-  line-height: 1;
-  height: 13px;
-}
-
-.circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #2B4F82, #1B3B6B 60%, #0F1E33);
-  border: 2px solid var(--amber);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 0 0 8px #0F1E33, 0 0 0 9px rgba(180, 160, 120, 0.3);
-}
-
-.circle::before {
-  content: '';
-  position: absolute;
-  inset: -18px;
-  border: 1px dashed rgba(180, 160, 120, 0.28);
-  border-radius: 50%;
-}
-
-.circle-keyword {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 44px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 6px;
-}
-
-.circle-tag {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--amber-bright);
-  margin-top: 10px;
-  opacity: 0.9;
-  font-family: 'Noto Sans SC', sans-serif;
-}
-
-.circle-desc {
-  margin-top: 38px;
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--text-muted);
-  text-align: center;
-  max-width: 232px;
-}
-
-.circle-desc .highlight {
-  color: var(--amber);
-  font-weight: 600;
-}
-
-.footer {
-  position: absolute;
-  bottom: 54px;
-  left: 60px;
-  right: 60px;
-  border-top: 1px solid rgba(180, 160, 120, 0.35);
-  padding-top: 22px;
-  display: flex;
-  gap: 22px;
-  align-items: flex-start;
-}
-
-.footer-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding-top: 4px;
-  padding-right: 14px;
-  border-right: 1px solid rgba(180, 160, 120, 0.2);
-}
-
-.footer-square {
-  width: 10px;
-  height: 10px;
-  background: var(--amber);
-}
-
-.footer-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--amber);
-  writing-mode: vertical-rl;
-  font-weight: 500;
-}
-
-.footer-text {
-  flex: 1;
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text);
-}
-
-.footer-text .k {
-  color: var(--amber);
-  font-weight: 700;
-  margin-right: 6px;
-  letter-spacing: 1px;
-}
-
-.footer-text .dim {
-  color: var(--text-muted);
-}
-
-.footer-text .sep {
-  color: var(--amber);
-  margin: 0 8px;
-  opacity: 0.7;
-}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-deco deco-ring-1"></div>
-    <div class="bg-deco deco-ring-2"></div>
-    <div class="bg-deco deco-ring-3"></div>
-    <div class="bg-deco deco-square-1"></div>
-    <div class="bg-deco deco-square-2"></div>
-    <div class="bg-deco deco-square-3"></div>
-    <div class="bg-deco deco-square-4"></div>
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-square square-1"></div>
+    <div class="dot-decor" style="right:60px;top:230px;"></div>
+    <div class="bg-line line-h1"></div>
+    <div class="bg-line line-h2"></div>
   </div>
 
-  <div class="corner-mark corner-tl"></div>
-  <div class="corner-mark corner-tr"></div>
-  <div class="corner-mark corner-bl"></div>
-  <div class="corner-mark corner-br"></div>
-
   <div id="ct">
+
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
-        <div class="eyebrow">
-          <div class="eyebrow-square"></div>
-          <span>田野考察 · METHODOLOGY REVIEW</span>
+        <div class="page-num">36</div>
+        <div class="titles">
+          <div class="title-row">
+            <h1 class="main-title">田野考察小结</h1>
+            <span class="subtitle">12 案例的横切视角</span>
+          </div>
         </div>
-        <h1><span>田野考察方法论复盘</span></h1>
-        <div class="subtitle"><span>从群众中来的方法 · From the Masses</span></div>
       </div>
       <div class="header-right">
-        <div class="header-number"><span>§ 01</span></div>
-        <div class="header-meta"><span>FIVE DIMENSIONS</span></div>
+        <div class="en">FIELD WORK · CROSS-CUT</div>
+        <div>横切分析 · TRANSVERSAL LENS</div>
       </div>
     </div>
 
-    <div class="circles-section">
-      <div class="circles-line"></div>
-      <div class="circles-line-dot" style="left: 275px;"></div>
-      <div class="circles-line-dot" style="left: 585px;"></div>
-      <div class="circles-line-dot" style="left: 895px;"></div>
-      <div class="circles-line-dot" style="left: 1205px;"></div>
-      <div class="circles-row">
-        <div class="circle-card">
-          <div class="circle-number"><span>I.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>视角</span></div>
-            <div class="circle-tag"><span>PERSPECTIVE</span></div>
-          </div>
-          <div class="circle-desc">开源社区<span class="highlight">内实践者</span>，非外部观察者——既是参与者，也是记录者。</div>
-        </div>
+    <div class="gold-divider"></div>
 
-        <div class="circle-card">
-          <div class="circle-number"><span>II.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>方法</span></div>
-            <div class="circle-tag"><span>METHOD</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">从群众中来</span>，从实践出发；非框架先行，从案例中提炼，非理论推导。</div>
+    <!-- Category 1: 文化事件 -->
+    <div class="category cat-1">
+      <div class="cat-head">
+        <span class="cat-num">01</span>
+        <span class="cat-title">文化事件</span>
+        <span class="cat-en">Cultural Events</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 6</span>
+      </div>
+      <div class="grid-6">
+        <div class="card">
+          <div class="card-name">Judgment</div>
+          <div class="card-desc">判断力</div>
+          <div class="card-tag">REL</div>
         </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>III.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>立场</span></div>
-            <div class="circle-tag"><span>STANCE</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">批判行政开源</span>，用实践检验理论，用演化观察制度。</div>
+        <div class="card">
+          <div class="card-name">Tenacity</div>
+          <div class="card-desc">韧性</div>
+          <div class="card-tag">REL</div>
         </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>IV.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>局限</span></div>
-            <div class="circle-tag"><span>LIMITS</span></div>
-          </div>
-          <div class="circle-desc">弱代理（stars ≠ 使用）、单一仓库、<span class="highlight">关键词分析（非语义）</span>。</div>
+        <div class="card">
+          <div class="card-name">Surface</div>
+          <div class="card-desc">表层界面</div>
+          <div class="card-tag">COMPAT</div>
         </div>
-
-        <div class="circle-card">
-          <div class="circle-number"><span>V.</span></div>
-          <div class="circle">
-            <div class="circle-keyword"><span>下一步</span></div>
-            <div class="circle-tag"><span>NEXT</span></div>
-          </div>
-          <div class="circle-desc"><span class="highlight">长期追踪</span>，持续观察需求 / 供给 / 消费的演化，寻找更强信号。</div>
+        <div class="card">
+          <div class="card-name">Velocity</div>
+          <div class="card-desc">速度</div>
+          <div class="card-tag">TRUST</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Quicksilver</div>
+          <div class="card-desc">易变 / 流动性</div>
+          <div class="card-tag">COMPAT</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Patch</div>
+          <div class="card-desc">补丁</div>
+          <div class="card-tag">REL</div>
         </div>
       </div>
+    </div>
+
+    <!-- Category 2: 制度标本 -->
+    <div class="category cat-2">
+      <div class="cat-head">
+        <span class="cat-num">02</span>
+        <span class="cat-title">制度标本</span>
+        <span class="cat-en">Institutional Cases</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 5</span>
+      </div>
+      <div class="grid-5">
+        <div class="card">
+          <div class="card-issue">#107070</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#101600</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#67002</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#66353</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+        <div class="card">
+          <div class="card-issue">#84672</div>
+          <div class="card-desc">典型 issue 编号</div>
+          <div class="card-tag">ISSUE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: 数据案例 -->
+    <div class="category cat-3">
+      <div class="cat-head">
+        <span class="cat-num">03</span>
+        <span class="cat-title">数据案例</span>
+        <span class="cat-en">Data Case</span>
+        <span class="cat-line"></span>
+        <span class="cat-badge count">× 1</span>
+      </div>
+      <div class="grid-1">
+        <div class="card card-main">
+          <div class="card-name">Desktop 供需缺口</div>
+          <div class="card-desc">扩张期信号 · Expansion Phase Signal</div>
+          <div class="card-tag">DATA</div>
+        </div>
+        <div class="card-highlight">
+          <span class="highlight-label">Signal →</span>
+          <span class="highlight-value">扩张期 · 需求外溢</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Three common problems -->
+    <div class="three-modules">
+      <div class="module">
+        <div class="m-num">①</div>
+        <div class="m-glyph">可靠性</div>
+        <div class="m-info">
+          <span class="m-en">RELIABILITY</span>
+          <span class="m-desc">稳定可预期</span>
+        </div>
+      </div>
+      <div class="module">
+        <div class="m-num">②</div>
+        <div class="m-glyph">兼容性</div>
+        <div class="m-info">
+          <span class="m-en">COMPATIBILITY</span>
+          <span class="m-desc">跨语境可迁移</span>
+        </div>
+      </div>
+      <div class="module">
+        <div class="m-num">③</div>
+        <div class="m-glyph">信任</div>
+        <div class="m-info">
+          <span class="m-en">TRUST</span>
+          <span class="m-desc">可观察 · 可度量</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:var(--gold);letter-spacing:5px;margin-top:-4px;">
+      从 "能用" 到 "好用" 的三道分水岭
+    </div>
+
+    <!-- Core insight -->
+    <div class="insight">
+      <div class="quote-mark">"</div>
+      <div class="insight-content">
+        <div class="insight-text">
+          <span class="underline">消费侧信任是可观察的信号</span>——开源 Agent 的"度量权"在社区手里。
+        </div>
+        <div class="insight-en">Consumer Trust · An Observable Signal · The Right to Measure Lives in the Community</div>
+      </div>
+      <div class="insight-end"></div>
     </div>
 
     <div class="footer">
-      <div class="footer-marker">
-        <div class="footer-square"></div>
-        <div class="footer-label"><span>SYNTHESIS</span></div>
-      </div>
-      <div class="footer-text">
-        <span class="k">方法论复盘</span>视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。<span class="sep">/</span><span class="dim">局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。</span>
-      </div>
+      <span>FIELDWORK · CROSS-CUT REVIEW</span>
+      <span class="footer-line"></span>
+      <span>P.36 / 田野考察小结</span>
     </div>
+
   </div>
 </div>
 </body>

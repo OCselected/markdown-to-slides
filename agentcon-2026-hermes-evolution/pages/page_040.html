@@ -4,26 +4,26 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>第四幕 · Agent 演化洞察</title>
+<title>田野考察方法论复盘</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=wrap');
 
 :root {
   --bg: #0F1E33;
-  --accent: #1B3B6B;
-  --gold: #B4A078;
-  --warm-white: #F5F0E8;
-  --warm-white-dim: rgba(245, 240, 232, 0.72);
-  --warm-white-faint: rgba(245, 240, 232, 0.28);
+  --primary: #1B3B6B;
+  --primary-light: #2B4F82;
+  --text: #F5F0E8;
+  --text-muted: #C8C0B0;
+  --amber: #B4A078;
+  --amber-bright: #D4BE94;
 }
 
-* { box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .wrapper {
@@ -32,349 +32,426 @@ html, body {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  background: var(--bg);
+  background: #0F1E33;
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #0F1E33;
+  background: radial-gradient(circle at 15% 25%, rgba(27, 59, 107, 0.55), transparent 45%), radial-gradient(circle at 85% 75%, rgba(180, 160, 120, 0.08), transparent 45%);
 }
 
-.bg-noise {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96  0 0 0 0 0.94  0 0 0 0 0.91  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.9;
+.bg-deco { position: absolute; }
+.deco-ring-1 {
+  top: -140px;
+  right: -140px;
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(180, 160, 120, 0.20);
+  border-radius: 50%;
 }
-
-.bg-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 90% 70% at 40% 40%, rgba(27, 59, 107, 0.22) 0%, rgba(15, 30, 51, 0) 70%);
+.deco-ring-2 {
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border: 1px dashed rgba(180, 160, 120, 0.22);
+  border-radius: 50%;
 }
-
-.bauhaus-decor {
-  position: absolute;
-  top: 90px;
-  right: 100px;
-  width: 260px;
-  height: 200px;
-  z-index: 0;
-  opacity: 0.92;
+.deco-ring-3 {
+  bottom: -60px;
+  left: -70px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(43, 79, 130, 0.8);
+  border-radius: 50%;
 }
-
-.bauhaus-decor-sm {
-  position: absolute;
-  top: 280px;
+.deco-square-1 {
+  top: 150px;
+  left: 40px;
+  width: 22px;
+  height: 22px;
+  background: var(--amber);
+  opacity: 0.7;
+}
+.deco-square-2 {
+  top: 200px;
+  left: 78px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--amber);
+  opacity: 0.55;
+}
+.deco-square-3 {
+  bottom: 220px;
   right: 40px;
-  width: 90px;
-  height: 90px;
-  z-index: 0;
-  opacity: 0.5;
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--amber);
+  opacity: 0.4;
+}
+.deco-square-4 {
+  bottom: 280px;
+  right: 88px;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-light);
 }
 
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 60px 100px;
-  color: var(--warm-white);
+  padding: 60px;
+  box-sizing: border-box;
 }
 
-.top-marker {
+.corner-mark {
   position: absolute;
-  top: 60px;
-  left: 100px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--amber);
+  z-index: 2;
+}
+.corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+.corner-tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
+.corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
+
+.header {
   display: flex;
-  align-items: center;
-  gap: 22px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 46px;
 }
 
-.marker-accent-bar {
-  width: 4px;
-  height: 44px;
-  background: var(--gold);
-}
-
-.marker-text .marker-act {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  letter-spacing: 0.5em;
-  color: var(--gold);
-  font-weight: 500;
-}
-
-.marker-text .marker-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  letter-spacing: 0.32em;
-  color: rgba(245, 240, 232, 0.5);
-  margin-top: 6px;
-}
-
-.center-block {
-  position: absolute;
-  top: 200px;
-  left: 100px;
-  right: 100px;
-}
-
-.pre-title {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.6em;
-  color: var(--warm-white-faint);
-  margin-bottom: 32px;
-  font-weight: 300;
-}
-
-.main-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 124px;
-  font-weight: 700;
-  color: var(--warm-white);
-  line-height: 1.05;
-  letter-spacing: 0.06em;
-  margin: 0;
-}
-
-.main-title-en {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  letter-spacing: 0.55em;
-  color: rgba(245, 240, 232, 0.42);
-  margin-top: 22px;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.subtitle {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 24px;
-  color: var(--warm-white-dim);
-  margin-top: 34px;
-  letter-spacing: 0.12em;
-  font-weight: 300;
-}
-
-.subtitle-en {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.32);
-  margin-top: 8px;
-  font-weight: 300;
-}
-
-.divider-row {
-  position: absolute;
-  left: 100px;
-  right: 100px;
-  top: 610px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.divider-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  letter-spacing: 0.55em;
-  color: var(--gold);
-  font-weight: 400;
-}
-
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(27, 59, 107, 0.9);
-}
-
-.divider-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.narrative-cols {
-  position: absolute;
-  top: 660px;
-  left: 100px;
-  right: 100px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.col {
-  flex: 1;
-  padding: 0 40px;
-}
-
-.col:first-child { padding-left: 0; }
-.col:last-child { padding-right: 0; }
-
-.col-tag {
+.eyebrow {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-size: 13px;
+  letter-spacing: 5px;
+  font-weight: 500;
 }
 
-.tag-line {
-  width: 24px;
+.eyebrow-square {
+  width: 12px;
+  height: 12px;
+  background: var(--amber);
+}
+
+.eyebrow-line {
+  width: 60px;
   height: 1px;
-  background: var(--gold);
+  background: var(--amber);
+  opacity: 0.6;
 }
 
-.tag-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  letter-spacing: 0.5em;
-  color: var(--gold);
-  font-weight: 400;
+h1 {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 58px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+  line-height: 1.1;
 }
 
-.col-title {
-  font-family: 'Noto Serif SC', serif;
+.subtitle {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
   font-size: 22px;
+  color: var(--amber);
+  letter-spacing: 4px;
+  margin-top: 14px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.header-right {
+  text-align: right;
+  padding-bottom: 6px;
+}
+
+.header-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--primary-light);
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.header-meta {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.circles-section {
+  position: relative;
+  padding: 20px 0;
+}
+
+.circles-line {
+  position: absolute;
+  top: 145px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.55) 8%, rgba(180, 160, 120, 0.55) 92%, transparent);
+}
+
+.circles-line-dot {
+  position: absolute;
+  top: 141px;
+  width: 9px;
+  height: 9px;
+  background: var(--amber);
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+.circles-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+}
+
+.circle-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  margin-bottom: 12px;
   font-weight: 600;
-  color: var(--warm-white);
-  margin: 0 0 14px 0;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  line-height: 1;
+  height: 13px;
 }
 
-.col-desc {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 16px;
-  color: var(--warm-white-dim);
-  line-height: 1.7;
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 0.03em;
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #2B4F82, #1B3B6B 60%, #0F1E33);
+  border: 2px solid var(--amber);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 0 8px #0F1E33, 0 0 0 9px rgba(180, 160, 120, 0.3);
 }
 
-.col-divider {
-  width: 1px;
-  height: 130px;
-  background: rgba(245, 240, 232, 0.14);
-  align-self: center;
-}
-
-.bottom-preview {
+.circle::before {
+  content: '';
   position: absolute;
-  bottom: 34px;
-  left: 0;
-  right: 0;
+  inset: -18px;
+  border: 1px dashed rgba(180, 160, 120, 0.28);
+  border-radius: 50%;
+}
+
+.circle-keyword {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 6px;
+}
+
+.circle-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber-bright);
+  margin-top: 10px;
+  opacity: 0.9;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.circle-desc {
+  margin-top: 38px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
   text-align: center;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.7em;
-  color: rgba(245, 240, 232, 0.28);
-  font-weight: 300;
+  max-width: 232px;
 }
 
-.page-foot {
-  position: absolute;
-  bottom: 34px;
-  right: 100px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.22);
-  font-weight: 300;
+.circle-desc .highlight {
+  color: var(--amber);
+  font-weight: 600;
 }
 
-.page-foot-left {
+.footer {
   position: absolute;
-  bottom: 34px;
-  left: 100px;
+  bottom: 54px;
+  left: 60px;
+  right: 60px;
+  border-top: 1px solid rgba(180, 160, 120, 0.35);
+  padding-top: 22px;
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.footer-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+  padding-right: 14px;
+  border-right: 1px solid rgba(180, 160, 120, 0.2);
+}
+
+.footer-square {
+  width: 10px;
+  height: 10px;
+  background: var(--amber);
+}
+
+.footer-label {
   font-family: 'Noto Serif SC', serif;
   font-size: 11px;
-  letter-spacing: 0.4em;
-  color: rgba(245, 240, 232, 0.22);
-  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--amber);
+  writing-mode: vertical-rl;
+  font-weight: 500;
+}
+
+.footer-text {
+  flex: 1;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.footer-text .k {
+  color: var(--amber);
+  font-weight: 700;
+  margin-right: 6px;
+  letter-spacing: 1px;
+}
+
+.footer-text .dim {
+  color: var(--text-muted);
+}
+
+.footer-text .sep {
+  color: var(--amber);
+  margin: 0 8px;
+  opacity: 0.7;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-vignette"></div>
-    <div class="bg-noise"></div>
-    <svg class="bauhaus-decor" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="20" x2="260" y2="20" stroke="#1B3B6B" stroke-width="1"/>
-      <circle cx="200" cy="60" r="42" fill="#B4A078"/>
-      <rect x="40" y="90" width="60" height="60" fill="none" stroke="#1B3B6B" stroke-width="2"/>
-      <circle cx="120" cy="150" r="10" fill="#1B3B6B"/>
-      <line x1="140" y1="130" x2="260" y2="130" stroke="#F5F0E8" stroke-width="1" opacity="0.35"/>
-      <rect x="150" y="10" width="8" height="8" fill="#F5F0E8" opacity="0.5"/>
-      <line x1="0" y1="180" x2="120" y2="180" stroke="#B4A078" stroke-width="1" opacity="0.6"/>
-    </svg>
-    <svg class="bauhaus-decor-sm" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="0" x2="90" y2="90" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-      <line x1="90" y1="0" x2="0" y2="90" stroke="#1B3B6B" stroke-width="1"/>
-    </svg>
+    <div class="bg-deco deco-ring-1"></div>
+    <div class="bg-deco deco-ring-2"></div>
+    <div class="bg-deco deco-ring-3"></div>
+    <div class="bg-deco deco-square-1"></div>
+    <div class="bg-deco deco-square-2"></div>
+    <div class="bg-deco deco-square-3"></div>
+    <div class="bg-deco deco-square-4"></div>
   </div>
 
+  <div class="corner-mark corner-tl"></div>
+  <div class="corner-mark corner-tr"></div>
+  <div class="corner-mark corner-bl"></div>
+  <div class="corner-mark corner-br"></div>
+
   <div id="ct">
-    <div class="top-marker">
-      <div class="marker-accent-bar"></div>
-      <div class="marker-text">
-        <div class="marker-act">ACT&nbsp;IV</div>
-        <div class="marker-num">04&nbsp;/&nbsp;04</div>
-      </div>
-    </div>
-
-    <div class="center-block">
-      <div class="pre-title">PART&nbsp;IV&nbsp;·&nbsp;THE&nbsp;FOURTH&nbsp;ACT</div>
-      <h1 class="main-title">Agent 演化洞察</h1>
-      <div class="main-title-en">AGENT · EVOLUTIONARY INSIGHTS</div>
-      <div class="subtitle">从 12 案例中提炼的演化规律</div>
-      <div class="subtitle-en">EVOLUTIONARY LAWS EXTRACTED FROM TWELVE CASE STUDIES</div>
-    </div>
-
-    <div class="divider-row">
-      <div class="divider-label">本幕叙事骨架</div>
-      <div class="divider-line"></div>
-      <div class="divider-dot"></div>
-    </div>
-
-    <div class="narrative-cols">
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">核心</div>
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow">
+          <div class="eyebrow-square"></div>
+          <span>田野考察 · METHODOLOGY REVIEW</span>
         </div>
-        <h3 class="col-title">从"能用"到"好用"的三道分水岭</h3>
-        <p class="col-desc">在能力阈值之上，Agent 才真正跨越体验的门槛。</p>
+        <h1><span>田野考察方法论复盘</span></h1>
+        <div class="subtitle"><span>从群众中来的方法 · From the Masses</span></div>
       </div>
-      <div class="col-divider"></div>
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">方法</div>
-        </div>
-        <h3 class="col-title">12 案例 → 3 共性 → 3 洞察</h3>
-        <p class="col-desc">自下而上的归纳路径，从样本抽离出可迁移的结构。</p>
-      </div>
-      <div class="col-divider"></div>
-      <div class="col">
-        <div class="col-tag">
-          <div class="tag-line"></div>
-          <div class="tag-label">目标</div>
-        </div>
-        <h3 class="col-title">理解 Agent 演化的内在规律</h3>
-        <p class="col-desc">看清技术迭代之下的驱动逻辑与演化节奏。</p>
+      <div class="header-right">
+        <div class="header-number"><span>§ 01</span></div>
+        <div class="header-meta"><span>FIVE DIMENSIONS</span></div>
       </div>
     </div>
 
-    <div class="page-foot-left">SECTION&nbsp;·&nbsp;IV</div>
-    <div class="bottom-preview">可靠性&nbsp;&nbsp;·&nbsp;&nbsp;兼容性&nbsp;&nbsp;·&nbsp;&nbsp;信任</div>
-    <div class="page-foot">END&nbsp;·&nbsp;OVERVIEW</div>
+    <div class="circles-section">
+      <div class="circles-line"></div>
+      <div class="circles-line-dot" style="left: 275px;"></div>
+      <div class="circles-line-dot" style="left: 585px;"></div>
+      <div class="circles-line-dot" style="left: 895px;"></div>
+      <div class="circles-line-dot" style="left: 1205px;"></div>
+      <div class="circles-row">
+        <div class="circle-card">
+          <div class="circle-number"><span>I.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>视角</span></div>
+            <div class="circle-tag"><span>PERSPECTIVE</span></div>
+          </div>
+          <div class="circle-desc">开源社区<span class="highlight">内实践者</span>，非外部观察者——既是参与者，也是记录者。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>II.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>方法</span></div>
+            <div class="circle-tag"><span>METHOD</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">从群众中来</span>，从实践出发；非框架先行，从案例中提炼，非理论推导。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>III.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>立场</span></div>
+            <div class="circle-tag"><span>STANCE</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">批判行政开源</span>，用实践检验理论，用演化观察制度。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>IV.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>局限</span></div>
+            <div class="circle-tag"><span>LIMITS</span></div>
+          </div>
+          <div class="circle-desc">弱代理（stars ≠ 使用）、单一仓库、<span class="highlight">关键词分析（非语义）</span>。</div>
+        </div>
+
+        <div class="circle-card">
+          <div class="circle-number"><span>V.</span></div>
+          <div class="circle">
+            <div class="circle-keyword"><span>下一步</span></div>
+            <div class="circle-tag"><span>NEXT</span></div>
+          </div>
+          <div class="circle-desc"><span class="highlight">长期追踪</span>，持续观察需求 / 供给 / 消费的演化，寻找更强信号。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-marker">
+        <div class="footer-square"></div>
+        <div class="footer-label"><span>SYNTHESIS</span></div>
+      </div>
+      <div class="footer-text">
+        <span class="k">方法论复盘</span>视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。<span class="sep">/</span><span class="dim">局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。</span>
+      </div>
+    </div>
   </div>
 </div>
 </body>

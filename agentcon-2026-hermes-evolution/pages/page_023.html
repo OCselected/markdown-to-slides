@@ -1,427 +1,725 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>案例 1 · Judgment Release · P0/P1 清零</title>
+<title>Release 命名文化 · 田野观察第 1 章</title>
+<script src="../assets/echarts.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-:root{
-  --bg:#0F1E33;
-  --bg-deep:#0A1626;
-  --prussian:#1B3B6B;
-  --prussian-soft:#244E85;
-  --text:#F5F0E8;
-  --text-dim:#B8BFCB;
-  --text-mute:#7C889E;
-  --gold:#B4A078;
-  --gold-bright:#C9B58A;
-}
+  :root {
+    --bg-deep: #0F1E33;
+    --primary: #1B3B6B;
+    --primary-light: #2A4E82;
+    --accent: #B4A078;
+    --accent-dim: #8A7A5A;
+    --text: #F5F0E8;
+    --text-dim: rgba(245, 240, 232, 0.62);
+    --text-faint: rgba(245, 240, 232, 0.32);
+    --line: rgba(180, 160, 120, 0.30);
+    --line-faint: rgba(245, 240, 232, 0.14);
+  }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%}
-body{
-  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow:hidden;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-.wrapper{
-  width:1600px;height:900px;
-  position:relative;overflow:hidden;
-  margin:0 auto;
-  background:#0F1E33;
-}
+  html, body { width: 100%; height: 100%; }
 
-#bg{
-  position:absolute;inset:0;z-index:0;
-  background:linear-gradient(135deg,#0F1E33 0%,#0A1626 100%);
-}
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text);
+    background: #05091a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
 
-#ct{
-  position:absolute;inset:0;z-index:1;
-  padding:54px 60px 44px;
-}
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: var(--bg-deep);
+  }
 
-/* Bauhaus decoration */
-.deco-circle{position:absolute;border-radius:50%;}
-.deco-square{position:absolute;}
-.deco-line{position:absolute;}
-.deco-line-h{height:1px;background:var(--gold);}
-.deco-line-v{width:1px;background:var(--gold);}
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 15% 10%, rgba(42, 78, 130, 0.35), transparent 55%);
+  }
 
-/* Header */
-.header{
-  position:relative;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding-bottom:16px;
-  border-bottom:1px solid rgba(180,160,120,.32);
-  margin-bottom:30px;
-  height:162px;
-}
-.header-left{display:flex;flex-direction:column;gap:14px;position:relative;z-index:2;}
-.tag-row{display:flex;gap:10px;align-items:center;}
-.tag{
-  display:inline-block;
-  padding:5px 12px;
-  background:transparent;
-  border:1px solid var(--gold);
-  color:var(--gold);
-  font-size:11px;
-  letter-spacing:2.2px;
-  font-weight:500;
-  font-family:"Noto Sans SC",sans-serif;
-}
-.header h1{
-  font-family:"Noto Serif SC","Songti SC","STSong",serif;
-  font-size:46px;
-  font-weight:700;
-  color:var(--text);
-  line-height:1.1;
-  letter-spacing:.5px;
-}
-.header h1 .accent{color:var(--gold);}
-.header h1 .sub-en{font-size:26px;color:var(--text-dim);font-weight:500;letter-spacing:1.2px;}
+  .bg-circle {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid var(--line-faint);
+    border-radius: 50%;
+    right: -180px;
+    top: -220px;
+  }
+  .bg-circle-inner {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    right: -80px;
+    top: -120px;
+  }
+  .bg-square {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--line-faint);
+    left: -50px;
+    bottom: -40px;
+    transform: rotate(15deg);
+  }
+  .bg-square-inner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(180, 160, 120, 0.06);
+    left: 80px;
+    bottom: 40px;
+    transform: rotate(15deg);
+  }
+  .bg-vline {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, var(--line-faint) 30%, var(--line-faint) 70%, transparent 100%);
+  }
+  .bg-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    left: calc(50% - 3px);
+    top: 48%;
+    opacity: 0.75;
+  }
+  .bg-hline-top {
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    width: 120px;
+    height: 1px;
+    background: var(--line);
+  }
+  .bg-corner-tag {
+    position: absolute;
+    right: 30px;
+    bottom: 18px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+  }
 
-.header-right{
-  display:flex;flex-direction:column;align-items:flex-end;gap:12px;
-  position:relative;z-index:2;
-}
-.subtitle{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:20px;
-  color:var(--gold);
-  letter-spacing:3px;
-  font-weight:500;
-}
-.subtitle-en{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:11px;
-  color:var(--text-mute);
-  letter-spacing:3px;
-  text-transform:uppercase;
-}
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 44px 60px 40px 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
 
-/* Two columns */
-.grid{
-  position:relative;
-  display:grid;
-  grid-template-columns:720px 1fr;
-  gap:44px;
-  height:664px;
-}
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-left { flex: 1; min-width: 0; }
 
-/* Left column */
-.left-panel{position:relative;display:flex;flex-direction:column;gap:22px;}
+  .chapter-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .chapter-label .cl-line {
+    width: 44px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
 
-.hero-number-wrap{
-  position:relative;
-  padding:6px 0 22px;
-  border-bottom:1px solid rgba(180,160,120,.25);
-}
-.hero-number{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:224px;
-  font-weight:900;
-  color:var(--text);
-  line-height:.92;
-  letter-spacing:-6px;
-  display:flex;align-items:baseline;gap:20px;
-}
-.hero-number .unit{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:16px;
-  color:var(--gold);
-  letter-spacing:5px;
-  font-weight:400;
-  transform:translateY(-8px);
-}
-.hero-label{
-  display:flex;justify-content:space-between;align-items:baseline;
-  margin-top:6px;
-  padding-top:12px;
-  border-top:1px dashed rgba(180,160,120,.28);
-}
-.hero-label .l{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:18px;color:var(--gold);
-  letter-spacing:2.4px;
-}
-.hero-label .r{
-  font-size:11px;color:var(--text-mute);letter-spacing:3px;
-  font-weight:400;
-}
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .h1-dot { color: var(--accent); font-weight: 400; }
 
-/* KPI 2x2 grid */
-.kpi-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-.card{
-  position:relative;
-  padding:22px 22px 20px;
-  background:rgba(27,59,107,.24);
-  border-left:3px solid var(--gold);
-  box-shadow:0 0 0 1px rgba(180,160,120,.10);
-  min-height:140px;
-}
-.card::after{
-  content:'';position:absolute;
-  top:16px;right:16px;
-  width:6px;height:6px;
-  background:var(--gold);
-}
-.card .label{
-  font-size:11px;
-  color:var(--gold);
-  letter-spacing:2.5px;
-  margin-bottom:14px;
-  font-weight:600;
-  text-transform:uppercase;
-  font-family:"Noto Sans SC",sans-serif;
-}
-.card .value{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:30px;
-  color:var(--text);
-  font-weight:700;
-  line-height:1.15;
-  letter-spacing:.5px;
-  margin-bottom:8px;
-}
-.card .sub{
-  font-size:12px;
-  color:var(--text-dim);
-  line-height:1.55;
-  letter-spacing:.8px;
-}
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(245, 240, 232, 0.78);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .subtitle-quote {
+    color: var(--accent);
+    font-weight: 500;
+    padding: 0 2px;
+  }
+  .subtitle-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-left: 12px;
+    letter-spacing: 1px;
+  }
 
-/* Right column */
-.right-panel{position:relative;display:flex;flex-direction:column;gap:20px;}
+  .h-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .h-divider-line { width: 56px; height: 1px; background: var(--accent); }
+  .h-divider-bar { width: 22px; height: 1px; background: var(--text-faint); }
+  .h-divider-square { width: 5px; height: 5px; background: var(--accent); }
+  .h-divider-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--text-dim);
+    margin-left: 4px;
+    font-weight: 400;
+  }
 
-.hero-image-wrap{
-  position:relative;
-  width:616px;
-  height:344px;
-  overflow:hidden;
-  border:1px solid rgba(180,160,120,.38);
-  box-shadow:0 0 0 6px rgba(27,59,107,.18);
-  flex-shrink:0;
-  margin-left:auto;
-}
-.hero-image-wrap img{
-  width:100%;height:100%;
-  display:block;
-  object-fit:cover;
-}
-.contributor-badge{
-  position:absolute;
-  top:14px;right:14px;
-  display:flex;align-items:center;gap:10px;
-  padding:8px 14px;
-  background:rgba(15,30,51,.86);
-  border:1px solid var(--gold);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-}
-.contributor-badge .avatar{
-  width:30px;height:30px;
-  border-radius:50%;
-  border:1px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:14px;
-  color:var(--gold);
-  font-weight:700;
-}
-.contributor-badge .info{display:flex;flex-direction:column;line-height:1.25;}
-.contributor-badge .name{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:13px;
-  color:var(--text);
-  font-weight:600;
-  letter-spacing:.6px;
-}
-.contributor-badge .role{
-  font-size:10px;
-  color:var(--gold);
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-family:"Noto Sans SC",sans-serif;
-}
+  /* KPI block */
+  .header-right {
+    display: flex;
+    gap: 16px;
+    padding-top: 4px;
+  }
+  .kpi {
+    background: linear-gradient(155deg, rgba(27, 59, 107, 0.65), rgba(15, 30, 51, 0.35));
+    border: 1px solid var(--line-faint);
+    padding: 16px 20px 14px 20px;
+    min-width: 138px;
+    position: relative;
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent);
+  }
+  .kpi-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .kpi-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+  .kpi-value.accent { color: var(--accent); }
+  .kpi-unit {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 400;
+    margin-left: 5px;
+    letter-spacing: 1px;
+  }
+  .kpi-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .kpi-bar {
+    display: inline-block;
+    height: 2px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 6px;
+  }
 
-.image-caption{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:14px;
-  color:var(--gold);
-  letter-spacing:1.8px;
-  padding-left:14px;
-  border-left:2px solid var(--gold);
-  line-height:1.55;
-}
+  /* ===== MAIN ===== */
+  .main {
+    display: flex;
+    gap: 44px;
+    flex: 1;
+    min-height: 0;
+  }
 
-.narrative-block{
-  position:relative;
-  padding:22px 26px;
-  background:rgba(27,59,107,.20);
-  border-top:1px solid rgba(180,160,120,.35);
-  border-bottom:1px solid rgba(180,160,120,.35);
-  margin-top:2px;
-}
-.narrative-block .n-title{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:15px;
-  color:var(--gold);
-  letter-spacing:2.4px;
-  font-weight:600;
-  margin-bottom:12px;
-  padding-bottom:10px;
-  border-bottom:1px dashed rgba(180,160,120,.28);
-}
-.narrative-block p{
-  font-size:13.5px;
-  color:var(--text);
-  line-height:1.8;
-  letter-spacing:.5px;
-}
-.narrative-block p + p{margin-top:8px;}
-.narrative-block .highlight{color:var(--gold);font-weight:600;}
-.narrative-block .muted{color:var(--text-dim);font-style:italic;}
+  .narrative {
+    width: 372px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 2px;
+  }
+  .nar-eyebrow {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .nar-marker {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .nar-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
+  .nar-highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .nar-mid {
+    color: var(--accent);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 0 2px;
+  }
+  .nar-em {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+  }
+  .nar-quote {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
 
-.quote{
-  position:relative;
-  padding:14px 22px;
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:14px;
-  color:var(--gold-bright);
-  letter-spacing:1.2px;
-  line-height:1.65;
-  display:flex;align-items:flex-start;gap:14px;
-}
-.quote .mark{
-  font-family:"Noto Serif SC","Songti SC",serif;
-  font-size:42px;
-  line-height:.6;
-  color:var(--gold);
-  font-weight:900;
-  flex-shrink:0;
-  margin-top:6px;
-}
-.quote .txt{flex:1;}
+  .nar-meta {
+    border-top: 1px solid var(--line-faint);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .meta-key {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+  .meta-val {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .meta-val em {
+    color: var(--accent);
+    font-style: italic;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
 
-/* Corners */
-.cnr-tl{position:absolute;top:22px;left:22px;width:32px;height:32px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
-.cnr-br{position:absolute;bottom:22px;right:22px;width:32px;height:32px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+  .nar-bar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+  }
+  .nar-bar-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  }
+  .nar-bar-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* Cards grid */
+  .cards {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .card {
+    background: linear-gradient(160deg, rgba(27, 59, 107, 0.55) 0%, rgba(15, 30, 51, 0.75) 100%);
+    border: 1px solid var(--line-faint);
+    border-top: 2px solid var(--accent);
+    padding: 16px 18px 14px 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .card-idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  .card-marker {
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .card-marker.square { border-radius: 0; transform: rotate(45deg); }
+  .card-marker.hollow {
+    background: transparent;
+    border: 1px solid var(--accent);
+  }
+  .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+  .card-name-en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .card-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .card-note {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .card-num {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    padding: 0 1px;
+  }
+  .card-en-quote {
+    font-style: italic;
+    color: rgba(245, 240, 232, 0.88);
+  }
+  .card-code {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* Corner geometry on cards */
+  .card::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 14px;
+    height: 14px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-bar {
+    width: 44px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .foot-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
+  .foot-chap {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-faint);
+    font-weight: 500;
+  }
+  .foot-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foot-square {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+  }
+  .foot-line {
+    width: 22px;
+    height: 1px;
+    background: var(--line);
+  }
+  .closing {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 1.2px;
+    font-weight: 500;
+  }
+  .closing .close-a { color: var(--accent); font-weight: 600; }
+  .closing .close-eq {
+    color: var(--accent);
+    padding: 0 6px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+  }
+  .closing .close-e { color: var(--accent); font-style: italic; font-weight: 500; }
+
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="bg-hline-top"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle-inner"></div>
+    <div class="bg-vline"></div>
+    <div class="bg-dot"></div>
+    <div class="bg-square"></div>
+    <div class="bg-square-inner"></div>
+    <div class="bg-corner-tag">HERMES · CULTURE OBSERVATION</div>
+  </div>
   <div id="ct">
 
-    <!-- decorative -->
-    <div class="deco-circle" style="top:110px;right:52%;width:5px;height:5px;background:var(--gold);"></div>
-    <div class="deco-circle" style="top:126px;right:51.5%;width:3px;height:3px;background:var(--gold);opacity:.65;"></div>
-    <div class="deco-square" style="top:132px;right:50.6%;width:4px;height:4px;background:var(--gold);opacity:.5;"></div>
-    <div class="deco-circle" style="top:806px;left:290px;width:8px;height:8px;border:1px solid var(--gold);"></div>
-    <div class="deco-line deco-line-h" style="top:822px;left:302px;width:120px;opacity:.45;"></div>
-    <div class="deco-circle" style="top:842px;left:300px;width:4px;height:4px;background:var(--gold);"></div>
-    <div class="deco-circle" style="top:842px;left:310px;width:3px;height:3px;background:var(--gold);opacity:.6;"></div>
-    <div class="deco-circle" style="top:842px;left:318px;width:2px;height:2px;background:var(--gold);opacity:.4;"></div>
-    <div class="deco-square" style="top:130px;left:26%;width:5px;height:5px;background:var(--gold);transform:rotate(45deg);"></div>
-
-    <!-- Header -->
+    <!-- HEADER -->
     <div class="header">
       <div class="header-left">
-        <div class="tag-row">
-          <span class="tag">CASE · 01</span>
-          <span class="tag">HERMES</span>
-          <span class="tag">P0 / P1</span>
+        <div class="chapter-label"><span>CHAPTER 01</span><span class="cl-line"></span><span>FIELD NOTES</span></div>
+        <h1>Release 命名文化 <span class="h1-dot">·</span> 田野观察第 1 章</h1>
+        <div class="subtitle">
+          <span class="subtitle-quote">「 把 release 当作文化事件 」</span>
+          <span class="subtitle-en">Treating a release as a cultural event</span>
         </div>
-        <h1>案例 1 · Judgment Release · <span class="sub-en">P0/P1 清零</span></h1>
+        <div class="h-divider">
+          <span class="h-divider-line"></span>
+          <span class="h-divider-bar"></span>
+          <span class="h-divider-square"></span>
+          <span class="h-divider-text">命名 · 仪式 · 制度</span>
+        </div>
       </div>
       <div class="header-right">
-        <div class="subtitle">12 天战役的田野观察</div>
-        <div class="subtitle-en">A TWELVE-DAY FIELD OBSERVATION</div>
-      </div>
-      <div class="cnr-tl"></div>
-    </div>
-
-    <!-- Main grid -->
-    <div class="grid">
-      <!-- Left -->
-      <div class="left-panel">
-        <div class="hero-number-wrap">
-          <div class="hero-number">
-            <span>692</span>
-            <span class="unit">ITEMS</span>
-          </div>
-          <div class="hero-label">
-            <span class="l">items / 12 days</span>
-            <span class="r">HIGHEST-PRIORITY · CLEARED</span>
-          </div>
+        <div class="kpi">
+          <div class="kpi-label">RELEASES · 总量</div>
+          <div class="kpi-value">33<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:28px;"></span>全部发布</div>
         </div>
-
-        <div class="kpi-grid">
-          <div class="card">
-            <div class="label"><span>P0 CLOSED</span></div>
-            <div class="value"><span>3 issues + 8 PRs</span></div>
-            <div class="sub"><span>最紧迫级别 · 12 天内全部关闭</span></div>
-          </div>
-          <div class="card">
-            <div class="label"><span>P1 CLOSED</span></div>
-            <div class="value"><span>493 issues + 188 PRs</span></div>
-            <div class="sub"><span>高优先级别 · 集中兵力清空</span></div>
-          </div>
-          <div class="card">
-            <div class="label"><span>TOTAL P0 / P1</span></div>
-            <div class="value"><span>692 items / 12 days</span></div>
-            <div class="sub"><span>战役窗口内清零的全部工作量</span></div>
-          </div>
-          <div class="card">
-            <div class="label"><span>WINDOW COMMITS</span></div>
-            <div class="value"><span>1,720 commits / 998 PRs</span></div>
-            <div class="sub"><span>12 天窗口内累计交付密度</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right -->
-      <div class="right-panel">
-        <div class="hero-image-wrap">
-          <img src="../images/page_021_hero.png" alt="包豪斯几何战役视觉：右侧几何高塔，塔身布满暖琥珀光点，左侧斜线汇聚冲击塔身，暖金勾勒边缘，象征 12 天清零的战役完成" width="616" height="344">
-          <div class="contributor-badge">
-            <div class="avatar">K</div>
-            <div class="info">
-              <div class="name">@kshitijk4poor</div>
-              <div class="role">KEY CONTRIBUTOR</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="image-caption">
-          12 天集中兵力、清零 P0/P1 的战场视觉
-        </div>
-
-        <div class="narrative-block">
-          <div class="n-title">FIELD NOTES · 田野观察</div>
-          <p>Judgment Release 是 Hermes 的一次「战役」——<span class="highlight">12 天清零 P0/P1</span>，是开源项目罕见的集中兵力文化事件。</p>
-          <p class="muted">@kshitijk4poor 的通宵作战是这段历史的脚注。</p>
-          <p><span class="highlight">「把 P0/P1 保持为 0」</span>是文化承诺，不是 KPI。</p>
-        </div>
-
-        <div class="quote">
-          <div class="mark">"</div>
-          <div class="txt">We're keeping P0/P1 at 0 from here forward —— 可靠性不是 KPI，是制度契约。</div>
+        <div class="kpi">
+          <div class="kpi-label">命名 RELEASE · 命名</div>
+          <div class="kpi-value accent">06<span class="kpi-unit">个</span></div>
+          <div class="kpi-sub"><span class="kpi-bar" style="width:10px;"></span>文化事件</div>
         </div>
       </div>
     </div>
 
-    <div class="cnr-br"></div>
+    <!-- MAIN -->
+    <div class="main">
+      <!-- Narrative -->
+      <div class="narrative">
+        <div class="nar-eyebrow">FIELD OBSERVATION · 田野观察</div>
+        <div class="nar-marker">■</div>
+        <p class="nar-text">
+          <span class="nar-highlight">Hermes</span> 的 release 不是版本号，是文化事件。<span class="nar-highlight">6 个</span>命名 release 用<span class="nar-mid">希腊神话 / 概念词汇</span>命名，每个命名背后都是一个<span class="nar-em">制度主张</span>——这是开源项目的<span class="nar-quote">"仪式"</span>。
+        </p>
+
+        <div class="nar-meta">
+          <div class="meta-row">
+            <span class="meta-key">命名法</span>
+            <span class="meta-val">希腊神话 <em>·</em> 概念词汇</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">制度主张</span>
+            <span class="meta-val">每个命名 = 一个 claim</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-key">仪式化</span>
+            <span class="meta-val">开源项目的 "仪式"</span>
+          </div>
+        </div>
+
+        <div class="nar-bar">
+          <span class="nar-bar-line"></span>
+          <span class="nar-bar-tag">OBSERVATION / 01</span>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">01 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Judgment</div>
+          <div class="card-name-en">判 · 决</div>
+          <div class="card-divider"></div>
+          <div class="card-note">P0/P1 清零战役——<span class="card-num">700</span> highest-priority items cleared in <span class="card-num">12</span> days</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">02 / 06</span>
+            <span class="card-marker square"></span>
+          </div>
+          <div class="card-name">Tenacity</div>
+          <div class="card-name-en">韧 · 性</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"finishes what it starts"</span>——多 agent kanban 平台</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">03 / 06</span>
+            <span class="card-marker hollow"></span>
+          </div>
+          <div class="card-name">Surface</div>
+          <div class="card-name-en">表 · 面</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"Hermes meets you wherever you work"</span>——原生 desktop + Web admin</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">04 / 06</span>
+            <span class="card-marker square"></span>
+          </div>
+          <div class="card-name">Velocity</div>
+          <div class="card-name-en">速 · 度</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"16,000 行 → 3,821 行"</span>——大重构</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">05 / 06</span>
+            <span class="card-marker"></span>
+          </div>
+          <div class="card-name">Quicksilver</div>
+          <div class="card-name-en">流 · 银</div>
+          <div class="card-divider"></div>
+          <div class="card-note"><span class="card-en-quote">"first token time 80% 下降"</span>——性能爆发</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-idx">06 / 06</span>
+            <span class="card-marker hollow"></span>
+          </div>
+          <div class="card-name">Patch</div>
+          <div class="card-name-en">修 · 补</div>
+          <div class="card-divider"></div>
+          <div class="card-note">热修复——<span class="card-code">dashboard 401 reload loop</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="foot-left">
+        <span class="foot-bar"></span>
+        <span class="foot-year">2024</span>
+        <span class="foot-chap">HERMES · 01 / CULTURE</span>
+      </div>
+      <div class="foot-right">
+        <span class="foot-square"></span>
+        <span class="closing"><span class="close-a">release 命名</span><span class="close-eq">=</span>制度主张的<span class="close-e">仪式化表达</span></span>
+        <span class="foot-line"></span>
+      </div>
+    </div>
+
   </div>
 </div>
 </body>

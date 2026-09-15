@@ -1,9 +1,9 @@
 Target language for all visible text: Simplified Chinese (zh-Hans). Use simplified characters (简体中文) throughout.
 
-我需要一页数据展示型 PPT，主题是"消费侧总览 · 弱代理的采纳信号"，重点是呈现 397 位 contributors 的三层金字塔结构，并点明 stars/forks 只是弱代理指标、不代表真实使用。整体风格是深色学术（dark academic）气质：主色为深普鲁士蓝 #1B3B6B，底色 #0F1E33，文字用暖白 #F5F0E8，点缀色是羊皮纸感的暗金 #B4A078；标题用思源宋体/Noto Serif SC，正文用思源黑体，装饰用包豪斯式圆、方、线，克制理性，不要任何 emoji 或卡通图标。
+我需要一页深色科技风的数据总览页，第 20 页，主题"操作侧总览 · 20+ 平台消息网关 + 6 种终端后端 + 一级 i18n"，副标题"田野考察第三视角 · 用户在哪里接入"，聚焦 Hermes Agent 在接入生态上的三处进化。
 
-版面建议：顶部左侧放大号标题"消费侧总览"，右侧或下方紧跟副标题"弱代理的采纳信号"，下方用一行小字叙事串联："397 contributors 分层清晰：核心 5.3%、活跃 36%、外围 58.7%。stars/forks 是弱代理，无法反映真实使用频率、场景与付费行为。" 页面中部左侧放一个三层金字塔图（用纯 CSS 梯形/三角形堆叠实现，从下到上依次是：底层外围 233 人 58.7%、中层活跃 143 人 36%、顶层核心 21 人 5.3%，每层旁边标注对应区间定义，如"1–9 commits""10–99 commits""100+ commits"）。金字塔右侧竖排或网格排列 4 张 KPI 卡片：总 Contributors 397、核心（100+ commits）21 人 / 5.3%、活跃（10–99 commits）143 人 / 36%、外围（1–9 commits）233 人 / 58.7%，并把 Top 1 贡献者 teknium1（14,638）作为小徽章或高亮标注贴在核心层旁边。
+顶部左对齐放主标题（大号衬线体）与副标题。紧随标题下方排一排 5 张 KPI 数字卡片，用等宽字体把大数字打亮：20+（消息网关平台）、5（本土 IM 覆盖：Feishu / WeCom / Weixin / QQ Bot / DingTalk）、6 种（终端后端）、6+（OS 平台，含 Android / Windows Native）、一级 zh-Hans（i18n 语言路径）。
 
-页面下半部分用一条横向时间线或小卡片列补充 releases 相关事实：Releases 共 33 个，时间跨度 2026-03-12 到 2026-09-11；其中命名 release 6 个，视为文化事件信号。最底部收束一句强调性的总结语："stars/forks ≠ 真实使用——是弱代理"，用衬线字体、大字重、暗金描边或细金线下划线的形式作为视觉重心收口。
+中部是六个要点卡片，建议 3 列 × 2 行网格布局，每张卡片 head + detail 两层：消息网关一栏展开平台清单——CLI、Telegram、Discord、Slack、WhatsApp、Signal、Matrix、Mattermost、Email、SMS、Teams、Google Chat；本土 IM 五件套一栏强调"不是附属翻译，是一等公民"；终端后端一栏列出本地、Docker、SSH、Daytona、Singularity、Modal 六种，并点出 Daytona+Modal 提供 serverless 持久化；操作系统覆盖一栏列 Linux、macOS、WSL2、Windows Native（早期测试）、Android（Termux）、Nix & NixOS；文档 i18n 一栏强调 /docs/zh-Hans/ 是与英文对等的一级入口；制度含义一栏收束到"操作进化不是功能堆砌，是把 Agent 塞进用户已经存在的接入路径——交易成本的最小化"。底部再落一行叙事句作为收束：不是"我能做什么"，是"我在哪里等你"——Agent 只有先塞进用户已经存在的接入路径，才会被真实使用，这也是消费侧采纳率背后的制度基础。
 
-这页没有任何可用配图，请完全依靠文字、数字、CSS 几何装饰（金字塔、色块、细分割线、圆点装饰）把版面填满，不要留大片空白，也不要画成花哨的插图。
+这页没有可用的配图，请用纯文字和 CSS 装饰把版面填满，不要留大片空白；用包豪斯几何元素（圆、方、细线）做卡片分隔和角落装饰。整体风格是 dark academic 学术理性调性，主色深普鲁士蓝 #1B3B6B，辅助点缀色暖金 #B4A078，背景 #0F1E33，文字暖白 #F5F0E8，标题用 Noto Serif SC 衬线体，正文用 Noto Sans SC，数字和路径用 JetBrains Mono 等宽字体，营造克制、智识感、羊皮纸质感的深色视觉系统。

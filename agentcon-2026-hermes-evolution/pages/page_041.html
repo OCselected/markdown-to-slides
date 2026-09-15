@@ -4,300 +4,377 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>三道分水岭 · 可靠性/兼容性/信任</title>
+<title>第四幕 · Agent 演化洞察</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
 
-  :root {
-    --bg: #0F1E33;
-    --primary: #1B3B6B;
-    --accent: #B4A078;
-    --text: #F5F0E8;
-    --text-dim: rgba(245, 240, 232, 0.68);
-    --text-faint: rgba(245, 240, 232, 0.42);
-    --border: rgba(180, 160, 120, 0.28);
-    --card-border: rgba(245, 240, 232, 0.14);
-    --font-serif: 'Noto Serif SC', serif;
-    --font-sans: 'Noto Sans SC', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
+:root {
+  --bg: #0F1E33;
+  --accent: #1B3B6B;
+  --gold: #B4A078;
+  --warm-white: #F5F0E8;
+  --warm-white-dim: rgba(245, 240, 232, 0.72);
+  --warm-white-faint: rgba(245, 240, 232, 0.28);
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); font-family: var(--font-sans); color: var(--text); }
+* { box-sizing: border-box; }
 
-  .wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; margin: 0 auto; }
-  #bg { position: absolute; inset: 0; z-index: 0; }
-  #ct { position: absolute; inset: 0; z-index: 1; padding: 60px; box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
 
-  /* ===== Background decoration ===== */
-  .bg-frame {
-    position: absolute; inset: 30px;
-    border: 1px solid rgba(180, 160, 120, 0.12);
-  }
-  .bg-corner {
-    position: absolute; width: 22px; height: 22px;
-    border: 2px solid var(--accent);
-    opacity: 0.8;
-  }
-  .bg-corner.tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
-  .bg-corner.tr { top: 22px; right: 22px; border-left: none; border-bottom: none; }
-  .bg-corner.bl { bottom: 22px; left: 22px; border-right: none; border-top: none; }
-  .bg-corner.br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
+}
 
-  /* ===== Header ===== */
-  .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 46px;
-  }
-  .title-left { display: flex; align-items: stretch; gap: 22px; }
-  .title-text { display: flex; flex-direction: column; }
-  .eyebrow {
-    display: flex; align-items: center; gap: 12px;
-    font-family: var(--font-mono); font-size: 12px; letter-spacing: 3px;
-    color: var(--accent); margin-bottom: 14px; font-weight: 500;
-  }
-  .eyebrow .dash { width: 30px; height: 1px; background: var(--accent); opacity: 0.7; }
-  .title-main {
-    font-family: var(--font-serif); font-weight: 700;
-    font-size: 50px; letter-spacing: 5px; color: var(--text); line-height: 1.15;
-  }
-  .title-main .thin { font-weight: 500; opacity: 0.75; font-size: 42px; margin: 0 4px; }
-  .title-sub {
-    font-family: var(--font-sans); font-weight: 300; font-size: 19px;
-    color: var(--text-dim); margin-top: 12px; letter-spacing: 3px;
-  }
-  .title-rule {
-    width: 3px; align-self: stretch;
-    background: linear-gradient(to bottom, var(--accent) 0%, rgba(180,160,120,0) 100%);
-  }
-  .title-right { display: flex; justify-content: flex-end; padding-top: 2px; }
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0F1E33;
+}
 
-  /* ===== Connecting line ===== */
-  .line-section { position: relative; height: 22px; margin: 0 0 32px 0; }
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96  0 0 0 0 0.94  0 0 0 0 0.91  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.9;
+}
 
-  /* ===== Cards row ===== */
-  .cards { display: flex; gap: 50px; }
-  .card {
-    width: 460px; height: 550px;
-    background: linear-gradient(180deg, rgba(27, 59, 107, 0.4) 0%, rgba(15, 30, 51, 0.7) 100%);
-    border: 1px solid var(--card-border);
-    position: relative;
-    display: flex; flex-direction: column;
-  }
-  .card-top {
-    height: 2px; width: 100%;
-    background: linear-gradient(to right, var(--accent) 0%, rgba(180, 160, 120, 0.2) 70%, rgba(180, 160, 120, 0) 100%);
-  }
-  .card-head {
-    padding: 30px 30px 0 30px;
-    display: flex; align-items: center; gap: 22px;
-  }
-  .num { width: 64px; height: 64px; position: relative; }
-  .num-name {
-    font-family: var(--font-serif); font-weight: 700; font-size: 38px;
-    color: var(--text); letter-spacing: 10px; line-height: 1;
-    padding-left: 4px;
-  }
-  .card-body {
-    flex: 1; padding: 34px 30px 30px 30px;
-    display: flex; flex-direction: column; justify-content: center;
-    gap: 34px;
-  }
-  .bronze-bar {
-    width: 60px; height: 2px; background: var(--accent);
-  }
-  .p-text {
-    font-family: var(--font-sans); font-weight: 300; font-size: 17px;
-    color: var(--text); line-height: 1.9; letter-spacing: 0.5px;
-  }
-  .p-text .em { color: var(--accent); font-weight: 500; }
-  .tag {
-    display: flex; align-items: center; gap: 14px;
-    padding: 10px 0 0 0;
-    border-top: 1px dashed rgba(180, 160, 120, 0.4);
-    font-family: var(--font-mono); font-size: 13px; color: var(--accent);
-    letter-spacing: 1.5px;
-  }
-  .tag .hash { color: var(--text); font-weight: 700; font-size: 14px; }
-  .tag .kw { color: var(--text); font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; }
-  .card-corner {
-    position: absolute; top: 14px; right: 14px;
-    width: 6px; height: 6px; background: var(--accent); opacity: 0.6;
-  }
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 40% 40%, rgba(27, 59, 107, 0.22) 0%, rgba(15, 30, 51, 0) 70%);
+}
 
-  /* ===== Bottom summary ===== */
-  .summary {
-    position: absolute; left: 0; right: 0; bottom: 74px;
-    display: flex; align-items: center; justify-content: center; gap: 22px;
-  }
-  .summary-line {
-    width: 260px; height: 1px;
-    background: linear-gradient(to right, rgba(180,160,120,0) 0%, var(--accent) 100%);
-  }
-  .summary-line.right {
-    background: linear-gradient(to right, var(--accent) 0%, rgba(180,160,120,0) 100%);
-  }
-  .summary-box {
-    padding: 14px 42px;
-    background: rgba(27, 59, 107, 0.35);
-    border: 1px solid var(--border);
-    font-family: var(--font-serif); font-weight: 500; font-size: 17px;
-    color: var(--text); letter-spacing: 2.5px; white-space: nowrap;
-  }
-  .summary-box .em { color: var(--accent); font-weight: 700; }
+.bauhaus-decor {
+  position: absolute;
+  top: 90px;
+  right: 100px;
+  width: 260px;
+  height: 200px;
+  z-index: 0;
+  opacity: 0.92;
+}
 
-  /* ===== Footer ===== */
-  .footer {
-    position: absolute; left: 0; right: 0; bottom: 30px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 60px;
-    font-family: var(--font-mono); font-size: 10px;
-    color: var(--text-faint); letter-spacing: 2.5px;
-  }
+.bauhaus-decor-sm {
+  position: absolute;
+  top: 280px;
+  right: 40px;
+  width: 90px;
+  height: 90px;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 60px 100px;
+  color: var(--warm-white);
+}
+
+.top-marker {
+  position: absolute;
+  top: 60px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.marker-accent-bar {
+  width: 4px;
+  height: 44px;
+  background: var(--gold);
+}
+
+.marker-text .marker-act {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.marker-text .marker-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: rgba(245, 240, 232, 0.5);
+  margin-top: 6px;
+}
+
+.center-block {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  right: 100px;
+}
+
+.pre-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.6em;
+  color: var(--warm-white-faint);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 124px;
+  font-weight: 700;
+  color: var(--warm-white);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.main-title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.55em;
+  color: rgba(245, 240, 232, 0.42);
+  margin-top: 22px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 24px;
+  color: var(--warm-white-dim);
+  margin-top: 34px;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+}
+
+.subtitle-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.32);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.divider-row {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 610px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.divider-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  letter-spacing: 0.55em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(27, 59, 107, 0.9);
+}
+
+.divider-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.narrative-cols {
+  position: absolute;
+  top: 660px;
+  left: 100px;
+  right: 100px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.col {
+  flex: 1;
+  padding: 0 40px;
+}
+
+.col:first-child { padding-left: 0; }
+.col:last-child { padding-right: 0; }
+
+.col-tag {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.tag-line {
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.tag-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.col-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin: 0 0 14px 0;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.col-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: var(--warm-white-dim);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.col-divider {
+  width: 1px;
+  height: 130px;
+  background: rgba(245, 240, 232, 0.14);
+  align-self: center;
+}
+
+.bottom-preview {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.7em;
+  color: rgba(245, 240, 232, 0.28);
+  font-weight: 300;
+}
+
+.page-foot {
+  position: absolute;
+  bottom: 34px;
+  right: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.22);
+  font-weight: 300;
+}
+
+.page-foot-left {
+  position: absolute;
+  bottom: 34px;
+  left: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: rgba(245, 240, 232, 0.22);
+  font-weight: 300;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-frame"></div>
-    <div class="bg-corner tl"></div>
-    <div class="bg-corner tr"></div>
-    <div class="bg-corner bl"></div>
-    <div class="bg-corner br"></div>
-
-    <!-- Background geometric motifs (Bauhaus: circle, square, line) -->
-    <svg width="1600" height="900" viewBox="0 0 1600 900" style="position:absolute;inset:0;" aria-hidden="true">
-      <!-- top-right: circle + square -->
-      <g transform="translate(1452, 118)" opacity="0.35">
-        <circle cx="0" cy="0" r="32" fill="none" stroke="#B4A078" stroke-width="1.5"/>
-        <rect x="-8" y="8" width="16" height="16" fill="#B4A078" opacity="0.6"/>
-        <line x1="-42" y1="0" x2="-14" y2="0" stroke="#B4A078" stroke-width="1" opacity="0.8"/>
-      </g>
-      <!-- bottom-right cluster: dot pattern -->
-      <g transform="translate(1388, 872)" opacity="0.4">
-        <circle cx="0" cy="0" r="2" fill="#B4A078"/>
-        <circle cx="12" cy="0" r="2" fill="#B4A078"/>
-        <circle cx="0" cy="12" r="2" fill="#B4A078"/>
-        <circle cx="12" cy="12" r="2" fill="#B4A078"/>
-      </g>
-      <!-- vertical accent line -->
-      <line x1="800" y1="172" x2="800" y2="204" stroke="#B4A078" stroke-width="1" opacity="0.35"/>
-      <!-- small square at top-middle -->
-      <rect x="795" y="180" width="10" height="10" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
+    <div class="bg-vignette"></div>
+    <div class="bg-noise"></div>
+    <svg class="bauhaus-decor" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="20" x2="260" y2="20" stroke="#1B3B6B" stroke-width="1"/>
+      <circle cx="200" cy="60" r="42" fill="#B4A078"/>
+      <rect x="40" y="90" width="60" height="60" fill="none" stroke="#1B3B6B" stroke-width="2"/>
+      <circle cx="120" cy="150" r="10" fill="#1B3B6B"/>
+      <line x1="140" y1="130" x2="260" y2="130" stroke="#F5F0E8" stroke-width="1" opacity="0.35"/>
+      <rect x="150" y="10" width="8" height="8" fill="#F5F0E8" opacity="0.5"/>
+      <line x1="0" y1="180" x2="120" y2="180" stroke="#B4A078" stroke-width="1" opacity="0.6"/>
+    </svg>
+    <svg class="bauhaus-decor-sm" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="0" x2="90" y2="90" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
+      <line x1="90" y1="0" x2="0" y2="90" stroke="#1B3B6B" stroke-width="1"/>
     </svg>
   </div>
 
   <div id="ct">
-    <!-- Header -->
-    <div class="header">
-      <div class="title-left">
-        <div class="title-text">
-          <div class="eyebrow"><span class="dash"></span><span>PART 03 · THREE THRESHOLDS</span></div>
-          <div class="title-main">三道分水岭 <span class="thin">·</span> 可靠性/兼容性/信任</div>
-          <div class="title-sub">从"能用"到"好用"的关键跃迁</div>
-        </div>
-        <div class="title-rule"></div>
-        <svg class="title-right" width="160" height="118" viewBox="0 0 160 118" aria-hidden="true">
-          <circle cx="42" cy="42" r="34" fill="none" stroke="#B4A078" stroke-width="1.5" opacity="0.85"/>
-          <rect x="70" y="30" width="52" height="52" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-          <circle cx="98" cy="60" r="7" fill="#B4A078" opacity="0.75"/>
-          <line x1="10" y1="94" x2="140" y2="94" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-        </svg>
+    <div class="top-marker">
+      <div class="marker-accent-bar"></div>
+      <div class="marker-text">
+        <div class="marker-act">ACT&nbsp;IV</div>
+        <div class="marker-num">04&nbsp;/&nbsp;04</div>
       </div>
     </div>
 
-    <!-- Connecting line (progression) -->
-    <div class="line-section">
-      <svg width="1480" height="22" viewBox="0 0 1480 22" aria-hidden="true">
-        <line x1="40" y1="11" x2="1440" y2="11" stroke="rgba(180,160,120,0.35)" stroke-width="1"/>
-        <!-- Dots on each card (progression anchors) -->
-        <circle cx="230" cy="11" r="5" fill="#B4A078"/>
-        <circle cx="230" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
-        <circle cx="740" cy="11" r="5" fill="#B4A078"/>
-        <circle cx="740" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
-        <circle cx="1250" cy="11" r="5" fill="#B4A078"/>
-        <circle cx="1250" cy="11" r="11" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.45"/>
-        <!-- Arrows between cards (progression direction) -->
-        <g stroke="#B4A078" stroke-width="1.5" fill="none" opacity="0.9">
-          <path d="M 478 11 L 542 11"/>
-          <path d="M 532 5 L 542 11 L 532 17"/>
-          <path d="M 988 11 L 1052 11"/>
-          <path d="M 1042 5 L 1052 11 L 1042 17"/>
-        </g>
-        <circle cx="1440" cy="11" r="2.5" fill="#B4A078"/>
-      </svg>
+    <div class="center-block">
+      <div class="pre-title">PART&nbsp;IV&nbsp;·&nbsp;THE&nbsp;FOURTH&nbsp;ACT</div>
+      <h1 class="main-title">Agent 演化洞察</h1>
+      <div class="main-title-en">AGENT · EVOLUTIONARY INSIGHTS</div>
+      <div class="subtitle">从 12 案例中提炼的演化规律</div>
+      <div class="subtitle-en">EVOLUTIONARY LAWS EXTRACTED FROM TWELVE CASE STUDIES</div>
     </div>
 
-    <!-- Three cards -->
-    <div class="cards">
-      <!-- Card 01: 可靠性 -->
-      <div class="card">
-        <div class="card-top"></div>
-        <div class="card-corner"></div>
-        <div class="card-head">
-          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
-            <circle cx="32" cy="32" r="28" fill="none" stroke="#B4A078" stroke-width="1.8"/>
-            <text x="32" y="41" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">01</text>
-          </svg>
-          <div class="num-name">可靠性</div>
-        </div>
-        <div class="card-body">
-          <div class="bronze-bar"></div>
-          <p class="p-text">能否<span class="em">信任</span> Agent 记住正确的历史——在长上下文、跨会话、多次交互中，让记忆不失真、结论不漂移。</p>
-          <div class="tag"><span class="hash">#107070</span><span>·</span><span class="kw">Tenacity</span></div>
-        </div>
-      </div>
+    <div class="divider-row">
+      <div class="divider-label">本幕叙事骨架</div>
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+    </div>
 
-      <!-- Card 02: 兼容性 -->
-      <div class="card">
-        <div class="card-top"></div>
-        <div class="card-corner"></div>
-        <div class="card-head">
-          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
-            <rect x="10" y="10" width="44" height="44" fill="none" stroke="#B4A078" stroke-width="1.8"/>
-            <text x="32" y="41" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">02</text>
-          </svg>
-          <div class="num-name">兼容性</div>
+    <div class="narrative-cols">
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">核心</div>
         </div>
-        <div class="card-body">
-          <div class="bronze-bar"></div>
-          <p class="p-text">用户不会被<span class="em">锁在门外</span>——跨系统、跨平台、跨生态，让每一次协作都在可达的边界之内。</p>
-          <div class="tag"><span class="hash">#101600</span><span>·</span><span class="kw">Surface</span></div>
-        </div>
+        <h3 class="col-title">从"能用"到"好用"的三道分水岭</h3>
+        <p class="col-desc">在能力阈值之上，Agent 才真正跨越体验的门槛。</p>
       </div>
-
-      <!-- Card 03: 信任 -->
-      <div class="card">
-        <div class="card-top"></div>
-        <div class="card-corner"></div>
-        <div class="card-head">
-          <svg class="num" viewBox="0 0 64 64" aria-hidden="true">
-            <line x1="32" y1="8" x2="32" y2="26" stroke="#B4A078" stroke-width="1.8"/>
-            <line x1="32" y1="40" x2="32" y2="56" stroke="#B4A078" stroke-width="1.8"/>
-            <text x="32" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="18" font-weight="700" fill="#B4A078">03</text>
-          </svg>
-          <div class="num-name">信　任</div>
+      <div class="col-divider"></div>
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">方法</div>
         </div>
-        <div class="card-body">
-          <div class="bronze-bar"></div>
-          <p class="p-text">能力必须有<span class="em">安全边界</span>——判断何时行动、何时退让，让强大成为可托付的存在，而非风险源。</p>
-          <div class="tag"><span class="hash">#67002</span><span>·</span><span class="kw">Judgment</span></div>
+        <h3 class="col-title">12 案例 → 3 共性 → 3 洞察</h3>
+        <p class="col-desc">自下而上的归纳路径，从样本抽离出可迁移的结构。</p>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col">
+        <div class="col-tag">
+          <div class="tag-line"></div>
+          <div class="tag-label">目标</div>
         </div>
+        <h3 class="col-title">理解 Agent 演化的内在规律</h3>
+        <p class="col-desc">看清技术迭代之下的驱动逻辑与演化节奏。</p>
       </div>
     </div>
 
-    <!-- Bottom summary -->
-    <div class="summary">
-      <div class="summary-line"></div>
-      <div class="summary-box">三道分水岭是 Agent 从<span class="em">"能用"</span>到<span class="em">"好用"</span>的关键跃迁，顺序不是独立的</div>
-      <div class="summary-line right"></div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <span>AGENT MATURITY · 03 / 03</span>
-      <span>THREE THRESHOLDS OF TRUST</span>
-    </div>
+    <div class="page-foot-left">SECTION&nbsp;·&nbsp;IV</div>
+    <div class="bottom-preview">可靠性&nbsp;&nbsp;·&nbsp;&nbsp;兼容性&nbsp;&nbsp;·&nbsp;&nbsp;信任</div>
+    <div class="page-foot">END&nbsp;·&nbsp;OVERVIEW</div>
   </div>
 </div>
 </body>

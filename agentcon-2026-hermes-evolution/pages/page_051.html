@@ -4,276 +4,324 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>致谢 · Thank you</title>
+<title>延伸阅读 · 制度经济学核心文献</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0F1E33;
-  --bg-deep: #0A1526;
-  --primary: #1B3B6B;
-  --accent: #B4A078;
-  --text: #F5F0E8;
-  --muted: rgba(245,240,232,0.68);
-  --muted-strong: rgba(245,240,232,0.88);
-  --line: rgba(180,160,120,0.55);
-}
+  :root {
+    --bg-deep: #0F1E33;
+    --bg-panel: #1B3B6B;
+    --accent-gold: #B4A078;
+    --accent-gold-dim: rgba(180, 160, 120, 0.42);
+    --accent-gold-faint: rgba(180, 160, 120, 0.14);
+    --text-warm: #F5F0E8;
+    --text-muted: rgba(245, 240, 232, 0.62);
+    --text-dim: rgba(245, 240, 232, 0.44);
+    --hairline: rgba(245, 240, 232, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", -apple-system, "Helvetica Neue", sans-serif;
+    background: #0F1E33;
+    color: var(--text-warm);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #0F1E33 0%, #0B1830 100%);
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .top-line {
+    position: absolute;
+    top: 82px;
+    left: 60px;
+    width: 1480px;
+    height: 1px;
+    background: var(--accent-gold-dim);
+  }
+  .top-square {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 22px;
+    height: 22px;
+    background: var(--accent-gold);
+  }
+  .accent-circle-lg {
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(180, 160, 120, 0.28);
+    border-radius: 50%;
+  }
+  .accent-circle-lg::after {
+    content: '';
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+  }
+  .accent-circle-md {
+    position: absolute;
+    bottom: -120px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    background: rgba(180, 160, 120, 0.05);
+    border-radius: 50%;
+  }
+  .accent-square-lg {
+    position: absolute;
+    bottom: 88px;
+    right: 90px;
+    width: 46px;
+    height: 46px;
+    background: transparent;
+    border: 1px solid rgba(180, 160, 120, 0.35);
+  }
+  .accent-square-sm {
+    position: absolute;
+    bottom: 148px;
+    right: 70px;
+    width: 14px;
+    height: 14px;
+    background: var(--accent-gold);
+  }
+  .accent-square-bl {
+    position: absolute;
+    bottom: 22px;
+    left: 60px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-gold);
+  }
+  .accent-tick {
+    position: absolute;
+    top: 208px;
+    left: 60px;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-gold);
+  }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 34px 60px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-left { display: flex; align-items: flex-end; gap: 34px; }
+  .title-block {
+    position: relative;
+    padding-left: 22px;
+  }
+  .title-block::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 70px;
+    background: var(--accent-gold);
+  }
+  .title {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    color: var(--text-warm);
+    margin: 0;
+  }
+  .subtitle-block {
+    padding-bottom: 6px;
+    min-width: 260px;
+  }
+  .subtitle {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 22px;
+    color: var(--accent-gold);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    margin: 0 0 6px 0;
+  }
+  .subtitle-en {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Noto Sans SC', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-}
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 34px;
+    grid-template-rows: 90px 32px 46px;
+    row-gap: 16px;
+  }
+  .card-image {
+    position: relative;
+    height: 90px;
+    background: var(--accent-gold);
+    overflow: hidden;
+  }
+  .card-image::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    width: 12px;
+    height: 90px;
+    background: var(--bg-panel);
+  }
+  .card-image::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 3px;
+    height: 90px;
+    background: var(--accent-gold);
+    opacity: 0.5;
+  }
+  .card-title {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-warm);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .card-source {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+  .card-source .year {
+    color: var(--accent-gold);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-right: 4px;
+  }
+  .card-source .work {
+    display: block;
+    color: var(--text-warm);
+    font-style: italic;
+    margin-top: 3px;
+    opacity: 0.9;
+  }
 
-.wrapper {
-  width: 1600px;
-  height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--bg);
-}
-
-.bg-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 90% 60% at 50% 38%, rgba(27,59,107,0.44) 0%, transparent 70%);
-}
-
-.bg-corner {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 110% 55% at 50% 110%, rgba(10,21,38,0.72) 0%, transparent 70%);
-}
-
-.bg-texture {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(245,240,232,0.013) 0 1px, transparent 1px 3px);
-}
-
-.bg-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 92% 72% at 50% 50%, transparent 42%, rgba(0,0,0,0.42) 100%);
-}
-
-.corner {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border: 0 solid var(--line);
-  opacity: 0.5;
-}
-.corner.tl { top: 56px; left: 72px; border-top-width: 1px; border-left-width: 1px; }
-.corner.tr { top: 56px; right: 72px; border-top-width: 1px; border-right-width: 1px; }
-.corner.bl { bottom: 92px; left: 72px; border-bottom-width: 1px; border-left-width: 1px; }
-.corner.br { bottom: 92px; right: 72px; border-bottom-width: 1px; border-right-width: 1px; }
-
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 60px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.top-mark {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 46px;
-}
-.top-mark .line {
-  width: 108px;
-  height: 1px;
-  background: var(--line);
-}
-.top-mark .dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  transform: rotate(45deg);
-}
-
-.title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 96px;
-  letter-spacing: 0.05em;
-  line-height: 1.02;
-  color: var(--text);
-  text-align: center;
-  margin-bottom: 22px;
-  white-space: nowrap;
-}
-
-.title .zh {
-  font-weight: 600;
-}
-
-.title .divider {
-  color: var(--accent);
-  font-weight: 300;
-  font-size: 0.5em;
-  margin: 0 0.36em;
-  vertical-align: 0.28em;
-}
-
-.title .en {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--muted-strong);
-  letter-spacing: 0.02em;
-}
-
-.subtitle {
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 26px;
-  letter-spacing: 0.44em;
-  color: var(--accent);
-  text-align: center;
-  margin-bottom: 58px;
-  padding-left: 0.44em;
-}
-
-.mid-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-  max-width: 1200px;
-}
-
-.rule {
-  width: 44px;
-  height: 1px;
-  background: var(--line);
-}
-
-.line-1, .line-2, .line-3 {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 19px;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--muted-strong);
-  text-align: center;
-  letter-spacing: 0.04em;
-}
-
-.accent-serif {
-  color: var(--accent);
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 20px;
-}
-
-.accent-inline {
-  color: var(--accent);
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.date {
-  color: var(--accent);
-  font-family: 'Noto Serif SC', serif;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.12em;
-  font-weight: 500;
-}
-
-.bottom-mark {
-  display: flex;
-  justify-content: center;
-  margin-top: 42px;
-}
-.bottom-mark .sq {
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--accent);
-  transform: rotate(45deg);
-}
-
-.footer {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.32em;
-  color: var(--muted);
-  text-align: center;
-  white-space: nowrap;
-  padding-left: 0.32em;
-}
+  .footer {
+    margin-top: auto;
+    padding-top: 22px;
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .footer-text {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+  .footer-text .em { color: var(--text-warm); font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-glow"></div>
-    <div class="bg-corner"></div>
-    <div class="bg-texture"></div>
-    <div class="bg-vignette"></div>
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
+    <div class="top-line"></div>
+    <div class="top-square"></div>
+    <div class="accent-circle-lg"></div>
+    <div class="accent-circle-md"></div>
+    <div class="accent-square-lg"></div>
+    <div class="accent-square-sm"></div>
+    <div class="accent-square-bl"></div>
+    <div class="accent-tick"></div>
   </div>
   <div id="ct">
-    <div class="top-mark">
-      <span class="line"></span>
-      <span class="dot"></span>
-      <span class="line"></span>
+    <div class="header">
+      <div class="header-left">
+        <div class="title-block">
+          <h1 class="title">延伸阅读</h1>
+        </div>
+        <div class="subtitle-block">
+          <div class="subtitle">制度经济学核心文献</div>
+          <div class="subtitle-en">CORE READINGS · INSTITUTIONAL ECONOMICS</div>
+        </div>
+      </div>
     </div>
-
-    <h1 class="title">
-      <span class="zh">致</span><span class="zh">谢</span><span class="divider">·</span><span class="en">Thank you</span>
-    </h1>
-
-    <div class="subtitle"><span>Keep Movement</span></div>
-
-    <div class="mid-block">
-      <div class="rule"></div>
-      <p class="line-1"><span>「</span><span class="accent-serif">开源之道</span><span>」 · </span><span class="accent-serif">适兕</span><span> × </span><span class="accent-serif">窄廊</span><span>，两种存在形式，一个使命</span></p>
-      <p class="line-1"><span class="accent-inline">Keep Movement</span><span> —— 知识不是静止的，是在移动中产生的。</span></p>
-
-      <div class="rule"></div>
-
-      <p class="line-2"><span>数据基线 </span><span class="date">2026-09-11</span><span> · 田野考察 —— 从群众中来，非框架先行。</span></p>
-
-      <div class="rule"></div>
-
-      <p class="line-3"><span>这个演讲不是要证明什么，</span><span class="accent-inline">是要打开一种思考</span><span>。</span></p>
-    </div>
-
-    <div class="bottom-mark">
-      <span class="sq"></span>
+    <div class="content">
+      <div class="cards">
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-image"></div>
+        <div class="card-title">转型经济学</div>
+        <div class="card-title">交易成本经济学</div>
+        <div class="card-title">认知制度</div>
+        <div class="card-title">演化制度理论</div>
+        <div class="card-title">开源经济学</div>
+        <div class="card-source"><span class="year">2004</span> · Roland<span class="work">Understanding Institutional Change</span></div>
+        <div class="card-source"><span class="year">2000</span> · Williamson<span class="work">The New Institutional Economics</span></div>
+        <div class="card-source"><span class="year">2016</span> · Akcagün &amp; Sapienza<span class="work">Cognitive Rules of Growth</span></div>
+        <div class="card-source"><span class="year">2017</span> · Greif &amp; Mokyr<span class="work">Journal of Institutional Economics</span></div>
+        <div class="card-source"><span class="year">2002</span> · Lerner &amp; Tirole<span class="work">The Economics of Open Source Software</span></div>
+      </div>
+      <div class="footer">
+        <p class="footer-text">延伸阅读覆盖<span class="em">制度经济学的核心文献</span>——从<span class="em">转型经济学</span>到<span class="em">演化制度理论</span>，从<span class="em">交易成本</span>到<span class="em">开源经济学</span>。</p>
+      </div>
     </div>
   </div>
-
-  <div class="footer"><span>2026-09-14 · AgentCon 2026 · 北京 · Token 经济趋势</span></div>
 </div>
 </body>
 </html>

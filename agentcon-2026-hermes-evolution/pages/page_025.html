@@ -1,614 +1,477 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>Hermes Surface Release · 原生 Desktop</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>案例 2 · Tenacity Release · 多 Agent Kanban</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0F1E33;
-  --prussian: #1B3B6B;
-  --prussian-deep: #142D52;
-  --prussian-light: #2A5090;
-  --gold: #B4A078;
-  --gold-bright: #D9C89A;
-  --gold-dim: #7A6D52;
-  --ink: #F5F0E8;
-  --ink-soft: rgba(245,240,232,0.72);
-  --ink-mute: rgba(245,240,232,0.50);
-  --line: rgba(180,160,120,0.30);
-  --line-strong: rgba(180,160,120,0.55);
-}
+  :root{
+    --bg:#0F1E33;
+    --bg-2:#0A1626;
+    --ink:#F5F0E8;
+    --ink-2:rgba(245,240,232,0.72);
+    --ink-3:rgba(245,240,232,0.48);
+    --amber:#B4A078;
+    --amber-2:#C9B48A;
+    --line:rgba(180,160,120,0.35);
+    --card:rgba(245,240,232,0.045);
+    --card-border:rgba(245,240,232,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans SC',sans-serif;
+    color:var(--ink);
+    background:#060d18;
+  }
+  .wrapper{
+    width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;
+    background:
+      radial-gradient(1200px 700px at 20% 15%, rgba(180,160,120,0.08), transparent 60%),
+      radial-gradient(900px 600px at 85% 85%, rgba(180,160,120,0.05), transparent 60%),
+      linear-gradient(180deg,#122442 0%,#0F1E33 40%,#0A1626 100%);
+  }
+  #bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  #ct{position:absolute;inset:0;z-index:1;padding:44px 60px 40px;box-sizing:border-box;}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  /* Baustyle decorative geometry in bg */
+  .bg-shape{position:absolute;}
+  .bg-circle{
+    left:-120px;top:-140px;width:360px;height:360px;border-radius:50%;
+    border:1px solid rgba(180,160,120,0.18);
+  }
+  .bg-circle-2{
+    right:-160px;bottom:-160px;width:420px;height:420px;border-radius:50%;
+    border:1px solid rgba(180,160,120,0.14);
+  }
+  .bg-square{
+    left:820px;top:-40px;width:120px;height:120px;
+    border:1px solid rgba(180,160,120,0.22);
+    transform:rotate(15deg);
+  }
+  .bg-line-v{
+    left:60px;top:0;width:1px;height:100%;
+    background:linear-gradient(180deg,transparent,rgba(180,160,120,0.25),transparent);
+  }
+  .bg-line-h{
+    left:0;top:460px;height:1px;width:100%;
+    background:linear-gradient(90deg,transparent,rgba(180,160,120,0.18),transparent);
+  }
+  .bg-dot{
+    left:44px;top:460px;width:8px;height:8px;border-radius:50%;
+    background:var(--amber);box-shadow:0 0 12px rgba(180,160,120,0.6);
+  }
 
-html, body {
-  width: 1600px; height: 900px;
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: var(--ink);
-  background: #000;
-  overflow: hidden;
-}
+  /* Header */
+  .header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:18px;}
+  .header-left{flex:1;min-width:0;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:0.22em;color:var(--amber);
+    text-transform:uppercase;margin-bottom:12px;
+  }
+  .kicker .bar{width:28px;height:1px;background:var(--amber);}
+  h1{
+    font-family:'Noto Serif SC',serif;
+    font-weight:900;
+    font-size:44px;line-height:1.15;
+    color:var(--ink);
+    letter-spacing:-0.5px;
+  }
+  h1 .accent{color:var(--amber);}
+  .subtitle{
+    font-family:'Noto Serif SC',serif;
+    font-weight:500;font-style:italic;
+    font-size:18px;color:var(--ink-2);
+    margin-top:10px;letter-spacing:0.5px;
+  }
+  .subtitle .quote{color:var(--amber-2);font-style:italic;}
+  .header-right{
+    display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+    padding-bottom:6px;
+  }
+  .header-right .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.2em;color:var(--ink-3);
+  }
+  .header-right .num{
+    font-family:'JetBrains Mono',monospace;font-size:22px;
+    color:var(--amber);letter-spacing:0.05em;
+  }
 
-.wrapper {
-  width: 1600px; height: 900px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-}
+  .divider{
+    display:flex;align-items:center;gap:14px;margin:6px 0 20px;
+  }
+  .divider .l{flex:1;height:1px;background:linear-gradient(90deg,rgba(180,160,120,0.5),rgba(180,160,120,0.05));}
+  .divider .s{width:10px;height:10px;border:1px solid var(--amber);background:transparent;}
+  .divider .s.f{background:var(--amber);}
 
-#bg {
-  position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse at 15% 20%, rgba(27,59,107,0.42) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 85%, rgba(180,160,120,0.10) 0%, transparent 60%),
-    linear-gradient(155deg, #0C1828 0%, #0F1E33 45%, #142845 100%);
-}
+  /* Main grid */
+  .main{display:grid;grid-template-columns:820px 1fr;gap:36px;height:520px;}
 
-#bg::before {
-  content: '';
-  position: absolute;
-  left: 1150px; top: -140px;
-  width: 620px; height: 620px;
-  border-radius: 50%;
-  border: 1px solid rgba(180,160,120,0.10);
-}
-#bg::after {
-  content: '';
-  position: absolute;
-  left: -160px; bottom: -160px;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  background: rgba(180,160,120,0.06);
-  filter: blur(2px);
-}
+  .left{display:flex;flex-direction:column;gap:14px;}
 
-#ct {
-  position: absolute; inset: 0;
-  z-index: 1;
-  padding: 44px 60px;
-}
+  .version-bar{
+    display:flex;align-items:center;gap:16px;
+    padding:14px 20px;
+    background:linear-gradient(90deg,rgba(180,160,120,0.14),rgba(180,160,120,0.02));
+    border-left:3px solid var(--amber);
+    border-radius:2px;
+  }
+  .version-bar .v-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:20px;font-weight:700;color:var(--amber);
+    letter-spacing:0.02em;
+  }
+  .version-bar .v-sep{width:1px;height:22px;background:rgba(180,160,120,0.35);}
+  .version-bar .v-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--ink-2);letter-spacing:0.05em;
+  }
+  .version-bar .v-name{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:16px;color:var(--ink);margin-left:auto;
+  }
+  .version-bar .v-name span{color:var(--amber-2);font-style:italic;}
 
-/* ============ HEADER ============ */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 22px;
-}
-.case-tag {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  color: var(--gold);
-  letter-spacing: 0.14em;
-}
-.case-num {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 700;
-  color: var(--gold-bright);
-  font-size: 17px;
-}
-.case-line {
-  display: inline-block;
-  width: 44px; height: 1px;
-  background: var(--gold);
-  opacity: 0.7;
-}
-.header-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: 0.04em;
-}
-.header-title .en {
-  color: var(--gold);
-  font-weight: 400;
-  font-family: 'Noto Serif SC', serif;
-}
-.header-sub {
-  margin-top: 3px;
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--ink-mute);
-  letter-spacing: 0.05em;
-}
+  .cards{display:flex;flex-direction:column;gap:9px;flex:1;}
+  .card{
+    display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;
+    padding:11px 16px 11px 14px;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:2px;
+    position:relative;
+  }
+  .card .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--amber);
+    border-right:1px solid var(--card-border);
+    padding-right:10px;height:100%;display:flex;align-items:flex-start;padding-top:2px;
+    letter-spacing:0.05em;
+  }
+  .card .body{min-width:0;}
+  .card .title{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:15px;color:var(--ink);margin-bottom:3px;line-height:1.3;
+  }
+  .card .desc{
+    font-size:12.5px;color:var(--ink-2);line-height:1.5;
+  }
+  .card .desc code{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--amber-2);font-size:12px;
+    padding:1px 5px;background:rgba(180,160,120,0.1);
+    border-radius:2px;
+  }
+  .card.hi{
+    border:1px solid var(--amber);
+    background:linear-gradient(90deg,rgba(180,160,120,0.16),rgba(180,160,120,0.04));
+    box-shadow:0 0 0 1px rgba(180,160,120,0.15) inset;
+  }
+  .card.hi .idx{color:var(--amber);border-right-color:rgba(180,160,120,0.4);}
+  .card.hi .title{color:var(--amber-2);}
+  .card.hi::after{
+    content:'';position:absolute;right:-1px;top:-1px;
+    width:8px;height:8px;background:var(--amber);
+  }
+  .badge{
+    display:inline-block;font-family:'JetBrains Mono',monospace;
+    font-size:10px;color:var(--amber);
+    border:1px solid var(--amber);
+    padding:1px 6px;margin-left:8px;border-radius:2px;
+    letter-spacing:0.1em;vertical-align:2px;
+  }
 
-/* ============ MAIN ============ */
-.main {
-  display: grid;
-  grid-template-columns: 810px 1fr;
-  gap: 42px;
-}
+  /* Right column */
+  .right{display:flex;flex-direction:column;gap:12px;}
+  .hero-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:2752/1536;
+    border:1px solid var(--card-border);
+    background:#0A1626;
+    overflow:hidden;
+  }
+  .hero-frame img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(0.95) contrast(1.02);
+  }
+  .hero-frame .corner{
+    position:absolute;width:14px;height:14px;
+    border:1px solid var(--amber);
+  }
+  .hero-frame .corner.tl{top:8px;left:8px;border-right:none;border-bottom:none;}
+  .hero-frame .corner.tr{top:8px;right:8px;border-left:none;border-bottom:none;}
+  .hero-frame .corner.bl{bottom:8px;left:8px;border-right:none;border-top:none;}
+  .hero-frame .corner.br{bottom:8px;right:8px;border-left:none;border-top:none;}
+  .hero-frame .meta{
+    position:absolute;top:14px;left:30px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    letter-spacing:0.22em;color:var(--amber);
+    background:rgba(15,30,51,0.7);padding:3px 8px;
+    border:1px solid rgba(180,160,120,0.4);
+  }
+  .caption{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Noto Serif SC',serif;font-style:italic;
+    font-size:13px;color:var(--ink-2);
+  }
+  .caption .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+  .caption .en{
+    font-family:'JetBrains Mono',monospace;font-style:normal;
+    font-size:10px;color:var(--ink-3);letter-spacing:0.15em;
+    margin-left:auto;
+  }
 
-/* LEFT - HERO */
-.hero-wrap {
-  position: relative;
-  width: 810px; height: 453px;
-}
-.hero-frame {
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--line);
-  background: var(--prussian-deep);
-}
-.hero-frame::before {
-  content: '';
-  position: absolute;
-  left: -12px; top: -12px;
-  width: 22px; height: 22px;
-  background: var(--gold);
-}
-.hero-frame::after {
-  content: '';
-  position: absolute;
-  right: -12px; bottom: -12px;
-  width: 22px; height: 22px;
-  border: 1px solid var(--gold);
-  background: transparent;
-}
-.hero-corner-l {
-  position: absolute;
-  left: 12px; top: 12px;
-  width: 34px; height: 34px;
-  border-left: 2px solid var(--gold);
-  border-top: 2px solid var(--gold);
-}
-.hero-corner-r {
-  position: absolute;
-  right: 12px; bottom: 12px;
-  width: 34px; height: 34px;
-  border-right: 2px solid var(--gold);
-  border-bottom: 2px solid var(--gold);
-}
-.hero-img {
-  position: absolute;
-  inset: 12px;
-  width: 786px; height: 429px;
-  object-fit: cover;
-}
+  .right-bottom{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;
+  }
+  .mini{
+    padding:10px 12px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:2px;
+  }
+  .mini .lbl{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;
+    letter-spacing:0.2em;color:var(--ink-3);text-transform:uppercase;margin-bottom:4px;
+  }
+  .mini .val{
+    font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:13px;color:var(--amber-2);line-height:1.3;
+  }
+  .mini .sub{
+    font-size:11px;color:var(--ink-2);margin-top:2px;line-height:1.4;
+  }
 
-.hero-caption {
-  position: absolute;
-  left: 0; right: 0;
-  top: 472px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Noto Serif SC', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--ink-soft);
-  letter-spacing: 0.03em;
-}
-.cap-dot {
-  display: inline-block;
-  width: 8px; height: 8px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-.cap-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
-  opacity: 0.5;
-}
+  /* KPI bar */
+  .kpi{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--card-border);
+    border:1px solid var(--card-border);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .kpi-cell{
+    background:linear-gradient(180deg,rgba(245,240,232,0.05),rgba(245,240,232,0.02));
+    padding:12px 18px 12px;
+    position:relative;
+  }
+  .kpi-cell .num{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;font-size:30px;color:var(--amber);
+    letter-spacing:-0.5px;line-height:1;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .kpi-cell .num .unit{
+    font-size:13px;color:var(--amber-2);font-weight:500;
+    letter-spacing:0.05em;
+  }
+  .kpi-cell .lbl{
+    font-size:11px;color:var(--ink-2);
+    letter-spacing:0.1em;margin-top:5px;
+    text-transform:uppercase;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .kpi-cell .sub{
+    font-size:10.5px;color:var(--ink-3);margin-top:2px;
+    font-family:'Noto Sans SC',sans-serif;letter-spacing:0.03em;
+  }
+  .kpi-cell::before{
+    content:'';position:absolute;top:0;left:0;width:24px;height:2px;
+    background:var(--amber);
+  }
 
-.tag-row {
-  position: absolute;
-  left: 0; right: 0;
-  top: 522px;
-  display: flex;
-  gap: 10px;
-}
-.tag {
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  background: rgba(15,30,51,0.55);
-  font-size: 12px;
-  color: var(--ink-soft);
-  letter-spacing: 0.08em;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.tag .dot {
-  width: 5px; height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-.tag-solid {
-  border-color: var(--gold);
-  color: var(--gold-bright);
-}
+  /* Summary */
+  .summary{
+    margin-top:12px;display:flex;align-items:center;gap:14px;
+  }
+  .summary .mark{
+    width:10px;height:10px;background:var(--amber);flex-shrink:0;
+    transform:rotate(45deg);
+  }
+  .summary .text{
+    font-family:'Noto Serif SC',serif;font-weight:500;
+    font-size:13px;color:var(--ink);line-height:1.5;
+  }
+  .summary .text em{color:var(--amber-2);font-style:italic;font-weight:700;}
 
-/* RIGHT - CONTENT */
-.right-col {
-  padding-top: 4px;
-}
-
-.version-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 7px 16px;
-  border: 1px solid var(--gold);
-  background: rgba(180,160,120,0.08);
-  color: var(--gold-bright);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  margin-bottom: 16px;
-}
-.version-pill .ver-dot {
-  width: 7px; height: 7px;
-  background: var(--gold-bright);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--gold-bright);
-}
-.version-pill .ver-tag {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.1em;
-  font-size: 13px;
-}
-.version-pill .ver-sep {
-  color: var(--gold);
-  opacity: 0.7;
-}
-.version-pill .ver-date {
-  color: var(--ink-soft);
-  font-family: 'Noto Serif SC', serif;
-}
-
-.main-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 27px;
-  font-weight: 700;
-  line-height: 1.42;
-  color: var(--ink);
-  margin-bottom: 22px;
-  letter-spacing: 0.005em;
-}
-.main-title .num {
-  color: var(--gold-bright);
-  font-weight: 900;
-}
-.main-title .plus {
-  color: var(--gold);
-  font-weight: 400;
-  margin: 0 3px;
-}
-.main-title .em {
-  color: var(--gold);
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 1px;
-}
-
-.intro {
-  font-size: 13.5px;
-  line-height: 1.75;
-  color: var(--ink-soft);
-  margin-bottom: 18px;
-  letter-spacing: 0.01em;
-}
-.intro b {
-  color: var(--gold-bright);
-  font-weight: 600;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 18px;
-}
-.feature-card {
-  position: relative;
-  padding: 12px 12px 13px;
-  background: linear-gradient(160deg, rgba(27,59,107,0.60) 0%, rgba(20,45,82,0.35) 100%);
-  border: 1px solid var(--line);
-  border-top: 2px solid var(--gold);
-}
-.feature-idx {
-  position: absolute;
-  top: 8px; right: 10px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  color: var(--gold);
-  opacity: 0.85;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-.feature-tag {
-  font-size: 10px;
-  color: var(--gold);
-  letter-spacing: 0.18em;
-  font-weight: 500;
-  margin-bottom: 3px;
-  font-family: 'Noto Serif SC', serif;
-}
-.feature-name {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 6px;
-  line-height: 1.25;
-}
-.feature-desc {
-  font-size: 11.5px;
-  color: var(--ink-soft);
-  line-height: 1.55;
-}
-.feature-desc .mono {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--gold-bright);
-  font-size: 10.5px;
-}
-.feature-desc em {
-  color: var(--gold-bright);
-  font-style: normal;
-  font-weight: 600;
-}
-
-/* NARRATIVE */
-.narrative {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 0 10px 14px;
-  border-left: 3px solid var(--gold);
-  margin-bottom: 18px;
-}
-.narrative-mark {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 32px;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1;
-  flex-shrink: 0;
-}
-.narrative-text {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--ink-soft);
-  flex: 1;
-}
-.narrative-text b {
-  color: var(--gold-bright);
-  font-weight: 700;
-}
-
-/* KPI - full width bottom */
-.kpi-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  position: absolute;
-  left: 60px; right: 60px;
-  bottom: 42px;
-}
-.kpi-card {
-  position: relative;
-  padding: 16px 20px 15px;
-  background: linear-gradient(140deg, rgba(27,59,107,0.70) 0%, rgba(15,30,51,0.85) 100%);
-  border: 1px solid var(--line);
-  border-top: 2px solid var(--gold);
-  min-height: 108px;
-}
-.kpi-card::before {
-  content: '';
-  position: absolute;
-  right: -1px; bottom: -1px;
-  width: 12px; height: 12px;
-  background: var(--gold);
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-}
-.kpi-card::after {
-  content: '';
-  position: absolute;
-  left: 20px; right: 40px;
-  top: 48px;
-  height: 1px;
-  background: var(--line);
-}
-.kpi-label {
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 0.24em;
-  font-weight: 500;
-  margin-bottom: 6px;
-  font-family: 'Noto Serif SC', serif;
-}
-.kpi-value {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 44px;
-  font-weight: 900;
-  color: var(--ink);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-.kpi-value .unit {
-  font-size: 14px;
-  color: var(--gold);
-  font-weight: 500;
-  margin-left: 6px;
-  letter-spacing: 0.06em;
-  vertical-align: 5px;
-}
-.kpi-note {
-  font-size: 11px;
-  color: var(--ink-mute);
-  letter-spacing: 0.03em;
-  font-family: 'Noto Serif SC', serif;
-}
-.kpi-note em {
-  color: var(--gold-bright);
-  font-style: normal;
-  font-weight: 600;
-}
-
-/* FOOTER MARK */
-.footer-mark {
-  position: absolute;
-  left: 60px; bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  color: var(--ink-mute);
-  letter-spacing: 0.28em;
-  font-family: 'Noto Serif SC', serif;
-}
-.footer-mark .f-line {
-  width: 32px; height: 1px; background: var(--gold); opacity: 0.5;
-}
-.footer-mark .f-sq {
-  width: 6px; height: 6px; background: var(--gold);
-}
+  .footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;color:var(--ink-3);letter-spacing:0.2em;
+  }
+  .footer .l{display:flex;align-items:center;gap:10px;}
+  .footer .dot{width:5px;height:5px;border-radius:50%;background:var(--amber);}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="bg-shape bg-circle"></div>
+    <div class="bg-shape bg-circle-2"></div>
+    <div class="bg-shape bg-square"></div>
+    <div class="bg-shape bg-line-v"></div>
+    <div class="bg-shape bg-line-h"></div>
+    <div class="bg-shape bg-dot"></div>
+  </div>
+
   <div id="ct">
-
-    <!-- HEADER -->
+    <!-- Header -->
     <div class="header">
-      <div class="case-tag">
-        <span class="case-num">CASE / 03</span>
-        <span class="case-line"></span>
-        <span>HERMES · SURFACE RELEASE</span>
+      <div class="header-left">
+        <div class="kicker"><span class="bar"></span><span>Case Study · 02</span><span class="bar"></span></div>
+        <h1>案例 2 · <span class="accent">Tenacity Release</span> · 多 Agent Kanban</h1>
+        <div class="subtitle">"<span class="quote">finishes what it starts</span>" 的文化承诺 —— 让可靠性成为默认行为</div>
       </div>
-      <div class="header-title">
-        <span class="en">Hermes meets you</span> where you work
-        <div class="header-sub">从 CLI 到 Desktop · 从本地到远程 · 从英文到中文</div>
+      <div class="header-right">
+        <span class="tag">RELEASE NOTE</span>
+        <span class="num">v0.13.0</span>
+        <span class="tag">2026 · 05 · 07</span>
       </div>
     </div>
 
-    <!-- MAIN TWO-COLUMN -->
+    <div class="divider">
+      <span class="l"></span>
+      <span class="s f"></span>
+      <span class="s"></span>
+      <span class="l"></span>
+    </div>
+
+    <!-- Main two-column -->
     <div class="main">
-      <!-- LEFT: HERO IMAGE -->
-      <div class="hero-wrap">
-        <div class="hero-frame"></div>
-        <div class="hero-corner-l"></div>
-        <div class="hero-corner-r"></div>
-        <img class="hero-img" src="../images/page_023_hero.png" alt="Surface Release 主视觉：深普鲁士蓝羊皮纸底色的包豪斯几何构图，笔记本、手机、浏览器三种设备面以暖琥珀光悬浮，细同心圆脉冲向外示意连接，中式几何化字符与金色圆形徽章点缀，语义为'在任意工作场景相遇'">
-        <div class="hero-caption">
-          <span class="cap-dot"></span>
-          <span>在任意工作场景相遇 · Hermes meets you wherever you work</span>
-          <span class="cap-line"></span>
+      <!-- Left column -->
+      <div class="left">
+        <div class="version-bar">
+          <span class="v-tag">v0.13.0</span>
+          <span class="v-sep"></span>
+          <span class="v-date">2026-05-07</span>
+          <span class="v-name">— The <span>Tenacity</span> Release</span>
         </div>
-        <div class="tag-row">
-          <span class="tag tag-solid"><span class="dot"></span>NATIVE DESKTOP</span>
-          <span class="tag"><span class="dot"></span>macOS</span>
-          <span class="tag"><span class="dot"></span>Linux</span>
-          <span class="tag"><span class="dot"></span>Windows</span>
+
+        <div class="cards">
+          <div class="card">
+            <div class="idx">01</div>
+            <div class="body">
+              <div class="title">Kanban 多 Agent 平台</div>
+              <div class="desc">
+                <code>heartbeat</code> 心跳保活 · <code>reclaim</code> 失联回收 · <code>zombie detection</code> 僵死检测——把多智能体看板从"能跑"推向"能守"。
+              </div>
+            </div>
+          </div>
+
+          <div class="card hi">
+            <div class="idx">02</div>
+            <div class="body">
+              <div class="title">/goal 命令 · Ralph Loop<span class="badge">CORE</span></div>
+              <div class="desc">
+                Agent 锁定目标跨 turn 执行——不再因单轮结束而放弃；失败即重入、偏离即收敛，目标直至完成方才释放。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">03</div>
+            <div class="body">
+              <div class="title">Checkpoints v2</div>
+              <div class="desc">
+                State 持久化重写、<code>真剪枝</code> 与磁盘护栏——让长任务在断电级故障后仍可无损续跑。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">04</div>
+            <div class="body">
+              <div class="title">Sessions Survive Restarts</div>
+              <div class="desc">
+                Gateway 崩溃后自动恢复会话上下文；进程可以死，工作流不能断。
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="idx">05</div>
+            <div class="body">
+              <div class="title">制度含义 · Tenacity as Norm</div>
+              <div class="desc">
+                "可靠性"从代码质量延伸到任务持久性——Agent 必须把开始的事做完。
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT: CONTENT -->
-      <div class="right-col">
-        <div class="version-pill">
-          <span class="ver-dot"></span>
-          <span class="ver-tag">RELEASE</span>
-          <span class="ver-sep">·</span>
-          <span>v0.16.0</span>
-          <span class="ver-sep">·</span>
-          <span class="ver-date">2026-06-05</span>
-          <span class="ver-sep">—</span>
-          <span>The Surface Release</span>
+      <!-- Right column -->
+      <div class="right">
+        <div class="hero-frame">
+          <img src="../images/page_022_hero.png" alt="多 Agent Kanban 抽象合成图：三列看板、跨列漂浮的任务卡片、心跳波形与同心圆目标点对齐">
+          <span class="corner tl"></span>
+          <span class="corner tr"></span>
+          <span class="corner bl"></span>
+          <span class="corner br"></span>
+          <span class="meta">FIG · TENACITY / 01</span>
+        </div>
+        <div class="caption">
+          <span class="dot"></span>
+          <span>心跳守护任务，锁定不偏离目标</span>
+          <span class="en">HEARTBEAT × GOAL-LOCK</span>
         </div>
 
-        <h1 class="main-title">
-          <span class="num">100</span> PRs <span class="plus">+</span> <span class="num">159</span> commits<br>
-          <span class="em">一周内</span>做出原生 desktop app<br>
-          macOS · Linux · Windows
-        </h1>
-
-        <div class="intro">
-          一周之内，社区以<b>近百张 PR</b> 的密度把 Hermes 从命令行推送到了你的桌面——这是它作为日常工具的正式登场。
-        </div>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <span class="feature-idx">01</span>
-            <div class="feature-tag">WEB</div>
-            <div class="feature-name">管理面板</div>
-            <div class="feature-desc">从 <span class="mono">view sessions</span> 进化为完整 Web 浏览器管理面板</div>
+        <div class="right-bottom">
+          <div class="mini">
+            <div class="lbl">Paradigm</div>
+            <div class="val">Reactive → Tenacious</div>
+            <div class="sub">从被动响应到持久追索</div>
           </div>
-          <div class="feature-card">
-            <span class="feature-idx">02</span>
-            <div class="feature-tag">ZH-HANS</div>
-            <div class="feature-name">中文 UI</div>
-            <div class="feature-desc">完整<em>简体中文</em>翻译，桌面应用原生支持 zh-Hans</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-idx">03</span>
-            <div class="feature-tag">REMOTE</div>
-            <div class="feature-name">远程 Hermes</div>
-            <div class="feature-desc">连接远程 gateway · <span class="mono">OAuth</span> / <span class="mono">u-pw</span> 登录</div>
-          </div>
-          <div class="feature-card">
-            <span class="feature-idx">04</span>
-            <div class="feature-tag">MEANING</div>
-            <div class="feature-name">制度含义</div>
-            <div class="feature-desc"><em>Surface</em>：接触面在扩大——CLI→Desktop · 本地→远程 · 英→中</div>
-          </div>
-        </div>
-
-        <div class="narrative">
-          <span class="narrative-mark">"</span>
-          <div class="narrative-text">
-            Surface Release 是 Hermes 从<b>技术工具到日常工具</b>的关键跃迁——一周内 100 PRs 的密度，体现了开源社区<em>"集中兵力"</em>的文化节奏。
+          <div class="mini">
+            <div class="lbl">Invariant</div>
+            <div class="val">Session Never Dropped</div>
+            <div class="sub">进程可死，工作流不断</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BOTTOM KPI ROW -->
-    <div class="kpi-row">
-      <div class="kpi-card">
-        <div class="kpi-label">COMMITS</div>
-        <div class="kpi-value">874</div>
-        <div class="kpi-note"><em>窗口期</em>窗口内 commits 总数</div>
+    <!-- KPI bar -->
+    <div class="kpi">
+      <div class="kpi-cell">
+        <div class="num">864</div>
+        <div class="lbl">WINDOW COMMITS</div>
+        <div class="sub">窗口期内累计提交</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">MERGED PRs</div>
-        <div class="kpi-value">542</div>
-        <div class="kpi-note">合并的 Pull Requests</div>
+      <div class="kpi-cell">
+        <div class="num">588</div>
+        <div class="lbl">MERGED PRs</div>
+        <div class="sub">已合并 Pull Requests</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">ISSUES CLOSED</div>
-        <div class="kpi-value">399</div>
-        <div class="kpi-note"><em>2 P0 + 62 P1</em> 高优先级修复</div>
+      <div class="kpi-cell">
+        <div class="num">282</div>
+        <div class="lbl">ISSUES CLOSED</div>
+        <div class="sub">含 13 P0 · 36 P1</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">CONTRIBUTORS</div>
-        <div class="kpi-value">170</div>
-        <div class="kpi-note">参与贡献者 · 社区协作</div>
+      <div class="kpi-cell">
+        <div class="num">295</div>
+        <div class="lbl">CONTRIBUTORS</div>
+        <div class="sub">参与贡献者</div>
       </div>
     </div>
 
-    <div class="footer-mark">
-      <span class="f-line"></span>
-      <span>HERMES · SURFACE RELEASE v0.16.0</span>
-      <span class="f-sq"></span>
+    <!-- Summary -->
+    <div class="summary">
+      <span class="mark"></span>
+      <span class="text">可靠性从<em>代码质量</em>延伸到<em>任务持久性</em>——Agent 必须把开始的事做完。</span>
     </div>
 
+    <div class="footer">
+      <div class="l">
+        <span class="dot"></span>
+        <span>SENSNOVA · CASE STUDY 02 / TENACITY</span>
+      </div>
+      <div>FINISHES WHAT IT STARTS</div>
+    </div>
   </div>
 </div>
 </body>

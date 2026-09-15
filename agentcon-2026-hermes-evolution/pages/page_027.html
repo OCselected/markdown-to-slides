@@ -1,477 +1,530 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>案例 5 · Quicksilver Release · 性能爆发</title>
+<title>案例 04 · Velocity Release · 大重构</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;600;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0F1E33;
-    --bg-deep: #0A1524;
-    --primary: #1B3B6B;
-    --primary-bright: #2C5599;
-    --accent: #B4A078;
-    --accent-bright: #D4B98A;
-    --text: #F5F0E8;
-    --text-muted: #8E99AD;
-    --text-dim: #6E7889;
-    --line: rgba(180,160,120,0.28);
-    --card-bg: rgba(27,59,107,0.28);
-  }
+:root {
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --accent: #B4A078;
+  --text: #F5F0E8;
+  --text-dim: rgba(245, 240, 232, 0.62);
+  --text-faint: rgba(245, 240, 232, 0.38);
+  --line: rgba(245, 240, 232, 0.14);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #050d1c; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, sans-serif;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #0F1E33;
+}
+#bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+#ct { position: absolute; inset: 0; z-index: 1; padding: 48px 60px 34px 60px; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Bauhaus geometric decorative elements */
+.bg-grad {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 640px;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(27,59,107,0.55) 0%, rgba(27,59,107,0.12) 55%, transparent 100%);
+}
+.bg-arc {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border: 1.5px solid rgba(180,160,120,0.28);
+  border-radius: 50%;
+}
+.bg-dot {
+  position: absolute;
+  top: 118px;
+  right: 260px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.bg-sq {
+  position: absolute;
+  bottom: 108px;
+  left: -24px;
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+}
+.bg-circ-outline {
+  position: absolute;
+  bottom: -110px;
+  left: 500px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(180,160,120,0.18);
+  border-radius: 50%;
+}
+.bg-hline {
+  position: absolute;
+  top: 140px;
+  right: 0;
+  width: 220px;
+  height: 1px;
+  background: rgba(180,160,120,0.4);
+}
 
-  body {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--text);
-    background: #050A12;
-  }
+/* Header */
+.header { margin-bottom: 26px; }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent);
+  font-family: 'Noto Sans SC';
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  margin-bottom: 14px;
+}
+.eyebrow .dash {
+  width: 34px;
+  height: 2px;
+  background: var(--accent);
+}
+.title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+.title .accent-dot {
+  color: var(--accent);
+  font-weight: 500;
+}
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--accent);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+.subtitle .arr { color: var(--accent); }
 
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-  }
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+.divider .bar-thick { width: 56px; height: 4px; background: var(--accent); }
+.divider .bar-thin { width: 220px; height: 1px; background: rgba(245,240,232,0.25); }
+.divider .bar-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+}
 
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: var(--bg);
-  }
+/* Content grid */
+.content {
+  display: grid;
+  grid-template-columns: 800px 1fr;
+  gap: 44px;
+}
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 54px 72px 44px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
+/* Left column */
+.hero-block { position: relative; }
+.hero-frame {
+  width: 800px;
+  height: 424px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(180,160,120,0.28);
+  background: var(--primary);
+}
+.hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-corner-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+.hero-corner-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+.hero-caption {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+.hero-caption .tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 3px 10px;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
 
-  .header {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 22px;
-  }
+/* Right column */
+.right-col { position: relative; }
+.hero-metrics {
+  position: relative;
+  background: rgba(27, 59, 107, 0.5);
+  border: 1px solid rgba(180,160,120,0.3);
+  padding: 20px 24px 22px 24px;
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.hero-metrics::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+.metric-l, .metric-r { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.metric-label {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.3em;
+  font-weight: 500;
+}
+.metric-value {
+  font-family: 'Noto Serif SC', serif;
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1;
+}
+.metric-l .metric-value { font-size: 54px; color: var(--text-dim); }
+.metric-r .metric-value { font-size: 62px; color: var(--accent); }
+.metric-unit {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.16em;
+}
+.metric-arrow {
+  font-family: 'Noto Serif SC';
+  color: var(--accent);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+}
+.metric-arrow::before,
+.metric-arrow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 26px;
+  height: 1px;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+.metric-arrow::before { top: 6px; }
+.metric-arrow::after { bottom: 6px; }
+.hero-metrics-foot {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(180,160,120,0.28);
+}
+.mf-tag {
+  font-family: 'Noto Serif SC';
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+}
+.mf-text {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
 
-  .accent-line {
-    width: 64px;
-    height: 3px;
-    background: var(--accent);
-  }
+/* Key points */
+.keypoints {
+  list-style: none;
+  margin-top: 20px;
+}
+.keypoints li {
+  display: grid;
+  grid-template-columns: 30px 88px 1fr;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dashed rgba(245,240,232,0.12);
+  align-items: baseline;
+}
+.kp-idx {
+  font-family: 'Noto Serif SC';
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.kp-tag {
+  font-family: 'Noto Serif SC';
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  padding-right: 4px;
+  border-right: 1px solid rgba(180,160,120,0.32);
+}
+.kp-text {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.kp-text .h {
+  color: var(--accent);
+  font-family: 'Noto Serif SC';
+  font-weight: 600;
+}
+.kp-text em {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
 
-  h1 {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 42px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: var(--text);
-    line-height: 1.15;
-  }
+/* Bottom stats */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(180,160,120,0.32);
+  border-bottom: 1px solid rgba(180,160,120,0.14);
+  background: linear-gradient(180deg, rgba(27,59,107,0.42) 0%, rgba(27,59,107,0.1) 100%);
+}
+.stat {
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.stat + .stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: rgba(245,240,232,0.12);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.28em;
+  font-weight: 500;
+}
+.stat-value {
+  font-family: 'Noto Serif SC';
+  color: var(--text);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.stat-value .plus {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 500;
+}
+.stat-note {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.stat-note .dot { color: var(--accent); margin: 0 5px; }
 
-  .subtitle {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--accent-bright);
-    max-width: 1200px;
-    line-height: 1.5;
-    padding-left: 14px;
-    border-left: 2px solid var(--accent);
-  }
-
-  .hero-row {
-    display: grid;
-    grid-template-columns: 510px 1fr;
-    gap: 34px;
-    margin-bottom: 24px;
-  }
-
-  .hero-img {
-    width: 510px;
-    height: 285px;
-    object-fit: cover;
-    border: 1px solid rgba(180,160,120,0.35);
-    display: block;
-  }
-
-  .big-stat {
-    background: var(--card-bg);
-    border: 1px solid rgba(180,160,120,0.32);
-    border-left: 4px solid var(--accent);
-    padding: 20px 26px 18px;
-    position: relative;
-    height: 285px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .big-stat-topline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-
-  .stat-square {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    transform: rotate(45deg);
-  }
-
-  .big-number {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 104px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 0.92;
-    letter-spacing: -2px;
-    display: block;
-  }
-
-  .stat-label {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 21px;
-    color: var(--text);
-    font-weight: 500;
-    letter-spacing: 1.2px;
-    margin-top: 2px;
-  }
-
-  .divider-h {
-    height: 1px;
-    background: var(--line);
-    margin: 2px 0;
-  }
-
-  .cold-start-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .cold-start-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 3px;
-    padding-right: 14px;
-    border-right: 1px solid var(--line);
-    font-weight: 500;
-  }
-
-  .cold-start-val {
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-
-  .cs-before { color: var(--text-muted); }
-  .cs-after { color: var(--accent-bright); }
-
-  .arrow {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--accent);
-    font-size: 22px;
-    margin: 0 4px;
-    font-weight: 700;
-  }
-
-  .pill {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    padding: 4px 12px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    letter-spacing: 1.6px;
-    border-radius: 2px;
-    margin-left: 4px;
-    text-transform: uppercase;
-  }
-
-  .platform-line {
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(180,160,120,0.18);
-  }
-
-  .platform-line span:first-child {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--text-muted);
-    font-size: 12px;
-    letter-spacing: 2.2px;
-    font-weight: 500;
-  }
-
-  .platform-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text);
-    padding: 3px 10px;
-    background: rgba(180,160,120,0.10);
-    border: 1px solid rgba(180,160,120,0.30);
-    letter-spacing: 0.8px;
-  }
-
-  .kpi-band {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin-bottom: 22px;
-  }
-
-  .kpi-card {
-    background: rgba(27,59,107,0.18);
-    border: 1px solid rgba(180,160,120,0.22);
-    padding: 14px 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    min-height: 80px;
-  }
-
-  .kpi-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    bottom: 10px;
-    width: 3px;
-    background: var(--accent);
-  }
-
-  .kpi-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-    line-height: 1;
-  }
-
-  .kpi-lbl {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: var(--text);
-    letter-spacing: 1px;
-    margin-top: 3px;
-    opacity: 0.9;
-  }
-
-  .bullet-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 30px;
-    margin-bottom: 12px;
-  }
-
-  .bullet {
-    padding: 5px 0;
-    border-top: 1px solid rgba(180,160,120,0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .bullet-head {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 0.8px;
-  }
-
-  .bullet-head::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .bullet-detail {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
-    padding-left: 17px;
-    letter-spacing: 0.2px;
-  }
-
-  .bullet-detail em {
-    color: var(--accent-bright);
-    font-style: normal;
-    font-weight: 500;
-  }
-
-  .bullet-detail .mono {
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text);
-    font-size: 11.5px;
-  }
-
-  .tag-inline {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    padding: 1px 6px;
-    background: rgba(180,160,120,0.15);
-    border: 1px solid rgba(180,160,120,0.4);
-    color: var(--accent);
-    margin-right: 8px;
-    letter-spacing: 0.5px;
-    border-radius: 2px;
-  }
-
-  .footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding-top: 14px;
-  }
-
-  .footer-line {
-    width: 140px;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.7;
-  }
-
-  .footer-text {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--text-muted);
-    letter-spacing: 2.5px;
-  }
-
-  .footer-text .dot {
-    color: var(--accent);
-    font-style: normal;
-    margin: 0 8px;
-  }
+/* Small signature */
+.sig {
+  position: absolute;
+  top: 46px;
+  right: 60px;
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.3em;
+  z-index: 2;
+  line-height: 1.8;
+}
+.sig .k { color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="bg-grad"></div>
+    <div class="bg-arc"></div>
+    <div class="bg-dot"></div>
+    <div class="bg-sq"></div>
+    <div class="bg-circ-outline"></div>
+    <div class="bg-hline"></div>
+  </div>
+
   <div id="ct">
+    <div class="sig">
+      <div>SENSE NOVA · Case Study Series</div>
+      <div class="k">CASE 04 / 08</div>
+    </div>
+
     <div class="header">
-      <div class="accent-line"></div>
-      <h1>案例 5 · Quicksilver Release · 性能爆发</h1>
-      <div class="subtitle">"Hermes is the messenger god, and this window we made him move like it"</div>
-    </div>
-
-    <div class="hero-row">
-      <img class="hero-img" src="../images/page_025_hero.png" alt="Quicksilver Release 视觉隐喻：从迟疑到爆发">
-
-      <div class="big-stat">
-        <div class="big-stat-topline">
-          <span>Performance · Headline Metric</span>
-          <span class="stat-square"></span>
-        </div>
-        <div>
-          <span class="big-number">~80%</span>
-          <div class="stat-label">First-token 下降</div>
-        </div>
-        <div class="divider-h"></div>
-        <div class="cold-start-row">
-          <span class="cold-start-label">冷启动</span>
-          <span class="cold-start-val cs-before">4.3s</span>
-          <span class="arrow">→</span>
-          <span class="cold-start-val cs-after">0.9s</span>
-          <span class="pill">全平台</span>
-        </div>
-        <div class="platform-line">
-          <span>Platforms</span>
-          <span class="platform-tag">CLI</span>
-          <span class="platform-tag">gateway</span>
-          <span class="platform-tag">TUI</span>
-          <span class="platform-tag">desktop</span>
-          <span class="platform-tag">cron</span>
-        </div>
+      <div class="eyebrow"><span class="dash"></span><span>CASE 04 · DEEP REFACTOR</span></div>
+      <h1 class="title">Velocity Release <span class="accent-dot">·</span> 大重构</h1>
+      <p class="subtitle">16,000 行 <span class="arr">→</span> 3,821 行的制度设计</p>
+      <div class="divider">
+        <span class="bar-thick"></span>
+        <span class="bar-dot"></span>
+        <span class="bar-thin"></span>
       </div>
     </div>
 
-    <div class="kpi-band">
-      <div class="kpi-card">
-        <div class="kpi-num">2,245</div>
-        <div class="kpi-lbl">Commits · 窗口提交</div>
+    <div class="content">
+      <div class="hero-block">
+        <div class="hero-frame">
+          <img src="../images/page_024_hero.png" alt="Velocity 大重构 · 从纠缠的旧代码到清爽模块化">
+          <span class="hero-corner-tl"></span>
+          <span class="hero-corner-br"></span>
+        </div>
+        <div class="hero-caption">
+          <span class="tag">FIG. 04</span>
+          <span>纠缠的旧代码 <span style="color:var(--accent);">⇢</span> 模块化新结构</span>
+        </div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-num">1,065</div>
-        <div class="kpi-lbl">Merged PRs</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num">3,300</div>
-        <div class="kpi-lbl">Issues Closed</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num">450+</div>
-        <div class="kpi-lbl">Contributors</div>
-      </div>
-    </div>
 
-    <div class="bullet-list">
-      <div class="bullet">
-        <div class="bullet-head">Release</div>
-        <div class="bullet-detail"><span class="tag-inline">v0.19.0</span><span class="mono">2026-07-20</span> &nbsp;The Quicksilver Release</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-head">Headline</div>
-        <div class="bullet-detail">First-token time 下降 <em>~80%</em>，<em>"那个深呼吸消失了"</em>——迟疑与等待，被彻底抹掉。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-head">冷启动</div>
-        <div class="bullet-detail"><span class="mono">4.3s → 0.9s</span>，覆盖 <em>CLI / gateway / TUI / desktop / cron</em> 全平台。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-head">Desktop 性能</div>
-        <div class="bullet-detail"><em>20+ PR</em> 速度改造，streaming markdown <em>14× 更快</em>——大段输出不再卡顿。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-head">Delivery-obligation Ledger</div>
-        <div class="bullet-detail">响应不会因 gateway 崩溃而丢失，<em>P1 silent-loss 窗口关闭</em>。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-head">制度含义</div>
-        <div class="bullet-detail">速度是消费侧信任的基础——<em>"如果 Hermes 像要深呼吸"，用户就会离开</em>。</div>
-      </div>
-    </div>
+      <div class="right-col">
+        <div class="hero-metrics">
+          <div class="metric-l">
+            <span class="metric-label">BEFORE</span>
+            <span class="metric-value">16,083</span>
+            <span class="metric-unit">行 · LINES</span>
+          </div>
+          <div class="metric-arrow">→</div>
+          <div class="metric-r">
+            <span class="metric-label">AFTER</span>
+            <span class="metric-value">3,821</span>
+            <span class="metric-unit">行 · LINES</span>
+          </div>
+          <div class="hero-metrics-foot">
+            <span class="mf-tag">−76%</span>
+            <span class="mf-text">14 modules · cohesion <code style="color:var(--text);font-family:'Noto Sans SC';">agent/*</code></span>
+          </div>
+        </div>
 
-    <div class="footer">
-      <div class="footer-line"></div>
-      <div class="footer-text">这个窗口<span class="dot">·</span>我们让它像 Hermes 一样移动</div>
+        <ol class="keypoints">
+          <li>
+            <span class="kp-idx">01</span>
+            <span class="kp-tag">Release</span>
+            <span class="kp-text">v0.15.0 &nbsp;·&nbsp; <span class="h">2026-05-28</span> The Velocity Release</span>
+          </li>
+          <li>
+            <span class="kp-idx">02</span>
+            <span class="kp-tag">核心动作</span>
+            <span class="kp-text"><em>run_agent.py</em> 从 16,083 行坍缩到 3,821 行 &nbsp;<span class="h">−76%</span></span>
+          </li>
+          <li>
+            <span class="kp-idx">03</span>
+            <span class="kp-tag">重构方式</span>
+            <span class="kp-text">提取为 <span class="h">14 个</span> <em>cohesion agent/*</em> 模块 &nbsp;·&nbsp; 行为不变</span>
+          </li>
+          <li>
+            <span class="kp-idx">04</span>
+            <span class="kp-tag">冷启动</span>
+            <span class="kp-text">又一秒节省 &nbsp;·&nbsp; per-turn function calls <span class="h">−47%</span></span>
+          </li>
+          <li>
+            <span class="kp-idx">05</span>
+            <span class="kp-tag">session_search</span>
+            <span class="kp-text"><span class="h">4,500×</span> 更快 &nbsp;·&nbsp; <em>0 LLM 调用</em> &nbsp;·&nbsp; 免费</span>
+          </li>
+          <li>
+            <span class="kp-idx">06</span>
+            <span class="kp-tag">制度含义</span>
+            <span class="kp-text">速度 <em>不是优化，是制度设计</em> — 重构让未来开发更快、插件作者能 grep</span>
+          </li>
+        </ol>
+
+        <div class="bottom-bar">
+          <div class="stat">
+            <span class="stat-label">COMMITS</span>
+            <span class="stat-value">1,302</span>
+            <span class="stat-note">Release 窗口</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">MERGED PRs</span>
+            <span class="stat-value">747</span>
+            <span class="stat-note">Merged PRs</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">ISSUES CLOSED</span>
+            <span class="stat-value">560<span class="plus">+</span></span>
+            <span class="stat-note">15 P0 <span class="dot">·</span> 65 P1</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">CONTRIBUTORS</span>
+            <span class="stat-value">321</span>
+            <span class="stat-note">Contributors</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

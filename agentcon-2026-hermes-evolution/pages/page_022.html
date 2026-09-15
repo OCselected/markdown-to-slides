@@ -4,720 +4,450 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>Release 命名文化 · 田野观察第 1 章</title>
-<script src="../assets/echarts.min.js"></script>
+<title>三个核心洞察</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
 
-  :root {
-    --bg-deep: #0F1E33;
-    --primary: #1B3B6B;
-    --primary-light: #2A4E82;
-    --accent: #B4A078;
-    --accent-dim: #8A7A5A;
-    --text: #F5F0E8;
-    --text-dim: rgba(245, 240, 232, 0.62);
-    --text-faint: rgba(245, 240, 232, 0.32);
-    --line: rgba(180, 160, 120, 0.30);
-    --line-faint: rgba(245, 240, 232, 0.14);
-  }
+:root {
+  --bg: #0F1E33;
+  --text: #F5F0E8;
+  --accent: #B4A078;
+  --accent-deep: #1B3B6B;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body { width: 100%; height: 100%; }
+body {
+  background: #0F1E33;
+  color: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  overflow: hidden;
+}
 
-  body {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--text);
-    background: #05091a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-font-smoothing: antialiased;
-  }
+.wrapper {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: radial-gradient(ellipse 1100px 720px at 50% 35%, #1B3B6B 0%, #0F1E33 65%);
+}
 
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    background: var(--bg-deep);
-  }
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: radial-gradient(ellipse at 15% 10%, rgba(42, 78, 130, 0.35), transparent 55%);
-  }
+#bg::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(180,160,120,0.18);
+  border-radius: 50%;
+}
 
-  .bg-circle {
-    position: absolute;
-    width: 520px;
-    height: 520px;
-    border: 1px solid var(--line-faint);
-    border-radius: 50%;
-    right: -180px;
-    top: -220px;
-  }
-  .bg-circle-inner {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    right: -80px;
-    top: -120px;
-  }
-  .bg-square {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border: 1px solid var(--line-faint);
-    left: -50px;
-    bottom: -40px;
-    transform: rotate(15deg);
-  }
-  .bg-square-inner {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: rgba(180, 160, 120, 0.06);
-    left: 80px;
-    bottom: 40px;
-    transform: rotate(15deg);
-  }
-  .bg-vline {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent 0%, var(--line-faint) 30%, var(--line-faint) 70%, transparent 100%);
-  }
-  .bg-dot {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    left: calc(50% - 3px);
-    top: 48%;
-    opacity: 0.75;
-  }
-  .bg-hline-top {
-    position: absolute;
-    left: 60px;
-    top: 40px;
-    width: 120px;
-    height: 1px;
-    background: var(--line);
-  }
-  .bg-corner-tag {
-    position: absolute;
-    right: 30px;
-    bottom: 18px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-faint);
-  }
+#bg::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  right: -100px;
+  width: 340px;
+  height: 340px;
+  background: rgba(27,59,107,0.35);
+}
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 44px 60px 40px 60px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 56px 64px 42px;
+}
 
-  /* ===== HEADER ===== */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .header-left { flex: 1; min-width: 0; }
+.title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 26px;
+}
 
-  .chapter-label {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .chapter-label .cl-line {
-    width: 44px;
-    height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
+.title-main {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #F5F0E8;
+  letter-spacing: 6px;
+  line-height: 1.1;
+}
 
-  h1 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 46px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: 1px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .h1-dot { color: var(--accent); font-weight: 400; }
+.title-mark {
+  width: 78px;
+  height: 3px;
+  background: #B4A078;
+  margin-top: 14px;
+}
 
-  .subtitle {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 19px;
-    font-weight: 400;
-    color: rgba(245, 240, 232, 0.78);
-    letter-spacing: 0.5px;
-    margin-bottom: 14px;
-  }
-  .subtitle-quote {
-    color: var(--accent);
-    font-weight: 500;
-    padding: 0 2px;
-  }
-  .subtitle-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-left: 12px;
-    letter-spacing: 1px;
-  }
+.title-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: rgba(245,240,232,0.42);
+  letter-spacing: 5px;
+  padding-top: 20px;
+  font-weight: 300;
+}
 
-  .h-divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .h-divider-line { width: 56px; height: 1px; background: var(--accent); }
-  .h-divider-bar { width: 22px; height: 1px; background: var(--text-faint); }
-  .h-divider-square { width: 5px; height: 5px; background: var(--accent); }
-  .h-divider-text {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: var(--text-dim);
-    margin-left: 4px;
-    font-weight: 400;
-  }
+.hero-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 24px;
+}
 
-  /* KPI block */
-  .header-right {
-    display: flex;
-    gap: 16px;
-    padding-top: 4px;
-  }
-  .kpi {
-    background: linear-gradient(155deg, rgba(27, 59, 107, 0.65), rgba(15, 30, 51, 0.35));
-    border: 1px solid var(--line-faint);
-    padding: 16px 20px 14px 20px;
-    min-width: 138px;
-    position: relative;
-  }
-  .kpi::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent);
-  }
-  .kpi-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-  .kpi-value {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--text);
-    letter-spacing: 0.5px;
-  }
-  .kpi-value.accent { color: var(--accent); }
-  .kpi-unit {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 400;
-    margin-left: 5px;
-    letter-spacing: 1px;
-  }
-  .kpi-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 1.5px;
-    margin-top: 6px;
-    font-weight: 400;
-  }
-  .kpi-bar {
-    display: inline-block;
-    height: 2px;
-    background: var(--accent);
-    vertical-align: middle;
-    margin-right: 6px;
-  }
+.hero-wrap {
+  width: 660px;
+  flex-shrink: 0;
+}
 
-  /* ===== MAIN ===== */
-  .main {
-    display: flex;
-    gap: 44px;
-    flex: 1;
-    min-height: 0;
-  }
+.hero-img {
+  display: block;
+  width: 660px;
+  height: 368px;
+  object-fit: cover;
+  border: 1px solid rgba(180,160,120,0.25);
+}
 
-  .narrative {
-    width: 372px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-top: 2px;
-  }
-  .nar-eyebrow {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .nar-marker {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .nar-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    line-height: 1.85;
-    color: var(--text);
-    font-weight: 400;
-    margin-bottom: 22px;
-  }
-  .nar-highlight {
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .nar-mid {
-    color: var(--accent);
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 0 2px;
-  }
-  .nar-em {
-    color: var(--text);
-    font-weight: 600;
-    border-bottom: 1px solid var(--accent-dim);
-    padding-bottom: 1px;
-  }
-  .nar-quote {
-    color: var(--accent);
-    font-style: italic;
-    font-weight: 500;
-  }
+.hero-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(245,240,232,0.45);
+  letter-spacing: 2.5px;
+}
 
-  .nar-meta {
-    border-top: 1px solid var(--line-faint);
-    padding-top: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .meta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .meta-key {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
-  .meta-val {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: var(--text);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-  }
-  .meta-val em {
-    color: var(--accent);
-    font-style: italic;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    font-weight: 500;
-  }
+.hero-caption-left {
+  color: #B4A078;
+  font-weight: 500;
+}
 
-  .nar-bar {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 16px;
-  }
-  .nar-bar-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-  }
-  .nar-bar-tag {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
+.bridge {
+  flex: 1;
+  padding: 14px 0 6px 0;
+}
 
-  /* Cards grid */
-  .cards {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
-    gap: 14px;
-    min-width: 0;
-  }
+.bridge-tag {
+  display: inline-block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: #B4A078;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
 
-  .card {
-    background: linear-gradient(160deg, rgba(27, 59, 107, 0.55) 0%, rgba(15, 30, 51, 0.75) 100%);
-    border: 1px solid var(--line-faint);
-    border-top: 2px solid var(--accent);
-    padding: 16px 18px 14px 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .card-idx {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    font-weight: 500;
-  }
-  .card-marker {
-    width: 5px;
-    height: 5px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-  .card-marker.square { border-radius: 0; transform: rotate(45deg); }
-  .card-marker.hollow {
-    background: transparent;
-    border: 1px solid var(--accent);
-  }
-  .card-name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 3px;
-    letter-spacing: 0.5px;
-  }
-  .card-name-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
-  .card-divider {
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-    margin-bottom: 10px;
-    opacity: 0.7;
-  }
-  .card-note {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    line-height: 1.65;
-    color: var(--text);
-    font-weight: 400;
-  }
-  .card-num {
-    color: var(--accent);
-    font-weight: 600;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    padding: 0 1px;
-  }
-  .card-en-quote {
-    font-style: italic;
-    color: rgba(245, 240, 232, 0.88);
-  }
-  .card-code {
-    color: var(--accent);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
+.bridge-tag-line {
+  display: block;
+  width: 42px;
+  height: 2px;
+  background: #B4A078;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
 
-  /* Corner geometry on cards */
-  .card::after {
-    content: '';
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    width: 14px;
-    height: 14px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
+.bridge-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  line-height: 1.75;
+  color: #F5F0E8;
+  font-weight: 400;
+}
 
-  /* ===== FOOTER ===== */
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-  }
-  .foot-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .foot-bar {
-    width: 44px;
-    height: 2px;
-    background: var(--accent);
-  }
-  .foot-year {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    color: var(--text-dim);
-    letter-spacing: 3px;
-    font-weight: 500;
-  }
-  .foot-chap {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--text-faint);
-    font-weight: 500;
-  }
-  .foot-right {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .foot-square {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-  }
-  .foot-line {
-    width: 22px;
-    height: 1px;
-    background: var(--line);
-  }
-  .closing {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: var(--text);
-    letter-spacing: 1.2px;
-    font-weight: 500;
-  }
-  .closing .close-a { color: var(--accent); font-weight: 600; }
-  .closing .close-eq {
-    color: var(--accent);
-    padding: 0 6px;
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 400;
-  }
-  .closing .close-e { color: var(--accent); font-style: italic; font-weight: 500; }
+.quote-mark {
+  color: #B4A078;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 44px;
+  line-height: 0;
+  vertical-align: -18px;
+  margin-right: 6px;
+}
 
+.quote-highlight {
+  color: #B4A078;
+  font-weight: 700;
+}
+
+.bridge-foot {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 3px;
+}
+
+.bridge-foot-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(180,160,120,0.55);
+}
+
+.insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.col {
+  padding: 22px 22px 24px;
+  border: 1px solid rgba(180,160,120,0.16);
+  background: rgba(22,41,74,0.45);
+  position: relative;
+  height: 252px;
+}
+
+.col-left-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 66px;
+  background: #B4A078;
+}
+
+.col-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.col-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 0.95;
+  color: #B4A078;
+}
+
+.col-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.col-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: rgba(245,240,232,0.42);
+  font-weight: 300;
+}
+
+.col-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  color: #F5F0E8;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  line-height: 1.35;
+}
+
+.col-rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(180,160,120,0.55);
+  margin-bottom: 14px;
+}
+
+.col-body {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  line-height: 1.85;
+  color: #F5F0E8;
+  font-weight: 400;
+}
+
+.col-body .em {
+  color: #B4A078;
+  font-weight: 700;
+}
+
+.col-shape {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+}
+
+.shape-circle {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #B4A078;
+  border-radius: 50%;
+}
+
+.shape-square {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #B4A078;
+}
+
+.shape-line {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shape-line span {
+  display: block;
+  height: 1.5px;
+  background: #B4A078;
+}
+
+.shape-line .l1 { width: 26px; }
+.shape-line .l2 { width: 18px; }
+.shape-line .l3 { width: 22px; }
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(180,160,120,0.18);
+}
+
+.foot-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 4px;
+}
+
+.foot-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: #F5F0E8;
+  letter-spacing: 3px;
+}
+
+.foot-quote {
+  color: #B4A078;
+  font-size: 22px;
+  margin: 0 2px;
+}
+
+.foot-highlight {
+  color: #B4A078;
+  font-weight: 700;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="bg-hline-top"></div>
-    <div class="bg-circle"></div>
-    <div class="bg-circle-inner"></div>
-    <div class="bg-vline"></div>
-    <div class="bg-dot"></div>
-    <div class="bg-square"></div>
-    <div class="bg-square-inner"></div>
-    <div class="bg-corner-tag">HERMES · CULTURE OBSERVATION</div>
-  </div>
+  <div id="bg"></div>
   <div id="ct">
 
-    <!-- HEADER -->
-    <div class="header">
-      <div class="header-left">
-        <div class="chapter-label"><span>CHAPTER 01</span><span class="cl-line"></span><span>FIELD NOTES</span></div>
-        <h1>Release 命名文化 <span class="h1-dot">·</span> 田野观察第 1 章</h1>
-        <div class="subtitle">
-          <span class="subtitle-quote">「 把 release 当作文化事件 」</span>
-          <span class="subtitle-en">Treating a release as a cultural event</span>
-        </div>
-        <div class="h-divider">
-          <span class="h-divider-line"></span>
-          <span class="h-divider-bar"></span>
-          <span class="h-divider-square"></span>
-          <span class="h-divider-text">命名 · 仪式 · 制度</span>
+    <div class="title-block">
+      <div>
+        <div class="title-main"><span>三个核心洞察</span></div>
+        <div class="title-mark"></div>
+      </div>
+      <div class="title-right"><span>CORE INSIGHTS / 019</span></div>
+    </div>
+
+    <div class="hero-row">
+      <div class="hero-wrap">
+        <img class="hero-img" src="../images/page_019_hero.png" alt="包豪斯几何构图：结构稳定、分层兼容、信任跃迁">
+        <div class="hero-caption">
+          <span class="hero-caption-left"><span>结构稳定 · 分层兼容 · 信任跃迁</span></span>
+          <span><span>BAUHAUS COMPOSITION</span></span>
         </div>
       </div>
-      <div class="header-right">
-        <div class="kpi">
-          <div class="kpi-label">RELEASES · 总量</div>
-          <div class="kpi-value">33<span class="kpi-unit">个</span></div>
-          <div class="kpi-sub"><span class="kpi-bar" style="width:28px;"></span>全部发布</div>
+      <div class="bridge">
+        <div class="bridge-tag"><span>NARRATIVE BRIDGE</span></div>
+        <div class="bridge-tag-line"></div>
+        <div class="bridge-quote">
+          <span class="quote-mark">「</span><span>从"能用"到"好用"的</span><span class="quote-highlight">关键跃迁</span><span>就在第三个洞察里。</span>
         </div>
-        <div class="kpi">
-          <div class="kpi-label">命名 RELEASE · 命名</div>
-          <div class="kpi-value accent">06<span class="kpi-unit">个</span></div>
-          <div class="kpi-sub"><span class="kpi-bar" style="width:10px;"></span>文化事件</div>
+        <div class="bridge-foot">
+          <span class="bridge-foot-line"></span>
+          <span><span>递进 · INSIGHT 01 → 03</span></span>
         </div>
       </div>
     </div>
 
-    <!-- MAIN -->
-    <div class="main">
-      <!-- Narrative -->
-      <div class="narrative">
-        <div class="nar-eyebrow">FIELD OBSERVATION · 田野观察</div>
-        <div class="nar-marker">■</div>
-        <p class="nar-text">
-          <span class="nar-highlight">Hermes</span> 的 release 不是版本号，是文化事件。<span class="nar-highlight">6 个</span>命名 release 用<span class="nar-mid">希腊神话 / 概念词汇</span>命名，每个命名背后都是一个<span class="nar-em">制度主张</span>——这是开源项目的<span class="nar-quote">"仪式"</span>。
-        </p>
+    <div class="insights">
 
-        <div class="nar-meta">
-          <div class="meta-row">
-            <span class="meta-key">命名法</span>
-            <span class="meta-val">希腊神话 <em>·</em> 概念词汇</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-key">制度主张</span>
-            <span class="meta-val">每个命名 = 一个 claim</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-key">仪式化</span>
-            <span class="meta-val">开源项目的 "仪式"</span>
+      <div class="col">
+        <div class="col-left-bar"></div>
+        <div class="col-header">
+          <div class="col-num"><span>01</span></div>
+          <div class="col-head-text">
+            <span class="col-tag"><span>INSIGHT</span></span>
+            <div class="col-title"><span>从扩张期进入稳定化期</span></div>
           </div>
         </div>
-
-        <div class="nar-bar">
-          <span class="nar-bar-line"></span>
-          <span class="nar-bar-tag">OBSERVATION / 01</span>
+        <div class="col-rule"></div>
+        <div class="col-body">
+          <p><span><span class="em">P2 全给 bug</span>、<span class="em">P1 缺席</span>，<br>CLI 层 bug 驱动节奏。</span></p>
+        </div>
+        <div class="col-shape">
+          <div class="shape-square"></div>
         </div>
       </div>
 
-      <!-- Cards -->
-      <div class="cards">
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">01 / 06</span>
-            <span class="card-marker"></span>
+      <div class="col">
+        <div class="col-left-bar"></div>
+        <div class="col-header">
+          <div class="col-num"><span>02</span></div>
+          <div class="col-head-text">
+            <span class="col-tag"><span>INSIGHT</span></span>
+            <div class="col-title"><span>兼容性是结构性税</span></div>
           </div>
-          <div class="card-name">Judgment</div>
-          <div class="card-name-en">判 · 决</div>
-          <div class="card-divider"></div>
-          <div class="card-note">P0/P1 清零战役——<span class="card-num">700</span> highest-priority items cleared in <span class="card-num">12</span> days</div>
         </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">02 / 06</span>
-            <span class="card-marker square"></span>
-          </div>
-          <div class="card-name">Tenacity</div>
-          <div class="card-name-en">韧 · 性</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"finishes what it starts"</span>——多 agent kanban 平台</div>
+        <div class="col-rule"></div>
+        <div class="col-body">
+          <p><span><span class="em">56% PR</span> 带兼容性标签，<br>供给侧的<span class="em">隐形成本</span>。</span></p>
         </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">03 / 06</span>
-            <span class="card-marker hollow"></span>
-          </div>
-          <div class="card-name">Surface</div>
-          <div class="card-name-en">表 · 面</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"Hermes meets you wherever you work"</span>——原生 desktop + Web admin</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">04 / 06</span>
-            <span class="card-marker square"></span>
-          </div>
-          <div class="card-name">Velocity</div>
-          <div class="card-name-en">速 · 度</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"16,000 行 → 3,821 行"</span>——大重构</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">05 / 06</span>
-            <span class="card-marker"></span>
-          </div>
-          <div class="card-name">Quicksilver</div>
-          <div class="card-name-en">流 · 银</div>
-          <div class="card-divider"></div>
-          <div class="card-note"><span class="card-en-quote">"first token time 80% 下降"</span>——性能爆发</div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <span class="card-idx">06 / 06</span>
-            <span class="card-marker hollow"></span>
-          </div>
-          <div class="card-name">Patch</div>
-          <div class="card-name-en">修 · 补</div>
-          <div class="card-divider"></div>
-          <div class="card-note">热修复——<span class="card-code">dashboard 401 reload loop</span></div>
+        <div class="col-shape">
+          <div class="shape-circle"></div>
         </div>
       </div>
+
+      <div class="col">
+        <div class="col-left-bar"></div>
+        <div class="col-header">
+          <div class="col-num"><span>03</span></div>
+          <div class="col-head-text">
+            <span class="col-tag"><span>INSIGHT</span></span>
+            <div class="col-title"><span>信任是可观察的信号</span></div>
+          </div>
+        </div>
+        <div class="col-rule"></div>
+        <div class="col-body">
+          <p><span>feature issue <span class="em">自带安全边界标签</span>，<br>消费侧信任可被追踪。</span></p>
+        </div>
+        <div class="col-shape">
+          <div class="shape-line">
+            <span class="l1"></span>
+            <span class="l2"></span>
+            <span class="l3"></span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer">
-      <div class="foot-left">
-        <span class="foot-bar"></span>
-        <span class="foot-year">2024</span>
-        <span class="foot-chap">HERMES · 01 / CULTURE</span>
-      </div>
-      <div class="foot-right">
-        <span class="foot-square"></span>
-        <span class="closing"><span class="close-a">release 命名</span><span class="close-eq">=</span>制度主张的<span class="close-e">仪式化表达</span></span>
-        <span class="foot-line"></span>
-      </div>
+    <div class="foot">
+      <div class="foot-left"><span>递进脉络 · Progression</span></div>
+      <div class="foot-right"><span>从<span class="foot-quote">「</span>能用<span class="foot-quote">」</span>到<span class="foot-quote">「</span><span class="foot-highlight">好用</span><span class="foot-quote">」</span>的关键跃迁</span></div>
     </div>
 
   </div>

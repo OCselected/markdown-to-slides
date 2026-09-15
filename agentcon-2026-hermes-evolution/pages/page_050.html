@@ -1,325 +1,369 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>延伸阅读 · 制度经济学核心文献</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>讨论问题</title>
 <style>
-  :root {
-    --bg-deep: #0F1E33;
-    --bg-panel: #1B3B6B;
-    --accent-gold: #B4A078;
-    --accent-gold-dim: rgba(180, 160, 120, 0.42);
-    --accent-gold-faint: rgba(180, 160, 120, 0.14);
-    --text-warm: #F5F0E8;
-    --text-muted: rgba(245, 240, 232, 0.62);
-    --text-dim: rgba(245, 240, 232, 0.44);
-    --hairline: rgba(245, 240, 232, 0.16);
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: "Noto Sans SC", "PingFang SC", -apple-system, "Helvetica Neue", sans-serif;
-    background: #0F1E33;
-    color: var(--text-warm);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    background: linear-gradient(180deg, #0F1E33 0%, #0B1830 100%);
-  }
-  #bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .top-line {
-    position: absolute;
-    top: 82px;
-    left: 60px;
-    width: 1480px;
-    height: 1px;
-    background: var(--accent-gold-dim);
-  }
-  .top-square {
-    position: absolute;
-    top: 60px;
-    right: 60px;
-    width: 22px;
-    height: 22px;
-    background: var(--accent-gold);
-  }
-  .accent-circle-lg {
-    position: absolute;
-    top: -140px;
-    right: -120px;
-    width: 340px;
-    height: 340px;
-    border: 1px solid rgba(180, 160, 120, 0.28);
-    border-radius: 50%;
-  }
-  .accent-circle-lg::after {
-    content: '';
-    position: absolute;
-    bottom: 24px;
-    left: 40px;
-    width: 8px;
-    height: 8px;
-    background: var(--accent-gold);
-    border-radius: 50%;
-  }
-  .accent-circle-md {
-    position: absolute;
-    bottom: -120px;
-    left: -100px;
-    width: 280px;
-    height: 280px;
-    background: rgba(180, 160, 120, 0.05);
-    border-radius: 50%;
-  }
-  .accent-square-lg {
-    position: absolute;
-    bottom: 88px;
-    right: 90px;
-    width: 46px;
-    height: 46px;
-    background: transparent;
-    border: 1px solid rgba(180, 160, 120, 0.35);
-  }
-  .accent-square-sm {
-    position: absolute;
-    bottom: 148px;
-    right: 70px;
-    width: 14px;
-    height: 14px;
-    background: var(--accent-gold);
-  }
-  .accent-square-bl {
-    position: absolute;
-    bottom: 22px;
-    left: 60px;
-    width: 10px;
-    height: 10px;
-    background: var(--accent-gold);
-  }
-  .accent-tick {
-    position: absolute;
-    top: 208px;
-    left: 60px;
-    width: 40px;
-    height: 2px;
-    background: var(--accent-gold);
-  }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-  #ct {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 34px 60px 30px;
-    display: flex;
-    flex-direction: column;
-  }
-  .header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .header-left { display: flex; align-items: flex-end; gap: 34px; }
-  .title-block {
-    position: relative;
-    padding-left: 22px;
-  }
-  .title-block::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 4px;
-    height: 70px;
-    background: var(--accent-gold);
-  }
-  .title {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 60px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    color: var(--text-warm);
-    margin: 0;
-  }
-  .subtitle-block {
-    padding-bottom: 6px;
-    min-width: 260px;
-  }
-  .subtitle {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 22px;
-    color: var(--accent-gold);
-    letter-spacing: 0.2em;
-    font-weight: 500;
-    margin: 0 0 6px 0;
-  }
-  .subtitle-en {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    font-weight: 400;
-  }
+:root{
+  --bg:#0F1E33;
+  --prussian:#1B3B6B;
+  --gold:#B4A078;
+  --warm-white:#F5F0E8;
+  --cyan:#4CC9C0;
+  --muted:rgba(245,240,232,0.55);
+  --dim:rgba(180,160,120,0.7);
+  --line:rgba(180,160,120,0.25);
+}
 
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-top: 32px;
-  }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 34px;
-    grid-template-rows: 90px 32px 46px;
-    row-gap: 16px;
-  }
-  .card-image {
-    position: relative;
-    height: 90px;
-    background: var(--accent-gold);
-    overflow: hidden;
-  }
-  .card-image::before {
-    content: '';
-    position: absolute;
-    left: 16px;
-    top: 0;
-    width: 12px;
-    height: 90px;
-    background: var(--bg-panel);
-  }
-  .card-image::after {
-    content: '';
-    position: absolute;
-    left: 28px;
-    top: 0;
-    width: 3px;
-    height: 90px;
-    background: var(--accent-gold);
-    opacity: 0.5;
-  }
-  .card-title {
-    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-warm);
-    letter-spacing: 0.08em;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  .card-source {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.55;
-    font-style: italic;
-    letter-spacing: 0.03em;
-  }
-  .card-source .year {
-    color: var(--accent-gold);
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    margin-right: 4px;
-  }
-  .card-source .work {
-    display: block;
-    color: var(--text-warm);
-    font-style: italic;
-    margin-top: 3px;
-    opacity: 0.9;
-  }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-  .footer {
-    margin-top: auto;
-    padding-top: 22px;
-    position: relative;
-  }
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--hairline);
-  }
-  .footer-text {
-    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    letter-spacing: 0.06em;
-    font-weight: 300;
-  }
-  .footer-text .em { color: var(--text-warm); font-weight: 500; }
+body{
+  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  background:#050b17;
+  color:var(--warm-white);
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrapper{
+  width:1600px;
+  height:900px;
+  position:relative;
+  overflow:hidden;
+  margin:0 auto;
+  background:var(--bg);
+}
+
+#bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:radial-gradient(1000px 600px at 100% 0%, rgba(27,59,107,0.55) 0%, rgba(15,30,51,0) 60%);
+}
+
+#ct{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  padding:70px 100px 60px 100px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Corner geometric decoration */
+.corner-tl{
+  position:absolute;
+  top:0;left:0;
+  width:180px;height:180px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  z-index:0;
+}
+.corner-tl::after{
+  content:'';
+  position:absolute;
+  top:28px;left:28px;
+  width:10px;height:10px;
+  background:var(--gold);
+}
+
+.corner-tr{
+  position:absolute;
+  top:0;right:0;
+  width:180px;height:180px;
+  border-left:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  z-index:0;
+}
+.corner-tr::after{
+  content:'';
+  position:absolute;
+  top:30px;right:30px;
+  width:14px;height:14px;
+  border:1px solid var(--gold);
+}
+
+.corner-br{
+  position:absolute;
+  right:0;bottom:0;
+  width:180px;height:180px;
+  border-left:1px solid var(--line);
+  border-top:1px solid var(--line);
+  z-index:0;
+}
+.corner-br::after{
+  content:'';
+  position:absolute;
+  bottom:30px;right:30px;
+  width:14px;height:14px;
+  border:1px solid var(--gold);
+}
+
+.corner-bl{
+  position:absolute;
+  left:0;bottom:0;
+  width:180px;height:180px;
+  border-right:1px solid var(--line);
+  border-top:1px solid var(--line);
+  z-index:0;
+}
+.corner-bl::after{
+  content:'';
+  position:absolute;
+  bottom:28px;left:28px;
+  width:10px;height:10px;
+  background:var(--gold);
+}
+
+/* Header */
+.header-block{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px;
+  padding-left:170px;
+  margin-top:8px;
+}
+
+.section-mark{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:12px;
+  letter-spacing:0.35em;
+  color:var(--gold);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.section-mark .tag{
+  border:1px solid var(--gold);
+  padding:5px 12px;
+  color:var(--gold);
+  letter-spacing:0.3em;
+  font-weight:500;
+}
+
+.section-mark .dot{
+  width:6px;height:6px;
+  background:var(--cyan);
+  border-radius:50%;
+  display:inline-block;
+}
+
+.title{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:88px;
+  font-weight:700;
+  letter-spacing:0.18em;
+  color:var(--warm-white);
+  line-height:1;
+}
+
+.subtitle-row{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.subtitle{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:22px;
+  font-weight:400;
+  color:var(--gold);
+  letter-spacing:0.25em;
+}
+
+.subtitle-bar{
+  width:70px;
+  height:1px;
+  background:var(--gold);
+}
+
+/* Questions list */
+.questions{
+  margin-top:38px;
+  margin-left:170px;
+  width:1280px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.question{
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  padding:16px 8px 16px 0;
+}
+
+.dot-marker{
+  flex-shrink:0;
+  margin-top:16px;
+  width:12px;
+  height:12px;
+  background:var(--cyan);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(76,201,192,0.14);
+}
+
+.q-main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.q-num{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:0.28em;
+  color:var(--gold);
+}
+
+.q-text{
+  font-family:'Noto Sans SC','PingFang SC',sans-serif;
+  font-size:18px;
+  line-height:1.65;
+  color:rgba(245,240,232,0.85);
+  font-weight:300;
+}
+
+.q-text strong{
+  color:var(--warm-white);
+  font-weight:500;
+}
+
+.q-text .kw{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:16px;
+  font-weight:500;
+  color:var(--cyan);
+  letter-spacing:0.03em;
+}
+
+/* Footer */
+.footer-block{
+  margin-top:28px;
+  padding-left:170px;
+  padding-right:0;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.footer-divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:10px;
+  letter-spacing:0.4em;
+  color:rgba(180,160,120,0.6);
+}
+
+.footer-divider .line{
+  width:60px;
+  height:1px;
+  background:rgba(180,160,120,0.4);
+}
+
+.footer-divider .dot{
+  width:5px;height:5px;
+  background:var(--cyan);
+  border-radius:50%;
+}
+
+.footer-text{
+  font-family:'Noto Sans SC','PingFang SC',sans-serif;
+  font-size:13px;
+  line-height:1.9;
+  color:var(--muted);
+  font-weight:300;
+}
+
+.footer-text .em{
+  color:var(--gold);
+  font-weight:500;
+}
+
+.footer-text .mono{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:11.5px;
+  color:var(--cyan);
+  letter-spacing:0.05em;
+  font-weight:500;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg">
-    <div class="top-line"></div>
-    <div class="top-square"></div>
-    <div class="accent-circle-lg"></div>
-    <div class="accent-circle-md"></div>
-    <div class="accent-square-lg"></div>
-    <div class="accent-square-sm"></div>
-    <div class="accent-square-bl"></div>
-    <div class="accent-tick"></div>
-  </div>
+  <div id="bg"></div>
   <div id="ct">
-    <div class="header">
-      <div class="header-left">
-        <div class="title-block">
-          <h1 class="title">延伸阅读</h1>
+    <div class="corner-tl"></div>
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+    <div class="corner-br"></div>
+
+    <div class="header-block">
+      <div class="section-mark">
+        <span class="tag"><span>FIN</span></span>
+        <span class="dot"></span>
+        <span><span>SECTION — Q &amp; A</span></span>
+      </div>
+      <h1 class="title"><span>讨论问题</span></h1>
+      <div class="subtitle-row">
+        <span class="subtitle-bar"></span>
+        <span class="subtitle"><span>留给 Q&amp;A 的三个开放问题</span></span>
+      </div>
+    </div>
+
+    <div class="questions">
+      <div class="question">
+        <div class="dot-marker"></div>
+        <div class="q-main">
+          <span class="q-num"><span>QUESTION #1</span></span>
+          <p class="q-text"><strong>Agent 演化是否还有第六阶段？</strong>从"能用"到"会协作"之后，下一个分水岭究竟在哪里。</p>
         </div>
-        <div class="subtitle-block">
-          <div class="subtitle">制度经济学核心文献</div>
-          <div class="subtitle-en">CORE READINGS · INSTITUTIONAL ECONOMICS</div>
+      </div>
+
+      <div class="question">
+        <div class="dot-marker"></div>
+        <div class="q-main">
+          <span class="q-num"><span>QUESTION #2</span></span>
+          <p class="q-text"><strong>开源 Agent 的"度量权"</strong>应该在社区手里，还是走向标准化？—— <span class="kw">Hermes 的 Footprint Ladder</span> 是一种制度实验。</p>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="dot-marker"></div>
+        <div class="q-main">
+          <span class="q-num"><span>QUESTION #3</span></span>
+          <p class="q-text"><strong>两种治理哲学的终局：</strong>本土办公产品的 <span class="kw">Agent 平台化</span>，与开源 Agent 的 <span class="kw">模块化</span>，最终如何收束？</p>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="dot-marker"></div>
+        <div class="q-main">
+          <span class="q-num"><span>QUESTION #4</span></span>
+          <p class="q-text"><strong><span class="kw">Talk &amp; Search</span> 时代与 <span class="kw">Agent &amp; Decide</span> 时代</strong>，是共存还是替代？消费范式重构，是否已经开始。</p>
         </div>
       </div>
     </div>
-    <div class="content">
-      <div class="cards">
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-image"></div>
-        <div class="card-title">转型经济学</div>
-        <div class="card-title">交易成本经济学</div>
-        <div class="card-title">认知制度</div>
-        <div class="card-title">演化制度理论</div>
-        <div class="card-title">开源经济学</div>
-        <div class="card-source"><span class="year">2004</span> · Roland<span class="work">Understanding Institutional Change</span></div>
-        <div class="card-source"><span class="year">2000</span> · Williamson<span class="work">The New Institutional Economics</span></div>
-        <div class="card-source"><span class="year">2016</span> · Akcagün &amp; Sapienza<span class="work">Cognitive Rules of Growth</span></div>
-        <div class="card-source"><span class="year">2017</span> · Greif &amp; Mokyr<span class="work">Journal of Institutional Economics</span></div>
-        <div class="card-source"><span class="year">2002</span> · Lerner &amp; Tirole<span class="work">The Economics of Open Source Software</span></div>
+
+    <div class="footer-block">
+      <div class="footer-divider">
+        <span class="line"></span>
+        <span><span>FIN / Q&amp;A</span></span>
+        <span class="dot"></span>
       </div>
-      <div class="footer">
-        <p class="footer-text">延伸阅读覆盖<span class="em">制度经济学的核心文献</span>——从<span class="em">转型经济学</span>到<span class="em">演化制度理论</span>，从<span class="em">交易成本</span>到<span class="em">开源经济学</span>。</p>
-      </div>
+      <p class="footer-text">
+        <span class="em">三个开放问题留给 Q&amp;A。</span>  田野考察是开放的 —— 欢迎补充案例，<span class="mono">issue / PR / release</span> 都是田野材料。
+      </p>
     </div>
   </div>
 </div>

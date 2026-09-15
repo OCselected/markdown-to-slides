@@ -1,475 +1,736 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Phase 4 · PR #94266 · Collective Wisdom Agent</title>
-<script src="../assets/echarts.min.js"></script>
+<title>PR #82198 · Skill-Persistence EPIC</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-:root{
-  --bg-deep:#0F1E33;
-  --primary:#1B3B6B;
-  --primary-2:#16305A;
-  --gold:#B4A078;
-  --gold-light:#D6C79F;
-  --gold-dim:#7A6B4E;
-  --text:#F5F0E8;
-  --text-dim:#BFB7A5;
-  --text-mute:#8B8371;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;}
-
-body{
-  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  color:var(--text);
-  background:#000;
+:root {
+  --ink: #0F1E33;
+  --ink-2: #142644;
+  --primary: #1B3B6B;
+  --primary-light: #2C5490;
+  --warm: #F5F0E8;
+  --warm-dim: #C7C1B4;
+  --gold: #B4A078;
+  --gold-light: #D4C39B;
+  --rule: rgba(180,160,120,0.35);
 }
 
-.wrapper{
-  width:1600px;height:900px;
-  position:relative;overflow:hidden;
-  margin:0 auto;
-  background:linear-gradient(140deg,#0C1A2E 0%,#0F1E33 45%,#122341 100%);
-  color:var(--text);
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--warm);
+  background: #000;
 }
 
-#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-#ct{position:absolute;inset:0;z-index:2;padding:48px 60px 40px;box-sizing:border-box;}
-
-/* ---- 背景几何装饰 ---- */
-.bg-square{position:absolute;border:1px solid var(--gold-dim);opacity:.12;}
-.bg-square.s1{top:-60px;right:-60px;width:260px;height:260px;border-color:var(--primary);opacity:.55;}
-.bg-square.s2{top:220px;left:-40px;width:80px;height:80px;border-width:2px;opacity:.35;}
-.bg-square.s3{bottom:-50px;right:520px;width:140px;height:140px;opacity:.22;}
-.bg-circle{position:absolute;border-radius:50%;}
-.bg-circle.c1{bottom:180px;left:-70px;width:180px;height:180px;background:var(--primary);opacity:.35;}
-.bg-circle.c2{top:60px;right:180px;width:14px;height:14px;background:var(--gold);opacity:.6;}
-.bg-circle.c3{top:110px;right:220px;width:6px;height:6px;background:var(--gold);opacity:.4;}
-.bg-line{position:absolute;background:var(--gold);}
-.bg-line.l1{top:132px;right:60px;width:110px;height:1px;opacity:.55;}
-.bg-line.l2{bottom:60px;left:60px;width:260px;height:1px;opacity:.35;}
-.bg-line.l3{top:60px;left:160px;width:1px;height:56px;opacity:.4;}
-
-/* ---- 顶部标题栏 ---- */
-.top{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  padding-bottom:16px;
-  border-bottom:1px solid rgba(180,160,120,0.35);
-}
-.title-block .kicker{
-  font-family:"JetBrains Mono",monospace;
-  color:var(--gold);font-size:11px;letter-spacing:3.5px;
-  margin-bottom:10px;font-weight:600;
-}
-.title-block h1{
-  font-family:"Noto Serif SC",serif;
-  font-size:40px;font-weight:900;color:var(--text);
-  line-height:1.1;letter-spacing:1px;
-}
-.title-block .sub{
-  font-family:"Noto Serif SC",serif;
-  font-size:18px;color:var(--gold-light);margin-top:8px;font-weight:500;
-  letter-spacing:2px;
-}
-.title-side{text-align:right;}
-.title-side .label{
-  font-family:"JetBrains Mono",monospace;font-size:10px;
-  color:var(--text-mute);letter-spacing:2.5px;margin-bottom:6px;
-}
-.title-side .val{
-  font-family:"JetBrains Mono",monospace;font-size:16px;
-  color:var(--gold-light);letter-spacing:1.5px;font-weight:500;
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--ink);
 }
 
-/* ---- 三列 ---- */
-.three-col{
-  display:grid;
-  grid-template-columns:410px 1fr 300px;
-  gap:44px;
-  margin-top:28px;
-  height:322px;
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(1200px 700px at 15% 20%, rgba(27,59,107,0.55) 0%, rgba(15,30,51,0) 60%),
+    radial-gradient(900px 600px at 90% 85%, rgba(180,160,120,0.12) 0%, rgba(15,30,51,0) 55%),
+    linear-gradient(160deg, #0F1E33 0%, #0B1728 100%);
 }
 
-/* 左列 */
-.left-col{position:relative;padding-top:26px;}
-.tag{
-  font-family:"Noto Serif SC",serif;
-  color:var(--gold);font-size:15px;letter-spacing:8px;font-weight:500;
-  display:flex;align-items:center;
-}
-.tag::before{
-  content:"";width:28px;height:1px;background:var(--gold);margin-right:16px;
-}
-.pr-num{
-  font-family:"JetBrains Mono",monospace;
-  font-size:150px;font-weight:700;line-height:.95;
-  color:var(--text);letter-spacing:-4px;
-  margin-top:20px;
-}
-.pr-num .hash{
-  color:var(--gold);font-weight:400;font-size:96px;
-  vertical-align:top;margin-right:2px;
-}
-.divider{
-  width:200px;height:1px;background:var(--gold);
-  margin-top:18px;position:relative;
-}
-.divider::after{
-  content:"";position:absolute;right:-4px;top:-3px;
-  width:7px;height:7px;background:var(--gold);
-}
-.sub-label{
-  font-family:"JetBrains Mono",monospace;
-  font-size:12px;color:var(--gold-light);
-  letter-spacing:3px;margin-top:12px;font-weight:500;
-}
-.sub-cn{
-  font-family:"Noto Serif SC",serif;
-  color:var(--text-dim);font-size:14px;letter-spacing:3px;
-  margin-top:8px;font-weight:400;
-}
-.left-square{
-  position:absolute;bottom:24px;right:6px;
-  width:34px;height:34px;
-  border:1.5px solid var(--gold);opacity:.6;
-}
-.left-circle{
-  position:absolute;bottom:16px;right:52px;
-  width:10px;height:10px;border-radius:50%;
-  background:var(--gold);opacity:.65;
+/* subtle paper texture dots */
+#bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(245,240,232,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(180,160,120,0.03) 1px, transparent 1px);
+  background-size: 6px 6px, 14px 14px;
+  background-position: 0 0, 3px 3px;
+  pointer-events: none;
 }
 
-/* 中列 */
-.mid-col{display:flex;flex-direction:column;justify-content:flex-start;}
-.mid-head{
-  display:flex;align-items:center;gap:14px;
-  padding-bottom:10px;
-  border-bottom:1px solid rgba(180,160,120,0.35);
-  margin-bottom:14px;
+/* Bauhaus geometric decorations */
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
 }
-.mid-head .dot{
-  width:9px;height:9px;background:var(--gold);border-radius:50%;
+.deco.circle-large {
+  top: -180px; right: -140px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(180,160,120,0.28);
 }
-.mid-head .title{
-  font-family:"Noto Serif SC",serif;
-  font-size:20px;color:var(--text);font-weight:700;letter-spacing:3px;
+.deco.circle-small {
+  bottom: 130px; left: 40px;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: rgba(180,160,120,0.14);
 }
-.mid-head .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:2px;
-  margin-left:auto;
+.deco.square-outline {
+  top: 260px; right: 60px;
+  width: 110px; height: 110px;
+  border: 1px solid rgba(245,240,232,0.14);
+  transform: rotate(45deg);
 }
-.concept-viz{position:relative;height:206px;}
-.concept-viz svg{position:absolute;inset:0;}
-.concept-caption{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:12.5px;color:var(--text-dim);line-height:1.75;
-  margin-top:12px;letter-spacing:.5px;
-  border-left:2px solid var(--gold);padding-left:12px;
+.deco.square-fill {
+  top: 140px; right: 200px;
+  width: 22px; height: 22px;
+  background: var(--gold);
 }
-.concept-caption strong{color:var(--gold-light);font-weight:500;}
-
-/* 右列 */
-.right-col{position:relative;padding-top:6px;}
-.right-head{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;color:var(--gold);letter-spacing:2.5px;
-  margin-bottom:12px;
+.deco.line-h {
+  top: 92px; left: 60px;
+  width: 200px; height: 1px;
+  background: var(--gold);
 }
-.arrow-col{
-  display:flex;flex-direction:column;align-items:center;
-  padding:2px 0 0;position:relative;
+.deco.line-v {
+  top: 220px; left: 60px;
+  width: 1px; height: 60px;
+  background: var(--gold);
 }
-.arrow-peak{position:relative;width:210px;}
-.arrow-peak .cn{
-  font-family:"Noto Serif SC",serif;
-  font-size:20px;font-weight:700;color:var(--gold-light);
-  letter-spacing:5px;text-align:center;line-height:1.2;
+.deco.triangle {
+  bottom: 200px; right: 80px;
+  width: 0; height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 58px solid rgba(180,160,120,0.32);
 }
-.arrow-peak .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:9px;color:var(--gold);letter-spacing:2.5px;
-  text-align:center;margin-top:5px;
-}
-.arrow-shape{margin-top:10px;position:relative;width:180px;text-align:center;}
-.arrow-head{
-  width:0;height:0;
-  border-left:20px solid transparent;
-  border-right:20px solid transparent;
-  border-bottom:26px solid var(--gold);
-  margin:0 auto;
-}
-.arrow-stem{
-  width:3px;background:var(--gold);margin:0 auto;height:170px;
-}
-.arrow-tail{
-  width:120px;height:1px;background:var(--gold);margin:0 auto;
-}
-.arrow-base{width:200px;margin-top:14px;}
-.arrow-base .cn{
-  font-family:"Noto Serif SC",serif;
-  font-size:16px;font-weight:500;color:var(--text);
-  letter-spacing:5px;text-align:center;line-height:1.2;
-}
-.arrow-base .en{
-  font-family:"JetBrains Mono",monospace;
-  font-size:9px;color:var(--text-mute);letter-spacing:2px;
-  text-align:center;margin-top:5px;
-}
-.arrow-mid{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:1.5px;
-  text-align:center;margin-top:10px;
+.deco.dots-row {
+  top: 480px; left: 730px;
+  width: 60px; height: 8px;
+  background-image: radial-gradient(circle, var(--gold) 1.5px, transparent 2px);
+  background-size: 14px 8px;
+  background-repeat: repeat-x;
+  opacity: 0.6;
 }
 
-/* ---- 中间 KPI + 要点 ---- */
-.metrics-band{
-  display:grid;
-  grid-template-columns:640px 1fr;
-  gap:32px;
-  margin-top:22px;
-}
-.kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.kpi{
-  position:relative;padding:14px 20px 16px;
-  background:var(--primary-2);
-  border-left:3px solid var(--gold);
-}
-.kpi .lbl{
-  font-family:"JetBrains Mono",monospace;
-  font-size:11px;color:var(--gold);letter-spacing:2px;
-  margin-bottom:4px;font-weight:500;
-}
-.kpi .num{
-  font-family:"JetBrains Mono",monospace;
-  font-size:44px;font-weight:700;color:var(--text);
-  letter-spacing:1px;line-height:1;
-}
-.kpi .desc{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:11.5px;color:var(--text-dim);
-  margin-top:6px;letter-spacing:1.5px;
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 46px 60px 40px;
+  box-sizing: border-box;
 }
 
-.points{
-  display:grid;grid-template-rows:repeat(3,1fr);gap:8px;
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px;
 }
-.point{
-  display:grid;grid-template-columns:36px 130px 1fr;
-  align-items:center;gap:12px;
-  padding:6px 0;
-  border-bottom:1px solid rgba(180,160,120,0.18);
+.header-left { flex: 1; }
+.pr-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 10px;
 }
-.point:last-child{border-bottom:none;}
-.point .idx{
-  font-family:"JetBrains Mono",monospace;
-  font-size:15px;color:var(--gold);font-weight:600;
+.pr-tag span { color: var(--warm-dim); }
+h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--warm);
+  letter-spacing: 0.5px;
+  line-height: 1.15;
 }
-.point .name{
-  font-family:"Noto Serif SC",serif;
-  font-size:15px;font-weight:700;color:var(--text);letter-spacing:2px;
+h1 em {
+  font-style: normal;
+  color: var(--gold);
 }
-.point .txt{
-  font-family:"Noto Sans SC",sans-serif;
-  font-size:12px;color:var(--text-dim);line-height:1.55;
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--warm-dim);
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-weight: 400;
 }
-.point .txt code{
-  font-family:"JetBrains Mono",monospace;
-  color:var(--gold-light);font-size:11px;
-  background:rgba(180,160,120,0.10);
-  padding:1px 5px;margin:0 2px;
-  letter-spacing:.5px;
+.header-right {
+  text-align: right;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--warm-dim);
+  letter-spacing: 2px;
+  line-height: 1.7;
+}
+.header-right .pg {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0;
+  display: block;
+  margin-top: 2px;
 }
 
-/* ---- 底部 narrative ---- */
-.narrative{
-  margin-top:18px;
-  padding:14px 24px;
-  display:flex;gap:16px;align-items:flex-start;
-  background:var(--primary-2);
-  border-left:2px solid var(--gold);
-  border-right:1px solid rgba(180,160,120,0.28);
-}
-.narrative .mark{
-  font-family:"Noto Serif SC",serif;
-  font-size:38px;color:var(--gold);line-height:1;
-  font-weight:700;flex-shrink:0;
-}
-.narrative .body{
-  font-family:"Noto Serif SC",serif;
-  font-size:14px;color:var(--text);line-height:1.7;letter-spacing:.5px;
-}
-.narrative .body em{
-  color:var(--gold-light);font-style:italic;font-weight:500;
-}
-.narrative .body strong{
-  color:var(--gold-light);font-family:"JetBrains Mono",monospace;
-  font-weight:500;font-size:13px;
+/* Three column layout */
+.grid {
+  display: grid;
+  grid-template-columns: 400px 1fr 1fr;
+  gap: 32px;
+  height: 540px;
 }
 
-/* ---- footer ---- */
-.footer{
-  position:absolute;bottom:16px;left:60px;right:60px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;color:var(--text-mute);letter-spacing:2px;
+/* LEFT COLUMN */
+.left-col {
+  position: relative;
+  padding-right: 12px;
+  border-right: 1px solid var(--rule);
+}
+.big-num-wrap {
+  position: relative;
+  margin-bottom: 26px;
+}
+.big-num {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 128px;
+  color: var(--warm);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  position: relative;
+}
+.big-num .hash {
+  color: var(--gold);
+}
+.big-num-mark {
+  position: absolute;
+  top: 6px; right: -6px;
+  width: 14px; height: 14px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.big-num-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px 10px 14px;
+  background: rgba(245,240,232,0.03);
+  border-left: 2px solid var(--gold);
+  position: relative;
+}
+.stat-num {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--gold);
+  min-width: 40px;
+  line-height: 1.1;
+}
+.stat-body { flex: 1; }
+.stat-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--warm);
+  letter-spacing: 1.5px;
+  margin-bottom: 3px;
+}
+.stat-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--warm-dim);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* MIDDLE COLUMN - architecture */
+.mid-col {
+  position: relative;
+  padding: 0 8px;
+}
+.col-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--warm);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-title::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: var(--gold);
+}
+.col-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--warm-dim);
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+
+.arch {
+  position: relative;
+  height: 445px;
+  padding: 8px 12px;
+  background: rgba(245,240,232,0.02);
+  border: 1px solid rgba(180,160,120,0.2);
+}
+.arch::before, .arch::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1px solid var(--gold);
+}
+.arch::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.arch::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.layer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.layer-box {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.layer-1 .layer-box {
+  background: rgba(180,160,120,0.15);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+}
+.layer-2 .layer-box {
+  background: rgba(27,59,107,0.6);
+  border: 1px solid var(--primary-light);
+}
+.layer-3 .layer-box {
+  background: rgba(180,160,120,0.08);
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+}
+.layer-3 .layer-box span {
+  transform: rotate(-45deg);
+  display: block;
+}
+.layer-icon {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--gold);
+  line-height: 1;
+}
+.layer-content { flex: 1; }
+.layer-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.layer-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--warm);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.layer-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: var(--warm-dim);
+  line-height: 1.5;
+}
+
+.arrow-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: -4px 0;
+  position: relative;
+}
+.arrow-down .line {
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--gold), rgba(180,160,120,0.2));
+}
+.arrow-down .tip {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid var(--gold);
+  margin-top: -1px;
+}
+
+.arch-foot {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+
+/* RIGHT COLUMN */
+.right-col {
+  position: relative;
+  padding-left: 8px;
+}
+.evolution {
+  position: relative;
+  height: 200px;
+  background: rgba(27,59,107,0.15);
+  border: 1px solid rgba(180,160,120,0.25);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.evo-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.evo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.evo-node {
+  flex: 1;
+  padding: 14px 12px;
+  text-align: center;
+  border: 1px solid rgba(245,240,232,0.35);
+  background: rgba(15,30,51,0.4);
+}
+.evo-node.start { border-color: var(--warm-dim); }
+.evo-node.end { border-color: var(--gold); background: rgba(180,160,120,0.12); }
+.evo-node-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.evo-node-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--warm);
+  line-height: 1.15;
+}
+.evo-arrow {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.evo-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid var(--gold);
+}
+.evo-arrow-label {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.evo-desc {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--warm-dim);
+  line-height: 1.65;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(180,160,120,0.35);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.right-points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.r-point {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.r-point:last-child { border-bottom: none; }
+.r-dot {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.r-body { flex: 1; }
+.r-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--warm);
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.r-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11.5px;
+  color: var(--warm-dim);
+  line-height: 1.55;
+}
+
+/* BOTTOM NARRATIVE */
+.narrative {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  right: 60px;
+  padding: 18px 26px;
+  background: linear-gradient(90deg, rgba(27,59,107,0.4) 0%, rgba(27,59,107,0.15) 100%);
+  border-left: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.narrative-badge {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--gold);
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+.narrative-text {
+  flex: 1;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--warm);
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+.narrative-text em {
+  font-style: normal;
+  color: var(--gold);
+  font-weight: 700;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-square s1"></div>
-    <div class="bg-square s2"></div>
-    <div class="bg-square s3"></div>
-    <div class="bg-circle c1"></div>
-    <div class="bg-circle c2"></div>
-    <div class="bg-circle c3"></div>
-    <div class="bg-line l1"></div>
-    <div class="bg-line l2"></div>
-    <div class="bg-line l3"></div>
+    <div class="deco circle-large"></div>
+    <div class="deco circle-small"></div>
+    <div class="deco square-outline"></div>
+    <div class="deco square-fill"></div>
+    <div class="deco line-h"></div>
+    <div class="deco line-v"></div>
+    <div class="deco triangle"></div>
+    <div class="deco dots-row"></div>
   </div>
 
   <div id="ct">
-    <div class="top">
-      <div class="title-block">
-        <div class="kicker">PHASE 4 &nbsp;·&nbsp; FLAGSHIP PROPOSAL &nbsp;·&nbsp; 标志性提案</div>
-        <h1>PR #94266 · Collective Wisdom Agent</h1>
-        <div class="sub">集体智慧 · 智慧化 &nbsp;&nbsp;<span style="color:var(--text-mute);letter-spacing:1.5px;">— 2026 · 08</span></div>
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <div class="pr-tag">PR · <span>#82198</span> &nbsp;/&nbsp; SKILL-PERSISTENCE EPIC</div>
+        <h1>EPIC: Hermes skill-persistence and <em>storage-boundary</em><br>operational-risk conquest</h1>
+        <div class="subtitle">自我组织 · 持久化 &nbsp;—&nbsp; Phase 4 / 2026-08</div>
       </div>
-      <div class="title-side">
-        <div class="label">FEATURE · WISDOM</div>
-        <div class="val">Hermes V1</div>
-        <div class="label" style="margin-top:10px;">CATEGORY</div>
-        <div class="val" style="font-size:13px;">comp · agent · tool · skills</div>
+      <div class="header-right">
+        <span>HERMES · PROPOSAL</span>
+        <span class="pg">30</span>
       </div>
     </div>
 
-    <div class="three-col">
+    <!-- THREE COLUMN GRID -->
+    <div class="grid">
+      <!-- LEFT -->
       <div class="left-col">
-        <div class="tag"><span>章节标识</span></div>
-        <div class="pr-num"><span class="hash">#</span>94266</div>
-        <div class="divider"></div>
-        <div class="sub-label">Phase 4 · 标志性提案</div>
-        <div class="sub-cn">FLAGSHIP PROPOSAL</div>
-        <div class="left-square"></div>
-        <div class="left-circle"></div>
+        <div class="big-num-wrap">
+          <div class="big-num"><span class="hash">#</span>82198<span class="big-num-mark"></span></div>
+          <div class="big-num-label">EPIC · HERMES · PHASE 4</div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">01</div>
+            <div class="stat-body">
+              <div class="stat-title">需求信号</div>
+              <div class="stat-desc">54,633 body（最大 EPIC）· comp/agent · tool/skills · area/memory · needs-decision</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">02</div>
+            <div class="stat-body">
+              <div class="stat-title">技术复杂度</div>
+              <div class="stat-desc">样本中最大的设计文档之一 · skill 持久化 + 存储边界 + 运维风险</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">03</div>
+            <div class="stat-body">
+              <div class="stat-title">用户需求</div>
+              <div class="stat-desc">从临时 skill 到持久 skill —— agent 自我组织、持久化知识、管理存储边界</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">04</div>
+            <div class="stat-body">
+              <div class="stat-title">演化意义</div>
+              <div class="stat-desc">Phase 4 标志性提案 —— EPIC 级设计文档 · agent 自我组织能力</div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <!-- MIDDLE: architecture diagram -->
       <div class="mid-col">
-        <div class="mid-head">
-          <div class="dot"></div>
-          <div class="title"><span>集体智慧 · 概念</span></div>
-          <div class="en"><span>COLLECTIVE · WISDOM</span></div>
-        </div>
-        <div class="concept-viz">
-          <svg viewBox="0 0 600 206" preserveAspectRatio="xMidYMid meet">
-            <line x1="110" y1="55" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-            <line x1="510" y1="42" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-            <line x1="70" y1="140" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <line x1="530" y1="150" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <line x1="110" y1="55" x2="70" y2="140" stroke="#B4A078" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.5"/>
-            <line x1="510" y1="42" x2="530" y2="150" stroke="#B4A078" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.5"/>
-            <line x1="110" y1="55" x2="200" y2="180" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <line x1="200" y1="180" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <line x1="200" y1="180" x2="420" y2="185" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <line x1="420" y1="185" x2="300" y2="103" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <line x1="420" y1="185" x2="530" y2="150" stroke="#B4A078" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.35"/>
-            <rect x="52" y="17" width="16" height="16" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-            <rect x="536" y="17" width="16" height="16" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.55"/>
-
-            <circle cx="110" cy="55" r="7" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="510" cy="42" r="7" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="70" cy="140" r="6" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="530" cy="150" r="6" fill="#1B3B6B" stroke="#B4A078" stroke-width="1.5"/>
-            <circle cx="200" cy="180" r="5" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
-            <circle cx="420" cy="185" r="5" fill="#1B3B6B" stroke="#B4A078" stroke-width="1"/>
-            <circle cx="300" cy="103" r="22" fill="#B4A078"/>
-            <circle cx="300" cy="103" r="34" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-            <circle cx="300" cy="103" r="48" fill="none" stroke="#B4A078" stroke-width="0.7" opacity="0.28"/>
-
-            <text x="110" y="80" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.85">SESSION · 01</text>
-            <text x="510" y="68" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.85">SESSION · 02</text>
-            <text x="70" y="165" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.75">SESSION · 03</text>
-            <text x="530" y="175" fill="#B4A078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" text-anchor="middle" opacity="0.75">SESSION · 04</text>
-            <text x="300" y="108" fill="#0F1E33" font-family="Noto Serif SC, serif" font-weight="700" font-size="14" letter-spacing="2" text-anchor="middle">集体</text>
-          </svg>
-        </div>
-        <div class="concept-caption">
-          <span>从 <strong>「个体 agent」</strong> 到 <strong>「集体智慧」</strong> —— 多个 agent session 的知识聚合为集体智慧，构成跨会话可复用的智能底座。</span>
+        <div class="col-title">ARCHITECTURE</div>
+        <div class="col-sub">三层结构 · 自我组织的层次递进</div>
+        <div class="arch">
+          <div class="layer layer-1">
+            <div class="layer-box"><span class="layer-icon">①</span></div>
+            <div class="layer-content">
+              <div class="layer-tag">LAYER 01 · CORE</div>
+              <div class="layer-name">skill persistence</div>
+              <div class="layer-desc">Skill 持久化 —— 从临时到持久，知识沉淀</div>
+            </div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="tip"></div></div>
+          <div class="layer layer-2">
+            <div class="layer-box"><span class="layer-icon">②</span></div>
+            <div class="layer-content">
+              <div class="layer-tag">LAYER 02 · BOUNDARY</div>
+              <div class="layer-name">storage boundary</div>
+              <div class="layer-desc">存储边界 —— 权限、隔离、可管理的边界</div>
+            </div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="tip"></div></div>
+          <div class="layer layer-3">
+            <div class="layer-box"><span class="layer-icon">③</span></div>
+            <div class="layer-content">
+              <div class="layer-tag">LAYER 03 · OPERATIONAL</div>
+              <div class="layer-name">operational-risk conquest</div>
+              <div class="layer-desc">运维风险征服 —— 可靠性、可观测、可恢复</div>
+            </div>
+          </div>
+          <div class="arch-foot">SELF-ORGANIZING · SELF-PERSISTENT · SELF-OPERATIONAL</div>
         </div>
       </div>
 
+      <!-- RIGHT: evolution -->
       <div class="right-col">
-        <div class="right-head"><span>能力跃迁 · LEAP</span></div>
-        <div class="arrow-col">
-          <div class="arrow-peak">
-            <div class="cn"><span>集体智慧</span></div>
-            <div class="en"><span>COLLECTIVE WISDOM</span></div>
+        <div class="col-title">EVOLUTION</div>
+        <div class="col-sub">从伙伴到自我组织者的跃迁</div>
+
+        <div class="evolution">
+          <div class="evo-label">AGENT EVOLUTION · PHASE 4</div>
+          <div class="evo-row">
+            <div class="evo-node start">
+              <div class="evo-node-label">BEFORE</div>
+              <div class="evo-node-text">伙伴</div>
+              <div style="font-size:10px;color:var(--warm-dim);margin-top:4px;letter-spacing:1px;">Assistant</div>
+            </div>
+            <div class="evo-arrow">
+              <span class="evo-arrow-label">EVOLVE</span>
+            </div>
+            <div class="evo-node end">
+              <div class="evo-node-label">AFTER</div>
+              <div class="evo-node-text">自我组织者</div>
+              <div style="font-size:10px;color:var(--gold);margin-top:4px;letter-spacing:1px;">Self-Organizer</div>
+            </div>
           </div>
-          <div class="arrow-shape">
-            <div class="arrow-head"></div>
-            <div class="arrow-stem"></div>
-            <div class="arrow-tail"></div>
+          <div class="evo-desc">
+            持久化 skill · 管理存储边界 · 征服运维风险<br>
+            —— agent 从"响应者"跃迁为"组织者"
           </div>
-          <div class="arrow-base">
-            <div class="cn"><span>自我组织</span></div>
-            <div class="en"><span>SELF ORGANIZATION</span></div>
+        </div>
+
+        <div class="right-points">
+          <div class="r-point">
+            <div class="r-dot"></div>
+            <div class="r-body">
+              <div class="r-title">状态：open · needs-decision</div>
+              <div class="r-text">标签 tool/skills · area/memory · 54,633 body 待决策</div>
+            </div>
           </div>
-          <div class="arrow-mid"><span>自我组织 → 集体智慧</span></div>
+          <div class="r-point">
+            <div class="r-dot"></div>
+            <div class="r-body">
+              <div class="r-title">核心命题</div>
+              <div class="r-text">Skill 持久化 + 存储边界 —— 自我组织的两个基石</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="metrics-band">
-      <div class="kpi-row">
-        <div class="kpi">
-          <div class="lbl"><span>BODY</span></div>
-          <div class="num">52,295</div>
-          <div class="desc"><span>设计文档规模</span></div>
-        </div>
-        <div class="kpi">
-          <div class="lbl"><span>COMMENTS</span></div>
-          <div class="num">9</div>
-          <div class="desc"><span>讨论活跃</span></div>
-        </div>
-      </div>
-
-      <div class="points">
-        <div class="point">
-          <div class="idx">01</div>
-          <div class="name">需求信号</div>
-          <div class="txt">
-            <code>52,295 body</code> · <code>9 comments</code> · <code>comp / agent</code> · <code>tool / skills</code> · <code>area / config</code> · <code>needs-decision</code>
-          </div>
-        </div>
-        <div class="point">
-          <div class="idx">02</div>
-          <div class="name">用户需求</div>
-          <div class="txt">从个体 agent 到集体智慧 —— 多个 agent session 的知识聚合</div>
-        </div>
-        <div class="point">
-          <div class="idx">03</div>
-          <div class="name">演化意义</div>
-          <div class="txt">Phase 4 标志性提案，9 comments 讨论活跃，用户要求 agent 有集体智慧能力</div>
-        </div>
-      </div>
-    </div>
-
+    <!-- BOTTOM NARRATIVE -->
     <div class="narrative">
-      <div class="mark"><span>“</span></div>
-      <div class="body">
-        #94266 是 Phase 4 的另一个标志性提案。<em>「feat(wisdom): add Hermes Collective Wisdom Agent V1」</em> —— <strong>52,295 body + 9 comments</strong> 说明这是活跃讨论的设计文档。
+      <div class="narrative-badge">SUMMARY · #82198</div>
+      <div class="narrative-text">
+        <em>#82198</em> 是 Phase 4 的标志性 EPIC，<em>54,633 body</em> 是样本中最大的设计文档之一。<br>
+        "skill-persistence and storage-boundary operational-risk conquest" —— 用户要求 agent 能<em>持久化 skill</em>（知识）、<em>管理存储边界</em>（安全）、<em>征服运维风险</em>（可靠性）。这是 agent 从"伙伴"到<em>"自我组织者"</em>的跃迁。
       </div>
-    </div>
-
-    <div class="footer">
-      <span>Phase 4 · 标志性提案 · 2026-08</span>
-      <span>Hermes V1 &nbsp;·&nbsp; Collective Wisdom Agent</span>
     </div>
   </div>
 </div>

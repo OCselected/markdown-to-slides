@@ -1,439 +1,248 @@
- 前缀 ✓
 
-输出开始。
-</think>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Epilogue · 长期演化追踪</title>
+<title>MCP 演化路径 · 从厂商私产到中立基金会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+:root{
+  --bg:#0F1E33;
+  --primary:#1B3B6B;
+  --primary-light:#26518D;
+  --gold:#B4A078;
+  --gold-bright:#D4B885;
+  --gold-dim:rgba(180,160,120,.35);
+  --gold-faint:rgba(180,160,120,.14);
+  --text:#F5F0E8;
+  --text-dim:#B7B0A2;
+  --text-mute:#8C8678;
+  --line:rgba(245,240,232,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#080E1A;overflow:hidden;}
+body{font-family:"Noto Sans SC",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;font-feature-settings:"palt";}
 
-  :root {
-    --bg: #0F1E33;
-    --bg-2: #1B3B6B;
-    --text: #F5F0E8;
-    --text-dim: rgba(245, 240, 232, 0.72);
-    --text-faint: rgba(245, 240, 232, 0.42);
-    --gold: #B4A078;
-    --gold-dim: rgba(180, 160, 120, 0.55);
-    --gold-faint: rgba(180, 160, 120, 0.18);
-    --blue-line: rgba(27, 59, 107, 0.55);
-  }
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:#0F1E33;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ---------- background decorations (Bauhaus geometry) ---------- */
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.bg-dot{position:absolute;border-radius:50%;border:1.5px solid var(--gold-dim);}
+.bg-dot.fill{background:var(--gold-faint);border-color:transparent;}
+.bg-sq{position:absolute;border:1px solid var(--gold-dim);}
+.bg-sq.fill{background:var(--gold-faint);border:none;}
+.bg-bar{position:absolute;background:var(--gold-dim);}
+.bg-bar.dim{background:rgba(180,160,120,.18);}
+.bg-ring-thick{position:absolute;border-radius:50%;border:8px solid var(--gold-faint);}
 
-  body {
-    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-    background: #0F1E33;
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-  }
+/* ---------- content layer ---------- */
+#ct{position:absolute;inset:0;z-index:1;padding:52px 60px 42px 60px;display:flex;flex-direction:column;}
 
-  .wrapper {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    background: radial-gradient(ellipse at 18% 18%, #172a4d 0%, #0F1E33 55%, #0a1524 100%);
-  }
+/* ---------- header ---------- */
+.header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-bottom:26px;position:relative;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold) 90px,var(--line) 90px,var(--line) 100%);}
+.title-block{max-width:960px;}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.eyebrow-dot{width:8px;height:8px;background:var(--gold);display:inline-block;}
+.eyebrow-text{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);letter-spacing:3.5px;font-weight:500;}
+h1{font-family:"Noto Serif SC",serif;font-weight:700;font-size:54px;color:var(--text);line-height:1.14;letter-spacing:.5px;}
+h1 .accent{color:var(--gold-bright);}
+.subtitle{display:flex;align-items:center;gap:12px;margin-top:14px;}
+.subtitle-mark{width:28px;height:2px;background:var(--gold);}
+.subtitle-text{font-family:"Noto Serif SC",serif;font-size:20px;color:var(--text-dim);font-weight:400;font-style:italic;letter-spacing:1px;}
 
-  #bg { position: absolute; inset: 0; z-index: 0; }
-  #ct { position: absolute; inset: 0; z-index: 1; }
+.meta-block{text-align:right;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-mute);letter-spacing:1.5px;line-height:2;flex-shrink:0;}
+.meta-block .meta-hi{color:var(--gold);letter-spacing:2px;}
+.meta-block .meta-lab{display:block;color:var(--text-mute);margin-top:6px;}
 
-  /* 背景装饰几何 */
-  .deco-big-circle {
-    position: absolute;
-    right: -200px;
-    bottom: -200px;
-    width: 520px;
-    height: 520px;
-    border: 1px solid var(--blue-line);
-    border-radius: 50%;
-  }
-  .deco-big-circle-2 {
-    position: absolute;
-    right: -60px;
-    bottom: -60px;
-    width: 240px;
-    height: 240px;
-    border: 1px solid var(--gold-faint);
-    border-radius: 50%;
-  }
-  .deco-small-dot {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .deco-square {
-    position: absolute;
-    border: 1px solid var(--gold);
-  }
-  .deco-line-v {
-    position: absolute;
-    width: 1px;
-    background: var(--gold-faint);
-  }
-  .deco-line-h {
-    position: absolute;
-    height: 1px;
-    background: var(--gold-faint);
-  }
+/* ---------- timeline section ---------- */
+.timeline-section{margin-top:36px;flex:1;position:relative;}
 
-  /* 顶部栏 */
-  .top-bar {
-    position: absolute;
-    top: 50px;
-    left: 60px;
-    right: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    color: var(--gold);
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  .top-bar .side {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .top-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-  }
-  .top-square {
-    width: 7px;
-    height: 7px;
-    border: 1.5px solid var(--gold);
-    transform: rotate(45deg);
-  }
-  .top-line {
-    position: absolute;
-    top: 78px;
-    left: 60px;
-    right: 60px;
-    height: 1px;
-    background: linear-gradient(to right, var(--gold-dim) 0%, var(--gold-faint) 100%);
-  }
+.anchors{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;}
+.anchor{position:relative;padding-bottom:6px;}
+.anchor-l{text-align:left;}
+.anchor-r{text-align:right;}
+.anchor-label{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--gold);letter-spacing:3px;margin-bottom:4px;}
+.anchor-name{font-family:"Noto Serif SC",serif;font-size:26px;color:var(--text);font-weight:700;letter-spacing:.5px;}
+.anchor-date{font-family:"JetBrains Mono",monospace;font-size:15px;color:var(--text-dim);margin-top:4px;letter-spacing:1.5px;}
+.anchor-bar{position:absolute;bottom:-4px;width:70px;height:2px;background:var(--gold);}
+.anchor-l .anchor-bar{left:0;}
+.anchor-r .anchor-bar{right:0;}
 
-  /* 标题区 */
-  .title-block {
-    position: absolute;
-    top: 148px;
-    left: 60px;
-    max-width: 1300px;
-  }
-  .eyebrow {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 13px;
-    letter-spacing: 0.55em;
-    color: var(--gold);
-    margin-bottom: 34px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-transform: uppercase;
-  }
-  .eyebrow .marker {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    display: inline-block;
-  }
-  .main-title {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 118px;
-    font-weight: 700;
-    line-height: 1.02;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    margin-bottom: 34px;
-  }
-  .sub-title {
-    font-family: 'Noto Serif SC', serif;
-    font-style: italic;
-    font-size: 32px;
-    color: var(--gold);
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .sub-title .line {
-    width: 48px;
-    height: 1px;
-    background: var(--gold);
-  }
+.timeline-body{position:relative;margin-top:22px;padding-top:14px;}
 
-  /* 三条要点 */
-  .points {
-    position: absolute;
-    top: 538px;
-    left: 60px;
-    right: 60px;
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
-  }
-  .point {
-    flex: 1;
-    position: relative;
-    padding-top: 22px;
-  }
-  .point-mark-h {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 44px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .point-mark-v {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 22px;
-    background: var(--gold);
-  }
-  .point-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    letter-spacing: 0.4em;
-    color: var(--gold);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .point-label {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 14px;
-    line-height: 1.45;
-  }
-  .point-desc {
-    font-size: 12.5px;
-    line-height: 1.8;
-    color: var(--text-dim);
-    font-weight: 300;
-  }
+/* rail */
+.rail{position:absolute;left:0;right:0;top:70px;height:36px;display:flex;align-items:center;}
+.rail-line{flex:1;height:3px;background:linear-gradient(90deg,var(--gold-bright) 0%,var(--gold) 20%,var(--gold) 80%,var(--gold-bright) 100%);}
+.rail-arrow{width:0;height:0;border-left:22px solid var(--gold-bright);border-top:14px solid transparent;border-bottom:14px solid transparent;flex-shrink:0;margin-left:-1px;}
+.rail-dot-l{width:12px;height:12px;background:var(--gold-bright);border-radius:50%;flex-shrink:0;margin-right:-2px;box-shadow:0 0 0 4px rgba(180,160,120,.2);}
 
-  /* 底部路线图 */
-  .roadmap {
-    position: absolute;
-    bottom: 132px;
-    left: 60px;
-    right: 60px;
-    height: 40px;
-  }
-  .roadmap-line {
-    position: absolute;
-    left: 190px;
-    right: 40px;
-    top: 50%;
-    height: 1px;
-    background: linear-gradient(to right, var(--gold) 0%, var(--gold) 72%, rgba(180, 160, 120, 0.08) 100%);
-  }
-  .roadmap-start {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .start-dot {
-    width: 12px;
-    height: 12px;
-    background: var(--gold);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(180, 160, 120, 0.16);
-  }
-  .start-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .start-label {
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-  }
-  .start-date {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: var(--gold);
-    letter-spacing: 0.14em;
-    font-weight: 500;
-  }
-  .node {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background: var(--bg);
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-  }
-  .node.filled {
-    background: var(--gold);
-  }
-  .arrow-end {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 8px solid rgba(180, 160, 120, 0.4);
-  }
+/* span label below arrow */
+.span-label{position:absolute;left:0;right:0;top:120px;text-align:center;}
+.span-label-inner{display:inline-flex;align-items:center;gap:14px;padding:6px 22px;background:var(--bg);border:1px solid var(--gold-dim);}
+.span-label-en{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-mute);letter-spacing:3px;}
+.span-label-zh{font-family:"Noto Serif SC",serif;font-size:14px;color:var(--gold);letter-spacing:2px;}
 
-  /* 底部 narrative + 页码 */
-  .footer {
-    position: absolute;
-    bottom: 44px;
-    left: 60px;
-    right: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-  }
-  .narrative {
-    font-family: 'Noto Serif SC', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: var(--text-faint);
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-    max-width: 980px;
-  }
-  .narrative em {
-    color: var(--gold);
-    font-style: italic;
-    font-weight: 400;
-  }
-  .page-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
+/* nodes row */
+.nodes-row{display:flex;justify-content:space-between;margin-top:22px;padding:0 6px;}
+.node{width:15.5%;position:relative;text-align:center;}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1.5px solid var(--gold);color:var(--gold);font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;letter-spacing:1px;border-radius:50%;background:var(--bg);}
+.node-dot{width:14px;height:14px;background:var(--gold-bright);border:2px solid var(--bg);border-radius:50%;margin:8px auto 10px auto;box-shadow:0 0 0 3px var(--gold-dim);}
+.node-date{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);letter-spacing:1.5px;margin-bottom:14px;}
+
+/* ---------- insight section ---------- */
+.insight{margin-top:34px;padding:22px 34px;border-top:1px solid var(--line);position:relative;}
+.insight::before{content:'';position:absolute;top:-1px;left:0;width:180px;height:2px;background:var(--gold);}
+.insight-content{display:flex;align-items:center;gap:28px;}
+.insight-num{font-family:"Noto Serif SC",serif;font-size:60px;color:var(--gold);font-weight:400;line-height:1;flex-shrink:0;}
+.insight-body{flex:1;display:flex;align-items:center;gap:18px;}
+.quote-mark{font-family:"Noto Serif SC",serif;font-size:80px;color:var(--gold-dim);line-height:.6;flex-shrink:0;margin-top:16px;}
+.quote{font-family:"Noto Serif SC",serif;font-size:24px;color:var(--text);font-weight:400;line-height:1.5;letter-spacing:.3px;}
+.quote em{color:var(--gold-bright);font-style:normal;font-weight:600;}
+.quote-label{display:block;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text-mute);letter-spacing:3px;margin-bottom:6px;}
+.insight-mark{width:70px;height:70px;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
+.insight-mark::after{content:'';position:absolute;width:18px;height:18px;background:var(--gold-faint);}
+
+/* ---------- card styles ---------- */
+.card{background:linear-gradient(180deg,rgba(38,81,141,.16) 0%,rgba(15,30,51,.4) 100%);border:1px solid var(--gold-dim);padding:14px 14px 16px 14px;position:relative;min-height:196px;}
+.card-start{border-color:var(--gold);background:linear-gradient(180deg,rgba(180,160,120,.14) 0%,rgba(30,60,110,.32) 100%);}
+.card-end{border-color:var(--gold);background:linear-gradient(180deg,rgba(180,160,120,.16) 0%,rgba(30,60,110,.32) 100%);}
+.card-corner{position:absolute;top:8px;right:8px;font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--gold);letter-spacing:2px;}
+.card-tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--gold);letter-spacing:2.5px;margin-bottom:8px;font-weight:600;}
+.card-title{font-family:"Noto Serif SC",serif;font-size:20px;color:var(--text);font-weight:700;line-height:1.25;margin-bottom:8px;}
+.card-desc{font-size:12.5px;color:var(--text-dim);line-height:1.7;letter-spacing:.2px;}
+.card-desc strong{color:var(--text);font-weight:600;}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <!-- 右下角同心大圆 -->
-    <div class="deco-big-circle"></div>
-    <div class="deco-big-circle-2"></div>
-    <!-- 右上角几何装饰 -->
-    <div class="deco-line-v" style="top: 100px; right: 60px; height: 60px;"></div>
-    <div class="deco-line-h" style="top: 160px; right: 60px; width: 60px;"></div>
-    <div class="deco-square" style="top: 168px; right: 68px; width: 14px; height: 14px;"></div>
-    <div class="deco-small-dot" style="top: 138px; right: 220px; width: 6px; height: 6px;"></div>
-    <!-- 右侧散点 -->
-    <div class="deco-small-dot" style="top: 400px; right: 100px; width: 5px; height: 5px;"></div>
-    <div class="deco-small-dot" style="top: 462px; right: 180px; width: 4px; height: 4px; background: rgba(180,160,120,0.55);"></div>
-    <!-- 左侧竖线 -->
-    <div class="deco-line-v" style="top: 500px; left: 32px; height: 168px;"></div>
-    <div class="deco-small-dot" style="top: 500px; left: 29px; width: 7px; height: 7px;"></div>
-    <!-- 左下角方点 -->
-    <div class="deco-square" style="bottom: 96px; left: 32px; width: 10px; height: 10px; background: rgba(180,160,120,0.6); border: none;"></div>
+    <div class="bg-ring-thick" style="left:-160px;top:-160px;width:420px;height:420px;"></div>
+    <div class="bg-dot" style="right:-120px;bottom:-120px;width:360px;height:360px;"></div>
+    <div class="bg-dot fill" style="right:80px;top:60px;width:6px;height:6px;"></div>
+    <div class="bg-sq fill" style="left:120px;bottom:80px;width:10px;height:10px;transform:rotate(45deg);"></div>
+    <div class="bg-bar dim" style="right:220px;top:180px;width:1px;height:60px;"></div>
+    <div class="bg-bar dim" style="left:400px;bottom:120px;width:80px;height:1px;"></div>
+    <div class="bg-dot" style="left:520px;top:38px;width:5px;height:5px;border-color:var(--gold);background:var(--gold);"></div>
+    <div class="bg-sq" style="right:380px;bottom:60px;width:22px;height:22px;border-color:rgba(180,160,120,.2);"></div>
   </div>
+
   <div id="ct">
-    <!-- 顶部栏 -->
-    <div class="top-bar">
-      <div class="side">
-        <span class="top-dot"></span>
-        <span>Chapter · Epilogue</span>
-      </div>
-      <div class="side">
-        <span>尾声 · 长期演化追踪</span>
-        <span class="top-square"></span>
-      </div>
-    </div>
-    <div class="top-line"></div>
-
-    <!-- 主标题 -->
-    <div class="title-block">
-      <div class="eyebrow">
-        <span class="marker"></span>
-        <span>§ Epilogue · 尾声</span>
-      </div>
-      <h1 class="main-title">长期演化追踪</h1>
-      <div class="sub-title">
-        <span class="line"></span>
-        <span>不是终点</span>
-      </div>
-    </div>
-
-    <!-- 三条要点 -->
-    <div class="points">
-      <div class="point">
-        <div class="point-mark-h"></div>
-        <div class="point-mark-v"></div>
-        <div class="point-num">01 · 定位</div>
-        <div class="point-label">长期演化追踪系统的<br>第一个快照</div>
-        <div class="point-desc">这不是一次性分析，而是持续观测与复现机制的起点——标记的是时间轴上的一枚锚点。</div>
-      </div>
-      <div class="point">
-        <div class="point-mark-h"></div>
-        <div class="point-mark-v"></div>
-        <div class="point-num">02 · 三个维度</div>
-        <div class="point-label">度量权 / 可靠性 / 产权</div>
-        <div class="point-desc">三者是并行维度而非线性递进，交叉支撑长期演化的观测框架，不可相互替代。</div>
-      </div>
-      <div class="point">
-        <div class="point-mark-h"></div>
-        <div class="point-mark-v"></div>
-        <div class="point-num">03 · Keep Movement</div>
-        <div class="point-label">没有终点的哲学</div>
-        <div class="point-desc">"进化论的哲学里是没有终点的"——追踪本身即是结论，Keep Movement。</div>
-      </div>
-    </div>
-
-    <!-- 底部路线图 -->
-    <div class="roadmap">
-      <div class="roadmap-start">
-        <div class="start-dot"></div>
-        <div class="start-info">
-          <div class="start-label">Speech · 起点</div>
-          <div class="start-date">2026-09-21</div>
+    <!-- ============ HEADER ============ -->
+    <div class="header">
+      <div class="title-block">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span class="eyebrow-text">MCP · EVOLUTION · CASE STUDY</span>
+        </div>
+        <h1>MCP 演化路径 · <span class="accent">从厂商私产到中立基金会</span></h1>
+        <div class="subtitle">
+          <span class="subtitle-mark"></span>
+          <span class="subtitle-text">生态演化的一个案例</span>
         </div>
       </div>
-      <div class="roadmap-line"></div>
-      <div class="node" style="left: 24%;"></div>
-      <div class="node" style="left: 42%;"></div>
-      <div class="node" style="left: 62%;"></div>
-      <div class="node" style="left: 82%;"></div>
-      <div class="arrow-end"></div>
+      <div class="meta-block">
+        AGENT ECOSYSTEM<span class="meta-lab">
+        CASE №<span class="meta-hi">01</span>
+        </span>
+      </div>
     </div>
 
-    <!-- 页脚 narrative + 页码 -->
-    <div class="footer">
-      <div class="narrative">
-        这不是一次性分析，是长期演化追踪系统的第一个快照 —— <em>"进化论的哲学里是没有终点的" — Keep Movement</em>
+    <!-- ============ TIMELINE ============ -->
+    <div class="timeline-section">
+      <div class="anchors">
+        <div class="anchor anchor-l">
+          <div class="anchor-label">起点 · START</div>
+          <div class="anchor-name">Anthropic</div>
+          <div class="anchor-date">2024-11-25</div>
+          <span class="anchor-bar"></span>
+        </div>
+        <div class="anchor anchor-r">
+          <div class="anchor-label">终点 · END</div>
+          <div class="anchor-name">Linux Foundation</div>
+          <div class="anchor-date">2026</div>
+          <span class="anchor-bar"></span>
+        </div>
       </div>
-      <div class="page-num">— 44 · Epilogue —</div>
+
+      <div class="timeline-body">
+        <div class="rail">
+          <span class="rail-dot-l"></span>
+          <span class="rail-line"></span>
+          <span class="rail-arrow"></span>
+        </div>
+        <div class="span-label">
+          <span class="span-label-inner">
+            <span class="span-label-en">SPAN</span>
+            <span class="span-label-zh">2024-11-25 &nbsp;→&nbsp; 2026</span>
+          </span>
+        </div>
+
+        <div class="nodes-row">
+          <div class="node">
+            <span class="node-num">01</span>
+            <span class="node-dot"></span>
+            <div class="node-date">2024 · 11 · 25</div>
+            <div class="card card-start">
+              <span class="card-corner">START</span>
+              <span class="card-tag">起点</span>
+              <div class="card-title">Anthropic<br>单厂商发布</div>
+              <div class="card-desc"><strong>Model Context Protocol</strong> 由 Anthropic 独家推出，作为私有基础设施发布。</div>
+            </div>
+          </div>
+          <div class="node">
+            <span class="node-num">02</span>
+            <span class="node-dot"></span>
+            <div class="node-date">2025 · 03</div>
+            <div class="card">
+              <span class="card-corner">ADOPTION</span>
+              <span class="card-tag">采纳</span>
+              <div class="card-title">OpenAI 加入</div>
+              <div class="card-desc">第二个前沿实验室采纳 MCP，跨厂商共识由此形成。</div>
+            </div>
+          </div>
+          <div class="node">
+            <span class="node-num">03</span>
+            <span class="node-dot"></span>
+            <div class="node-date">2025</div>
+            <div class="card">
+              <span class="card-corner">EXPANSION</span>
+              <span class="card-tag">云厂</span>
+              <div class="card-title">云厂密集加入</div>
+              <div class="card-desc">AWS Bedrock AgentCore 等云基础设施相继接入 MCP。</div>
+            </div>
+          </div>
+          <div class="node">
+            <span class="node-num">04</span>
+            <span class="node-dot"></span>
+            <div class="node-date">2026</div>
+            <div class="card card-end">
+              <span class="card-corner">END</span>
+              <span class="card-tag">捐给 LF</span>
+              <div class="card-title">Agentic AI Foundation</div>
+              <div class="card-desc">MCP 正式加入 Linux Foundation 旗下 <strong>Agentic AI Foundation</strong>，转入中立治理。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ INSIGHT ============ -->
+      <div class="insight">
+        <div class="insight-content">
+          <div class="insight-num">05</div>
+          <div class="insight-body">
+            <div class="quote-mark">"</div>
+            <div class="quote-wrap">
+              <span class="quote-label">观察 · OBSERVATION</span>
+              <div class="quote">MCP 的演化，是社区自我组织的自然结果——<em>不是行政命令所能促成。</em></div>
+            </div>
+          </div>
+          <div class="insight-mark"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

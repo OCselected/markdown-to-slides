@@ -1,369 +1,388 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>讨论问题</title>
+<title>结语 · 开源之为思想的力量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
-:root{
-  --bg:#0F1E33;
-  --prussian:#1B3B6B;
-  --gold:#B4A078;
-  --warm-white:#F5F0E8;
-  --cyan:#4CC9C0;
-  --muted:rgba(245,240,232,0.55);
-  --dim:rgba(180,160,120,0.7);
-  --line:rgba(180,160,120,0.25);
+:root {
+  --bg: #0F1E33;
+  --primary: #1B3B6B;
+  --accent: #B4A078;
+  --text: #F5F0E8;
+  --text-soft: rgba(245, 240, 232, 0.68);
+  --text-dim: rgba(245, 240, 232, 0.42);
+  --border: rgba(27, 59, 107, 0.35);
+  --border-soft: rgba(180, 160, 120, 0.28);
 }
-
-*{box-sizing:border-box;margin:0;padding:0;}
-
-body{
-  font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
-  background:#050b17;
-  color:var(--warm-white);
-  -webkit-font-smoothing:antialiased;
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--bg);
 }
-
-.wrapper{
-  width:1600px;
-  height:900px;
-  position:relative;
-  overflow:hidden;
-  margin:0 auto;
-  background:var(--bg);
+.wrapper {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: var(--bg);
 }
-
-#bg{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background:radial-gradient(1000px 600px at 100% 0%, rgba(27,59,107,0.55) 0%, rgba(15,30,51,0) 60%);
+#bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(27, 59, 107, 0.45) 0%, rgba(15, 30, 51, 1) 60%, #0A1526 100%);
 }
-
-#ct{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  padding:70px 100px 60px 100px;
-  display:flex;
-  flex-direction:column;
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(180, 160, 120, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 160, 120, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.6;
 }
-
-/* Corner geometric decoration */
-.corner-tl{
-  position:absolute;
-  top:0;left:0;
-  width:180px;height:180px;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  z-index:0;
-}
-.corner-tl::after{
-  content:'';
-  position:absolute;
-  top:28px;left:28px;
-  width:10px;height:10px;
-  background:var(--gold);
-}
-
-.corner-tr{
-  position:absolute;
-  top:0;right:0;
-  width:180px;height:180px;
-  border-left:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  z-index:0;
-}
-.corner-tr::after{
-  content:'';
-  position:absolute;
-  top:30px;right:30px;
-  width:14px;height:14px;
-  border:1px solid var(--gold);
-}
-
-.corner-br{
-  position:absolute;
-  right:0;bottom:0;
-  width:180px;height:180px;
-  border-left:1px solid var(--line);
-  border-top:1px solid var(--line);
-  z-index:0;
-}
-.corner-br::after{
-  content:'';
-  position:absolute;
-  bottom:30px;right:30px;
-  width:14px;height:14px;
-  border:1px solid var(--gold);
-}
-
-.corner-bl{
-  position:absolute;
-  left:0;bottom:0;
-  width:180px;height:180px;
-  border-right:1px solid var(--line);
-  border-top:1px solid var(--line);
-  z-index:0;
-}
-.corner-bl::after{
-  content:'';
-  position:absolute;
-  bottom:28px;left:28px;
-  width:10px;height:10px;
-  background:var(--gold);
+#ct {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 56px 80px;
+  box-sizing: border-box;
 }
 
 /* Header */
-.header-block{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:24px;
-  padding-left:170px;
-  margin-top:8px;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.header-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+.header-right .rule {
+  display: inline-block;
+  width: 48px;
+  height: 4px;
+  background: var(--accent);
 }
 
-.section-mark{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:12px;
-  letter-spacing:0.35em;
-  color:var(--gold);
-  display:flex;
-  align-items:center;
-  gap:14px;
+/* Decorative geometry */
+.deco { position: absolute; pointer-events: none; }
+.deco-circle-1 {
+  top: 130px; left: 60px;
+  width: 90px; height: 90px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.deco-square-1 {
+  top: 158px; left: 110px;
+  width: 22px; height: 22px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+.deco-line-1 {
+  top: 200px; left: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0.6), rgba(180,160,120,0));
+}
+.deco-circle-2 {
+  top: 150px; right: 70px;
+  width: 60px; height: 60px;
+  border: 1px solid rgba(180,160,120,0.4);
+  border-radius: 50%;
+}
+.deco-square-2 {
+  bottom: 130px; left: 60px;
+  width: 14px; height: 14px;
+  border: 1px solid var(--accent);
+  opacity: 0.6;
+}
+.deco-line-2 {
+  bottom: 120px; right: 240px;
+  width: 220px; height: 1px;
+  background: linear-gradient(90deg, rgba(180,160,120,0), rgba(180,160,120,0.6));
+}
+.deco-circle-3 {
+  bottom: 110px; right: 70px;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
 }
 
-.section-mark .tag{
-  border:1px solid var(--gold);
-  padding:5px 12px;
-  color:var(--gold);
-  letter-spacing:0.3em;
-  font-weight:500;
+/* Center slogan */
+.center-area {
+  margin-top: 62px;
+  text-align: center;
+  position: relative;
+}
+.center-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: var(--accent);
+  margin-bottom: 26px;
+  text-transform: uppercase;
+}
+.center-eyebrow .dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.center-eyebrow .bar {
+  width: 40px; height: 1px;
+  background: var(--accent);
+}
+.slogan {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 92px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  line-height: 1.15;
+  color: var(--text);
+  text-shadow: 0 2px 0 rgba(180, 160, 120, 0.22), 0 4px 18px rgba(180, 160, 120, 0.14);
+  margin: 0;
+}
+.slogan .quote {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 100px;
+  vertical-align: -6px;
+}
+.slogan-under {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+.slogan-under .seg {
+  width: 60px; height: 2px;
+  background: var(--accent);
 }
 
-.section-mark .dot{
-  width:6px;height:6px;
-  background:var(--cyan);
-  border-radius:50%;
-  display:inline-block;
+/* Four cards */
+.cards {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(27, 59, 107, 0.28) 0%, rgba(27, 59, 107, 0.14) 100%);
+  padding: 26px 22px 24px;
+  min-height: 176px;
+  box-sizing: border-box;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 34px; height: 3px;
+  background: var(--accent);
+}
+.card-idx {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-idx .sq {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+}
+.card-head {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.card-head .en {
+  display: block;
+  font-family: Georgia, 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+.card-detail {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.7;
+  letter-spacing: 0.5px;
 }
 
-.title{
-  font-family:'Noto Serif SC','Songti SC',serif;
-  font-size:88px;
-  font-weight:700;
-  letter-spacing:0.18em;
-  color:var(--warm-white);
-  line-height:1;
+/* Footer narrative */
+.footer {
+  position: absolute;
+  left: 80px; right: 80px;
+  bottom: 56px;
+  text-align: center;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-soft);
 }
-
-.subtitle-row{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.footer-narrative {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-soft);
+  letter-spacing: 1.5px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
-.subtitle{
-  font-family:'Noto Serif SC','Songti SC',serif;
-  font-size:22px;
-  font-weight:400;
-  color:var(--gold);
-  letter-spacing:0.25em;
+.footer-narrative .em {
+  color: var(--accent);
+  font-weight: 500;
 }
-
-.subtitle-bar{
-  width:70px;
-  height:1px;
-  background:var(--gold);
+.footer-page {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-dim);
 }
-
-/* Questions list */
-.questions{
-  margin-top:38px;
-  margin-left:170px;
-  width:1280px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.question{
-  display:flex;
-  align-items:flex-start;
-  gap:24px;
-  padding:16px 8px 16px 0;
-}
-
-.dot-marker{
-  flex-shrink:0;
-  margin-top:16px;
-  width:12px;
-  height:12px;
-  background:var(--cyan);
-  border-radius:50%;
-  box-shadow:0 0 0 5px rgba(76,201,192,0.14);
-}
-
-.q-main{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.q-num{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:15px;
-  font-weight:700;
-  letter-spacing:0.28em;
-  color:var(--gold);
-}
-
-.q-text{
-  font-family:'Noto Sans SC','PingFang SC',sans-serif;
-  font-size:18px;
-  line-height:1.65;
-  color:rgba(245,240,232,0.85);
-  font-weight:300;
-}
-
-.q-text strong{
-  color:var(--warm-white);
-  font-weight:500;
-}
-
-.q-text .kw{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:16px;
-  font-weight:500;
-  color:var(--cyan);
-  letter-spacing:0.03em;
-}
-
-/* Footer */
-.footer-block{
-  margin-top:28px;
-  padding-left:170px;
-  padding-right:0;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.footer-divider{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:10px;
-  letter-spacing:0.4em;
-  color:rgba(180,160,120,0.6);
-}
-
-.footer-divider .line{
-  width:60px;
-  height:1px;
-  background:rgba(180,160,120,0.4);
-}
-
-.footer-divider .dot{
-  width:5px;height:5px;
-  background:var(--cyan);
-  border-radius:50%;
-}
-
-.footer-text{
-  font-family:'Noto Sans SC','PingFang SC',sans-serif;
-  font-size:13px;
-  line-height:1.9;
-  color:var(--muted);
-  font-weight:300;
-}
-
-.footer-text .em{
-  color:var(--gold);
-  font-weight:500;
-}
-
-.footer-text .mono{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:11.5px;
-  color:var(--cyan);
-  letter-spacing:0.05em;
-  font-weight:500;
+.footer-page .rule {
+  display: inline-block;
+  width: 30px; height: 1px;
+  background: var(--text-dim);
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="bg-grid"></div>
+    <div class="deco deco-circle-1"></div>
+    <div class="deco deco-square-1"></div>
+    <div class="deco deco-line-1"></div>
+    <div class="deco deco-circle-2"></div>
+    <div class="deco deco-square-2"></div>
+    <div class="deco deco-line-2"></div>
+    <div class="deco deco-circle-3"></div>
+  </div>
+
   <div id="ct">
-    <div class="corner-tl"></div>
-    <div class="corner-tr"></div>
-    <div class="corner-bl"></div>
-    <div class="corner-br"></div>
-
-    <div class="header-block">
-      <div class="section-mark">
-        <span class="tag"><span>FIN</span></span>
-        <span class="dot"></span>
-        <span><span>SECTION — Q &amp; A</span></span>
+    <div class="header">
+      <div class="header-left">
+        <div class="header-mark"></div>
+        <div class="header-title">结语 · 开源之为思想的力量</div>
       </div>
-      <h1 class="title"><span>讨论问题</span></h1>
-      <div class="subtitle-row">
-        <span class="subtitle-bar"></span>
-        <span class="subtitle"><span>留给 Q&amp;A 的三个开放问题</span></span>
+      <div class="header-right">
+        <span>CONCLUSION</span>
+        <span class="rule"></span>
+        <span>P. 46</span>
       </div>
     </div>
 
-    <div class="questions">
-      <div class="question">
-        <div class="dot-marker"></div>
-        <div class="q-main">
-          <span class="q-num"><span>QUESTION #1</span></span>
-          <p class="q-text"><strong>Agent 演化是否还有第六阶段？</strong>从"能用"到"会协作"之后，下一个分水岭究竟在哪里。</p>
-        </div>
+    <div class="center-area">
+      <div class="center-eyebrow">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span>THE SOURCE CODE OF INSTITUTIONS</span>
+        <span class="dot"></span>
+        <span class="bar"></span>
       </div>
-
-      <div class="question">
-        <div class="dot-marker"></div>
-        <div class="q-main">
-          <span class="q-num"><span>QUESTION #2</span></span>
-          <p class="q-text"><strong>开源 Agent 的"度量权"</strong>应该在社区手里，还是走向标准化？—— <span class="kw">Hermes 的 Footprint Ladder</span> 是一种制度实验。</p>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="dot-marker"></div>
-        <div class="q-main">
-          <span class="q-num"><span>QUESTION #3</span></span>
-          <p class="q-text"><strong>两种治理哲学的终局：</strong>本土办公产品的 <span class="kw">Agent 平台化</span>，与开源 Agent 的 <span class="kw">模块化</span>，最终如何收束？</p>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="dot-marker"></div>
-        <div class="q-main">
-          <span class="q-num"><span>QUESTION #4</span></span>
-          <p class="q-text"><strong><span class="kw">Talk &amp; Search</span> 时代与 <span class="kw">Agent &amp; Decide</span> 时代</strong>，是共存还是替代？消费范式重构，是否已经开始。</p>
-        </div>
+      <h1 class="slogan">
+        <span class="quote">「</span>思想是制度的源代码<span class="quote">」</span>
+      </h1>
+      <div class="slogan-under">
+        <span class="seg"></span>
+        <span>Keep Movement</span>
+        <span class="seg"></span>
       </div>
     </div>
 
-    <div class="footer-block">
-      <div class="footer-divider">
-        <span class="line"></span>
-        <span><span>FIN / Q&amp;A</span></span>
-        <span class="dot"></span>
+    <div class="cards">
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>I · FROM AGENT TO INSTITUTION</span></div>
+        <div class="card-head">从 Agent 到制度<span class="en">Agent as Sample</span></div>
+        <div class="card-detail">Hermes 是样本，不是终点。它只是一次实验，真正的题目是它背后的机制如何生长。</div>
       </div>
-      <p class="footer-text">
-        <span class="em">三个开放问题留给 Q&amp;A。</span>  田野考察是开放的 —— 欢迎补充案例，<span class="mono">issue / PR / release</span> 都是田野材料。
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>II · THE WAY OF OPENNESS</span></div>
+        <div class="card-head">开源之道<span class="en">Idea, Not Road</span></div>
+        <div class="card-detail">道是思想（idea），不是道路（road）。开源的价值不在通道，在于让想法得以流动。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>III · KEEP MOVEMENT</span></div>
+        <div class="card-head">Keep Movement<span class="en">Knowledge in Motion</span></div>
+        <div class="card-detail">知识不是静止的，是在移动中产生的。任何被冻结的秩序都会失去解释力。</div>
+      </div>
+      <div class="card">
+        <div class="card-idx"><span class="sq"></span><span>IV · A BLANK SPACE</span></div>
+        <div class="card-head">一句留白<span class="en">An Opening, Not a Proof</span></div>
+        <div class="card-detail">不是要证明什么——是打开一种思考。答案留给你，把问题还给演化本身。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="footer-narrative">
+        <span class="em">「思想是制度的源代码」</span>——不是规则在动，是思想在动。<span class="em">Keep Movement。</span>这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
       </p>
+      <div class="footer-page">
+        <span>END OF SPEECH</span>
+        <span class="rule"></span>
+        <span>46 / 46</span>
+        <span class="rule"></span>
+        <span>OPENNESS · INSTITUTION · MOVEMENT</span>
+      </div>
     </div>
   </div>
 </div>

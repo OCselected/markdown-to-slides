@@ -246,7 +246,28 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'P3 (feature)', 'value': '72%'}
 * **叙事：** 27,783 PRs 呈现'收敛型'策略：P2 全给 bug、P3 养 feature、P1 缺席——项目正从扩张期进入稳定化期。
 
-## Slide 20: 消费侧总览 · 弱代理的采纳信号
+## Slide 20: 操作侧总览 · 20+ 平台消息网关 + 6 种终端后端 + 一级 i18n
+
+* **视觉隐喻：** 左侧消息网关矩阵（20+ 平台图标拼贴），右侧部署拓扑（6 种终端后端），底部 zh-Hans 路径高亮；深普鲁士蓝背景
+
+* **显示要点：**
+  * {'head': '消息网关', 'detail': '20+ 平台——CLI/Telegram/Discord/Slack/WhatsApp/Signal/Matrix/Mattermost/Email/SMS/Teams/Google Chat'}
+  * {'head': '本土 IM 五件套', 'detail': 'Feishu / WeCom / Weixin / QQ Bot / DingTalk——不是附属翻译，是一等公民'}
+  * {'head': '终端后端', 'detail': '6 种：本地 / Docker / SSH / Daytona / Singularity / Modal——Daytona+Modal 提供 serverless 持久化'}
+  * {'head': '操作系统覆盖', 'detail': 'Linux/macOS/WSL2/Windows Native (早期测试)/Android (Termux)/Nix & NixOS'}
+  * {'head': '文档 i18n', 'detail': '/docs/zh-Hans/ 作为一级路径——与英文对等的正式入口，非翻译附属'}
+  * {'head': '制度含义', 'detail': '操作进化不是功能堆砌，是把 Agent 塞进用户已经存在的接入路径——交易成本的最小化'}
+
+* **数据要点：**
+  * {'label': '消息网关平台', 'value': '20+'}
+  * {'label': '本土 IM 覆盖', 'value': '5 (Feishu/WeCom/Weixin/QQ/DingTalk)'}
+  * {'label': '终端后端', 'value': '6 种'}
+  * {'label': 'OS 平台', 'value': '6+ (含 Android/Windows Native)'}
+  * {'label': 'i18n 语言路径', 'value': '一级 zh-Hans'}
+
+* **叙事：** 田野考察的第三视角——从"用户要什么"和"项目做了什么"，转到"用户在哪里接入"。Hermes 的操作进化体现在三处：20+ 消息网关（本土 IM 五件套被点名）、6 种终端后端（Daytona/Modal serverless 化）、zh-Hans 一级路径（文档本身作为本土接入点）。操作进化的本质是**接入的交易成本最小化**——不是"我能做什么"，是"我在哪里等你"。这也是消费侧采纳率背后的制度基础：Agent 只有先塞进用户已经存在的接入路径，才会被真实使用。
+
+## Slide 21: 消费侧总览 · 弱代理的采纳信号
 * **视觉隐喻：** 三层金字塔，底层 233 外围，中层 143 活跃，顶层 21 核心
 * **显示要点：**
   * {'head': 'Releases', 'detail': '33 个，从 2026-03-12 到 2026-09-11'}
@@ -263,7 +284,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Top 1', 'value': 'teknium1 (14,638)'}
 * **叙事：** 397 contributors 分层清晰：核心 5.3%、活跃 36%、外围 58.7%。stars/forks 是弱代理——不能反映真实使用频率、场景、付费行为。
 
-## Slide 21: 三个核心洞察
+## Slide 22: 三个核心洞察
 * **视觉隐喻：** 三列并置，每列一个大标题+简短说明，深普鲁士蓝背景
 * **显示要点：**
   * {'head': '洞察 #1', 'detail': '从扩张期进入稳定化期——P2 全给 bug + P1 缺席 + CLI 层 bug 驱动'}
@@ -271,7 +292,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '洞察 #3', 'detail': '消费侧信任是可观察的信号——feature issue 自带安全边界标签'}
 * **叙事：** 三个洞察：稳定化期、兼容性结构性税、消费侧信任作为可观察信号——从'能用'到'好用'的关键跃迁就在第三个洞察里。
 
-## Slide 22: Release 命名文化 · 田野观察第 1 章——把 release 当作文化事件
+## Slide 23: Release 命名文化 · 田野观察第 1 章——把 release 当作文化事件
 * **视觉隐喻：** 6 个 release 名称横向排列，每个下方一句话注解，深普鲁士蓝背景
 * **显示要点：**
   * {'head': '6 个命名 release', 'detail': 'Judgment / Tenacity / Surface / Velocity / Quicksilver / Patch'}
@@ -286,7 +307,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '命名 Release', 'value': '6 个'}
 * **叙事：** Hermes 的 release 不是版本号，是文化事件。6 个命名 release 用希腊神话/概念词汇命名，每个命名背后都是一个制度主张——这是开源项目的'仪式'。
 
-## Slide 23: 案例 1 · Judgment Release · P0/P1 清零——12 天战役的田野观察
+## Slide 24: 案例 1 · Judgment Release · P0/P1 清零——12 天战役的田野观察
 * **视觉隐喻：** 左侧大数字'692'，右侧 12 天日历网格，下方 @kshitijk4poor 的贡献者徽章
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.18.0 (2026-07-01) — The Judgment Release'}
@@ -302,7 +323,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '窗口 commits', 'value': '1,720 commits / 998 PRs'}
 * **叙事：** Judgment Release 是 Hermes 的一次'战役'——12 天清零 P0/P1，是开源项目罕见的'集中兵力'文化事件。@kshitijk4poor 的通宵作战是这段历史的脚注。'把 P0/P1 保持为 0'是文化承诺，不是 KPI。
 
-## Slide 24: 案例 2 · Tenacity Release · 多 Agent Kanban——'finishes what it starts' 的文化承诺
+## Slide 25: 案例 2 · Tenacity Release · 多 Agent Kanban——'finishes what it starts' 的文化承诺
 * **视觉隐喻：** 左侧 Kanban 看板图形，右侧 /goal 命令高亮，下方 heartbeat 心跳符号
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.13.0 (2026-05-07) — The Tenacity Release'}
@@ -318,7 +339,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Contributors', 'value': '295'}
 * **叙事：** Tenacity Release 的核心是'可靠性'——agent 必须'把开始的事做完'。Kanban 多 agent 平台的 heartbeat/reclaim/zombie detection 机制，让任务不会因崩溃而丢失。/goal 命令让 agent 跨 turn 锁定目标。
 
-## Slide 25: 案例 3 · Surface Release · 原生 Desktop——'Hermes meets you wherever you work'
+## Slide 26: 案例 3 · Surface Release · 原生 Desktop——'Hermes meets you wherever you work'
 * **视觉隐喻：** 左侧 desktop app 截图风格图形，右侧多语言图标，下方'1 周 100 PRs'徽章
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.16.0 (2026-06-05) — The Surface Release'}
@@ -334,7 +355,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Contributors', 'value': '170'}
 * **叙事：** Surface Release 是 Hermes 从'技术工具'到'日常工具'的关键跃迁——原生 desktop + Web admin + 中文 UI + 远程连接。一周内 100 PRs 的密度，体现了开源社区的'集中兵力'文化。
 
-## Slide 26: 案例 4 · Velocity Release · 大重构——'16,000 行 → 3,821 行' 的制度设计
+## Slide 27: 案例 4 · Velocity Release · 大重构——'16,000 行 → 3,821 行' 的制度设计
 * **视觉隐喻：** 左侧'16,083 行'大数字，中间箭头，右侧'3,821 行'小数字，下方'14 modules'标签
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.15.0 (2026-05-28) — The Velocity Release'}
@@ -350,7 +371,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Contributors', 'value': '321'}
 * **叙事：** Velocity Release 的核心是'速度'——不是性能优化，是制度设计。run_agent.py 从 16,083 行坍缩到 3,821 行，行为不变，但未来开发速度、插件作者 grep 体验、编辑器加载时间都大幅提升。
 
-## Slide 27: 案例 5 · Quicksilver Release · 性能爆发——'Hermes is the messenger god, and this window we made him move like it'
+## Slide 28: 案例 5 · Quicksilver Release · 性能爆发——'Hermes is the messenger god, and this window we made him move like it'
 * **视觉隐喻：** 左侧闪电符号 + '80%'大数字，右侧'4.3s → 0.9s'对比，下方'信使神 Hermes'神话引用
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.19.0 (2026-07-20) — The Quicksilver Release'}
@@ -367,7 +388,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'First-token 下降', 'value': '~80%'}
 * **叙事：** Quicksilver Release 的命名来自 Hermes（信使神）——'this window we made him move like it'。first-token time 下降 80% 是消费侧信任的基础：如果 agent 像要深呼吸，用户就会离开。
 
-## Slide 28: 案例 6 · Patch Release · 热修复——同日 hotfix 的田野观察
+## Slide 29: 案例 6 · Patch Release · 热修复——同日 hotfix 的田野观察
 * **视觉隐喻：** 左侧'v0.15.0'红色标签 + 箭头 + 右侧'v0.15.1'绿色标签，下方'+1 天'时间徽章
 * **显示要点：**
   * {'head': 'Release', 'detail': 'v0.15.1 (2026-05-29) — The Patch Release'}
@@ -383,7 +404,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '时间', 'value': 'v0.15.0 + 1 天'}
 * **叙事：** Patch Release 是开源项目的'认错仪式'——同日热修复，28 commits + 21 PRs。dashboard 401 reload loop 是 v0.15.0 的严重缺陷，团队立即定位并修复。'我们承认错了，并立刻修好'是开源信任的基石。
 
-## Slide 29: PR #5143 · 多角色自动路由——Gateway Hooks · 专业化分化（2026-04）
+## Slide 30: PR #5143 · 多角色自动路由——Gateway Hooks · 专业化分化（2026-04）
 * **视觉隐喻：** 左侧'#5143'大号编号 + 中间 gateway hooks 路由图 + 右侧'工具→团队'箭头
 * **显示要点：**
   * {'head': '需求信号', 'detail': '28,040 body · 11 comments · comp/gateway · area/sessions · needs-decision'}
@@ -394,7 +415,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Comments', 'value': '11'}
 * **叙事：** #5143 是 Phase 2 的标志性提案。用户要求 gateway hooks 实现多角色自动路由——不同任务类型路由到不同 agent 角色。这是 agent 从'工具'到'团队'的第一个信号。
 
-## Slide 30: PR #53871 · 给 Hermes 一个灵魂——Curiosity Engine · 生命化（2026-06）
+## Slide 31: PR #53871 · 给 Hermes 一个灵魂——Curiosity Engine · 生命化（2026-06）
 * **视觉隐喻：** 左侧'#53871'大号编号 + 中间'生命'概念图 + 右侧'工具→伙伴'箭头
 * **显示要点：**
   * {'head': '需求信号', 'detail': '27,518 body · comp/agent · tool/memory · area/sessions'}
@@ -405,7 +426,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '核心', 'value': 'Curiosity + Dream + Watchman'}
 * **叙事：** #53871 是 Phase 3 的标志性提案。'Give Hermes a Life Between Sessions'——引入 Curiosity Engine、Synthetic Dream Cycle、Watchman。这是 agent 从'工具'到'伙伴'的跃迁。
 
-## Slide 31: PR #61044 · Cron-native Batch API——自主调度 · 自动化（2026-07）
+## Slide 32: PR #61044 · Cron-native Batch API——自主调度 · 自动化（2026-07）
 * **视觉隐喻：** 左侧'#61044'大号编号 + 中间 cron 循环图（agent loop 自主调度）+ 右侧'手动→自动'箭头
 * **显示要点：**
   * {'head': '标题', 'detail': 'RFC: Cron-native Batch API agent loop for scheduled/background work'}
@@ -420,7 +441,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '状态', 'value': 'open · P3'}
 * **叙事：** #61044 是 Phase 3 的标志性 RFC。'Cron-native Batch API agent loop for scheduled/background work'——用户要求 agent 能定时自主执行复杂任务。从手动触发到自主调度的跃迁。innovation 标签说明这是被认可的创新提案。
 
-## Slide 32: PR #82198 · Skill-Persistence EPIC——自我组织 · 持久化（2026-08）
+## Slide 33: PR #82198 · Skill-Persistence EPIC——自我组织 · 持久化（2026-08）
 * **视觉隐喻：** 左侧'#82198'大号编号 + 中间'Skill-Persistence'架构图（持久化 + 边界 + 风险）+ 右侧'伙伴→自我组织'箭头
 * **显示要点：**
   * {'head': '标题', 'detail': 'EPIC: Hermes skill-persistence and storage-boundary operational-risk conquest'}
@@ -435,7 +456,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '状态', 'value': 'open · needs-decision'}
 * **叙事：** #82198 是 Phase 4 的标志性 EPIC。54,633 body 是样本中最大的设计文档之一。'skill-persistence and storage-boundary operational-risk conquest'——用户要求 agent 能持久化 skill（知识）、管理存储边界（安全）、征服运维风险（可靠性）。这是 agent 从'伙伴'到'自我组织者'的跃迁。
 
-## Slide 33: PR #94266 · Collective Wisdom Agent——集体智慧 · 智慧化（2026-08）
+## Slide 34: PR #94266 · Collective Wisdom Agent——集体智慧 · 智慧化（2026-08）
 * **视觉隐喻：** 左侧'#94266'大号编号 + 中间'集体智慧'网络图 + 右侧'自我组织→集体智慧'箭头
 * **显示要点：**
   * {'head': '需求信号', 'detail': '52,295 body · 9 comments · comp/agent · tool/skills · area/config · needs-decision'}
@@ -446,7 +467,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Comments', 'value': '9（讨论活跃）'}
 * **叙事：** #94266 是 Phase 4 的另一个标志性提案。'feat(wisdom): add Hermes Collective Wisdom Agent V1'——用户要求 agent 有集体智慧能力。52,295 body + 9 comments 说明这是活跃讨论的设计文档。
 
-## Slide 34: 案例 12 · desktop 供需缺口——数据案例：唯一失衡的组件
+## Slide 35: 案例 12 · desktop 供需缺口——数据案例：唯一失衡的组件
 * **视觉隐喻：** 对比表格，desktop 一行用红色标注'⚠️ 供给欠配'，下方 Surface Release 徽章
 * **显示要点：**
   * {'head': '需求', 'detail': 'desktop 需求 11%——用户主动要求新功能'}
@@ -461,7 +482,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': 'Surface Release', 'value': '100 PRs / 1 周'}
 * **叙事：** desktop 是供需缺口——用户偏新功能，供给以 bug 为主。但 Surface Release（一周 100 PRs）显示团队对 desktop 的集中投入。'生态是结果，不是手段'——能力扩张是用户需求驱动的。
 
-## Slide 35: 三个共性问题 · 专业化/生命化/智慧化——5 个 PR 案例的共性提炼
+## Slide 36: 三个共性问题 · 专业化/生命化/智慧化——5 个 PR 案例的共性提炼
 * **视觉隐喻：** 左侧 5 个 PR 编号列 + 中间'专业化→生命化→智慧化'演进箭头 + 右侧 needs-decision 标签
 * **显示要点：**
   * {'head': '专业化', 'detail': "#5143 多角色路由——agent 从'一个处理一切'到'角色分工'"}
@@ -471,7 +492,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '演化轨迹', 'detail': '专业化 → 生命化 → 自动化 → 持久化 → 智慧化'}
 * **叙事：** 5 个 PR 案例的共性：用户不再满足于'一个 agent 处理一切'，而是要求 agent 有专业化分工、有生命感、有自主调度、有持久化记忆、有集体智慧。5 个 PR 都是 needs-decision 状态——社区正在讨论这些演化方向。
 
-## Slide 36: 从'能用'到'好用'的跃迁 · 五阶段——用户需求演化的完整轨迹
+## Slide 37: 从'能用'到'好用'的跃迁 · 五阶段——用户需求演化的完整轨迹
 * **视觉隐喻：** 五阶段横向时间线，每阶段一个 PR 编号 + 日期 + 核心关键词
 * **显示要点：**
   * {'head': '专业化 → 生命化', 'detail': '#5143 (2026-04) Gateway Hooks → #53871 (2026-06) Soul / Curiosity Engine'}
@@ -479,7 +500,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '智慧化', 'detail': '#94266 (2026-08) Collective Wisdom Agent V1 (52,295 body)'}
 * **叙事：** 从'能用'到'好用'的跃迁是五步：专业化 → 生命化 → 自动化 → 持久化 → 智慧化。每一步都是用户对 agent 的需求提升——从工具到伙伴到自我组织到集体智慧。
 
-## Slide 37: Release 节奏观察——33 releases / 180 天
+## Slide 38: Release 节奏观察——33 releases / 180 天
 * **视觉隐喻：** 时间线 + 33 个圆点，命名 release 用红圈标注
 * **显示要点：**
   * {'head': '密度', 'detail': '33 releases / 180 天 ≈ 5.5 天/release'}
@@ -491,7 +512,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '命名 Release', 'value': '6 个'}
 * **叙事：** Release 节奏是社区自我组织的节奏——不是行政命令能促成的。
 
-## Slide 38: 田野考察小结——12 案例的横切视角
+## Slide 39: 田野考察小结——12 案例的横切视角
 * **视觉隐喻：** 12 个案例标签网格排列，下方三个共性问题大字
 * **显示要点：**
   * {'head': '6 个命名 release', 'detail': 'Judgment/Tenacity/Surface/Velocity/Quicksilver/Patch——文化事件'}
@@ -501,7 +522,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '核心洞察', 'detail': "消费侧信任是可观察的信号——开源 Agent 的'度量权'在社区手里"}
 * **叙事：** 12 个案例的横切视角：6 个命名 release + 5 个典型 issue + 1 个数据案例 = 三个共性问题（可靠性/兼容性/信任）。核心洞察：消费侧信任是可观察的信号——开源 Agent 的'度量权'在社区手里。
 
-## Slide 39: 田野考察方法论复盘——从群众中来的方法
+## Slide 40: 田野考察方法论复盘——从群众中来的方法
 * **视觉隐喻：** 五个圆圈排列：视角/方法/立场/局限/下一步，每个圆圈一个关键词
 * **显示要点：**
   * {'head': '视角', 'detail': '开源社区内实践者——不是外部观察者，是参与者和记录者'}
@@ -511,7 +532,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '下一步', 'detail': '长期追踪——持续观察需求/供给/消费的演化，寻找更强信号'}
 * **叙事：** 方法论复盘：视角是开源社区内实践者（不是外部观察者），方法是从群众中来（从实践出发，非框架先行），立场是批判行政开源（用实践检验理论）。局限：消费信号是弱代理、单一仓库、关键词分析非语义分析。下一步：长期追踪。
 
-## Slide 40: 第四幕 · Agent 演化洞察——从 12 案例中提炼的演化规律
+## Slide 41: 第四幕 · Agent 演化洞察——从 12 案例中提炼的演化规律
 * **视觉隐喻：** 深普鲁士蓝底色，中央大字'Agent 演化洞察'，下方三道分水岭
 * **显示要点：**
   * {'head': '核心', 'detail': "从'能用'到'好用'的三道分水岭"}
@@ -519,7 +540,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '目标', 'detail': '理解 Agent 演化的内在规律'}
 * **叙事：** 本幕从 12 个案例中提炼 Agent 演化规律——从'能用'到'好用'的三道分水岭：可靠性、兼容性、信任。
 
-## Slide 41: 三道分水岭 · 可靠性/兼容性/信任——从'能用'到'好用'的关键跃迁
+## Slide 42: 三道分水岭 · 可靠性/兼容性/信任——从'能用'到'好用'的关键跃迁
 * **视觉隐喻：** 三道分水岭并排：可靠性/兼容性/信任
 * **显示要点：**
   * {'head': '可靠性', 'detail': '能否信任 agent 记住正确的历史（#107070 + Tenacity）'}
@@ -527,7 +548,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '信任', 'detail': '能力有安全边界（#67002 + Judgment）'}
 * **叙事：** 三道分水岭是 Agent 从'能用'到'好用'的关键跃迁。顺序不是独立的——可靠性是兼容性的基础，兼容性是信任的前提。
 
-## Slide 42: 洞察 #1 · 可靠性是 Agent 的底线——Tenacity Release + #107070
+## Slide 43: 洞察 #1 · 可靠性是 Agent 的底线——Tenacity Release + #107070
 * **视觉隐喻：** 左侧 Tenacity Release 徽章 + 右侧 #107070 issue 卡片，中间箭头
 * **显示要点：**
   * {'head': 'Tenacity Release', 'detail': 'Kanban 多 agent 平台——heartbeat/reclaim/zombie detection'}
@@ -540,7 +561,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '#107070', 'value': 'P1 / risk-session-state'}
 * **叙事：** 可靠性是 Agent 的底线——Tenacity Release 用 Kanban 平台解决任务持久性，#107070 是会话重放污染历史的 P1 缺陷。供给侧（Tenacity）+ 需求侧（#107070）= 完整画面。
 
-## Slide 43: 洞察 #2 · 兼容性是 Agent 的边界——Surface Release + #101600
+## Slide 44: 洞察 #2 · 兼容性是 Agent 的边界——Surface Release + #101600
 * **视觉隐喻：** 左侧 Surface Release 徽章 + 右侧 #101600 issue 卡片
 * **显示要点：**
   * {'head': 'Surface Release', 'detail': '原生 desktop（macOS/Linux/Windows）'}
@@ -551,7 +572,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '#101600', 'value': 'P1 / risk-compatibility'}
 * **叙事：** 兼容性是 Agent 的边界——Surface Release 做出跨平台 desktop，#101600 是 Windows 自锁的 P1 缺陷。供给侧 + 需求侧 = 完整画面。
 
-## Slide 44: 洞察 #3 · 信任是 Agent 的跃迁——Judgment Release + #67002
+## Slide 45: 洞察 #3 · 信任是 Agent 的跃迁——Judgment Release + #67002
 * **视觉隐喻：** 左侧 Judgment Release 徽章 + 右侧 #67002 issue 卡片，中间箭头
 * **显示要点：**
   * {'head': 'Judgment Release', 'detail': 'P0/P1 清零战役——692 items / 12 days'}
@@ -564,7 +585,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '#67002', 'value': 'risk-message-delivery + blast-moderate'}
 * **叙事：** 信任是 Agent 的跃迁——Judgment Release 用 P0/P1 清零建立信任，#67002 是用户主动要求安全边界。供给侧（Judgment）+ 需求侧（#67002）= 完整画面。
 
-## Slide 45: MCP 演化路径 · 从厂商私产到中立基金会——生态演化的一个案例
+## Slide 46: MCP 演化路径 · 从厂商私产到中立基金会——生态演化的一个案例
 * **视觉隐喻：** 左上 Anthropic → 中间箭头 → 右上 Linux Foundation，箭头下方标注时间跨度
 * **显示要点：**
   * {'head': '起点', 'detail': '2024-11-25 Anthropic 单厂商发布'}
@@ -577,7 +598,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'label': '终点', 'value': '2026'}
 * **叙事：** MCP 演化路径：从 Anthropic 单厂商私产到 Linux Foundation 中立基金会。多厂商自发采纳后的自然结果——这是 Agent 生态演化的一个典型案例。
 
-## Slide 46: Epilogue · 长期演化追踪——不是终点
+## Slide 47: Epilogue · 长期演化追踪——不是终点
 * **视觉隐喻：** 极简路线图，左侧'演讲 2026-09-21'，右侧延伸长线上有四个节点
 * **显示要点：**
   * {'head': '定位', 'detail': '本演讲是长期演化追踪系统的第一个快照'}
@@ -585,7 +606,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': 'Keep Movement', 'detail': '进化论的哲学里是没有终点的'}
 * **叙事：** 这不是一次性分析，是长期演化追踪系统的第一个快照。'进化论的哲学里是没有终点的'——Keep Movement。
 
-## Slide 47: 长期演化追踪系统——下一个快照是什么？
+## Slide 48: 长期演化追踪系统——下一个快照是什么？
 * **视觉隐喻：** 时间线 + 四个节点（需求/供给/消费/制度），线上有'每周/每月/持续'标注
 * **显示要点：**
   * {'head': '需求侧', 'detail': '持续追踪 issue 演化（每周更新）'}
@@ -595,7 +616,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '田野考察', 'detail': '新增案例（issue/PR/release）每月更新'}
 * **叙事：** 长期演化追踪系统的下一个快照：需求侧/供给侧/消费侧每周更新，新增案例每月更新，制度维度并行追踪。'Keep Movement'——知识不是静止的，是在移动中产生的。
 
-## Slide 48: 结语 · 开源之为思想的力量
+## Slide 49: 结语 · 开源之为思想的力量
 * **视觉隐喻：** 深普鲁士蓝底色，中央大字'思想是制度的源代码'
 * **显示要点：**
   * {'head': '从 Agent 到制度', 'detail': 'Hermes 是样本，不是终点'}
@@ -604,7 +625,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '一句留白', 'detail': '不是要证明什么——是打开一种思考'}
 * **叙事：** '思想是制度的源代码'——不是规则在动，是思想在动。Keep Movement。这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
 
-## Slide 49: 讨论问题——留给 Q&A 的三个开放问题
+## Slide 50: 讨论问题——留给 Q&A 的三个开放问题
 * **视觉隐喻：** 极简设计，三个问题列在中央，每个问题前有小圆点
 * **显示要点：**
   * **问题 #1**：从"能用"到"会协作"，是否还有第六阶段？——agent 演化的下一个分水岭在哪里？
@@ -613,7 +634,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * **问题 #4**：Talk & Search 时代和 Agent & Decide 时代会共存还是替代？——消费范式的重构已经开始了吗？
 * **叙事：** 三个开放问题留给 Q&A。田野考察是开放的——欢迎补充案例，issue/PR/release 都是田野材料。
 
-## Slide 50: 延伸阅读——制度经济学核心文献
+## Slide 51: 延伸阅读——制度经济学核心文献
 * **视觉隐喻：** 5 本书籍封面横向排列，深普鲁士蓝背景
 * **显示要点：**
   * {'head': '转型经济学', 'detail': 'Roland 2004 · Understanding Institutional Change'}
@@ -623,7 +644,7 @@ dark academic tone, Intellectual Visual System. 冷静智识感，田野考察�
   * {'head': '开源经济学', 'detail': 'Lerner & Tirole 2002 · The Economics of Open Source Software'}
 * **叙事：** 延伸阅读覆盖制度经济学的核心文献——从转型经济学到演化制度理论，从交易成本到开源经济学。
 
-## Slide 51: 致谢 · Thank you——Keep Movement
+## Slide 52: 致谢 · Thank you——Keep Movement
 * **视觉隐喻：** Minimal design. Center: '致谢 · Thank you'. Below: 'Keep Movement'. Bottom: date + event info.
 * **显示要点：**
   * **「开源之道」·适兕 × 窄廊**——两种存在形式，一个使命：Keep Movement——知识不是静止的，是在移动中产生的

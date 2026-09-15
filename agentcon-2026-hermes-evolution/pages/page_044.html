@@ -4,31 +4,31 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>洞察 #3 · 信任是 Agent 的跃迁</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<title>洞察 #2 · 兼容性是 Agent 的边界</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
-  --bg-1: #0F1E33;
-  --bg-2: #1B3B6B;
-  --bg-3: #0A1628;
+  --bg: #0F1E33;
+  --bg-2: #142744;
+  --bg-3: #1B3B6B;
   --ink: #F5F0E8;
-  --ink-dim: rgba(245, 240, 232, 0.64);
-  --ink-mute: rgba(245, 240, 232, 0.42);
-  --accent: #B4A078;
-  --accent-bright: #D4BE94;
-  --rule: rgba(180, 160, 120, 0.32);
-  --rule-soft: rgba(180, 160, 120, 0.16);
+  --ink-2: #C9C0B0;
+  --ink-3: #7A8399;
+  --gold: #B4A078;
+  --gold-2: #D8B980;
+  --accent: #6FA8C9;
+  --line: rgba(245, 240, 232, 0.14);
+  --line-strong: rgba(180, 160, 120, 0.35);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 
 body {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   color: var(--ink);
-  background: var(--bg-1);
-  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
 }
 
 .wrapper {
@@ -37,658 +37,468 @@ body {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  font-family: 'Noto Sans SC', sans-serif;
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 1300px 900px at 30% 20%, #1B3B6B 0%, #0F1E33 55%, #0A1628 100%);
+  background: radial-gradient(ellipse at 30% 20%, #17304F 0%, #0F1E33 55%, #0A1524 100%);
 }
 
-.bg-shape { position: absolute; pointer-events: none; }
-.bg-circle-lg {
-  width: 360px; height: 360px; border-radius: 50%;
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.bg-c1 {
+  width: 720px; height: 720px;
+  top: -340px; right: -220px;
+  border: 1px solid rgba(180, 160, 120, 0.18);
+  background: radial-gradient(circle at 30% 30%, rgba(180, 160, 120, 0.05), transparent 60%);
+}
+.bg-c2 {
+  width: 460px; height: 460px;
+  bottom: -180px; left: -140px;
   border: 1px solid rgba(180, 160, 120, 0.14);
-  top: -140px; right: -90px;
 }
-.bg-circle-md {
-  width: 180px; height: 180px; border-radius: 50%;
-  background: rgba(180, 160, 120, 0.04);
-  bottom: -60px; left: 12%;
+.bg-c3 {
+  width: 14px; height: 14px;
+  bottom: 110px; right: 90px;
+  background: rgba(216, 185, 128, 0.4);
 }
-.bg-square-rot {
-  width: 110px; height: 110px;
-  border: 1px solid rgba(180, 160, 120, 0.22);
-  transform: rotate(45deg);
-  top: 320px; right: 130px;
+
+.bg-square {
+  position: absolute;
+  pointer-events: none;
 }
-.bg-square-sml {
-  width: 16px; height: 16px;
-  background: rgba(180, 160, 120, 0.4);
-  top: 148px; left: 60%;
+.bg-sq1 {
+  width: 42px; height: 42px;
+  top: 380px; right: 48px;
+  background: var(--gold);
+  opacity: 0.85;
 }
-.bg-line-h-1 {
-  width: 220px; height: 1px;
-  background: var(--rule);
-  top: 260px; left: 60px;
+.bg-sq2 {
+  width: 6px; height: 6px;
+  bottom: 220px; left: 60px;
+  background: var(--gold);
 }
-.bg-line-v-1 {
-  width: 1px; height: 200px;
-  background: var(--rule);
-  top: 140px; right: 260px;
+.bg-sq3 {
+  width: 18px; height: 18px;
+  top: 180px; left: 34px;
+  border: 1px solid var(--gold);
+  opacity: 0.5;
 }
-.bg-line-h-2 {
-  width: 180px; height: 1px;
-  background: var(--rule);
-  bottom: 90px; right: 100px;
+
+.bg-hline {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180, 160, 120, 0.22), transparent);
 }
-.bg-dot-1 {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  top: 88px; right: 88px;
-}
-.bg-dot-2 {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent);
-  bottom: 44px; left: 44px;
-}
-.bg-tri {
-  width: 0; height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 20px solid rgba(180, 160, 120, 0.3);
-  top: 500px; left: 60px;
-  transform: rotate(-15deg);
-}
+.bg-hline-1 { top: 300px; }
+.bg-hline-2 { bottom: 178px; }
 
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 44px 68px 36px;
+  padding: 48px 60px;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== Header ===== */
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 40px;
-}
-.header-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.badge-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 2px;
-}
-.badge-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 14px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-size: 12px;
-  letter-spacing: 0.24em;
+.header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+
+.insight-label {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 15px;
   font-weight: 500;
-  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
-.badge-tag .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
+.insight-label::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
 }
-.h-eyebrow {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: var(--ink-dim);
-  letter-spacing: 0.28em;
+.insight-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(180,160,120,0.4), transparent);
 }
-.h-eyebrow .sep { color: var(--accent); margin: 0 10px; }
 
 h1.title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 48px;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 54px;
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin: 0;
   color: var(--ink);
-  letter-spacing: 0.04em;
-  line-height: 1.15;
-  margin-top: 2px;
 }
-h1.title em {
-  font-style: normal;
-  color: var(--accent-bright);
-  padding: 0 4px;
+.title-accent {
+  color: var(--gold-2);
+  font-style: italic;
 }
-.subtitle {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  color: var(--ink-dim);
-  letter-spacing: 0.1em;
-  margin-top: 6px;
+
+.subtitle-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--ink-2);
+  letter-spacing: 0.16em;
 }
-.subtitle .code {
-  font-family: 'Noto Serif SC', serif;
-  color: var(--accent);
-  font-weight: 600;
+.subtitle-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  display: inline-block;
 }
-.subtitle .sep { color: var(--accent); }
-
-.header-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  padding-top: 4px;
-  min-width: 150px;
-}
-.hr-meta {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  color: var(--ink-mute);
-  letter-spacing: 0.32em;
-}
-.hr-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 62px;
-  color: var(--accent);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.hr-underscore {
-  width: 88px;
-  height: 2px;
-  background: var(--accent);
-  margin-top: 4px;
-}
-.hr-caption {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px;
-  color: var(--ink-mute);
-  letter-spacing: 0.28em;
-  margin-top: 4px;
+.subtitle-divider {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
 }
 
-/* ===== Main split ===== */
-.main-split {
+.cards {
   display: grid;
-  grid-template-columns: 1fr 108px 1fr;
-  gap: 0;
-  margin-top: 20px;
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  margin-bottom: 24px;
 }
 
 .card {
   position: relative;
-  padding: 22px 26px 20px;
-  border: 1px solid rgba(180, 160, 120, 0.28);
-  background: rgba(15, 30, 51, 0.55);
+  background: linear-gradient(155deg, rgba(27,59,107,0.55), rgba(15,30,51,0.85));
+  border: 1px solid var(--line);
+  padding: 28px 32px 26px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  height: 380px;
 }
 .card::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: -1px; left: -1px;
-  width: 20px; height: 20px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
+  top: 0; left: 0;
+  width: 60px; height: 3px;
+  background: var(--gold);
 }
 .card::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: -1px; right: -1px;
-  width: 20px; height: 20px;
-  border-bottom: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
+  top: -1px; right: -1px;
+  width: 34px; height: 34px;
+  border-right: 1px solid var(--gold);
+  border-top: 1px solid var(--gold);
+  opacity: 0.5;
 }
 
-.card-top {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.card-side-label {
+.card-tag {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.28em;
-  color: var(--accent);
+  letter-spacing: 0.22em;
+  color: var(--gold);
 }
-.card-side-label.right {
-  justify-content: flex-end;
-}
-.card-side-label .side-line {
-  width: 26px; height: 1px; background: var(--accent);
-}
-.card-name {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.15;
-  letter-spacing: 0.02em;
-}
-.card-name .code {
-  color: var(--accent-bright);
-  font-weight: 700;
-}
-.card-version {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  color: var(--ink-dim);
-  letter-spacing: 0.06em;
-}
-.card-version .sep { color: var(--accent); margin: 0 8px; }
-
-.card-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 4px;
-}
-.tag {
-  padding: 3px 9px;
+.card-tag-badge {
+  width: 46px; height: 22px;
+  border: 1px solid var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
   font-size: 10px;
-  border: 1px solid rgba(180, 160, 120, 0.42);
-  color: var(--accent);
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.05em;
-  line-height: 1.5;
+  letter-spacing: 0.12em;
+}
+.card-tag-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(180, 160, 120, 0.25);
 }
 
-.metric-block {
-  padding: 12px 0 10px;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+.card-main {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 12px;
-}
-.metric-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  flex: 1;
-}
-.metric-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 40px;
-  color: var(--accent-bright);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-.metric-num.letters {
-  font-size: 32px;
-  letter-spacing: 0.06em;
-}
-.metric-num .unit {
-  font-size: 15px;
-  color: var(--accent);
-  font-weight: 500;
-  margin-left: 3px;
-}
-.metric-lbl {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: var(--ink-dim);
-  letter-spacing: 0.16em;
-  line-height: 1.5;
-}
-.metric-divider {
-  width: 1px;
-  align-self: stretch;
-  background: var(--rule);
-  margin: 4px 0;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.card-desc {
+.card-icon {
+  width: 72px; height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.icon-square {
+  border: 2px solid var(--gold);
+}
+.icon-circle {
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.card-hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.card-sub {
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 13px;
-  line-height: 1.7;
-  color: var(--ink);
-}
-.card-desc .hi {
-  color: var(--accent-bright);
-  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
 }
 
-.card-role {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
+.card-severity-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sev-badge {
+  padding: 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-weight: 700;
+}
+.sev-badge-outline {
+  border-color: rgba(111, 168, 201, 0.6);
   color: var(--accent);
+  font-weight: 400;
+}
+
+.card-timestamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-3);
   letter-spacing: 0.1em;
-  padding-top: 10px;
-  border-top: 1px dashed var(--rule);
+  padding-top: 12px;
+  border-top: 1px dashed rgba(245, 240, 232, 0.12);
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.role-diamond {
-  width: 7px; height: 7px;
-  background: var(--accent);
-  transform: rotate(45deg);
+.card-timestamp::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
   flex-shrink: 0;
 }
 
-/* ===== Center connector ===== */
-.connector {
+.plat-row {
+  display: flex;
+  gap: 10px;
+}
+.plat {
+  flex: 1;
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px 0;
+  gap: 5px;
 }
-.conn-label-top {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.4em;
-  text-align: center;
-  line-height: 1.2;
+.plat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  font-weight: 500;
 }
-.conn-line {
-  width: 42px; height: 1px;
-  background: var(--accent);
-}
-.conn-badge {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  border: 1px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background: rgba(15, 30, 51, 0.7);
-}
-.conn-badge::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border: 1px solid var(--rule-soft);
-  border-radius: 50%;
-}
-.conn-badge svg {
-  width: 34px; height: 34px;
-}
-.conn-label-bottom {
+.plat-tag {
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 10px;
-  color: var(--ink-mute);
-  letter-spacing: 0.24em;
-  text-align: center;
-  line-height: 1.2;
+  color: var(--ink-3);
+  padding: 1px 8px;
+  border: 1px solid rgba(245,240,232,0.12);
+  letter-spacing: 0.1em;
 }
 
-/* ===== Bottom 4 points ===== */
-.points {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 20px;
-}
-.point {
-  position: relative;
-  padding: 12px 14px 12px 16px;
-  border-left: 2px solid var(--accent);
-  background: rgba(15, 30, 51, 0.4);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.point-header {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 2px;
-}
-.point-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  color: var(--accent);
-  font-weight: 700;
-  line-height: 1;
-}
-.point-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
+.card-summary {
+  margin-top: auto;
+  padding: 14px 16px;
+  border-left: 2px solid var(--gold);
+  background: rgba(180, 160, 120, 0.06);
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.5;
   color: var(--ink);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-.point-text {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  color: var(--ink-dim);
-  line-height: 1.6;
-}
-.point-text .em {
-  color: var(--accent-bright);
   font-weight: 500;
 }
 
-/* ===== Footer ===== */
-.footer {
-  margin-top: 18px;
+.card-summary.accent {
+  border-left-color: var(--accent);
+  background: rgba(111, 168, 201, 0.08);
+}
+.card-summary strong {
+  font-weight: 700;
+  color: var(--gold-2);
+  letter-spacing: 0.04em;
+}
+.card-summary.accent strong {
+  color: var(--accent);
+}
+
+.bridge {
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding: 12px 20px;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.footer-line {
-  width: 30px;
-  height: 1px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-.footer-text {
-  flex: 1;
-  font-family: 'Noto Serif SC', serif;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+  font-family: 'Noto Serif SC', Georgia, serif;
   font-size: 18px;
-  color: var(--ink);
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  text-align: center;
+  color: var(--gold);
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  margin-bottom: 18px;
 }
-.footer-text em {
-  font-style: normal;
-  color: var(--accent-bright);
+.bridge::before,
+.bridge::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180,160,120,0.4), transparent);
+  max-width: 320px;
 }
-.footer-tail {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px;
-  color: var(--ink-mute);
-  letter-spacing: 0.28em;
+.bridge-mid-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
   flex-shrink: 0;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 14px;
+}
+.bottom-bar {
+  flex: 1;
+  height: 1px;
+  max-width: 180px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.bottom-bar.right {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+.bottom-label {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.bottom-label .accent {
+  color: var(--gold-2);
+  font-style: italic;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-shape bg-circle-lg"></div>
-    <div class="bg-shape bg-circle-md"></div>
-    <div class="bg-shape bg-square-rot"></div>
-    <div class="bg-shape bg-square-sml"></div>
-    <div class="bg-shape bg-line-h-1"></div>
-    <div class="bg-shape bg-line-v-1"></div>
-    <div class="bg-shape bg-line-h-2"></div>
-    <div class="bg-shape bg-dot-1"></div>
-    <div class="bg-shape bg-dot-2"></div>
-    <div class="bg-shape bg-tri"></div>
+    <div class="bg-circle bg-c1"></div>
+    <div class="bg-circle bg-c2"></div>
+    <div class="bg-circle bg-c3"></div>
+    <div class="bg-square bg-sq1"></div>
+    <div class="bg-square bg-sq2"></div>
+    <div class="bg-square bg-sq3"></div>
+    <div class="bg-hline bg-hline-1"></div>
+    <div class="bg-hline bg-hline-2"></div>
   </div>
-
   <div id="ct">
     <div class="header">
-      <div class="header-left">
-        <div class="badge-row">
-          <div class="badge-tag"><span class="dot"></span><span>INSIGHT · 洞察</span></div>
-          <div class="h-eyebrow">AGENT EVOLUTION <span class="sep">·</span> 第 03 章 <span class="sep">·</span> 2026</div>
-        </div>
-        <h1 class="title">信任是 Agent 的<em>跃迁</em></h1>
-        <div class="subtitle">
-          <span class="code">Judgment Release</span>
-          <span class="sep">+</span>
-          <span class="code">#67002</span>
-          <span class="sep">·</span>
-          <span>供给侧 × 需求侧 的合题</span>
-        </div>
-      </div>
-      <div class="header-right">
-        <div class="hr-meta">No.</div>
-        <div class="hr-num">03</div>
-        <div class="hr-underscore"></div>
-        <div class="hr-caption">TRUST · LEAP</div>
+      <div class="insight-label"><span>洞察 #2 &nbsp;/&nbsp; INSIGHT No. 02</span></div>
+      <h1 class="title">兼容性是 Agent 的<span class="title-accent">边界</span></h1>
+      <div class="subtitle-row">
+        <span class="subtitle-dot"></span>
+        <span>Surface Release &nbsp;+&nbsp; #101600</span>
+        <span class="subtitle-divider"></span>
+        <span>供给 &nbsp;·&nbsp; 需求</span>
       </div>
     </div>
 
-    <div class="main-split">
+    <div class="cards">
       <div class="card">
-        <div class="card-top">
-          <div class="card-side-label">
-            <span class="side-line"></span>
-            <span>供给侧 · SUPPLY SIDE</span>
-          </div>
-          <div class="card-name">Judgment Release</div>
-          <div class="card-version">v0.18.0 <span class="sep">·</span> 2026-07-01</div>
-          <div class="card-tags">
-            <span class="tag">milestone</span>
-            <span class="tag">quality-baseline</span>
-            <span class="tag">judgment</span>
+        <div class="card-tag"><span>供给侧 / SUPPLY</span><span class="card-tag-badge">RELEASE</span><span class="card-tag-line"></span></div>
+        <div class="card-main">
+          <div class="card-icon icon-square">v</div>
+          <div class="card-hero-text">
+            <div class="card-title-mono">v0.16.0</div>
+            <div class="card-sub">Surface Release</div>
           </div>
         </div>
-
-        <div class="metric-block">
-          <div class="metric-item">
-            <div class="metric-num">692<span class="unit"> items</span></div>
-            <div class="metric-lbl">P0 / P1 全部清零</div>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <div class="metric-num">12<span class="unit"> 天</span></div>
-            <div class="metric-lbl">战役周期 · DAYS</div>
-          </div>
+        <div class="card-timestamp"><span>发布日期 · 2026-06-05</span></div>
+        <div class="plat-row">
+          <div class="plat"><span class="plat-label">macOS</span><span class="plat-tag">native</span></div>
+          <div class="plat"><span class="plat-label">Linux</span><span class="plat-tag">native</span></div>
+          <div class="plat"><span class="plat-label">Windows</span><span class="plat-tag">native</span></div>
         </div>
-
-        <div class="card-desc">
-          一次<span class="hi">P0 / P1 清零战役</span>——在两个工作周内清空 692 项最高优先级事项，主动向市场兑现质量与判断力的信誉基线。
-        </div>
-        <div class="card-role">
-          <span class="role-diamond"></span>
-          <span>主动建立信任 · 供给端的信誉投入</span>
-        </div>
-      </div>
-
-      <div class="connector">
-        <div class="conn-label-top">合 题</div>
-        <div class="conn-line"></div>
-        <div class="conn-badge">
-          <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 15 L13 15 M10 11 L13 15 L10 19" fill="none" stroke="#D4BE94" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M26 15 L17 15 M20 11 L17 15 L20 19" fill="none" stroke="#D4BE94" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
-          </svg>
-        </div>
-        <div class="conn-line"></div>
-        <div class="conn-label-bottom">双轴驱动</div>
+        <div class="card-summary"><strong>原生 desktop</strong>：macOS / Linux / Windows</div>
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-side-label right">
-            <span>需求侧 · DEMAND SIDE</span>
-            <span class="side-line"></span>
-          </div>
-          <div class="card-name"><span class="code">#67002</span> Issue</div>
-          <div class="card-version">Safe MCP Reload <span class="sep">·</span> 用户主动发起</div>
-          <div class="card-tags">
-            <span class="tag">risk-message-delivery</span>
-            <span class="tag">blast-moderate</span>
-            <span class="tag">user-issued</span>
+        <div class="card-tag"><span>需求侧 / DEMAND</span><span class="card-tag-badge">ISSUE</span><span class="card-tag-line"></span></div>
+        <div class="card-main">
+          <div class="card-icon icon-circle">!</div>
+          <div class="card-hero-text">
+            <div class="card-title-mono">#101600</div>
+            <div class="card-sub">open · blocking</div>
           </div>
         </div>
-
-        <div class="metric-block">
-          <div class="metric-item">
-            <div class="metric-num letters">MCP</div>
-            <div class="metric-lbl">协议级 · PROTOCOL</div>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <div class="metric-num letters">SAFE</div>
-            <div class="metric-lbl">用户指定 · BOUNDARY</div>
-          </div>
+        <div class="card-severity-row">
+          <span class="sev-badge">P1</span>
+          <span class="sev-badge sev-badge-outline">risk-compatibility</span>
         </div>
-
-        <div class="card-desc">
-          <span class="hi">Safe MCP Reload</span>——用户主动要求为能力接入加装安全边界，把"能连上"改造成"敢用 · 可控 · 可回收"。
-        </div>
-        <div class="card-role">
-          <span class="role-diamond"></span>
-          <span>主动收口边界 · 需求端的信任契约</span>
-        </div>
+        <div class="card-timestamp"><span>Windows 原生路径 · self-lock</span></div>
+        <div class="card-summary accent"><strong>Windows 自锁</strong>——P1 缺陷</div>
       </div>
     </div>
 
-    <div class="points">
-      <div class="point">
-        <div class="point-header">
-          <span class="point-num">01</span>
-          <span class="point-title">信任定义</span>
-        </div>
-        <div class="point-text">用户在索取能力的同时，<span class="em">显式要求安全收口</span>——这就是 Agent 语境下的信任。</div>
-      </div>
-      <div class="point">
-        <div class="point-header">
-          <span class="point-num">02</span>
-          <span class="point-title">制度含义</span>
-        </div>
-        <div class="point-text">信任是 Agent 从<span class="em">"能用"到"好用"</span>的关键跃迁：能力 × 边界。</div>
-      </div>
-      <div class="point">
-        <div class="point-header">
-          <span class="point-num">03</span>
-          <span class="point-title">案例组合</span>
-        </div>
-        <div class="point-text">供给侧（Judgment）<span class="em">+ 需求侧（#67002）</span>= 完整画面，缺一不可。</div>
-      </div>
-      <div class="point">
-        <div class="point-header">
-          <span class="point-num">04</span>
-          <span class="point-title">观察方法</span>
-        </div>
-        <div class="point-text">用<span class="em">"能力索取 × 安全收口"</span>双轴审视，才能识别 Agent 真正的跃迁。</div>
-      </div>
+    <div class="bridge">
+      <span class="bridge-mid-dot"></span>
+      <span>供给侧 &nbsp;+&nbsp; 需求侧 &nbsp;=&nbsp; 完整画面</span>
+      <span class="bridge-mid-dot"></span>
     </div>
 
-    <div class="footer">
-      <div class="footer-line"></div>
-      <div class="footer-text">信任是 <em>Agent 的跃迁</em>——不是能力上限，而是<em>信任半径</em>的扩张</div>
-      <div class="footer-line"></div>
-      <div class="footer-tail">INSIGHT · 03</div>
+    <div class="bottom">
+      <span class="bottom-bar left"></span>
+      <span class="bottom-label">兼容性 是 <span class="accent">Agent</span> 的边界</span>
+      <span class="bottom-bar right"></span>
     </div>
   </div>
 </div>

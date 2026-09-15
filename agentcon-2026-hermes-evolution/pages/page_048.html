@@ -1,30 +1,34 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>结语 · 开源之为思想的力量</title>
+<title>长期演化追踪系统 · 下一个快照</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
+  --navy: #1B3B6B;
+  --navy-2: #244B82;
+  --navy-3: #2E5BA0;
   --bg: #0F1E33;
-  --primary: #1B3B6B;
-  --accent: #B4A078;
-  --text: #F5F0E8;
-  --text-soft: rgba(245, 240, 232, 0.68);
-  --text-dim: rgba(245, 240, 232, 0.42);
-  --border: rgba(27, 59, 107, 0.35);
-  --border-soft: rgba(180, 160, 120, 0.28);
+  --bg-2: #13263F;
+  --cream: #F5F0E8;
+  --cream-2: #E8DFCC;
+  --gold: #B4A078;
+  --gold-2: #C9B88F;
+  --muted: #7A8CA6;
+  --rule: rgba(180, 160, 120, 0.22);
+  --rule-2: rgba(180, 160, 120, 0.5);
 }
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
-  color: var(--text);
-  background: var(--bg);
+html, body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #000;
+  color: var(--cream);
+  overflow: hidden;
 }
 .wrapper {
   width: 1600px;
@@ -34,356 +38,909 @@ body {
   margin: 0 auto;
   background: var(--bg);
 }
-#bg {
+#bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+#bg .bg-photo {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 60px;
+  width: 1080px;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.38;
   z-index: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(27, 59, 107, 0.45) 0%, rgba(15, 30, 51, 1) 60%, #0A1526 100%);
 }
-.bg-grid {
+#bg .bg-overlay {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(180, 160, 120, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 160, 120, 0.035) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.6;
+  background: linear-gradient(180deg, rgba(15,30,51,0.55) 0%, rgba(15,30,51,0.72) 45%, rgba(15,30,51,0.98) 65%);
+  z-index: 1;
 }
 #ct {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  padding: 56px 80px;
+  z-index: 2;
+  padding: 56px 60px 32px 60px;
   box-sizing: border-box;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--border-soft);
-  position: relative;
-}
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.header-mark {
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
+/* === Background decorative shapes === */
+.deco { position: absolute; pointer-events: none; z-index: 1; }
+.deco-c1 {
+  top: 62px;
+  right: 268px;
+  width: 116px;
+  height: 116px;
+  border: 1.5px solid rgba(180, 160, 120, 0.32);
   border-radius: 50%;
 }
-.header-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: var(--text);
+.deco-c2 {
+  top: 82px;
+  right: 300px;
+  width: 88px;
+  height: 88px;
+  border: 1px dashed rgba(180, 160, 120, 0.22);
+  border-radius: 50%;
 }
-.header-right {
+.deco-r1 {
+  top: 60px;
+  right: 60px;
+  width: 90px;
+  height: 90px;
+  border: 1.5px solid var(--rule-2);
+}
+.deco-r2 {
+  top: 88px;
+  right: 88px;
+  width: 62px;
+  height: 62px;
+  border: 1px dashed rgba(180, 160, 120, 0.28);
+}
+.deco-triangle {
+  top: 158px;
+  right: 100px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 14px solid rgba(180, 160, 120, 0.32);
+}
+.deco-l1 {
+  top: 180px;
+  right: 240px;
+  width: 60px;
+  height: 2px;
+  background: var(--rule-2);
+}
+.deco-l2 {
+  top: 184px;
+  right: 244px;
+  width: 52px;
+  height: 1.5px;
+  background: rgba(180, 160, 120, 0.15);
+}
+.deco-dot {
+  bottom: 82px;
+  right: 82px;
+  width: 44px;
+  height: 44px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.14;
+}
+
+/* === Title === */
+.header { position: relative; z-index: 3; padding-bottom: 26px; }
+.header-inner { position: relative; z-index: 4; max-width: 1180px; }
+.eyebrow {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.34em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.eyebrow .eb-line {
+  width: 46px;
+  height: 1.5px;
+  background: var(--gold);
+}
+.eyebrow .eb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.title {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 76px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+.title .tmark {
+  color: var(--gold);
+  font-size: 40px;
+  vertical-align: super;
+  margin-left: 4px;
+  font-weight: 400;
+}
+.subtitle-row {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  margin-bottom: 18px;
+}
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--gold-2);
+  letter-spacing: 0.1em;
+}
+.subtitle-en {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
+  letter-spacing: 0.28em;
+  color: var(--muted);
+  font-weight: 400;
 }
-.header-right .rule {
-  display: inline-block;
-  width: 48px;
-  height: 4px;
-  background: var(--accent);
-}
-
-/* Decorative geometry */
-.deco { position: absolute; pointer-events: none; }
-.deco-circle-1 {
-  top: 130px; left: 60px;
-  width: 90px; height: 90px;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  opacity: 0.5;
-}
-.deco-square-1 {
-  top: 158px; left: 110px;
-  width: 22px; height: 22px;
-  background: var(--accent);
-  opacity: 0.6;
-}
-.deco-line-1 {
-  top: 200px; left: 240px;
-  width: 220px; height: 1px;
-  background: linear-gradient(90deg, rgba(180,160,120,0.6), rgba(180,160,120,0));
-}
-.deco-circle-2 {
-  top: 150px; right: 70px;
-  width: 60px; height: 60px;
-  border: 1px solid rgba(180,160,120,0.4);
-  border-radius: 50%;
-}
-.deco-square-2 {
-  bottom: 130px; left: 60px;
-  width: 14px; height: 14px;
-  border: 1px solid var(--accent);
-  opacity: 0.6;
-}
-.deco-line-2 {
-  bottom: 120px; right: 240px;
-  width: 220px; height: 1px;
-  background: linear-gradient(90deg, rgba(180,160,120,0), rgba(180,160,120,0.6));
-}
-.deco-circle-3 {
-  bottom: 110px; right: 70px;
-  width: 10px; height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-/* Center slogan */
-.center-area {
-  margin-top: 62px;
-  text-align: center;
-  position: relative;
-}
-.center-eyebrow {
-  display: inline-flex;
+.narrative {
+  display: flex;
   align-items: center;
   gap: 16px;
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  letter-spacing: 8px;
-  color: var(--accent);
-  margin-bottom: 26px;
-  text-transform: uppercase;
-}
-.center-eyebrow .dot {
-  width: 6px; height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-.center-eyebrow .bar {
-  width: 40px; height: 1px;
-  background: var(--accent);
-}
-.slogan {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 92px;
-  font-weight: 700;
-  letter-spacing: 8px;
-  line-height: 1.15;
-  color: var(--text);
-  text-shadow: 0 2px 0 rgba(180, 160, 120, 0.22), 0 4px 18px rgba(180, 160, 120, 0.14);
-  margin: 0;
-}
-.slogan .quote {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  color: var(--accent);
-  font-weight: 400;
-  font-size: 100px;
-  vertical-align: -6px;
-}
-.slogan-under {
-  margin-top: 22px;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 20px;
-  letter-spacing: 4px;
-  color: var(--accent);
-}
-.slogan-under .seg {
-  width: 60px; height: 2px;
-  background: var(--accent);
-}
-
-/* Four cards */
-.cards {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.card {
-  position: relative;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(27, 59, 107, 0.28) 0%, rgba(27, 59, 107, 0.14) 100%);
-  padding: 26px 22px 24px;
-  min-height: 176px;
-  box-sizing: border-box;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 34px; height: 3px;
-  background: var(--accent);
-}
-.card-idx {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-idx .sq {
-  display: inline-block;
-  width: 6px; height: 6px;
-  background: var(--accent);
-}
-.card-head {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 2px;
-  line-height: 1.3;
-  margin-bottom: 14px;
-}
-.card-head .en {
-  display: block;
-  font-family: Georgia, 'Noto Serif SC', serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  color: var(--accent);
-  margin-top: 4px;
-}
-.card-detail {
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  font-size: 14px;
+  font-size: 16.5px;
+  color: var(--cream-2);
   font-weight: 300;
-  color: var(--text-soft);
-  line-height: 1.7;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
+  border-left: 2.5px solid var(--gold);
+  padding-left: 18px;
+  max-width: 1120px;
 }
-
-/* Footer narrative */
-.footer {
-  position: absolute;
-  left: 80px; right: 80px;
-  bottom: 56px;
-  text-align: center;
-  padding-top: 22px;
-  border-top: 1px solid var(--border-soft);
-}
-.footer-narrative {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text-soft);
-  letter-spacing: 1.5px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.footer-narrative .em {
-  color: var(--accent);
+.narrative em {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  font-size: 13.5px;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border: 1px solid var(--rule-2);
+  border-radius: 2px;
   font-weight: 500;
 }
-.footer-page {
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--text-dim);
+
+/* === Timeline === */
+.timeline {
+  position: relative;
+  margin-top: 22px;
+  padding-bottom: 46px;
+  z-index: 3;
 }
-.footer-page .rule {
-  display: inline-block;
-  width: 30px; height: 1px;
-  background: var(--text-dim);
+.tl-line {
+  position: relative;
+  height: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 20px rgba(180,160,120,0.28);
+}
+.tl-end {
+  position: absolute;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.tl-end-left { left: -4px; }
+.tl-end-right { right: -4px; }
+.tl-progress {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 4px;
+  background: var(--gold-2);
+  width: 52%;
+  opacity: 0.85;
+}
+.tl-nodes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.tl-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-50%);
+}
+.tl-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.tl-dot-inner {
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.tl-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-top: 12px;
+}
+.tl-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  color: var(--cream);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* === Cards row === */
+.cards-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 2px;
+}
+.card {
+  flex: 1 1 0;
+  background: linear-gradient(180deg, rgba(27,59,107,0.4) 0%, rgba(15,30,51,0.6) 100%);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--gold);
+  padding: 16px 20px 18px;
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+.card-body {
+  padding-left: 4px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(180,160,120,0.12);
+  padding-top: 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  color: var(--cream);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.cadence {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--gold);
+  color: var(--bg);
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  border-radius: 1px;
+}
+.cadence.ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 2px 7px;
+}
+.card-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.card-body-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: var(--gold-2);
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.02em;
+}
+.card-body-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.card-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12.5px;
+  color: var(--cream-2);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-list li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--cream);
+  padding: 7px 0;
+  border-bottom: 1px dashed rgba(180,160,120,0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+.card-list li:last-child { border-bottom: none; }
+.card-list .num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 500;
+  min-width: 22px;
+}
+.signal-list { list-style: none; padding: 0; margin: 4px 0 0 0; }
+.signal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: var(--cream);
+}
+.signal-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(180, 160, 120, 0.14);
+  border: 1px solid var(--rule-2);
+  border-radius: 2px;
+}
+.signal-icon.circle {
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+}
+.signal-icon.rect {
+  border-radius: 0;
+  background: rgba(180,160,120,0.2);
+  border: none;
+}
+.signal-icon.tri {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid var(--gold);
+  border-radius: 0;
+}
+.signal-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--gold-2);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin-left: auto;
+}
+.signal-zh {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.bars {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+  align-items: flex-end;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.bar {
+  width: 100%;
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+  position: relative;
+}
+.bar-1 { height: 52px; }
+.bar-2 { height: 68px; }
+.bar-3 { height: 42px; }
+.bar-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--cream);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.bar-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-align: center;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.card-corner {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  opacity: 0.55;
+}
+.card-corner.circle {
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+}
+.card-corner.square {
+  border: 1.5px solid var(--gold);
+}
+.card-corner.bar {
+  width: 4px;
+  height: 20px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+/* === Field study + Summary bottom block === */
+.bottom-block {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.fieldstudy {
+  background: linear-gradient(90deg, rgba(36, 75, 130, 0.45), rgba(15, 30, 51, 0.65));
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 18px 26px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.fieldstudy::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 140px;
+  height: 140px;
+  border: 1.5px dashed rgba(180, 160, 120, 0.12);
+  border-radius: 50%;
+}
+.fs-tag {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fs-tag .cadence {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 5px 12px;
+  background: var(--gold);
+  color: var(--bg);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  align-self: flex-start;
+  border-radius: 1px;
+}
+.fs-tag-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold-2);
+  letter-spacing: 0.28em;
+  font-weight: 500;
+}
+.fs-body { flex: 1; min-width: 0; }
+.fs-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+.fs-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  color: var(--cream);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.fs-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.22em;
+}
+.fs-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: var(--cream-2);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+.fs-cases {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.fs-case {
+  padding: 4px 12px;
+  border: 1px solid var(--rule-2);
+  background: rgba(15, 30, 51, 0.55);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold-2);
+  letter-spacing: 0.14em;
+  border-radius: 1px;
+  font-weight: 500;
+}
+.fs-case::before {
+  content: '+ ';
+  color: var(--gold);
+}
+.fs-side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
+}
+.fs-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 34px;
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 300;
+}
+.fs-next {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.32em;
+  font-weight: 400;
+}
+
+/* === Summary bar === */
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 22px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  background: rgba(27, 59, 107, 0.28);
+  position: relative;
+}
+.summary-icon {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.summary-icon::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.summary-icon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  background: var(--gold);
+  bottom: -14px;
+}
+.summary-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15.5px;
+  color: var(--cream);
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  flex: 1;
+  font-weight: 400;
+}
+.summary-text strong {
+  color: var(--gold-2);
+  font-weight: 600;
+}
+.summary-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: 0.32em;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+}
+
+/* === Footer === */
+.footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.34em;
+  font-weight: 400;
+}
+.footer .f-line {
+  width: 60px;
+  height: 1px;
+  background: var(--rule-2);
+  margin: 0 12px;
+}
+.footer .f-center {
+  display: flex;
+  align-items: center;
+}
+.footer .f-center .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin: 0 10px;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-grid"></div>
-    <div class="deco deco-circle-1"></div>
-    <div class="deco deco-square-1"></div>
-    <div class="deco deco-line-1"></div>
-    <div class="deco deco-circle-2"></div>
-    <div class="deco deco-square-2"></div>
-    <div class="deco deco-line-2"></div>
-    <div class="deco deco-circle-3"></div>
+    <img class="bg-photo" src="../images/page_005_hero.png" alt="">
+    <div class="bg-overlay"></div>
+    <div class="deco deco-c1"></div>
+    <div class="deco deco-c2"></div>
+    <div class="deco deco-r1"></div>
+    <div class="deco deco-r2"></div>
+    <div class="deco deco-triangle"></div>
+    <div class="deco deco-l1"></div>
+    <div class="deco deco-l2"></div>
+    <div class="deco deco-dot"></div>
   </div>
-
   <div id="ct">
+
+    <!-- Header -->
     <div class="header">
-      <div class="header-left">
-        <div class="header-mark"></div>
-        <div class="header-title">结语 · 开源之为思想的力量</div>
-      </div>
-      <div class="header-right">
-        <span>CONCLUSION</span>
-        <span class="rule"></span>
-        <span>P. 46</span>
-      </div>
-    </div>
-
-    <div class="center-area">
-      <div class="center-eyebrow">
-        <span class="bar"></span>
-        <span class="dot"></span>
-        <span>THE SOURCE CODE OF INSTITUTIONS</span>
-        <span class="dot"></span>
-        <span class="bar"></span>
-      </div>
-      <h1 class="slogan">
-        <span class="quote">「</span>思想是制度的源代码<span class="quote">」</span>
-      </h1>
-      <div class="slogan-under">
-        <span class="seg"></span>
-        <span>Keep Movement</span>
-        <span class="seg"></span>
+      <div class="header-inner">
+        <div class="eyebrow">
+          <span class="eb-line"></span>
+          <span>S / N &nbsp; · &nbsp; LONG-TERM EVOLUTION TRACKING</span>
+          <span class="eb-dot"></span>
+        </div>
+        <h1 class="title">长期演化追踪系统<span class="tmark">.</span></h1>
+        <div class="subtitle-row">
+          <div class="subtitle">下一个快照是什么？</div>
+          <div class="subtitle-en">WHAT'S IN THE NEXT SNAPSHOT?</div>
+        </div>
+        <div class="narrative">
+          <span>知识不是静止的，是在移动中产生的</span>
+          <em>KEEP MOVEMENT</em>
+        </div>
       </div>
     </div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>I · FROM AGENT TO INSTITUTION</span></div>
-        <div class="card-head">从 Agent 到制度<span class="en">Agent as Sample</span></div>
-        <div class="card-detail">Hermes 是样本，不是终点。它只是一次实验，真正的题目是它背后的机制如何生长。</div>
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="tl-line">
+        <div class="tl-progress"></div>
+        <div class="tl-end tl-end-left"></div>
+        <div class="tl-end tl-end-right"></div>
       </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>II · THE WAY OF OPENNESS</span></div>
-        <div class="card-head">开源之道<span class="en">Idea, Not Road</span></div>
-        <div class="card-detail">道是思想（idea），不是道路（road）。开源的价值不在通道，在于让想法得以流动。</div>
-      </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>III · KEEP MOVEMENT</span></div>
-        <div class="card-head">Keep Movement<span class="en">Knowledge in Motion</span></div>
-        <div class="card-detail">知识不是静止的，是在移动中产生的。任何被冻结的秩序都会失去解释力。</div>
-      </div>
-      <div class="card">
-        <div class="card-idx"><span class="sq"></span><span>IV · A BLANK SPACE</span></div>
-        <div class="card-head">一句留白<span class="en">An Opening, Not a Proof</span></div>
-        <div class="card-detail">不是要证明什么——是打开一种思考。答案留给你，把问题还给演化本身。</div>
+      <div class="tl-nodes">
+        <div class="tl-node">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-num">01</div>
+          <div class="tl-label">需求侧</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-num">02</div>
+          <div class="tl-label">供给侧</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-num">03</div>
+          <div class="tl-label">消费侧</div>
+        </div>
+        <div class="tl-node">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-num">04</div>
+          <div class="tl-label">制度维度</div>
+        </div>
       </div>
     </div>
 
+    <!-- Four cards -->
+    <div class="cards-section">
+      <div class="card">
+        <div class="card-corner circle"></div>
+        <div class="card-title-row">
+          <div class="card-title">需求侧</div>
+          <div class="cadence">每周</div>
+        </div>
+        <div class="card-en">DEMAND SIDE · TRACK ISSUE</div>
+        <div class="card-body">
+          <div class="card-body-title">追踪 issue 演化</div>
+          <div class="card-desc">按周节奏持续追踪 issue 的提出、演化与关闭路径，捕捉真实需求变化。</div>
+          <ul class="card-list">
+            <li><span class="num">·</span>每周滚动更新</li>
+            <li><span class="num">·</span>标记优先级变化</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-corner square"></div>
+        <div class="card-title-row">
+          <div class="card-title">供给侧</div>
+          <div class="cadence">持续</div>
+        </div>
+        <div class="card-en">SUPPLY SIDE · TRACK PR</div>
+        <div class="card-body">
+          <div class="card-body-title">追踪 PR 演化</div>
+          <div class="card-desc">按周节奏持续追踪 PR 的提出、演化与合入路径，反映供给能力。</div>
+          <ul class="card-list">
+            <li><span class="num">·</span>每周滚动更新</li>
+            <li><span class="num">·</span>观察合入速率</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-corner bar"></div>
+        <div class="card-title-row">
+          <div class="card-title">消费侧</div>
+          <div class="cadence ghost">信号</div>
+        </div>
+        <div class="card-en">CONSUMPTION · STRONGER SIGNALS</div>
+        <div class="card-body">
+          <div class="card-body-title">寻找更强信号</div>
+          <div class="card-desc">寻找更强的消费信号，从多维度观察真实使用情况。</div>
+          <ul class="signal-list">
+            <li class="signal-item"><span class="signal-icon rect"></span><span class="signal-en">PyPI downloads</span><span class="signal-zh">/ 包下载</span></li>
+            <li class="signal-item"><span class="signal-icon circle"></span><span class="signal-en">Docker pulls</span><span class="signal-zh">/ 镜像拉取</span></li>
+            <li class="signal-item"><span class="signal-icon tri"></span><span class="signal-en">Discord 活跃度</span><span class="signal-zh">/ 社群</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-corner square"></div>
+        <div class="card-title-row">
+          <div class="card-title">制度维度</div>
+          <div class="cadence ghost">并行</div>
+        </div>
+        <div class="card-en">INSTITUTIONAL · PARALLEL METRICS</div>
+        <div class="card-body">
+          <div class="card-body-title">并行度量三个维度</div>
+          <div class="bars">
+            <div class="bar-col">
+              <div class="bar bar-1"></div>
+              <div class="bar-label">度量权</div>
+              <div class="bar-en">METRIC<br>RIGHTS</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar bar-2"></div>
+              <div class="bar-label">可靠性</div>
+              <div class="bar-en">RELIABILITY</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar bar-3"></div>
+              <div class="bar-label">产权</div>
+              <div class="bar-en">PROPRIETY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom block: field study + summary -->
+    <div class="bottom-block">
+      <div class="fieldstudy">
+        <div class="fs-tag">
+          <div class="cadence">每月</div>
+          <div class="fs-tag-label">MONTHLY</div>
+        </div>
+        <div class="fs-body">
+          <div class="fs-title-row">
+            <div class="fs-title">田野考察</div>
+            <div class="fs-en">FIELD OBSERVATION · NEW CASES</div>
+          </div>
+          <div class="fs-desc">新增案例每月归档，与前三条线每周节奏形成互补，让快照体系更完整。</div>
+          <div class="fs-cases">
+            <div class="fs-case">ISSUE</div>
+            <div class="fs-case">PR</div>
+            <div class="fs-case">RELEASE</div>
+          </div>
+        </div>
+        <div class="fs-side">
+          <div class="fs-arrow">→</div>
+          <div class="fs-next">NEXT</div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="summary-icon"></div>
+        <div class="summary-text">
+          <strong>需求侧 / 供给侧 / 消费侧</strong>每周更新，<strong>田野考察</strong>每月更新，<strong>制度维度</strong>并行追踪 —— 共同构成持续移动的快照体系。
+        </div>
+        <div class="summary-en">KEEP MOVEMENT &nbsp;·&nbsp; MOVE FORWARD</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
-      <p class="footer-narrative">
-        <span class="em">「思想是制度的源代码」</span>——不是规则在动，是思想在动。<span class="em">Keep Movement。</span>这个演讲不是要证明什么，是要打开一种思考：用制度经济学的眼睛，重新看 Agent 演化。
-      </p>
-      <div class="footer-page">
-        <span>END OF SPEECH</span>
-        <span class="rule"></span>
-        <span>46 / 46</span>
-        <span class="rule"></span>
-        <span>OPENNESS · INSTITUTION · MOVEMENT</span>
+      <div>SNAPSHOT TRACKING &nbsp;·&nbsp; SERIES 05</div>
+      <div class="f-center">
+        <span>每周 &nbsp;·&nbsp; 持续 &nbsp;·&nbsp; 并行 &nbsp;·&nbsp; 每月</span>
+        <span class="f-line"></span>
+        <span>KEEP MOVEMENT</span>
       </div>
+      <div>2024 &nbsp;·&nbsp; EVOLUTION TRACK</div>
     </div>
+
   </div>
 </div>
 </body>

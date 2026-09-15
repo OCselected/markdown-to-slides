@@ -680,6 +680,71 @@
     {
       "page_no": 20,
       "page_kind": "data",
+      "title": "操作侧总览 · 20+ 平台消息网关 + 6 种终端后端 + 一级 i18n",
+      "subtitle": "田野考察第三视角 · 用户在哪里接入",
+      "bullets": [
+        {
+          "head": "消息网关",
+          "detail": "20+ 平台——CLI/Telegram/Discord/Slack/WhatsApp/Signal/Matrix/Mattermost/Email/SMS/Teams/Google Chat"
+        },
+        {
+          "head": "本土 IM 五件套",
+          "detail": "Feishu / WeCom / Weixin / QQ Bot / DingTalk——不是附属翻译，是一等公民"
+        },
+        {
+          "head": "终端后端",
+          "detail": "6 种：本地 / Docker / SSH / Daytona / Singularity / Modal——Daytona+Modal 提供 serverless 持久化"
+        },
+        {
+          "head": "操作系统覆盖",
+          "detail": "Linux/macOS/WSL2/Windows Native (早期测试)/Android (Termux)/Nix & NixOS"
+        },
+        {
+          "head": "文档 i18n",
+          "detail": "/docs/zh-Hans/ 作为一级路径——与英文对等的正式入口，非翻译附属"
+        },
+        {
+          "head": "制度含义",
+          "detail": "操作进化不是功能堆砌，是把 Agent 塞进用户已经存在的接入路径——交易成本的最小化"
+        }
+      ],
+      "narrative": "田野考察的第三视角——从\"用户要什么\"和\"项目做了什么\"，转到\"用户在哪里接入\"。Hermes 的操作进化体现在三处：20+ 消息网关（本土 IM 五件套被点名）、6 种终端后端（Daytona/Modal serverless 化）、zh-Hans 一级路径（文档本身作为本土接入点）。操作进化的本质是接入的交易成本最小化——不是\"我能做什么\"，是\"我在哪里等你\"。这也是消费侧采纳率背后的制度基础：Agent 只有先塞进用户已经存在的接入路径，才会被真实使用。",
+      "data_points": [
+        {
+          "label": "消息网关平台",
+          "value": "20+"
+        },
+        {
+          "label": "本土 IM 覆盖",
+          "value": "5 (Feishu/WeCom/Weixin/QQ/DingTalk)"
+        },
+        {
+          "label": "终端后端",
+          "value": "6 种"
+        },
+        {
+          "label": "OS 平台",
+          "value": "6+ (含 Android/Windows Native)"
+        },
+        {
+          "label": "i18n 语言路径",
+          "value": "一级 zh-Hans"
+        }
+      ],
+      "visual_hints": "左侧消息网关矩阵（20+ 平台图标拼贴），右侧部署拓扑（6 种终端后端），底部 zh-Hans 路径高亮；深普鲁士蓝背景",
+      "use_table": null,
+      "use_image": null,
+      "asset_slots": [
+        {
+          "slot_id": "hero",
+          "intent": "消息网关矩阵+部署拓扑+i18n 路径三级可视化",
+          "aspect_ratio": "16:9"
+        }
+      ]
+    },
+    {
+      "page_no": 21,
+      "page_kind": "data",
       "title": "消费侧总览 · 弱代理的采纳信号",
       "subtitle": "",
       "bullets": [
@@ -743,7 +808,7 @@
       ]
     },
     {
-      "page_no": 21,
+      "page_no": 22,
       "page_kind": "content",
       "title": "三个核心洞察",
       "subtitle": "",
@@ -775,7 +840,7 @@
       ]
     },
     {
-      "page_no": 22,
+      "page_no": 23,
       "page_kind": "content",
       "title": "Release 命名文化 · 田野观察第 1 章",
       "subtitle": "把 release 当作文化事件",
@@ -826,7 +891,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 23,
+      "page_no": 24,
       "page_kind": "content",
       "title": "案例 1 · Judgment Release · P0/P1 清零",
       "subtitle": "12 天战役的田野观察",
@@ -887,7 +952,7 @@
       ]
     },
     {
-      "page_no": 24,
+      "page_no": 25,
       "page_kind": "content",
       "title": "案例 2 · Tenacity Release · 多 Agent Kanban",
       "subtitle": "'finishes what it starts' 的文化承诺",
@@ -948,7 +1013,7 @@
       ]
     },
     {
-      "page_no": 25,
+      "page_no": 26,
       "page_kind": "content",
       "title": "案例 3 · Surface Release · 原生 Desktop",
       "subtitle": "'Hermes meets you wherever you work'",
@@ -1009,7 +1074,7 @@
       ]
     },
     {
-      "page_no": 26,
+      "page_no": 27,
       "page_kind": "content",
       "title": "案例 4 · Velocity Release · 大重构",
       "subtitle": "'16,000 行 → 3,821 行' 的制度设计",
@@ -1070,7 +1135,7 @@
       ]
     },
     {
-      "page_no": 27,
+      "page_no": 28,
       "page_kind": "content",
       "title": "案例 5 · Quicksilver Release · 性能爆发",
       "subtitle": "'Hermes is the messenger god, and this window we made him move like it'",
@@ -1135,7 +1200,7 @@
       ]
     },
     {
-      "page_no": 28,
+      "page_no": 29,
       "page_kind": "content",
       "title": "案例 6 · Patch Release · 热修复",
       "subtitle": "同日 hotfix 的田野观察",
@@ -1190,7 +1255,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 29,
+      "page_no": 30,
       "page_kind": "content",
       "title": "PR #5143 · 多角色自动路由",
       "subtitle": "Gateway Hooks · 专业化分化（2026-04）",
@@ -1225,7 +1290,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 30,
+      "page_no": 31,
       "page_kind": "content",
       "title": "PR #53871 · 给 Hermes 一个灵魂",
       "subtitle": "Curiosity Engine · 生命化（2026-06）",
@@ -1260,7 +1325,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 31,
+      "page_no": 32,
       "page_kind": "content",
       "title": "PR #61044 · Cron-native Batch API",
       "subtitle": "自主调度 · 自动化（2026-07）",
@@ -1311,7 +1376,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 32,
+      "page_no": 33,
       "page_kind": "content",
       "title": "PR #82198 · Skill-Persistence EPIC",
       "subtitle": "自我组织 · 持久化（2026-08）",
@@ -1362,7 +1427,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 33,
+      "page_no": 34,
       "page_kind": "content",
       "title": "PR #94266 · Collective Wisdom Agent",
       "subtitle": "集体智慧 · 智慧化（2026-08）",
@@ -1397,7 +1462,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 34,
+      "page_no": 35,
       "page_kind": "content",
       "title": "案例 12 · desktop 供需缺口",
       "subtitle": "数据案例：唯一失衡的组件",
@@ -1448,7 +1513,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 35,
+      "page_no": 36,
       "page_kind": "content",
       "title": "三个共性问题 · 专业化/生命化/智慧化",
       "subtitle": "5 个 PR 案例的共性提炼",
@@ -1482,7 +1547,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 36,
+      "page_no": 37,
       "page_kind": "content",
       "title": "从'能用'到'好用'的跃迁 · 五阶段",
       "subtitle": "用户需求演化的完整轨迹",
@@ -1508,7 +1573,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 37,
+      "page_no": 38,
       "page_kind": "content",
       "title": "Release 节奏观察",
       "subtitle": "33 releases / 180 天",
@@ -1547,7 +1612,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 38,
+      "page_no": 39,
       "page_kind": "content",
       "title": "田野考察小结",
       "subtitle": "12 案例的横切视角",
@@ -1587,7 +1652,7 @@
       ]
     },
     {
-      "page_no": 39,
+      "page_no": 40,
       "page_kind": "content",
       "title": "田野考察方法论复盘",
       "subtitle": "从群众中来的方法",
@@ -1621,7 +1686,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 40,
+      "page_no": 41,
       "page_kind": "section_header",
       "title": "第四幕 · Agent 演化洞察",
       "subtitle": "从 12 案例中提炼的演化规律",
@@ -1647,7 +1712,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 41,
+      "page_no": 42,
       "page_kind": "content",
       "title": "三道分水岭 · 可靠性/兼容性/信任",
       "subtitle": "从'能用'到'好用'的关键跃迁",
@@ -1679,7 +1744,7 @@
       ]
     },
     {
-      "page_no": 42,
+      "page_no": 43,
       "page_kind": "content",
       "title": "洞察 #1 · 可靠性是 Agent 的底线",
       "subtitle": "Tenacity Release + #107070",
@@ -1722,7 +1787,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 43,
+      "page_no": 44,
       "page_kind": "content",
       "title": "洞察 #2 · 兼容性是 Agent 的边界",
       "subtitle": "Surface Release + #101600",
@@ -1757,7 +1822,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 44,
+      "page_no": 45,
       "page_kind": "content",
       "title": "洞察 #3 · 信任是 Agent 的跃迁",
       "subtitle": "Judgment Release + #67002",
@@ -1800,7 +1865,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 45,
+      "page_no": 46,
       "page_kind": "content",
       "title": "MCP 演化路径 · 从厂商私产到中立基金会",
       "subtitle": "生态演化的一个案例",
@@ -1843,7 +1908,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 46,
+      "page_no": 47,
       "page_kind": "section_header",
       "title": "Epilogue · 长期演化追踪",
       "subtitle": "不是终点",
@@ -1869,7 +1934,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 47,
+      "page_no": 48,
       "page_kind": "content",
       "title": "长期演化追踪系统",
       "subtitle": "下一个快照是什么？",
@@ -1903,7 +1968,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 48,
+      "page_no": 49,
       "page_kind": "content",
       "title": "结语 · 开源之为思想的力量",
       "subtitle": "",
@@ -1933,7 +1998,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 49,
+      "page_no": 50,
       "page_kind": "content",
       "title": "讨论问题",
       "subtitle": "留给 Q&A 的三个开放问题",
@@ -1951,7 +2016,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 50,
+      "page_no": 51,
       "page_kind": "content",
       "title": "延伸阅读",
       "subtitle": "制度经济学核心文献",
@@ -1985,7 +2050,7 @@
       "asset_slots": []
     },
     {
-      "page_no": 51,
+      "page_no": 52,
       "page_kind": "closing",
       "title": "致谢 · Thank you",
       "subtitle": "Keep Movement",

@@ -1,419 +1,522 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>三个共性问题 · 专业化 / 生命化 / 智慧化</title>
+<title>案例 12 · desktop 供需缺口</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-deep: #0F1E33;
+    --bg: #0F1E33;
     --primary: #1B3B6B;
-    --primary-light: #2A5A9C;
-    --text-main: #F5F0E8;
-    --accent: #B4A078;
-    --accent-dim: #8C7C58;
-    --muted: #8899B3;
-    --line: #2D4A72;
-    --card: #142842;
-    --card-2: #183457;
+    --gold: #B4A078;
+    --cream: #F5F0E8;
+    --muted: rgba(245,240,232,.62);
+    --line: rgba(180,160,120,.22);
+    --warn: #E58A5A;
+    --warn-bg: rgba(229,138,90,.10);
+    --parchment: url('../images/page_012_parchment.png');
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: var(--bg-deep);
-    color: var(--text-main);
-    font-size: 14px;
+  html, body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: #0F1E33;
+    color: var(--cream);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  .wrapper { width: 1600px; height: 900px; position: relative; overflow: hidden; margin: 0 auto; }
-  #bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 85% 15%, #16315C 0%, #0F1E33 55%); }
-  #ct { position: absolute; inset: 0; z-index: 1; padding: 44px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; }
+  .wrapper {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #0F1E33;
+  }
+  #bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 8% 4%, rgba(27,59,107,0.75) 0%, rgba(15,30,51,0.10) 42%, rgba(15,30,51,0) 68%),
+      var(--parchment);
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 88% 82%, rgba(180,160,120,0.10) 0%, rgba(15,30,51,0) 42%);
+  }
+  .geo-circle, .geo-square, .geo-line, .geo-square-2 {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .geo-circle {
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,160,120,0.16);
+    top: -220px; right: -200px;
+  }
+  .geo-square {
+    width: 24px; height: 24px;
+    background: rgba(180,160,120,0.28);
+    top: 210px; right: 88px;
+  }
+  .geo-line {
+    width: 1px; height: 900px;
+    background: rgba(180,160,120,0.08);
+    top: 0; left: 60px;
+  }
+  .geo-square-2 {
+    width: 10px; height: 10px;
+    background: rgba(180,160,120,0.45);
+    bottom: 96px; right: 140px;
+  }
+
+  #ct {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 56px 60px 56px 60px;
+  }
 
   /* Header */
-  .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; }
-  .title-block { flex: 1; }
-  .kicker {
-    display: flex; align-items: center; gap: 14px;
-    font-size: 11px; letter-spacing: 3px;
-    color: var(--accent);
-    margin-bottom: 10px; font-weight: 500;
+  .header {
+    height: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
   }
-  .kicker .line { width: 42px; height: 1px; background: var(--accent); }
-  .kicker .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+  .title-block { display: flex; align-items: flex-start; gap: 20px; }
+  .title-square {
+    width: 22px; height: 22px;
+    background: var(--gold);
+    margin-top: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(180,160,120,0.10);
+  }
+  .titles { display: flex; flex-direction: column; gap: 10px; }
   h1 {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 38px; font-weight: 700;
-    line-height: 1.18; color: var(--text-main);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  h1 .case-num {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 34px;
+    margin-right: 12px;
+    vertical-align: 4px;
     letter-spacing: 1px;
   }
-  h1 .em { color: var(--accent); }
-  h1 .sep { color: var(--muted); font-weight: 400; margin: 0 8px; }
   .subtitle {
-    margin-top: 10px;
-    font-size: 14px; color: var(--muted);
-    letter-spacing: 2px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1.8px;
+    padding-left: 2px;
   }
-  .subtitle .n { color: var(--accent); font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; margin: 0 3px; }
-  .subtitle-en {
-    display: block; margin-top: 3px;
-    font-size: 9.5px; letter-spacing: 3.5px;
-    color: var(--accent-dim); font-weight: 500;
+  .header-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    padding-top: 6px;
   }
-
-  .header-deco { width: 220px; height: 90px; position: relative; }
-
-  /* Main */
-  .main { display: flex; gap: 22px; flex: 1; min-height: 0; }
-  .col-left { width: 350px; display: flex; flex-direction: column; }
-  .col-right { flex: 1; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-
-  .col-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
-  .col-head h2 {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 16px; font-weight: 600;
-    color: var(--text-main);
-    letter-spacing: 1px;
+  .header-line {
+    width: 96px; height: 1px;
+    background: var(--gold);
+    opacity: .7;
   }
-  .col-head .en { font-size: 10px; letter-spacing: 2px; color: var(--muted); }
-  .col-head .rule { flex: 1; height: 1px; background: var(--line); }
-
-  .pr-list { display: flex; flex-direction: column; gap: 10px; }
-  .pr-card {
-    display: flex; align-items: center; gap: 14px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    padding: 10px 14px; height: 50px;
-    position: relative;
-  }
-  .pr-card .idx {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px; color: var(--muted);
-    letter-spacing: 1.5px; width: 20px;
-  }
-  .pr-card .num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 20px; font-weight: 700;
-    color: var(--text-main); letter-spacing: 0.5px;
-    min-width: 92px;
-  }
-  .pr-card .head {
-    font-size: 13px; color: var(--accent);
-    flex: 1; line-height: 1.3;
-  }
-  .pr-card .tag {
-    font-size: 9.5px; letter-spacing: 1.5px;
-    color: var(--accent-dim);
-    padding: 3px 8px;
-    border: 1px solid var(--line);
-  }
-
-  .tags-block {
-    margin-top: 16px;
-    background: var(--card-2);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    padding: 14px 18px;
-  }
-  .tag-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-  .tag-row:last-child { margin-bottom: 0; }
-  .tag-label {
-    font-size: 10px; letter-spacing: 1.5px;
-    color: var(--accent); font-weight: 600;
-    padding: 4px 10px;
-    background: rgba(180, 160, 120, 0.14);
-    border: 1px solid var(--accent-dim);
-    min-width: 60px; text-align: center;
-  }
-  .tag-label.common {
-    background: rgba(180, 160, 120, 0.22);
-    border-color: var(--accent);
-    color: var(--text-main);
-  }
-  .tag-text { font-size: 12px; color: var(--muted); line-height: 1.45; flex: 1; }
-
-  .col-note {
-    margin-top: auto;
-    padding-top: 12px;
-    font-size: 10.5px; letter-spacing: 1.5px;
-    color: var(--accent-dim);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .col-note .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
-  .col-note .line { flex: 1; height: 1px; background: var(--line); }
-
-  /* Evolution */
-  .evolution { display: flex; gap: 10px; align-items: stretch; flex: 1; }
-  .stage {
-    flex: 1;
-    background: var(--card-2);
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--primary-light);
-    padding: 18px 18px 16px;
-    display: flex; flex-direction: column;
-    position: relative;
-  }
-  .stage::after {
-    content: ''; position: absolute;
-    top: 18px; right: 18px;
-    width: 8px; height: 8px;
-    background: var(--accent); opacity: 0.5;
-  }
-  .stage-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 36px; font-weight: 700;
-    color: var(--accent); opacity: 0.28;
-    line-height: 1; margin-bottom: 6px;
-  }
-  .stage-name {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 26px; font-weight: 700;
-    color: var(--text-main);
+  .meta-text {
+    font-size: 11px;
+    color: var(--muted);
     letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
+
+  /* KPI row */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+    margin-top: 20px;
+  }
+  .kpi {
+    padding: 20px 26px;
+    background: rgba(27,59,107,0.24);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    position: relative;
+    min-height: 130px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .kpi.warn {
+    border-top-color: var(--warn);
+    background: rgba(229,138,90,0.09);
+  }
+  .kpi-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 500;
+  }
+  .kpi-value {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 4px 0 2px 0;
+  }
+  .kpi-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .kpi-unit {
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .kpi.warn .kpi-num,
+  .kpi.warn .kpi-unit { color: var(--warn); }
+  .kpi-sub {
+    font-size: 13px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+  .kpi-sub-en {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }
+
+  /* Table */
+  .table-section {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(15,30,51,0.55);
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .table thead th {
+    background: rgba(27,59,107,0.55);
+    color: var(--gold);
+    padding: 13px 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 3.5px;
+    font-family: 'Noto Serif SC', serif;
+    border-bottom: 1px solid var(--gold);
+  }
+  .table tbody td {
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(180,160,120,0.10);
+    vertical-align: middle;
+  }
+  .table tbody tr:last-child td { border-bottom: none; }
+  .table tbody tr.warn {
+    background: var(--warn-bg);
+  }
+  .table tbody tr.warn td:first-child {
+    border-left: 3px solid var(--warn);
+    padding-left: 21px;
+  }
+  .comp-cell {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .warn .dot { background: var(--warn); }
+  .comp-name {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .num .pct {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 3px;
+    font-weight: 400;
+  }
+  .num.warn { color: var(--warn); }
+  .num.warn .pct { color: rgba(229,138,90,0.7); }
+  .badge-mini {
+    display: inline-block;
+    padding: 4px 11px;
+    background: var(--warn);
+    color: #1F0E05;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+  .badge-ok {
+    display: inline-block;
+    padding: 4px 11px;
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.32);
+    color: rgba(245,240,232,0.82);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+
+  .table-caption {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .badge-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 9px 20px;
+    border: 1px solid var(--gold);
+    background: rgba(180,160,120,0.10);
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+  }
+  .badge-gold .dot-gold {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .caption-note {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  /* Narrative */
+  .narrative {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.05fr 1.3fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .narrative-left {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .nar-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
     margin-bottom: 4px;
   }
-  .stage-en {
-    font-size: 9.5px; letter-spacing: 2.5px;
-    color: var(--muted);
-    margin-bottom: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
+  .nar-line {
+    font-size: 13.5px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.65;
+    letter-spacing: 0.4px;
+    padding-left: 22px;
+    position: relative;
   }
-  .stage-detail { font-size: 13px; line-height: 1.85; color: var(--text-main); }
-  .stage-detail .ref {
-    color: var(--accent); font-weight: 600;
+  .nar-line .num-inline {
+    color: var(--gold);
     font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0 2px;
   }
-  .stage-detail .plus { color: var(--muted); margin: 0 3px; }
-  .stage-detail .arrow { color: var(--accent-dim); font-weight: 400; }
+  .nar-line .step {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
 
-  .arrow {
-    display: flex; align-items: center; justify-content: center;
-    width: 44px; flex-shrink: 0;
+  .quote-block {
+    display: flex; align-items: center; gap: 22px;
   }
-  .arrow svg { width: 44px; height: 24px; }
-
-  /* Decision */
-  .decision {
-    display: flex; align-items: center; gap: 18px;
-    background: linear-gradient(90deg, rgba(180,160,120,0.14) 0%, rgba(180,160,120,0) 100%);
-    border: 1px solid var(--accent-dim);
-    border-left: 3px solid var(--accent);
-    padding: 12px 20px;
+  .quote-ring {
+    width: 56px; height: 56px;
+    flex-shrink: 0;
+    position: relative;
   }
-  .decision .badge-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 40px; font-weight: 700;
-    color: var(--accent); line-height: 1;
-  }
-  .decision .badge-txt {
-    font-size: 10px; letter-spacing: 2px;
-    color: var(--accent-dim);
-    padding: 2px 8px;
-    border: 1px solid var(--accent);
-    align-self: center;
-  }
-  .decision .desc { flex: 1; }
-  .decision .desc .title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px; font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 3px; letter-spacing: 0.5px;
-  }
-  .decision .desc .body { font-size: 12.5px; color: var(--text-main); line-height: 1.5; }
-
-  /* Bottom */
-  .bottom {
-    border-top: 1px solid var(--line);
-    padding-top: 14px;
-    display: flex; align-items: center; gap: 26px;
-  }
-  .bottom .label {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px; font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 2px;
-    white-space: nowrap;
-    border-right: 1px solid var(--line);
-    padding-right: 20px;
-  }
-  .bottom .label .en { display: block; font-size: 9px; letter-spacing: 2px; color: var(--muted); margin-top: 2px; font-weight: 400; font-family: 'Noto Sans SC', sans-serif; }
-  .trajectory { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .trajectory .step {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px; font-weight: 600;
-    color: var(--text-main); letter-spacing: 1px;
-  }
-  .trajectory .ar { color: var(--accent-dim); font-size: 12px; }
-  .final-msg {
+  .quote-text {
     flex: 1;
-    font-size: 13px; color: var(--text-main);
-    line-height: 1.6;
-    border-left: 2px solid var(--accent);
-    padding-left: 16px;
   }
-  .final-msg em { color: var(--accent); font-style: normal; font-weight: 600; font-family: 'Noto Serif SC', serif; }
+  .quote-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.35;
+    letter-spacing: 1px;
+  }
+  .quote-sub {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    line-height: 1.55;
+  }
+  .quote-accent {
+    color: var(--gold);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg"></div>
+  <div class="geo-circle"></div>
+  <div class="geo-square"></div>
+  <div class="geo-line"></div>
+  <div class="geo-square-2"></div>
+
   <div id="ct">
 
+    <!-- Header -->
     <div class="header">
       <div class="title-block">
-        <div class="kicker"><span>PR CASES · SYNTHESIS</span><span class="line"></span><span class="dot"></span><span>共性问题提炼</span></div>
-        <h1><span>三个共性问题</span><span class="sep">·</span><span class="em">专业化 / 生命化 / 智慧化</span></h1>
-        <div class="subtitle">
-          <span class="n">5</span><span>个 PR 案例的共性提炼</span>
-          <span class="subtitle-en">FROM 5 PR CASES · A COMMON-PATTERN SYNTHESIS</span>
+        <div class="title-square"></div>
+        <div class="titles">
+          <h1><span class="case-num">案例 12</span>desktop 供需缺口</h1>
+          <div class="subtitle">数据案例：唯一失衡的组件 · Supply – Demand Gap · Component Level</div>
         </div>
       </div>
-      <div class="header-deco">
-        <svg width="220" height="90" viewBox="0 0 220 90">
-          <circle cx="30" cy="45" r="26" fill="none" stroke="#B4A078" stroke-width="1"/>
-          <circle cx="30" cy="45" r="4" fill="#B4A078"/>
-          <line x1="60" y1="45" x2="115" y2="45" stroke="#2D4A72" stroke-width="1"/>
-          <rect x="118" y="30" width="30" height="30" fill="none" stroke="#F5F0E8" stroke-width="1.2"/>
-          <line x1="155" y1="45" x2="200" y2="45" stroke="#2D4A72" stroke-width="1"/>
-          <circle cx="205" cy="45" r="9" fill="none" stroke="#B4A078" stroke-width="1"/>
-          <line x1="30" y1="12" x2="30" y2="78" stroke="#2D4A72" stroke-width="0.5"/>
-          <line x1="133" y1="20" x2="133" y2="70" stroke="#2D4A72" stroke-width="0.5"/>
-        </svg>
+      <div class="header-meta">
+        <div class="header-line"></div>
+        <div class="meta-text">SUPPLY · DEMAND · AUDIT</div>
       </div>
     </div>
 
-    <div class="main">
-
-      <div class="col-left">
-        <div class="col-head">
-          <h2>5 个 PR 案例</h2>
-          <span class="en">PR CASES</span>
-          <span class="rule"></span>
-        </div>
-
-        <div class="pr-list">
-          <div class="pr-card">
-            <span class="idx">01</span>
-            <span class="num">#5143</span>
-            <span class="head">多角色路由 · 专业化分工</span>
-            <span class="tag">专业化</span>
-          </div>
-          <div class="pr-card">
-            <span class="idx">02</span>
-            <span class="num">#53871</span>
-            <span class="head">Soul · 记忆延续与自主</span>
-            <span class="tag">生命化</span>
-          </div>
-          <div class="pr-card">
-            <span class="idx">03</span>
-            <span class="num">#82198</span>
-            <span class="head">Skill-Persistence · 技能持久</span>
-            <span class="tag">智慧化</span>
-          </div>
-          <div class="pr-card">
-            <span class="idx">04</span>
-            <span class="num">#94266</span>
-            <span class="head">Collective Wisdom · 集体智慧</span>
-            <span class="tag">智慧化</span>
-          </div>
-        </div>
-
-        <div class="tags-block">
-          <div class="tag-row">
-            <span class="tag-label common">共同点</span>
-            <span class="tag-text">5 个 PR 均指向 agent 从"处理任务"到"具备能力"的演进</span>
-          </div>
-          <div class="tag-row">
-            <span class="tag-label">演化轨迹</span>
-            <span class="tag-text">专业化 → 生命化 → 智慧化</span>
-          </div>
-        </div>
-
-        <div class="col-note">
-          <span class="line"></span>
-          <span>ALL 5 · OPEN / IN DISCUSSION</span>
-          <span class="dot"></span>
-        </div>
+    <!-- KPI cards -->
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-label">DESKTOP 需求</div>
+        <div class="kpi-value"><span class="kpi-num">11</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">用户主动要求的功能占比<br><span class="kpi-sub-en">DEMAND SHARE</span></div>
       </div>
-
-      <div class="col-right">
-        <div class="col-head">
-          <h2>三个阶段 · 演进路径</h2>
-          <span class="en">EVOLUTION STAGES</span>
-          <span class="rule"></span>
-        </div>
-
-        <div class="evolution">
-          <div class="stage">
-            <div class="stage-num">01</div>
-            <div class="stage-name">专业化</div>
-            <div class="stage-en">SPECIALIZATION</div>
-            <div class="stage-detail">
-              <span class="ref">#5143</span> 多角色路由<br>
-              <span class="arrow">→</span> agent 从"一个处理一切"到"角色分工"
-            </div>
-          </div>
-
-          <div class="arrow">
-            <svg viewBox="0 0 44 24">
-              <line x1="4" y1="12" x2="38" y2="12" stroke="#B4A078" stroke-width="1.2"/>
-              <polyline points="30,6 38,12 30,18" fill="none" stroke="#B4A078" stroke-width="1.2"/>
-            </svg>
-          </div>
-
-          <div class="stage">
-            <div class="stage-num">02</div>
-            <div class="stage-name">生命化</div>
-            <div class="stage-en">LIVING ENTITY</div>
-            <div class="stage-detail">
-              <span class="ref">#53871</span> Soul<br>
-              <span class="arrow">→</span> agent 有生命感、记忆延续、自主性
-            </div>
-          </div>
-
-          <div class="arrow">
-            <svg viewBox="0 0 44 24">
-              <line x1="4" y1="12" x2="38" y2="12" stroke="#B4A078" stroke-width="1.2"/>
-              <polyline points="30,6 38,12 30,18" fill="none" stroke="#B4A078" stroke-width="1.2"/>
-            </svg>
-          </div>
-
-          <div class="stage">
-            <div class="stage-num">03</div>
-            <div class="stage-name">智慧化</div>
-            <div class="stage-en">COLLECTIVE WISDOM</div>
-            <div class="stage-detail">
-              <span class="ref">#82198</span> Skill-Persistence<span class="plus">+</span><br>
-              <span class="ref">#94266</span> Collective Wisdom<br>
-              <span class="arrow">→</span> agent 自我组织并汇聚集体智慧
-            </div>
-          </div>
-        </div>
-
-        <div class="decision">
-          <span class="badge-num">5</span>
-          <span class="badge-txt">待决策</span>
-          <div class="desc">
-            <div class="title">needs-decision · 全部处于讨论中</div>
-            <div class="body">5 个 PR 均标记 needs-decision，社区正在就这些 agent 演化方向展开讨论。</div>
-          </div>
-        </div>
+      <div class="kpi warn">
+        <div class="kpi-label">DESKTOP 供给</div>
+        <div class="kpi-value"><span class="kpi-num">8</span><span class="kpi-unit">%</span></div>
+        <div class="kpi-sub">以 bug 修复为主的产出<br><span class="kpi-sub-en">SUPPLY SHARE</span></div>
       </div>
-
+      <div class="kpi">
+        <div class="kpi-label">SURFACE RELEASE</div>
+        <div class="kpi-value"><span class="kpi-num">100</span><span class="kpi-unit">PRs / 周</span></div>
+        <div class="kpi-sub">集中投入至 desktop 组件<br><span class="kpi-sub-en">PR THROUGHPUT</span></div>
+      </div>
     </div>
 
-    <div class="bottom">
-      <div class="label"><span>演化轨迹</span><span class="en">EVOLUTION ARC</span></div>
-      <div class="trajectory">
-        <span class="step">专业化</span><span class="ar">→</span>
-        <span class="step">生命化</span><span class="ar">→</span>
-        <span class="step">自动化</span><span class="ar">→</span>
-        <span class="step">持久化</span><span class="ar">→</span>
-        <span class="step">智慧化</span>
+    <!-- Table -->
+    <div class="table-section">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:28%;">组件 Component</th>
+            <th style="width:14%;">需求占比</th>
+            <th style="width:14%;">供给占比</th>
+            <th>供需匹配评估</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warn">
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">desktop</span></div></td>
+            <td><span class="num warn">11<span class="pct">%</span></span></td>
+            <td><span class="num warn">8<span class="pct">%</span></span></td>
+            <td><span class="badge-mini">⚠ 供给欠配</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">agent</span></div></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="num">26<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">gateway</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">22<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+          <tr>
+            <td><div class="comp-cell"><span class="dot"></span><span class="comp-name">cli</span></div></td>
+            <td><span class="num">18<span class="pct">%</span></span></td>
+            <td><span class="num">17<span class="pct">%</span></span></td>
+            <td><span class="badge-ok">匹配良好</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-caption">
+        <div class="badge-gold">
+          <span class="dot-gold"></span>
+          Surface Release · 2026-06-05 一周 100 PRs
+        </div>
+        <div class="caption-note">— 团队对 desktop 的集中投入已在产出端显现</div>
       </div>
-      <div class="final-msg">
-        用户不再满足于"一个 agent 处理一切"，而是要求 agent 有 <em>专业化分工</em>、<em>生命感</em>、<em>自主调度</em>、<em>持久化记忆</em>、<em>集体智慧</em>。
+    </div>
+
+    <!-- Narrative -->
+    <div class="narrative">
+      <div class="narrative-left">
+        <div class="nar-label">观 察 · INSIGHTS</div>
+        <div class="nar-line"><span class="step">01</span>需求 <span class="num-inline">11%</span> 高于供给 <span class="num-inline">8%</span>，是四个组件中唯一失衡</div>
+        <div class="nar-line"><span class="step">02</span>类型错配：需求偏新功能，供给偏 bug 修复</div>
+        <div class="nar-line"><span class="step">03</span>Surface Release 一周 <span class="num-inline">100 PRs</span>，集中投入已启动</div>
+      </div>
+
+      <div class="quote-block">
+        <div class="quote-ring">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="26" fill="none" stroke="#B4A078" stroke-width="1.2" opacity="0.75"/>
+            <circle cx="28" cy="28" r="7" fill="#B4A078"/>
+          </svg>
+        </div>
+        <div class="quote-text">
+          <div class="quote-main">"生态是结果，不是手段。"</div>
+          <div class="quote-sub">能力扩张由<span class="quote-accent">用户需求</span>驱动，而非行政推动。</div>
+        </div>
       </div>
     </div>
 

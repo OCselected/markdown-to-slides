@@ -4,450 +4,357 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
-<title>三个核心洞察</title>
+<title>消费侧总览 · 弱代理的采纳信号</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-:root {
-  --bg: #0F1E33;
-  --text: #F5F0E8;
-  --accent: #B4A078;
-  --accent-deep: #1B3B6B;
+:root{
+  --bg:#0F1E33;
+  --primary:#1B3B6B;
+  --primary-light:#2C5090;
+  --text:#F5F0E8;
+  --text-dim:rgba(245,240,232,0.68);
+  --text-faint:rgba(245,240,232,0.42);
+  --gold:#B4A078;
+  --gold-light:#C9B78F;
+  --gold-dim:rgba(180,160,120,0.55);
+  --gold-line:rgba(180,160,120,0.4);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1600px;height:900px;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased;}
 
-body {
-  background: #0F1E33;
-  color: #F5F0E8;
-  font-family: 'Noto Sans SC', sans-serif;
-  overflow: hidden;
-}
+.wrapper{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto;background:var(--bg);}
+#bg{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(27,59,107,0.35) 0%,rgba(15,30,51,0) 45%);}
+#bg .deco-circle{position:absolute;border-radius:50%;border:1px solid var(--gold-dim);opacity:0.35;}
+#bg .deco-circle.big{width:340px;height:340px;top:-140px;right:-120px;}
+#bg .deco-circle.small{width:70px;height:70px;bottom:120px;left:80px;border-color:var(--gold);}
+#bg .deco-line-v{position:absolute;top:0;width:1px;background:rgba(180,160,120,0.2);}
+#bg .deco-line-v.a{left:120px;height:100%;}
+#bg .deco-line-v.b{right:120px;height:100%;}
+#bg .deco-line-h{position:absolute;left:120px;right:120px;height:1px;background:rgba(180,160,120,0.15);}
+#bg .deco-line-h.top{top:120px;}
+#bg .deco-dot{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;}
+#bg .deco-dot.a{top:120px;left:116px;}
+#bg .deco-dot.b{top:120px;right:116px;}
+#bg .deco-square{position:absolute;width:14px;height:14px;border:1px solid var(--gold-dim);}
+#bg .deco-square.a{top:120px;left:50%;transform:translateX(-50%) rotate(45deg);}
 
-.wrapper {
-  position: relative;
-  width: 1600px;
-  height: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-  background: radial-gradient(ellipse 1100px 720px at 50% 35%, #1B3B6B 0%, #0F1E33 65%);
-}
+#ct{position:absolute;inset:0;z-index:1;padding:60px 90px 56px;box-sizing:border-box;}
 
-#bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+/* Hero */
+.hero{margin-bottom:26px;}
+.hero-top{display:flex;align-items:flex-end;gap:22px;}
+.hero-title{font-family:'Noto Serif SC',serif;font-size:66px;font-weight:900;color:var(--text);line-height:1;letter-spacing:3px;}
+.hero-sub-wrap{padding-bottom:12px;}
+.hero-sub{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:500;color:var(--gold);letter-spacing:6px;line-height:1;}
+.hero-sub-line{width:64px;height:1px;background:var(--gold);margin-top:12px;}
+.hero-tag{margin-left:auto;padding:10px 20px;border:1px solid var(--gold-dim);color:var(--gold);font-size:11px;letter-spacing:4px;font-weight:500;background:rgba(27,59,107,0.3);}
+.hero-narrative{margin-top:18px;font-size:14.5px;line-height:1.75;color:var(--text-dim);max-width:1220px;letter-spacing:0.3px;}
+.hero-narrative .n-num{color:var(--gold);font-weight:600;font-family:'JetBrains Mono',monospace;}
+.hero-narrative .n-em{color:var(--text);font-weight:500;}
 
-#bg::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: -80px;
-  width: 260px;
-  height: 260px;
-  border: 1px solid rgba(180,160,120,0.18);
-  border-radius: 50%;
-}
+/* Section split */
+.section{margin-top:26px;}
 
-#bg::after {
-  content: '';
-  position: absolute;
-  bottom: -120px;
-  right: -100px;
-  width: 340px;
-  height: 340px;
-  background: rgba(27,59,107,0.35);
-}
+/* Section title */
+.sec-title-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.sec-title-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:3px;border:1px solid var(--gold-dim);padding:3px 8px;}
+.sec-title-text{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--text);font-weight:600;letter-spacing:3px;}
+.sec-title-line{flex:1;height:1px;background:var(--gold-line);}
+.sec-title-en{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;}
 
-#ct {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 56px 64px 42px;
-}
+/* Pyramid section */
+.pyramid-section{display:grid;grid-template-columns:600px 1fr;gap:44px;}
+.pyramid-wrap{position:relative;padding:6px 0;}
+.corner{position:absolute;width:18px;height:18px;border:1px solid var(--gold-dim);}
+.corner.tl{top:0;left:0;border-right:none;border-bottom:none;}
+.corner.tr{top:0;right:0;border-left:none;border-bottom:none;}
+.corner.bl{bottom:0;left:0;border-right:none;border-top:none;}
+.corner.br{bottom:0;right:0;border-left:none;border-top:none;}
 
-.title-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 26px;
-}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 10px;}
+.tier{position:relative;display:flex;align-items:baseline;}
+.tier-body{padding:14px 22px;background:var(--primary);border:1px solid var(--gold-dim);color:var(--text);font-family:'Noto Serif SC',serif;display:flex;align-items:baseline;justify-content:space-between;gap:18px;}
+.tier-num{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--gold);letter-spacing:0.5px;}
+.tier-lbl{font-size:11.5px;color:var(--text-dim);letter-spacing:2px;font-family:'Noto Sans SC',sans-serif;font-weight:400;}
+.tier.core .tier-body{width:180px;clip-path:polygon(50% 0,100% 100%,0 100%);padding:26px 32px 8px;justify-content:center;background:var(--primary-light);border-color:var(--gold);}
+.tier.core .tier-num{font-size:20px;}
+.tier.active .tier-body{width:360px;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);padding:14px 40px 12px;background:var(--primary);}
+.tier.periph .tier-body{width:540px;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);padding:16px 46px 14px;background:#14305A;}
 
-.title-main {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 700;
-  font-size: 48px;
-  color: #F5F0E8;
-  letter-spacing: 6px;
-  line-height: 1.1;
-}
+.tier-label{margin-left:22px;flex:0 0 auto;min-width:130px;}
+.tier-label-name{font-family:'Noto Serif SC',serif;font-size:13px;color:var(--gold);letter-spacing:3px;font-weight:600;}
+.tier-label-range{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-faint);margin-top:5px;letter-spacing:0.5px;}
 
-.title-mark {
-  width: 78px;
-  height: 3px;
-  background: #B4A078;
-  margin-top: 14px;
-}
+.badge{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:24px;padding:10px 16px;border:1px solid var(--gold);background:rgba(180,160,120,0.08);display:flex;flex-direction:column;gap:3px;min-width:150px;}
+.badge-label{font-size:9.5px;color:var(--gold);letter-spacing:3px;font-weight:500;}
+.badge-name{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--text);font-weight:700;letter-spacing:0.5px;}
+.badge-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold-light);padding-left:14px;position:relative;}
 
-.title-right {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  color: rgba(245,240,232,0.42);
-  letter-spacing: 5px;
-  padding-top: 20px;
-  font-weight: 300;
-}
+.pyramid-caption{margin-top:22px;text-align:center;font-size:11px;color:var(--text-faint);letter-spacing:2px;font-family:'JetBrains Mono',monospace;}
+.pyramid-caption .caption-dot{display:inline-block;width:4px;height:4px;background:var(--gold);margin:0 10px;transform:translateY(-2px);}
 
-.hero-row {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 24px;
-}
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.kpi{position:relative;padding:18px 20px;background:rgba(27,59,107,0.45);border:1px solid var(--gold-line);}
+.kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);}
+.kpi-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.kpi-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;}
+.kpi-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+.kpi-name{font-family:'Noto Serif SC',serif;font-size:14px;color:var(--text);font-weight:500;letter-spacing:2px;margin-bottom:6px;}
+.kpi-num{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:0.5px;}
+.kpi-sub{margin-top:6px;font-size:11.5px;color:var(--text-dim);letter-spacing:0.5px;}
+.kpi-sub .mono{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-weight:600;}
 
-.hero-wrap {
-  width: 660px;
-  flex-shrink: 0;
-}
+.kpi.big .kpi-num{font-size:44px;color:var(--text);}
+.kpi.big{background:linear-gradient(180deg,rgba(27,59,107,0.65) 0%,rgba(27,59,107,0.35) 100%);border-color:var(--gold-dim);}
+.kpi.big::before{width:4px;background:var(--gold);}
 
-.hero-img {
-  display: block;
-  width: 660px;
-  height: 368px;
-  object-fit: cover;
-  border: 1px solid rgba(180,160,120,0.25);
-}
+/* Timeline */
+.timeline-section{margin-top:24px;}
+.timeline{position:relative;padding:12px 0 8px;}
+.tl-track{position:relative;height:2px;background:var(--gold-line);margin:22px 40px 12px;}
+.tl-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);z-index:2;}
+.tl-dot.big{width:16px;height:16px;background:var(--gold);border-color:var(--gold-light);box-shadow:0 0 0 4px rgba(180,160,120,0.15);}
+.tl-tick{position:absolute;top:calc(100% + 8px);width:1px;height:6px;background:var(--gold-dim);transform:translateX(-50%);}
+.tl-node{position:absolute;top:calc(100% + 20px);transform:translateX(-50%);text-align:center;}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.5px;font-weight:600;}
+.tl-lbl{margin-top:6px;font-size:11px;color:var(--text-dim);letter-spacing:2px;font-family:'Noto Serif SC',serif;}
+.tl-lbl.gold{color:var(--gold);font-weight:600;}
 
-.hero-caption {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: rgba(245,240,232,0.45);
-  letter-spacing: 2.5px;
-}
+.tl-legend{margin-top:76px;display:flex;align-items:center;justify-content:center;gap:32px;}
+.tl-legend-item{display:flex;align-items:center;gap:10px;}
+.tl-legend-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);border:1px solid var(--gold);}
+.tl-legend-dot.big{width:14px;height:14px;background:var(--gold);box-shadow:0 0 0 3px rgba(180,160,120,0.2);}
+.tl-legend-txt{font-size:12px;color:var(--text-dim);letter-spacing:1px;}
+.tl-legend-txt .mono{font-family:'JetBrains Mono',monospace;color:var(--text);font-weight:600;margin:0 3px;}
+.tl-legend-divider{width:1px;height:18px;background:var(--gold-line);}
+.tl-legend-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-dim);letter-spacing:1.5px;}
 
-.hero-caption-left {
-  color: #B4A078;
-  font-weight: 500;
-}
+/* Summary */
+.summary{margin-top:30px;display:flex;align-items:center;justify-content:center;gap:30px;position:relative;}
+.summary-side{flex:0 0 200px;height:1px;background:var(--gold-line);position:relative;}
+.summary-side::after{content:'';position:absolute;top:-3px;width:7px;height:7px;background:var(--gold);border-radius:50%;}
+.summary-side.left::after{right:-3px;}
+.summary-side.right::after{left:-3px;}
+.summary-center{display:flex;align-items:center;gap:22px;padding:16px 30px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);}
+.summary-text{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:var(--text);letter-spacing:4px;}
+.summary-text .st-neq{color:var(--gold);margin:0 8px;font-weight:900;}
+.summary-text .st-em{color:var(--gold);font-weight:900;}
+.summary-en{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-dim);letter-spacing:3px;}
 
-.bridge {
-  flex: 1;
-  padding: 14px 0 6px 0;
-}
-
-.bridge-tag {
-  display: inline-block;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  letter-spacing: 6px;
-  color: #B4A078;
-  margin-bottom: 18px;
-  font-weight: 500;
-}
-
-.bridge-tag-line {
-  display: block;
-  width: 42px;
-  height: 2px;
-  background: #B4A078;
-  margin-top: 12px;
-  margin-bottom: 20px;
-}
-
-.bridge-quote {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  line-height: 1.75;
-  color: #F5F0E8;
-  font-weight: 400;
-}
-
-.quote-mark {
-  color: #B4A078;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 44px;
-  line-height: 0;
-  vertical-align: -18px;
-  margin-right: 6px;
-}
-
-.quote-highlight {
-  color: #B4A078;
-  font-weight: 700;
-}
-
-.bridge-foot {
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: rgba(245,240,232,0.5);
-  letter-spacing: 3px;
-}
-
-.bridge-foot-line {
-  width: 60px;
-  height: 1px;
-  background: rgba(180,160,120,0.55);
-}
-
-.insights {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-}
-
-.col {
-  padding: 22px 22px 24px;
-  border: 1px solid rgba(180,160,120,0.16);
-  background: rgba(22,41,74,0.45);
-  position: relative;
-  height: 252px;
-}
-
-.col-left-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 66px;
-  background: #B4A078;
-}
-
-.col-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.col-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 64px;
-  font-weight: 900;
-  line-height: 0.95;
-  color: #B4A078;
-}
-
-.col-head-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.col-tag {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px;
-  letter-spacing: 5px;
-  color: rgba(245,240,232,0.42);
-  font-weight: 300;
-}
-
-.col-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 19px;
-  color: #F5F0E8;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  line-height: 1.35;
-}
-
-.col-rule {
-  width: 32px;
-  height: 1px;
-  background: rgba(180,160,120,0.55);
-  margin-bottom: 14px;
-}
-
-.col-body {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  line-height: 1.85;
-  color: #F5F0E8;
-  font-weight: 400;
-}
-
-.col-body .em {
-  color: #B4A078;
-  font-weight: 700;
-}
-
-.col-shape {
-  position: absolute;
-  bottom: 18px;
-  right: 20px;
-}
-
-.shape-circle {
-  width: 22px;
-  height: 22px;
-  border: 1.5px solid #B4A078;
-  border-radius: 50%;
-}
-
-.shape-square {
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid #B4A078;
-}
-
-.shape-line {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.shape-line span {
-  display: block;
-  height: 1.5px;
-  background: #B4A078;
-}
-
-.shape-line .l1 { width: 26px; }
-.shape-line .l2 { width: 18px; }
-.shape-line .l3 { width: 22px; }
-
-.foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 22px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(180,160,120,0.18);
-}
-
-.foot-left {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  color: rgba(245,240,232,0.5);
-  letter-spacing: 4px;
-}
-
-.foot-right {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 17px;
-  color: #F5F0E8;
-  letter-spacing: 3px;
-}
-
-.foot-quote {
-  color: #B4A078;
-  font-size: 22px;
-  margin: 0 2px;
-}
-
-.foot-highlight {
-  color: #B4A078;
-  font-weight: 700;
-}
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div id="bg"></div>
+  <div id="bg">
+    <div class="deco-circle big"></div>
+    <div class="deco-circle small"></div>
+    <div class="deco-line-v a"></div>
+    <div class="deco-line-v b"></div>
+    <div class="deco-line-h top"></div>
+    <div class="deco-dot a"></div>
+    <div class="deco-dot b"></div>
+    <div class="deco-square a"></div>
+  </div>
   <div id="ct">
 
-    <div class="title-block">
-      <div>
-        <div class="title-main"><span>三个核心洞察</span></div>
-        <div class="title-mark"></div>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-top">
+        <h1 class="hero-title">消费侧总览</h1>
+        <div class="hero-sub-wrap">
+          <div class="hero-sub">弱代理的采纳信号</div>
+          <div class="hero-sub-line"></div>
+        </div>
+        <div class="hero-tag">CONSUMPTION · WEAK PROXY</div>
       </div>
-      <div class="title-right"><span>CORE INSIGHTS / 019</span></div>
+      <p class="hero-narrative">
+        <span class="n-num">397</span> 位 <span class="n-em">contributors</span> 分层清晰：<span class="n-em">核心 5.3%</span>、<span class="n-em">活跃 36%</span>、<span class="n-em">外围 58.7%</span>。stars / forks 是弱代理，无法反映真实使用频率、场景与付费行为。
+      </p>
     </div>
 
-    <div class="hero-row">
-      <div class="hero-wrap">
-        <img class="hero-img" src="../images/page_019_hero.png" alt="包豪斯几何构图：结构稳定、分层兼容、信任跃迁">
-        <div class="hero-caption">
-          <span class="hero-caption-left"><span>结构稳定 · 分层兼容 · 信任跃迁</span></span>
-          <span><span>BAUHAUS COMPOSITION</span></span>
+    <!-- Pyramid + KPI -->
+    <div class="section pyramid-section">
+
+      <div class="pyramid-wrap">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="pyramid">
+          <!-- Top: Core -->
+          <div class="tier core">
+            <div class="tier-body">
+              <span class="tier-num">21 人</span>
+              <span class="tier-lbl">5.3%</span>
+            </div>
+            <div class="badge">
+              <span class="badge-label">TOP 1 · 贡献度</span>
+              <span class="badge-name">teknium1</span>
+              <span class="badge-num">14,638</span>
+            </div>
+          </div>
+          <!-- Middle: Active -->
+          <div class="tier active">
+            <div class="tier-body">
+              <span class="tier-num">143 人</span>
+              <span class="tier-lbl">36.0%</span>
+            </div>
+            <div class="tier-label">
+              <div class="tier-label-name">活跃 ACTIVE</div>
+              <div class="tier-label-range">10 – 99 commits</div>
+            </div>
+          </div>
+          <!-- Bottom: Peripheral -->
+          <div class="tier periph">
+            <div class="tier-body">
+              <span class="tier-num">233 人</span>
+              <span class="tier-lbl">58.7%</span>
+            </div>
+            <div class="tier-label">
+              <div class="tier-label-name">外围 PERIPHERAL</div>
+              <div class="tier-label-range">1 – 9 commits</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pyramid-caption">
+          CONTRIBUTORS · 397<span class="caption-dot"></span>COMMITS 分层
         </div>
       </div>
-      <div class="bridge">
-        <div class="bridge-tag"><span>NARRATIVE BRIDGE</span></div>
-        <div class="bridge-tag-line"></div>
-        <div class="bridge-quote">
-          <span class="quote-mark">「</span><span>从"能用"到"好用"的</span><span class="quote-highlight">关键跃迁</span><span>就在第三个洞察里。</span>
+
+      <div class="kpi-grid">
+        <div class="kpi big">
+          <div class="kpi-head">
+            <span class="kpi-tag">K01</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">总 CONTRIBUTORS</div>
+          <div class="kpi-num">397</div>
+          <div class="kpi-sub">去重后累计贡献者</div>
         </div>
-        <div class="bridge-foot">
-          <span class="bridge-foot-line"></span>
-          <span><span>递进 · INSIGHT 01 → 03</span></span>
+        <div class="kpi">
+          <div class="kpi-head">
+            <span class="kpi-tag">K02 · CORE</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">核心（100+ commits）</div>
+          <div class="kpi-num">21</div>
+          <div class="kpi-sub"><span class="mono">5.3%</span> · 顶层维护者</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-head">
+            <span class="kpi-tag">K03 · ACTIVE</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">活跃（10 – 99 commits）</div>
+          <div class="kpi-num">143</div>
+          <div class="kpi-sub"><span class="mono">36.0%</span> · 中层持续协作</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-head">
+            <span class="kpi-tag">K04 · PERIPHERAL</span>
+            <span class="kpi-dot"></span>
+          </div>
+          <div class="kpi-name">外围（1 – 9 commits）</div>
+          <div class="kpi-num">233</div>
+          <div class="kpi-sub"><span class="mono">58.7%</span> · 长尾接触</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Releases timeline -->
+    <div class="timeline-section">
+      <div class="sec-title-row">
+        <span class="sec-title-num">03</span>
+        <span class="sec-title-text">Releases · 发布节奏</span>
+        <span class="sec-title-line"></span>
+        <span class="sec-title-en">N = 33 · NAMED = 6</span>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-track">
+          <svg width="100%" height="40" viewBox="0 0 1380 40" preserveAspectRatio="none" style="position:absolute;top:-14px;left:0;width:100%;height:40px;overflow:visible;pointer-events:none;">
+            <circle cx="0" cy="20" r="6" fill="#0F1E33" stroke="#B4A078" stroke-width="2"/>
+            <circle cx="240" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="480" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="720" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="960" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="1140" cy="20" r="5" fill="#0F1E33" stroke="#B4A078" stroke-width="1.5"/>
+            <circle cx="1240" cy="20" r="6" fill="#0F1E33" stroke="#B4A078" stroke-width="2"/>
+            <circle cx="1380" cy="20" r="9" fill="#B4A078" stroke="#C9B78F" stroke-width="2"/>
+          </svg>
+
+          <div class="tl-tick" style="left:0%"></div>
+          <div class="tl-node" style="left:0%">
+            <div class="tl-date">2026-03-12</div>
+            <div class="tl-lbl gold">首次发布</div>
+          </div>
+
+          <div class="tl-node" style="left:18.1%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 8 个</div>
+          </div>
+          <div class="tl-node" style="left:35.1%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 16 个</div>
+          </div>
+          <div class="tl-node" style="left:51.4%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 22 个</div>
+          </div>
+          <div class="tl-node" style="left:67.7%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 28 个</div>
+          </div>
+          <div class="tl-node" style="left:80.5%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 31 个</div>
+          </div>
+
+          <div class="tl-node" style="left:88.3%">
+            <div class="tl-date">—</div>
+            <div class="tl-lbl">累计 32 个</div>
+          </div>
+
+          <div class="tl-tick" style="left:100%"></div>
+          <div class="tl-node" style="left:100%">
+            <div class="tl-date">2026-09-11</div>
+            <div class="tl-lbl gold">共 33 个 · 收官</div>
+          </div>
+        </div>
+
+        <div class="tl-legend">
+          <div class="tl-legend-item">
+            <span class="tl-legend-dot big"></span>
+            <span class="tl-legend-txt">命名 release <span class="mono">6</span> · 视为文化事件信号</span>
+          </div>
+          <div class="tl-legend-divider"></div>
+          <div class="tl-legend-item">
+            <span class="tl-legend-dot"></span>
+            <span class="tl-legend-txt">常规发布 <span class="mono">27</span> · 累计 33</span>
+          </div>
+          <div class="tl-legend-divider"></div>
+          <div class="tl-legend-item">
+            <span class="tl-legend-meta">跨度 183 天 · 平均间隔 5.8 天</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="insights">
-
-      <div class="col">
-        <div class="col-left-bar"></div>
-        <div class="col-header">
-          <div class="col-num"><span>01</span></div>
-          <div class="col-head-text">
-            <span class="col-tag"><span>INSIGHT</span></span>
-            <div class="col-title"><span>从扩张期进入稳定化期</span></div>
-          </div>
-        </div>
-        <div class="col-rule"></div>
-        <div class="col-body">
-          <p><span><span class="em">P2 全给 bug</span>、<span class="em">P1 缺席</span>，<br>CLI 层 bug 驱动节奏。</span></p>
-        </div>
-        <div class="col-shape">
-          <div class="shape-square"></div>
-        </div>
+    <!-- Summary -->
+    <div class="summary">
+      <div class="summary-side left"></div>
+      <div class="summary-center">
+        <span class="summary-text">stars / forks <span class="st-neq">≠</span> 真实使用 —— 是<span class="st-em">弱代理</span></span>
+        <span class="summary-en">WEAK PROXY · NOT ADOPTION</span>
       </div>
-
-      <div class="col">
-        <div class="col-left-bar"></div>
-        <div class="col-header">
-          <div class="col-num"><span>02</span></div>
-          <div class="col-head-text">
-            <span class="col-tag"><span>INSIGHT</span></span>
-            <div class="col-title"><span>兼容性是结构性税</span></div>
-          </div>
-        </div>
-        <div class="col-rule"></div>
-        <div class="col-body">
-          <p><span><span class="em">56% PR</span> 带兼容性标签，<br>供给侧的<span class="em">隐形成本</span>。</span></p>
-        </div>
-        <div class="col-shape">
-          <div class="shape-circle"></div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="col-left-bar"></div>
-        <div class="col-header">
-          <div class="col-num"><span>03</span></div>
-          <div class="col-head-text">
-            <span class="col-tag"><span>INSIGHT</span></span>
-            <div class="col-title"><span>信任是可观察的信号</span></div>
-          </div>
-        </div>
-        <div class="col-rule"></div>
-        <div class="col-body">
-          <p><span>feature issue <span class="em">自带安全边界标签</span>，<br>消费侧信任可被追踪。</span></p>
-        </div>
-        <div class="col-shape">
-          <div class="shape-line">
-            <span class="l1"></span>
-            <span class="l2"></span>
-            <span class="l3"></span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="foot">
-      <div class="foot-left"><span>递进脉络 · Progression</span></div>
-      <div class="foot-right"><span>从<span class="foot-quote">「</span>能用<span class="foot-quote">」</span>到<span class="foot-quote">「</span><span class="foot-highlight">好用</span><span class="foot-quote">」</span>的关键跃迁</span></div>
+      <div class="summary-side right"></div>
     </div>
 
   </div>
