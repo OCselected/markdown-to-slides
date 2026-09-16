@@ -1,371 +1,474 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <title>为什么要关注 Agent 的演化</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="../assets/echarts.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
+  :root{
+    --bg:#0F1E33;
+    --panel:#132845;
+    --primary:#1B3B6B;
+    --accent-line:#1F3659;
+    --text-main:#F5F0E8;
+    --text-muted:#A9B5C8;
+    --text-dim:#6B7A91;
+    --gold:#B4A078;
+    --gold-bright:#E4C97A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#000;}
+  body{
+    font-family:'Noto Sans SC','PingFang SC',sans-serif;
+    color:var(--text-main);
+    line-height:1.4;
+  }
+  .wrapper{
+    width:1600px;height:900px;
+    position:relative;overflow:hidden;
+    background:#0F1E33;
+    margin:0 auto;
+  }
+  #bg{position:absolute;inset:0;z-index:0;}
+  .bg-svg{width:100%;height:100%;position:absolute;top:0;left:0;opacity:.9;}
+  #ct{position:absolute;inset:0;z-index:1;padding:44px 56px 44px 56px;}
+  .main{
+    display:grid;
+    grid-template-columns:500px 432px 368px;
+    column-gap:28px;
+    height:474px;
+    margin-top:132px;
+  }
+  .col{display:flex;flex-direction:column;}
+  .col-right{gap:12px;}
 
-:root{
-  --bg:#0F1E33;
-  --bg2:#152944;
-  --ink:#F5F0E8;
-  --ink-dim:rgba(245,240,232,0.72);
-  --ink-mute:rgba(245,240,232,0.5);
-  --accent:#B4A078;
-  --accent-dim:rgba(180,160,120,0.35);
-  --prussian:#1B3B6B;
-  --line:rgba(245,240,232,0.14);
-  --card:rgba(27,59,107,0.22);
-}
+  /* Header */
+  .head{position:absolute;top:44px;left:56px;right:56px;}
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11px;letter-spacing:3px;color:var(--gold);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+  }
+  .eyebrow .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+  .eyebrow .line{flex:1;height:1px;background:linear-gradient(to right,rgba(180,160,120,.5),rgba(180,160,120,0));max-width:280px;}
+  h1{
+    font-family:'Noto Serif SC',serif;
+    font-weight:700;font-size:40px;
+    color:var(--text-main);
+    line-height:1.2;margin-top:14px;letter-spacing:1px;
+  }
+  .subtitle{
+    font-size:14px;color:var(--text-muted);
+    margin-top:12px;line-height:1.5;letter-spacing:.3px;
+  }
+  .subtitle .hl{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;}
+  .top-accent{
+    position:absolute;top:44px;right:56px;
+    width:60px;height:60px;
+    border:1px solid var(--gold);
+  }
+  .top-accent::before{
+    content:'';position:absolute;left:0;top:0;width:16px;height:16px;background:var(--gold);
+  }
 
-*{box-sizing:border-box;}
+  /* Section header */
+  .sec-head{display:flex;align-items:baseline;gap:10px;height:30px;margin-bottom:14px;}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;}
+  .sec-title{font-size:14px;font-weight:700;color:var(--text-main);letter-spacing:1px;}
+  .sec-sub{font-size:10px;color:var(--text-dim);letter-spacing:.5px;}
 
-body{
-  margin:0;
-  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  background:#000;
-  color:var(--ink);
-}
+  /* Chart */
+  #chart_1{width:500px;height:326px;}
+  .metric-row{
+    display:flex;align-items:center;gap:22px;
+    margin-top:14px;
+    padding:14px 0 0 0;
+    border-top:1px solid rgba(180,160,120,.25);
+    flex:1;
+  }
+  .metric-main{display:flex;flex-direction:column;}
+  .metric-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:42px;color:var(--gold);font-weight:700;
+    line-height:1;letter-spacing:1px;
+  }
+  .metric-num .unit{font-size:18px;margin-left:4px;font-weight:500;}
+  .metric-label{font-size:12px;color:var(--text-muted);margin-top:8px;letter-spacing:1.5px;}
+  .metric-divider{width:1px;height:36px;background:var(--accent-line);}
+  .metric-growth{display:flex;flex-direction:column;}
+  .metric-growth .gnum{
+    font-family:'JetBrains Mono',monospace;
+    font-size:22px;color:var(--gold-bright);font-weight:700;line-height:1;
+  }
+  .metric-growth .glabel{font-size:11px;color:var(--text-muted);margin-top:6px;}
 
-.wrapper{
-  width:1600px;
-  height:900px;
-  position:relative;
-  overflow:hidden;
-  margin:0 auto;
-  background:var(--bg);
-}
+  /* Timeline */
+  .timeline{position:relative;padding-left:36px;display:flex;flex-direction:column;gap:20px;flex:1;}
+  .timeline::before{
+    content:'';position:absolute;left:14px;top:6px;bottom:6px;width:1px;
+    background:linear-gradient(to bottom,var(--primary) 0%,var(--gold) 45%,var(--primary) 100%);
+  }
+  .tl-item{position:relative;padding:16px 18px;background:rgba(15,30,51,.6);border:1px solid var(--accent-line);border-radius:2px;}
+  .tl-item::before{
+    content:'';position:absolute;left:-30px;top:22px;width:12px;height:12px;border:2px solid var(--primary);background:var(--bg);border-radius:50%;
+  }
+  .tl-item.active{
+    background:rgba(27,59,107,.35);
+    border-color:var(--gold);
+    box-shadow:inset 3px 0 0 var(--gold);
+  }
+  .tl-item.active::before{
+    background:var(--gold);border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(180,160,120,.2);
+  }
+  .tl-badge{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;
+    color:var(--gold);background:rgba(180,160,120,.12);
+    padding:3px 9px;margin-bottom:8px;border:1px solid rgba(180,160,120,.35);
+  }
+  .tl-item:not(.active) .tl-badge{color:var(--text-dim);background:rgba(255,255,255,.03);border-color:rgba(107,122,145,.25);}
+  .tl-title{font-family:'Noto Serif SC',serif;font-size:17px;color:var(--text-main);font-weight:600;line-height:1.3;}
+  .tl-item.active .tl-title{color:var(--gold);}
+  .tl-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:5px;letter-spacing:1px;}
+  .tl-item.active .tl-year{color:var(--gold);}
+  .tl-desc{font-size:11.5px;color:var(--text-muted);margin-top:6px;line-height:1.55;}
+  .tl-note{
+    font-size:11px;color:var(--text-dim);
+    padding-top:10px;margin-top:auto;
+    border-top:1px solid var(--accent-line);line-height:1.55;
+    letter-spacing:.3px;
+  }
 
-#bg{
-  position:absolute; inset:0; z-index:0;
-  background:radial-gradient(1200px 700px at 20% 20%, #16294a 0%, #0F1E33 55%, #0a1628 100%);
-}
+  /* KPI Cards */
+  .kpi-card{
+    background:rgba(19,40,69,.55);
+    border:1px solid var(--accent-line);
+    border-left:3px solid var(--gold);
+    padding:10px 14px 10px 14px;
+    display:flex;flex-direction:column;gap:4px;
+    height:108px;
+    position:relative;
+  }
+  .kpi-card .badge{
+    position:absolute;top:10px;right:12px;
+    font-size:10px;color:var(--gold);
+    font-family:'JetBrains Mono',monospace;
+    padding:2px 7px;background:rgba(180,160,120,.12);
+    border:1px solid rgba(180,160,120,.35);letter-spacing:1px;
+  }
+  .kpi-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:32px;font-weight:700;color:var(--gold);
+    line-height:1;letter-spacing:.5px;
+    margin-top:4px;
+  }
+  .kpi-num .u{font-size:14px;font-weight:500;margin-left:2px;}
+  .kpi-label{font-size:12.5px;color:var(--text-main);font-weight:500;line-height:1.4;}
+  .kpi-tag{font-size:10.5px;color:var(--text-dim);margin-top:auto;line-height:1.35;}
 
-#ct{
-  position:absolute; inset:0; z-index:1;
-  padding:38px 60px 40px 60px;
-  display:flex; flex-direction:column; gap:18px;
-}
+  /* Vendor band */
+  .vendor-band{
+    margin-top:14px;
+    height:68px;
+    padding:10px 20px;
+    background:linear-gradient(90deg,rgba(27,59,107,.5),rgba(27,59,107,.1) 60%,rgba(27,59,107,.5));
+    border-top:1px solid rgba(180,160,120,.3);
+    border-bottom:1px solid rgba(180,160,120,.3);
+    display:flex;align-items:center;gap:26px;
+  }
+  .vendor-band-title{
+    font-size:11px;letter-spacing:2px;color:var(--gold);
+    padding-right:22px;border-right:1px solid rgba(180,160,120,.35);
+    flex-shrink:0;line-height:1.4;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .vendor-band-title .vt-sub{
+    display:block;font-family:'Noto Sans SC',sans-serif;
+    font-size:10px;color:var(--text-dim);margin-top:4px;letter-spacing:1px;
+  }
+  .vendor-list{display:flex;gap:32px;flex:1;flex-wrap:nowrap;}
+  .vendor-item{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+  .vendor-item::before{
+    content:'';width:8px;height:8px;flex-shrink:0;
+  }
+  .vendor-item[data-c="1"]::before{background:var(--c-1);}
+  .vendor-item[data-c="2"]::before{background:var(--c-2);}
+  .vendor-item[data-c="3"]::before{background:var(--c-3);}
+  .vendor-item[data-c="4"]::before{background:var(--c-4);}
+  .vendor-name{font-size:13px;font-weight:500;color:var(--text-main);white-space:nowrap;}
+  .vendor-tag{
+    font-size:10.5px;color:var(--text-muted);
+    font-family:'JetBrains Mono',monospace;letter-spacing:.5px;
+    white-space:nowrap;
+  }
 
-/* Bauhaus 装饰 */
-.deco{position:absolute; pointer-events:none; z-index:0;}
-.deco-circle-a{
-  width:340px; height:340px; border:1px solid var(--accent-dim);
-  border-radius:50%; right:-120px; top:-140px;
-}
-.deco-circle-b{
-  width:28px; height:28px; background:var(--accent);
-  right:64px; top:64px;
-}
-.deco-square-a{
-  width:104px; height:104px; border:1px solid rgba(245,240,232,0.16);
-  left:34px; bottom:170px;
-}
-.deco-line-a{
-  width:200px; height:1px; background:rgba(245,240,232,0.2);
-  right:60px; bottom:230px;
-}
-.deco-line-b{
-  width:60px; height:2px; background:var(--accent);
-  right:280px; top:112px;
-}
-.deco-dot-grid{
-  right:64px; bottom:64px;
-  display:grid; grid-template-columns:repeat(5,8px); gap:6px;
-}
-.deco-dot-grid i{display:block; width:4px; height:4px; background:var(--ink); opacity:.2;}
+  /* Hermes badge */
+  .hermes-badge{
+    padding:6px 14px;
+    border:1px solid var(--gold);
+    background:rgba(180,160,120,.08);
+    display:flex;align-items:center;gap:10px;
+    flex-shrink:0;
+  }
+  .hermes-badge .hb-dot{
+    width:8px;height:8px;background:var(--gold);border-radius:50%;
+    box-shadow:0 0 0 3px rgba(180,160,120,.2);
+  }
+  .hermes-badge .hb-text{display:flex;flex-direction:column;line-height:1.3;}
+  .hermes-badge .hb-title{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1px;}
+  .hermes-badge .hb-meta{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-muted);letter-spacing:.3px;}
 
-/* Header */
-.header{
-  display:flex; flex-direction:column; gap:8px;
-  padding-bottom:10px;
-  border-bottom:1px solid var(--line);
-  position:relative;
-  z-index:2;
-}
-.eyebrow{
-  display:flex; align-items:center; gap:14px;
-  font-size:12px; color:var(--accent); letter-spacing:0.28em; font-weight:500;
-}
-.eyebrow .bar{width:40px; height:2px; background:var(--accent);}
-.eyebrow .page-num{margin-left:auto; color:var(--ink-mute); letter-spacing:0.3em;}
-.title{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:42px; font-weight:700; color:var(--ink);
-  letter-spacing:0.02em; line-height:1.18;
-  margin:4px 0 0;
-}
-.subtitle{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:18px; font-weight:400;
-  color:rgba(245,240,232,0.6);
-  letter-spacing:0.04em;
-}
-.subtitle .em{color:var(--ink); font-weight:500;}
-
-/* Compare */
-.compare{display:grid; grid-template-columns:1fr 1fr; gap:24px; z-index:2; position:relative;}
-.col{
-  padding:20px 24px;
-  border:1px solid var(--line);
-  background:var(--card);
-  position:relative;
-}
-.col-head{
-  display:flex; align-items:center; gap:12px;
-  padding-bottom:10px; margin-bottom:10px;
-  border-bottom:1px solid var(--line);
-}
-.col-tag{
-  font-size:11px; letter-spacing:0.32em;
-  padding:3px 10px;
-  border:1px solid var(--ink-mute);
-  color:var(--ink-dim);
-}
-.col-title{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:22px; font-weight:700; color:var(--ink);
-}
-.col-sub{
-  font-size:12px; color:var(--ink-mute);
-  margin-left:auto; letter-spacing:0.06em;
-}
-
-.list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;}
-.list li{display:flex; gap:12px; align-items:flex-start; font-size:13.5px; line-height:1.55; color:rgba(245,240,232,0.9);}
-.mark{flex:0 0 auto; margin-top:6px;}
-.mark-square{width:10px; height:10px; background:rgba(245,240,232,0.7);}
-.mark-circle{width:10px; height:10px; background:var(--accent); border-radius:50%;}
-.list b{color:var(--ink); font-weight:700;}
-
-.tags{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 12px;}
-.tag{
-  font-size:12px; padding:5px 11px;
-  border:1px solid rgba(245,240,232,0.32);
-  color:rgba(245,240,232,0.85);
-  letter-spacing:0.06em;
-}
-.tag-gold{border-color:var(--accent); color:var(--accent);}
-
-.foot{
-  margin-top:auto;
-  padding-top:10px;
-  border-top:1px dashed var(--line);
-  font-size:13px;
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-}
-.foot-dim{color:rgba(245,240,232,0.55); line-height:1.5;}
-.foot-gold{color:var(--accent); line-height:1.5; letter-spacing:0.02em;}
-
-/* open column highlight */
-.col-open{
-  border:1px solid var(--accent);
-  background:linear-gradient(180deg, rgba(180,160,120,0.10) 0%, rgba(27,59,107,0.28) 100%);
-}
-.col-open .col-tag{border-color:var(--accent); color:var(--accent);}
-.col-open .col-title{color:var(--accent);}
-.col-open .col-sub{color:var(--accent);}
-.col-open::before{
-  content:""; position:absolute; left:-1px; top:-1px;
-  width:14px; height:14px;
-  background:var(--accent);
-}
-
-/* Points */
-.points{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; z-index:2; position:relative;}
-.pt{
-  padding:16px 20px;
-  background:rgba(15,30,51,0.6);
-  border-top:2px solid var(--prussian);
-  position:relative;
-}
-.pt::before{
-  content:""; position:absolute; top:-2px; left:0;
-  width:36px; height:2px; background:var(--accent);
-}
-.pt-idx{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:11px; letter-spacing:0.3em;
-  color:var(--accent);
-  margin-bottom:4px;
-}
-.pt-lead{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:19px; font-weight:700; color:var(--ink);
-  margin-bottom:6px; letter-spacing:0.02em;
-}
-.pt-body{
-  font-size:12.5px; color:rgba(245,240,232,0.75);
-  line-height:1.65;
-}
-.pt-body b{color:var(--ink); font-weight:600;}
-.pt-body em{color:var(--accent); font-style:normal; font-weight:500;}
-
-/* Data band */
-.databand{
-  display:grid; grid-template-columns:auto 1fr 1fr 1fr;
-  align-items:center; gap:36px;
-  padding:18px 30px;
-  background:rgba(15,30,51,0.7);
-  border:1px solid var(--line);
-  border-left:4px solid var(--accent);
-  position:relative;
-  z-index:2;
-}
-.db-label{
-  display:flex; flex-direction:column; gap:4px;
-  padding-right:22px;
-  border-right:1px solid var(--line);
-  min-width:200px;
-}
-.db-label .l1{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:19px; font-weight:700; color:var(--accent);
-  letter-spacing:0.02em;
-}
-.db-label .l2{
-  font-size:12px; color:var(--ink-mute);
-  letter-spacing:0.08em;
-}
-.kpi{display:flex; flex-direction:column; align-items:center; gap:2px;}
-.kpi .num{
-  font-family:"Noto Serif SC","STSong","SimSun",serif;
-  font-size:46px; font-weight:900;
-  color:var(--accent);
-  letter-spacing:0.01em;
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-}
-.kpi .lbl{
-  font-size:11px; color:var(--ink-dim);
-  letter-spacing:0.22em;
-  margin-top:4px;
-}
-.kpi .sub{
-  font-size:10.5px; color:var(--ink-mute);
-  letter-spacing:0.12em;
-}
+  /* Bottom bar */
+  .bottom-bar{
+    margin-top:14px;
+    height:48px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 22px;
+    background:rgba(15,30,51,.6);
+    border-top:2px solid var(--gold);
+  }
+  .quote{font-family:'Noto Serif SC',serif;font-size:14px;color:var(--text-main);font-style:italic;letter-spacing:1.5px;line-height:1.4;}
+  .quote-mark{color:var(--gold);font-size:22px;font-family:'Noto Serif SC',serif;margin-right:8px;font-style:normal;}
+  .sources{display:flex;gap:16px;font-size:10px;color:var(--text-dim);letter-spacing:1px;font-family:'JetBrains Mono',monospace;}
+  .src{display:flex;align-items:center;gap:6px;}
+  .src::before{content:'';width:4px;height:4px;background:var(--gold);}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="deco deco-circle-a"></div>
-    <div class="deco deco-circle-b"></div>
-    <div class="deco deco-square-a"></div>
-    <div class="deco deco-line-a"></div>
-    <div class="deco deco-line-b"></div>
-    <div class="deco deco-dot-grid">
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-    </div>
+    <svg class="bg-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="120" cy="180" r="150" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.6"/>
+      <circle cx="120" cy="180" r="90" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.3"/>
+      <rect x="1360" y="700" width="180" height="180" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.7"/>
+      <rect x="1420" y="760" width="120" height="120" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.35"/>
+      <line x1="0" y1="770" x2="1600" y2="770" stroke="#1F3659" stroke-width="1" opacity="0.5"/>
+      <line x1="70" y1="290" x2="70" y2="830" stroke="#1F3659" stroke-width="1" opacity="0.35"/>
+      <circle cx="1520" cy="120" r="5" fill="#B4A078" opacity="0.7"/>
+      <circle cx="90" cy="500" r="3" fill="#B4A078" opacity="0.4"/>
+      <rect x="1500" y="360" width="24" height="24" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.3" transform="rotate(45 1512 372)"/>
+    </svg>
   </div>
-
   <div id="ct">
-    <!-- Header -->
-    <div class="header">
+
+    <div class="top-accent"></div>
+
+    <div class="head">
       <div class="eyebrow">
-        <span class="bar"></span>
-        <span>PART · 03 &nbsp; / &nbsp; 观察框架</span>
-        <span class="page-num">03 / 06</span>
+        <span class="dot"></span>
+        <span>03 · 为什么要关注</span>
+        <span class="line"></span>
+        <span>WHY NOW</span>
       </div>
-      <h1 class="title">为什么要关注 Agent 的演化</h1>
-      <div class="subtitle"><span class="em">本土办公产品的火热化竞争</span>——一个不该被忽略的信号</div>
+      <h1>为什么要关注 Agent 的演化</h1>
+      <p class="subtitle">
+        本土 AI 办公 <span class="hl">230 亿元</span> · 同比 <span class="hl">+47%</span> · <span class="hl">20+</span> 款产品密集上线 —— 曾鸣《智能》(2026) 三阶段中第二阶段"智能体大爆发"已经兑现
+      </p>
     </div>
 
-    <!-- Compare -->
-    <div class="compare">
-      <div class="col col-closed">
-        <div class="col-head">
-          <span class="col-tag">CLOSED · 封闭路径</span>
-          <span class="col-title">本土办公的 AI 竞赛</span>
-          <span class="col-sub">工具叙事</span>
+    <div class="main">
+      <div class="col col-chart">
+        <div class="sec-head">
+          <span class="sec-num">01</span>
+          <span class="sec-title">规模跃迁</span>
+          <span class="sec-sub">本土 AI 办公 · 2025 vs 2026 H1</span>
         </div>
-        <ul class="list">
-          <li><span class="mark mark-square"></span><span>飞书、钉钉、WPS 等头部厂商几乎同步接入 Agent 能力</span></li>
-          <li><span class="mark mark-square"></span><span>以 <b>"智能助手 / AI 办公 / 数字员工"</b> 作卖点标签，快速堆叠功能</span></li>
-          <li><span class="mark mark-square"></span><span>能力边界、权限范围、审计机制均在各自封闭生态中定义</span></li>
-        </ul>
-        <div class="tags">
-          <span class="tag">智能助手</span>
-          <span class="tag">AI 办公</span>
-          <span class="tag">数字员工</span>
-        </div>
-        <div class="foot foot-dim">
-          表面看是一场 <b>工具竞争</b> —— 谁能更快把 Agent 塞进日常工作流；
-          底层却是 <b>制度竞争</b> —— 谁能把 Agent 的能力与边界，锁进自己的闭环。
+        <div id="chart_1" style="width:500px;height:326px;"></div>
+        <div class="metric-row">
+          <div class="metric-main">
+            <div class="metric-num">230<span class="unit">亿元</span></div>
+            <div class="metric-label">2026 上半年本土 AI 办公市场</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-growth">
+            <div class="gnum">+47%</div>
+            <div class="glabel">同比增速</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-growth">
+            <div class="gnum">20+</div>
+            <div class="glabel">半年内上线 Agent 产品</div>
+          </div>
         </div>
       </div>
 
-      <div class="col col-open">
-        <div class="col-head">
-          <span class="col-tag">OPEN · 开放路径</span>
-          <span class="col-title">Hermes Agent 的反向选择</span>
-          <span class="col-sub">治理叙事</span>
+      <div class="col col-tl">
+        <div class="sec-head">
+          <span class="sec-num">02</span>
+          <span class="sec-title">三阶段演化</span>
+          <span class="sec-sub">曾鸣《智能》· 2026</span>
         </div>
-        <ul class="list">
-          <li><span class="mark mark-circle"></span><span>不追功能堆叠，坚持 <b>"最小核心 + 开放边缘"</b> 的架构哲学</span></li>
-          <li><span class="mark mark-circle"></span><span>把定义权交给外部——能力扩展、审计策略、权限模型由生态共同演进</span></li>
-          <li><span class="mark mark-circle"></span><span>社区驱动迭代：<b>243K star</b> · <b>397 contributors</b> · <b>33 releases</b></span></li>
-        </ul>
-        <div class="tags">
-          <span class="tag tag-gold">最小核心</span>
-          <span class="tag tag-gold">开放边缘</span>
-          <span class="tag tag-gold">社区治理</span>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-badge">阶段 Ⅰ</div>
+            <div class="tl-title">智能涌现</div>
+            <div class="tl-year">2018 – 2022</div>
+            <div class="tl-desc">大模型能力跃升 · 单点智能突破 · 工具化的辅助形态</div>
+          </div>
+          <div class="tl-item active">
+            <div class="tl-badge">阶段 Ⅱ · 已兑现</div>
+            <div class="tl-title">智能体大爆发</div>
+            <div class="tl-year">2024 – 2026 H1</div>
+            <div class="tl-desc">Agent 从实验室走向办公生产 · 从工具升级为代理 · 从提示到自主执行</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-badge">阶段 Ⅲ</div>
+            <div class="tl-title">智能社会</div>
+            <div class="tl-year">2027 →</div>
+            <div class="tl-desc">Agent 网络协同 · 生产力系统重构 · 组织与人的关系重写</div>
+          </div>
+          <div class="tl-note">四家大厂共同完成的一场关于"Agent 平台 vs 最小核心"的制度性实验</div>
         </div>
-        <div class="foot foot-gold">
-          Hermes 是另一种 <b>治理哲学</b> 的样本 ——
-          当本土厂商把 Agent 关进生态，它选择把 Agent 交给世界。
+      </div>
+
+      <div class="col col-right">
+        <div class="sec-head">
+          <span class="sec-num">03</span>
+          <span class="sec-title">关键指标</span>
+          <span class="sec-sub">Market Signals</span>
+        </div>
+        <div class="kpi-card">
+          <span class="badge">3M→6M</span>
+          <div class="kpi-num">6,000<span class="u">万</span></div>
+          <div class="kpi-label">桌面端 Agent 月活</div>
+          <div class="kpi-tag">3 月 2,000 万 → 6 月 6,000 万 · 三月翻三倍</div>
+        </div>
+        <div class="kpi-card">
+          <span class="badge">MAU</span>
+          <div class="kpi-num">1,115<span class="u">万</span></div>
+          <div class="kpi-label">WorkBuddy · 7 月榜首</div>
+          <div class="kpi-tag">+ 百度搭子 674 万 · 合计占市场六成</div>
+        </div>
+        <div class="kpi-card">
+          <span class="badge">艾媒</span>
+          <div class="kpi-num">59.1<span class="u">%</span></div>
+          <div class="kpi-label">用户付费意愿</div>
+          <div class="kpi-tag">Agent 产品用户调研 · 艾媒咨询 2026</div>
+        </div>
+        <div class="kpi-card">
+          <span class="badge">2026</span>
+          <div class="kpi-num">40<span class="u">%</span></div>
+          <div class="kpi-label">企业应用嵌入 Agent</div>
+          <div class="kpi-tag">Gartner 预测 · 2026 年底之前</div>
         </div>
       </div>
     </div>
 
-    <!-- Points -->
-    <div class="points">
-      <div class="pt">
-        <div class="pt-idx">01 &nbsp;·&nbsp; 当下的热点</div>
-        <div class="pt-lead">飞书、钉钉、WPS 的 AI 竞赛</div>
-        <div class="pt-body">头部办公厂商不约而同把 Agent 作为下一条增长曲线，"智能助手 / AI 办公 / 数字员工"成为高频标签——<b>工具叙事</b> 之下，是能力边界的重新划线。</div>
+    <div class="vendor-band">
+      <div class="vendor-band-title">
+        大厂入局
+        <span class="vt-sub">2026 · H1</span>
       </div>
-      <div class="pt">
-        <div class="pt-idx">02 &nbsp;·&nbsp; 表面是工具 底层是制度</div>
-        <div class="pt-lead">谁定义 Agent，谁就掌握下一代生产力工具</div>
-        <div class="pt-body">这场竞争从来不是纯技术竞赛，而是 <b>制度环境的映射</b>——能力边界、权限范围、审计机制的取舍，直接决定 Agent 能否成为可信的生产力工具。</div>
+      <div class="vendor-list">
+        <div class="vendor-item" data-c="1">
+          <span class="vendor-name">腾讯 WorkBuddy</span>
+          <span class="vendor-tag">平台化 · 生态型</span>
+        </div>
+        <div class="vendor-item" data-c="2">
+          <span class="vendor-name">阿里千问办公</span>
+          <span class="vendor-tag">模型 × 办公</span>
+        </div>
+        <div class="vendor-item" data-c="3">
+          <span class="vendor-name">字节豆包工作</span>
+          <span class="vendor-tag">内容 × 协作</span>
+        </div>
+        <div class="vendor-item" data-c="4">
+          <span class="vendor-name">百度搭子</span>
+          <span class="vendor-tag">5 个月迭代 150 版本 · +1,063.79%</span>
+        </div>
       </div>
-      <div class="pt">
-        <div class="pt-idx">03 &nbsp;·&nbsp; Hermes 是反向样本</div>
-        <div class="pt-lead">最小核心 + 开放边缘 的治理哲学</div>
-        <div class="pt-body">Hermes 拒绝把 Agent 关进封闭生态，而是把扩展点交给社区——它是 <em>另一套治理范式</em> 的活样本，也是理解本土路径的镜像。</div>
+      <div class="hermes-badge">
+        <span class="hb-dot"></span>
+        <div class="hb-text">
+          <span class="hb-title">Hermes Agent · 反向样本</span>
+          <span class="hb-meta">243K ★ · 397 contributors · 33 releases</span>
+        </div>
       </div>
     </div>
 
-    <!-- Data band -->
-    <div class="databand">
-      <div class="db-label">
-        <span class="l1">Hermes Agent</span>
-        <span class="l2">开放路径的可见证据</span>
+    <div class="bottom-bar">
+      <div class="quote">
+        <span class="quote-mark">"</span>谁定义 Agent 的能力边界、权限范围、审计机制，谁就掌握下一代生产力工具的定义权
       </div>
-      <div class="kpi">
-        <span class="num">243K</span>
-        <span class="lbl">STAR</span>
-        <span class="sub">GitHub 关注度</span>
-      </div>
-      <div class="kpi">
-        <span class="num">397</span>
-        <span class="lbl">CONTRIBUTORS</span>
-        <span class="sub">社区贡献者</span>
-      </div>
-      <div class="kpi">
-        <span class="num">33</span>
-        <span class="lbl">RELEASES</span>
-        <span class="sub">版本迭代数</span>
+      <div class="sources">
+        <span class="src">虎嗅 2026-09-16</span>
+        <span class="src">艾媒</span>
+        <span class="src">Gartner</span>
       </div>
     </div>
+
   </div>
 </div>
+<script>
+(function(){
+  var el = document.getElementById('chart_1');
+  if(!el || typeof echarts === 'undefined') return;
+  var chart = echarts.init(el, null, {renderer:'svg'});
+  chart.setOption({
+    animation:false,
+    grid:{left:56, right:26, top:50, bottom:36},
+    xAxis:{
+      type:'category',
+      data:['2025 H1','2025 H2','2026 H1'],
+      axisLine:{lineStyle:{color:'#A9B5C8'}},
+      axisTick:{show:false},
+      axisLabel:{color:'#A9B5C8', fontFamily:'JetBrains Mono', fontSize:12, letterSpacing:1}
+    },
+    yAxis:{
+      type:'value',
+      max:260,
+      name:'规模（亿元）',
+      nameTextStyle:{color:'#6B7A91', fontSize:10, padding:[0,0,6,0], fontFamily:'Noto Sans SC'},
+      splitLine:{lineStyle:{color:'rgba(255,255,255,0.06)'}},
+      axisLine:{show:false},
+      axisTick:{show:false},
+      axisLabel:{color:'#6B7A91', fontFamily:'JetBrains Mono', fontSize:11}
+    },
+    series:[{
+      type:'bar',
+      barWidth:64,
+      data:[
+        {value:156, itemStyle:{color:'#1B3B6B'}},
+        {value:180, itemStyle:{color:'#2C4F80'}},
+        {value:230, itemStyle:{color:'#B4A078'}}
+      ],
+      label:{
+        show:true, position:'top',
+        color:'#F5F0E8',
+        fontFamily:'JetBrains Mono',
+        fontWeight:700, fontSize:15,
+        formatter:'{c} 亿'
+      },
+      markLine:{
+        symbol:'none',
+        silent:true,
+        lineStyle:{color:'#B4A078', type:'dashed', width:1, opacity:.7},
+        data:[]
+      }
+    }],
+    graphic:[{
+      type:'group',
+      left:'center', top:14,
+      children:[{
+        type:'text',
+        style:{
+          text:'+47% YoY',
+          fill:'#B4A078',
+          font:'700 14px JetBrains Mono',
+          textAlign:'center'
+        }
+      }]
+    }]
+  });
+  window.__pptxChartsReady = (window.__pptxChartsReady || 0) + 1;
+})();
+</script>
 </body>
 </html>

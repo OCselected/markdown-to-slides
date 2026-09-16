@@ -5,30 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>阶段三 · 协议成熟（2025–2026）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy: #1B3B6B;
   --bg: #0F1E33;
-  --gold: #B4A078;
-  --cream: #F5F0E8;
-  --cream-dim: rgba(245, 240, 232, 0.72);
-  --cream-faint: rgba(245, 240, 232, 0.55);
-  --cream-ghost: rgba(245, 240, 232, 0.35);
-  --gold-dim: rgba(180, 160, 120, 0.5);
-  --gold-faint: rgba(180, 160, 120, 0.22);
-  --gold-glow: rgba(255, 200, 130, 0.18);
-  --navy-mid: rgba(27, 59, 107, 0.5);
+  --primary: #1B3B6B;
+  --primary-light: #2E5A94;
+  --accent: #B4A078;
+  --accent-light: #C9B98E;
+  --text: #F5F0E8;
+  --text-muted: #A89F8B;
+  --line: rgba(180, 160, 120, 0.28);
+  --line-strong: rgba(180, 160, 120, 0.55);
+  --highlight-red: #C94E4E;
+  --panel: rgba(27, 59, 107, 0.28);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
-  background: #050B18;
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: var(--cream);
+  width: 1600px;
+  height: 900px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
-body { padding: 0; }
 
 .wrapper {
   width: 1600px;
@@ -36,433 +41,613 @@ body { padding: 0; }
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  background: var(--bg);
 }
 
 #bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: radial-gradient(ellipse at 22% 18%, rgba(27,59,107,0.32) 0%, transparent 55%), #0F1E33;
 }
-.bg-grad {
+
+#bg svg {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(140deg, #0B1830 0%, #0F1E33 45%, #142648 100%);
-}
-.bg-radiance {
-  position: absolute;
-  top: 42%;
-  right: 20%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, var(--gold-glow) 0%, rgba(180,160,120,0) 60%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
 }
 
 #ct {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding: 52px 72px 40px;
-}
-
-.deco {
-  position: absolute;
-  top: 38px;
-  left: 0;
-  width: 100%;
-  height: 32px;
-  z-index: 2;
-  pointer-events: none;
-}
-.deco::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 40px;
-  width: 64px;
-  height: 1px;
-  background: var(--gold);
-}
-
-/* ===== Header ===== */
-.header {
-  position: relative;
-}
-.phase-tag {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 13px;
-  color: var(--gold);
-  letter-spacing: 6px;
-  margin-bottom: 10px;
-}
-.main-title {
-  font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
-  font-size: 46px;
-  font-weight: 700;
-  color: var(--cream);
-  letter-spacing: 1.5px;
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-.subtitle {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  color: var(--cream-dim);
-  letter-spacing: 2px;
-  font-weight: 300;
-  border-left: 2px solid var(--gold);
-  padding-left: 12px;
-  line-height: 1.55;
-}
-
-/* ===== Timeline ===== */
-.timeline-wrap {
-  position: relative;
-  margin-top: 44px;
-  padding: 0 20px;
-}
-
-.timeline-ruler {
-  position: relative;
-  width: 100%;
-  height: 12px;
-}
-.tl-marks {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 12px;
-}
-.tl-line {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(180, 160, 120, 0.5);
-}
-.tl-highlight {
-  position: absolute;
-  top: 4px;
-  left: 75%;
-  width: 25%;
-  height: 3px;
-  background: var(--gold);
-  box-shadow: 0 0 12px rgba(180, 160, 120, 0.6);
-}
-
-.dots {
-  position: relative;
+  padding: 52px 72px;
   display: flex;
+  flex-direction: column;
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-bottom: 26px;
 }
-.dot {
+
+.head-left {
+  flex: 1;
   position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--navy);
-  box-shadow: inset 0 0 0 4px var(--bg), 0 0 0 1px rgba(27, 59, 107, 0.6);
 }
-.dot-emphasis {
-  position: relative;
-  width: 76px;
-  height: 76px;
-  margin-left: -23px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #EBC892 0%, #B4A078 55%, #8C7B5A 100%);
-  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold), 0 0 32px rgba(180, 160, 120, 0.55);
+
+.eyebrow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 4.5px;
+  font-weight: 400;
 }
-.dot-emphasis::before {
-  content: "";
-  position: absolute;
-  inset: -18px;
-  border-radius: 50%;
-  border: 1px solid var(--gold-faint);
+
+.eyebrow-mark {
+  display: inline-block;
+  width: 38px;
+  height: 2px;
+  background: var(--accent);
 }
-.dot-emphasis::after {
-  content: "";
-  position: absolute;
-  inset: -34px;
-  border-radius: 50%;
-  border: 1px dashed rgba(180, 160, 120, 0.3);
-}
-.em-dot-text {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 22px;
+
+.title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 46px;
   font-weight: 700;
-  color: #1B1408;
-  letter-spacing: 0.5px;
+  color: var(--text);
+  letter-spacing: 2.5px;
+  line-height: 1.15;
+}
+
+.title-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 4px;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.head-right {
+  text-align: right;
+  padding-bottom: 6px;
+  border-left: 1px solid var(--line);
+  padding-left: 22px;
+}
+
+.head-right .year {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 30px;
+  color: var(--accent);
+  letter-spacing: 4px;
+  font-weight: 600;
   line-height: 1;
 }
 
-.tl-events {
-  position: relative;
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.event {
-  padding: 0 14px;
-  text-align: left;
-  position: relative;
-}
-.event.emphasis {
-  padding-left: 38px;
-}
-.e-date {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 17px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.e-title {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 23px;
-  color: var(--cream);
-  font-weight: 600;
-  line-height: 1.28;
-  margin-bottom: 12px;
-}
-.e-note {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  color: var(--cream-dim);
-  line-height: 1.75;
-  letter-spacing: 0.4px;
-  font-weight: 300;
-}
-.event.emphasis .e-date {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 18px;
-}
-.event.emphasis .e-title {
-  color: #EBC892;
-  font-size: 27px;
-  font-weight: 700;
-}
-.event.emphasis .e-note {
-  color: var(--cream);
-  font-size: 13.5px;
-  font-weight: 400;
+.head-right .year-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 3.5px;
+  margin-top: 8px;
 }
 
-/* ===== Insight Block ===== */
-.insight-block {
+.subtitle {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 1000px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  margin-top: 14px;
+  letter-spacing: 0.4px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 40px;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.timeline {
   position: relative;
-  margin-top: 38px;
-  padding: 18px 26px 18px 62px;
-  background: rgba(27, 59, 107, 0.28);
-  border-left: 3px solid var(--gold);
+  padding: 6px 14px 6px 10px;
+  height: 504px;
 }
-.insight-block::before {
-  content: "05";
+
+.timeline-ct-line {
   position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 26px;
-  color: var(--gold);
+  left: 40px;
+  top: 40px;
+  width: 1px;
+  height: 400px;
+  background: var(--line);
+  z-index: 0;
+}
+
+.timeline-ct-line::before,
+.timeline-ct-line::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.timeline-ct-line::before { top: -3px; }
+.timeline-ct-line::after { bottom: -3px; }
+
+.timeline-nodes {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+}
+
+.node {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  min-height: 78px;
+  margin-bottom: 12px;
+}
+
+.node:last-child { margin-bottom: 0; }
+
+.node-dot-ct {
+  width: 32px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 3px;
+}
+
+.node-dot {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--accent);
+  background: var(--bg);
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.node-dot::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.node.highlight .node-dot {
+  width: 18px;
+  height: 18px;
+  border-color: var(--highlight-red);
+  background: var(--bg);
+  box-shadow: 0 0 0 4px rgba(201, 78, 78, 0.16);
+  margin-top: -3px;
+}
+
+.node.highlight .node-dot::after {
+  background: var(--highlight-red);
+  opacity: 1;
+  inset: 4px;
+}
+
+.node-body {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.node-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 1px;
+  color: var(--accent);
+  letter-spacing: 2.2px;
+  margin-bottom: 3px;
+  line-height: 1.4;
 }
-.insight-block::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 54px;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-.insight-label {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 4px;
-  margin-bottom: 6px;
+
+.node-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
   font-weight: 600;
+  color: var(--text);
+  line-height: 1.32;
+  letter-spacing: 0.4px;
 }
-.insight-text {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 19px;
-  color: var(--cream);
+
+.node.highlight .node-title {
+  color: var(--highlight-red);
+  font-weight: 700;
+}
+
+.node-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.55;
+  letter-spacing: 0.2px;
+}
+
+.framework-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 24px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.framework-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+.fw-source {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12.5px;
+  color: var(--accent-light);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
   font-weight: 500;
-  letter-spacing: 0.6px;
+}
+
+.fw-source-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 2.2px;
+  margin-bottom: 18px;
   line-height: 1.5;
 }
 
-/* ===== Closing ===== */
-.closing {
-  position: absolute;
-  bottom: 34px;
-  left: 72px;
-  right: 72px;
-  border-top: 1px solid rgba(180, 160, 120, 0.25);
-  padding-top: 16px;
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 14.5px;
-  color: var(--cream-faint);
-  letter-spacing: 0.8px;
-  line-height: 1.8;
-  font-weight: 400;
-  font-style: italic;
-}
-.closing .quo {
-  color: var(--gold);
+.fw-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: var(--text);
   font-weight: 600;
-  font-style: normal;
-  margin-right: 4px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
 }
 
-/* Corner marks — Bauhaus geometric accents */
-.corner-tl {
+.fw-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.fw-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line);
+  position: relative;
+}
+
+.fw-step.highlight {
+  background: rgba(180, 160, 120, 0.12);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(180, 160, 120, 0.22);
+}
+
+.fw-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  color: var(--accent);
+  font-weight: 600;
+  line-height: 1;
+  width: 28px;
+  flex-shrink: 0;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.fw-step.highlight .fw-num {
+  color: var(--accent);
+}
+
+.fw-step-body {
+  flex: 1;
+}
+
+.fw-step-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+
+.fw-step.highlight .fw-step-title {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.fw-step-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  letter-spacing: 0.2px;
+}
+
+.fw-highlight {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(180, 160, 120, 0.08);
+  border-left: 3px solid var(--accent);
+  font-size: 11.5px;
+  color: var(--text);
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+.fw-highlight-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.4px;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 16px 26px 14px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  gap: 30px;
+}
+
+.foot::before {
+  content: '';
   position: absolute;
-  top: 38px;
-  left: 660px;
+  top: -1px;
+  left: 0;
   width: 90px;
   height: 1px;
-  background: var(--gold);
-  opacity: 0.6;
-}
-.corner-tr {
-  position: absolute;
-  top: 46px;
-  right: 72px;
-  width: 46px;
-  height: 46px;
-  border-top: 1px solid var(--gold-dim);
-  border-right: 1px solid var(--gold-dim);
-}
-.corner-bl {
-  position: absolute;
-  bottom: 92px;
-  left: 72px;
-  width: 24px;
-  height: 1px;
-  background: var(--gold-dim);
-}
-.corner-br {
-  position: absolute;
-  bottom: 34px;
-  right: 40px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px;
-  color: var(--gold-faint);
-  letter-spacing: 3px;
+  background: var(--accent);
 }
 
-/* Vertical accent bar */
-.side-rule {
-  position: absolute;
-  top: 300px;
-  left: 30px;
-  width: 1px;
-  height: 340px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(180,160,120,0.4) 20%, rgba(180,160,120,0.4) 80%, transparent 100%);
+.foot-line {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 1.8px;
+  flex: 0 0 auto;
+  max-width: 320px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.foot-line::before {
+  content: '◆ ';
+  color: var(--accent);
+  font-size: 10px;
+  vertical-align: middle;
+  margin-right: 6px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.foot-data {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.data-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.data-num .unit {
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 3px;
+  letter-spacing: 0;
+  color: var(--accent-light);
+}
+
+.data-num .arrow {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  margin-right: 3px;
+  font-size: 22px;
+}
+
+.data-label {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 2.4px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 400;
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div id="bg">
-    <div class="bg-grad"></div>
-    <div class="bg-radiance"></div>
+    <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="1460" cy="140" r="150" fill="none" stroke="rgba(180,160,120,0.14)" stroke-width="1"/>
+      <circle cx="1460" cy="140" r="90" fill="none" stroke="rgba(180,160,120,0.09)" stroke-width="1"/>
+      <circle cx="1460" cy="140" r="30" fill="rgba(180,160,120,0.06)"/>
+      <circle cx="130" cy="810" r="80" fill="none" stroke="rgba(180,160,120,0.11)" stroke-width="1"/>
+      <rect x="1515" y="828" width="42" height="42" fill="none" stroke="rgba(180,160,120,0.18)" stroke-width="1"/>
+      <rect x="1548" y="820" width="20" height="20" fill="rgba(180,160,120,0.14)"/>
+      <line x1="60" y1="580" x2="60" y2="770" stroke="rgba(180,160,120,0.2)" stroke-width="1"/>
+      <line x1="1540" y1="220" x2="1540" y2="440" stroke="rgba(180,160,120,0.14)" stroke-width="1"/>
+    </svg>
   </div>
 
   <div id="ct">
-    <!-- Top decoration -->
-    <div class="deco">
-      <svg width="100%" height="32" viewBox="0 0 1456 32" preserveAspectRatio="none">
-        <line x1="0" y1="16" x2="200" y2="16" stroke="#B4A078" stroke-width="1" opacity="0.7"/>
-        <circle cx="215" cy="16" r="4" fill="none" stroke="#B4A078" stroke-width="1" opacity="0.9"/>
-        <line x1="228" y1="16" x2="280" y2="16" stroke="#B4A078" stroke-width="1" opacity="0.5"/>
-        <line x1="1456" y1="16" x2="1300" y2="16" stroke="#B4A078" stroke-width="1" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <!-- Corner accents -->
-    <div class="corner-tr"></div>
-    <div class="corner-bl"></div>
-    <div class="side-rule"></div>
-    <div class="corner-br">CHAPTER · III</div>
-
-    <!-- Header -->
-    <div class="header">
-      <div class="phase-tag">PHASE · III &nbsp;·&nbsp; 2025 — 2026</div>
-      <h1 class="main-title">阶段三 · 协议成熟</h1>
-      <div class="subtitle">从单厂商私产到中立公共资产 — 协议制度化时代</div>
-    </div>
-
-    <!-- Timeline -->
-    <div class="timeline-wrap">
-      <div class="timeline-ruler">
-        <div class="tl-marks">
-          <svg width="100%" height="12" viewBox="0 0 1456 12" preserveAspectRatio="none">
-            <g stroke="#B4A078" opacity="0.35">
-              <line x1="0" y1="0" x2="0" y2="8" stroke-width="1"/>
-              <line x1="485" y1="0" x2="485" y2="8" stroke-width="1"/>
-              <line x1="970" y1="0" x2="970" y2="8" stroke-width="1"/>
-              <line x1="1456" y1="0" x2="1456" y2="8" stroke-width="1"/>
-            </g>
-          </svg>
-        </div>
-        <div class="tl-line"></div>
-        <div class="tl-highlight"></div>
+    <div class="head">
+      <div class="head-left">
+        <div class="eyebrow"><span class="eyebrow-mark"></span><span>STAGE · 03</span></div>
+        <div class="title">阶段三 · 协议成熟</div>
+        <div class="title-en">PROTOCOL MATURITY</div>
+        <div class="subtitle">2025–2026 · 协议制度化——行政动员失败之后，MCP 由 Anthropic 单厂商私产转化为 Linux Foundation 中立资产，agent 互操作进入自发秩序的公共治理时代</div>
       </div>
-
-      <div class="dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot-emphasis"><span class="em-dot-text">2026</span></div>
-      </div>
-
-      <div class="tl-events">
-        <div class="event">
-          <div class="e-date">2025 · 03</div>
-          <div class="e-title">OpenAI 采纳 MCP</div>
-          <div class="e-note">第二个前沿实验室加入<br/>—— 竞争者主动接入</div>
-        </div>
-        <div class="event">
-          <div class="e-date">2025 · 07</div>
-          <div class="e-title">AWS Bedrock AgentCore</div>
-          <div class="e-note">云原生 agent 平台化<br/>—— 基础设施层入场</div>
-        </div>
-        <div class="event">
-          <div class="e-date">2026 · 01</div>
-          <div class="e-title">A2A 协议发布</div>
-          <div class="e-note">agent-agent 协作标准<br/>—— 层间互操作成型</div>
-        </div>
-        <div class="event emphasis">
-          <div class="e-date">2026 · 高潮</div>
-          <div class="e-title">MCP 捐给 LF</div>
-          <div class="e-note">加入 Agentic AI Foundation<br/>（Linux Foundation 旗下）</div>
-        </div>
+      <div class="head-right">
+        <div class="year">2025 — 2026</div>
+        <div class="year-sub">THE NEXT TWO YEARS</div>
       </div>
     </div>
 
-    <!-- Insight block -->
-    <div class="insight-block">
-      <div class="insight-label">FIFTH INSIGHT · 制度含义</div>
-      <div class="insight-text">协议制度化 —— 行政动员失败后的自发秩序</div>
+    <div class="main">
+      <div class="timeline">
+        <div class="timeline-ct-line"></div>
+        <div class="timeline-nodes">
+          <div class="node">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2025-03</div>
+              <div class="node-title">OpenAI 采纳 MCP</div>
+              <div class="node-desc">第二个前沿实验室加入——MCP 由单厂商标准演化为行业事实标准</div>
+            </div>
+          </div>
+          <div class="node">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2025-07</div>
+              <div class="node-title">AWS Bedrock AgentCore 上线</div>
+              <div class="node-desc">云原生 agent 平台化——MCP 深入基础设施层</div>
+            </div>
+          </div>
+          <div class="node">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2026-01</div>
+              <div class="node-title">A2A 协议开放</div>
+              <div class="node-desc">agent-agent 协作标准——MCP 与 A2A 共同构成 agent 互操作的双层协议栈</div>
+            </div>
+          </div>
+          <div class="node highlight">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2026-01 · KEY</div>
+              <div class="node-title">MCP 捐给 Linux Foundation</div>
+              <div class="node-desc">加入 Agentic AI Foundation——单厂商私产转为中立公共资产，治理权移交开放社区</div>
+            </div>
+          </div>
+          <div class="node">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2026 H1 · CN</div>
+              <div class="node-title">本土第二阶段启动</div>
+              <div class="node-desc">AI 办公智能体市场 230 亿元、同比 +47%、上线 20+ 款产品</div>
+            </div>
+          </div>
+          <div class="node">
+            <div class="node-dot-ct"><div class="node-dot"></div></div>
+            <div class="node-body">
+              <div class="node-date">2026 H2 → 2027</div>
+              <div class="node-title">向智能体操作系统收敛</div>
+              <div class="node-desc">协议、平台、组织三层同步成熟，为 AI OS 时代铺路</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="framework-card">
+        <div class="fw-source">曾鸣 · 《智能：AI 时代的商业、组织与战略的本质》（2026）</div>
+        <div class="fw-source-en">ZENG MING · INTELLIGENCE · 2026</div>
+        <div class="fw-title">AI 发展三阶段框架</div>
+        <div class="fw-steps">
+          <div class="fw-step">
+            <div class="fw-num">01</div>
+            <div class="fw-step-body">
+              <div class="fw-step-title">基础设施成形</div>
+              <div class="fw-step-desc">算力、数据与模型三要素就位，行业通用能力沉淀</div>
+            </div>
+          </div>
+          <div class="fw-step highlight">
+            <div class="fw-num">02</div>
+            <div class="fw-step-body">
+              <div class="fw-step-title">智能体大爆发</div>
+              <div class="fw-step-desc">Agent 从技术验证走向生产可用，规模化落地于行业</div>
+            </div>
+          </div>
+          <div class="fw-step">
+            <div class="fw-num">03</div>
+            <div class="fw-step-body">
+              <div class="fw-step-title">AI 操作系统出现</div>
+              <div class="fw-step-desc">协议、平台、组织形态一体化，形成新的智能体生态</div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-highlight">
+          当前节点 · 2026 H1 中国 AI 办公智能体市场
+          <span class="fw-highlight-num"> 230 亿元 · +47%</span>
+          ，上线 <span class="fw-highlight-num">20+</span> 款产品——第二阶段在中国的具体兑现
+        </div>
+      </div>
     </div>
 
-    <!-- Closing quote -->
-    <div class="closing">
-      <span class="quo">「</span>MCP 从 Anthropic 单厂商私产到 Linux Foundation 中立资产，是协议制度化的教科书样本 —— 这不是行政命令能促成的，是多厂商自发采纳后的自然结果。<span class="quo">」</span>
+    <div class="foot">
+      <div class="foot-line">协议治理权移交 · 第二阶段在中国兑现</div>
+      <div class="foot-data">
+        <div class="data-item">
+          <div class="data-num">2026 年 1 月</div>
+          <div class="data-label">MCP 捐给 LF · 中立化</div>
+        </div>
+        <div class="data-item">
+          <div class="data-num">230<span class="unit">亿元</span></div>
+          <div class="data-label">本土第二阶段规模</div>
+        </div>
+        <div class="data-item">
+          <div class="data-num"><span class="arrow">↑</span>47<span class="unit">%</span></div>
+          <div class="data-label">同比增速</div>
+        </div>
+        <div class="data-item">
+          <div class="data-num">20+<span class="unit">款</span></div>
+          <div class="data-label">2026 H1 累计上线</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
