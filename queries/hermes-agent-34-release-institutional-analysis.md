@@ -516,3 +516,206 @@ Hermes 的架构演化不是从模型能力倒推出来的，而是被消费面�
    - 验证 release notes 中的架构重构是否在代码边界中真实发生。
 
 研究立场保持：这是开放观察，不是企业评价。
+
+---
+
+## 10. Token Economy 视角：模型支持演变是入口经济与平台治理
+
+### 10.1 核心判断
+
+Hermes Agent 对 model/provider 的支持演变，不是一般意义的“接入更多模型”。它更像是围绕 token 经济建立的一套入口、路由、认证、计费、缓存、降级和用户选择制度。
+
+可以从三个方向理解：
+
+1. **LLM 厂商希望获得更多入口**
+   - ChatGPT/Codex、Claude、Gemini、Grok、Nous Portal、Hugging Face、Bedrock、LM Studio、OpenRouter、Vercel AI Gateway 等都需要一个能触达 agent 工作流的入口。
+   - Hermes 不是单纯“调用 API”的工具，而是把模型选择变成用户每日工作流的一部分。
+
+2. **Nous Research 也把 Hermes 变成商业模型与工具入口**
+   - Nous Portal、Nous Tool Gateway、Nous free tier、subscription/topup、pricing display、recommended models、model catalog、tool entitlement 等，说明开源 agent 与商业服务之间有连续界面。
+   - Hermes 的 provider 层不是只服务第三方厂商，也服务 Nous 自己的 Portal/Tool Gateway 生态。
+
+3. **Token economy 的核心是交易界面**
+   - token 不是孤立的 API 计费单位，而是由入口、身份、认证、路由、缓存、配额、价格显示、模型目录、fallback、用量反馈共同构成的交易界面。
+   - 谁掌握入口，谁就影响用户消费 token 的路径、成本感知和厂商选择。
+
+---
+
+### 10.2 Provider Layer 的早期制度：从散落调用到集中路由
+
+早期 release 中 provider 支持的变化，重点不是“多一个模型”，而是建立统一入口。
+
+代表节点：
+- `v2026.3.12` v0.2.0：Centralized provider router、`resolve_provider_client()`、`call_llm()` API、Nous Portal first-class provider、OpenAI Codex Responses API、OpenRouter routing。
+- `v2026.3.17` v0.3.0：Vercel AI Gateway、Anthropic native auxiliary vision、Anthropic OAuth flow、direct endpoint overrides。
+- `v2026.3.23` v0.4.0：GitHub Copilot、Alibaba Cloud / DashScope、Kilo Code、OpenCode Zen/Go 等 new providers。
+- `v2026.3.28` v0.5.0：Hugging Face first-class provider、Nous Portal 400+ models、Nous Portal model slugs align with OpenRouter naming。
+- `v2026.3.30` v0.6.0：ordered fallback provider chain、Gemini preview models、stop silent OpenRouter fallback。
+
+制度意义：
+- provider router 是 token economy 的“交易中介”。
+- 它把模型调用从分散的脚本/API key 行为，变成可配置、可切换、可回退、可观察的资源路由。
+- 当 Hermes 能自动识别 provider、切换 model、保留 custom endpoint、清除 stale `api_mode`、阻止 silent OpenRouter fallback，它就在建立一种“不误导用户”的交易透明度。
+
+---
+
+### 10.3 LLM 厂商入口：为什么每个模型厂商都需要 agent runtime
+
+Hermes 的 provider 演变显示，LLM 厂商并不只想被 API 调用，而是希望进入 agent 的日常行动环境。
+
+主要厂商/入口：
+- OpenAI / Codex：Responses API、Codex OAuth、GPT/Codex tool-use guidance、Fast Mode、developer role、Codex runtime。
+- Anthropic / Claude：native Anthropic provider、Claude Code credential auto-discovery、OAuth PKCE、prompt caching、native auxiliary vision。
+- Google / Gemini：Google AI Studio native provider、Gemini CLI OAuth、models.dev integration、Gemini routed through AI Studio API。
+- xAI / Grok：xAI native provider、xAI Grok prompt caching、SuperGrok OAuth。
+- Nous Research：Nous Portal、Nous Tool Gateway、Nous recommended models、Nous free tier。
+- Hugging Face：first-class inference provider、agentic model picker。
+- AWS Bedrock：native Bedrock provider。
+- OpenRouter：routing、catalog、pricing、fallback、provider_preferences。
+- Vercel AI Gateway：dynamic discovery、pricing、attribution。
+- 其他：DashScope、Qwen OAuth、LM Studio、MiniMax、Tencent Tokenhub/TokenPlan、Azure AI Foundry、Meta Model API、CommandCode、Nebius Token Factory、Ramp Router、Actual Computer。
+
+研究判断：
+- LLM 厂商需要的不是“被列表收录”，而是进入 agent runtime 的执行环境。
+- Agent runtime 决定模型如何被调用、如何显示价格、如何处理 OAuth、如何缓存、如何 fallback、如何被用户中途切换。
+- 因此 provider 支持是入口战，不是技术兼容列表。
+
+---
+
+### 10.4 Nous Portal / Tool Gateway：开源 agent 与商业服务的连续界面
+
+Nous 相关入口在 release 中逐渐变清晰：
+- v0.2.0：Nous Portal as first-class provider。
+- v0.5.0：Nous Portal supports 400+ models。
+- v0.8.0：Nous Portal free-tier model gating、pricing display。
+- v0.10.0：Nous Tool Gateway for paid Nous Portal subscribers: web search、image generation、TTS、vision etc.
+- v0.12.0：remote model catalog manifest from OpenRouter + Nous Portal catalogs。
+- v0.16.0：Always show Nous Tool Gateway backends、login on select、surface Nous free tool pool、route FAL video gen through managed Nous gateway。
+- v0.17.0：persist Nous recommended-models to disk、fall back on Portal failure。
+- v0.21.2：Nous free tier and guided first launch。
+
+制度意义：
+- Nous Portal 是模型供给入口。
+- Nous Tool Gateway 是工具供给入口。
+- free tier、subscription、topup、pricing display 是消费制度。
+- Hermes 不是单纯开源项目，而是 Nous 商业生态与开源 agent 用户之间的连续界面。
+
+关键问题：
+- 开源入口如何吸引用户？
+- 免费层如何降低首次消费门槛？
+- 付费订阅如何获得工具权益？
+- Nous 推荐模型如何影响用户选择？
+- OpenRouter/第三方模型与 Nous Portal 模型之间如何显示价格与缓存优势？
+
+这些不是 UI 问题，而是 token economy 的制度设计。
+
+---
+
+### 10.5 价格、缓存、配额：token 不是价格，而是成本感知系统
+
+release notes 中多次出现 pricing、prompt caching、rate limit、usage、topup、subscription。
+
+代表节点：
+- v0.8.0：Model pricing display for OpenRouter and Nous Portal、xAI Grok prompt caching。
+- v0.9.0：Fast Mode、rate limit header capture shown in `/usage`。
+- v0.14.0：OpenRouter Pareto Code router、Codex runtime、OpenAI-compatible local proxy for OAuth providers。
+- v0.17.0：Anthropic adaptive models、expensive selection confirmation。
+- v0.19.0：`/subscription` and `/topup`、smart approvals default。
+- v0.21.0：model catalog wave、model_overrides lets users patch context window or pricing themselves。
+
+研究判断：
+- token economy 的核心不是 token 单价，而是用户对成本的可感知性和可控制性。
+- Hermes 通过 pricing display、prompt caching、rate limit、usage、model_overrides、fallback 与 expensive selection confirmation，把 token 从“看不见的水电”变成“可管理的资源配置”。
+- 这也解释了为什么性能、prompt caching、model picker、latency、tokens/sec、cache-hit% 都是 token economy 的一部分。
+
+---
+
+### 10.6 OAuth、订阅与入口权：从 API key 到订阅身份
+
+provider 演化中有一类重要变化：从 API key 到 OAuth / subscription / identity。
+
+代表：
+- Codex OAuth、ChatGPT subscription support。
+- Anthropic OAuth flow / Claude Code credential auto-discovery。
+- GitHub Copilot OAuth。
+- Google Gemini CLI OAuth。
+- xAI SuperGrok OAuth。
+- MiniMax OAuth PKCE。
+- Nous Portal / Nous Tool Gateway login、free tier、subscription、topup。
+
+研究判断：
+- API key 是机器凭证，OAuth/subscription 是用户身份和权益系统。
+- 厂商通过 OAuth/subscription 不只是完成认证，还把用户订阅、权益、免费层、模型推荐和工具入口绑定起来。
+- Hermes 作为开源 agent，天然成为这些身份系统进入 agent 工作流的入口。
+
+这带来两个制度问题：
+- 用户选择模型时，是在选择技术能力，还是在选择厂商订阅身份？
+- agent 的开放性是否会转化为模型/工具厂商的渠道优势？
+
+---
+
+### 10.7 Token Economy 的制度框架
+
+可以把 Hermes 的 model/provider 演化整理为五层：
+
+1. **入口层**
+   - CLI、TUI、Desktop、Web Dashboard、ACP、gateway platforms。
+   - 决定用户在哪里选择、切换、消耗模型。
+
+2. **身份层**
+   - API key、OAuth、subscription、free tier、Nous login、Bitwarden/1Password secret source。
+   - 决定谁有资格消耗 token 与工具权益。
+
+3. **路由层**
+   - provider router、Transport ABC、fallback chain、credential pools、provider_preferences、OpenAI-compatible proxy。
+   - 决定一次任务使用哪个模型、哪个端点、哪个计费路径。
+
+4. **交易层**
+   - pricing display、prompt caching、rate limit、usage、topup、subscription、model_overrides、MCP schema token estimates。
+   - 决定用户能否理解并管理 token 成本。
+
+5. **治理层**
+   - expensive selection confirmation、smart approvals、security hardening、credential vault、provider health check、fallback failover。
+   - 决定高成本、高风险、高风险权限动作如何被批准与恢复。
+
+---
+
+### 10.8 对 AgentCon 分享的可复用表达
+
+可以这样表达：
+
+> Provider support is not just model compatibility. It is the institutional layer where AI agents meet the token economy.
+
+中文解释：
+- provider support 不是“模型兼容”。
+- 它是 agent 与 token 经济相遇的制度层。
+- LLM 厂商需要入口；Nous 需要商业模型与工具入口；用户需要可理解的价格、可切换的模型、可回退的路由；开源社区需要保持开放与选择权。
+
+一句话结论：
+> Hermes 的 model/provider 演化，展示了开源 agent runtime 如何成为 LLM 厂商、工具厂商和用户之间的 token 交易界面。
+
+---
+
+### 10.9 后续深挖方向
+
+如果要继续深入，建议围绕以下证据做专项分析：
+
+1. **Provider timeline**
+   - 统计每个 provider 首次出现、后续增强、成为 first-class provider、支持 OAuth、支持 pricing、支持 prompt caching 的时间点。
+
+2. **Nous Portal vs third-party providers**
+   - 比较 Nous Portal、OpenRouter、Codex、Claude、Gemini、xAI 在 release notes 中的入口位置。
+   - 观察 Nous recommended models、free tier、Tool Gateway 与第三方模型并置时，Hermes 如何呈现选择权。
+
+3. **Token cost visibility**
+   - 抽取 pricing display、prompt caching、usage、topup、subscription、model_overrides、cache-hit、tokens/sec、latency 等证据。
+   - 做一张“成本可见性演化图”。
+
+4. **OAuth and identity**
+   - 统计 OAuth provider 数量与认证路径。
+   - 分析 API key、OAuth、subscription、credential pool、secret source 的治理差异。
+
+5. **Entry power**
+   - 讨论开源 agent runtime 是否成为模型厂商的分发渠道。
+   - 如果 Hermes 用户增长，LLM 厂商会怎样理解这个入口？Nous 的商业模型又怎样通过 Portal/Tool Gateway 反哺开源用户？
+
