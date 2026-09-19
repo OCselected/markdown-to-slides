@@ -37,7 +37,7 @@ dark academic tone, intellectual visual system, art taste.
 ## Slide 1: Cover
 * **Title:** From the Evolution of the Hermes Project
 * **Subtitle:** Insights into Agent Demand and Consumption Trends
-* **Speaker:** 「开源之道」·Shisi × Narrow Corridor
+* **Speaker:** 「开源之道」·Kuosi × Narrow Corridor
 * **Event / Date:** AgentCon 2026 · Beijing · 2026-09-21
 
 ## Slide 2: Speaker introduction
@@ -46,8 +46,8 @@ dark academic tone, intellectual visual system, art taste.
 * Display points:
   * Speaker self-introduction
   * 「开源之道」 / The Way of Open Source: a project committed to exploring open source ideas, knowledge, and values
-  * 「开源之道」·Shisi: author and main creator
-  * 「开源之道」·Narrow Corridor: https://narrow-corridor.opensourceway.blog/ — a digital twin of open source ideas and a digital avatar of Shisi. It builds bridges in gray zones and looks for possibility in the gaps between institutions.
+  * 「开源之道」·Kuosi: author and main creator
+  * 「开源之道」·Narrow Corridor: https://narrow-corridor.opensourceway.blog/ — a digital twin of open source ideas and a digital avatar of Kuosi. It builds bridges in gray zones and looks for possibility in the gaps between institutions.
 
 ## Slide 3: The office agent war in the China market
 * Visual metaphor:
