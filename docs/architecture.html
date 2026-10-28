@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #F5F0E8; color: #2C2A26; padding-left: 96px;
+  font-family: "Source Han Sans SC","PingFang SC","Noto Sans CJK SC",-apple-system,sans-serif;
+  padding: 56px 64px; width: 1400px;
+}
+.hd { margin-bottom: 36px; border-bottom: 2px solid #C9BFA8; padding-bottom: 20px; }
+.kicker { font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #8B6914; margin-bottom: 10px; }
+h1 { font-size: 28px; font-weight: 700; color: #1B3B6B; letter-spacing: .02em; }
+.sub { font-size: 13px; color: #6B6459; margin-top: 8px; }
+
+.flow { display: flex; flex-direction: column; gap: 0; }
+
+/* 层的容器 */
+.layer { position: relative; padding: 22px 26px; border-radius: 6px; margin-bottom: 0; }
+.layer-label {
+  position: absolute; left: -38px; top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 9.5px; letter-spacing: .26em;
+  text-transform: uppercase; color: #A08A50; white-space: nowrap;
+  font-weight: 700;
+}
+.l-src    { background: rgba(27,59,107,.055); border: 1px solid rgba(27,59,107,.20); margin-left: 46px; }
+.l-build  { background: rgba(139,105,20,.06); border: 1px solid rgba(139,105,20,.22); margin-left: 46px; }
+.l-ship   { background: rgba(45,106,79,.06);  border: 1px solid rgba(45,106,79,.22);  margin-left: 46px; }
+.l-serve  { background: rgba(160,58,46,.055); border: 1px solid rgba(160,58,46,.20); margin-left: 46px; }
+.l-view   { background: rgba(27,59,107,.04);  border: 1px dashed rgba(27,59,107,.28); margin-left: 46px; }
+
+.layer h2 {
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  color: #1B3B6B; margin-bottom: 14px; font-weight: 700;
+}
+.row { display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
+
+/* 节点 */
+.node {
+  flex: 1; min-width: 0; background: #fff; border: 1px solid #D8D2C4;
+  border-radius: 5px; padding: 13px 15px;
+}
+.node .t { font-size: 13px; font-weight: 700; color: #1B3B6B; margin-bottom: 5px; line-height: 1.4; }
+.node .m { font-size: 11.5px; color: #6B6459; line-height: 1.65; }
+.node .m code {
+  background: rgba(27,59,107,.07); padding: 1px 4px; border-radius: 2px;
+  font-family: ui-monospace,Menlo,monospace; font-size: 10.5px;
+}
+.node.store { background: #FCFAF5; border-style: dashed; }
+.node.key { border-left: 3px solid #1B3B6B; }
+
+/* 箭头 */
+.arrow {
+  display: flex; align-items: center; justify-content: center;
+  height: 40px; margin-left: 46px; position: relative;
+}
+.arrow:before {
+  content: ""; width: 2px; height: 100%; background: #C9BFA8;
+}
+.arrow:after {
+  content: ""; position: absolute; bottom: 0;
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 7px solid #C9BFA8;
+}
+.arrow span {
+  position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+  font-size: 11px; color: #8B6914; background: #F5F0E8; padding: 2px 8px;
+  border: 1px solid #E0D9C8; border-radius: 100px; white-space: nowrap;
+}
+
+/* 右侧注记 */
+.side { display: flex; gap: 16px; margin-top: 28px; }
+.note {
+  flex: 1; background: #fff; border: 1px solid #E0D9C8; border-radius: 5px;
+  padding: 14px 16px; border-top: 3px solid #8B6914;
+}
+.note h3 { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #8B6914; margin-bottom: 8px; }
+.note p { font-size: 11.5px; color: #4A463F; line-height: 1.7; }
+.note code { background: rgba(27,59,107,.07); padding: 1px 4px; border-radius: 2px; font-family: ui-monospace,monospace; font-size: 10.5px; }
+
+.legend { margin-top: 22px; display: flex; gap: 26px; font-size: 11px; color: #6B6459; }
+.legend i { display: inline-block; width: 22px; height: 3px; margin-right: 6px; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <div class="kicker">Architecture Review · 2026-10-28</div>
+  <h1>每日阅读幻灯片 · 发布链路架构</h1>
+  <div class="sub">reading.opensourceway.blog ／ 源在本地，构建在本地，只把成品推上去</div>
+</div>
+
+<div class="flow">
+
+  <!-- 1 数据源 -->
+  <div class="layer l-src">
+    <div class="layer-label">Source</div>
+    <h2>① 数据源（本地 · 腾讯云）</h2>
+    <div class="row">
+      <div class="node key">
+        <div class="t">日读 markdown</div>
+        <div class="m"><code>markdown-to-slides/daily-reading/YYYY-MM/YYYY-MM-DD.md</code><br>每天一篇，含 Slide 0–N、视觉隐喻、要点、书摘、追问</div>
+      </div>
+      <div class="node store">
+        <div class="t">配图 PNG</div>
+        <div class="m"><code>ppt_decks/日读_日期_时间戳/images/</code><br>SenseNova u1.5-lite 生成，按 slide 序号命名</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"><span>cron 01:00 生成配图 ／ 手动或定时发布</span></div>
+
+  <!-- 2 构建 -->
+  <div class="layer l-build">
+    <div class="layer-label">Build</div>
+    <h2>② 构建（本地 · 只产出成品，不产出中间态）</h2>
+    <div class="row">
+      <div class="node key">
+        <div class="t">render-deck.py</div>
+        <div class="m">markdown → 单文件 HTML<br>解析 Slide N ／ 提取要点·书摘·追问 ／ 内联 CSS<br>无 CDN、无外部依赖，断网可看</div>
+      </div>
+      <div class="node">
+        <div class="t">publish-deck.py</div>
+        <div class="m">编排：调 render-deck → 整理产物 → rsync → 重建索引<br>每期独立目录，图片就近放 <code>images/</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"><span>rsync over SSH · 只推变更</span></div>
+
+  <!-- 3 传输 -->
+  <div class="layer l-ship">
+    <div class="layer-label">Ship</div>
+    <h2>③ 传输（rsync over SSH — 不是挂载）</h2>
+    <div class="row">
+      <div class="node">
+        <div class="t">为什么不用 rclone / sshfs 挂载</div>
+        <div class="m">发布是<b>单向动作</b>。挂载把远端伪装成本地磁盘，换来三个代价：断线 hang、删除会取消上传、跨网络逐文件 stat。实测 onedrive 写入 1.5MB/s；far 的 488MB/s 是写缓存假象（删文件时上传被 cancel）。</div>
+      </div>
+      <div class="node key">
+        <div class="t">rsync 三条硬约束</div>
+        <div class="m">① <code>--chmod=D755,F644</code>：SenseNova 产出的 PNG 是 600，nginx 以 www 用户读不到 → 403<br>② <code>--delete</code> 只作用于当期目录内部<br>③ 幂等：重发同一期直接覆盖</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"><span>SSH · 8.211.12.147</span></div>
+
+  <!-- 4 服务 -->
+  <div class="layer l-serve">
+    <div class="layer-label">Serve</div>
+    <h2>④ 服务（8.211.12.147 · 阿里云 eu-central-1）</h2>
+    <div class="row">
+      <div class="node store">
+        <div class="t">静态根目录</div>
+        <div class="m"><code>/www/wwwroot/slides/</code><br>YYYY-MM-DD/deck.html + images/ + index.html</div>
+      </div>
+      <div class="node key">
+        <div class="t">nginx 1.26.2（宝塔）</div>
+        <div class="m">独立配置 <code>slides.conf</code><br>不碰宝塔默认站点（已停用其 wordpress 默认站，避免 default_server 冲突）<br>HTML 不缓存 ／ 图片 30d immutable</div>
+      </div>
+      <div class="node">
+        <div class="t">TLS</div>
+        <div class="m">certbot + Let's Encrypt<br>HTTP-01 验证走 <code>/.well-known/acme-challenge/</code><br>自动续期</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow"><span>HTTPS ／ DNS: reading → 8.211.12.147（GoDaddy）</span></div>
+
+  <!-- 5 访问 -->
+  <div class="layer l-view">
+    <div class="layer-label">View</div>
+    <h2>⑤ 访问</h2>
+    <div class="row">
+      <div class="node">
+        <div class="t">https://reading.opensourceway.blog/</div>
+        <div class="m">索引页：按日期倒序列出所有已发布 deck</div>
+      </div>
+      <div class="node">
+        <div class="t">https://reading.opensourceway.blog/YYYY-MM-DD/</div>
+        <div class="m">单期幻灯片：图文对照，长页滚动</div>
+      </div>
+      <div class="node store">
+        <div class="t">IP 直连（过渡／调试）</div>
+        <div class="m"><code>http://8.211.12.147/</code><br>域名生效前仍可用</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="side">
+  <div class="note">
+    <h3>边界与失败面</h3>
+    <p><b>本地是唯一事实源。</b>远端只放成品，任何一期都能从 markdown + PNG 重新生成。远端磁盘满或机器挂掉，不损失原始数据。</p>
+  </div>
+  <div class="note">
+    <h3>与主站的关系</h3>
+    <p><b>完全独立。</b>opensourceway.blog 主站在 GitHub Pages（185.199.x），这里是自有服务器，两者无耦合。主站挂了不影响这边，反之亦然。</p>
+  </div>
+  <div class="note">
+    <h3>已知待办</h3>
+    <p>① 443 需在阿里云安全组放行<br>② GoDaddy 加 DNS 记录<br>③ 域名生效后跑 certbot 签证书</p>
+  </div>
+</div>
+
+<div class="legend">
+  <span><i style="background:#1B3B6B"></i>关键环节</span>
+  <span><i style="background:#C9BFA8"></i>数据/存储</span>
+  <span><i style="background:#8B6914"></i>构建</span>
+  <span><i style="background:#2D6A4F"></i>传输</span>
+  <span><i style="background:#A03A2E"></i>服务</span>
+</div>
+
+</body>
+</html>

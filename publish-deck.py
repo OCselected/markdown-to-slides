@@ -148,15 +148,16 @@ h1{{font-size:1.7rem;color:var(--ink);margin-bottom:.5rem;letter-spacing:.02em}}
 ul{{list-style:none}}
 li{{border-bottom:1px solid var(--rule)}}
 li a{{display:flex;gap:1.2rem;align-items:baseline;
-  padding:1.05rem .3rem;text-decoration:none;color:inherit;
+  padding:1.05rem .4rem;text-decoration:none;color:inherit;
   transition:background .15s}}
 li a:hover{{background:rgba(27,59,107,.05)}}
-.date{{font-size:.82rem;color:var(--accent);letter-spacing:.06em;
-  flex-shrink:0;font-variant-numeric:tabular-nums}}
+.date{{font-size:.82rem;color:#8A6D1E;letter-spacing:.06em;
+  flex-shrink:0;width:7.2em;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}}
 .title{{font-size:1rem;color:var(--ink)}}
 .empty{{color:#6B6459;padding:2rem 0}}
-footer{{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--rule);
-  font-size:.78rem;color:#6B6459}}
+footer{{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-size:.78rem;color:#6B6459;text-align:right}}
 </style>
 </head>
 <body>
