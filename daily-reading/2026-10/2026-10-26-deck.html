@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>「开源之道」日读 · 2026-10-26</title>
+<style>
+:root{
+  --ink:#1B3B6B; --ink-soft:#3D5A80; --paper:#F5F0E8; --paper-2:#EDE6D9;
+  --rule:#C9BFA8; --accent:#8B6914; --text:#2C2A26; --muted:#6B6459;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--text);
+  font-family:"Source Han Serif SC","Songti SC","Noto Serif CJK SC",Georgia,serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.deck{max-width:1180px;margin:0 auto;padding:0 1.25rem 6rem}
+
+/* 顶部信息条 */
+.masthead{
+  padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--rule);
+  margin-bottom:2rem;
+}
+.masthead .kicker{
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;
+}
+.masthead h1{font-size:1.35rem;color:var(--ink);font-weight:700;letter-spacing:.02em}
+
+/* 单页 slide */
+.slide{
+  padding:2.5rem 0;border-bottom:1px solid var(--rule);
+}
+.slide:last-child{border-bottom:none}
+.slide-head{
+  display:flex;align-items:baseline;gap:.9rem;margin-bottom:1.4rem;
+}
+.slide-no{
+  font-size:.72rem;letter-spacing:.18em;color:var(--accent);
+  border:1px solid var(--rule);border-radius:2px;
+  padding:.15rem .45rem;flex-shrink:0;
+}
+.slide-title{
+  font-size:1.5rem;font-weight:700;color:var(--ink);
+  line-height:1.4;letter-spacing:.01em;
+}
+
+/* 封面 */
+.slide.cover .slide-title{font-size:2.1rem}
+.cover-sub{
+  font-size:1.02rem;color:var(--muted);margin:.4rem 0 1.2rem;
+  padding-left:1rem;border-left:2px solid var(--accent);
+}
+.cover-meta{font-size:.85rem;color:var(--accent);letter-spacing:.06em}
+.slide.cover figure.shot{margin:1.2rem 0 1.6rem}
+.slide.cover .cover-body{margin-top:.5rem}
+
+/* 图文分栏 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:1.2rem}}
+
+figure.shot{margin:0}
+figure.shot img{
+  width:100%;height:auto;display:block;border-radius:3px;
+  box-shadow:0 2px 18px rgba(27,59,107,.13);
+}
+figure.shot figcaption{
+  margin-top:.6rem;font-size:.78rem;color:var(--muted);
+  line-height:1.6;font-style:italic;
+}
+
+/* 正文块 */
+.lede{font-size:1.02rem;color:var(--ink-soft);margin-bottom:1.2rem}
+.block{margin-bottom:1.35rem}
+.block-label{
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.5rem;
+}
+.block ul{list-style:none}
+.block li{
+  position:relative;padding-left:1.1rem;margin-bottom:.7rem;
+  font-size:.94rem;line-height:1.8;
+}
+.block li:before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:6px;height:6px;background:var(--ink);border-radius:50%;opacity:.55;
+}
+.quote{
+  border-left:2px solid var(--accent);
+  padding:.7rem 0 .7rem 1.1rem;margin:.9rem 0;
+  font-size:.95rem;color:var(--ink-soft);font-style:italic;
+}
+.quote cite{display:block;font-style:normal;font-size:.8rem;color:var(--muted);margin-top:.45rem}
+.question{
+  background:var(--paper-2);border-radius:4px;
+  padding:1rem 1.15rem;margin-top:.9rem;
+}
+.question .block-label{color:var(--ink)}
+.question li{font-size:.9rem}
+code{
+  background:rgba(27,59,107,.08);padding:.08em .32em;border-radius:2px;
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.88em;
+}
+.plain{
+  padding:1.2rem;border:1px dashed var(--rule);border-radius:4px;
+  color:var(--muted);font-size:.88rem;text-align:center;
+}
+footer{
+  margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+  font-size:.78rem;color:var(--muted);letter-spacing:.04em;
+}
+</style>
+</head>
+<body>
+<div class="deck">
+  <header class="masthead">
+    <div class="kicker">OSCAR · 开源之书 · 共读 ／ 每日阅读</div>
+    <h1>2026-10-26 ｜ 秩序不在完美，方向不在答案</h1>
+  </header>
+<section class="slide cover" id="s0">
+<div class="slide-head">
+<span class="slide-no">COVER</span>
+</div>
+<h2 class="slide-title" style="font-size:2.4rem;margin-bottom:.3rem">秩序不在完美，方向不在答案</h2>
+<p class="cover-sub">法律因被认识而生效，启蒙因指向而前行——制度是看不见的能量转换</p>
+<p class="cover-meta">「开源之道」·适兕 ｜ 2026.10.26</p>
+<figure class="shot"><img src="../../../ppt_decks/日读_2026-10-26_20261027_010028/images/slide-03.png" alt="配图" loading="lazy"><figcaption>dark academic风格：幽暗石廊深处，一座磨损却稳固的古水道桥横跨深渊，桥下水流无声持续驱动看不见的铜齿轮，光影在石壁上缓慢移动
+<em> <strong>讲者信息：</strong> 「开源之道」·适兕
+</em> <strong>时间/地点：</strong> 2026.10.26</figcaption></figure>
+<div class="cover-body"></div>
+</section>
+<section class="slide" id="s1">
+<div class="slide-head">
+<span class="slide-no">01</span>
+<h2 class="slide-title">适兕感慨——够用就好：被人认识的法律，胜过无人知晓的完美</h2>
+</div>
+<div class="split">
+<div><div class="block"><div class="block-label">要点</div><ul><li><strong>甲</strong>：鲁丁之断——<strong>"The MIT license isn't perfect. Neither is the W3C patent policy. But people know them, and that matters."</strong> 前一层更狠：<strong>"a lot of what we do is theater"</strong>——<strong>多数标准专利承诺永不会被诉，release、non-assert 只为落地得体、管理观感</strong>；故<strong>技术更弱而广受信任者，胜于密不透风而无人识得的定制协议</strong>。<strong>"被认识"不是修辞，是可执行的制度资本。</strong></li><li><strong>乙</strong>：适兕之问——<strong>"人类不应该整天就去想着搭便车、占便宜，而是应该思考为什么会有法律？人如何携手共进？权力和控制真的可以解决一切问题吗？"</strong> <strong>三问实为一问</strong>：<strong>若以人必搭便车为预设，法只需罚；若承认人会携手，法则须先被理解</strong>。<strong>鲁丁"people know them"即此转向之实证。</strong></li></ul></div><div class="block"><div class="block-label">书摘</div><div class="quote">"The MIT license isn't perfect. Neither is the W3C patent policy. But people know them, and that matters."<cite>————David Rudin, <em>Coffee &amp; Standards</em>, Foreword（第 18 页）</cite></div></div><div class="block question"><div class="block-label">窄廊追问</div><ul><li><strong>"被人认识"能否被刻意制造</strong>？<strong>若一个不完美的许可因广为人知而有力，一个更公道的许可能否靠同样传播获得同等力量</strong>？<strong>抑或"被认识"已被先到者占据</strong>——<strong>MIT 之名由三十年默认值累积，后来者纵优亦难复述</strong>。<strong>此问关涉开源治理的真实路径：改良条款，还是经营可识性。</strong></li><li><strong>若权力不足以尽解，它究竟解决什么</strong>？<strong>鲁丁书中权力未消失，只换形态</strong>：<strong>席位、提案权、草案先行、议程节奏</strong>。<strong>故第三问宜更精确：权力解决"谁先写下第一稿"，而非"谁被最终采纳"</strong>。<strong>开源之困，常不在无权力，而在有权力而无信任。</strong></li></ul></div></div>
+<div><figure class="shot"><img src="../../../ppt_decks/日读_2026-10-26_20261027_010028/images/slide-05.png" alt="配图" loading="lazy"></figure></div>
+</div>
+</section>
+<section class="slide" id="s2">
+<div class="slide-head">
+<span class="slide-no">02</span>
+<h2 class="slide-title">适兕感慨——不提供答案，只提供方向</h2>
+</div>
+<div class="split">
+<div><div class="block"><div class="block-label">要点</div><ul><li><strong>甲</strong>：鲁丁之断——<strong>"Reasonable people will disagree on some of this. That's fine. The goal isn't to give you the answer. It's to give you the framework to find your own."</strong> 他自陈其方法为<strong>"one practitioner's view based on long experience"</strong>——<strong>即此书的限度，亦其体例</strong>：<strong>明言己见之所在，而不冒充定论</strong>。<strong>能容异议者，方为可传之框架。</strong></li><li><strong>乙</strong>：适兕之断——<strong>"作为启蒙或解释者，是的，我们永远提供的都不答案，而是某个方向。"</strong> <strong>此语既为鲁丁作注，亦为「开源之道」自定位</strong>：<strong>解释者之职，非授人以鱼，乃授人以渔具</strong>。<strong>然"方向"须担责</strong>：<strong>方向可对可错，故可被反驳；答案不可反驳，故近于教条</strong>。<strong>「开源之道」之价值，正在其可被驳。</strong></li></ul></div><div class="block"><div class="block-label">书摘</div><div class="quote">"Reasonable people will disagree on some of this. That's fine. The goal isn't to give you the answer. It's to give you the framework to find your own."<cite>————David Rudin, <em>Coffee &amp; Standards</em>, Foreword（第 20–21 页）</cite></div></div><div class="block question"><div class="block-label">窄廊追问</div><ul><li><strong>"只给方向"会不会成为免责的托词</strong>？<strong>若方向永不验收，则解释者永不担责</strong>。<strong>然鲁丁之书有实据、有案例、有自陈限度</strong>——<strong>其"不给定论"是建立在二十年经验之上的克制，不是无话可说的谦让</strong>。<strong>判据：方向是否附带了可核对的依据与否证的条件；若无，则"不给答案"只是把责任推给读者。</strong></li><li><strong>启蒙者若永远不给答案，如何知道自己是否误人</strong>？<strong>答案可用对错检验，方向只能由走出来的人回头验证</strong>——<strong>故解释者须留下坐标：此刻依据何书、何案例、何人经验</strong>。<strong>「开源之道」的十余年文字，正是这些坐标；若坐标断裂，"方向"便退化为风格。</strong></li></ul></div></div>
+<div><figure class="shot"><img src="../../../ppt_decks/日读_2026-10-26_20261027_010028/images/slide-07.png" alt="配图" loading="lazy"></figure></div>
+</div>
+</section>
+  <footer>「开源之道」·适兕 ／ 配图由 SenseNova u1.5-lite 生成 · 3 张</footer>
+</div>
+</body>
+</html>
