@@ -156,6 +156,10 @@ li a:hover{{background:rgba(27,59,107,.05)}}
   font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}}
 .title{{font-size:1rem;color:var(--ink)}}
 .empty{{color:#6B6459;padding:2rem 0}}
+.arch-link{{margin-top:2.4rem;font-size:.82rem}}
+.arch-link a{{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,105,20,.4);
+  padding-bottom:1px}}
+.arch-link a:hover{{color:var(--ink);border-bottom-color:var(--ink)}}
 footer{{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
   font-size:.78rem;color:#6B6459;text-align:right}}
 </style>
@@ -168,6 +172,7 @@ footer{{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
   <ul>
 {chr(10).join(items) if items else '    <li class="empty">还没有已发布的幻灯片</li>'}
   </ul>
+  <p class="arch-link"><a href="architecture.html">查看发布链路架构图 →</a></p>
   <footer>共 {len(dates)} 期</footer>
 </div>
 </body>
