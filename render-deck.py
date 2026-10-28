@@ -79,7 +79,7 @@ def grab_bullets(block, section):
     """取出某个小节下的 bullet 列表。
 
     边界要卡死：只收「该小节标题」到「下一个 **小节名**」之间的行。
-    旧实现的停止条件是 \n\*\*[^\n*]+\*\*，遇到 **粗体** 开头的正文行
+    旧实现的停止条件过宽，遇到 **粗体** 开头的正文行时不会被当成分隔
     不会被当成分隔，导致桥接、书摘的内容被吞进「要点」。
     """
     # 小节标题形如： **显示要点（2 条）**：  或  **「开源之道」·窄廊追问**：
@@ -394,7 +394,7 @@ def main():
 <div class="deck">
   <header class="masthead">
     <div class="kicker">OSCAR · 开源之书 · 共读 ／ 每日阅读</div>
-    <h1>{date} ｜ 秩序不在完美，方向不在答案</h1>
+    <h1>{date}</h1>
   </header>
 {chr(10).join(rendered)}
   <footer>「开源之道」·适兕 ／ 配图由 SenseNova u1.5-lite 生成 · {len(slides)} 张</footer>
