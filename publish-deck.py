@@ -34,7 +34,7 @@ RENDER = HOME / "developing/markdown-to-slides/render-deck.py"
 
 REMOTE_HOST = "8.211.12.147"
 REMOTE_ROOT = "/www/wwwroot/slides"
-PUBLIC_BASE = "http://8.211.12.147"
+PUBLIC_BASE = "https://reading.opensourceway.blog"
 
 
 def sh(cmd, **kw):
