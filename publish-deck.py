@@ -64,7 +64,38 @@ def find_images(date, slide_nums):
     return {num: p for num, p in zip(slide_nums, ordered)}
 
 
-def build_one(date, workdir):
+def published_dates():
+    """远端已发布的期次，按日期倒序（最新在前）。"""
+    listing = sh(["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10",
+                  REMOTE_HOST, f"ls -1 {REMOTE_ROOT} 2>/dev/null || true"])
+    return sorted([d.strip() for d in listing.splitlines()
+                   if re.fullmatch(r'\d{4}-\d{2}-\d{2}', d.strip())], reverse=True)
+
+
+def deck_title(date):
+    """从本地源文件取封面主标题，供翻页卡片显示。"""
+    src = DAILY_DIR / date[:7] / f"{date}.md"
+    if not src.exists():
+        return ""
+    m = re.search(r'## Slide 0[^\n]*\n\* \*\*主标题：\*\*\s*([^\n]+)',
+                  src.read_text(encoding="utf-8"))
+    return m.group(1).strip() if m else ""
+
+
+def neighbours(date, dates):
+    """算上一期/下一期。dates 为倒序（最新在前）。
+
+    上一期 = 更早的一期（在倒序列表里靠后），下一期 = 更新的一期（靠前）。
+    """
+    if date not in dates:
+        return None, None
+    i = dates.index(date)
+    newer = dates[i - 1] if i > 0 else None      # 靠前 = 更新
+    older = dates[i + 1] if i + 1 < len(dates) else None
+    return older, newer
+
+
+def build_one(date, workdir, dates=None):
     """在临时目录里构建一期的发布产物：deck.html + images/。"""
     src = DAILY_DIR / date[:7] / f"{date}.md"
     if not src.exists():
@@ -75,7 +106,14 @@ def build_one(date, workdir):
 
     # ① 先渲染成 HTML（图片路径此时指向本地，后面统一改写）
     tmp_html = stage / "deck.html"
-    sh([sys.executable, str(RENDER), date, "--out", str(tmp_html)])
+    render_cmd = [sys.executable, str(RENDER), date, "--out", str(tmp_html)]
+    if dates is not None:
+        older, newer = neighbours(date, dates)
+        if older:
+            render_cmd += ["--prev", older, "--prev-title", deck_title(older)]
+        if newer:
+            render_cmd += ["--next", newer, "--next-title", deck_title(newer)]
+    sh(render_cmd)
 
     # ② 把用到的图片拷到 images/，并把路径改写为相对路径
     texts = list(re.finditer(r'^## Slide\s+(\d+)', src.read_text(encoding="utf-8"), re.M))
@@ -214,7 +252,11 @@ def main():
 
     with tempfile.TemporaryDirectory() as wd:
         if args.date:
-            stage, n_img = build_one(args.date, wd)
+            # 已发布期次 + 本期（本期可能还没在远端，翻页要能指到它自己）
+            dates = published_dates()
+            if args.date not in dates:
+                dates = sorted(dates + [args.date], reverse=True)
+            stage, n_img = build_one(args.date, wd, dates)
             push(stage, args.date)
             print(f"✅ 已发布 {PUBLIC_BASE}/{args.date}/deck.html")
             print(f"   配图 {n_img} 张")

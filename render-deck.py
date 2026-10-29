@@ -60,18 +60,28 @@ def grab(block, key):
     return ""
 
 
-def grab_multiline(block, key, stops=("书摘", "桥接", "追问", "显示要点", "视觉隐喻", "---")):
-    """取可能跨行的字段（视觉隐喻常常很长）。"""
+def grab_multiline(block, key, stops=("书摘", "桥接", "追问", "显示要点", "视觉隐喻",
+                                      "讲者信息", "时间/地点", "主标题", "副标题", "---")):
+    """取可能跨行的字段（视觉隐喻常常很长）。
+
+    视觉隐喻后面常紧跟 `* **讲者信息：** ...`、`* **时间/地点：** ...` 这类
+    同级字段。这些行同样以 `* ` 开头，若不在 stops 里就会一并被吞进隐喻，
+    导致配图说明把「讲者信息」「时间/地点」也显示出来。
+    """
     m = re.search(rf'\*\*?\s*{key}\s*[：:]\s*\*\*?\s*(.*)', block, re.DOTALL)
     if not m:
         return ""
     body = m.group(1)
+    # ① 遇到任何同级 bullet 字段（* **xxx：**）就截断
+    cut = re.search(r'\n\s*\*\s*\*\*[^*]+\*\*\s*[：:]', body)
+    if cut:
+        body = body[:cut.start()]
+    # ② 再按显式小节名截断
     for s in stops:
-        idx = body.find(f"**{s}")
-        if idx == -1:
-            idx = body.find(f"\n{s}")
-        if idx != -1:
-            body = body[:idx]
+        for pat in (f"**{s}", f"\n{s}"):
+            idx = body.find(pat)
+            if idx != -1:
+                body = body[:idx]
     return body.strip().strip("*").strip()
 
 
@@ -164,7 +174,20 @@ body{
 /* 顶部信息条 */
 .masthead{
   padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--rule);
-  margin-bottom:2rem;
+  margin-bottom:2rem;position:relative;
+}
+/* 返回索引：固定在信息条右上，滚动时也保持可达 */
+.back-home{
+  position:absolute;right:0;top:2.5rem;
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.8rem;color:var(--accent);text-decoration:none;
+  border:1px solid var(--rule);border-radius:100px;
+  padding:.32rem .85rem;letter-spacing:.04em;
+  transition:background .15s,border-color .15s;
+}
+.back-home:hover{background:rgba(139,105,20,.07);border-color:var(--accent)}
+@media(max-width:640px){
+  .back-home{position:static;margin-top:.9rem;display:inline-flex}
 }
 .masthead .kicker{
   font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
@@ -250,6 +273,26 @@ code{
   padding:1.2rem;border:1px dashed var(--rule);border-radius:4px;
   color:var(--muted);font-size:.88rem;text-align:center;
 }
+/* 上一期 / 下一期 */
+.pager{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--rule);
+}
+.pager a,.pager span{
+  display:block;text-decoration:none;border:1px solid var(--rule);
+  border-radius:6px;padding:.9rem 1.1rem;transition:background .15s,border-color .15s;
+}
+.pager a:hover{background:rgba(27,59,107,.045);border-color:var(--ink-soft)}
+.pager .dir{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.35rem}
+.pager .ttl{font-size:.94rem;color:var(--ink);line-height:1.5;font-weight:600}
+.pager .dd{font-size:.75rem;color:var(--muted);margin-top:.3rem;
+  font-variant-numeric:tabular-nums}
+.pager .next{text-align:right}
+/* 没有相邻期次时占位，保持左右对称不塌陷 */
+.pager .none{border-style:dashed;opacity:.5}
+.pager .none .ttl{color:var(--muted);font-weight:400}
+
 footer{
   margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--rule);
   font-size:.78rem;color:var(--muted);letter-spacing:.04em;
@@ -362,6 +405,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("date", help="日期，如 2026-10-26")
     ap.add_argument("--out", help="输出 HTML 路径")
+    ap.add_argument("--prev", help="上一期（更早）日期，如 2026-10-24")
+    ap.add_argument("--next", help="下一期（更新）日期，如 2026-10-28")
+    ap.add_argument("--prev-title", default="", help="上一期标题")
+    ap.add_argument("--next-title", default="", help="下一期标题")
+    ap.add_argument("--home", default="../", help="返回索引的相对路径")
     args = ap.parse_args()
 
     date = args.date
@@ -382,6 +430,32 @@ def main():
     rendered = [render_slide(num, block, images.get(num), out_dir)
                 for num, block in slides]
 
+    # ── 导航：返回索引 + 上一期/下一期 ──
+    def esc(s):
+        return html.escape(s or "", quote=True)
+
+    def pager_card(kind, day, title):
+        """kind: 'prev' | 'next'。没有相邻期次时给占位，保持左右对称。"""
+        label = "← 上一期" if kind == "prev" else "下一期 →"
+        cls = "prev" if kind == "prev" else "next"
+        if day:
+            return (f'    <a class="{cls}" href="../{day}/deck.html">'
+                    f'<div class="dir">{label}</div>'
+                    f'<div class="ttl">{esc(title) or day}</div>'
+                    f'<div class="dd">{day}</div>'
+                    f'</a>')
+        return (f'    <span class="{cls} none">'
+                f'<div class="dir">{label}</div>'
+                f'<div class="ttl">已是{"最早" if kind == "prev" else "最新"}一期</div>'
+                f'</span>')
+
+    pager = "\n".join([
+        '  <nav class="pager">',
+        pager_card("prev", args.prev, args.prev_title),
+        pager_card("next", args.next, args.next_title),
+        '  </nav>',
+    ])
+
     doc = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -395,8 +469,10 @@ def main():
   <header class="masthead">
     <div class="kicker">OSCAR · 开源之书 · 共读 ／ 每日阅读</div>
     <h1>{date}</h1>
+    <a class="back-home" href="{esc(args.home)}">← 返回列表</a>
   </header>
 {chr(10).join(rendered)}
+{pager}
   <footer>「开源之道」·适兕 ／ 配图由 SenseNova u1.5-lite 生成 · {len(slides)} 张</footer>
 </div>
 </body>
