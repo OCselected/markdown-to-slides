@@ -91,11 +91,58 @@ dark academic tone, Intellectual Visual System, art taste.
   * **自发秩序不是「什么都不管」，是「规则由参与者共同长出，且对所有人一致生效」**
   * 报告结尾引用的那句话仍然成立（Irving Wladawsky-Berger，二十周年时说的）：「Linux 最珍贵的是社区。这是我们绝对不能失去的东西。」
 
-## Slide 37: 留几个问题给现场
+## Slide 37: 非常值得关注的研究
 * 视觉隐喻：
   * 一张空白的羊皮纸，只有四行字，大量留白。
 * 显示要点：
-  * 如果首次贡献者创纪录是 AI 带来的——社区「变健康」了吗？
-  * 「human sign-off」这一条，能在多大压力下撑住？
-  * 当企业贡献超过 80%，公地的**决策权**还在社区手里吗？
-  * 我们这边在做的「开源」，缺的是哪一条：可执行的许可证、真实的违规成本，还是为长周期付账的机制？
+  * Academic and economic impact analyses demonstrate that if open source software like Linux were suddenly eliminated, global GDP for the average nation would be over 2% lower in the long run due to lost operational efficiencies, increased total cost of ownership (TCO), and duplicated research costs.
+
+## Slide 38: 软件工程革命性的存在
+* 视觉隐喻：
+  * 
+* 显示要点：
+  * Linux’s modular architecture and distributed development model revolutionized software engineering.
+  * Linux’s legacy, therefore, is not only the system that runs much of today’s infrastructure. Through Git, it also helped define the development model behind much of today’s software: distributed, incremental, review-driven, and built around transparent histories of change.
+
+## Slide 39: 对国民经济的影响
+* 视觉隐喻：
+  * 无处不在的代码
+* 显示要点：
+  * Academic and economic impact analyses demonstrate that if open source software like Linux were suddenly eliminated, global GDP for the average nation would be over 2% lower in the long run due to lost operational efficiencies, increased total cost of ownership (TCO), and duplicated research costs.
+
+## Slide 40: Linus 之后的 Linux 制度
+* 视觉隐喻：
+  * 传承
+* 显示要点：
+  * Leadership succession is a key aspect of the kernel’s continuity, and in January 2026, the community drafted a process for selecting Linus’s successor
+
+## Slide 41: 下一代维护者
+* 视觉隐喻：
+  * 代际更替，是人类最伟大的杰作
+* 显示要点：
+  * In open source, it’s not like you recruit new developers, and those recruits go on to become maintainers. It is a community of people that voluntarily come and stay, choose to stay or leave. It’s not somebody pushing you as a developer through a pipeline. You are in charge of traveling that road.
+  * LLMs can teach you the technology, but open source is so much more than technology. ‘People’ aspects are the difficult ones to navigate and master. Those are the things that you would learn by having that interaction with a mentor.There’s no other project that gives you this kind of fulfillment in terms of being able to work with people from across the world. If you’re like me, and you want to do that, then this is the best project.
+    ———— Shuah Khan, kernel maintainer and Linux Fellow
+
+## Slide 42: 关于完善的社会
+* 视觉隐喻：
+  * 
+* 显示要点：
+  * “What is so precious about Linux is the community. That’s the one thing we can absolutely never lose. Keeping our open ecosystem going is very important, so that we can continue to play a role in addressing some of the most important issues facing our society.” 
+     ———— IBM Fellow Irving Wladawsky-Berger
+
+## Slide 43: 你能离开Linux吗？
+* 视觉隐喻：
+  * 
+* 显示要点：
+  * I think about what the world would have looked like without open source... And what would we be doing without open source? Linux runs the world, Linux and open source. That’s not a statement that we make lightly. And that is the beauty of it: people don’t even know Linux exists... but we have an outsized influence on the world.
+     —— Shuah Khan ，Kernel 维护者
+
+## Slide 44: 报告引用材料中的推荐
+* 视觉隐喻：
+  * 一座宝藏之山，充满了魔力。
+* 显示要点：
+  * Hoffmann M, Nagle F, Zhou Y. The Value of Open Source Software. Harv Bus Sch [Internet]. 2024 Jan [cited 2026 Aug 28]. Available from: https://www.hbs.edu/faculty/Pages/item.aspx?num=65230
+  * TED. The Mind Behind Linux | Linus Torvalds | TED [Internet]. 2016 [cited 2026 Aug 27]. Available from: https://www.youtube.com/watch?v=o8NPllzkFhE 
+  * Bielik J. The real story behind SpaceX’s 32,000 Linux computers in orbit. Webiano Digital & Marketing Agency [Internet]. 2026 Apr 27 [cited 2026 Aug 28]. Available from: https://webiano.digital/the-real-story-behind-spacexs-32000-linux-computersin-orbit/
+  * Vaughan-Nichols S. ZDNET [Internet]. 2026 [cited 2026 Aug 28]. Linux after Linus? The kernel community finally drafts a plan for replacing Torvalds. Available from: https://www.zdnet.com/article/linux-community-project-continuity-plan-forreplacing-linus-torvalds/
