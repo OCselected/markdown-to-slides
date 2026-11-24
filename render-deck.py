@@ -67,16 +67,32 @@ def grab_multiline(block, key, stops=("书摘", "桥接", "追问", "显示要�
     视觉隐喻后面常紧跟 `* **讲者信息：** ...`、`* **时间/地点：** ...` 这类
     同级字段。这些行同样以 `* ` 开头，若不在 stops 里就会一并被吞进隐喻，
     导致配图说明把「讲者信息」「时间/地点」也显示出来。
+
+    另外要挡住一种情况：字段本身是空的（源文件里只有 `* 视觉隐喻：`
+    下一行直接是 `* 显示要点：`）。此时必须返回空串，不能顺着往下把
+    整段「显示要点」当成隐喻——否则配图说明会重复正文。调用方据空串
+    走「无配图」分支。
     """
-    m = re.search(rf'\*\*?\s*{key}\s*[：:]\s*\*\*?\s*(.*)', block, re.DOTALL)
+    m = re.search(rf'\*?\*?\s*{key}\s*[：:]\s*\*?\*?\s*(.*)', block, re.DOTALL)
     if not m:
         return ""
     body = m.group(1)
+    # ⓿ 空字段早退：源文件里只有 `* 视觉隐喻：` 后面直接跟 `* 显示要点：`
+    #    这种字段本身是空的，必须返回空串，不能顺着往下抓正文
+    head = body.lstrip()
+    if head.startswith("* 显示要点") or head.startswith("显示要点") \
+            or head.startswith("* **显示要点") or head.startswith("**显示要点"):
+        return ""
     # ① 遇到任何同级 bullet 字段（* **xxx：**）就截断
-    cut = re.search(r'\n\s*\*\s*\*\*[^*]+\*\*\s*[：:]', body)
+    cut = re.search(r'\n\s*\*+\s*\*\*[^*]+\*\*\s*[：:]', body)
     if cut:
         body = body[:cut.start()]
-    # ② 再按显式小节名截断
+    # ② 再挡纯文本的小节名（* 显示要点： / 显示要点：）
+    #    源文件有两种写法混用，只挡 **粗体** 那种会漏
+    cut2 = re.search(r'\n\s*\*?\s*(显示要点|书摘|桥接|追问|讲者信息|时间/地点)\s*[：:]', body)
+    if cut2:
+        body = body[:cut2.start()]
+    # ③ 再按显式小节名截断
     for s in stops:
         for pat in (f"**{s}", f"\n{s}"):
             idx = body.find(pat)
@@ -103,8 +119,23 @@ def grab_bullets(block, section):
     items = []
     for line in body.split("\n"):
         line = line.strip()
+        # 兼容两种列表语法：
+        #   '- item'    （日读文件用的）
+        #   '* item'    （open-source-sharing 大纲用的）
+        # 注意 '**粗体**' 不是列表项，必须先排除，否则会被当成 '*' 列表
         if line.startswith("- "):
-            items.append(line[2:].strip())
+            item = line[2:].strip()
+        elif line.startswith("* ") and not line.startswith("**"):
+            item = line[2:].strip()
+        else:
+            continue
+        # 跳出「视觉隐喻：」「显示要点：」这类只有标签的空壳项——
+        # 它们是小节名，不是内容，留着会在页面上出现一行孤零零的「视觉隐喻：」。
+        # 源文件里有两种写法都要挡：'* **视觉隐喻：**' 和 '* 视觉隐喻：'
+        if re.fullmatch(r'\**\s*(视觉隐喻|显示要点|书摘|桥接|追问)[：:]\s*\**\s*', item):
+            continue
+        if item:
+            items.append(item)
     return items
 
 
@@ -338,11 +369,26 @@ def render_slide(num, block, img_path, out_dir):
     metaphor = grab_multiline(block, "视觉隐喻")
 
     # 显示要点
-    bullets = grab_bullets(block, "显示要点")
-    if not bullets:
-        # 兜底：抓所有 '- ' 开头且不在其他小节里的行
-        bullets = [l.strip()[2:].strip() for l in block.split("\n")
-                   if l.strip().startswith("- ")]
+    if is_cover:
+        # 封面字段已经单独渲染，不能再走列表兜底——
+        # 否则「主标题／副标题／讲者信息／时间地点」会被当列表项重复列一遍
+        bullets = grab_bullets(block, "显示要点")
+    else:
+        bullets = grab_bullets(block, "显示要点")
+        if not bullets:
+            # 兜底：抓所有列表行（'* ' 或 '- '），排除 **粗体** 小节名本身
+            for l in block.split("\n"):
+                s = l.strip()
+                if s.startswith("- "):
+                    item = s[2:].strip()
+                elif s.startswith("* ") and not s.startswith("**"):
+                    item = s[2:].strip()
+                else:
+                    continue
+                if re.fullmatch(r'\**\s*(视觉隐喻|显示要点|书摘|桥接|追问)[：:]\s*\**\s*', item):
+                    continue
+                if item:
+                    bullets.append(item)
 
     # 追问
     questions = grab_bullets(block, "「开源之道」·窄廊追问")
@@ -363,9 +409,11 @@ def render_slide(num, block, img_path, out_dir):
     # 图片
     img_html = ""
     if img_path and Path(img_path).exists():
-        # 直接用相对路径：从输出目录到图片文件的真实位置，
-        # 不要手工拼 parent.name——images 目录会被重复一层。
-        rel = os.path.relpath(img_path, Path(out_dir))
+        # 统一约定：配图放在输出目录的 images/ 下，HTML 引用 images/xxx.png。
+        # 不要用 os.path.relpath——当图片源与输出目录不在同一棵树（例如
+        # --imgdir 指向 ppt_decks，输出到 /tmp）时，会算出
+        # ../../../home/lee/... 这种只在生成机成立的路径，传到服务器就 404。
+        rel = f"images/{Path(img_path).name}"
         cap = md_inline(metaphor) if metaphor else ""
         img_html = (f'<figure class="shot"><img src="{rel}" alt="配图" loading="lazy">'
                     + (f'<figcaption>{cap}</figcaption>' if cap else "")
@@ -404,6 +452,12 @@ def render_slide(num, block, img_path, out_dir):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("date", help="日期，如 2026-10-26")
+    ap.add_argument("--src", help="直接指定源文件（可多个，逗号分隔）。"
+                                 "缺省按 daily-reading/<YYYY-MM>/<date>.md 找；"
+                                 "给了多个则按顺序合并成一份 deck——用于"
+                                 "一次分享拆成 part-1/2/3 的场合。")
+    ap.add_argument("--imgdir", help="直接指定配图目录（内含 slide-NN.png）。"
+                                    "缺省按 ppt_decks/日读_<date>_*/images 找。")
     ap.add_argument("--out", help="输出 HTML 路径")
     ap.add_argument("--prev", help="上一期（更早）日期，如 2026-10-24")
     ap.add_argument("--next", help="下一期（更新）日期，如 2026-10-28")
@@ -413,16 +467,50 @@ def main():
     args = ap.parse_args()
 
     date = args.date
-    src = DAILY_DIR / date[:7] / f"{date}.md"
-    if not src.exists():
-        sys.exit(f"找不到源文件：{src}")
 
-    content = src.read_text(encoding="utf-8")
-    slides = parse_slides(content)
-    if not slides:
-        sys.exit("未解析到任何 slide")
+    if args.src:
+        srcs = [Path(p.strip()) for p in args.src.split(",") if p.strip()]
+        missing = [p for p in srcs if not p.exists()]
+        if missing:
+            sys.exit(f"找不到源文件：{', '.join(map(str, missing))}")
+        # 多份合并：源文件的 Slide 序号本身连续（part-1 是 1-15，
+        # part-2 接着 16-30，part-3 是 31-44），不要再叠加 offset，
+        # 否则序号会被推成 0-14 / 30-44 / 75-88，配图找不到。
+        raw = []
+        for p in srcs:
+            part = parse_slides(p.read_text(encoding="utf-8"))
+            if not part:
+                sys.exit(f"{p} 未解析到任何 slide")
+            raw.extend(part)
+        # 平移到 0 起：render_slide 用 num == 0 判定封面
+        base = min(n for n, _ in raw)
+        slides = [(n - base, b) for n, b in raw]
+        # 自检：必须连续，否则 slide-NN.png 会错位
+        got = [n for n, _ in slides]
+        if got != list(range(len(slides))):
+            sys.exit(f"序号不连续，拒绝渲染：{got}")
+        print(f"合并 {len(srcs)} 份源文件 → {len(slides)} 张 slide")
+    else:
+        src = DAILY_DIR / date[:7] / f"{date}.md"
+        if not src.exists():
+            sys.exit(f"找不到源文件：{src}")
+        slides = parse_slides(src.read_text(encoding="utf-8"))
+        if not slides:
+            sys.exit("未解析到任何 slide")
 
-    images = find_images(date, [num for num, _ in slides])
+    if args.imgdir:
+        # 直接指定目录：按 slide-NN.png 精确匹配，不做任何历史兼容映射
+        d = Path(args.imgdir)
+        if not d.is_dir():
+            sys.exit(f"配图目录不存在：{d}")
+        images = {}
+        for num, _ in slides:
+            p = d / f"slide-{num:02d}.png"
+            if p.exists():
+                images[num] = p
+        print(f"配图：{len(images)} 张 ← {d}")
+    else:
+        images = find_images(date, [num for num, _ in slides])
 
     out_path = Path(args.out) if args.out else Path(f"/tmp/deck-{date}.html")
 
@@ -473,7 +561,7 @@ def main():
   </header>
 {chr(10).join(rendered)}
 {pager}
-  <footer>「开源之道」·适兕 ／ 配图由 SenseNova u1.5-lite 生成 · {len(slides)} 张</footer>
+  <footer>「开源之道」·适兕 ／ 配图由 SenseNova u1.6-lite 生成 · {len(slides)} 张</footer>
 </div>
 </body>
 </html>

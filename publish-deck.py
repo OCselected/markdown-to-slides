@@ -206,7 +206,7 @@ footer{{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
 <div class="wrap">
   <div class="kicker">OSCAR · 开源之书 · 共读</div>
   <h1>每日阅读 · 幻灯片</h1>
-  <p class="sub">「开源之道」·适兕 ／ 配图由 SenseNova u1.5-lite 生成</p>
+  <p class="sub">「开源之道」·适兕 ／ 配图由 SenseNova u1.6-lite 生成</p>
   <ul>
 {chr(10).join(items) if items else '    <li class="empty">还没有已发布的幻灯片</li>'}
   </ul>
