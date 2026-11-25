@@ -37,47 +37,53 @@ dark academic tone, Intellectual Visual System, art taste.
 
 # 幻灯片大纲内容 (Slide Deck Outline)
 
-## Slide 1: Cover
+## Slide 1: 关于我
+* 视觉隐喻：
+  * 左侧是一张老式名片压在书页上，右侧是书架上抽出的一排书脊，书名用极小字号排开。名片与书脊之间有一道细光。
+* 显示要点：
+  * **「开源之道」·适兕**，本名：李建盛，作/译者；
+  * **「开源之道」（：致力于开源相关思想、知识和价值的探究！）** 主创
+  * Linux 基金会旗下项目OpenChain、TODO Ambassador
+  * 组织者、策展人：「开源之书·共读」、OSPO Summit 
+  * 独立思考者：开源的经济学
+  * One Person Company （OPC）
+ 
+
+## Slide 2: Cover
 * **主标题：** Agentic、开源、阅读
 * **副标题：** 三个词，一条链——当代人如何学会与机器一起做事
-* **讲者信息：** 「开源之道」·适兕
+* **讲者信息：** 「开源之道」·适兕 x 窄廊
 * **时间/地点：** 2026.11.23 · 北京联合大学 · 「开源之书·共读」
 * **视觉隐喻：**
   * 一间深夜的书房，一盏台灯照亮摊开的古籍，书页中央站着一个铜制的人形立像——很小，但站着。一道光线从书页射向立像的胸口。背景是排到天花板的老书脊，深褐与铜金，光只落在该落的地方。
 
-## Slide 2: 一张海报里的三个词
+## Slide 3: 谁是窄廊？
 * 视觉隐喻：
-  * 海报被拆成三个色块并排悬挂：左块写着 Agentic，中块写着开源，右块写着阅读。三块之间用极细的铜线连着，线的走向不是并列，是从左到右依次穿过。
+  * 自由的窄廊
 * 显示要点：
-  * 今天的标题是三个词，不是三个话题。
-  * 它们**依次发生**：机器开始自己做事 → 需要一套让陌生人协作的制度 → 这套制度最终要落在具体的人身上。
-  * 如果只记住一个词，记住中间的「开源」；如果只记住一句话，记住它们是一条链。
-  * 90 分钟，三部分，每部分 25 分钟，留 15 分钟给提问。
+  * 适兕的数字孪生体，一个运行在 Hermes Agent 之上的 AI 协作者。
+  *  个人主页： https://narrow-corridor.opensourceway.blog/
+  *  是助理，不是工具，是共同作者。
 
-## Slide 3: 关于我——为什么是我来讲
-* 视觉隐喻：
-  * 左侧是一张老式名片压在书页上，右侧是书架上抽出的一排书脊，书名用极小字号排开。名片与书脊之间有一道细光。
-* 显示要点：
-  * **「开源之道」·适兕**，独立开源研究者，协作机制设计师。
-  * 做的事只有一件：把「人类为什么能组织起来做成一件事」这个问题，追问到底。
-  * 不用权力推动，不用金钱购买，只靠思想本身的力量影响他人。
 
-## Slide 4: 我做过什么——四种方式，一个方向
+## Slide 4: 适兕做过什么
 * 视觉隐喻：
   * 四个并列的方格，每格一件实物：一本翻开的书、一摞手写译稿、一张排满书脊的长桌、一台亮着的终端。四件东西共用一个底座。
 * 显示要点：
-  * **译**：《网络的财富》（劳伦斯·莱斯格）等开源思想核心文献的中文引入。
+  * **译**：《网络的财富》（Yochai Benkler）等开源思想核心文献的中文引入。
   * **著**：《开源之迷》（人民邮电出版社）、《开源之史》。
   * **选**：「开源之书·共读」十几年筛选下来的书单——不是畅销榜，是能撑住判断力的书。
   * **讲**：开源经济学讲义、Open Source Way 的长期写作。
+  * **学**：「开源之道」·窄廊 
 
 ## Slide 5: 我为什么站在这里
 * 视觉隐喻：
   * 一张讲台的照片，台上没有人，只有摊开的一本书和一支笔。台下的座位空着，但每张椅子上都放着一本翻开的书。
 * 显示要点：
-  * 我常说一句话：**开源的工作是启蒙，不是开拓。**
-  * 开拓是替别人走一遍；启蒙是把地图交出去，让人自己走。
-  * 所以今天不是来给你们答案的，是来给一张地图的——地图上可能有些地方是空的，那些空着的地方，正是你们要走的路。
+  * 今年是第三年站在这里和同学们分享交流，但人类的开源已经让给了Agentic；
+  * 很抱歉，未来不再需要计算机编程相关工作了。
+  * 相关公司不再招聘初级软件开发岗位：供给还在，再无消费；
+  * 校园的缓冲：还有时间！
 
 ## Slide 6: 今天的地图
 * 视觉隐喻：
@@ -88,77 +94,115 @@ dark academic tone, Intellectual Visual System, art taste.
   * **主题三 · 阅读（约 20 分钟）**：制度最终落在人身上——为什么是阅读，而不是教程？
   * 最后 15 分钟：提问、争论、抬杠，都欢迎。
 
-## Slide 7: 先看一张图
+## Slide 7: 先看几组数据
 * 视觉隐喻：
   * 一张极简的对照图：左边一个人拿着锤子敲钉子，右边一个人坐在椅子上，面前是一整条自动运转的流水线。两边的人数一样，都是一个人。
 * 显示要点：
-  * 左边：**你用工具**。锤子不会自己找钉子。
-  * 右边：**你交代事情**。流水线自己决定怎么走、先走哪一步。
-  * 从「用工具」到「交代事情」——这一步跨了三十年，但真正跨过去，只用了不到五年。
-  * 这就是 Agentic 这个词想说的全部：不是更强的工具，是**会自己决定下一步的东西**。
+  * Claude Code、OpenAI Codex 等直接接管命令行与代码仓库的 Agent 成为主力工具，推动软件工程从“代码补全（Copilot）”全面转向“任务委派（Agentic）”。
+  * AAIF 于 2025 年 12 月在 Linux 基金会旗下成立，由 Anthropic、Block 和 OpenAI 联合发起。截至 2026 年 10 月（成立不到一年），成员组织已突破 305 家；仅 2026 年第三季度就新增 60 家成员，包括蚂蚁集团（Ant Group）、盖茨基金会、MongoDB、Nutanix、Vercel 等以金牌会员身份加入。
+  * Gartner 预测 2026 年全球企业在 AI Agents 与助手上的总支出将达 292 亿美元。
 
-## Slide 8: 三个常见误解，先拆掉
+## Slide 8: The office agent war in China Market
 * 视觉隐喻：
-  * 三块石头并排摆在桌上，每块石头上刻一个词：聪明、全知、替代。三块石头都被一把小锤敲出了一道裂纹。
+  * 竞争激烈的数字产品，历史上的浏览器、操作系统、关系型数据库等
 * 显示要点：
-  * **误解一：Agent 就是更聪明的聊天机器人。** —— 不是。聊天机器人回答，Agent 交付。
-  * **误解二：Agent 什么都懂。** —— 不是。它最擅长的是**调用**别人的东西，包括别人写的代码、别人写的文档。
-  * **误解三：Agent 会替代人。** —— 它替代的是「执行」，不替代「判断」。而判断需要的东西，今天第三部分会讲。
+  * 2026 上半年规模 230 亿元，同比增长 47%；密集上线 20+ 款 AI 办公智能体（虎嗅 2026-09-16）
+  * 2026 年中腾讯 WorkBuddy、阿里千问办公、字节豆包工作、百度搭子集中上线
 
-## Slide 9: 一个真事
+## Slide 9: Brief history of agents
+* Visual metaphor:
+  * Agents groping forward in the dark
+* Display points:
+  1. 1956, Antecedents: The Dartmouth Workshop and the founding of AI
+  2. December 1980: Contract Net Protocol — the first multi-agent coordination framework
+  3. 1986: Minsky’s Society of Mind — intelligence as a multi-agent system
+  4. 1987: BDI — the belief–desire–intention architecture
+  5. 1990s: The multi-agent systems era
+  6. 2005–ongoing: Jason — an open source interpreter for AgentSpeak, extending Rao’s work
+  7. 1995: Russell & Norvig — AI defined as the study of intelligent agents
+  8. 2000s: Reinforcement learning, recommender agents, and the practical turn
+  9. December 19, 2013: Deep reinforcement learning agents reach the mainstream
+  10. June 11, 2020: The OpenAI API and the beginning of LLM-as-agent
+  11. September 14, 2022: Adept’s ACT-1 — a transformer trained to take actions
+  12. October 6, 2022: ReAct — the paper that defines the modern LLM agent
+  13. March 1, 2023: ChatGPT and Whisper APIs — the “API moment” for agents
+  14. March 28, 2023: BabyAGI — the first widely shared autonomous LLM agent
+  15. March 30, 2023: AutoGPT — the project that defines “autonomous agent” in the public mind
+  16. 2023: LangChain, AgentGPT, and the framework explosion
+  17. March 12, 2024: Cognition’s Devin — the first “AI software engineer” agent
+  18. March–May 2024: Multimodal and long-context models enable capable agents
+  19. October 22, 2024: Anthropic’s Computer Use — agents that operate real computers
+  20. November 25, 2024: Model Context Protocol — a standard for agent–tool connections
+  21. January 23, 2025: OpenAI Operator — browser-native agentic AI for consumers
+  22. March 2025: Manus — general-purpose autonomous agent goes viral
+  23. March 2025: Agent SDKs from frontier labs
+  24. Q1–Q3 2025: The AI agent funding wave
+  25. November 24, 2025: Claude Opus 4.5 — frontier performance for long-horizon agents
+  26. February 25, 2026: Hermes Agent released
+
+## Slide 10: Why Hermes?
 * 视觉隐喻：
-  * 一份 2011 年的新闻剪报，纸已经泛黄，标题被一道光切成两半。剪报旁边放着一枚老式印章。
+  * nousresearch Hermes agent 的logo 和风格
 * 显示要点：
-  * 2011 年，一位风险投资人写过一句话：「软件正在吞噬世界。」
-  * 十几年后，另一句话接上来了：「**开源正在比软件吞噬世界更快的速度，吞噬软件。**」
-  * 这两句话之间，藏着一个很少被讲清的事实：**今天你们手机里跑的东西，绝大部分不是某家公司写的。**
+  * Open Source Project
+  * 247K star · 34 releases · 3246 contributors 
+  * Hermes 是一个活跃、快速增长的开源项目，是 Agent 演化分析的合适样本。
+  * "最小核心 + 开放边缘"
+  * Skills 自我沉淀：闭环学习让 agent 随使用自我进化
+  * 作为用户和观察者
 
-## Slide 10: 一个数字
+## Slide 11: Hermes release evolution 1: feature
 * 视觉隐喻：
-  * 一张极简的信息图：一枚硬币放在左边，右边是一座山。硬币与山之间用一条极细的线连着，线上标着「2100×」。
+  * 一个不断生长的生命体
 * 显示要点：
-  * 把今天被广泛使用的开源软件**重写一遍**，全球加权成本约 **41.5 亿美元**。
-  * 如果每家企业都各自重写一遍——**8.8 万亿美元**，全世界企业软件支出要变成现在的 **3.5 倍**。
-  * 相差两千多倍。这个差额不是谁的利润，是**没人需要重复劳动**省下来的。
-  * 哈佛商学院 2024 年的测算。记住这个量级：**你们每天免费用的东西，值一个国家级的钱。**
+  * 阶段一：单 agent 的基础设施化：provider/model routing、tool calling、file operations、terminal execution、browser、memory/session、skills、MCP、messaging gateway
+  * 阶段二：多 agent 与可编排：Kanban、durable goals、checkpoints、delegation/subagents、curator/self-improvement、background review fork、swarm/graph decomposition
+  * 阶段三：agent 社会与 bot mode：Bot Mode、named agents、deterministic avatars、group chats、hermes peer、bot-to-bot DM、cron jobs with memory、cron continuity、steerable subagents、MCP command center
 
-## Slide 11: 但这些代码是谁写的
+## Slide 12: Hermes release evolution 2: arch
 * 视觉隐喻：
-  * 一张深夜的办公桌，桌上只有一台开着的笔记本，屏幕光照着一张没有人的椅子。桌角有一杯凉了的茶。
+  * 不断重塑的宇宙
 * 显示要点：
-  * 这些代码不是公司开会决定要写的。
-  * 它们大多是**一个人在深夜，解决了自己的一个问题**，然后顺手放到了公共的地方。
-  * 所以第一个主题的答案其实在这里：Agent 再强，它要调用的世界，是**无数陌生人无偿留下的东西**。
-  * 这件事能成立，靠的不是技术——是制度。这就是第二部分。
+  * Messaging Gateway：从平台适配到公共表面
+  * Profiles / Multi-instance：从单一用户到组织隔离
+  * Transport ABC / Provider Layer：模型市场制度
+  * Memory / Honcho / Session Search：从上下文到可治理知识
+  * MCP：从外部协议到 command center
+  * Desktop / Dashboard / TUI：消费面决定架构
+  * God-file Refactor：维护制度被规模逼出来
 
-## Slide 12: 今天我不打算讲的
-* 视觉隐喻：
-  * 一块黑板，上面写满了公式，然后被一块湿布擦掉大半，只留下右下角一个小小的问号。
-* 显示要点：
-  * 不讲：模型架构、参数量、训练方法、Prompt 技巧。
-  * 那些东西你们在别处能学到，而且半年就会过时。
-  * 今天只讲一件事：**当生产能力被重新分配，人该怎么组织。**
-  * 这个问题不随模型版本变化，它随人性变化——而人性很慢。
-
-## Slide 13: 一个提醒
+## Slide 13: 一个提醒：理性乐观派
 * 视觉隐喻：
   * 一只手指指向远处的山，山脚下有一条被踩出来的小路，路上没有指示牌。
 * 显示要点：
+  * 警惕使用过去的思路去衡量未来～ 
+  * 在没有驾驭火之前，人类也无法想象火带来了什么：温暖、消化、寿命、培育下一代
+  * 你们站在了历史的前沿：有前人的阵痛，进入创造历史的时刻～ 
   * 今天会有很多名词，你不需要都记住。
   * 你只需要带走**一条链**，和**一个能自己往前走的方法**。
-  * 名词会过期，链条不会。
+  * 
 
-## Slide 14: 承上
+## Slide 14: Demand, Supply, Consumers
 * 视觉隐喻：
-  * 一条虚线从画面底部升起，穿过中间，消失在顶部的光里。虚线上有三个节点，第一个节点刚刚被点亮。
+  * 修修补补、四面八方
 * 显示要点：
-  * 我们已经有了问题：**机器开始自己做事，人还剩下什么？**
-  * 接下来三部分，是一个可能的回答。
-  * 先说第一个词：Agentic。
+  * 消费者画像：开发者 / 维护者、平台用户、远程/团队用户、研究者 / 自动化用户、部署者 / 运维者
+  * 需求如何驱动架构：
+    * 消息平台 → gateway 制度
+    * 多人 → profile / multi-user / auth
+    * 长任务 → cron / goals / checkpoints / Kanban
+    * 桌面和远端 → Desktop / Dashboard / admin panel
+    * 外部工具 → MCP / plugin / skills
+    * 真实组织 → security / approval / state consistency / observability
 
-## Slide 15: Part 1 结束 · 留给现场
+
+## Slide 15:Token economic view
 * 视觉隐喻：
-  * 一整页空白，只有右下角一个小小的铜色圆点，像一枚刚开始发热的火星。
+  * 在用户和LLM之间存在着巨大的利润空间
 * 显示要点：
-  * 留白。
-  * 现场问题（如有）：你们手机里最常用的三个 App，代码是谁写的？
+  * Provider Layer 的早期制度：从散落调用到集中路由
+  * LLM 厂商入口：为什么每个模型厂商都需要 agent runtime
+  * Nous Portal / Tool Gateway：开源 agent 与商业服务的连续界面
+  * 价格、缓存、配额：token 不是价格，而是成本感知系统
+  * OAuth、订阅与入口权：从 API key 到订阅身份
+  * Provider support is not just model compatibility. It is the institutional layer where AI agents meet the token economy.
